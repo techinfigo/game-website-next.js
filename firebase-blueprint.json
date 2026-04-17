@@ -1,0 +1,24 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Stores student profile information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Firebase Auth UID" },
+        "displayName": { "type": "string", "description": "Student's full name" },
+        "phoneNumber": { "type": "string", "description": "Student's verified phone number" },
+        "email": { "type": "string", "format": "email", "description": "Student's email address" },
+        "role": { "type": "string", "enum": ["student", "admin"], "description": "User role" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Account creation timestamp" }
+      },
+      "required": ["uid", "phoneNumber", "role"]
+    }
+  },
+  "firestore": {
+    "/users/{uid}": {
+      "schema": "UserProfile",
+      "description": "Collection of user profiles indexed by UID"
+    }
+  }
+}
