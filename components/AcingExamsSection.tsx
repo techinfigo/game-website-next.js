@@ -64,6 +64,9 @@ const AcingExamsSection: React.FC = () => {
                 src="/course-mentor-spotlight.png" 
                 alt="Gaurav Babu Sir" 
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1560250097-0b93528c311a?fit=crop&w=800&q=80";
+                }}
               />
               
               {/* Overlay Content */}
