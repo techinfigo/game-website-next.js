@@ -52,7 +52,7 @@ const GateExamPage: React.FC = () => {
         tag: "BEST SELLER",
         price: "₹24,999",
         originalPrice: "₹35,000",
-        image: "https://images.unsplash.com/photo-1581092128911-30c25b81a070?fit=crop&w=800&q=80",
+        image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80",
         features: ["Targeted Revision", "100+ Mock Tests", "Daily Practice Sets"]
       }
     ],
@@ -62,7 +62,7 @@ const GateExamPage: React.FC = () => {
         tag: "COMPREHENSIVE",
         price: "₹35,000",
         originalPrice: "₹50,000",
-        image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?fit=crop&w=800&q=80",
+        image: "https://images.unsplash.com/photo-1503387762-592dec5832f2?auto=format&fit=crop&w=800&q=80",
         features: ["Structural Analysis", "Geotechnical Depth", "Standard PYQs"]
       },
       {
@@ -2203,7 +2203,7 @@ const GateExamPage: React.FC = () => {
       </section>
 
       {/* 10. PREPARATION CTA */}
-      <section className="py-24 bg-gameTeal text-white relative overflow-hidden">
+      <section className="py-12 bg-[#075d63] text-white relative overflow-hidden">
          {/* Decorative elements - subtle glow as in screenshot */}
          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gameTeal/10 rounded-full blur-[120px]"></div>

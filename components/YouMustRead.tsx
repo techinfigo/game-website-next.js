@@ -29,7 +29,7 @@ const YouMustRead: React.FC = () => {
     {
       id: 4,
       title: "Preparation Hacks (Strategy) #4",
-      img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?fit=crop&w=600&q=80",
+      img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?fit=crop&w=600&q=80",
       desc: "How to create short notes that actually help in revision."
     },
     {

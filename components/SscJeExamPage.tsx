@@ -70,7 +70,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       label: "Core Sectors",
       title: "Direct Entry into India's Core Infrastructure Sectors",
       desc: "Work on massive national projects like bridges, dams, and modern railways. See your engineering impact in real-time.",
-      image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?fit=crop&w=800&q=80", 
+      image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800&q=80", 
       icon: HardHat,
       color: "text-gameGoldDark",
       bg: "bg-gameGold/5"
@@ -79,7 +79,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       label: "Career Growth",
       title: "Clear & Time-Bound Career Progression to Executive Ranks",
       desc: "Climb the ladder from Junior Engineer to Assistant Engineer, Executive Engineer, and up to Engineer-in-Chief.",
-      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?fit=crop&w=800&q=80", 
+      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80", 
       icon: TrendingUp,
       color: "text-gameTeal",
       bg: "bg-gameTeal/5"
@@ -667,7 +667,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-gameTeal selection:text-white -mt-20">
       
       {/* 1. Hero Section */}
-      <section className="relative pt-32 pb-32 overflow-hidden bg-black text-white">
+      <section className="relative pt-16 pb-20 overflow-hidden bg-black text-white">
          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gameTeal/10 rounded-full blur-[120px] pointer-events-none"></div>
          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gameGold/5 rounded-full blur-[100px] pointer-events-none"></div>
          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
@@ -745,7 +745,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       </div>
 
       {/* 2. Overview */}
-      <section id="overview" className="py-16 px-8 md:px-10 lg:px-12 bg-white relative scroll-mt-32">
+      <section id="overview" className="py-12 px-8 md:px-10 lg:px-12 bg-white relative scroll-mt-32">
          <div className="max-w-[1200px] mx-auto">
             <div className="flex flex-col lg:flex-row gap-12 items-center">
                <motion.div 

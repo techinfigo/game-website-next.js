@@ -80,7 +80,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Graduate Aptitude Test in Engineering',
       icon: GraduationCap,
       color: 'text-blue-400',
-      image: "https://images.unsplash.com/photo-1541339907198-e08759df9a73?fit=crop&w=800&q=80",
+      image: "https://images.unsplash.com/photo-1523050853064-db7045df1972?fit=crop&w=800&q=80",
       action: 'gate'
     },
     {
@@ -89,7 +89,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Public Sector Undertakings / Research & Development',
       icon: Briefcase,
       color: 'text-emerald-400',
-      image: "https://images.unsplash.com/photo-1454165833767-0275080187a1?fit=crop&w=800&q=80",
+      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?fit=crop&w=800&q=80",
       action: 'psu'
     },
     {
@@ -98,7 +98,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Staff Selection Commission Junior Engineer',
       icon: Building2,
       color: 'text-orange-400',
-      image: "https://images.unsplash.com/photo-1503387762-592dee58c460?fit=crop&w=800&q=80",
+      image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?fit=crop&w=800&q=80",
       action: 'ssc'
     },
     {

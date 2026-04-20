@@ -49,7 +49,7 @@ const ExamPageLayout: React.FC<ExamPageProps> = ({ hero, overview, features, pat
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
       
       {/* 1. Hero Section */}
-      <section className={`relative pt-24 pb-32 overflow-hidden text-white ${hero.bgGradient}`}>
+      <section className={`relative pt-10 pb-12 overflow-hidden text-white ${hero.bgGradient}`}>
          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-white/10 rounded-full blur-[120px] pointer-events-none"></div>
          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-black/10 rounded-full blur-[100px] pointer-events-none"></div>
@@ -86,18 +86,18 @@ const ExamPageLayout: React.FC<ExamPageProps> = ({ hero, overview, features, pat
       </section>
 
       {/* 2. Overview Section */}
-      <section className="py-24 px-8 md:px-10 lg:px-12 bg-white relative">
+      <section className="py-12 px-8 md:px-10 lg:px-12 bg-white relative">
          <div className="max-w-[1200px] mx-auto">
-            <div className="flex flex-col lg:flex-row gap-16 items-center">
+            <div className="flex flex-col lg:flex-row gap-10 items-center">
                <motion.div 
                   className="lg:w-1/2"
                   initial={{ opacity: 0, x: -30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                >
-                  <span className="text-slate-500 font-bold tracking-widest uppercase text-xs mb-3 block">Overview</span>
-                  <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
-                     {overview.title} <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-700 to-slate-500">{overview.highlight}</span>
+                  <span className="text-[#075d63] font-bold tracking-widest uppercase text-[10px] mb-2 block">Overview</span>
+                  <h2 className="text-2xl md:text-4xl font-extrabold text-slate-900 mb-4 leading-tight">
+                     {overview.title} <span className="text-[#075d63]">{overview.highlight}</span>
                   </h2>
                   <div className="space-y-6 text-slate-600 text-lg leading-relaxed">
                      {overview.content}
@@ -119,11 +119,11 @@ const ExamPageLayout: React.FC<ExamPageProps> = ({ hero, overview, features, pat
       </section>
 
       {/* 3. Opportunities / Features */}
-      <section className="py-24 bg-slate-50 relative overflow-hidden">
+      <section className="py-12 bg-slate-50 relative overflow-hidden">
          <div className="max-w-[1200px] mx-auto px-8 md:px-10 lg:px-12 relative z-10">
-            <div className="text-center mb-16">
-               <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6">
-                  Key <span className="text-slate-500">Opportunities</span>
+            <div className="text-center mb-10">
+               <h2 className="text-2xl md:text-4xl font-extrabold text-slate-900 mb-4">
+                  Key <span className="text-[#075d63]">Opportunities</span>
                </h2>
             </div>
 
@@ -150,10 +150,10 @@ const ExamPageLayout: React.FC<ExamPageProps> = ({ hero, overview, features, pat
 
       {/* 4. Exam Pattern (Optional) */}
       {pattern && (
-         <section className="py-24 bg-white border-t border-slate-100">
+         <section className="py-12 bg-white border-t border-slate-100">
             <div className="max-w-[1200px] mx-auto px-8 md:px-10 lg:px-12">
-               <div className="text-center mb-16">
-                  <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6">{pattern.title}</h2>
+               <div className="text-center mb-10">
+                  <h2 className="text-2xl md:text-4xl font-extrabold text-slate-900 mb-4">{pattern.title}</h2>
                </div>
                <div className="grid md:grid-cols-3 gap-8">
                   {pattern.stages.map((stage, i) => (
@@ -176,10 +176,10 @@ const ExamPageLayout: React.FC<ExamPageProps> = ({ hero, overview, features, pat
       )}
 
       {/* 5. FAQs */}
-      <section className="py-24 bg-slate-50">
+      <section className="py-12 bg-slate-50">
          <div className="max-w-[1000px] mx-auto px-8 md:px-10 lg:px-12">
-            <div className="text-center mb-12">
-               <h2 className="text-3xl font-extrabold text-slate-900">Frequently Asked Questions</h2>
+            <div className="text-center mb-8">
+               <h2 className="text-2xl md:text-4xl font-extrabold text-slate-900">Frequently Asked Questions</h2>
             </div>
             <div className="space-y-4">
                {faqs.map((faq, i) => (

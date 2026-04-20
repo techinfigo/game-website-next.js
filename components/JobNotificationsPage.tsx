@@ -591,7 +591,7 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-gameTeal selection:text-white -mt-20">
       
       {/* SECTION 1: Banner Section (Hero) - REFINED SPACING */}
-      <section className="relative pt-20 pb-16 lg:pt-28 lg:pb-24 overflow-hidden bg-gradient-to-br from-[#075d63] via-[#054a4f] to-[#043f42] text-white">
+      <section className="relative pt-12 pb-10 lg:pt-20 lg:pb-16 overflow-hidden bg-gradient-to-br from-[#075d63] via-[#054a4f] to-[#043f42] text-white">
         {/* Dynamic Background Elements */}
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gameTeal/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gameGold/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
@@ -774,7 +774,7 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
       </section>
 
       {/* SECTION 4: Job Notification Table - UPDATED WITH GATED ACCESS AND 10-ROW VISIBILITY */}
-      <section id="live-alerts" className="py-24 bg-white relative overflow-hidden scroll-mt-20">
+      <section id="live-alerts" className="py-12 bg-white relative overflow-hidden scroll-mt-20">
          <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10">
             <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-8">
                <div className="max-w-2xl">

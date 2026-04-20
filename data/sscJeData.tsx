@@ -9,7 +9,7 @@ export const keyHighlights = [
     label: "Prestige & Security",
     title: "A Golden Ticket to a Respected & Secure Government Career.",
     desc: "Secure a Group B (Non-Gazetted) position that commands respect in society and provides lifelong stability.",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?fit=crop&w=800&q=80", 
+    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800&q=80", 
     icon: Shield,
     color: "text-gameTeal",
     bg: "bg-gameTeal/5"
@@ -18,7 +18,7 @@ export const keyHighlights = [
     label: "Salary & Perks",
     title: "Attractive & Progressive Salary with Fantastic Perks",
     desc: "Enjoy Level-6 pay scale with HRA, DA, medical benefits, and a lifestyle that ensures prosperity for you and your family.",
-    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?fit=crop&w=800&q=80", 
+    image: "https://images.unsplash.com/photo-1589723900234-453664d4ec18?auto=format&fit=crop&w=800&q=80", 
     icon: Wallet,
     color: "text-gameTeal",
     bg: "bg-gameTeal/5"
@@ -27,7 +27,7 @@ export const keyHighlights = [
     label: "Core Sectors",
     title: "Direct Entry into India's Core Infrastructure Sectors",
     desc: "Work on massive national projects like bridges, dams, and modern railways. See your engineering impact in real-time.",
-    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?fit=crop&w=800&q=80", 
+    image: "https://images.unsplash.com/photo-1503387263359-53b769212261?auto=format&fit=crop&w=800&q=80", 
     icon: HardHat,
     color: "text-gameGoldDark",
     bg: "bg-gameGold/5"
@@ -36,7 +36,7 @@ export const keyHighlights = [
     label: "Career Growth",
     title: "Clear & Time-Bound Career Progression to Executive Ranks",
     desc: "Climb the ladder from Junior Engineer to Assistant Engineer, Executive Engineer, and up to Engineer-in-Chief.",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?fit=crop&w=800&q=80", 
+    image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=800&q=80", 
     icon: TrendingUp,
     color: "text-gameTeal",
     bg: "bg-gameTeal/5"
@@ -45,7 +45,7 @@ export const keyHighlights = [
     label: "Achievable Goal",
     title: "Achievable Goal with a Well-Defined Exam Pattern",
     desc: "With a structured syllabus and clarity in pattern, SSC-JE is an achievable dream for dedicated Diploma and Degree holders.",
-    image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?fit=crop&w=800&q=80", 
+    image: "https://images.unsplash.com/photo-1503387762-592dec5832f2?auto=format&fit=crop&w=800&q=80", 
     icon: Target,
     color: "text-gameGoldDark",
     bg: "bg-gameGold/5"

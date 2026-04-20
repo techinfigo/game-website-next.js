@@ -75,7 +75,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
     {
       title: "ESE (CE) Comprehensive 2025",
       tagline: "Engineering Services Mastery",
-      image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?fit=crop&w=800&q=80",
+      image: "https://images.unsplash.com/photo-1503387762-592dec5832f2?auto=format&fit=crop&w=800&q=80",
       duration: "18 Months",
       eligibility: "Civil Aspirants",
       features: ["Tech + Non-Tech", "Mains Answer Writing", "Interview Guide"],

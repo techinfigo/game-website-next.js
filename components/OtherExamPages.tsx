@@ -52,9 +52,9 @@ export const StateAeJeExamPage: React.FC = () => {
         title: "Serve Your State as an Engineer",
         subtitle: "State AE / JE Services",
         description: "State Public Service Commissions (PSCs) regularly recruit Assistant Engineers (AE) and Junior Engineers (JE). Secure a gazetted or non-gazetted post in your home state.",
-        bgGradient: "bg-gradient-to-br from-[#064e3b] to-[#065f46]",
+        bgGradient: "bg-gradient-to-br from-[#075d63] to-[#0a4a4f]",
         icon: MapPin,
-        iconColor: "text-emerald-400"
+        iconColor: "text-teal-300"
       }}
       overview={{
         title: "State",
@@ -132,9 +132,9 @@ export const NonTechExamPage: React.FC = () => {
         title: "Master General Studies & Aptitude",
         subtitle: "Non-Technical Exams",
         description: "Ace the Non-Tech portion of ESE, SSC, RRB, and Banking exams. Comprehensive coverage of Reasoning, Aptitude, History, Polity, and Current Affairs.",
-        bgGradient: "bg-gradient-to-br from-[#1e3a8a] to-[#1e40af]",
+        bgGradient: "bg-gradient-to-br from-[#075d63] via-[#054a4f] to-[#043f42]",
         icon: Globe,
-        iconColor: "text-blue-400"
+        iconColor: "text-teal-300"
       }}
       overview={{
         title: "General",
