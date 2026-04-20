@@ -2,6 +2,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Search, Calendar, Clock, ChevronRight, Tag, User, 
@@ -200,10 +201,12 @@ const BlogPage: React.FC = () => {
              transition={{ delay: 0.2 }}
              className="relative aspect-[16/9] rounded-[3rem] overflow-hidden shadow-2xl border-4 border-slate-50"
            >
-              <img 
+              <Image 
                  src={selectedPost.image} 
                  alt={selectedPost.title} 
-                 className="w-full h-full object-cover"
+                 fill
+                 className="object-cover"
+                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#075d63]/20 to-transparent mix-blend-multiply"></div>
            </motion.div>
@@ -263,11 +266,15 @@ const BlogPage: React.FC = () => {
                </p>
 
                <figure className="my-12">
-                  <img 
-                     src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?fit=crop&w=1200&q=80" 
-                     alt="Study Setup" 
-                     className="w-full"
-                  />
+                  <div className="relative aspect-video w-full rounded-[2rem] overflow-hidden shadow-xl">
+                     <Image 
+                        src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?fit=crop&w=1200&q=80" 
+                        alt="Study Setup" 
+                        fill
+                        className="object-cover"
+                        referrerPolicy="no-referrer"
+                     />
+                  </div>
                   <figcaption className="text-center text-base text-slate-500 mt-4 font-medium italic">A conducive study environment helps maintain focus.</figcaption>
                </figure>
 
@@ -336,7 +343,15 @@ const BlogPage: React.FC = () => {
                        className="group cursor-pointer bg-white rounded-[2rem] p-5 shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-[#075d63]/20 hover:-translate-y-2 flex flex-col h-full"
                     >
                        <div className="h-56 rounded-3xl overflow-hidden mb-6 relative shrink-0">
-                          <img src={post.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={post.title} />
+                          <div className="relative w-full h-full">
+                             <Image 
+                               src={post.image} 
+                               fill
+                               className="object-cover group-hover:scale-110 transition-transform duration-700" 
+                               alt={post.title} 
+                               referrerPolicy="no-referrer"
+                             />
+                          </div>
                           <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider text-[#075d63] shadow-lg">
                              {post.category}
                           </div>
@@ -457,10 +472,12 @@ const BlogPage: React.FC = () => {
                   <div className="group relative bg-white rounded-[2.5rem] border border-slate-100 shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 cursor-pointer">
                      <div className="grid lg:grid-cols-12 gap-0">
                         <div className="lg:col-span-7 relative h-[400px] lg:h-auto overflow-hidden">
-                           <img 
+                           <Image 
                               src={featuredPost.image} 
                               alt={featuredPost.title} 
-                              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                              fill
+                              className="object-cover transition-transform duration-700 group-hover:scale-105"
+                              referrerPolicy="no-referrer"
                            />
                            <div className="absolute top-6 left-6">
                               <span className="bg-white/90 backdrop-blur-md text-[#075d63] text-xs font-black px-4 py-2 rounded-lg uppercase tracking-wider shadow-lg flex items-center gap-2 border border-[#075d63]/20">
@@ -521,10 +538,12 @@ const BlogPage: React.FC = () => {
                            className="group bg-white rounded-[2rem] border border-slate-100 shadow-lg hover:shadow-2xl hover:shadow-[#075d63]/10 transition-all duration-300 flex flex-col h-full overflow-hidden cursor-pointer hover:-translate-y-2 hover:border-[#075d63]/20"
                         >
                            <div className="relative aspect-[16/10] overflow-hidden">
-                              <img 
+                              <Image 
                                  src={post.image} 
                                  alt={post.title} 
-                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                 fill
+                                 className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                 referrerPolicy="no-referrer"
                               />
                               <div className="absolute inset-0 bg-[#075d63]/20 group-hover:bg-[#075d63]/0 transition-colors"></div>
                               <div className="absolute top-4 left-4 flex gap-2">

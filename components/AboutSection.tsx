@@ -2,6 +2,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 
@@ -14,7 +15,15 @@ const AboutSection: React.FC = () => {
            {/* Image Grid */}
            <div className="lg:w-1/2 grid grid-cols-2 gap-4">
               <div className="space-y-4 mt-8">
-                 <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?fit=crop&w=400&h=500&q=80" alt="Engineering Students" className="rounded-2xl shadow-lg w-full h-64 object-cover" />
+                 <div className="relative h-64 w-full">
+                     <Image 
+                        src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?fit=crop&w=400&h=500&q=80" 
+                        alt="Engineering Students" 
+                        fill
+                        className="rounded-2xl shadow-lg object-cover" 
+                        referrerPolicy="no-referrer"
+                     />
+                  </div>
                  <div className="bg-gameTeal p-6 rounded-2xl text-white text-center">
                     <div className="text-4xl font-black mb-1">13+</div>
                     <div className="text-xs font-bold uppercase tracking-wider opacity-80">Years Experience</div>
@@ -25,7 +34,15 @@ const AboutSection: React.FC = () => {
                     <div className="text-4xl font-black text-gameGoldDark mb-1">100k+</div>
                     <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">Students Mentored</div>
                  </div>
-                 <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?fit=crop&w=400&h=500&q=80" alt="Classroom Learning" className="rounded-2xl shadow-lg w-full h-64 object-cover" />
+                 <div className="relative h-64 w-full">
+                     <Image 
+                        src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?fit=crop&w=400&h=500&q=80" 
+                        alt="Classroom Learning" 
+                        fill
+                        className="rounded-2xl shadow-lg object-cover" 
+                        referrerPolicy="no-referrer"
+                     />
+                  </div>
               </div>
            </div>
 

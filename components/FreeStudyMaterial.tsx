@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { ArrowRight, BookOpen, Lightbulb, PlayCircle, FileText, Zap, Sparkles, Check } from 'lucide-react';
 
 const FreeStudyMaterial: React.FC = () => {
@@ -73,11 +74,13 @@ const FreeStudyMaterial: React.FC = () => {
               </motion.div>
 
               {/* Main Image */}
-              <div className="relative z-10 w-[240px] md:w-[300px] rounded-[2rem] overflow-hidden border-4 border-white shadow-2xl">
-                 <img
+              <div className="relative z-10 w-[240px] md:w-[300px] aspect-[4/5] rounded-[2rem] overflow-hidden border-4 border-white shadow-2xl">
+                 <Image
                     src="/prep-main.png"
                     alt="Preparation Material"
-                    className="w-full h-auto object-cover"
+                    fill
+                    className="object-cover"
+                    referrerPolicy="no-referrer"
                  />
                  {/* Gradient Overlay */}
                  <div className="absolute inset-0 bg-gradient-to-t from-gameTeal/20 to-transparent mix-blend-overlay"></div>
@@ -140,7 +143,13 @@ const FreeStudyMaterial: React.FC = () => {
                     <div className="flex -space-x-2.5">
                        {[1,2,3,4].map((i) => (
                           <div key={i} className="w-7 h-7 rounded-full border-2 border-white bg-slate-200 overflow-hidden">
-                             <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="Student" className="w-full h-full object-cover" />
+                             <Image 
+                                 src={`https://i.pravatar.cc/100?img=${i + 10}`} 
+                                 alt="Student" 
+                                 fill
+                                 className="object-cover" 
+                                 referrerPolicy="no-referrer"
+                              />
                           </div>
                        ))}
                     </div>

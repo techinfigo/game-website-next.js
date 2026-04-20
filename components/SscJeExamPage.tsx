@@ -4,6 +4,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 /* Added ExternalLink as ExternalLinkIcon to the import list to fix the missing reference on line 1427 */
+import Image from 'next/image';
 import { 
   Building2, HardHat, Trophy, Shield, Wallet, TrendingUp, Clock, 
   ArrowRight, CheckCircle2, ChevronDown, Sparkles, GraduationCap,
@@ -777,13 +778,15 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                   viewport={{ once: true }}
                >
                   <div className="absolute inset-0 bg-gameTeal/5 rounded-full blur-3xl transform rotate-12"></div>
-                  <div className="relative bg-white rounded-[2.5rem] p-4 border border-slate-100 shadow-2xl">
-                     <img 
+                  <div className="relative bg-white rounded-[2.5rem] p-4 border border-slate-100 shadow-2xl aspect-video md:aspect-auto h-[400px]">
+                     <Image 
                         src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?fit=crop&w=800&q=80" 
                         alt="SSC JE Engineer" 
-                        className="rounded-[2rem] w-full h-auto object-cover"
+                        fill
+                        className="rounded-[2rem] object-cover"
+                        referrerPolicy="no-referrer"
                      />
-                     <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl border border-slate-100 max-w-xs">
+                     <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl border border-slate-100 max-w-xs z-20">
                         <div className="flex items-center gap-3 mb-2">
                            <div className="w-10 h-10 rounded-full bg-gameTeal/10 flex items-center justify-center text-gameTeal">
                               <CheckCircle2 size={20} />
@@ -827,14 +830,16 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                   >
                      <div className="lg:w-1/2 relative">
                         <div className="absolute inset-0 bg-gameTeal/5 rounded-full blur-3xl transform rotate-12"></div>
-                        <div className="relative rounded-[2.5rem] p-3 border border-white bg-white shadow-2xl overflow-hidden group">
-                           <img 
+                        <div className="relative rounded-[2.5rem] p-3 border border-white bg-white shadow-2xl overflow-hidden group aspect-video lg:aspect-square">
+                           <Image 
                               src={item.image} 
                               alt={item.label} 
-                              className="w-full aspect-video lg:aspect-square object-cover rounded-[2rem] transition-transform duration-700 group-hover:scale-105"
+                              fill
+                              className="object-cover rounded-[2rem] transition-transform duration-700 group-hover:scale-105"
+                              referrerPolicy="no-referrer"
                            />
-                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                           <div className="absolute bottom-8 left-8 text-white opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all">
+                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10"></div>
+                           <div className="absolute bottom-8 left-8 text-white opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all z-20">
                               <p className="text-lg font-black italic">Building India's Future</p>
                            </div>
                         </div>
@@ -885,13 +890,15 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                      transition={{ delay: i * 0.1 }}
                      className="bg-white rounded-[2.5rem] border border-slate-200 shadow-xl overflow-hidden group hover:border-gameTeal/30 transition-all duration-500"
                   >
-                     <div className="relative h-64 overflow-hidden">
-                        <img 
+                     <div className="relative h-64 overflow-hidden rounded-t-[2.5rem]">
+                        <Image 
                            src={course.image} 
                            alt={course.title} 
-                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                           fill
+                           className="object-cover transition-transform duration-700 group-hover:scale-110"
+                           referrerPolicy="no-referrer"
                         />
-                        <div className="absolute top-6 right-6">
+                        <div className="absolute top-6 right-6 z-10">
                            <span className="bg-gameGold text-black text-[10px] font-black px-4 py-2 rounded-full shadow-lg uppercase tracking-widest">
                               {course.tag}
                            </span>
@@ -971,12 +978,14 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                         className="min-w-[320px] md:min-w-[400px] bg-slate-800/50 backdrop-blur-xl rounded-[2.5rem] p-8 border border-white/10 hover:border-gameTeal/50 transition-all duration-500 group"
                      >
                         <div className="flex items-center gap-6 mb-6">
-                           <div className="relative">
+                           <div className="relative w-20 h-20">
                               <div className="absolute inset-0 bg-gameTeal rounded-full blur-xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
-                              <img 
+                              <Image 
                                  src={result.image} 
                                  alt={result.name} 
-                                 className="w-20 h-20 rounded-full object-cover border-2 border-gameTeal relative z-10"
+                                 fill
+                                 className="rounded-full object-cover border-2 border-gameTeal relative z-10"
+                                 referrerPolicy="no-referrer"
                               />
                               <div className="absolute -bottom-2 -right-2 bg-gameGold text-black text-[10px] font-black px-2 py-1 rounded-lg shadow-lg z-20">
                                  {result.rank}

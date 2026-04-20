@@ -2,6 +2,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Layers, Zap, PenTool, ArrowRight, CheckCircle2, Smartphone } from 'lucide-react';
 
@@ -84,10 +85,12 @@ const CourseFeatures: React.FC = () => {
                 >
                    {/* Background Image with Overlay */}
                    <div className="absolute inset-0">
-                      <img 
+                      <Image 
                         src={feature.bgImage} 
                         alt={feature.title} 
-                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                        fill
+                        className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                        referrerPolicy="no-referrer"
                       />
                       <div className={`absolute inset-0 bg-gradient-to-b ${feature.gradient} mix-blend-multiply opacity-90`}></div>
                       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>

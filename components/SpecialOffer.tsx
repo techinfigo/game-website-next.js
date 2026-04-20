@@ -2,6 +2,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { ArrowRight, Video, Lightbulb, Navigation } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -101,11 +102,13 @@ const SpecialOffer: React.FC = () => {
                 </div>
 
                 {/* Group Student Image */}
-                <div className="relative z-10 rounded-[2.5rem] overflow-hidden border-8 border-white/5 shadow-2xl">
-                   <img 
+                <div className="relative z-10 rounded-[2.5rem] overflow-hidden border-8 border-white/5 shadow-2xl w-[260px] md:w-[340px] aspect-[4/5]">
+                   <Image 
                       src="/offer-image.jpg" 
                       alt="Special Offer" 
-                      className="w-[260px] md:w-[340px] h-auto object-cover"
+                      fill
+                      className="object-cover"
+                      referrerPolicy="no-referrer"
                    />
                    {/* Gradient Overlay for integration */}
                    <div className="absolute inset-0 bg-gradient-to-t from-[#18181b] via-transparent to-transparent opacity-20"></div>

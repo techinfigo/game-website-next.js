@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle2, PlayCircle, Star, Briefcase, GraduationCap } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 const students = [
@@ -40,9 +41,15 @@ const VerticalSlider = ({ items, speed, reverse = false }: { items: typeof stude
             key={idx} 
             className="w-full aspect-[4/5] rounded-[2rem] overflow-hidden relative shadow-2xl border-[6px] border-white bg-white group"
           >
-            <img src={student.img} className="w-full h-full object-cover grayscale-[10%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110" alt={student.name} />
+            <Image 
+              src={student.img} 
+              alt={student.name} 
+              fill
+              className="object-cover grayscale-[10%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110" 
+              referrerPolicy="no-referrer"
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-            <div className="absolute bottom-4 left-4 right-4 text-white">
+            <div className="absolute bottom-4 left-4 right-4 text-white z-10">
               <div className="bg-gameGold text-black text-[8px] font-black uppercase px-2 py-0.5 rounded-md w-fit mb-1 shadow-lg">
                 {student.rank}
               </div>
@@ -161,14 +168,16 @@ const Hero: React.FC = () => {
                 transition={{ duration: 1, ease: "easeOut" }}
              >
                 <div className="relative flex items-end justify-center w-full h-full">
-                    <img 
-                      src="/gaurav-sir.png" 
-                      alt="Gaurav Babu Sir" 
-                      className="h-[70vh] lg:h-[80vh] w-auto object-contain object-bottom drop-shadow-[0_-10px_60px_rgba(0,0,0,0.1)] z-30 block mb-[-2px]"
-                      onError={(e) => {
-                        e.currentTarget.src = "https://www.freeiconspng.com/uploads/businessman-png-10.png";
-                      }}
-                    />
+                    <div className="relative h-[70vh] lg:h-[80vh] w-full">
+                        <Image 
+                          src="/gaurav-sir.png" 
+                          alt="Gaurav Babu Sir" 
+                          fill
+                          priority
+                          className="object-contain object-bottom drop-shadow-[0_-10px_60px_rgba(0,0,0,0.1)] z-30"
+                          referrerPolicy="no-referrer"
+                        />
+                    </div>
 
                     {/* Verified Badge */}
                     <motion.div 

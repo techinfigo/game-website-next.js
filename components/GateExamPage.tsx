@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   GraduationCap, Briefcase, Globe, Microscope, 
@@ -1023,11 +1024,13 @@ const GateExamPage: React.FC = () => {
                   viewport={{ once: true }}
                >
                   <div className="absolute inset-0 bg-gameTeal/5 rounded-full blur-3xl transform rotate-12"></div>
-                  <div className="relative bg-white rounded-[2.5rem] p-3 border border-slate-100 shadow-2xl">
-                     <img 
+                  <div className="relative bg-white rounded-[2.5rem] p-3 border border-slate-100 shadow-2xl overflow-hidden aspect-video">
+                     <Image 
                         src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?fit=crop&w=800&q=80" 
                         alt="GATE Aspirant" 
-                        className="rounded-[2rem] w-full h-auto object-cover"
+                        fill
+                        className="rounded-[2rem] object-cover"
+                        referrerPolicy="no-referrer"
                      />
                      <div className="absolute -bottom-4 -right-4 bg-white p-5 rounded-2xl shadow-xl border border-slate-100 max-w-xs">
                         <div className="flex items-center gap-3 mb-2">
@@ -1088,7 +1091,13 @@ const GateExamPage: React.FC = () => {
                         className="group bg-white rounded-[2.5rem] border border-slate-200 overflow-hidden shadow-lg hover:shadow-2xl hover:border-gameTeal/20 transition-all flex flex-col h-full"
                      >
                         <div className="relative h-48 overflow-hidden">
-                           <img src={course.image} alt={course.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                           <Image 
+                             src={course.image} 
+                             alt={course.title} 
+                             fill
+                             className="object-cover transition-transform duration-700 group-hover:scale-110" 
+                             referrerPolicy="no-referrer"
+                           />
                            <div className="absolute top-4 left-4">
                               <span className="bg-gameGold text-black text-[10px] font-black px-3 py-1.5 rounded-lg uppercase tracking-widest shadow-lg">
                                  {course.tag}
@@ -1163,10 +1172,12 @@ const GateExamPage: React.FC = () => {
                      onClick={() => setSelectedVideo(ranker.videoId)}
                      className="group relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-zinc-900 border border-white/5 cursor-pointer"
                   >
-                     <img 
+                     <Image 
                         src={ranker.image} 
-                        className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700" 
                         alt={ranker.name} 
+                        fill
+                        className="object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700" 
+                        referrerPolicy="no-referrer"
                      />
                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/30 to-transparent opacity-90 group-hover:opacity-60 transition-opacity duration-500"></div>
                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -2222,10 +2233,13 @@ const GateExamPage: React.FC = () => {
                         </div>
                         
                         <div className="flex gap-4">
-                           <img 
+                           <Image 
                               src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
                               alt="Google Play" 
-                              className="h-14 cursor-pointer hover:scale-105 transition-transform" 
+                              width={160}
+                              height={54}
+                              className="h-14 w-auto cursor-pointer hover:scale-105 transition-transform" 
+                              referrerPolicy="no-referrer"
                            />
                         </div>
                      </div>

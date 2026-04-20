@@ -2,6 +2,7 @@
 'use client';
 
 import React, { useRef } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Star, Quote, ChevronLeft, ChevronRight, BadgeCheck, MessageCircle } from 'lucide-react';
 
@@ -122,11 +123,13 @@ const TestimonialsText: React.FC = () => {
 
                    {/* User Info */}
                    <div className="flex items-center gap-3 mb-4 relative z-10">
-                      <div className="w-14 h-14 rounded-full p-0.5 bg-gradient-to-br from-gameTeal/20 to-slate-100 shrink-0">
-                         <img 
+                      <div className="relative w-14 h-14 rounded-full p-0.5 bg-gradient-to-br from-gameTeal/20 to-slate-100 shrink-0 overflow-hidden">
+                         <Image 
                            src={item.image} 
                            alt={item.name} 
-                           className="w-full h-full rounded-full object-cover border-2 border-white"
+                           fill
+                           className="rounded-full object-cover border-2 border-white"
+                           referrerPolicy="no-referrer"
                          />
                       </div>
                       <div>

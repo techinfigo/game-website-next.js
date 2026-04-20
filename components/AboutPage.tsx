@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence, useInView, animate } from 'framer-motion';
+import Image from 'next/image';
 import { 
   Trophy, Target, ArrowRight, Users, 
   Award, CheckCircle2, Phone, MessageCircle,
@@ -233,15 +234,15 @@ const AboutPage: React.FC = () => {
             <div className="lg:w-5/12 order-2 lg:order-1 w-full">
               <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="flex gap-[clamp(0.5rem,1.5vw,1rem)] items-center justify-center">
                 <div className="w-2/3 h-[clamp(250px,50vh,400px)] rounded-[clamp(1.5rem,4vh,3rem)] overflow-hidden shadow-2xl relative border-4 border-slate-50">
-                  <img src="/about-hero-main.png" alt="Main Mentorship" className="w-full h-full object-cover" />
+                  <Image src="/about-hero-main.png" alt="Main Mentorship" fill className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-gameTeal/20 to-transparent"></div>
                 </div>
                 <div className="w-1/3 flex flex-col gap-[clamp(0.5rem,1.5vw,1rem)]">
-                  <div className="h-[clamp(120px,24vh,195px)] rounded-[clamp(1.25rem,3vh,2.5rem)] overflow-hidden shadow-xl border-2 border-slate-50">
-                    <img src="/about-hero-sub1.png" alt="Student Learning" className="w-full h-full object-cover" />
+                  <div className="h-[clamp(120px,24vh,195px)] rounded-[clamp(1.25rem,3vh,2.5rem)] overflow-hidden shadow-xl border-2 border-slate-50 relative">
+                    <Image src="/about-hero-sub1.png" alt="Student Learning" fill className="w-full h-full object-cover" />
                   </div>
-                  <div className="h-[clamp(120px,24vh,195px)] rounded-[clamp(1.25rem,3vh,2.5rem)] overflow-hidden shadow-xl border-2 border-slate-200">
-                    <img src="/about-hero-sub2.png" alt="Achiever Greatness" className="w-full h-full object-cover" />
+                  <div className="h-[clamp(120px,24vh,195px)] rounded-[clamp(1.25rem,3vh,2.5rem)] overflow-hidden shadow-xl border-2 border-slate-200 relative">
+                    <Image src="/about-hero-sub2.png" alt="Achiever Greatness" fill className="w-full h-full object-cover" />
                   </div>
                 </div>
               </motion.div>
@@ -423,10 +424,12 @@ const AboutPage: React.FC = () => {
                   <div className="absolute -bottom-[clamp(1rem,3vh,3rem)] -right-[clamp(1rem,3vh,3rem)] w-[clamp(8rem,24vh,12rem)] h-[clamp(8rem,24vh,12rem)] bg-gameGold/10 rounded-full -z-10 group-hover:translate-x-4 group-hover:translate-y-4 transition-transform duration-700 blur-2xl"></div>
                   
                   <div className="relative z-10 rounded-[clamp(2rem,6vh,4rem)] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] bg-slate-800 border-8 border-white/5 h-[clamp(250px,50vh,450px)] w-full">
-                     <img 
+                     <Image 
                        src="/about-mentor.png" 
                        alt="Gaurav Babu Sir" 
+                       fill
                        className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-105" 
+                       referrerPolicy="no-referrer"
                      />
                      <div className="absolute inset-0 bg-gradient-to-t from-gameBlack via-transparent to-transparent opacity-80"></div>
                      
@@ -789,10 +792,12 @@ const AboutPage: React.FC = () => {
                   className="md:col-span-6 relative h-full min-h-[clamp(200px,30vh,400px)]"
                >
                   <div className="absolute inset-0 rounded-[clamp(1.5rem,4vh,2.5rem)] overflow-hidden border border-white/10 shadow-2xl">
-                     <img 
+                     <Image 
                         src="/about-leadership.png" 
                         alt="Gaurav Babu Sir" 
+                        fill
                         className="w-full h-full object-cover grayscale-[15%] brightness-90 group-hover:brightness-100 transition-all duration-700" 
+                        referrerPolicy="no-referrer"
                      />
                      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                   </div>
@@ -923,10 +928,12 @@ const AboutPage: React.FC = () => {
                   </div>
 
                   <div className="h-[280px] lg:h-[340px] relative overflow-hidden">
-                     <img 
+                     <Image 
                         src={chiefMentor.img} 
                         alt={chiefMentor.name} 
-                        className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110" 
+                        fill
+                        className="object-cover transition-all duration-1000 group-hover:scale-110" 
+                        referrerPolicy="no-referrer"
                      />
                      <div className="absolute inset-0 bg-gradient-to-t from-[#12141c] via-transparent to-transparent opacity-90"></div>
                      
@@ -1000,10 +1007,12 @@ const AboutPage: React.FC = () => {
                                  className="bg-[#12141c] rounded-3xl overflow-hidden border border-white/5 shadow-2xl flex flex-col group hover:border-gameTeal/30 transition-all duration-500 cursor-pointer h-full"
                               >
                                  <div className="h-[160px] lg:h-[200px] relative overflow-hidden bg-[#0a0a0a]">
-                                    <img 
+                                    <Image 
                                        src={fac.img} 
                                        alt={fac.name} 
-                                       className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105" 
+                                       fill
+                                       className="object-cover transition-all duration-700 group-hover:scale-105" 
+                                       referrerPolicy="no-referrer"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-[#12141c] via-transparent to-transparent opacity-60"></div>
                                  </div>
@@ -1078,7 +1087,13 @@ const AboutPage: React.FC = () => {
 
                   {/* Sidebar/Image - Compacted */}
                   <div className="md:w-[40%] h-64 md:h-auto relative overflow-hidden bg-black shrink-0">
-                     <img src={selectedFaculty.img} alt={selectedFaculty.name} className="w-full h-full object-cover grayscale-[10%]" />
+                     <Image 
+                        src={selectedFaculty.img} 
+                        alt={selectedFaculty.name} 
+                        fill
+                        className="object-cover grayscale-[10%]" 
+                        referrerPolicy="no-referrer"
+                     />
                      <div className="absolute inset-0 bg-gradient-to-t from-[#12141a] via-transparent to-transparent"></div>
                      <div className="absolute bottom-6 left-6 right-6">
                         <div className="bg-gameGold/10 backdrop-blur-xl border border-gameGold/30 p-4 rounded-2xl">

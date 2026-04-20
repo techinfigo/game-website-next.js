@@ -2,6 +2,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Trophy, Play, Pause, Crown } from 'lucide-react';
 
@@ -136,10 +137,12 @@ const ResultsSlider: React.FC = () => {
                                 className="relative w-[220px] h-[320px] rounded-3xl overflow-hidden cursor-pointer group flex-shrink-0 border border-white/5 hover:border-[#f2c537]/50 transition-all duration-300"
                             >
                                 {/* Image */}
-                                <img 
+                                <Image 
                                     src={student.image} 
                                     alt={student.name} 
-                                    className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-110" 
+                                    fill
+                                    className="object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-110" 
+                                    referrerPolicy="no-referrer"
                                 />
                                 
                                 {/* Gradient Overlay */}

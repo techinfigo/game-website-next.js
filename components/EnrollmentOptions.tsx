@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { Layout, PenTool, FileText, Book, ClipboardList, BookOpen, ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -34,10 +35,13 @@ const EnrollmentOptions: React.FC = () => {
                 transition={{ duration: 0.6 }}
                 className="relative z-10 rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white group"
               >
-                 <img 
+                 <Image 
                     src="/enrollment-image.png" 
                     alt="Ready to Excel" 
+                    width={800}
+                    height={600}
                     className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700"
+                    referrerPolicy="no-referrer"
                  />
                  
                  {/* Overlay Gradient */}

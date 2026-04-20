@@ -15,10 +15,7 @@ const ReferEarn: React.FC = () => {
   };
 
   return (
-    <section className="py-12 lg:py-16 bg-slate-50 relative overflow-hidden">
-       {/* Background Decoration */}
-       <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-b from-gameGold/5 to-transparent rounded-full blur-[100px] pointer-events-none"></div>
-       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gameTeal/5 rounded-full blur-[100px] pointer-events-none"></div>
+    <section className="py-8 lg:py-10 bg-slate-300 relative overflow-hidden border-t border-slate-300">
 
        <div className="max-w-[1080px] mx-auto px-6 md:px-10 lg:px-12 relative z-10">
           <motion.div 
@@ -36,25 +33,22 @@ const ReferEarn: React.FC = () => {
                 <div className="lg:w-[60%] p-8 md:p-12 relative z-10">
                    
                    {/* Badge */}
-                   <div className="inline-flex items-center gap-2 bg-amber-50 border border-amber-100 text-amber-700 px-3 py-1 rounded-full shadow-sm mb-6">
+                   <div className="inline-flex items-center gap-2 bg-amber-50 border border-amber-100 text-amber-700 px-3 py-1 rounded-full shadow-sm mb-4">
                       <Gift size={12} className="fill-amber-700" />
                       <span className="font-black text-[9px] uppercase tracking-widest">Referral Program</span>
                    </div>
 
                    {/* Heading */}
-                   <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4 leading-tight">
-                      Invite Friends & <br/>
-                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-gameTeal to-teal-600">
-                         Unlock Exclusive Rewards
-                      </span>
+                   <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-3 leading-tight">
+                      Invite Friends & <span className="text-transparent bg-clip-text bg-gradient-to-r from-gameTeal to-teal-600">Unlock Exclusive Rewards</span>
                    </h2>
                    
-                   <p className="text-slate-600 mb-8 text-base leading-relaxed max-w-lg font-bold">
+                   <p className="text-slate-600 mb-6 text-sm md:text-base leading-relaxed max-w-lg font-bold">
                       Knowledge grows when shared. Invite your friends to GAME Academy. When they enroll, you both get <span className="font-black text-slate-900 bg-yellow-100 px-1 rounded">₹500 OFF</span> and premium study kits.
                    </p>
                    
                    {/* 3-Step Process */}
-                   <div className="grid grid-cols-3 gap-3 mb-10 relative">
+                   <div className="grid grid-cols-3 gap-3 mb-8 relative">
                       {/* Connecting Line */}
                       <div className="absolute top-4 left-10 right-10 h-px bg-slate-100 -z-10 hidden sm:block"></div>
 

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Briefcase, Building2, Trophy, Star, ShieldCheck, 
@@ -474,11 +475,13 @@ const PsuExamPage: React.FC = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                >
-                  <div className="relative bg-white rounded-[2.5rem] p-4 border border-slate-100 shadow-2xl overflow-hidden group">
-                     <img 
+                  <div className="relative bg-white rounded-[2.5rem] p-4 border border-slate-100 shadow-2xl overflow-hidden group aspect-video">
+                     <Image 
                         src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?fit=crop&w=800&q=80" 
                         alt="PSU Industry" 
-                        className="rounded-[2rem] w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700"
+                        fill
+                        className="rounded-[2rem] object-cover transform group-hover:scale-105 transition-transform duration-700"
+                        referrerPolicy="no-referrer"
                      />
                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
                      <div className="absolute bottom-10 left-10 right-10 text-white">

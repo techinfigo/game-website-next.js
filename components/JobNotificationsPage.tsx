@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ArrowRight, Bell, Sparkles, Send, Briefcase, 
@@ -632,8 +633,14 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
                 <div className="flex items-center gap-4 px-6 py-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
                    <div className="flex -space-x-3">
                       {[1,2,3,4].map(i => (
-                        <div key={i} className="w-10 h-10 rounded-full border-2 border-[#075d63] bg-slate-200 overflow-hidden shadow-lg">
-                           <img src={`https://i.pravatar.cc/100?img=${i + 30}`} alt="User" className="w-full h-full object-cover" />
+                        <div key={i} className="relative w-10 h-10 rounded-full border-2 border-[#075d63] bg-slate-200 overflow-hidden shadow-lg">
+                           <Image 
+                              src={`https://i.pravatar.cc/100?img=${i + 30}`} 
+                              alt="User" 
+                              fill
+                              className="object-cover" 
+                              referrerPolicy="no-referrer"
+                            />
                         </div>
                       ))}
                    </div>

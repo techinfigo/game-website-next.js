@@ -1,6 +1,6 @@
 
 'use client';
-
+import Image from 'next/image';
 import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
@@ -269,7 +269,13 @@ const JobUpdatesSection: React.FC<JobUpdatesSectionProps> = ({ onNavigate }) => 
               <div className="flex -space-x-2.5">
                  {[1,2,3].map(i => (
                     <div key={i} className="w-7 h-7 rounded-full border-2 border-gameTealDark bg-slate-800 overflow-hidden shadow-lg">
-                       <img src={`https://i.pravatar.cc/150?img=${i + 40}`} alt="Engineer" className="w-full h-full object-cover" />
+                       <Image 
+                         src={`https://i.pravatar.cc/150?img=${i + 40}`} 
+                         alt="Engineer" 
+                         fill
+                         className="object-cover" 
+                         referrerPolicy="no-referrer"
+                       />
                     </div>
                  ))}
                  <div className="w-7 h-7 rounded-full border-2 border-gameTealDark bg-gameGold flex items-center justify-center text-black font-black text-[7px]">

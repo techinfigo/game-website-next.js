@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import { Sparkles, X, PhoneCall, Loader2, Check, Star, Smartphone, Play, Eye, ChevronLeft, ChevronRight, Youtube, ExternalLink } from 'lucide-react';
 
 const TelegramIcon = ({ className }: { className?: string }) => (
@@ -154,7 +155,7 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
   };
 
   return (
-    <section className={`relative ${isSection ? 'py-12' : 'pt-16 pb-12'} overflow-hidden bg-[#075d63] min-h-[450px] flex flex-col justify-center`}>
+    <section className={`relative ${isSection ? 'py-8' : 'pt-10 pb-8'} overflow-hidden bg-[#075d63] min-h-[380px] flex flex-col justify-center`}>
       
       {/* Dynamic Backgrounds */}
       <AnimatePresence mode="wait">
@@ -172,7 +173,7 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
       </AnimatePresence>
       
       {/* Request Call Back Sticky Button */}
-      <div className="absolute top-8 right-8 z-40">
+      <div className="absolute top-6 right-8 z-40">
          <motion.button 
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -202,17 +203,17 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
                
                {/* Left Content */}
-               <div className="text-center lg:text-left pt-2">
-                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-md mb-3 mx-auto lg:mx-0">
+               <div className="text-center lg:text-left pt-0">
+                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-md mb-2 mx-auto lg:mx-0">
                       <Sparkles size={12} className="text-gameGold" />
                       <span className="text-[10px] font-bold uppercase tracking-widest text-gameGold">{slides[currentSlide].badge}</span>
                    </div>
 
-                   <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-[1.1] mb-3">
+                   <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-[1.1] mb-2">
                       {slides[currentSlide].title}
                    </h1>
                    
-                   <p className="text-teal-100 text-sm md:text-base mb-6 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                   <p className="text-teal-100 text-sm md:text-base mb-4 leading-relaxed max-w-xl mx-auto lg:mx-0">
                       {slides[currentSlide].description}
                    </p>
 
@@ -220,14 +221,14 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
                    {slides[currentSlide].type === 'masterclass' && (
                      <>
                         {/* JOIN COMMUNITY HEADER */}
-                        <div className="flex items-center gap-4 mb-4 max-w-lg mx-auto lg:mx-0">
+                        <div className="flex items-center gap-4 mb-3 max-w-lg mx-auto lg:mx-0">
                            <div className="h-px bg-white/20 flex-1 lg:hidden"></div>
                            <span className="text-white/80 text-[10px] font-bold uppercase tracking-widest">JOIN OUR COMMUNITY</span>
                            <div className="h-px bg-white/20 flex-1"></div>
                         </div>
  
                         {/* Community Section - Now supports 4 icons */}
-                        <div className="flex flex-wrap justify-center lg:justify-start gap-3 md:gap-4 mb-6 relative">
+                        <div className="flex flex-wrap justify-center lg:justify-start gap-3 md:gap-4 mb-4 relative">
                            {communityLinks.map((link, i) => {
                               const isYoutube = link.id === 'youtube';
                               
@@ -352,7 +353,7 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
                    )}
                </div>
 
-               <div className="hidden lg:flex items-center justify-center relative w-full h-[320px] perspective-1000">
+               <div className="hidden lg:flex items-center justify-center relative w-full h-[280px] perspective-1000">
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[#043f42] blur-[100px] rounded-full opacity-60 pointer-events-none"></div>
 
                   {slides[currentSlide].type === 'masterclass' && (
@@ -398,7 +399,13 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
                               onClick={() => setSelectedVideo(video.videoId)}
                            >
                               <div className="relative aspect-video rounded-2xl overflow-hidden mb-3 shadow-sm bg-slate-100">
-                                 <img src={video.thumbnail} alt={video.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                                 <Image 
+                                   src={video.thumbnail} 
+                                   alt={video.title} 
+                                   fill
+                                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                                   referrerPolicy="no-referrer"
+                                 />
                                  <div className="absolute inset-0 bg-black/20 flex items-center justify-center group-hover:bg-black/10 transition-colors">
                                     <div className="w-14 h-14 bg-white/90 rounded-full flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition-all">
                                        <Play size={24} className="fill-slate-900 text-slate-900 ml-0.5" />

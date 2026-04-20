@@ -2,6 +2,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   BookOpen, Target, Laptop, Users, CheckCircle2
@@ -78,11 +79,11 @@ const CourseHelpSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-10 lg:py-12 bg-slate-50 relative overflow-hidden">
+    <section className="py-6 lg:py-8 bg-slate-50 relative overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-8 md:px-10 lg:px-12">
         
         {/* Header */}
-        <div className="text-center mb-10">
+        <div className="text-center mb-6">
            <motion.div
              initial={{ opacity: 0, y: 20 }}
              whileInView={{ opacity: 1, y: 0 }}
@@ -92,13 +93,13 @@ const CourseHelpSection: React.FC = () => {
                  <CheckCircle2 size={12} /> Why Choose Us
               </div>
               <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
-                 How do these courses <br className="hidden md:block"/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#075d63] to-[#b48e0b]">help you?</span>
+                 How do these courses <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#075d63] to-[#b48e0b]">help you?</span>
               </h2>
            </motion.div>
         </div>
 
         {/* Accordion Container */}
-        <div className="flex flex-col lg:flex-row gap-3 h-auto lg:h-[550px]">
+        <div className="flex flex-col lg:flex-row gap-3 h-auto lg:h-[480px]">
           {features.map((feature) => (
             <motion.div
               key={feature.id}
@@ -106,7 +107,7 @@ const CourseHelpSection: React.FC = () => {
               onClick={() => setActiveId(feature.id)}
               onMouseEnter={() => setActiveId(feature.id)}
               className={`relative rounded-[1.5rem] overflow-hidden cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] group
-                ${activeId === feature.id ? 'lg:flex-[3.5] h-[500px] lg:h-auto' : 'lg:flex-[0.7] h-[80px] lg:h-auto hover:lg:flex-[0.9]'}
+                ${activeId === feature.id ? 'lg:flex-[3.5] h-[440px] lg:h-auto' : 'lg:flex-[0.7] h-[80px] lg:h-auto hover:lg:flex-[0.9]'}
               `}
             >
               {/* Background with Gradient */}
@@ -139,7 +140,7 @@ const CourseHelpSection: React.FC = () => {
                    
                    {/* Text Content */}
                    <div className="flex-1 flex flex-col justify-center text-white z-10 min-w-[280px]">
-                      <h3 className="text-3xl md:text-5xl font-black mb-8 leading-tight tracking-tight">
+                      <h3 className="text-3xl md:text-5xl font-black mb-4 leading-tight tracking-tight">
                          {feature.title}
                       </h3>
                       
@@ -158,13 +159,15 @@ const CourseHelpSection: React.FC = () => {
                    <div className="flex-1 relative hidden md:flex items-center justify-center">
                       <div className="relative w-full max-w-[340px] aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-white/10 group-hover:scale-105 transition-transform duration-700 grid grid-cols-2 grid-rows-2 gap-1">
                          {feature.images.map((img, i) => (
-                           <img 
-                             key={i}
-                             src={img} 
-                             alt={`${feature.title} collage ${i}`} 
-                             className="w-full h-full object-cover"
-                             referrerPolicy="no-referrer"
-                           />
+                           <div key={i} className="relative w-full h-full">
+                              <Image 
+                                src={img} 
+                                alt={`${feature.title} collage ${i}`} 
+                                fill
+                                className="object-cover"
+                                referrerPolicy="no-referrer"
+                              />
+                           </div>
                          ))}
                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 pointer-events-none"></div>
                          

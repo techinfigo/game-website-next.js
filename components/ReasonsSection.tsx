@@ -71,11 +71,11 @@ const ReasonsSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-10 md:py-12 bg-white overflow-hidden border-t border-slate-100">
+    <section className="py-6 md:py-8 bg-white overflow-hidden border-t border-slate-100">
       <div className="max-w-[1400px] mx-auto px-6 md:px-8 lg:px-10">
         
         {/* Header Section */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-6">
           <motion.div 
             {...fadeInUp}
             className="flex flex-col items-center gap-3"
@@ -83,15 +83,15 @@ const ReasonsSection: React.FC = () => {
             <span className="text-[10px] font-black text-gameGold bg-gameBlack px-4 py-1.5 rounded-full uppercase tracking-[0.3em] mb-2 shadow-lg whitespace-nowrap">
               <Sparkles size={12} className="inline mr-2" /> THE GAME ADVANTAGE
             </span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-tight whitespace-nowrap">
-              7 Reasons Why We Are <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-gameTeal to-teal-500">India&apos;s Leading Choice</span>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 leading-tight whitespace-nowrap">
+              7 Reasons Why We Are <span className="text-transparent bg-clip-text bg-gradient-to-r from-gameTeal to-teal-500">India&apos;s Leading Choice</span>
             </h2>
             <div className="w-24 h-1.5 bg-gameGold mx-auto mt-4 rounded-full"></div>
           </motion.div>
         </div>
 
         {/* Interactive Infographic - Desktop View (7 Cards) */}
-        <div className="hidden lg:flex items-stretch justify-center h-[450px] md:h-[500px] w-full gap-0 overflow-visible">
+        <div className="hidden lg:flex items-stretch justify-center h-[380px] md:h-[420px] w-full gap-0 overflow-visible">
           {reasons.map((reason, index) => {
             const isActive = hoveredReasonIndex === index;
             
@@ -140,10 +140,10 @@ const ReasonsSection: React.FC = () => {
                         <span className="text-[10px] font-black uppercase tracking-[0.4em] text-gameGold mb-1.5 block">
                            Reason {parseInt(reason.id)}
                         </span>
-                        <h3 className="font-black uppercase tracking-wider text-lg md:text-xl lg:text-2xl mb-2 leading-[1.2] text-center w-full mx-auto break-words px-4">
+                        <h3 className="font-black uppercase tracking-wider text-base md:text-lg lg:text-xl mb-1 leading-[1.2] text-center w-full mx-auto break-words px-4">
                            {reason.title}
                         </h3>
-                        <p className="text-teal-50 text-sm md:text-base font-medium leading-relaxed max-w-[340px] mb-4">
+                        <p className="text-teal-50 text-xs md:text-sm font-medium leading-relaxed max-w-[340px] mb-3">
                            {reason.desc}
                         </p>
                         <div className="pt-3 border-t border-white/10 w-full flex justify-center">
@@ -158,7 +158,7 @@ const ReasonsSection: React.FC = () => {
                   {!isActive && (
                     <>
                         <div className="relative h-full flex items-center justify-center">
-                             <h3 className="font-black uppercase tracking-[0.15em] text-[10px] md:text-xs lg:text-sm text-center leading-tight transform -rotate-90 origin-center opacity-70 whitespace-nowrap">
+                             <h3 className="font-black uppercase tracking-[0.05em] text-[9px] md:text-[10px] lg:text-[11px] text-center leading-tight transform -rotate-90 origin-center text-white/90 whitespace-nowrap drop-shadow-sm">
                                 {reason.title}
                              </h3>
                         </div>

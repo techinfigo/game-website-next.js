@@ -2,6 +2,7 @@
 'use client';
 
 import React, { useRef } from 'react';
+import Image from 'next/image';
 import { ArrowRight, ChevronRight, ChevronLeft, BookOpen } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -119,10 +120,12 @@ const YouMustRead: React.FC = () => {
                        transition={{ delay: idx * 0.1 }}
                     >
                        <div className="h-52 overflow-hidden relative">
-                          <img 
+                          <Image 
                              src={blog.img} 
                              alt={blog.title} 
-                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                             fill
+                             className="object-cover group-hover:scale-110 transition-transform duration-700"
+                             referrerPolicy="no-referrer"
                           />
                           {/* Tech Overlay Effect */}
                           <div className="absolute inset-0 bg-[#075d63]/20 mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

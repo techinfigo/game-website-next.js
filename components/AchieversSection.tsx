@@ -3,6 +3,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import { Trophy, Play, Crown, X, ArrowRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
@@ -191,10 +192,12 @@ const AchieversSection: React.FC<AchieversSectionProps> = ({ onNavigate }) => {
                                     ) : (
                                         <>
                                             {/* Image */}
-                                            <img 
+                                            <Image 
                                                 src={student.image} 
                                                 alt={student.name} 
+                                                fill
                                                 className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-110" 
+                                                referrerPolicy="no-referrer"
                                             />
                                             
                                             {/* Gradient Overlay */}

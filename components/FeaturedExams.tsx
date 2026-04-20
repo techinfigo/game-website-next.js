@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useRef, useState } from 'react';
+import Image from 'next/image';
 import { 
   GraduationCap, Trophy, Briefcase, Building2, Train, MapPin, 
   BookOpen, ChevronRight, Info, ChevronLeft 
@@ -70,7 +71,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Engineering Services Examination',
       icon: Trophy,
       color: 'text-purple-400',
-      image: "/exams/ese.jpg",
+      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?fit=crop&w=800&q=80",
       action: 'ese'
     },
     {
@@ -79,7 +80,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Graduate Aptitude Test in Engineering',
       icon: GraduationCap,
       color: 'text-blue-400',
-      image: "/exams/gate.jpg",
+      image: "https://images.unsplash.com/photo-1541339907198-e08759df9a73?fit=crop&w=800&q=80",
       action: 'gate'
     },
     {
@@ -88,7 +89,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Public Sector Undertakings / Research & Development',
       icon: Briefcase,
       color: 'text-emerald-400',
-      image: "/exams/psu.jpg",
+      image: "https://images.unsplash.com/photo-1454165833767-0275080187a1?fit=crop&w=800&q=80",
       action: 'psu'
     },
     {
@@ -97,7 +98,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Staff Selection Commission Junior Engineer',
       icon: Building2,
       color: 'text-orange-400',
-      image: "/exams/ssc.jpg",
+      image: "https://images.unsplash.com/photo-1503387762-592dee58c460?fit=crop&w=800&q=80",
       action: 'ssc'
     },
     {
@@ -106,7 +107,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Railway Recruitment Board Junior Engineer',
       icon: Train,
       color: 'text-red-400',
-      image: "/exams/rrb.jpg",
+      image: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?fit=crop&w=800&q=80",
       action: 'rrb'
     },
     {
@@ -115,7 +116,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'State Assistant Engineer / Junior Engineer',
       icon: MapPin,
       color: 'text-cyan-400',
-      image: "/exams/state.jpg",
+      image: "https://images.unsplash.com/photo-1541888941294-e8367f65b508?fit=crop&w=800&q=80",
       action: 'state'
     },
     {
@@ -124,7 +125,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Non Technical Exam',
       icon: BookOpen,
       color: 'text-indigo-400',
-      image: "/exams/nontech.jpg",
+      image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?fit=crop&w=800&q=80",
       action: 'nontech'
     }
   ];
@@ -164,7 +165,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                 >
-                  Gaurav’s Academy for Mentorship & Education, an online institute for engineering preparation in India; guiding students to excel in GATE, ESE, PSUs, SSC JE, and AE exams.
+                  Gaurav's Academy for Mentorship & Education, an online institute for engineering preparation in India; guiding students to excel in GATE, ESE, PSUs, SSC JE, and AE exams.
                 </motion.p>
              </div>
 
@@ -208,11 +209,13 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
                    <div className="relative h-[320px] rounded-[2.5rem] overflow-hidden bg-slate-900 border border-slate-200/10 transition-all duration-500 isolate">
                       
                       {/* Background Image */}
-                      <img 
+                      <Image 
                          src={item.image} 
                          alt={item.title} 
+                         fill
                          draggable="false"
                          className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-1000 grayscale group-hover:grayscale-0"
+                         referrerPolicy="no-referrer"
                       />
                       
                       {/* Gradient Overlays */}

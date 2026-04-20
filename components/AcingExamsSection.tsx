@@ -2,11 +2,12 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Sparkles, Trophy, ArrowRight } from 'lucide-react';
 
 const AcingExamsSection: React.FC = () => {
   return (
-    <section className="relative w-full bg-[#075d63] py-12 overflow-hidden">
+    <section className="relative w-full bg-[#075d63] py-9 overflow-hidden">
       {/* Grid Pattern Overlay */}
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 pointer-events-none"></div>
       
@@ -21,23 +22,23 @@ const AcingExamsSection: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="flex flex-col items-start"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/20 border border-white/10 mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/20 border border-white/10 mb-4">
               <Sparkles size={14} className="text-[#f2c537]" />
               <span className="text-[10px] font-bold uppercase tracking-widest text-[#f2c537]">
                 Expert Guidance, Proven Results!
               </span>
             </div>
 
-            <h2 className="text-4xl md:text-5xl font-black text-white leading-tight mb-4">
+            <h2 className="text-4xl md:text-5xl font-black text-white leading-tight mb-2">
               Ready to ace your <br />
               <span className="text-[#f2c537]">Government Exams?</span>
             </h2>
 
-            <p className="text-lg font-bold text-white mb-3">
+            <p className="text-lg font-bold text-white mb-2">
               With GAME - Your Shortcut to acing exams & launching a stellar Career.
             </p>
 
-            <p className="text-teal-50/80 text-sm mb-8 max-w-lg leading-relaxed">
+            <p className="text-teal-50/80 text-sm mb-6 max-w-lg leading-relaxed">
               Expert-Led Courses tailored to elevate your skills, master core concepts & dominate Exams.
             </p>
 
@@ -60,13 +61,13 @@ const AcingExamsSection: React.FC = () => {
             className="relative flex justify-center lg:justify-end"
           >
             <div className="relative w-full max-w-[380px] aspect-[4/5] rounded-[32px] border-[10px] border-white shadow-2xl overflow-hidden group">
-              <img 
+              <Image 
                 src="/course-mentor-spotlight.png" 
                 alt="Gaurav Babu Sir" 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1560250097-0b93528c311a?fit=crop&w=800&q=80";
-                }}
+                fill
+                priority
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                referrerPolicy="no-referrer"
               />
               
               {/* Overlay Content */}

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Train, MapPin, ChevronDown, ArrowRight, CheckCircle2,
@@ -396,11 +397,13 @@ const RrbJeExamPage: React.FC = () => {
                   >
                      <div className="lg:w-1/2 relative">
                         <div className="absolute inset-0 bg-gameTeal/5 rounded-full blur-3xl transform rotate-12"></div>
-                        <div className="relative rounded-[2.5rem] p-3 border border-white bg-white shadow-2xl overflow-hidden group">
-                           <img 
+                        <div className="relative rounded-[2.5rem] p-3 border border-white bg-white shadow-2xl overflow-hidden group aspect-video lg:aspect-[4/3]">
+                           <Image 
                               src={item.image} 
                               alt={item.label} 
-                              className="w-full aspect-video lg:aspect-[4/3] object-cover rounded-[2rem] transition-transform duration-700 group-hover:scale-105"
+                              fill
+                              className="object-cover rounded-[2rem] transition-transform duration-700 group-hover:scale-105"
+                              referrerPolicy="no-referrer"
                            />
                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                            <div className="absolute bottom-8 left-8 text-white opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all">

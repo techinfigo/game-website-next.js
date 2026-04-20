@@ -2,6 +2,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { CheckCircle2, Star, Clock, Globe, Users, BookOpen, Layout, Headphones, ShieldCheck, ArrowRight } from 'lucide-react';
 
 interface CourseCardProps {
@@ -51,10 +52,11 @@ const CourseCard: React.FC<CourseCardProps> = ({
         {/* Left Section: Visuals & Highlights */}
         <div className="lg:w-[40%] p-8 bg-slate-50/50 flex flex-col">
           <div className="relative aspect-video lg:aspect-square rounded-3xl overflow-hidden mb-8 shadow-lg">
-            <img 
+            <Image 
               src={image} 
               alt={title} 
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-700"
               referrerPolicy="no-referrer"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">

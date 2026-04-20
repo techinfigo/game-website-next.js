@@ -2,6 +2,7 @@
 'use client';
 
 import React, { useEffect, useState, useMemo } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { 
   Trophy, User, ArrowRight, Crown, 
@@ -83,11 +84,12 @@ const RankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
   >
     {/* Image Box - Shorter Aspect Ratio */}
     <div className="relative aspect-[1/1] overflow-hidden bg-slate-100 shrink-0">
-      <img 
+      <Image 
           src={ranker.image} 
           alt={ranker.name} 
-          loading="lazy"
-          className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" 
+          fill
+          className="object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" 
+          referrerPolicy="no-referrer"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/10 to-transparent opacity-80 group-hover:opacity-70 transition-opacity"></div>
       
@@ -294,8 +296,14 @@ const RankersPage: React.FC = () => {
                   <div className="h-px w-16 bg-gradient-to-r from-transparent to-white/20 rounded-full"></div>
                   <div className="flex -space-x-3">
                      {[1,2,3,4,5].map(i => (
-                        <div key={i} className="w-12 h-12 rounded-full border-4 border-[#0f1115] bg-slate-800 overflow-hidden shadow-2xl">
-                           <img src={`https://i.pravatar.cc/150?img=${i + 15}`} alt="Achiever" className="w-full h-full object-cover" />
+                        <div key={i} className="relative w-12 h-12 rounded-full border-4 border-[#0f1115] bg-slate-800 overflow-hidden shadow-2xl">
+                           <Image 
+                                  src={`https://i.pravatar.cc/150?img=${i + 15}`} 
+                                  alt="Achiever" 
+                                  fill
+                                  className="object-cover" 
+                                  referrerPolicy="no-referrer"
+                               />
                         </div>
                       ))}
                   </div>

@@ -2,6 +2,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Quote, Star, Trophy, Video, MessageSquare, Sparkles, Crown, CheckCircle2, ArrowRight, X } from 'lucide-react';
 
@@ -134,10 +135,12 @@ const RankerCard = React.memo(({ item, onPlay }: { item: any, onPlay?: () => voi
     className="group relative bg-white rounded-2xl overflow-hidden shadow-lg shadow-slate-200/30 border border-slate-100 hover:shadow-xl hover:shadow-gameTeal/10 transition-all duration-300 cursor-pointer h-[280px] md:h-[320px]"
   >
     <div className="relative h-full overflow-hidden">
-      <img 
+      <Image 
         src={item.img} 
         alt={item.name} 
+        fill
         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+        referrerPolicy="no-referrer"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/10 to-transparent opacity-70"></div>
       
@@ -174,8 +177,14 @@ const TestimonialCard = React.memo(({ item }: { item: any }) => (
     </div>
     
     <div className="flex items-center gap-3 mb-4 relative z-10">
-      <div className="w-12 h-12 rounded-full p-0.5 bg-gradient-to-br from-gameTeal to-teal-100 shadow-md">
-        <img src={item.img} alt={item.name} className="w-full h-full rounded-full object-cover border-2 border-white" />
+      <div className="w-12 h-12 rounded-full p-0.5 bg-gradient-to-br from-gameTeal to-teal-100 shadow-md relative overflow-hidden">
+        <Image 
+          src={item.img} 
+          alt={item.name} 
+          fill
+          className="w-full h-full rounded-full object-cover border-2 border-white" 
+          referrerPolicy="no-referrer"
+        />
       </div>
       <div>
         <h4 className="font-black text-slate-900 text-base leading-tight">{item.name}</h4>
@@ -197,11 +206,12 @@ const TestimonialCard = React.memo(({ item }: { item: any }) => (
 
 // WhatsApp Screenshot Card - SIMPLIFIED FOR PHONE VIEW
 const WhatsAppPhoneCard = React.memo(({ item }: { item: any }) => (
-  <div className="mb-4 last:mb-0">
-    <img 
+  <div className="mb-4 last:mb-0 relative w-full aspect-[2/3]">
+    <Image 
       src={item.img} 
       alt="WhatsApp Screenshot" 
-      className="w-full h-auto rounded-2xl shadow-sm" 
+      fill
+      className="w-full h-auto rounded-2xl shadow-sm object-contain" 
       referrerPolicy="no-referrer"
     />
   </div>

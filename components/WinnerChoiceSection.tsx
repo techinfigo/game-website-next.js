@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import { 
   Trophy, User, GraduationCap, Briefcase, Award, Star, Users, CheckCircle2, Search, Sparkles, ArrowRight, Target
 } from 'lucide-react';
@@ -207,10 +208,12 @@ const WinnerChoiceSection: React.FC = () => {
                 onMouseLeave={() => setIsPaused(false)}
               >
                 <div className="absolute inset-0">
-                   <img 
+                   <Image 
                       src={tabs[activeTab].image} 
                       alt={tabs[activeTab].title} 
+                      fill
                       className="w-full h-full object-cover grayscale-[20%] opacity-40" 
+                      referrerPolicy="no-referrer"
                    />
                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
                 </div>

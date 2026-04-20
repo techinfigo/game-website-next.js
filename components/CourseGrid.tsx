@@ -2,6 +2,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { 
   ArrowRight, Clock, CheckCircle2, Star, Filter, Users, BookOpen, 
   GraduationCap, Building2, Search, LayoutGrid, X, Globe, Sparkles, 
@@ -56,7 +57,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
     {
       title: "Lakshya Course (ME) GATE 2025",
       tagline: "Focused & Time Bound",
-      image: "https://images.unsplash.com/photo-1581092921461-eab62e97a783?fit=crop&w=800&q=80",
+      image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?fit=crop&w=800&q=80",
       duration: "14 Months",
       eligibility: "Final Year / Droppers",
       features: ["Targeted Syllabus", "100+ Mock Exams", "Doubt Solving"],
@@ -264,7 +265,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
     catId === 'All' ? allCourses.length : allCourses.filter(c => c.category === catId).length;
 
   return (
-    <section id="course-grid" className="pt-12 pb-24 relative min-h-[600px] bg-[#f8fafc]">
+    <section id="course-grid" className="pt-4 pb-8 relative min-h-[400px] bg-slate-300">
        
        <style>{`
           .thin-scrollbar::-webkit-scrollbar {
@@ -294,12 +295,10 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
          }}
        ></div>
        
-       <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-white to-transparent"></div>
-
-       <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10">
+       <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-14 relative z-10">
           
           {/* CONTROL BAR */}
-          <div className="bg-white rounded-2xl shadow-lg shadow-slate-200/50 border border-slate-100 p-2.5 mb-16 flex flex-col lg:flex-row items-center justify-between gap-6 relative z-20">
+          <div className="bg-white rounded-2xl shadow-lg shadow-slate-200/50 border border-slate-100 p-2.5 mb-4 flex flex-col lg:flex-row items-center justify-between gap-6 relative z-20">
              
              {/* Tabs */}
              <div className="flex overflow-x-auto thin-scrollbar w-full lg:w-auto gap-4 pb-6 lg:pb-0 items-center">
@@ -356,7 +355,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
           </div>
 
           {/* Heading */}
-          <div className="flex items-center justify-between mb-8 ml-2">
+          <div className="flex items-center justify-between mb-4 ml-2">
              <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-[#075d63]/10 flex items-center justify-center text-[#075d63]">
                    <LayoutGrid size={20} />
@@ -373,7 +372,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
           </div>
           
           {/* Courses Slidable Row */}
-          <div className="space-y-12">
+          <div className="space-y-6">
              <AnimatePresence mode="wait">
                {filteredCourses.length > 0 ? (
                  <motion.div 
@@ -381,12 +380,12 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
                    initial={{ opacity: 0 }}
                    animate={{ opacity: 1 }}
                    exit={{ opacity: 0 }}
-                   className="space-y-12"
+                   className="space-y-6"
                  >
                    <div className="relative group/row">
                      <div 
                         id="course-row-0"
-                        className="flex items-stretch overflow-x-auto scroll-smooth snap-x snap-mandatory gap-6 pb-8 px-2 -mx-2 thin-scrollbar"
+                        className="flex items-stretch overflow-x-auto scroll-smooth snap-x snap-mandatory gap-6 pb-4 px-2 -mx-2 thin-scrollbar"
                      >
                         {filteredCourses.map((course) => (
                           <motion.div
@@ -396,60 +395,79 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
                             animate={{ opacity: 1, y: 0 }}
                             className="snap-start h-full shrink-0 w-[calc(100%-1rem)] md:w-[calc(50%-12px)] flex"
                           >
-                            <div 
-                              className="group relative bg-white rounded-[2rem] border-2 border-slate-100 overflow-hidden transition-all duration-700 h-full min-h-[460px] flex flex-col md:flex-row shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_32px_64px_rgba(7,93,99,0.12)] hover:border-gameTeal/30 cursor-pointer"
-                            >
-                              
+                            <div className="group relative bg-white rounded-[2.5rem] border-2 border-slate-200/60 overflow-hidden transition-all duration-700 w-full min-h-[460px] md:min-h-[480px] flex flex-col md:flex-row ring-1 ring-slate-900/5 hover:border-gameTeal/30 cursor-pointer">
                               {/* LEFT SECTION: Visuals & Highlights */}
-                              <div className="md:w-[40%] flex flex-col relative overflow-hidden bg-slate-50/50">
+                              <div className="w-full md:w-1/2 flex flex-col relative overflow-hidden bg-slate-100 border-b md:border-b-0 md:border-r border-slate-200 min-h-[250px] md:min-h-full">
                                   {/* Image with Overlay */}
-                                  <div className="relative h-44 md:h-full overflow-hidden">
-                                      <img 
+                                  <div className="absolute inset-0 overflow-hidden">
+                                      <Image 
                                          src={course.image} 
                                          alt={course.title} 
-                                         className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
+                                         fill
+                                         className="object-cover transition-transform duration-1000 group-hover:scale-105" 
+                                         referrerPolicy="no-referrer"
                                       />
-                                      <div className="absolute inset-0 bg-gradient-to-t from-gameTeal/80 via-gameTeal/20 to-transparent opacity-60"></div>
+                                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/20 to-transparent"></div>
                                       
                                       {/* Floating Badge */}
                                       <div className="absolute top-5 left-5 z-20">
-                                         <span className={`text-[10px] font-black px-3 py-2 rounded-xl shadow-2xl uppercase tracking-widest ${course.tagColor} border border-white/30 backdrop-blur-md`}>
+                                         <span className={`text-[10px] font-black px-3 py-2 rounded-xl shadow-2xl uppercase tracking-widest ${course.tagColor} border border-white/10 backdrop-blur-md`}>
                                             {course.tag}
                                          </span>
                                       </div>
 
-                                      {/* Highlights Overlay on Image (Mobile) / Bottom (Desktop) */}
-                                      <div className="absolute bottom-0 left-0 w-full p-6 space-y-4 bg-gradient-to-t from-slate-900/90 to-transparent md:bg-none md:relative md:from-transparent">
-                                          <div className="flex items-center gap-4 group/item">
-                                              <div className="w-10 h-10 rounded-2xl bg-gameTeal/10 md:bg-gameTeal/5 border border-white/20 md:border-gameTeal/10 flex items-center justify-center text-white md:text-gameTeal shrink-0 transition-all group-hover/item:bg-gameTeal group-hover/item:text-white group-hover/item:scale-110 shadow-sm">
-                                                  <MessageSquare size={18} />
+                                      {/* Vertical Highlights */}
+                                      <div className="absolute top-20 left-5 space-y-4 z-20">
+                                          <div className="flex items-center gap-3 group/item">
+                                              <div className="w-9 h-9 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shrink-0 transition-all group-hover:bg-gameTeal group-hover:scale-110">
+                                                  <MessageSquare size={16} />
                                               </div>
-                                              <span className="text-[11px] font-black text-white md:text-slate-700 uppercase tracking-tight">Student's feedback</span>
+                                              <span className="text-[10px] font-black text-white uppercase tracking-tight opacity-0 group-hover:opacity-100 transition-opacity">Student's feedback</span>
                                           </div>
-                                          <div className="flex items-center gap-4 group/item">
-                                              <div className="w-10 h-10 rounded-2xl bg-gameTeal/10 md:bg-gameTeal/5 border border-white/20 md:border-gameTeal/10 flex items-center justify-center text-white md:text-gameTeal shrink-0 transition-all group-hover/item:bg-gameTeal group-hover/item:text-white group-hover/item:scale-110 shadow-sm">
-                                                  <Trophy size={18} />
+                                          <div className="flex items-center gap-3 group/item">
+                                              <div className="w-9 h-9 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shrink-0 transition-all group-hover:bg-gameTeal group-hover:scale-110">
+                                                  <Trophy size={16} />
                                               </div>
-                                              <span className="text-[11px] font-black text-white md:text-slate-700 uppercase tracking-tight">Selection (Results)</span>
+                                              <span className="text-[10px] font-black text-white uppercase tracking-tight opacity-0 group-hover:opacity-100 transition-opacity">Selection (Results)</span>
                                           </div>
-                                          <div className="flex items-center gap-4 group/item">
-                                              <div className="w-10 h-10 rounded-2xl bg-gameTeal/10 md:bg-gameTeal/5 border border-white/20 md:border-gameTeal/10 flex items-center justify-center text-white md:text-gameTeal shrink-0 transition-all group-hover/item:bg-gameTeal group-hover/item:text-white group-hover/item:scale-110 shadow-sm">
-                                                  <PlayCircle size={18} />
+                                          <div className="flex items-center gap-3 group/item">
+                                              <div className="w-9 h-9 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shrink-0 transition-all group-hover:bg-gameTeal group-hover:scale-110">
+                                                  <PlayCircle size={16} />
                                               </div>
-                                              <span className="text-[11px] font-black text-white md:text-slate-700 uppercase tracking-tight">Live & Recorded</span>
+                                              <span className="text-[10px] font-black text-white uppercase tracking-tight opacity-0 group-hover:opacity-100 transition-opacity">Live & Recorded</span>
+                                          </div>
+                                      </div>
+
+                                      {/* Bottom Action Area (Price & Button) */}
+                                      <div className="absolute bottom-0 left-0 right-0 p-5 z-20 bg-gradient-to-t from-slate-950 to-transparent">
+                                          <div className="flex items-center justify-between gap-4">
+                                              <div className="flex flex-col bg-white/10 backdrop-blur-xl px-4 py-2 rounded-2xl border border-white/20">
+                                                  <span className="text-[9px] font-black text-white/50 line-through tracking-widest uppercase mb-0.5">
+                                                      {course.originalPrice}
+                                                  </span>
+                                                  <span className="text-2xl font-black text-white tracking-tighter leading-none">
+                                                      {course.price}
+                                                  </span>
+                                              </div>
+
+                                              <button 
+                                                className="flex-1 py-3.5 rounded-xl bg-[#f2c537] text-black font-black text-[11px] uppercase tracking-[0.2em] hover:bg-white transition-all duration-500 flex items-center justify-center gap-2 shadow-xl"
+                                              >
+                                                Enroll Now <ChevronRight size={16} strokeWidth={3} />
+                                              </button>
                                           </div>
                                       </div>
                                   </div>
                               </div>
   
                               {/* RIGHT SECTION: Course Details */}
-                              <div className="md:w-[60%] p-6 flex flex-col bg-white flex-1 relative">
-                                  {/* Decorative Element */}
-                                  <div className="absolute top-0 right-0 w-24 h-24 bg-gameTeal/5 rounded-bl-[4rem] -z-0 transition-transform group-hover:scale-110 duration-700"></div>
-
+                              <div className="w-full md:w-1/2 p-5 md:p-6 flex flex-col bg-white relative">
+                                  {/* Section divider hint */}
+                                  <div className="hidden md:block absolute -left-1 text-slate-100 z-10 font-black text-[80px] pointer-events-none opacity-20">/</div>
+                                  
                                   <div className="relative z-10 flex flex-col h-full">
                                       {/* Top Row */}
-                                      <div className="flex justify-between items-center mb-3">
+                                      <div className="flex justify-between items-center mb-2">
                                            <div className="px-4 py-2 rounded-2xl bg-gameTeal text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-lg shadow-gameTeal/30 border border-white/10">
                                               {course.category.split(' ')[0]} Branch
                                            </div>
@@ -463,11 +481,11 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
                                            </div>
                                       </div>
       
-                                      <h3 className="text-xl md:text-2xl font-black text-slate-900 mb-2 leading-[1.1] tracking-tight group-hover:text-gameTeal transition-colors duration-300">
+                                      <h3 className="text-lg md:text-xl font-black text-slate-900 mb-1.5 leading-[1.1] tracking-tight group-hover:text-gameTeal transition-colors duration-300">
                                          {course.title}
                                       </h3>
 
-                                      <div className="flex flex-col gap-2 mb-4">
+                                      <div className="flex flex-col gap-1.5 mb-2.5">
                                           <div className="flex items-center gap-3 bg-gameTeal/5 p-2 rounded-xl border border-gameTeal/10">
                                               <div className="w-2 h-2 rounded-full bg-gameTeal shadow-[0_0_8px_rgba(7,93,99,0.6)]"></div>
                                               <p className="text-xs font-bold text-slate-700">
@@ -483,8 +501,8 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
                                       </div>
       
                                       {/* Features Grid - Bento Style */}
-                                      <div className="grid grid-cols-3 gap-2 mb-5">
-                                          <div className="p-3 rounded-2xl bg-slate-50 border border-slate-100 text-center transition-all hover:bg-gameTeal/5 hover:border-gameTeal/30 group/feat">
+                                      <div className="grid grid-cols-3 gap-2 mb-3">
+                                          <div className="p-2.5 rounded-2xl bg-slate-50 border border-slate-100 text-center transition-all hover:bg-gameTeal/5 hover:border-gameTeal/30 group/feat">
                                               <Clock size={16} className="text-gameTeal mx-auto mb-1.5 transition-transform group-hover/feat:scale-110" />
                                               <span className="text-[10px] font-black text-slate-900 block leading-tight">{course.duration}</span>
                                           </div>
@@ -498,8 +516,8 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
                                           </div>
                                       </div>
 
-                                      {/* Includes List */}
-                                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-6 mb-5">
+                                      {/* Includes List - Aligned vertically in 1 column */}
+                                      <div className="flex flex-col gap-2.5 mb-4 bg-slate-50/50 p-3 rounded-2xl border border-slate-100">
                                           {[
                                               "1200+ hrs Content",
                                               "Test & Assignments",
@@ -507,31 +525,15 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
                                               "Tech + Non Tech"
                                           ].map((item, i) => (
                                               <div key={i} className="flex items-center gap-3">
-                                                  <div className="w-5 h-5 rounded-full bg-gameTeal/10 flex items-center justify-center shrink-0 border border-gameTeal/20">
-                                                      <CheckCircle2 size={12} className="text-gameTeal" strokeWidth={3} />
+                                                  <div className="w-6 h-6 rounded-lg bg-gameTeal/10 flex items-center justify-center shrink-0 border border-gameTeal/20">
+                                                      <CheckCircle2 size={14} className="text-gameTeal" strokeWidth={3} />
                                                   </div>
-                                                  <span className="text-xs font-bold text-slate-600 truncate">{item}</span>
+                                                  <span className="text-sm font-bold text-slate-700">{item}</span>
                                               </div>
                                           ))}
                                       </div>
       
-                                      {/* Bottom Action Area */}
-                                      <div className="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between gap-4">
-                                          <div className="flex flex-col bg-gameTeal/5 px-3 py-1.5 rounded-xl border border-gameTeal/10">
-                                              <span className="text-[9px] font-black text-slate-400 line-through tracking-widest uppercase opacity-60">
-                                                  {course.originalPrice}
-                                              </span>
-                                              <span className="text-2xl font-black text-gameTeal tracking-tighter leading-none">
-                                                  {course.price}
-                                              </span>
-                                          </div>
-
-                                          <button 
-                                            className="flex-1 max-w-[160px] py-3.5 rounded-xl bg-gameTeal text-white font-black text-[11px] uppercase tracking-[0.2em] hover:bg-[#043f42] transition-all duration-500 flex items-center justify-center gap-2 shadow-[0_15px_30px_-5px_rgba(7,93,99,0.4)] hover:shadow-[0_25px_50px_-10px_rgba(7,93,99,0.6)] hover:-translate-y-1.5 active:translate-y-0 border border-white/10"
-                                          >
-                                            Enroll Now <ChevronRight size={16} strokeWidth={3} />
-                                          </button>
-                                      </div>
+                                      {/* Bottom Area is now empty as action moved to left side */}
                                   </div>
                               </div>
                             </div>

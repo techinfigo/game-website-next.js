@@ -2,6 +2,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Play, X, ChevronRight, ChevronLeft, Lightbulb, Clock, Brain, Users, FileText, Globe, Heart, ArrowRight, Star, Target } from 'lucide-react';
 
@@ -298,10 +299,12 @@ const HacksAndStrategiesPage: React.FC = () => {
                      onClick={() => setSelectedVideo(video)}
                   >
                      <div className="relative rounded-2xl overflow-hidden shadow-lg aspect-video mb-4 bg-slate-900">
-                        <img 
+                        <Image 
                            src={video.thumbnail} 
                            alt={video.title} 
-                           className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
+                           fill
+                           className="object-cover opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
+                           referrerPolicy="no-referrer"
                         />
                         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center">
                            <div className="w-14 h-14 bg-white/90 rounded-full flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition-all">

@@ -2,6 +2,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { Play, Clock, Eye, Zap, X, ChevronRight, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -84,10 +85,12 @@ const GBVideos: React.FC = () => {
                 >
                    {/* Thumbnail Container */}
                    <div className="relative aspect-[16/10] rounded-2xl overflow-hidden mb-4 bg-white shadow-inner">
-                      <img 
-                        src={video.thumbnail} 
-                        alt={video.title} 
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                      <Image 
+                         src={video.thumbnail} 
+                         alt={video.title} 
+                         fill
+                         className="object-cover transition-transform duration-700 group-hover:scale-110" 
+                         referrerPolicy="no-referrer"
                       />
                       
                       {/* Overlay */}

@@ -2,6 +2,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { Quote, Star } from 'lucide-react';
 
 const AchieversTalk: React.FC = () => {
@@ -53,7 +54,15 @@ const AchieversTalk: React.FC = () => {
                   </p>
 
                   <div className="flex items-center gap-4">
-                     <img src={t.img} alt={t.name} className="w-12 h-12 rounded-full object-cover" />
+                     <div className="relative w-12 h-12 rounded-full overflow-hidden">
+                        <Image 
+                           src={t.img} 
+                           alt={t.name} 
+                           fill
+                           className="object-cover" 
+                           referrerPolicy="no-referrer"
+                        />
+                     </div>
                      <div>
                         <h4 className="font-bold text-slate-900">{t.name}</h4>
                         <p className="text-xs font-bold text-gameTeal uppercase">{t.rank}</p>
