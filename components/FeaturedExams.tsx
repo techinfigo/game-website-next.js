@@ -80,7 +80,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Graduate Aptitude Test in Engineering',
       icon: GraduationCap,
       color: 'text-blue-400',
-      image: "https://images.unsplash.com/photo-1523050853064-db7045df1972?fit=crop&w=800&q=80",
+      image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?fit=crop&w=800&q=80",
       action: 'gate'
     },
     {

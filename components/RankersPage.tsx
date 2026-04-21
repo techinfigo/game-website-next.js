@@ -6,7 +6,8 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { 
   Trophy, User, ArrowRight, Crown, 
-  Medal, Quote
+  Medal, Quote, Building2, Briefcase, 
+  GraduationCap, Calendar
 } from 'lucide-react';
 
 // Single source of truth interface based on the Rankers sheet
@@ -184,52 +185,64 @@ const RankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
 
 const JobRankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
   <div
-    className="group relative flex flex-col bg-slate-950 rounded-[2.5rem] transition-all duration-500 overflow-hidden h-[450px] w-full border border-white/10"
+    className="group relative flex flex-col bg-[#050505] rounded-[2rem] transition-all duration-500 overflow-hidden h-[380px] w-full border border-white/5"
   >
-    {/* Top Image Section */}
-    <div className="relative h-1/2 w-full overflow-hidden">
+    {/* Top Image Section - Increased visibility */}
+    <div className="relative h-[52%] w-full overflow-hidden">
       <Image 
           src={ranker.image} 
           alt={ranker.name} 
           fill
-          className="object-cover transition-transform duration-1000 opacity-80 group-hover:opacity-100 group-hover:scale-105" 
+          className="object-cover transition-transform duration-1000 opacity-90 group-hover:opacity-100 group-hover:scale-110" 
           referrerPolicy="no-referrer"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent"></div>
       
       {/* Category HUD */}
-      <div className="absolute top-4 left-4">
-          <div className="px-3 py-1 rounded-full bg-gameGold text-gameTeal text-[8px] font-black uppercase tracking-[0.2em] border border-white/10">
+      <div className="absolute top-3 left-3">
+          <div className="px-2 py-0.5 rounded-full bg-gameGold text-[#050505] text-[7px] font-black uppercase tracking-[0.2em] border border-white/10">
             {ranker.category}
           </div>
       </div>
     </div>
 
-    {/* Identity & Stats Section */}
-    <div className="flex-grow p-6 bg-slate-950 flex flex-col text-left">
-      <div className="mb-4">
-        <h3 className="text-2xl font-black text-white leading-tight mb-1 group-hover:text-gameGold transition-colors">
+    {/* Identity & Stats Section - Grouped at bottom */}
+    <div className="flex-grow p-4 bg-[#050505] flex flex-col text-left justify-end">
+      <div className="mb-2">
+        <h3 className="text-xl font-black text-gameGold leading-tight mb-0.5 transition-colors">
           {ranker.name}
         </h3>
-        <p className="text-gameTeal font-black text-[10px] uppercase tracking-[0.2em] mb-4">
-          {ranker.organisation}
-        </p>
+        <div className="flex items-center gap-1.5 opacity-90">
+          <Building2 size={11} className="text-gameTeal" />
+          <p className="text-gameTeal font-black text-[9px] uppercase tracking-[0.1em]">
+            {ranker.organisation}
+          </p>
+        </div>
       </div>
 
-      <div className="mt-auto space-y-3.5 pt-4 border-t border-white/5">
-        <div className="flex justify-between items-start">
-          <p className="text-[8px] uppercase font-black text-slate-500 tracking-[0.2em]">Designation</p>
-          <p className="text-[11px] font-bold text-white max-w-[65%] text-right italic leading-tight">{ranker.designation}</p>
+      <div className="space-y-2.5 pt-3 border-t border-white/10">
+        <div className="flex items-center gap-3">
+          <Briefcase size={12} className="text-slate-500 shrink-0" />
+          <div className="flex flex-col">
+            <p className="text-[7px] uppercase font-black text-slate-500 tracking-[0.1em]">Designation</p>
+            <p className="text-[10px] font-bold text-white italic leading-tight">{ranker.designation}</p>
+          </div>
         </div>
         
-        <div className="flex justify-between items-center">
-          <p className="text-[8px] uppercase font-black text-slate-500 tracking-[0.2em]">Branch</p>
-          <p className="text-[10px] font-black text-gameGold uppercase tracking-tight">{ranker.branch}</p>
+        <div className="flex items-center gap-3">
+          <GraduationCap size={12} className="text-slate-500 shrink-0" />
+          <div className="flex flex-col">
+            <p className="text-[7px] uppercase font-black text-slate-500 tracking-[0.1em]">Branch</p>
+            <p className="text-[10px] font-black text-gameGold uppercase tracking-tight">{ranker.branch}</p>
+          </div>
         </div>
 
-        <div className="flex justify-between items-center">
-          <p className="text-[8px] uppercase font-black text-slate-500 tracking-[0.2em]">Selection Year</p>
-          <p className="text-[10px] font-black text-slate-300">{ranker.selectionYear}</p>
+        <div className="flex items-center gap-3">
+          <Calendar size={12} className="text-slate-500 shrink-0" />
+          <div className="flex flex-col">
+            <p className="text-[7px] uppercase font-black text-slate-500 tracking-[0.1em]">Selection Year</p>
+            <p className="text-[10px] font-black text-slate-300">{ranker.selectionYear}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -453,7 +466,7 @@ const RankersPage: React.FC = () => {
       </section>
 
       {/* SECTION 2: Gaurav Sir's Students in Reputed Jobs Website */}
-      <section className="py-12 lg:py-16 bg-slate-900 relative overflow-hidden">
+      <section className="py-12 lg:py-16 bg-gameTealDark relative overflow-hidden">
          <div className="max-w-[1280px] mx-auto px-8 mb-10 text-center">
             <h2 className="text-3xl md:text-5xl font-black text-white">
                Gaurav Sir's Students in Reputed Jobs Website
