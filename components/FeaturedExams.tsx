@@ -131,27 +131,27 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
   ];
 
   return (
-    <section className="py-12 md:py-16 bg-white relative overflow-hidden">
+    <section className="py-8 md:py-10 bg-white relative overflow-hidden">
        {/* Background Decoration */}
        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.02]"></div>
        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-teal-50 rounded-full blur-[120px] -z-10"></div>
 
        <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10">
           
-          <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-6">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-4 md:mb-6 gap-4 md:gap-6">
              <div className="max-w-2xl">
                 <motion.div 
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="inline-flex items-center gap-2 px-3 py-1 bg-[#075d63]/5 border border-[#075d63]/10 rounded-full mb-4"
+                  className="inline-flex items-center gap-2 px-3 py-1 bg-[#075d63]/5 border border-[#075d63]/10 rounded-full mb-2"
                 >
-                   <div className="w-1.5 h-1.5 rounded-full bg-gameGold animate-pulse"></div>
-                   <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Select Your Goal</span>
+                   <div className="w-1 h-1 rounded-full bg-gameGold animate-pulse"></div>
+                   <span className="text-[9px] font-black text-slate-500 uppercase tracking-[0.2em]">Select Your Goal</span>
                 </motion.div>
                 
                 <motion.h2 
-                  className="text-3xl md:text-4xl font-black text-slate-900 mb-4 leading-tight"
+                  className="text-2xl md:text-4xl font-black text-slate-900 mb-2 leading-tight"
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -160,28 +160,28 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
                 </motion.h2>
                 
                 <motion.p 
-                  className="text-slate-500 text-sm md:text-base leading-relaxed font-medium"
+                  className="text-slate-500 text-xs md:text-sm leading-relaxed font-medium mt-1"
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                 >
-                  Gaurav's Academy for Mentorship & Education, an online institute for engineering preparation in India; guiding students to excel in GATE, ESE, PSUs, SSC JE, and AE exams.
+                  Gaurav's Academy for Mentorship & Education, an online institute for engineering preparation; guiding students to excel in GATE, ESE, PSUs, and JE exams.
                 </motion.p>
              </div>
 
              {/* Navigation Buttons */}
-             <div className="flex gap-3">
+             <div className="flex gap-2 mb-2">
                 <button 
                   onClick={() => scroll('left')}
-                  className="w-12 h-12 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-gameTeal hover:text-white transition-all shadow-sm hover:shadow-xl group active:scale-95"
+                  className="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-gameTeal hover:text-white transition-all shadow-sm group"
                 >
-                   <ChevronLeft size={20} className="group-hover:-translate-x-0.5 transition-transform" />
+                   <ChevronLeft size={18} />
                 </button>
                 <button 
                   onClick={() => scroll('right')}
-                  className="w-12 h-12 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-gameTeal hover:text-white transition-all shadow-sm hover:shadow-xl group active:scale-95"
+                  className="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-gameTeal hover:text-white transition-all shadow-sm group"
                 >
-                   <ChevronRight size={20} className="group-hover:translate-x-0.5 transition-transform" />
+                   <ChevronRight size={18} />
                 </button>
              </div>
           </div>
@@ -193,7 +193,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
             onMouseLeave={handleMouseLeave}
             onMouseUp={handleMouseUp}
             onMouseMove={handleMouseMove}
-            className={`flex gap-5 overflow-x-auto pb-8 pt-2 no-scrollbar scroll-smooth snap-x select-none ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+            className={`flex gap-4 overflow-x-auto pb-4 pt-1 no-scrollbar scroll-smooth snap-x select-none ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
              {categories.map((item, index) => (
@@ -203,10 +203,10 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
                    whileInView={{ opacity: 1, x: 0 }}
                    viewport={{ once: true }}
                    transition={{ delay: index * 0.05 }}
-                   className="min-w-[260px] md:min-w-[280px] snap-center group pointer-events-auto"
+                   className="min-w-[240px] md:min-w-[260px] snap-center group pointer-events-auto"
                 >
                    {/* Container - Bit more rounded rounded-[3rem] */}
-                   <div className="relative h-[320px] rounded-[2.5rem] overflow-hidden bg-slate-900 border border-slate-200/10 transition-all duration-500 isolate">
+                   <div className="relative h-[260px] md:h-[280px] rounded-[2rem] overflow-hidden bg-slate-900 border border-slate-200/10 transition-all duration-500 isolate">
                       
                       {/* Background Image */}
                       <Image 
@@ -214,32 +214,32 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
                          alt={item.title} 
                          fill
                          draggable="false"
-                         className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-1000 grayscale group-hover:grayscale-0"
+                         className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-1000 grayscale group-hover:grayscale-0"
                          referrerPolicy="no-referrer"
                       />
                       
                       {/* Gradient Overlays */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                      <div className="absolute inset-0 border-[6px] border-white/5 rounded-[3rem] pointer-events-none group-hover:border-gameGold/20 transition-colors"></div>
+                      <div className="absolute inset-0 border-[4px] border-white/5 rounded-[2rem] pointer-events-none group-hover:border-gameGold/20 transition-colors"></div>
 
                       {/* Content */}
-                      <div className="absolute inset-0 p-5 pb-6 flex flex-col">
+                      <div className="absolute inset-0 p-4 pb-5 flex flex-col">
                          
                          {/* Floating Icon */}
-                         <div className={`w-10 h-10 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center mb-3 group-hover:bg-white group-hover:text-gameTeal transition-all shadow-2xl ${item.color}`}>
-                            <item.icon size={18} strokeWidth={2} />
+                         <div className={`w-9 h-9 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center mb-2 group-hover:bg-white group-hover:text-gameTeal transition-all ${item.color}`}>
+                            <item.icon size={16} strokeWidth={2} />
                          </div>
 
                          <div className="mt-auto">
-                            <h3 className="text-2xl font-black text-white mb-1 tracking-tight drop-shadow-lg leading-tight">
+                            <h3 className="text-xl font-black text-white mb-0.5 tracking-tight drop-shadow-lg leading-tight">
                                {item.title}
                             </h3>
-                            <p className="text-white/60 text-[9px] font-black uppercase tracking-[0.2em] mb-3 line-clamp-2 min-h-[28px]">
+                            <p className="text-white/60 text-[8px] font-black uppercase tracking-[0.15em] mb-2 line-clamp-1">
                                {item.subtitle}
                             </p>
                             
                             {/* Buttons container */}
-                            <div className="space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto">
+                            <div className="space-y-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto">
                                 <button 
                                   onClick={(e) => {
                                     if (isDragging) {
@@ -248,21 +248,9 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
                                     }
                                     handleNavigate('courses');
                                   }}
-                                  className="w-full bg-[#f2c537] text-black py-2.5 rounded-2xl font-black text-xs uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-white transition-all shadow-xl active:scale-[0.98]"
+                                  className="w-full bg-[#f2c537] text-black py-2 rounded-xl font-black text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-white transition-all shadow-xl active:scale-[0.98]"
                                 >
-                                   Explore Courses <ChevronRight size={14} />
-                                </button>
-                                <button 
-                                  onClick={(e) => {
-                                    if (isDragging) {
-                                      e.preventDefault();
-                                      return;
-                                    }
-                                    handleNavigate(item.action);
-                                  }}
-                                  className="w-full bg-white/10 backdrop-blur-md border border-white/20 text-white py-2.5 rounded-2xl font-black text-xs uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-white/20 transition-all active:scale-[0.98]"
-                                >
-                                   View Details <Info size={14} />
+                                   Explore <ChevronRight size={12} />
                                 </button>
                             </div>
                          </div>
