@@ -251,9 +251,10 @@ const MobilePhoneFrame = React.memo(({ children }: { children: React.ReactNode }
 
 // Optimized: Extracted CTA Section into a memoized sub-component - HEIGHT OPTIMIZED
 const AchieversCTA = React.memo(() => (
-  <section className="py-12 lg:py-16 bg-slate-900 relative overflow-hidden">
-     {/* Subtle background radial glow */}
-     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(20,184,166,0.05)_0%,transparent_70%)] pointer-events-none"></div>
+  <section className="py-12 lg:py-16 bg-gameTealDark relative overflow-hidden">
+     {/* Subtle background texture/pattern */}
+     <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 pointer-events-none"></div>
+     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05)_0%,transparent_70%)] pointer-events-none"></div>
      
      <div className="max-w-[1080px] mx-auto px-8 md:px-10 lg:px-12 text-center relative z-10">
         <motion.div
@@ -265,12 +266,12 @@ const AchieversCTA = React.memo(() => (
            <h2 className="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">
               Be the Next <span className="text-gameGold">Success Story</span>
            </h2>
-           <p className="text-slate-400 text-base md:text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
+           <p className="text-teal-50/80 text-base md:text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
               Join thousands of students who have transformed their careers with GAME Academy. Your journey to AIR 1 starts here.
            </p>
            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="group bg-gameTeal text-white px-8 py-3.5 rounded-2xl font-bold text-base shadow-xl shadow-gameTeal/20 hover:bg-gameTealLight hover:-translate-y-1 transition-all flex items-center justify-center gap-3">
-                 Explore Courses 
+              <button className="group bg-white text-gameTealDark px-8 py-3.5 rounded-2xl font-black text-base shadow-2xl hover:bg-gameGold hover:text-[#050505] hover:-translate-y-1 transition-all flex items-center justify-center gap-3">
+                 EXPLORE COURSES 
                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </button>
            </div>
