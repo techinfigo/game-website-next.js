@@ -32,68 +32,31 @@ const MOCK_RANKERS: Ranker[] = [
     name: "Abhishek Singh",
     designation: "AIR 1 - GATE 2024",
     category: "GATE",
-    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched. It made the toughest subjects feel like a game.",
+    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?fit=crop&w=600&q=80",
-    feedbackUrl: "#",
-    videoUrl: "https://youtube.com/watch?v=1"
   },
   {
     id: "2",
-    name: "Sneha Reddy",
-    designation: "AIR 15 - ESE 2023",
-    category: "ESE",
-    description: "ESE requires a different level of consistency. The structured roadmap at GAME Academy kept me focused through all three stages.",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?fit=crop&w=600&q=80",
-    feedbackUrl: "#"
+    name: "Akshay Pillay",
+    designation: "AIR 51 - UPSC CSE 2021",
+    category: "UPSC",
+    description: "The structured roadmap at GAME Academy kept me focused through all stages of CSE.",
+    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?fit=crop&w=600&q=80",
   },
   {
     id: "3",
+    name: "Sneha Reddy",
+    designation: "AIR 15 - ESE 2023",
+    category: "ESE",
+    description: "ESE requires consistency. Mentorship here is exceptional.",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?fit=crop&w=600&q=80",
+  },
+  {
+    id: "4",
     name: "Vikram Malhotra",
     designation: "Selected - ONGC",
     category: "PSU",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=600&q=80",
-    videoUrl: "https://youtube.com/watch?v=3"
-  },
-  {
-    id: "4",
-    name: "Ananya Das",
-    designation: "Selected - SSC JE (CPWD)",
-    category: "SSC-JE",
-    description: "The Excellence Course for SSC JE is a complete package. The non-tech part was handled exceptionally well.",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?fit=crop&w=600&q=80",
-    feedbackUrl: "#",
-    videoUrl: "https://youtube.com/watch?v=5"
-  },
-  {
-    id: "5",
-    name: "Rahul Verma",
-    designation: "AIR 8 - GATE 2024",
-    category: "GATE",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?fit=crop&w=600&q=80",
-    feedbackUrl: "#"
-  },
-  {
-    id: "6",
-    name: "Amit Patel",
-    designation: "AIR 22 - ESE 2023",
-    category: "ESE",
-    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?fit=crop&w=600&q=80",
-    videoUrl: "https://youtube.com/watch?v=6"
-  },
-  {
-    id: "7",
-    name: "Priya Sharma",
-    designation: "AIR 4 - GATE CE",
-    category: "GATE",
-    image: "https://i.pravatar.cc/150?u=priya",
-    description: "The structural analysis sessions were life-changing."
-  },
-  {
-    id: "8",
-    name: "Karan Johar",
-    designation: "Selected - BHEL",
-    category: "PSU",
-    image: "https://i.pravatar.cc/150?u=karan"
   }
 ];
 
@@ -142,43 +105,53 @@ const MOCK_JOB_RANKERS: Ranker[] = [
 
 const RankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
   <div
-    className="group flex flex-col bg-white rounded-[2.5rem] border border-slate-100 transition-all duration-500 overflow-hidden h-full"
+    className="group relative flex flex-col bg-[#050505] rounded-[2rem] transition-all duration-500 overflow-hidden h-[380px] w-full border border-white/5 shadow-2xl hover:shadow-gameTeal/10"
   >
-    {/* Image Area */}
-    <div className="relative h-[220px] shrink-0 overflow-hidden">
-      <Image 
-          src={ranker.image} 
-          alt={ranker.name} 
-          fill
-          className="object-cover transition-transform duration-1000 group-hover:scale-110" 
-          referrerPolicy="no-referrer"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent"></div>
-      
-      {/* Category Badge */}
-      <div className="absolute bottom-4 left-4">
-          <span className="px-2 py-1 rounded-lg bg-gameTeal text-white text-[8px] font-black uppercase tracking-widest">
-            {ranker.category}
-          </span>
-      </div>
+    {/* Full Card Image Background */}
+    <Image 
+        src={ranker.image} 
+        alt={ranker.name} 
+        fill
+        className="object-cover transition-transform duration-1000 opacity-80 group-hover:opacity-100 group-hover:scale-110" 
+        referrerPolicy="no-referrer"
+    />
+    
+    {/* Black-to-Transparent Gradient Overlay */}
+    <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent group-hover:from-[#050505] group-hover:via-[#050505]/70 transition-colors duration-500"></div>
+    
+    {/* Category Badge - Gold accented */}
+    <div className="absolute top-4 left-4 z-10">
+        <span className="px-2 py-0.5 rounded-md bg-gameGold text-black text-[7px] font-black uppercase tracking-widest shadow-lg">
+          {ranker.category}
+        </span>
     </div>
 
-    {/* Info Area */}
-    <div className="p-6 flex flex-col h-full bg-white text-left">
-      <h3 className="text-xl font-black text-slate-900 leading-tight mb-2 group-hover:text-gameTeal transition-colors">
-        {ranker.name}
-      </h3>
-      <p className="text-gameGold font-black text-[10px] uppercase tracking-widest mb-4">
-        {ranker.designation}
-      </p>
-      
-      {ranker.description && (
-        <div className="mt-auto pt-4 border-t border-slate-50">
-          <p className="text-slate-500 text-[11px] font-bold leading-relaxed italic line-clamp-3">
-             "{ranker.description}"
-          </p>
+    {/* Integrated Info Block - Dark Theme */}
+    <div className="absolute bottom-0 inset-x-0 p-5 z-10 flex flex-col text-left">
+      <div className="space-y-1">
+        <h3 className="text-base font-black text-white leading-tight transition-colors line-clamp-1 group-hover:text-gameGold">
+          {ranker.name}
+        </h3>
+        
+        <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 bg-gameTeal/40 px-1.5 py-0.5 rounded border border-gameTeal/50 backdrop-blur-sm">
+            <Trophy size={9} className="text-gameGold fill-gameGold/20" />
+            <span className="text-white font-black text-[8px] uppercase tracking-wider">
+              {ranker.designation.split(' - ')[0]}
+            </span>
+          </div>
+          <span className="text-white/20 text-[9px]">|</span>
+          <span className="text-gameGold font-bold text-[8px] uppercase tracking-wide italic line-clamp-1">
+             {ranker.designation.split(' - ')[1] || ranker.category}
+          </span>
         </div>
-      )}
+      </div>
+      
+      {/* Verified Excellence Indicator */}
+      <div className="mt-3 pt-2.5 border-t border-white/10 flex items-center justify-between opacity-60 group-hover:opacity-100 transition-opacity">
+         <span className="text-[6px] font-black text-gameTeal uppercase tracking-[0.2em]">Verified Excellence</span>
+         <div className="h-1 w-1 rounded-full bg-gameTeal animate-pulse"></div>
+      </div>
     </div>
   </div>
 ));
@@ -440,7 +413,7 @@ const RankersPage: React.FC = () => {
       </section>
 
       {/* SECTION 1: Spotlight on our Rankers */}
-      <section className="py-12 lg:py-16 bg-white relative overflow-hidden border-b border-slate-100">
+      <section className="py-12 lg:py-16 bg-slate-200 relative overflow-hidden border-b border-slate-100">
          <div className="max-w-[1280px] mx-auto px-8 mb-10 text-center">
             <h2 className="text-3xl md:text-5xl font-black text-gameTeal">
                Spotlight on our Rankers
