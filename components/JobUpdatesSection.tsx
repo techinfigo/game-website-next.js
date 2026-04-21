@@ -124,28 +124,28 @@ const JobUpdatesSection: React.FC<JobUpdatesSectionProps> = ({ onNavigate }) => 
   };
 
   return (
-    <section className="py-10 lg:py-12 bg-gameTealDark relative overflow-hidden">
+    <section className="py-6 lg:py-8 bg-gameTealDark relative overflow-hidden">
       <div className="absolute inset-0 bg-graph-paper opacity-[0.03] pointer-events-none invert"></div>
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-white/5 rounded-full blur-[140px] pointer-events-none -translate-y-1/2 translate-x-1/4"></div>
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gameGold/10 rounded-full blur-[120px] pointer-events-none translate-y-1/2 -translate-x-1/3"></div>
       
       <div className="max-w-[1400px] mx-auto px-8 md:px-10 lg:px-12 relative z-10">
         
-        <div className="flex flex-col md:flex-row justify-between items-end mb-6 gap-6">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-4 gap-6">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="max-w-2xl"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 border border-white/10 rounded-full text-gameGold text-[8px] font-black uppercase tracking-[0.2em] mb-4 shadow-sm backdrop-blur-md">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 border border-white/10 rounded-full text-gameGold text-[8px] font-black uppercase tracking-[0.2em] mb-3 shadow-sm backdrop-blur-md">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gameGold opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-gameGold"></span>
               </span>
               Live Job Hub
             </div>
-            <h2 className="text-2xl md:text-4xl font-black text-white leading-[1.1] tracking-tighter mb-2">
+            <h2 className="text-2xl md:text-4xl font-black text-white leading-[1.1] tracking-tighter mb-1">
               Latest Career <br/>
               <span className="text-gameGold">Opportunities</span>
             </h2>
@@ -176,7 +176,7 @@ const JobUpdatesSection: React.FC<JobUpdatesSectionProps> = ({ onNavigate }) => 
           onMouseLeave={handleMouseLeave}
           onMouseUp={handleMouseUp}
           onMouseMove={handleMouseMove}
-          className={`flex gap-4 overflow-x-auto pb-6 pt-1 px-6 -mx-6 no-scrollbar scroll-smooth snap-x select-none ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+          className={`flex gap-4 overflow-x-auto pb-4 pt-1 px-6 -mx-6 no-scrollbar scroll-smooth snap-x select-none ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {recentJobs.map((job, idx) => (
@@ -186,9 +186,9 @@ const JobUpdatesSection: React.FC<JobUpdatesSectionProps> = ({ onNavigate }) => 
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.05 }}
-              className="min-w-[220px] md:min-w-[240px] snap-center group relative bg-white p-3.5 rounded-[1.5rem] border border-white/80 transition-all duration-500 shadow-xl hover:-translate-y-2 flex flex-col"
+              className="min-w-[220px] md:min-w-[240px] snap-center group relative bg-white p-3 rounded-[1.5rem] border border-white/80 transition-all duration-500 shadow-xl hover:-translate-y-2 flex flex-col"
             >
-              <div className="flex justify-between items-start mb-3">
+              <div className="flex justify-between items-start mb-2">
                 <div className="w-8 h-8 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-center text-gameTeal group-hover:bg-gameTeal group-hover:text-white transition-all duration-500">
                   <Building2 size={16} />
                 </div>
@@ -199,7 +199,7 @@ const JobUpdatesSection: React.FC<JobUpdatesSectionProps> = ({ onNavigate }) => 
                 )}
               </div>
 
-              <div className="mb-3 flex-grow">
+              <div className="mb-2 flex-grow">
                 <div className="flex items-center gap-2 mb-1">
                   <span className="text-[7px] font-black text-gameGoldDark uppercase tracking-wider">{job.org}</span>
                 </div>
@@ -208,24 +208,24 @@ const JobUpdatesSection: React.FC<JobUpdatesSectionProps> = ({ onNavigate }) => 
                 </h3>
               </div>
 
-              <div className="space-y-1.5 mb-3">
-                <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-50 border border-slate-100">
+              <div className="space-y-1 mb-2">
+                <div className="flex items-center gap-2 p-1.5 rounded-lg bg-slate-50 border border-slate-100">
                    <LayoutGrid size={12} className="text-gameTeal" />
                    <span className="text-[9px] font-bold text-slate-800 truncate">{job.branch.join(', ')}</span>
                 </div>
                 
-                <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-50 border border-slate-100">
+                <div className="flex items-center gap-2 p-1.5 rounded-lg bg-slate-50 border border-slate-100">
                    <CalendarDays size={12} className="text-gameGoldDark" />
                    <span className="text-[9px] font-black text-slate-900">{job.lastDate}</span>
                 </div>
 
-                <div className="flex items-center gap-2 p-2 rounded-lg bg-teal-50/40 border border-teal-100/50">
+                <div className="flex items-center gap-2 p-1.5 rounded-lg bg-teal-50/40 border border-teal-100/50">
                    <Wallet size={12} className="text-gameTeal" />
                    <span className="text-[9px] font-black text-gameTealDark">{job.salary}</span>
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
+              <div className="pt-2 border-t border-slate-100 flex items-center justify-between">
                 <button 
                   onClick={(e) => {
                     if (isDragging) {
@@ -250,12 +250,12 @@ const JobUpdatesSection: React.FC<JobUpdatesSectionProps> = ({ onNavigate }) => 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-2 relative p-0.5 rounded-[2rem] bg-gradient-to-r from-gameGold/20 via-white/5 to-gameGold/20 overflow-hidden group"
+          className="mt-1 relative p-0.5 rounded-[2rem] bg-gradient-to-r from-gameGold/20 via-white/5 to-gameGold/20 overflow-hidden group"
         >
-          <div className="bg-gameTealDark rounded-[1.9rem] p-4 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-6 border border-white/5">
+          <div className="bg-gameTealDark rounded-[1.9rem] p-3 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-6 border border-white/5">
             <div className="flex flex-col md:flex-row items-center gap-4 relative z-10 text-center md:text-left">
-              <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gameGold group-hover:scale-105 transition-transform duration-700">
-                <Radio size={24} className="animate-pulse" />
+              <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gameGold group-hover:scale-105 transition-transform duration-700">
+                <Radio size={22} className="animate-pulse" />
               </div>
               <div>
                 <h3 className="text-xl md:text-2xl font-black text-white mb-0.5 tracking-tight">Stay Updated</h3>
@@ -265,24 +265,8 @@ const JobUpdatesSection: React.FC<JobUpdatesSectionProps> = ({ onNavigate }) => 
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-center gap-4 relative z-10 w-full lg:w-auto">
-              <div className="flex -space-x-2.5">
-                 {[1,2,3].map(i => (
-                    <div key={i} className="w-7 h-7 rounded-full border-2 border-gameTealDark bg-slate-800 overflow-hidden shadow-lg">
-                       <Image 
-                         src={`https://i.pravatar.cc/150?img=${i + 40}`} 
-                         alt="Engineer" 
-                         fill
-                         className="object-cover" 
-                         referrerPolicy="no-referrer"
-                       />
-                    </div>
-                 ))}
-                 <div className="w-7 h-7 rounded-full border-2 border-gameTealDark bg-gameGold flex items-center justify-center text-black font-black text-[7px]">
-                    +35k
-                 </div>
-              </div>
-              <button className="bg-white text-gameBlack px-6 py-2.5 rounded-lg font-black text-[8px] uppercase tracking-widest hover:bg-gameGold hover:text-black transition-all shadow-xl flex items-center gap-2 group/tg whitespace-nowrap active:scale-95">
+            <div className="flex items-center gap-4 relative z-10 w-full lg:w-auto">
+              <button className="bg-white text-gameBlack px-6 py-2 rounded-lg font-black text-[8px] uppercase tracking-widest hover:bg-gameGold hover:text-black transition-all shadow-xl flex items-center gap-2 group/tg whitespace-nowrap active:scale-95">
                 Join Channel <ChevronRight size={12} className="group-hover/tg:translate-x-0.5 transition-transform" />
               </button>
             </div>
