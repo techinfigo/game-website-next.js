@@ -289,6 +289,8 @@ const RankerSkeleton = () => (
 );
 
 const MarqueeRow = ({ items, direction = 'left', cardType = 'ranker', speed = 60 }: { items: Ranker[], direction?: 'left' | 'right', cardType?: 'ranker' | 'job', speed?: number }) => {
+  const [isPaused, setIsPaused] = useState(false);
+  
   if (!items || items.length === 0) return null;
   
   // Multiply items to ensure a seamless loop - 8x to handle any screen width
@@ -297,12 +299,14 @@ const MarqueeRow = ({ items, direction = 'left', cardType = 'ranker', speed = 60
   return (
     <div 
       className="relative flex overflow-hidden py-3"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
     >
       <div
         className={`flex gap-6 w-max ${direction === 'left' ? 'animate-marquee-left' : 'animate-marquee-right'}`}
         style={{
           animationDuration: `${speed}s`,
-          animationPlayState: 'running'
+          animationPlayState: isPaused ? 'paused' : 'running'
         }}
       >
         {duplicatedItems.map((item, idx) => (
