@@ -105,7 +105,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
 
 const RankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
   <div
-    className="group relative flex flex-col bg-[#050505] rounded-[2rem] transition-all duration-500 overflow-hidden h-[320px] w-full border border-white/5 shadow-2xl hover:shadow-gameTeal/10"
+    className="group relative flex flex-col bg-[#050505] rounded-[2rem] transition-all duration-500 overflow-hidden h-[350px] w-full border border-white/5 shadow-2xl hover:shadow-gameTeal/10"
   >
     {/* Full Card Image Background */}
     <Image 
@@ -158,10 +158,10 @@ const RankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
 
 const JobRankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
   <div
-    className="group relative flex flex-col bg-[#050505] rounded-[2rem] transition-all duration-500 overflow-hidden h-[320px] w-full border border-white/5"
+    className="group relative flex flex-col bg-[#050505] rounded-[2rem] transition-all duration-500 overflow-hidden h-[350px] w-full border border-white/5"
   >
-    {/* Top Image Section - Increased visibility */}
-    <div className="relative h-[50%] w-full overflow-hidden">
+    {/* Top Image Section - Balanced visibility */}
+    <div className="relative h-[55%] w-full overflow-hidden">
       <Image 
           src={ranker.image} 
           alt={ranker.name} 
@@ -172,41 +172,50 @@ const JobRankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
       <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent"></div>
       
       {/* Category HUD */}
-      <div className="absolute top-3 left-3">
-          <div className="px-2 py-0.5 rounded-full bg-gameGold text-[#050505] text-[7px] font-black uppercase tracking-[0.2em] border border-white/10">
+      <div className="absolute top-4 left-4">
+          <div className="px-2.5 py-1 rounded-full bg-gameGold text-[#050505] text-[8px] font-black uppercase tracking-[0.2em] border border-white/10 shadow-lg">
             {ranker.category}
           </div>
       </div>
     </div>
 
-    {/* Identity & Stats Section - Grouped at bottom */}
-    <div className="flex-grow p-3 bg-[#050505] flex flex-col text-left justify-end">
-      <div className="mb-1">
-        <h3 className="text-lg font-black text-gameGold leading-tight mb-0.5 transition-colors line-clamp-1">
+    {/* Identity & Stats Section - Enhanced visibility */}
+    <div className="flex-grow p-4 bg-[#050505] flex flex-col text-left justify-end">
+      <div className="mb-3">
+        <h3 className="text-xl font-black text-gameGold leading-tight mb-1 transition-colors line-clamp-1">
           {ranker.name}
         </h3>
-        <div className="flex items-center gap-1.5 opacity-90">
-          <Building2 size={10} className="text-gameTeal" />
-          <p className="text-gameTeal font-black text-[8px] uppercase tracking-[0.1em] line-clamp-1">
+        <div className="flex items-center gap-2 opacity-90">
+          <Building2 size={12} className="text-gameTeal" />
+          <p className="text-gameTeal font-black text-[10px] uppercase tracking-[0.1em] line-clamp-1">
             {ranker.organisation}
           </p>
         </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-2 pt-2 border-t border-white/10">
-        <div className="flex flex-col">
-          <p className="text-[6px] uppercase font-black text-slate-500 tracking-[0.1em]">Role</p>
-          <p className="text-[8px] font-bold text-white italic leading-tight truncate">{ranker.designation}</p>
+      <div className="grid grid-cols-1 gap-2 pt-3 border-t border-white/10">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-1.5">
+            <Briefcase size={10} className="text-slate-500" />
+            <p className="text-[8px] uppercase font-black text-slate-500 tracking-[0.1em]">Designation</p>
+          </div>
+          <p className="text-[10px] font-bold text-white italic leading-tight">{ranker.designation}</p>
         </div>
         
-        <div className="flex flex-col">
-          <p className="text-[6px] uppercase font-black text-slate-500 tracking-[0.1em]">Branch</p>
-          <p className="text-[8px] font-black text-gameGold uppercase tracking-tight truncate">{ranker.branch}</p>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-1.5">
+            <GraduationCap size={10} className="text-slate-500" />
+            <p className="text-[8px] uppercase font-black text-slate-500 tracking-[0.1em]">Branch</p>
+          </div>
+          <p className="text-[10px] font-black text-gameGold uppercase tracking-tight">{ranker.branch}</p>
         </div>
 
-        <div className="flex flex-col text-right">
-          <p className="text-[6px] uppercase font-black text-slate-500 tracking-[0.1em]">Year</p>
-          <p className="text-[8px] font-black text-slate-300">{ranker.selectionYear}</p>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-1.5">
+            <Calendar size={10} className="text-slate-500" />
+            <p className="text-[8px] uppercase font-black text-slate-500 tracking-[0.1em]">Year</p>
+          </div>
+          <p className="text-[10px] font-black text-slate-300">{ranker.selectionYear}</p>
         </div>
       </div>
     </div>
