@@ -105,7 +105,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
 
 const RankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
   <div
-    className="group relative flex flex-col bg-[#050505] rounded-[2rem] transition-all duration-500 overflow-hidden h-[380px] w-full border border-white/5 shadow-2xl hover:shadow-gameTeal/10"
+    className="group relative flex flex-col bg-[#050505] rounded-[2rem] transition-all duration-500 overflow-hidden h-[320px] w-full border border-white/5 shadow-2xl hover:shadow-gameTeal/10"
   >
     {/* Full Card Image Background */}
     <Image 
@@ -158,10 +158,10 @@ const RankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
 
 const JobRankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
   <div
-    className="group relative flex flex-col bg-[#050505] rounded-[2rem] transition-all duration-500 overflow-hidden h-[380px] w-full border border-white/5"
+    className="group relative flex flex-col bg-[#050505] rounded-[2rem] transition-all duration-500 overflow-hidden h-[320px] w-full border border-white/5"
   >
     {/* Top Image Section - Increased visibility */}
-    <div className="relative h-[52%] w-full overflow-hidden">
+    <div className="relative h-[50%] w-full overflow-hidden">
       <Image 
           src={ranker.image} 
           alt={ranker.name} 
@@ -180,42 +180,33 @@ const JobRankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
     </div>
 
     {/* Identity & Stats Section - Grouped at bottom */}
-    <div className="flex-grow p-4 bg-[#050505] flex flex-col text-left justify-end">
-      <div className="mb-2">
-        <h3 className="text-xl font-black text-gameGold leading-tight mb-0.5 transition-colors">
+    <div className="flex-grow p-3 bg-[#050505] flex flex-col text-left justify-end">
+      <div className="mb-1">
+        <h3 className="text-lg font-black text-gameGold leading-tight mb-0.5 transition-colors line-clamp-1">
           {ranker.name}
         </h3>
         <div className="flex items-center gap-1.5 opacity-90">
-          <Building2 size={11} className="text-gameTeal" />
-          <p className="text-gameTeal font-black text-[9px] uppercase tracking-[0.1em]">
+          <Building2 size={10} className="text-gameTeal" />
+          <p className="text-gameTeal font-black text-[8px] uppercase tracking-[0.1em] line-clamp-1">
             {ranker.organisation}
           </p>
         </div>
       </div>
 
-      <div className="space-y-2.5 pt-3 border-t border-white/10">
-        <div className="flex items-center gap-3">
-          <Briefcase size={12} className="text-slate-500 shrink-0" />
-          <div className="flex flex-col">
-            <p className="text-[7px] uppercase font-black text-slate-500 tracking-[0.1em]">Designation</p>
-            <p className="text-[10px] font-bold text-white italic leading-tight">{ranker.designation}</p>
-          </div>
+      <div className="grid grid-cols-3 gap-2 pt-2 border-t border-white/10">
+        <div className="flex flex-col">
+          <p className="text-[6px] uppercase font-black text-slate-500 tracking-[0.1em]">Role</p>
+          <p className="text-[8px] font-bold text-white italic leading-tight truncate">{ranker.designation}</p>
         </div>
         
-        <div className="flex items-center gap-3">
-          <GraduationCap size={12} className="text-slate-500 shrink-0" />
-          <div className="flex flex-col">
-            <p className="text-[7px] uppercase font-black text-slate-500 tracking-[0.1em]">Branch</p>
-            <p className="text-[10px] font-black text-gameGold uppercase tracking-tight">{ranker.branch}</p>
-          </div>
+        <div className="flex flex-col">
+          <p className="text-[6px] uppercase font-black text-slate-500 tracking-[0.1em]">Branch</p>
+          <p className="text-[8px] font-black text-gameGold uppercase tracking-tight truncate">{ranker.branch}</p>
         </div>
 
-        <div className="flex items-center gap-3">
-          <Calendar size={12} className="text-slate-500 shrink-0" />
-          <div className="flex flex-col">
-            <p className="text-[7px] uppercase font-black text-slate-500 tracking-[0.1em]">Selection Year</p>
-            <p className="text-[10px] font-black text-slate-300">{ranker.selectionYear}</p>
-          </div>
+        <div className="flex flex-col text-right">
+          <p className="text-[6px] uppercase font-black text-slate-500 tracking-[0.1em]">Year</p>
+          <p className="text-[8px] font-black text-slate-300">{ranker.selectionYear}</p>
         </div>
       </div>
     </div>
@@ -297,27 +288,25 @@ const RankerSkeleton = () => (
   </div>
 );
 
-const MarqueeRow = ({ items, direction = 'left', cardType = 'ranker' }: { items: Ranker[], direction?: 'left' | 'right', cardType?: 'ranker' | 'job' }) => {
-  // Multiply items to ensure a seamless loop
-  const duplicatedItems = [...items, ...items, ...items, ...items];
-  const [isPaused, setIsPaused] = useState(false);
+const MarqueeRow = ({ items, direction = 'left', cardType = 'ranker', speed = 60 }: { items: Ranker[], direction?: 'left' | 'right', cardType?: 'ranker' | 'job', speed?: number }) => {
+  if (!items || items.length === 0) return null;
+  
+  // Multiply items to ensure a seamless loop - 8x to handle any screen width
+  const duplicatedItems = [...items, ...items, ...items, ...items, ...items, ...items, ...items, ...items];
   
   return (
     <div 
-      className="relative flex overflow-hidden py-4 pause-on-hover pause-on-touch"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      onTouchStart={() => setIsPaused(true)}
-      onTouchEnd={() => setIsPaused(false)}
+      className="relative flex overflow-hidden py-3"
     >
       <div
-        className={`flex gap-4 ${direction === 'left' ? 'animate-marquee-left' : 'animate-marquee-right'}`}
+        className={`flex gap-6 w-max ${direction === 'left' ? 'animate-marquee-left' : 'animate-marquee-right'}`}
         style={{
-          animationPlayState: isPaused ? 'paused' : 'running'
+          animationDuration: `${speed}s`,
+          animationPlayState: 'running'
         }}
       >
         {duplicatedItems.map((item, idx) => (
-          <div key={`${item.id}-${idx}`} className="w-[300px] shrink-0 h-full">
+          <div key={`${item.id}-${idx}`} className="w-[300px] shrink-0">
             {cardType === 'ranker' ? <RankerCard ranker={item} /> : <JobRankerCard ranker={item} />}
           </div>
         ))}
@@ -361,8 +350,8 @@ const RankersPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-gameTeal selection:text-white -mt-20">
       
-      {/* PREMIUM HERO SECTION - OPTIMIZED DARK THEME */}
-      <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden bg-[#0f1115] text-white">
+      {/* PREMIUM HERO SECTION - HEIGHT OPTIMIZED & VISIBILITY FIXED */}
+      <section className="relative pt-32 pb-10 lg:pt-40 lg:pb-14 overflow-hidden bg-[#0f1115] text-white">
          
          {/* Background Effects */}
          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gameTeal/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
@@ -371,31 +360,31 @@ const RankersPage: React.FC = () => {
 
          <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10 text-center">
             <motion.div
-               initial={{ opacity: 0, y: 30 }}
+               initial={{ opacity: 0, y: 20 }}
                animate={{ opacity: 1, y: 0 }}
                transition={{ duration: 0.8 }}
             >
-               <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8">
-                  <div className="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-gameGold shadow-sm">
-                    <Trophy size={16} className="fill-gameGold" />
+               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-4">
+                  <div className="w-6 h-6 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-gameGold shadow-sm">
+                    <Trophy size={12} className="fill-gameGold" />
                   </div>
-                  <span className="text-[10px] font-black text-gameGold uppercase tracking-[0.3em]">Success Records</span>
+                  <span className="text-[9px] font-black text-gameGold uppercase tracking-[0.3em]">Success Records</span>
                </div>
 
-               <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tighter leading-[0.9]">
+               <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-3 tracking-tighter leading-[0.9]">
                   THE HALL OF <br/>
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-gameTeal via-teal-400 to-gameGold underline decoration-white/20 decoration-8 underline-offset-8">EXCELLENCE</span>
                </h1>
                
-               <p className="text-lg md:text-2xl text-slate-400 font-bold max-w-2xl mx-auto leading-relaxed mt-8">
+               <p className="text-base md:text-xl text-slate-400 font-bold max-w-2xl mx-auto leading-relaxed mt-4">
                   Celebrating the brilliance and hard work of students who mastered the engineering GAME.
                </p>
 
-               <div className="flex justify-center items-center gap-4 mt-12">
-                  <div className="h-px w-16 bg-gradient-to-r from-transparent to-white/20 rounded-full"></div>
-                  <div className="flex -space-x-3">
+               <div className="flex justify-center items-center gap-4 mt-8">
+                  <div className="h-px w-12 bg-gradient-to-r from-transparent to-white/20 rounded-full"></div>
+                  <div className="flex -space-x-2.5">
                      {[1,2,3,4,5].map(i => (
-                        <div key={i} className="relative w-12 h-12 rounded-full border-4 border-[#0f1115] bg-slate-800 overflow-hidden shadow-2xl">
+                        <div key={i} className="relative w-10 h-10 rounded-full border-2 border-[#0f1115] bg-slate-800 overflow-hidden shadow-2xl">
                            <Image 
                                   src={`https://i.pravatar.cc/150?img=${i + 15}`} 
                                   alt="Achiever" 
@@ -406,16 +395,16 @@ const RankersPage: React.FC = () => {
                         </div>
                       ))}
                   </div>
-                  <div className="h-px w-16 bg-gradient-to-l from-transparent to-white/20 rounded-full"></div>
+                  <div className="h-px w-12 bg-gradient-to-l from-transparent to-white/20 rounded-full"></div>
                </div>
             </motion.div>
          </div>
       </section>
 
-      {/* SECTION 1: Spotlight on our Rankers */}
-      <section className="py-12 lg:py-16 bg-slate-200 relative overflow-hidden border-b border-slate-100">
-         <div className="max-w-[1280px] mx-auto px-8 mb-10 text-center">
-            <h2 className="text-3xl md:text-5xl font-black text-gameTeal">
+      {/* SECTION 1: Spotlight on our Rankers - HEIGHT OPTIMIZED */}
+      <section className="py-6 lg:py-8 bg-slate-200 relative overflow-hidden border-b border-slate-100">
+         <div className="max-w-[1280px] mx-auto px-8 mb-4 text-center">
+            <h2 className="text-2xl md:text-3xl font-black text-gameTeal">
                Spotlight on our Rankers
             </h2>
          </div>
@@ -426,9 +415,9 @@ const RankersPage: React.FC = () => {
                   {[...Array(4)].map((_, i) => <RankerSkeleton key={i} />)}
                </div>
             ) : rankers.length > 0 ? (
-               <div className="space-y-4">
-                  <MarqueeRow items={row1} direction="left" />
-                  <MarqueeRow items={row2} direction="right" />
+               <div className="space-y-2">
+                  <MarqueeRow items={row1} direction="left" speed={70} />
+                  <MarqueeRow items={row2} direction="right" speed={70} />
                </div>
             ) : (
                <div className="max-w-[1280px] mx-auto px-8 text-center pt-10">
@@ -438,10 +427,10 @@ const RankersPage: React.FC = () => {
          </div>
       </section>
 
-      {/* SECTION 2: Gaurav Sir's Students in Reputed Jobs Website */}
-      <section className="py-12 lg:py-16 bg-gameTealDark relative overflow-hidden">
-         <div className="max-w-[1280px] mx-auto px-8 mb-10 text-center">
-            <h2 className="text-3xl md:text-5xl font-black text-white">
+      {/* SECTION 2: Gaurav Sir's Students in Reputed Jobs Website - HEIGHT OPTIMIZED */}
+      <section className="py-6 lg:py-8 bg-gameTealDark relative overflow-hidden">
+         <div className="max-w-[1280px] mx-auto px-8 mb-4 text-center">
+            <h2 className="text-2xl md:text-3xl font-black text-white">
                Gaurav Sir's Students in Reputed Jobs Website
             </h2>
          </div>
@@ -452,9 +441,9 @@ const RankersPage: React.FC = () => {
                   {[...Array(4)].map((_, i) => <RankerSkeleton key={i} />)}
                </div>
             ) : jobRankers.length > 0 ? (
-               <div className="space-y-4">
-                  <MarqueeRow items={row3} direction="left" cardType="job" />
-                  <MarqueeRow items={row4} direction="right" cardType="job" />
+               <div className="space-y-2">
+                  <MarqueeRow items={row3} direction="left" speed={70} cardType="job" />
+                  <MarqueeRow items={row4} direction="right" speed={70} cardType="job" />
                </div>
             ) : null}
          </div>
