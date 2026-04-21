@@ -132,7 +132,7 @@ const FILTER_TABS = [
 const RankerCard = React.memo(({ item, onPlay }: { item: any, onPlay?: () => void }) => (
   <div 
     onClick={onPlay}
-    className="group relative bg-white rounded-2xl overflow-hidden shadow-lg shadow-slate-200/30 border border-slate-100 hover:shadow-xl hover:shadow-gameTeal/10 transition-all duration-300 cursor-pointer h-[280px] md:h-[320px]"
+    className="group relative bg-white rounded-2xl overflow-hidden shadow-lg shadow-slate-200/30 border border-slate-100 hover:shadow-xl hover:shadow-gameTeal/10 transition-all duration-300 cursor-pointer h-[260px] md:h-[300px]"
   >
     <div className="relative h-full overflow-hidden">
       <Image 
@@ -171,7 +171,7 @@ const RankerCard = React.memo(({ item, onPlay }: { item: any, onPlay?: () => voi
 
 // Optimized: Extracted Testimonial Card into a memoized sub-component - TALLER DESIGN
 const TestimonialCard = React.memo(({ item }: { item: any }) => (
-  <div className="bg-white p-6 rounded-2xl shadow-md shadow-slate-200/30 border border-slate-100 relative group hover:border-gameTeal/30 transition-all duration-300 h-[280px] md:h-[320px] flex flex-col justify-center">
+  <div className="bg-white p-5 rounded-2xl shadow-md shadow-slate-200/30 border border-slate-100 relative group hover:border-gameTeal/30 transition-all duration-300 h-[260px] md:h-[300px] flex flex-col justify-center">
     <div className="absolute top-4 right-5 opacity-5 group-hover:opacity-10 transition-opacity">
       <Quote size={40} className="text-gameTeal" />
     </div>
@@ -249,11 +249,11 @@ const MobilePhoneFrame = React.memo(({ children }: { children: React.ReactNode }
   </div>
 ));
 
-// Optimized: Extracted CTA Section into a memoized sub-component
+// Optimized: Extracted CTA Section into a memoized sub-component - HEIGHT OPTIMIZED
 const AchieversCTA = React.memo(() => (
-  <section className="py-24 bg-white border-t border-slate-100 relative overflow-hidden">
+  <section className="py-12 lg:py-16 bg-slate-900 relative overflow-hidden">
      {/* Subtle background radial glow */}
-     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(20,184,166,0.03)_0%,transparent_70%)] pointer-events-none"></div>
+     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(20,184,166,0.05)_0%,transparent_70%)] pointer-events-none"></div>
      
      <div className="max-w-[1080px] mx-auto px-8 md:px-10 lg:px-12 text-center relative z-10">
         <motion.div
@@ -262,16 +262,16 @@ const AchieversCTA = React.memo(() => (
            viewport={{ once: true }}
            transition={{ duration: 0.6 }}
         >
-           <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">
-              Be the Next <span className="text-gameTeal">Success Story</span>
+           <h2 className="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">
+              Be the Next <span className="text-gameGold">Success Story</span>
            </h2>
-           <p className="text-slate-600 text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
+           <p className="text-slate-400 text-base md:text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
               Join thousands of students who have transformed their careers with GAME Academy. Your journey to AIR 1 starts here.
            </p>
            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="group bg-gameTeal text-white px-10 py-4 rounded-2xl font-bold text-lg shadow-xl shadow-gameTeal/20 hover:bg-gameTealDark hover:-translate-y-1 transition-all flex items-center justify-center gap-3">
+              <button className="group bg-gameTeal text-white px-8 py-3.5 rounded-2xl font-bold text-base shadow-xl shadow-gameTeal/20 hover:bg-gameTealLight hover:-translate-y-1 transition-all flex items-center justify-center gap-3">
                  Explore Courses 
-                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </button>
            </div>
         </motion.div>
@@ -375,10 +375,10 @@ const AchieversPage: React.FC<AchieversPageProps> = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-gameTeal selection:text-white">
+    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-gameTeal selection:text-white -mt-20">
       
-      {/* 1. Hero Section: Premium Dark Theme - OPTIMIZED */}
-      <section className="relative px-8 md:px-10 lg:px-12 pt-12 pb-10 lg:pt-16 lg:pb-16 overflow-hidden bg-[#0f1115] text-white">
+      {/* 1. Hero Section: Premium Dark Theme - HEIGHT OPTIMIZED & VISIBILITY FIXED */}
+      <section className="relative px-8 md:px-10 lg:px-12 pt-44 pb-10 lg:pt-52 lg:pb-14 overflow-hidden bg-[#0f1115] text-white">
          
          {/* Background Effects */}
          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gameTeal/10 rounded-full blur-[120px] pointer-events-none"></div>
@@ -393,15 +393,15 @@ const AchieversPage: React.FC<AchieversPageProps> = () => {
             >
                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-md mb-4">
                   <Crown size={12} className="text-gameGold fill-gameGold" />
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-gameGold">Hall of Fame</span>
+                  <span className="text-[9px] font-bold uppercase tracking-widest text-gameGold">Hall of Fame</span>
                </div>
 
-               <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-4 tracking-tight leading-none">
+               <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-3 tracking-tight leading-[0.9]">
                   Celebrating <br/>
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-gameTeal via-teal-400 to-gameGold">Excellence</span>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-gameTeal via-teal-400 to-gameGold underline decoration-white/20 decoration-8 underline-offset-8">Excellence</span>
                </h1>
 
-               <p className="text-base md:text-lg text-slate-400 max-w-2xl mx-auto mb-6 leading-relaxed">
+               <p className="text-base md:text-xl text-slate-400 max-w-2xl mx-auto mb-6 leading-relaxed mt-4">
                   Real stories of grit, perseverance, and triumph. Meet the students who turned their dreams into reality with GAME.
                </p>
 
@@ -418,8 +418,8 @@ const AchieversPage: React.FC<AchieversPageProps> = () => {
          </div>
       </section>
 
-      {/* 2. Content Grid: 30/70 Split with Sliders */}
-      <section className="py-10 px-8 md:px-10 lg:px-12 bg-slate-50 relative overflow-hidden">
+      {/* 2. Content Grid: 30/70 Split with Sliders - HEIGHT OPTIMIZED */}
+      <section className="py-6 lg:py-8 px-8 md:px-10 lg:px-12 bg-slate-50 relative overflow-hidden">
          <div className="max-w-[1400px] mx-auto">
             <div className="flex flex-col lg:flex-row gap-10 items-start justify-center">
                
@@ -427,8 +427,8 @@ const AchieversPage: React.FC<AchieversPageProps> = () => {
                <div className="lg:w-[25%] flex flex-col items-center">
                   <div className="w-full max-w-[240px]">
                      <div className="text-center mb-4">
-                        <h3 className="text-3xl font-black text-slate-900 leading-tight">Real Conversations</h3>
-                        <p className="text-slate-500 text-[10px] font-bold uppercase tracking-widest">WhatsApp Feedback</p>
+                        <h3 className="text-2xl font-black text-slate-900 leading-tight">Real Conversations</h3>
+                        <p className="text-slate-500 text-[9px] font-bold uppercase tracking-widest">WhatsApp Feedback</p>
                      </div>
                      <MobilePhoneFrame>
                         {whatsappStories.map((item) => (
@@ -439,12 +439,12 @@ const AchieversPage: React.FC<AchieversPageProps> = () => {
                </div>
 
                {/* Column 2: Sliders (75%) */}
-               <div className="lg:w-[75%] overflow-hidden lg:h-[820px] flex flex-col justify-between py-2">
+               <div className="lg:w-[75%] overflow-hidden lg:h-[760px] flex flex-col justify-between py-1">
                   
-                  <div className="mb-6 flex items-center justify-between px-2">
+                  <div className="mb-4 flex items-center justify-between px-2">
                      <div>
-                        <h3 className="text-4xl font-black text-slate-900 leading-tight tracking-tight">Student Success Stories</h3>
-                        <p className="text-slate-500 text-[10px] font-bold uppercase tracking-widest">Video & Written Testimonials</p>
+                        <h3 className="text-3xl font-black text-slate-900 leading-tight tracking-tight">Student Success Stories</h3>
+                        <p className="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Video & Written Testimonials</p>
                      </div>
                      <div className="hidden md:flex gap-2">
                         <div className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-400">
