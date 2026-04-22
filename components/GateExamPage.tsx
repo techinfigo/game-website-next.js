@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 
 import CourseGrid from './CourseGrid';
+import CourseHelpSection from './CourseHelpSection';
 
 const GateExamPage: React.FC = () => {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
@@ -107,63 +108,72 @@ const GateExamPage: React.FC = () => {
       desc: "Admission to IITs, NITs, IIITs, and other top institutes for M.Tech/M.E. programs. Receive a monthly stipend of Rs. 12,400 during postgraduate studies.",
       icon: GraduationCap,
       color: "text-gameTeal",
-      bg: "bg-gameTeal/10"
+      bg: "bg-gameTeal/10",
+      image: "https://images.unsplash.com/photo-1541339907198-e08756ebafe3?fit=crop&w=600&q=80"
     },
     {
       title: "PSU Recruitment",
       desc: "Direct recruitment into top Public Sector Undertakings (PSUs) like ONGC, BHEL, GAIL, NTPC, etc., with attractive salary packages and job security.",
       icon: Briefcase,
       color: "text-gameTeal",
-      bg: "bg-gameTeal/10"
+      bg: "bg-gameTeal/10",
+      image: "https://images.unsplash.com/photo-1541888941255-081d746fedff?fit=crop&w=600&q=80"
     },
     {
       title: "Opportunities Abroad",
       desc: "Admission to international universities such as the National University of Singapore (NUS) and the Technical University of Munich (TUM).",
       icon: Globe,
       color: "text-gameTeal",
-      bg: "bg-gameTeal/10"
+      bg: "bg-gameTeal/10",
+      image: "https://images.unsplash.com/photo-1449034446853-66c86144b0ad?fit=crop&w=600&q=80"
     },
     {
       title: "Research Opportunities",
       desc: "Openings for R&D roles in reputed research organisations like ISRO, DRDO, and BARC etc.",
       icon: Microscope,
       color: "text-gameTeal",
-      bg: "bg-gameTeal/10"
+      bg: "bg-gameTeal/10",
+      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?fit=crop&w=600&q=80"
     },
     {
       title: "Scholarships and Fellowships",
       desc: "Eligibility for AICTE/UGC scholarships and Junior Research Fellow (JRF) positions.",
       icon: Award,
       color: "text-gameGold",
-      bg: "bg-gameGold/10"
+      bg: "bg-gameGold/10",
+      image: "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?fit=crop&w=600&q=80"
     },
     {
       title: "Teaching Careers",
       desc: "Eligibility for teaching positions in engineering colleges and universities.",
       icon: BookOpen,
       color: "text-gameTeal",
-      bg: "bg-gameTeal/10"
+      bg: "bg-gameTeal/10",
+      image: "https://images.unsplash.com/photo-1524178232363-1fb28f74b0cd?fit=crop&w=600&q=80"
     },
     {
       title: "Career Growth in Industry",
       desc: "Access to better roles and higher salaries in private companies that require advanced technical expertise.",
       icon: TrendingUp,
       color: "text-gameTeal",
-      bg: "bg-gameTeal/10"
+      bg: "bg-gameTeal/10",
+      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?fit=crop&w=600&q=80"
     },
     {
       title: "Flexibility in Career",
       desc: "Strong foundational preparation for other competitive exams like ESE, SSC-JE, RRB-JE, and State-level AE & JE exams.",
       icon: Layers,
       color: "text-gameTeal",
-      bg: "bg-gameTeal/10"
+      bg: "bg-gameTeal/10",
+      image: "https://images.unsplash.com/photo-1506784919140-239611dc6742?fit=crop&w=600&q=80"
     },
     {
       title: "Prestige and Recognition",
       desc: "A GATE qualification adds significant credibility to your technical and academic profile.",
       icon: Star,
       color: "text-gameGold",
-      bg: "bg-gameGold/10"
+      bg: "bg-gameGold/10",
+      image: "https://images.unsplash.com/photo-1523287562758-66c7ed58967f?fit=crop&w=600&q=80"
     }
   ];
 
@@ -1060,88 +1070,31 @@ const GateExamPage: React.FC = () => {
                      <div className="absolute bottom-0 left-0 w-full p-8">
                         <h3 className="text-xl font-black text-white mb-1 drop-shadow-md group-hover:text-gameGold transition-colors">{ranker.name}</h3>
                         <p className="text-zinc-400 text-xs font-bold uppercase tracking-widest">{ranker.rank}</p>
-                     </div>
+                      </div>
                   </motion.div>
                ))}
             </div>
          </div>
       </section>
 
-      {/* HOW THESE COURSE HELPS YOU SECTION */}
-      <section id="gate-excellence" className="py-12 bg-white relative scroll-mt-32 overflow-hidden">
-         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gameTeal/5 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 translate-x-1/2"></div>
-         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gameGold/5 rounded-full blur-[80px] pointer-events-none translate-y-1/2 -translate-x-1/2"></div>
-         
-         <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10">
-            <div className="text-center mb-10 max-w-4xl mx-auto">
-               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gameTeal/5 border border-gameTeal/10 text-gameTeal text-xs font-black uppercase tracking-widest mb-4">
-                     <CheckCircle2Icon size={14} /> Course Excellence
-                  </div>
-                  <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6">
-                     How these courses <br className="hidden md:block"/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-gameTeal to-gameTealDark">help you?</span>
-                  </h2>
-                  <p className="text-slate-600 text-lg font-medium leading-relaxed">
-                     Our courses are meticulously crafted to bridge the gap between basic engineering education and the high standards of competitive exams. Here’s the GAME strategy for your success:
-                  </p>
-               </motion.div>
-            </div>
+      {/* 2. CourseHelpSection (Features explaining "How do these courses help you?") */}
+      <div id="gate-excellence" className="scroll-mt-32">
+         <CourseHelpSection />
+      </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-               {courseBenefits.map((feature, idx) => (
-                  <motion.div
-                     key={idx}
-                     initial={{ opacity: 0, y: 20 }}
-                     whileInView={{ opacity: 1, y: 0 }}
-                     viewport={{ once: true }}
-                     transition={{ delay: idx * 0.1 }}
-                     className={`bg-white rounded-[2.5rem] p-8 md:p-10 shadow-xl shadow-slate-200/50 border border-slate-100 hover:shadow-gameTeal/10 transition-all group overflow-hidden relative`}
-                  >
-                     <div className="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-bl-[100px] -mr-8 -mt-8 opacity-40 transition-transform duration-500 group-hover:scale-150"></div>
-                     
-                     <div className="relative z-10 flex flex-col h-full">
-                        <div className={`w-16 h-16 rounded-2xl ${feature.bg} flex items-center justify-center ${feature.color} mb-8 shadow-sm transform group-hover:scale-110 transition-transform duration-300`}>
-                           <feature.icon size={32} />
-                        </div>
-                        <h3 className="text-2xl font-black text-slate-900 mb-4 group-hover:text-gameTeal transition-colors">{feature.title}</h3>
-                        <p className="text-slate-500 font-bold text-base leading-relaxed mb-8 flex-grow">
-                           {feature.desc}
-                        </p>
-                        
-                        <div className="grid grid-cols-1 gap-3 pt-6 border-t border-slate-100">
-                           {feature.points.map((point, i) => (
-                              <div key={i} className="flex items-center gap-3">
-                                 <div className={`w-1.5 h-1.5 rounded-full ${feature.color.replace('text', 'bg')}`}></div>
-                                 <span className="text-sm font-black text-slate-800 uppercase tracking-wide">{point}</span>
-                              </div>
-                           ))}
-                        </div>
-                     </div>
-                  </motion.div>
-               ))}
-            </div>
-            
-            <div className="mt-16 text-center">
-               <button className="bg-gameBlack text-white px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest shadow-2xl hover:bg-gameTeal transition-all flex items-center justify-center gap-3 mx-auto group">
-                  <Sparkles size={18} className="text-gameGold animate-pulse" /> Unlock Your Full Potential Now
-               </button>
-            </div>
-         </div>
-      </section>
-
-      {/* 3. Advantages REDESIGNED - THE ENGINEERING BLUEPRINT PATH */}
-      <section id="advantages" className="py-12 bg-white relative overflow-hidden scroll-mt-32 border-t border-slate-100">
+      {/* 3. Advantages REDESIGNED - THE ENGINEERING ROADMAP - LIGHT GRAY THEME */}
+      <section id="advantages" className="py-24 bg-slate-50 relative overflow-hidden scroll-mt-32 border-t border-slate-200">
          {/* Background Blueprint Aesthetics */}
-         <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1.5px,transparent_1.5px)] [background-size:32px_32px] opacity-40"></div>
+         <div className="absolute inset-0 bg-[radial-gradient(#64748b_0.5px,transparent_0.5px)] [background-size:32px_32px] opacity-[0.05]"></div>
          <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-5"
               style={{ backgroundImage: `linear-gradient(to right, #075d63 1px, transparent 1px), linear-gradient(to bottom, #075d63 1px, transparent 1px)`, backgroundSize: '100px 100px' }}>
          </div>
 
          <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10">
-            <div className="text-center mb-12 max-w-4xl mx-auto">
+            <div className="text-center mb-24 max-w-4xl mx-auto">
                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
                   <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gameTeal/5 border border-gameTeal/10 text-gameTeal text-[10px] font-black uppercase tracking-[0.3em] mb-8 shadow-sm">
-                    <Rocket size={14} className="fill-gameTeal" /> Engineering Career Blueprint
+                    <Rocket size={14} className="fill-gameTeal" /> Engineering Career Roadmap
                   </div>
                   <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-8 tracking-tighter leading-none">
                      The <span className="text-gameTeal">GATE</span> Advantage
@@ -1152,90 +1105,108 @@ const GateExamPage: React.FC = () => {
                </motion.div>
             </div>
 
-            {/* TECHNICAL PATHWAY UI */}
+            {/* ROADMAP PATHWAY UI */}
             <div className="relative">
                
-               {/* THE VERTICAL PATHWAY LINE */}
-               <div className="absolute left-1/2 top-0 bottom-0 w-px bg-slate-200 -translate-x-1/2 hidden lg:block">
-                  <div className="sticky top-1/2 h-40 w-px bg-gradient-to-b from-transparent via-gameTeal to-transparent"></div>
+               {/* THE VERTICAL PATHWAY LINE (Center line) */}
+               <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-slate-200 -translate-x-1/2 hidden lg:block overflow-hidden">
+                  <motion.div 
+                     initial={{ height: 0 }}
+                     whileInView={{ height: '100%' }}
+                     transition={{ duration: 2, ease: "easeInOut" }}
+                     className="w-full bg-gradient-to-b from-gameTeal via-gameGold to-gameTeal"
+                  />
                </div>
 
-               <div className="space-y-16 lg:space-y-0">
+               <div className="space-y-24 lg:space-y-32">
                   {gateAdvantages.map((item, i) => {
                      const isEven = i % 2 === 0;
                      return (
-                        <div key={i} className="relative lg:min-h-[220px]">
+                        <div key={i} className="relative">
                            
-                           {/* BRANCHING NODE - DESKTOP */}
-                           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center z-20">
-                              <div className="w-4 h-4 rounded-full bg-white border-2 border-gameTeal flex items-center justify-center">
-                                 <div className="w-1.5 h-1.5 rounded-full bg-gameGold animate-pulse"></div>
+                           {/* BRANCHING NODE - DESKTOP CENTER */}
+                           <div className="absolute left-1/2 top-10 -translate-x-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center z-20">
+                              <div className="w-10 h-10 rounded-full bg-white border-4 border-gameTeal flex items-center justify-center shadow-xl">
+                                 <item.icon size={20} className={item.color} />
                               </div>
-                              <div className={`absolute ${isEven ? 'left-8' : 'right-8'} w-24 h-px bg-gradient-to-r ${isEven ? 'from-gameTeal to-transparent' : 'from-transparent to-gameTeal'} opacity-20`}></div>
                            </div>
 
-                           <motion.div 
-                              initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }} 
-                              whileInView={{ opacity: 1, x: 0 }} 
-                              viewport={{ once: true }} 
-                              transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
-                              className={`flex flex-col ${i % 2 === 0 ? 'lg:items-end lg:pr-[55%]' : 'lg:items-start lg:pl-[55%]'}`}
-                           >
-                              <div className={`relative group w-full ${i % 2 === 0 ? 'lg:text-right' : 'lg:text-left'}`}>
-                                 
-                                 {/* BLUEPRINT NUMBERING */}
-                                 <div className={`absolute ${i % 2 === 0 ? '-top-12 -left-4 lg:left-auto lg:-right-8' : '-top-12 -right-4 lg:right-auto lg:-left-8'} text-9xl font-black text-slate-100/50 group-hover:text-gameTeal/5 transition-colors pointer-events-none select-none italic`}>
-                                    0{i+1}
-                                 </div>
-
-                                 {/* ICON & CONTENT BLADE */}
-                                 <div className={`relative z-10 flex flex-col ${i % 2 === 0 ? 'lg:items-end' : 'lg:items-start'} gap-6`}>
-                                    
-                                    {/* TECHNICAL ICON */}
-                                    <div className={`w-20 h-20 rounded-[2rem] ${item.bg} flex items-center justify-center ${item.color} shadow-lg shadow-slate-100 border border-white group-hover:scale-110 transition-all duration-500`}>
-                                       <item.icon size={40} strokeWidth={1.5} />
-                                       
-                                       {/* Blueprint Coordinates Decoration */}
-                                       <div className="absolute -top-2 -left-2 text-[8px] font-mono text-slate-300 uppercase tracking-widest hidden lg:block">x:0{i+1}</div>
-                                       <div className="absolute -bottom-2 -right-2 text-[8px] font-mono text-slate-300 uppercase tracking-widest hidden lg:block">y:2026</div>
+                           <div className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12 lg:gap-20`}>
+                              
+                              {/* Content Side */}
+                              <motion.div 
+                                 initial={{ opacity: 0, x: isEven ? -50 : 50 }} 
+                                 whileInView={{ opacity: 1, x: 0 }} 
+                                 viewport={{ once: true }} 
+                                 className="w-full lg:w-1/2"
+                              >
+                                 <div className={`relative group ${isEven ? 'text-left lg:text-right' : 'text-left'}`}>
+                                    {/* Numbering */}
+                                    <div className={`absolute -top-10 ${isEven ? 'left-0 lg:left-auto lg:-right-4' : 'left-0 lg:-left-4'} text-8xl font-black text-gameTeal/5 pointer-events-none -z-10`}>
+                                       {i + 1 < 10 ? `0${i + 1}` : i + 1}
                                     </div>
-
-                                    {/* TEXT BLADE */}
-                                    <div className={`bg-white/40 backdrop-blur-md p-8 rounded-[2.5rem] border border-slate-100 shadow-xl max-w-lg transition-all duration-500 group-hover:shadow-2xl group-hover:border-gameTeal/10`}>
-                                       <h3 className="text-2xl font-black text-slate-900 mb-4 tracking-tight group-hover:text-gameTeal transition-colors leading-none">
+                                    
+                                    <div className="bg-white p-8 md:p-10 rounded-[3rem] shadow-2xl shadow-slate-200/50 border border-slate-100 hover:border-gameTeal/20 transition-all duration-500 hover:shadow-gameTeal/10 group">
+                                       <h3 className="text-3xl font-black text-slate-900 mb-6 tracking-tight leading-none group-hover:text-gameTeal transition-colors">
                                           {item.title}
                                        </h3>
-                                       <p className="text-slate-500 text-sm md:text-base font-bold leading-relaxed">
+                                       <p className="text-slate-500 text-base md:text-lg font-bold leading-relaxed mb-8">
                                           {item.desc}
                                        </p>
                                        
-                                       {/* Interaction Link */}
-                                       <div className={`mt-6 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-gameTeal/40 group-hover:text-gameTeal transition-all ${i % 2 === 0 ? 'lg:justify-end' : 'lg:justify-start'}`}>
-                                          Analyze Opportunity <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                                       <div className={`flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-gameTeal ${isEven ? 'lg:justify-end' : ''}`}>
+                                          Unlock Path <ArrowRight size={16} />
                                        </div>
                                     </div>
                                  </div>
-                              </div>
-                           </motion.div>
+                              </motion.div>
+
+                              {/* Image Side */}
+                              <motion.div 
+                                 initial={{ opacity: 0, x: isEven ? 50 : -50 }} 
+                                 whileInView={{ opacity: 1, x: 0 }} 
+                                 viewport={{ once: true }} 
+                                 className="w-full lg:w-1/2"
+                              >
+                                 <div className="relative group">
+                                    <div className="absolute inset-0 bg-gameTeal/10 rounded-[3rem] rotate-3 group-hover:rotate-0 transition-transform"></div>
+                                    <div className="absolute inset-0 bg-gameGold/10 rounded-[3rem] -rotate-3 group-hover:rotate-0 transition-transform"></div>
+                                    <div className="relative rounded-[3rem] overflow-hidden border-4 border-white shadow-2xl h-[300px] lg:h-[400px]">
+                                       <img 
+                                          src={item.image} 
+                                          alt={item.title} 
+                                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                                       />
+                                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                       <div className="absolute bottom-8 left-8 right-8 text-white opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all">
+                                          <p className="text-sm font-black uppercase tracking-widest text-[#f2c537] mb-2">GATE Opportunity</p>
+                                          <h4 className="text-xl font-bold">{item.title}</h4>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </motion.div>
+
+                           </div>
                         </div>
                      );
                   })}
                </div>
             </div>
 
-            {/* BOTTOM BLUEPRINT HIGHLIGHT */}
+            {/* BOTTOM PATH FINAL HIGHLIGHT */}
             <motion.div 
-               initial={{ opacity: 0, scale: 0.95 }}
-               whileInView={{ opacity: 1, scale: 1 }}
+               initial={{ opacity: 0, y: 30 }}
+               whileInView={{ opacity: 1, y: 0 }}
                viewport={{ once: true }}
                className="mt-32 p-1 bg-gradient-to-r from-transparent via-gameTeal/20 to-transparent rounded-[4rem]"
             >
-               <div className="bg-gameTealDark p-10 md:p-16 rounded-[3.8rem] flex flex-col md:flex-row items-center justify-between gap-12 border border-white/10 shadow-3xl">
-                  <div className="text-center md:text-left">
-                     <h4 className="text-3xl md:text-5xl font-black text-white mb-4 tracking-tighter">Your GATE roadmap is clear.</h4>
-                     <p className="text-gameTeal/50 font-bold text-lg">Join 100,000+ engineers building their future with GAME.</p>
+               <div className="bg-[#075d63] p-10 md:p-16 rounded-[3.8rem] flex flex-col md:flex-row items-center justify-between gap-12 border border-white/10 shadow-3xl overflow-hidden relative">
+                  <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+                  <div className="relative z-10 text-center md:text-left">
+                     <h4 className="text-3xl md:text-5xl font-black text-white mb-4 tracking-tighter">Your technical future is waiting.</h4>
+                     <p className="text-teal-50/70 font-bold text-lg">Initialize your preparation with India&apos;s most structured roadmap.</p>
                   </div>
-                  <button className="bg-gameGold text-black px-12 py-5 rounded-[2rem] font-black uppercase tracking-widest text-sm shadow-2xl hover:bg-white hover:-translate-y-1 transition-all shrink-0">
+                  <button className="relative z-10 bg-[#f2c537] text-black px-12 py-5 rounded-[2rem] font-black uppercase tracking-widest text-sm shadow-2xl hover:bg-white hover:-translate-y-1 transition-all shrink-0">
                      Initialize Prep Phase
                   </button>
                </div>
