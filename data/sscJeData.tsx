@@ -45,7 +45,7 @@ export const keyHighlights = [
     label: "Achievable Goal",
     title: "Achievable Goal with a Well-Defined Exam Pattern",
     desc: "With a structured syllabus and clarity in pattern, SSC-JE is an achievable dream for dedicated Diploma and Degree holders.",
-    image: "https://images.unsplash.com/photo-1503387762-592dec5832f2?auto=format&fit=crop&w=800&q=80", 
+    image: "https://picsum.photos/seed/sscje-goal/800/600", 
     icon: Target,
     color: "text-gameGoldDark",
     bg: "bg-gameGold/5"
@@ -60,7 +60,7 @@ export const sscJeCourses = [
     originalPrice: "₹24,999",
     discount: "40% OFF",
     features: ["Full Syllabus Coverage", "Live & Recorded Classes", "PYQ Analysis", "Test Series Included"],
-    image: "https://images.unsplash.com/photo-1503387762-592dec5832f2?fit=crop&w=800&q=80",
+    image: "https://picsum.photos/seed/sscje-civil/800/600",
     tag: "Best Seller"
   },
   {

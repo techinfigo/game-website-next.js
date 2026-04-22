@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
-import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   GraduationCap, Briefcase, Globe, Microscope, 
@@ -12,9 +11,10 @@ import {
   Play, X, Crown, Target, Layout, Sparkle
 } from 'lucide-react';
 
+import CourseGridSection from './CourseGridSection';
+
 const GateExamPage: React.FC = () => {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
-  const [activeBranch, setActiveBranch] = useState<'ME' | 'CE' | 'XE'>('ME');
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
 
   useEffect(() => {
@@ -35,55 +35,6 @@ const GateExamPage: React.FC = () => {
         behavior: 'smooth'
       });
     }
-  };
-
-  const gateCourses = {
-    ME: [
-      {
-        title: "Foundation Course (ME) 2025/26",
-        tag: "2-YEAR PROGRAM",
-        price: "₹35,000",
-        originalPrice: "₹50,000",
-        image: "https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?fit=crop&w=800&q=80",
-        features: ["1200+ Hrs Content", "1:1 Mentorship", "Hardcopy Notes"]
-      },
-      {
-        title: "Lakshya GATE (ME) 2025",
-        tag: "BEST SELLER",
-        price: "₹24,999",
-        originalPrice: "₹35,000",
-        image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80",
-        features: ["Targeted Revision", "100+ Mock Tests", "Daily Practice Sets"]
-      }
-    ],
-    CE: [
-      {
-        title: "Civil Engineering Foundation 2025",
-        tag: "COMPREHENSIVE",
-        price: "₹35,000",
-        originalPrice: "₹50,000",
-        image: "https://images.unsplash.com/photo-1503387762-592dec5832f2?auto=format&fit=crop&w=800&q=80",
-        features: ["Structural Analysis", "Geotechnical Depth", "Standard PYQs"]
-      },
-      {
-        title: "Lakshya GATE (CE) 2025",
-        tag: "FAST TRACK",
-        price: "₹24,999",
-        originalPrice: "₹35,000",
-        image: "https://images.unsplash.com/photo-1590487988256-9ed24133863e?fit=crop&w=800&q=80",
-        features: ["Formula Sheets", "Doubt Support", "Rank Improvement"]
-      }
-    ],
-    XE: [
-      {
-        title: "GATE XE (Engg Sciences) Mastery",
-        tag: "INTERDISCIPLINARY",
-        price: "₹18,000",
-        originalPrice: "₹25,000",
-        image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?fit=crop&w=800&q=80",
-        features: ["Maths + 2 Sections", "Fluid & Thermo", "Energy Science Add-on"]
-      }
-    ]
   };
 
   const rankers = [
@@ -1024,13 +975,11 @@ const GateExamPage: React.FC = () => {
                   viewport={{ once: true }}
                >
                   <div className="absolute inset-0 bg-gameTeal/5 rounded-full blur-3xl transform rotate-12"></div>
-                  <div className="relative bg-white rounded-[2.5rem] p-3 border border-slate-100 shadow-2xl overflow-hidden aspect-video">
-                     <Image 
+                  <div className="relative bg-white rounded-[2.5rem] p-3 border border-slate-100 shadow-2xl">
+                     <img 
                         src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?fit=crop&w=800&q=80" 
                         alt="GATE Aspirant" 
-                        fill
-                        className="rounded-[2rem] object-cover"
-                        referrerPolicy="no-referrer"
+                        className="rounded-[2rem] w-full h-auto object-cover"
                      />
                      <div className="absolute -bottom-4 -right-4 bg-white p-5 rounded-2xl shadow-xl border border-slate-100 max-w-xs">
                         <div className="flex items-center gap-3 mb-2">
@@ -1048,91 +997,7 @@ const GateExamPage: React.FC = () => {
       </section>
 
       {/* GATE COURSE SECTION - COMPACT */}
-      <section id="gate-courses" className="py-10 bg-slate-50 relative scroll-mt-32 border-t border-slate-200">
-         <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12">
-            <div className="text-center mb-10">
-               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-                  <span className="text-gameTeal font-black tracking-[0.2em] uppercase text-xs mb-2 block">Our Offerings</span>
-                  <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">
-                     Premium <span className="text-gameTeal">GATE Courses</span>
-                  </h2>
-                  <p className="text-slate-600 text-lg font-medium max-w-2xl mx-auto mb-6">
-                    Select your engineering branch to explore courses tailored for your success.
-                  </p>
-                  
-                  {/* Branch Select Tabs */}
-                  <div className="flex justify-center gap-4 mb-10">
-                     {['ME', 'CE', 'XE'].map((branch) => (
-                        <button
-                           key={branch}
-                           onClick={() => setActiveBranch(branch as any)}
-                           className={`px-8 py-2.5 rounded-xl font-black text-sm uppercase tracking-widest transition-all shadow-sm border ${
-                              activeBranch === branch 
-                              ? 'bg-gameTeal text-white border-gameTeal scale-105 shadow-gameTeal/20' 
-                              : 'bg-white text-slate-500 border-slate-200 hover:border-gameTeal/30 hover:text-gameTeal'
-                           }`}
-                        >
-                           {branch === 'ME' ? 'Mechanical' : branch === 'CE' ? 'Civil' : 'Engg Sciences (XE)'}
-                        </button>
-                     ))}
-                  </div>
-               </motion.div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-               <AnimatePresence mode="wait">
-                  {gateCourses[activeBranch].map((course, i) => (
-                     <motion.div
-                        key={`${activeBranch}-${course.title}`}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.95 }}
-                        transition={{ duration: 0.3, delay: i * 0.1 }}
-                        className="group bg-white rounded-[2.5rem] border border-slate-200 overflow-hidden shadow-lg hover:shadow-2xl hover:border-gameTeal/20 transition-all flex flex-col h-full"
-                     >
-                        <div className="relative h-48 overflow-hidden">
-                           <Image 
-                             src={course.image} 
-                             alt={course.title} 
-                             fill
-                             className="object-cover transition-transform duration-700 group-hover:scale-110" 
-                             referrerPolicy="no-referrer"
-                           />
-                           <div className="absolute top-4 left-4">
-                              <span className="bg-gameGold text-black text-[10px] font-black px-3 py-1.5 rounded-lg uppercase tracking-widest shadow-lg">
-                                 {course.tag}
-                              </span>
-                           </div>
-                        </div>
-                        <div className="p-6 flex flex-col flex-grow">
-                           <h3 className="text-xl font-black text-slate-900 mb-4 group-hover:text-gameTeal transition-colors">{course.title}</h3>
-                           <div className="space-y-2.5 mb-6 flex-grow">
-                              {course.features.map((feat, idx) => (
-                                 <div key={idx} className="flex items-center gap-3">
-                                    <CheckCircle2 size={16} className="text-gameTeal" />
-                                    <span className="text-sm font-bold text-slate-500">{feat}</span>
-                                 </div>
-                              ))}
-                           </div>
-                           <div className="mt-auto pt-5 border-t border-slate-100 flex items-center justify-between">
-                              <div>
-                                 <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-0.5">Course Fee</p>
-                                 <div className="flex items-center gap-2">
-                                    <span className="text-2xl font-black text-slate-900">{course.price}</span>
-                                    <span className="text-xs text-slate-400 line-through">{course.originalPrice}</span>
-                                 </div>
-                              </div>
-                              <button className="bg-gameTeal text-white px-6 py-2.5 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-gameTealDark transition-all shadow-lg shadow-gameTeal/20">
-                                 Enroll <ArrowRight size={14} className="inline ml-1" />
-                              </button>
-                           </div>
-                        </div>
-                     </motion.div>
-                  ))}
-               </AnimatePresence>
-            </div>
-         </div>
-      </section>
+      <CourseGridSection />
 
       {/* HALL OF FAME / VIDEO TESTIMONIALS SECTION - UPDATED SPACING */}
       <section id="gate-hall-of-fame" className="py-12 bg-gameBlack text-white relative scroll-mt-32 overflow-hidden border-t border-white/5">
@@ -1172,12 +1037,10 @@ const GateExamPage: React.FC = () => {
                      onClick={() => setSelectedVideo(ranker.videoId)}
                      className="group relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-zinc-900 border border-white/5 cursor-pointer"
                   >
-                     <Image 
+                     <img 
                         src={ranker.image} 
+                        className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700" 
                         alt={ranker.name} 
-                        fill
-                        className="object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700" 
-                        referrerPolicy="no-referrer"
                      />
                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/30 to-transparent opacity-90 group-hover:opacity-60 transition-opacity duration-500"></div>
                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -2203,7 +2066,7 @@ const GateExamPage: React.FC = () => {
       </section>
 
       {/* 10. PREPARATION CTA */}
-      <section className="py-12 bg-[#075d63] text-white relative overflow-hidden">
+      <section className="py-24 bg-gameTeal text-white relative overflow-hidden">
          {/* Decorative elements - subtle glow as in screenshot */}
          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gameTeal/10 rounded-full blur-[120px]"></div>
@@ -2233,13 +2096,10 @@ const GateExamPage: React.FC = () => {
                         </div>
                         
                         <div className="flex gap-4">
-                           <Image 
+                           <img 
                               src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
                               alt="Google Play" 
-                              width={160}
-                              height={54}
-                              className="h-14 w-auto cursor-pointer hover:scale-105 transition-transform" 
-                              referrerPolicy="no-referrer"
+                              className="h-14 cursor-pointer hover:scale-105 transition-transform" 
                            />
                         </div>
                      </div>

@@ -55,7 +55,7 @@ const CourseHelpSection: React.FC = () => {
       bgGradient: "from-[#053d41] to-[#075d63]",
       images: [
         "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=400",
-        "https://images.unsplash.com/photo-1588702547319-90c2f59775c1?auto=format&fit=crop&q=80&w=400",
+        "https://picsum.photos/seed/online-learning/400/400",
         "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=400",
         "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&q=80&w=400"
       ]

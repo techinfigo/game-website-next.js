@@ -103,7 +103,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       originalPrice: "₹24,999",
       discount: "40% OFF",
       features: ["Full Syllabus Coverage", "Live & Recorded Classes", "PYQ Analysis", "Test Series Included"],
-      image: "https://images.unsplash.com/photo-1503387762-592dec5832f2?fit=crop&w=800&q=80",
+      image: "https://picsum.photos/seed/civil-eng/800/600",
       tag: "Best Seller"
     },
     {

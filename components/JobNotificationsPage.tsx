@@ -590,22 +590,22 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-gameTeal selection:text-white -mt-20">
       
-      {/* SECTION 1: Banner Section (Hero) - REFINED SPACING */}
-      <section className="relative pt-12 pb-10 lg:pt-20 lg:pb-16 overflow-hidden bg-gradient-to-br from-[#075d63] via-[#054a4f] to-[#043f42] text-white">
+      {/* SECTION 1: Banner Section (Hero) - OPTIMIZED HEIGHT & VISIBILITY */}
+      <section className="relative pt-40 pb-4 lg:pt-48 lg:pb-6 overflow-hidden bg-gradient-to-br from-[#075d63] via-[#054a4f] to-[#043f42] text-white">
         {/* Dynamic Background Elements */}
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gameTeal/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gameGold/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.07] pointer-events-none"></div>
         
         <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10">
-          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+          <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
             <motion.div 
               className="lg:w-7/12 text-center lg:text-left"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/10 border border-white/20 text-[#f2c537] text-[10px] font-black uppercase tracking-[0.2em] mb-6 shadow-2xl backdrop-blur-xl">
+              <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/10 border border-white/20 text-[#f2c537] text-[10px] font-black uppercase tracking-[0.2em] mb-4 shadow-2xl backdrop-blur-xl">
                 <div className="relative">
                   <Bell size={16} className="animate-bounce" />
                   <div className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
@@ -613,7 +613,7 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
                 Real-Time Alerts Activated
               </div>
               
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 leading-[0.9] tracking-tighter">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-4 leading-[0.9] tracking-tighter">
                 NEVER MISS A <br/>
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f2c537] via-amber-200 to-[#f2c537] bg-[length:200%_auto] animate-shimmer">
                   CAREER MOVE
@@ -621,7 +621,7 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
                 AGAIN.
               </h1>
               
-              <p className="text-teal-50 text-base md:text-xl font-bold mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0 opacity-90">
+              <p className="text-teal-50 text-base md:text-xl font-bold mb-6 leading-relaxed max-w-2xl mx-auto lg:mx-0 opacity-90">
                 We track every PSU, SSC, and State AE/JE notification across India. Focus on your preparation, we&apos;ll handle the alerts.
               </p>
               
@@ -658,15 +658,15 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
               transition={{ duration: 1, delay: 0.2, ease: "backOut" }}
             >
-              <div className="relative w-96 h-[450px] bg-white/10 backdrop-blur-3xl rounded-[4rem] border border-white/20 shadow-[0_50px_100px_rgba(0,0,0,0.3)] flex flex-col items-center p-10 overflow-hidden animate-float">
-                 <div className="w-24 h-24 bg-[#f2c537] rounded-[2rem] flex items-center justify-center text-black mb-8 shadow-[0_20px_40px_rgba(242,197,55,0.4)] transform -rotate-6">
-                    <Briefcase size={48} strokeWidth={2.5} />
+              <div className="relative w-80 h-[380px] bg-white/10 backdrop-blur-3xl rounded-[3rem] border border-white/20 shadow-[0_50px_100px_rgba(0,0,0,0.3)] flex flex-col items-center p-6 lg:p-8 overflow-hidden animate-float">
+                 <div className="w-16 h-16 bg-[#f2c537] rounded-2xl flex items-center justify-center text-black mb-4 shadow-[0_20px_40px_rgba(242,197,55,0.4)] transform -rotate-6">
+                    <Briefcase size={32} strokeWidth={2.5} />
                  </div>
                  
-                 <h3 className="text-3xl font-black text-white text-center mb-2 tracking-tight">Live Feed</h3>
-                 <div className="w-16 h-1.5 bg-gameGold rounded-full mb-10"></div>
+                 <h3 className="text-2xl font-black text-white text-center mb-1 tracking-tight">Live Feed</h3>
+                 <div className="w-12 h-1 bg-gameGold rounded-full mb-6"></div>
                  
-                 <div className="w-full space-y-4">
+                 <div className="w-full space-y-3">
                     {[
                       { title: "ONGC Recruitment 2025", status: "Live", color: "bg-green-400" },
                       { title: "SSC-JE 2026 Calendar", status: "Expected", color: "bg-amber-400" },
@@ -688,8 +688,8 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
                     ))}
                  </div>
                  
-                 <div className="mt-auto pt-8 w-full">
-                    <div className="h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent mb-6"></div>
+                 <div className="mt-auto pt-4 w-full">
+                    <div className="h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent mb-4"></div>
                     <div className="flex items-center justify-center gap-2 text-[10px] font-black text-gameGold uppercase tracking-[0.3em]">
                        <Sparkles size={14} /> System Synced
                     </div>
@@ -749,8 +749,9 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
          </div>
       </section>
 
-      {/* SECTION 3: Introduction Section - COMPACT */}
-      <section className="py-12 lg:py-16 bg-slate-50 border-y border-slate-100 overflow-hidden relative">
+      {/* SECTION 3: Introduction Section - OPTIMIZED & DARKENED */}
+      <section className="py-10 lg:py-12 bg-slate-200 border-y border-slate-300 overflow-hidden relative">
+         <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:24px_24px] opacity-60"></div>
          <div className="max-w-[1000px] mx-auto px-8 md:px-10 lg:px-12 text-center relative z-10">
             <motion.div
                initial={{ opacity: 0, y: 20 }}
