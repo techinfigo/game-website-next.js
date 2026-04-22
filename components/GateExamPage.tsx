@@ -11,11 +11,13 @@ import {
   Play, X, Crown, Target, Layout, Sparkle
 } from 'lucide-react';
 
-import CourseGridSection from './CourseGridSection';
+import CourseGrid from './CourseGrid';
 
 const GateExamPage: React.FC = () => {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+  const [selectedExam, setSelectedExam] = useState('GATE / ESE');
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -997,7 +999,14 @@ const GateExamPage: React.FC = () => {
       </section>
 
       {/* GATE COURSE SECTION - COMPACT */}
-      <CourseGridSection />
+      <section id="gate-courses" className="bg-white scroll-mt-32 border-t border-slate-100">
+        <CourseGrid 
+          selectedExam={selectedExam} 
+          setSelectedExam={setSelectedExam}
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+        />
+      </section>
 
       {/* HALL OF FAME / VIDEO TESTIMONIALS SECTION - UPDATED SPACING */}
       <section id="gate-hall-of-fame" className="py-12 bg-gameBlack text-white relative scroll-mt-32 overflow-hidden border-t border-white/5">
