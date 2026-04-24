@@ -19,7 +19,7 @@ const WinnerChoiceSection: React.FC = () => {
       title: "Visionary Leadership",
       desc: "Under the guidance of Gaurav Babu Sir, we implement high-level engineering protocols to ensure our students lead the industry.",
       stats: [], 
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?fit=crop&w=800&q=80",
+      image: "/winners-leadership.png",
       icon: User
     },
     {
@@ -31,7 +31,7 @@ const WinnerChoiceSection: React.FC = () => {
         { label: "METHOD", value: "VISUALIZED" },
         { label: "RETENTION", value: "95%+" }
       ],
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?fit=crop&w=800&q=80",
+      image: "/winners-methodology.png",
       icon: GraduationCap
     },
     {
@@ -43,7 +43,7 @@ const WinnerChoiceSection: React.FC = () => {
         { label: "SELECTIONS", value: "5000+" },
         { label: "TOP RANKS", value: "50+" }
       ],
-      image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?fit=crop&w=800&q=80",
+      image: "/winners-results.jpg",
       icon: Trophy
     },
     {
@@ -55,7 +55,7 @@ const WinnerChoiceSection: React.FC = () => {
         { label: "SUPPORT", value: "24/7" },
         { label: "RESOLVED", value: "10k+" }
       ],
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?fit=crop&w=800&q=80",
+      image: "/winners-support.png",
       icon: Briefcase
     }
   ];

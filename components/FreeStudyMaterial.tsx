@@ -49,7 +49,7 @@ const FreeStudyMaterial: React.FC = () => {
               <div className="relative bg-white p-3 rounded-[2rem] shadow-[0_20px_50px_-15px_rgba(7,93,99,0.1)] border border-slate-100 group transition-all duration-500">
                  <div className="relative w-[240px] md:w-[280px] aspect-[4/5] rounded-[1.5rem] overflow-hidden bg-slate-900 border-2 border-white shadow-inner">
                     <Image
-                       src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?fit=crop&w=600&h=800&q=80"
+                       src="/knowledge-pitara.png"
                        alt="Knowledge Pitara"
                        fill
                        className="object-cover opacity-70 group-hover:scale-105 transition-transform duration-700"

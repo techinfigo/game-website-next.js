@@ -1441,37 +1441,6 @@ const GateExamPage: React.FC = () => {
          </div>
       </section>
 
-      {/* 5. GATE 2026 IMPORTANT DATES (TABLE - 3) */}
-      <section id="important-dates" className="py-12 bg-slate-50 border-t border-slate-200 scroll-mt-32">
-         <div className="max-w-[1000px] mx-auto px-8 md:px-10 lg:px-12">
-            <div className="text-center mb-10">
-               <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
-                  GATE 2026 Important Dates
-               </h2>
-               <div className="w-20 h-1 bg-gameGold mx-auto rounded-full mb-4"></div>
-            </div>
-
-            <div className="bg-white rounded-[2.5rem] shadow-2xl border-4 border-gameGold/20 overflow-hidden">
-               <div className="overflow-x-auto">
-                  <table className="w-full text-left border-collapse">
-                     <tbody className="text-sm md:text-base divide-y divide-slate-100">
-                        {importantDates.map((row, i) => (
-                           <tr key={i} className={`hover:bg-slate-50 transition-colors ${i % 2 === 1 ? 'bg-slate-50/30' : ''}`}>
-                              <td className="p-6 md:p-8 w-[60%] font-bold text-slate-700 leading-relaxed border-r border-slate-100">
-                                 {row.event}
-                              </td>
-                              <td className="p-6 md:p-8 w-[40%] font-medium leading-relaxed">
-                                 {row.date}
-                              </td>
-                           </tr>
-                        ))}
-                     </tbody>
-                  </table>
-               </div>
-            </div>
-         </div>
-      </section>
-
       {/* 6. GATE 2026 SCHEDULE (TABLE - 4) */}
       <section id="exam-schedule" className="py-12 bg-white border-t border-slate-200 scroll-mt-32">
          <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12">
