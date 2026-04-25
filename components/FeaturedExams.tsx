@@ -116,7 +116,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'State Assistant Engineer / Junior Engineer',
       icon: MapPin,
       color: 'text-cyan-400',
-      image: "https://images.unsplash.com/photo-1541888941294-e8367f65b508?fit=crop&w=800&q=80",
+      image: "https://images.unsplash.com/photo-1503387762-592fa580ba53?fit=crop&w=800&q=80",
       action: 'state'
     },
     {
