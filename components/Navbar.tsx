@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 
 // Added isLoggedIn and onLogout to the NavbarProps interface
 interface NavbarProps {
@@ -87,8 +88,14 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout }) => {
             className="flex items-center gap-2 cursor-pointer group" 
             onClick={handleLinkClick}
           >
-            <div className="w-10 h-10 bg-gradient-to-br from-gameTeal to-teal-700 rounded-xl flex items-center justify-center text-white font-extrabold text-xl shadow-lg group-hover:scale-105 transition-transform">
-                G
+            <div className="relative w-12 h-12">
+              <Image 
+                src="/game-logo.png"
+                alt="GAME Academy Logo"
+                fill
+                priority
+                className="object-contain group-hover:scale-105 transition-transform"
+              />
             </div>
             <div className="flex flex-col">
               <span className={`text-xl font-extrabold leading-none tracking-tight ${scrolled ? 'text-slate-900' : 'text-slate-800'}`}>GAME</span>

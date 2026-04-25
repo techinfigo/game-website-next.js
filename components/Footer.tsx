@@ -4,6 +4,7 @@
 import React from 'react';
 import { Facebook, Twitter, Instagram, Youtube, MapPin, Phone, Mail, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Footer: React.FC = () => {
   return (
@@ -14,9 +15,14 @@ const Footer: React.FC = () => {
            
            {/* Brand Column (Span 4) */}
            <div className="lg:col-span-4 space-y-6">
-              <Link href="/" className="flex items-center gap-2">
-                <div className="w-10 h-10 bg-gameTeal rounded-xl flex items-center justify-center text-white font-extrabold text-xl shadow-[0_0_15px_rgba(7,93,99,0.5)]">
-                    G
+              <Link href="/" className="flex items-center gap-2 group">
+                <div className="relative w-12 h-12">
+                   <Image 
+                      src="/game-logo.png"
+                      alt="GAME Academy Logo"
+                      fill
+                      className="object-contain group-hover:scale-105 transition-transform"
+                   />
                 </div>
                 <div className="flex flex-col">
                   <span className="text-2xl font-extrabold leading-none text-white tracking-tight">GAME</span>
