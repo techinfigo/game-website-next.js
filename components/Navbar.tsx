@@ -90,7 +90,7 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout }) => {
           >
             <div className="relative w-12 h-12">
               <Image 
-                src="/game-logo.png"
+                src="https://picsum.photos/seed/game/200"
                 alt="GAME Academy Logo"
                 fill
                 priority

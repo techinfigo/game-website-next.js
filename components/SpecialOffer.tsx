@@ -104,7 +104,7 @@ const SpecialOffer: React.FC = () => {
                 {/* Group Student Image */}
                 <div className="relative z-10 rounded-[2.5rem] overflow-hidden border-8 border-white/5 shadow-2xl w-[260px] md:w-[340px] aspect-[4/5]">
                    <Image 
-                      src="/special-offer-banner.png" 
+                      src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?fit=crop&w=600&h=800&q=80" 
                       alt="Special Offer" 
                       fill
                       className="object-cover"

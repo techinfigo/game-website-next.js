@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
               <Link href="/" className="flex items-center gap-2 group">
                 <div className="relative w-12 h-12">
                    <Image 
-                      src="/game-logo.png"
+                      src="https://picsum.photos/seed/game/200"
                       alt="GAME Academy Logo"
                       fill
                       className="object-contain group-hover:scale-105 transition-transform"

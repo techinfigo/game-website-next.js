@@ -7,18 +7,18 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const students = [
-  { name: "Priya Sharma", rank: "AIR 15 (ESE)", img: "/rankers/rank1.png" },
-  { name: "Rahul Verma", rank: "Selected (PSU)", img: "/rankers/rank2.png" },
-  { name: "Amit Patel", rank: "AIR 8 (GATE)", img: "/rankers/rank3.png" },
-  { name: "Sneha Reddy", rank: "AIR 22 (ESE)", img: "/rankers/rank4.png" },
-  { name: "Vikram Das", rank: "Selected (BARC)", img: "/rankers/rank5.png" },
-  { name: "Ananya Ray", rank: "AIR 1 (GATE ME)", img: "/rankers/rank6.png" },
-  { name: "Siddharth S.", rank: "AIR 45 (ESE)", img: "/rankers/rank7.png" },
-  { name: "Kavita J.", rank: "Selected (IOCL)", img: "/rankers/rank1.png" },
-  { name: "Rohan M.", rank: "AIR 12 (SSC-JE)", img: "/rankers/rank2.png" },
-  { name: "Megha Gupta", rank: "AIR 4 (ESE)", img: "/rankers/rank3.png" },
-  { name: "Ishaan Kohli", rank: "Selected (ONGC)", img: "/rankers/rank4.png" },
-  { name: "Tanya Bisht", rank: "AIR 31 (GATE)", img: "/rankers/rank5.png" },
+  { name: "Priya Sharma", rank: "AIR 15 (ESE)", img: "https://i.pravatar.cc/300?img=1" },
+  { name: "Rahul Verma", rank: "Selected (PSU)", img: "https://i.pravatar.cc/300?img=12" },
+  { name: "Amit Patel", rank: "AIR 8 (GATE)", img: "https://i.pravatar.cc/300?img=3" },
+  { name: "Sneha Reddy", rank: "AIR 22 (ESE)", img: "https://i.pravatar.cc/300?img=44" },
+  { name: "Vikram Das", rank: "Selected (BARC)", img: "https://i.pravatar.cc/300?img=5" },
+  { name: "Ananya Ray", rank: "AIR 1 (GATE ME)", img: "https://i.pravatar.cc/300?img=26" },
+  { name: "Siddharth S.", rank: "AIR 45 (ESE)", img: "https://i.pravatar.cc/300?img=7" },
+  { name: "Kavita J.", rank: "Selected (IOCL)", img: "https://i.pravatar.cc/300?img=48" },
+  { name: "Rohan M.", rank: "AIR 12 (SSC-JE)", img: "https://i.pravatar.cc/300?img=9" },
+  { name: "Megha Gupta", rank: "AIR 4 (ESE)", img: "https://i.pravatar.cc/300?img=20" },
+  { name: "Ishaan Kohli", rank: "Selected (ONGC)", img: "https://i.pravatar.cc/300?img=11" },
+  { name: "Tanya Bisht", rank: "AIR 31 (GATE)", img: "https://i.pravatar.cc/300?img=42" },
 ];
 
 const VerticalSlider = ({ items, speed, reverse = false }: { items: typeof students, speed: number, reverse?: boolean }) => {
@@ -164,7 +164,7 @@ const Hero: React.FC = () => {
                 <div className="relative flex items-end justify-center w-full h-full max-h-[500px] lg:max-h-[600px]">
                     <div className="relative h-[55vh] lg:h-[65vh] w-full">
                         <Image 
-                          src="/gaurav-sir.png" 
+                          src="https://images.unsplash.com/photo-1560250097-0b93528c311a?fit=crop&w=800&q=80" 
                           alt="Gaurav Babu Sir" 
                           fill
                           priority
