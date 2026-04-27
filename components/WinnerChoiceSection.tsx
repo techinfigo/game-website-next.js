@@ -55,7 +55,7 @@ const WinnerChoiceSection: React.FC = () => {
         { label: "SUPPORT", value: "24/7" },
         { label: "RESOLVED", value: "10k+" }
       ],
-      image: "/winners-support.jpg",
+      image: "/winners-support.png",
       icon: Briefcase
     }
   ];
