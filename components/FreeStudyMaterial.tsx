@@ -116,7 +116,7 @@ const FreeStudyMaterial: React.FC = () => {
                  {/* Balanced CTA Area - COMPACT */}
                  <div className="flex flex-col sm:flex-row items-center gap-6 pt-2">
                     <a 
-                       href="https://docs.google.com/spreadsheets/d/1xi1kyaIeNijUVVmLWXl-rzwaEUu5V8GrknNFtjOWP5s/edit?gid=0#gid=0"
+                       href="https://docs.google.com/spreadsheets/d/1xi1kyaIeNijUVVmLWXl-rzwaEUu5V8GrknNFtjOWP5s/edit?usp=sharing"
                        target="_blank"
                        rel="noopener noreferrer"
                        className="group bg-[#075d63] hover:bg-[#054a4f] text-white px-8 h-12 rounded-xl font-black text-[10px] uppercase tracking-[0.2em] flex items-center justify-center gap-3 shadow-lg transition-all hover:-translate-y-1 w-full sm:w-auto"
