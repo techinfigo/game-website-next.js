@@ -33,7 +33,7 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "AIR 1 - GATE 2024",
     category: "GATE",
     description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
-    image: "/images/rankers/ranker-lg-1.png",
+    image: "/ranker-lg-1.png",
   },
   {
     id: "2",
@@ -41,7 +41,7 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "AIR 51 - UPSC CSE 2021",
     category: "UPSC",
     description: "The structured roadmap at GAME Academy kept me focused through all stages of CSE.",
-    image: "/images/rankers/ranker-lg-2.png",
+    image: "/ranker-lg-2.png",
   },
   {
     id: "3",
@@ -49,14 +49,14 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "AIR 15 - ESE 2023",
     category: "ESE",
     description: "ESE requires consistency. Mentorship here is exceptional.",
-    image: "/images/rankers/ranker-lg-3.png",
+    image: "/ranker-lg-3.png",
   },
   {
     id: "4",
     name: "Vikram Malhotra",
     designation: "Selected - ONGC",
     category: "PSU",
-    image: "/images/rankers/ranker-lg-4.png",
+    image: "/ranker-lg-4.png",
   }
 ];
 
@@ -69,7 +69,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Mechanical Engineering",
     selectionYear: "2022",
     category: "UPSC/IAS",
-    image: "/images/rankers/ranker-rk-5.png"
+    image: "/ranker-rk-5.png"
   },
   {
     id: "j2",
@@ -79,7 +79,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Civil Engineering",
     selectionYear: "2023",
     category: "ESE",
-    image: "/images/rankers/ranker-rk-6.png"
+    image: "/ranker-rk-6.png"
   },
   {
     id: "j3",
@@ -89,7 +89,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Mechanical Engineering",
     selectionYear: "2021",
     category: "ISRO",
-    image: "/images/rankers/ranker-rk-7.png"
+    image: "/ranker-rk-7.png"
   },
   {
     id: "j4",
@@ -99,7 +99,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Mechanical Engineering",
     selectionYear: "2022",
     category: "PSU/GATE",
-    image: "/images/rankers/ranker-rk-8.png"
+    image: "/ranker-rk-8.png"
   }
 ];
 
@@ -399,7 +399,7 @@ const RankersPage: React.FC = () => {
                      {[1,2,3,4,5].map(i => (
                         <div key={i} className="relative w-10 h-10 rounded-full border-2 border-[#0f1115] bg-slate-800 overflow-hidden shadow-2xl">
                            <Image 
-                                  src={`/images/achievers/avatar-${i}.png`} 
+                                  src={`/achiever-${i}.png`} 
                                   alt="Achiever" 
                                   fill
                                   className="object-cover" 

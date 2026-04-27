@@ -7,18 +7,18 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const students = [
-  { name: "Priya Sharma", rank: "AIR 15 (ESE)", img: "/rankers/rank1.png" },
-  { name: "Rahul Verma", rank: "Selected (PSU)", img: "/rankers/rank2.png" },
-  { name: "Amit Patel", rank: "AIR 8 (GATE)", img: "/rankers/rank3.png" },
-  { name: "Sneha Reddy", rank: "AIR 22 (ESE)", img: "/rankers/rank4.png" },
-  { name: "Vikram Das", rank: "Selected (BARC)", img: "/rankers/rank5.png" },
-  { name: "Ananya Ray", rank: "AIR 1 (GATE ME)", img: "/rankers/rank6.png" },
-  { name: "Siddharth S.", rank: "AIR 45 (ESE)", img: "/rankers/rank7.png" },
-  { name: "Kavita J.", rank: "Selected (IOCL)", img: "/rankers/rank1.png" },
-  { name: "Rohan M.", rank: "AIR 12 (SSC-JE)", img: "/rankers/rank2.png" },
-  { name: "Megha Gupta", rank: "AIR 4 (ESE)", img: "/rankers/rank3.png" },
-  { name: "Ishaan Kohli", rank: "Selected (ONGC)", img: "/rankers/rank4.png" },
-  { name: "Tanya Bisht", rank: "AIR 31 (GATE)", img: "/rankers/rank5.png" },
+  { name: "Priya Sharma", rank: "AIR 15 (ESE)", img: "/ranker-rk-5.png" },
+  { name: "Rahul Verma", rank: "Selected (PSU)", img: "/ranker-rk-6.png" },
+  { name: "Amit Patel", rank: "AIR 8 (GATE)", img: "/ranker-rk-7.png" },
+  { name: "Sneha Reddy", rank: "AIR 22 (ESE)", img: "/ranker-rk-8.png" },
+  { name: "Vikram Das", rank: "Selected (BARC)", img: "/ranker-rk-5.png" },
+  { name: "Ananya Ray", rank: "AIR 1 (GATE ME)", img: "/ranker-rk-6.png" },
+  { name: "Siddharth S.", rank: "AIR 45 (ESE)", img: "/ranker-rk-7.png" },
+  { name: "Kavita J.", rank: "Selected (IOCL)", img: "/ranker-rk-8.png" },
+  { name: "Rohan M.", rank: "AIR 12 (SSC-JE)", img: "/ranker-rk-5.png" },
+  { name: "Megha Gupta", rank: "AIR 4 (ESE)", img: "/ranker-rk-6.png" },
+  { name: "Ishaan Kohli", rank: "Selected (ONGC)", img: "/ranker-rk-7.png" },
+  { name: "Tanya Bisht", rank: "AIR 31 (GATE)", img: "/ranker-rk-8.png" },
 ];
 
 const VerticalSlider = ({ items, speed, reverse = false }: { items: typeof students, speed: number, reverse?: boolean }) => {

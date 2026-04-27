@@ -23,31 +23,31 @@ const YouMustRead: React.FC = () => {
     {
       id: 5,
       title: "Preparation Hacks (Strategy) #5",
-      img: "/images/blog/blog-5.png",
+      img: "/blog-5.png",
       desc: "Master the art of time management during exam pressure."
     },
     {
       id: 4,
       title: "Preparation Hacks (Strategy) #4",
-      img: "/images/blog/blog-6.png",
+      img: "/blog-6.png",
       desc: "How to create short notes that actually help in revision."
     },
     {
       id: 3,
       title: "Preparation Hacks (Strategy) #3",
-      img: "/images/blog/blog-2.png",
+      img: "/blog-2.png",
       desc: "Understanding the psychology of competitive exams."
     },
     {
       id: 2,
       title: "Preparation Hacks (Strategy) #2",
-      img: "/images/blog/blog-3.png",
+      img: "/blog-3.png",
       desc: "Best resources to follow for General Studies."
     },
     {
       id: 1,
       title: "Preparation Hacks (Strategy) #1",
-      img: "/images/blog/blog-4.png",
+      img: "/blog-4.png",
       desc: "Why consistency beats intensity in the long run."
     }
   ];

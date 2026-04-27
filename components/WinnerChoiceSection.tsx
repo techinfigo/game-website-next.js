@@ -19,7 +19,7 @@ const WinnerChoiceSection: React.FC = () => {
       title: "Visionary Leadership",
       desc: "Under the guidance of Gaurav Babu Sir, we implement high-level engineering protocols to ensure our students lead the industry.",
       stats: [], 
-      image: "/images/winners/leadership.png",
+      image: "/winners-leadership.png",
       icon: User
     },
     {
@@ -31,7 +31,7 @@ const WinnerChoiceSection: React.FC = () => {
         { label: "METHOD", value: "VISUALIZED" },
         { label: "RETENTION", value: "95%+" }
       ],
-      image: "/images/winners/methodology.png",
+      image: "/winners-methodology.png",
       icon: GraduationCap
     },
     {
@@ -43,7 +43,7 @@ const WinnerChoiceSection: React.FC = () => {
         { label: "SELECTIONS", value: "5000+" },
         { label: "TOP RANKS", value: "50+" }
       ],
-      image: "/images/winners/results.png",
+      image: "/winners-results.jpg",
       icon: Trophy
     },
     {
@@ -55,7 +55,7 @@ const WinnerChoiceSection: React.FC = () => {
         { label: "SUPPORT", value: "24/7" },
         { label: "RESOLVED", value: "10k+" }
       ],
-      image: "/images/winners/support.png",
+      image: "/winners-support.png",
       icon: Briefcase
     }
   ];

@@ -49,7 +49,7 @@ const FreeStudyMaterial: React.FC = () => {
               <div className="relative bg-white p-3 rounded-[2rem] shadow-[0_20px_50px_-15px_rgba(7,93,99,0.1)] border border-slate-100 group transition-all duration-500">
                  <div className="relative w-[240px] md:w-[280px] aspect-[4/5] rounded-[1.5rem] overflow-hidden bg-slate-900 border-2 border-white shadow-inner">
                     <Image
-                       src="/images/ui/pitara-box.png"
+                       src="/knowledge-pitara.png"
                        alt="Knowledge Pitara"
                        fill
                        unoptimized
@@ -128,7 +128,7 @@ const FreeStudyMaterial: React.FC = () => {
                        <div className="flex -space-x-1.5">
                           {[21,22,23].map((i) => (
                              <div key={i} className="w-7 h-7 rounded-full border-2 border-white bg-slate-200 overflow-hidden shadow-sm relative">
-                                <Image src={`/images/achievers/avatar-${i}.png`} alt="Student" fill className="object-cover" referrerPolicy="no-referrer" />
+                                <Image src="/gaurav-sir.png" alt="Student" fill className="object-cover" referrerPolicy="no-referrer" />
                              </div>
                           ))}
                        </div>

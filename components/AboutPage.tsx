@@ -70,7 +70,7 @@ const AboutPage: React.FC = () => {
     role: "Founder & Chief Mentor",
     expLabel: "13+ YRS EXP.",
     exp: "13+ YEARS OF TEACHING EXCELLENCE",
-    img: "/images/faculty/faculty-gaurav.png",
+    img: "/gaurav-sir.png",
     stats: [
       { label: "Mentored 1 Lakh+ Students", icon: Users },
       { label: "GATE & ESE Expert", icon: Trophy },
@@ -85,7 +85,7 @@ const AboutPage: React.FC = () => {
       role: "Senior Mentor",
       expLabel: "10+ YRS EXP.",
       exp: "10+ YEARS OF TEACHING EXPERIENCE",
-    img: "/images/gallery/gallery-1.png",
+    img: "/gaurav-sir.png",
       stats: [
         { label: "Achieved ESE AIR 63, 90", icon: Medal },
         { label: "Mentored 50k+ Students", icon: Users },
@@ -98,7 +98,7 @@ const AboutPage: React.FC = () => {
       role: "Thermal Expert",
       expLabel: "9+ YRS EXP.",
       exp: "9+ YEARS OF TEACHING EXPERIENCE",
-    img: "/images/gallery/gallery-2.png",
+    img: "/gaurav-sir.png",
       stats: [
         { label: "Gate Qualified AIR 80", icon: Medal },
         { label: "60,000+ Students Mentored", icon: Users },
@@ -111,7 +111,7 @@ const AboutPage: React.FC = () => {
       role: "PSU Specialist",
       expLabel: "10+ YRS EXP.",
       exp: "10+ YEARS OF TEACHING EXPERIENCE",
-    img: "/images/gallery/gallery-3.png",
+    img: "/gaurav-sir.png",
       stats: [
         { label: "Fluid Mechanics Expert", icon: Target },
         { label: "Industry Recognition", icon: Award },
@@ -124,7 +124,7 @@ const AboutPage: React.FC = () => {
       role: "SOM Expert",
       expLabel: "7+ YRS EXP.",
       exp: "7+ YEARS OF TEACHING EXPERIENCE",
-    img: "/images/gallery/gallery-4.png",
+    img: "/gaurav-sir.png",
       stats: [
         { label: "Strength of Materials Guru", icon: Layers },
         { label: "Problem Solving Pro", icon: Zap },
@@ -234,15 +234,15 @@ const AboutPage: React.FC = () => {
             <div className="lg:w-5/12 order-2 lg:order-1 w-full">
               <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="flex gap-[clamp(0.5rem,1.5vw,1rem)] items-center justify-center">
                 <div className="w-2/3 h-[clamp(250px,50vh,400px)] rounded-[clamp(1.5rem,4vh,3rem)] overflow-hidden shadow-2xl relative border-4 border-slate-50">
-                  <Image src="/images/gallery/gallery-hero.png" alt="Main Mentorship" fill unoptimized className="w-full h-full object-cover" />
+                  <Image src="/gallery-hero.png" alt="Main Mentorship" fill unoptimized className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-gameTeal/20 to-transparent"></div>
                 </div>
                 <div className="w-1/3 flex flex-col gap-[clamp(0.5rem,1.5vw,1rem)]">
                   <div className="h-[clamp(120px,24vh,195px)] rounded-[clamp(1.25rem,3vh,2.5rem)] overflow-hidden shadow-xl border-2 border-slate-50 relative">
-                    <Image src="/images/gallery/student-learning.png" alt="Student Learning" fill unoptimized className="w-full h-full object-cover" />
+                    <Image src="/student-learning.png" alt="Student Learning" fill unoptimized className="w-full h-full object-cover" />
                   </div>
                   <div className="h-[clamp(120px,24vh,195px)] rounded-[clamp(1.25rem,3vh,2.5rem)] overflow-hidden shadow-xl border-2 border-slate-200 relative">
-                    <Image src="/images/gallery/achiever-greatness.png" alt="Achiever Greatness" fill unoptimized className="w-full h-full object-cover" />
+                    <Image src="/achiever-greatness.png" alt="Achiever Greatness" fill unoptimized className="w-full h-full object-cover" />
                   </div>
                 </div>
               </motion.div>
@@ -425,7 +425,7 @@ const AboutPage: React.FC = () => {
                   
                   <div className="relative z-10 rounded-[clamp(2rem,6vh,4rem)] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] bg-slate-800 border-8 border-white/5 h-[clamp(250px,50vh,450px)] w-full">
                      <Image 
-                       src="/images/gallery/gallery-large.png" 
+                       src="/gaurav-sir.png" 
                        alt="Gaurav Babu Sir" 
                        fill
                        unoptimized
@@ -794,7 +794,7 @@ const AboutPage: React.FC = () => {
                >
                   <div className="absolute inset-0 rounded-[clamp(1.5rem,4vh,2.5rem)] overflow-hidden border border-white/10 shadow-2xl">
                      <Image 
-                        src="/images/faculty/gaurav-leader.png" 
+                        src="/gaurav-sir.png" 
                         alt="Gaurav Babu Sir" 
                         fill
                         unoptimized

@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
            {/* Brand Column (Span 4) */}
            <div className="lg:col-span-4 space-y-6">
               <Link href="/" className="flex items-center group">
-                <div className="relative w-12 h-12">
+                <div className="relative w-32 h-12">
                    <Image 
                       src="/game-logo.png"
                        unoptimized
