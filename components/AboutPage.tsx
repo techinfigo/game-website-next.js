@@ -425,7 +425,7 @@ const AboutPage: React.FC = () => {
                   
                   <div className="relative z-10 rounded-[clamp(2rem,6vh,4rem)] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] bg-slate-800 border-8 border-white/5 h-[clamp(250px,50vh,450px)] w-full">
                      <Image 
-                       src="/gaurav-sir.png" 
+                       src="/gaurav-education.png" 
                        alt="Gaurav Babu Sir" 
                        fill
                        unoptimized
@@ -794,7 +794,7 @@ const AboutPage: React.FC = () => {
                >
                   <div className="absolute inset-0 rounded-[clamp(1.5rem,4vh,2.5rem)] overflow-hidden border border-white/10 shadow-2xl">
                      <Image 
-                        src="/gaurav-sir.png" 
+                        src="/visionary-leader.png" 
                         alt="Gaurav Babu Sir" 
                         fill
                         unoptimized
