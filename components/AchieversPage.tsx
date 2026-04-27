@@ -18,8 +18,8 @@ const ALL_STORIES = [
     name: "Rahul Singh", 
     rank: "AIR 1", 
     exam: "GATE ME 2023", 
-    img: "/images/rankers/abhishek.png", 
-    video: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Placeholder
+    img: "/images/rankers/ranker-lg-1.png", 
+    video: "https://www.youtube.com/embed/D6HOo41x2Ls", // Standard video ID
     featured: true 
   },
   { 
@@ -43,8 +43,8 @@ const ALL_STORIES = [
     name: "Priya Sharma", 
     rank: "AIR 5", 
     exam: "ESE CE 2023", 
-    img: "/images/rankers/sneha.png", 
-    video: "https://www.youtube.com/embed/dQw4w9WgXcQ" 
+    img: "/images/rankers/ranker-lg-2.png", 
+    video: "https://www.youtube.com/embed/gvK9V0trlaw" 
   },
   { 
     type: 'story',
@@ -67,7 +67,7 @@ const ALL_STORIES = [
     name: "Amit Patel", 
     rank: "AIR 12", 
     exam: "SSC EE 2023", 
-    img: "/images/rankers/amit.png", 
+    img: "/images/rankers/ranker-rk-5.png", 
     video: "https://www.youtube.com/embed/dQw4w9WgXcQ" 
   },
   { 
@@ -91,7 +91,7 @@ const ALL_STORIES = [
     name: "Neha Gupta", 
     rank: "AIR 3", 
     exam: "GATE CS 2023", 
-    img: "/images/rankers/vikram.png", 
+    img: "/images/rankers/ranker-rk-6.png", 
     video: "https://www.youtube.com/embed/dQw4w9WgXcQ" 
   },
   { 

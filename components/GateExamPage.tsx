@@ -44,25 +44,25 @@ const GateExamPage: React.FC = () => {
     {
       name: "Abhishek Singh",
       rank: "AIR 1 - GATE ME",
-      image: "/images/rankers/ranker-1.png",
+      image: "/images/rankers/ranker-rk-1.png",
       videoId: "D6HOo41x2Ls"
     },
     {
       name: "Ananya Ray",
       rank: "AIR 1 - GATE ME",
-      image: "/images/rankers/ranker-2.png",
+      image: "/images/rankers/ranker-rk-2.png",
       videoId: "gvK9V0trlaw"
     },
     {
       name: "Siddharth S.",
       rank: "AIR 45 - ESE ME",
-      image: "/images/rankers/ranker-3.png",
+      image: "/images/rankers/ranker-rk-3.png",
       videoId: "Ta7gKIxxya0"
     },
     {
       name: "Megha Gupta",
       rank: "AIR 4 - ESE ME",
-      image: "/images/rankers/ranker-4.png",
+      image: "/images/rankers/ranker-rk-4.png",
       videoId: "D6HOo41x2Ls"
     }
   ];
@@ -109,7 +109,7 @@ const GateExamPage: React.FC = () => {
       icon: GraduationCap,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
-      image: "/images/advantages/academic.png"
+      image: "/images/ui/advantage-1.png",
     },
     {
       title: "PSU Recruitment",
@@ -117,7 +117,7 @@ const GateExamPage: React.FC = () => {
       icon: Briefcase,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
-      image: "/images/advantages/psu.png"
+      image: "/images/ui/advantage-2.png",
     },
     {
       title: "Opportunities Abroad",
@@ -125,7 +125,7 @@ const GateExamPage: React.FC = () => {
       icon: Globe,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
-      image: "/images/advantages/abroad.png"
+      image: "/images/ui/advantage-3.png",
     },
     {
       title: "Research Opportunities",
@@ -133,7 +133,7 @@ const GateExamPage: React.FC = () => {
       icon: Microscope,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
-      image: "/images/advantages/research.png"
+      image: "/images/ui/advantage-4.png",
     },
     {
       title: "Scholarships and Fellowships",
@@ -141,7 +141,7 @@ const GateExamPage: React.FC = () => {
       icon: Award,
       color: "text-gameGold",
       bg: "bg-gameGold/10",
-      image: "/images/advantages/scholarship.png"
+      image: "/images/ui/advantage-5.png",
     },
     {
       title: "Teaching Careers",
@@ -149,7 +149,7 @@ const GateExamPage: React.FC = () => {
       icon: BookOpen,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
-      image: "/images/advantages/teaching.png"
+      image: "/images/ui/advantage-6.png",
     },
     {
       title: "Career Growth in Industry",
@@ -157,7 +157,7 @@ const GateExamPage: React.FC = () => {
       icon: TrendingUp,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
-      image: "/images/advantages/industry.png"
+      image: "/images/ui/advantage-7.png",
     },
     {
       title: "Flexibility in Career",
@@ -165,7 +165,7 @@ const GateExamPage: React.FC = () => {
       icon: Layers,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
-      image: "/images/advantages/flexibility.png"
+      image: "/images/ui/advantage-8.png",
     },
     {
       title: "Prestige and Recognition",
@@ -173,7 +173,7 @@ const GateExamPage: React.FC = () => {
       icon: Star,
       color: "text-gameGold",
       bg: "bg-gameGold/10",
-      image: "/images/advantages/prestige.png"
+      image: "/images/ui/advantage-9.png",
     }
   ];
 

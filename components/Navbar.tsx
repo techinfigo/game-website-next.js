@@ -76,7 +76,7 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout }) => {
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out bg-white/95 backdrop-blur-md ${
-        scrolled ? 'shadow-xl py-3 border-b border-slate-100' : 'py-5'
+        scrolled ? 'shadow-md py-2 border-b border-slate-100' : 'py-3'
       }`}
     >
       <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12">
@@ -88,14 +88,13 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout }) => {
             className="flex items-center cursor-pointer group" 
             onClick={handleLinkClick}
           >
-            <div className="relative w-12 h-12">
+            <div className="relative w-12 h-12 md:w-14 md:h-14 transition-transform group-hover:scale-105">
               <Image 
-                src="/game-logo.png"
+                src="/images/logo.png" 
                 alt="GAME Academy Logo"
                 fill
+                className="object-contain"
                 priority
-                unoptimized
-                className="object-contain group-hover:scale-105 transition-transform"
               />
             </div>
           </Link>

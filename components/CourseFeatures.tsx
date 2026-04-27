@@ -19,7 +19,7 @@ const CourseFeatures: React.FC = () => {
       points: ["Concept Visualization", "Fundamental Clarity", "Layered Learning"],
       gradient: "from-[#075d63] to-[#043f42]",
       accent: "text-[#075d63]",
-      bgImage: "/images/features/live-classes.png"
+      bgImage: "/images/courses/feature-1.png"
     },
     {
       id: 1,
@@ -30,7 +30,7 @@ const CourseFeatures: React.FC = () => {
       points: ["Critical Thinking", "Speed Techniques", "Accuracy Improvement"],
       gradient: "from-[#f2c537] to-[#d8b32f]",
       accent: "text-[#f2c537]",
-      bgImage: "/images/features/community.png"
+      bgImage: "/images/courses/feature-2.png"
     },
     {
       id: 2,
@@ -41,7 +41,7 @@ const CourseFeatures: React.FC = () => {
       points: ["Trend Analysis", "Pattern Updates", "Focused Syllabus"],
       gradient: "from-slate-700 to-slate-900",
       accent: "text-white",
-      bgImage: "/images/features/assessment.png"
+      bgImage: "/images/courses/feature-3.png"
     }
   ];
 

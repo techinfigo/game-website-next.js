@@ -72,7 +72,7 @@ const FacultyShowcase: React.FC = () => {
                    <div className="absolute top-10 right-0 w-[55%] h-[340px] z-10">
                       <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden shadow-xl border-[6px] border-white transform rotate-3 hover:rotate-0 transition-all duration-500">
                          <Image 
-                            src="/about-faculty-back.png" 
+                            src="/images/faculty/faculty-back.png" 
                             fill
                             unoptimized
                             className="object-cover" 
@@ -88,7 +88,7 @@ const FacultyShowcase: React.FC = () => {
                                {[1,2,3].map(i => (
                                   <div key={i} className="relative w-9 h-9 rounded-full border-2 border-white bg-slate-200 overflow-hidden">
                                      <Image 
-                                       src={`/images/faculty/faculty-${i}.png`} 
+                                       src={`/images/faculty/avatar-${i}.png`}
                                        fill 
                                        className="object-cover" 
                                        alt="Student" 
@@ -109,7 +109,7 @@ const FacultyShowcase: React.FC = () => {
                    <div className="absolute top-0 left-4 w-[60%] h-[380px] z-20">
                       <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden shadow-2xl border-[8px] border-white transform -rotate-2 hover:rotate-0 transition-all duration-500 group">
                          <Image 
-                            src="/about-faculty-front.png" 
+                            src="/images/faculty/faculty-front.png" 
                             fill
                             priority
                             unoptimized
@@ -138,7 +138,7 @@ const FacultyShowcase: React.FC = () => {
                 <div className="lg:hidden flex flex-col gap-6 mt-8">
                    <div className="relative w-full aspect-[4/5] rounded-[2rem] overflow-hidden shadow-xl border-4 border-white">
                       <Image 
-                        src="/about-faculty-front.png" 
+                        src="/images/faculty/faculty-front.png" 
                         fill
                         unoptimized
                         className="object-cover"
@@ -155,7 +155,7 @@ const FacultyShowcase: React.FC = () => {
                    </div>
                    <div className="relative w-[90%] aspect-[4/5] self-end rounded-[2rem] overflow-hidden shadow-xl border-4 border-white">
                       <Image 
-                        src="/about-faculty-back.png" 
+                        src="/images/faculty/faculty-back.png" 
                         fill
                         unoptimized
                         className="object-cover"

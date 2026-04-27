@@ -71,7 +71,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Engineering Services Examination',
       icon: Trophy,
       color: 'text-purple-400',
-      image: "/images/exams/gate.png",
+      image: "/images/exams/exam-ese-card.png",
       action: 'ese'
     },
     {
@@ -80,7 +80,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Graduate Aptitude Test in Engineering',
       icon: GraduationCap,
       color: 'text-blue-400',
-      image: "/images/exams/ese.png",
+      image: "/images/exams/exam-gate-card.png",
       action: 'gate'
     },
     {
@@ -89,7 +89,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Public Sector Undertakings / Research & Development',
       icon: Briefcase,
       color: 'text-emerald-400',
-      image: "/images/exams/psu.png",
+      image: "/images/exams/exam-psu-card.png",
       action: 'psu'
     },
     {
@@ -98,7 +98,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Staff Selection Commission Junior Engineer',
       icon: Building2,
       color: 'text-orange-400',
-      image: "/images/exams/ssc-je.png",
+      image: "/images/exams/exam-ssc-card.png",
       action: 'ssc'
     },
     {
@@ -107,7 +107,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Railway Recruitment Board Junior Engineer',
       icon: Train,
       color: 'text-red-400',
-      image: "/images/exams/rrb-je.png",
+      image: "/images/exams/exam-rrb-card.png",
       action: 'rrb'
     },
     {
@@ -116,7 +116,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'State Assistant Engineer / Junior Engineer',
       icon: MapPin,
       color: 'text-cyan-400',
-      image: "/images/exams/ae-je.png",
+      image: "/images/exams/exam-state-card.png",
       action: 'state'
     },
     {
@@ -125,7 +125,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Non Technical Exam',
       icon: BookOpen,
       color: 'text-indigo-400',
-      image: "/images/exams/isro.png",
+      image: "/images/exams/exam-nontech-card.png",
       action: 'nontech'
     }
   ];

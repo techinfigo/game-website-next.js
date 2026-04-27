@@ -477,7 +477,7 @@ const PsuExamPage: React.FC = () => {
                >
                   <div className="relative bg-white rounded-[2.5rem] p-4 border border-slate-100 shadow-2xl overflow-hidden group aspect-video">
                      <Image 
-                        src="/images/exams/psu-recruitment.png" 
+                        src="/images/exams/exam-psu-hero.png" 
                         alt="PSU Industry" 
                         fill
                         className="rounded-[2rem] object-cover transform group-hover:scale-105 transition-transform duration-700"

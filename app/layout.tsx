@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   description: "Join GAME Academy for visualized learning with Gaurav Babu Sir. Top-rated online coaching for GATE, ESE, SSC-JE, and PSU exams with 13+ years of excellence.",
 };
 
+// Root layout for GAME Academy
 export default function RootLayout({
   children,
 }: {

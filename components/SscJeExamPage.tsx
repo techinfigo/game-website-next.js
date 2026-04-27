@@ -52,7 +52,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       label: "Prestige & Security",
       title: "A Golden Ticket to a Respected & Secure Government Career.",
       desc: "Secure a Group B (Non-Gazetted) position that commands respect in society and provides lifelong stability.",
-      image: "/images/ssc-je/prestige.png", 
+      image: "/images/exams/exam-ssc-1.png", 
       icon: Shield,
       color: "text-gameTeal",
       bg: "bg-gameTeal/5"
@@ -61,7 +61,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       label: "Salary & Perks",
       title: "Attractive & Progressive Salary with Fantastic Perks",
       desc: "Enjoy Level-6 pay scale with HRA, DA, medical benefits, and a lifestyle that ensures prosperity for you and your family.",
-      image: "/images/ssc-je/salary.png", 
+      image: "/images/exams/exam-ssc-2.png", 
       icon: Wallet,
       color: "text-gameTeal",
       bg: "bg-gameTeal/5"
@@ -70,7 +70,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       label: "Core Sectors",
       title: "Direct Entry into India's Core Infrastructure Sectors",
       desc: "Work on massive national projects like bridges, dams, and modern railways. See your engineering impact in real-time.",
-      image: "/images/ssc-je/core-sectors.png", 
+      image: "/images/exams/exam-ssc-3.png", 
       icon: HardHat,
       color: "text-gameGoldDark",
       bg: "bg-gameGold/5"
@@ -79,7 +79,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       label: "Career Growth",
       title: "Clear & Time-Bound Career Progression to Executive Ranks",
       desc: "Climb the ladder from Junior Engineer to Assistant Engineer, Executive Engineer, and up to Engineer-in-Chief.",
-      image: "/images/ssc-je/career-growth.png", 
+      image: "/images/exams/exam-ssc-4.png", 
       icon: TrendingUp,
       color: "text-gameTeal",
       bg: "bg-gameTeal/5"
@@ -88,7 +88,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       label: "Achievable Goal",
       title: "Achievable Goal with a Well-Defined Exam Pattern",
       desc: "With a structured syllabus and clarity in pattern, SSC-JE is an achievable dream for dedicated Diploma and Degree holders.",
-      image: "/images/ssc-je/exam-prep.png", 
+      image: "/images/exams/exam-ssc-5.png", 
       icon: Target,
       color: "text-gameGoldDark",
       bg: "bg-gameGold/5"
@@ -103,7 +103,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       originalPrice: "Rs. 24,999",
       discount: "40% OFF",
       features: ["Full Syllabus Coverage", "Live & Recorded Classes", "PYQ Analysis", "Test Series Included"],
-      image: "/images/courses/ssc-je-civil.png",
+      image: "/images/courses/ssc-civil.png",
       tag: "Best Seller"
     },
     {
@@ -113,7 +113,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       originalPrice: "Rs. 24,999",
       discount: "40% OFF",
       features: ["Full Syllabus Coverage", "Live & Recorded Classes", "PYQ Analysis", "Test Series Included"],
-      image: "/images/courses/ssc-je-mech.png",
+      image: "/images/courses/ssc-mech.png",
       tag: "Popular"
     },
     {
@@ -123,7 +123,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       originalPrice: "Rs. 24,999",
       discount: "40% OFF",
       features: ["Full Syllabus Coverage", "Live & Recorded Classes", "PYQ Analysis", "Test Series Included"],
-      image: "/images/courses/ssc-je-elec.png",
+      image: "/images/courses/ssc-elec.png",
       tag: "Trending"
     }
   ];
@@ -135,7 +135,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       rank: "AIR 4",
       branch: "Civil",
       quote: "GAME Academy doesn't just teach you subjects; they teach you how to think like an engineer. Best decision of my life.",
-      image: "/images/rankers/ananya.png"
+      image: "/images/achievers/achiever-ssc-1.png"
     },
     {
       name: "Amit Patel",
@@ -143,7 +143,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       rank: "AIR 12",
       branch: "Electrical",
       quote: "The conceptual clarity I got from Gaurav Sir is unmatched. Every complex topic was broken down into simple parts.",
-      image: "/images/rankers/amit.png"
+      image: "/images/achievers/achiever-ssc-2.png"
     },
     {
       name: "Rajesh Kumar",
@@ -151,7 +151,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       rank: "AIR 25",
       branch: "Mechanical",
       quote: "The mentorship program kept me on track when I felt lost. It's not just a coaching center, it's a family.",
-      image: "/images/rankers/rajesh.png"
+      image: "/images/achievers/achiever-ssc-3.png"
     },
     {
       name: "Priya Sharma",
@@ -159,7 +159,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       rank: "AIR 8",
       branch: "Civil",
       quote: "The test series and PYQ analysis provided by GAME were instrumental in my success. Highly recommended!",
-      image: "/images/rankers/priya.png"
+      image: "/images/achievers/achiever-ssc-4.png"
     }
   ];
 
@@ -780,7 +780,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                   <div className="absolute inset-0 bg-gameTeal/5 rounded-full blur-3xl transform rotate-12"></div>
                   <div className="relative bg-white rounded-[2.5rem] p-4 border border-slate-100 shadow-2xl aspect-video md:aspect-auto h-[400px]">
                      <Image 
-                        src="/images/ssc-je/overview.png" 
+                        src="/images/exams/exam-ssc-hero.png" 
                         alt="SSC JE Engineer" 
                         fill
                         className="rounded-[2rem] object-cover"

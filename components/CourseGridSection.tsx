@@ -14,7 +14,7 @@ const CourseGridSection: React.FC = () => {
                 branch: "Mechanical Engineering",
                 price: "Rs. 35,000",
                 originalPrice: "Rs. 50,000",
-                image: "/images/courses/mech-excellence.png",
+                image: "/images/courses/course-1.png",
                 includes: ["1200+ Hrs Content", "1:1 Mentorship", "Hardcopy Notes", "24/7 Doubt Support"]
             },
             {
@@ -22,7 +22,7 @@ const CourseGridSection: React.FC = () => {
                 branch: "Mechanical Engineering",
                 price: "Rs. 24,999",
                 originalPrice: "Rs. 35,000",
-                image: "/images/courses/isro-drdo.png",
+                image: "/images/courses/course-2.png",
                 includes: ["Targeted Revision", "100+ Mock Tests", "Daily Practice Sets", "Concept Visualization"]
             }
         ],
@@ -32,7 +32,7 @@ const CourseGridSection: React.FC = () => {
                 branch: "Civil Engineering",
                 price: "Rs. 35,000",
                 originalPrice: "Rs. 50,000",
-                image: "/images/courses/gate-foundation.png",
+                image: "/images/courses/course-3.png",
                 includes: ["Structural Analysis", "Geotechnical Depth", "Standard PYQs", "Live Doubts"]
             },
             {
@@ -40,7 +40,7 @@ const CourseGridSection: React.FC = () => {
                 branch: "Civil Engineering",
                 price: "Rs. 24,999",
                 originalPrice: "Rs. 35,000",
-                image: "/images/courses/ese-premium.png",
+                image: "/images/courses/course-4.png",
                 includes: ["Formula Sheets", "Doubt Support", "Rank Improvement", "PYQ Analysis"]
             }
         ],
@@ -50,7 +50,7 @@ const CourseGridSection: React.FC = () => {
                 branch: "Engineering Sciences",
                 price: "Rs. 18,000",
                 originalPrice: "Rs. 25,000",
-                image: "/images/courses/upsc-prep.png",
+                image: "/images/courses/course-5.png",
                 includes: ["Maths + 2 Sections", "Fluid & Thermo", "Energy Science Add-on", "Concept Storytelling"]
             }
         ]
