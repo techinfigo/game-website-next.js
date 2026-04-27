@@ -90,10 +90,11 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout }) => {
           >
             <div className="relative w-12 h-12">
               <Image 
-                src="https://picsum.photos/seed/game/200"
+                src="/game-logo.png"
                 alt="GAME Academy Logo"
                 fill
                 priority
+                unoptimized
                 className="object-contain group-hover:scale-105 transition-transform"
               />
             </div>

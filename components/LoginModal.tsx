@@ -314,7 +314,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess }) =
                                          <label className="text-xs font-bold text-slate-700 dark:text-gray-300 uppercase tracking-wider ml-1">Mobile Number</label>
                                          <div className="relative group">
                                              <div className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 font-bold border-r border-slate-300 dark:border-white/10 pr-2 mr-2 text-sm flex items-center gap-1 pointer-events-none">
-                                                 <span>🇮🇳</span> +91
+                                                 <span>IN</span> +91
                                              </div>
                                              <input 
                                                  type="tel" 

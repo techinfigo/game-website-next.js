@@ -54,7 +54,7 @@ const AboutSection: React.FC = () => {
               </h2>
               
               <p className="text-slate-600 mb-8 text-lg leading-relaxed">
-                 GAME (Gaurav’s Academy for Mentorship & Education) is not just a coaching institute; it's a revolution in engineering education. Founded by Gaurav Babu Sir, we are dedicated to providing accessible, high-quality, and result-oriented mentorship.
+                 GAME (Gaurav's Academy for Mentorship & Education) is not just a coaching institute; it's a revolution in engineering education. Founded by Gaurav Babu Sir, we are dedicated to providing accessible, high-quality, and result-oriented mentorship.
               </p>
 
               <div className="space-y-4 mb-10">

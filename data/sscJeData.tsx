@@ -56,8 +56,8 @@ export const sscJeCourses = [
   {
     title: "Excellence Course - Civil Engineering",
     branch: "Civil",
-    price: "₹14,999",
-    originalPrice: "₹24,999",
+    price: "Rs. 14,999",
+    originalPrice: "Rs. 24,999",
     discount: "40% OFF",
     features: ["Full Syllabus Coverage", "Live & Recorded Classes", "PYQ Analysis", "Test Series Included"],
     image: "https://picsum.photos/seed/sscje-civil/800/600",
@@ -66,8 +66,8 @@ export const sscJeCourses = [
   {
     title: "Excellence Course - Mechanical Engineering",
     branch: "Mechanical",
-    price: "₹14,999",
-    originalPrice: "₹24,999",
+    price: "Rs. 14,999",
+    originalPrice: "Rs. 24,999",
     discount: "40% OFF",
     features: ["Full Syllabus Coverage", "Live & Recorded Classes", "PYQ Analysis", "Test Series Included"],
     image: "https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?fit=crop&w=800&q=80",
@@ -76,8 +76,8 @@ export const sscJeCourses = [
   {
     title: "Excellence Course - Electrical Engineering",
     branch: "Electrical",
-    price: "₹14,999",
-    originalPrice: "₹24,999",
+    price: "Rs. 14,999",
+    originalPrice: "Rs. 24,999",
     discount: "40% OFF",
     features: ["Full Syllabus Coverage", "Live & Recorded Classes", "PYQ Analysis", "Test Series Included"],
     image: "https://images.unsplash.com/photo-1498084393753-b411b2d26b34?fit=crop&w=800&q=80",
@@ -123,7 +123,7 @@ export const sscJeResults = [
 export const choiceReasons = [
   {
     title: "Prestigious Government Job",
-    desc: "SSC-JE offers a Group B (Non-Gazetted) position, providing job satisfaction, recognition, and the opportunity to contribute to the nation’s infrastructure development.",
+    desc: "SSC-JE offers a Group B (Non-Gazetted) position, providing job satisfaction, recognition, and the opportunity to contribute to the nation's infrastructure development.",
     icon: Award,
     color: "text-gameTeal",
     bg: "bg-gameTeal/5"
@@ -165,7 +165,7 @@ export const choiceReasons = [
   },
   {
     title: "Nation-Building Contribution",
-    desc: "Play a key role in critical public infrastructure projects and contribute to the country’s development in sectors like roads, bridges, water supply, and energy.",
+    desc: "Play a key role in critical public infrastructure projects and contribute to the country's development in sectors like roads, bridges, water supply, and energy.",
     icon: Flag,
     color: "text-gameTeal",
     bg: "bg-gameTeal/5"
@@ -207,8 +207,8 @@ export const detailedPostData = [
     no: 3,
     org: "Central Water Commission",
     posts: [
-      { name: "JE (M)", qual: "Bachelor’s Degree or Diploma in Mechanical Engineering from a recognized University or Institute." },
-      { name: "JE (C)", qual: "Bachelor’s Degree or Diploma in Civil Engineering from a recognized University or Institute." }
+      { name: "JE (M)", qual: "Bachelor's Degree or Diploma in Mechanical Engineering from a recognized University or Institute." },
+      { name: "JE (C)", qual: "Bachelor's Degree or Diploma in Civil Engineering from a recognized University or Institute." }
     ],
     age: "Up to 30 years"
   },
@@ -339,7 +339,7 @@ export const diplomaExamsData = [
 ];
 
 export const faqs = [
-  { q: "Q.1 Can I prepare for the SSC-JE Exams with GAME Academy’s Online Coaching?", a: "Absolutely! GAME Academy’s SSC-JE coaching (Excellence Course) is specifically designed to help candidates prepare effectively for the SSC-JE exam." },
+  { q: "Q.1 Can I prepare for the SSC-JE Exams with GAME Academy's Online Coaching?", a: "Absolutely! GAME Academy's SSC-JE coaching (Excellence Course) is specifically designed to help candidates prepare effectively for the SSC-JE exam." },
   { q: "Q.2 What are the branches GAME Academy deals with?", a: "As of now, GAME Academy provides coaching for Civil Engineering and Mechanical Engineering." },
   { q: "Q.3 Does GAME Academy cover non-technical parts as well?", a: "Yes, we are covering the entire syllabus of the non-technical part (Reasoning, General Awareness) as well." },
   { q: "Q 4. Why should I choose GAME for Online Coaching?", a: "GAME delivers high-quality education and top-notch content for Mechanical & Civil Engineering aspirants preparing for the SSC-JE exam. Under the leadership of Gaurav Babu Sir, a distinguished educator with 13+ years of experience, our teaching philosophy focuses on building a strong academic foundation by teaching subjects from scratch with conceptual clarity and practical problem-solving techniques. With GAME, students can confidently excel in competitive exams and achieve their career aspirations." },
@@ -349,7 +349,7 @@ export const faqs = [
     q: "Q 7. How Much Time is Needed for SSC-JE Exam Preparation for Full-Timers?",
     a: (
       <div className="space-y-4">
-        <p>Full-time aspirants preparing for the SSC-JE exam typically require 6-8 months of focused study. Here’s an ideal timeline:</p>
+        <p>Full-time aspirants preparing for the SSC-JE exam typically require 6-8 months of focused study. Here's an ideal timeline:</p>
         <ul className="list-disc pl-5 space-y-2">
           <li><strong>4-5 months:</strong> Complete the syllabus with conceptual clarity and regular practice of standard questions.</li>
           <li><strong>1-2 months:</strong> Focus on solving previous year's question papers (PYQs), taking mock tests, and revising key topics.</li>
@@ -363,7 +363,7 @@ export const faqs = [
     q: "Q 8. How Much Time is Needed for SSC-JE Exam Preparation for Working Individuals?",
     a: (
       <div className="space-y-4">
-        <p>Working professionals can prepare for the SSC-JE exam effectively in 8-12 months with smart time management, as the SSC-JE syllabus is broader but more direct than ESE and GATE. Here’s a realistic plan:</p>
+        <p>Working professionals can prepare for the SSC-JE exam effectively in 8-12 months with smart time management, as the SSC-JE syllabus is broader but more direct than ESE and GATE. Here's a realistic plan:</p>
         <ul className="list-disc pl-5 space-y-2">
           <li><strong>Daily Study Hours:</strong> Dedicate 2-3 hours on weekdays and 4-6 hours on weekends.</li>
           <li><strong>Syllabus Completion:</strong> Spend the first 5-6 months covering core subjects, building conceptual clarity, and practising key questions.</li>

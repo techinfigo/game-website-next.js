@@ -30,8 +30,8 @@ const CourseCard: React.FC<CourseCardProps> = ({
   duration = "6 mo",
   language = "Hinglish",
   mentorship = "1:1 mentorship",
-  originalPrice = "₹2000/-",
-  offeredPrice = "₹999/-",
+  originalPrice = "Rs. 2000/-",
+  offeredPrice = "Rs. 999/-",
   image = "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?fit=crop&w=800&h=450&q=80",
   highlights = [
     "Student's feedback: 4.9/5 Average",

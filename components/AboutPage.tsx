@@ -70,7 +70,7 @@ const AboutPage: React.FC = () => {
     role: "Founder & Chief Mentor",
     expLabel: "13+ YRS EXP.",
     exp: "13+ YEARS OF TEACHING EXCELLENCE",
-    img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?fit=crop&w=600&q=80",
+    img: "/about-faculty-gaurav.png",
     stats: [
       { label: "Mentored 1 Lakh+ Students", icon: Users },
       { label: "GATE & ESE Expert", icon: Trophy },
@@ -234,15 +234,15 @@ const AboutPage: React.FC = () => {
             <div className="lg:w-5/12 order-2 lg:order-1 w-full">
               <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="flex gap-[clamp(0.5rem,1.5vw,1rem)] items-center justify-center">
                 <div className="w-2/3 h-[clamp(250px,50vh,400px)] rounded-[clamp(1.5rem,4vh,3rem)] overflow-hidden shadow-2xl relative border-4 border-slate-50">
-                  <Image src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?fit=crop&w=800&q=80" alt="Main Mentorship" fill className="w-full h-full object-cover" />
+                  <Image src="/about-hero-main.png" alt="Main Mentorship" fill unoptimized className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-gameTeal/20 to-transparent"></div>
                 </div>
                 <div className="w-1/3 flex flex-col gap-[clamp(0.5rem,1.5vw,1rem)]">
                   <div className="h-[clamp(120px,24vh,195px)] rounded-[clamp(1.25rem,3vh,2.5rem)] overflow-hidden shadow-xl border-2 border-slate-50 relative">
-                    <Image src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?fit=crop&w=400&q=80" alt="Student Learning" fill className="w-full h-full object-cover" />
+                    <Image src="/about-hero-sub1.png" alt="Student Learning" fill unoptimized className="w-full h-full object-cover" />
                   </div>
                   <div className="h-[clamp(120px,24vh,195px)] rounded-[clamp(1.25rem,3vh,2.5rem)] overflow-hidden shadow-xl border-2 border-slate-200 relative">
-                    <Image src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?fit=crop&w=400&q=80" alt="Achiever Greatness" fill className="w-full h-full object-cover" />
+                    <Image src="/about-hero-sub2.png" alt="Achiever Greatness" fill unoptimized className="w-full h-full object-cover" />
                   </div>
                 </div>
               </motion.div>
@@ -250,7 +250,7 @@ const AboutPage: React.FC = () => {
             <div className="lg:w-7/12 order-1 lg:order-2 flex flex-col justify-center">
               <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="flex flex-col justify-center">
                 <h1 className="text-[clamp(1.75rem,3.5vw,3.25rem)] font-black text-slate-900 leading-tight mb-[clamp(0.25rem,1vh,0.75rem)] tracking-tight">
-                  Gaurav’s Academy for <span className="text-[#075d63]">Mentorship & Education</span>
+                  Gaurav's Academy for <span className="text-[#075d63]">Mentorship & Education</span>
                 </h1>
 
                 <div className="mb-[clamp(0.25rem,1.5vh,0.75rem)]">
@@ -425,9 +425,10 @@ const AboutPage: React.FC = () => {
                   
                   <div className="relative z-10 rounded-[clamp(2rem,6vh,4rem)] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] bg-slate-800 border-8 border-white/5 h-[clamp(250px,50vh,450px)] w-full">
                      <Image 
-                       src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?fit=crop&w=800&q=80" 
+                       src="/about-mentor.png" 
                        alt="Gaurav Babu Sir" 
                        fill
+                       unoptimized
                        className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-105" 
                        referrerPolicy="no-referrer"
                      />
@@ -793,9 +794,10 @@ const AboutPage: React.FC = () => {
                >
                   <div className="absolute inset-0 rounded-[clamp(1.5rem,4vh,2.5rem)] overflow-hidden border border-white/10 shadow-2xl">
                      <Image 
-                        src="https://images.unsplash.com/photo-1560250097-0b93528c311a?fit=crop&w=800&q=80" 
+                        src="/about-leadership.png" 
                         alt="Gaurav Babu Sir" 
                         fill
+                        unoptimized
                         className="w-full h-full object-cover grayscale-[15%] brightness-90 group-hover:brightness-100 transition-all duration-700" 
                         referrerPolicy="no-referrer"
                      />
@@ -932,6 +934,7 @@ const AboutPage: React.FC = () => {
                         src={chiefMentor.img} 
                         alt={chiefMentor.name} 
                         fill
+                        unoptimized
                         className="object-cover transition-all duration-1000 group-hover:scale-110" 
                         referrerPolicy="no-referrer"
                      />
@@ -1011,6 +1014,7 @@ const AboutPage: React.FC = () => {
                                        src={fac.img} 
                                        alt={fac.name} 
                                        fill
+                                       unoptimized
                                        className="object-cover transition-all duration-700 group-hover:scale-105" 
                                        referrerPolicy="no-referrer"
                                     />
@@ -1091,6 +1095,7 @@ const AboutPage: React.FC = () => {
                         src={selectedFaculty.img} 
                         alt={selectedFaculty.name} 
                         fill
+                        unoptimized
                         className="object-cover grayscale-[10%]" 
                         referrerPolicy="no-referrer"
                      />

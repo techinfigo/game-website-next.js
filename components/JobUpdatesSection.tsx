@@ -32,7 +32,7 @@ const JobUpdatesSection: React.FC<JobUpdatesSectionProps> = ({ onNavigate }) => 
       lastDate: "Oct 25, 2025",
       type: "Govt Job",
       isNew: true,
-      salary: "₹56,100 - 1.7L"
+      salary: "Rs. 56,100 - 1.7L"
     },
     {
       id: 2,
@@ -42,7 +42,7 @@ const JobUpdatesSection: React.FC<JobUpdatesSectionProps> = ({ onNavigate }) => 
       lastDate: "Nov 05, 2025",
       type: "PSU",
       isNew: true,
-      salary: "₹50,000 - 1.6L"
+      salary: "Rs. 50,000 - 1.6L"
     },
     {
       id: 3,
@@ -52,7 +52,7 @@ const JobUpdatesSection: React.FC<JobUpdatesSectionProps> = ({ onNavigate }) => 
       lastDate: "Oct 12, 2025",
       type: "Govt Job",
       isNew: false,
-      salary: "₹35,400 - 1.1L"
+      salary: "Rs. 35,400 - 1.1L"
     },
     {
       id: 4,
@@ -62,7 +62,7 @@ const JobUpdatesSection: React.FC<JobUpdatesSectionProps> = ({ onNavigate }) => 
       lastDate: "Oct 30, 2025",
       type: "R&D",
       isNew: false,
-      salary: "₹44,900"
+      salary: "Rs. 44,900"
     },
     {
       id: 5,
@@ -72,7 +72,7 @@ const JobUpdatesSection: React.FC<JobUpdatesSectionProps> = ({ onNavigate }) => 
       lastDate: "Nov 15, 2025",
       type: "Govt Job",
       isNew: true,
-      salary: "₹9,000 (Stipend)"
+      salary: "Rs. 9,000 (Stipend)"
     },
     {
       id: 6,
@@ -82,7 +82,7 @@ const JobUpdatesSection: React.FC<JobUpdatesSectionProps> = ({ onNavigate }) => 
       lastDate: "Dec 05, 2025",
       type: "PSU",
       isNew: false,
-      salary: "₹60,000 - 1.8L"
+      salary: "Rs. 60,000 - 1.8L"
     }
   ];
 

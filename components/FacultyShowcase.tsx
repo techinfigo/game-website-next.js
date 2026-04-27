@@ -72,8 +72,9 @@ const FacultyShowcase: React.FC = () => {
                    <div className="absolute top-10 right-0 w-[55%] h-[340px] z-10">
                       <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden shadow-xl border-[6px] border-white transform rotate-3 hover:rotate-0 transition-all duration-500">
                          <Image 
-                            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?fit=crop&w=800&q=80" 
+                            src="/about-faculty-back.png" 
                             fill
+                            unoptimized
                             className="object-cover" 
                             alt="Senior Faculty" 
                             referrerPolicy="no-referrer"
@@ -108,9 +109,10 @@ const FacultyShowcase: React.FC = () => {
                    <div className="absolute top-0 left-4 w-[60%] h-[380px] z-20">
                       <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden shadow-2xl border-[8px] border-white transform -rotate-2 hover:rotate-0 transition-all duration-500 group">
                          <Image 
-                            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?fit=crop&w=800&q=80" 
+                            src="/about-faculty-front.png" 
                             fill
                             priority
+                            unoptimized
                             className="object-cover group-hover:scale-105 transition-transform duration-700" 
                             alt="Gaurav Babu Sir" 
                             referrerPolicy="no-referrer"
@@ -136,8 +138,9 @@ const FacultyShowcase: React.FC = () => {
                 <div className="lg:hidden flex flex-col gap-6 mt-8">
                    <div className="relative w-full aspect-[4/5] rounded-[2rem] overflow-hidden shadow-xl border-4 border-white">
                       <Image 
-                        src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?fit=crop&w=800&q=80" 
+                        src="/about-faculty-front.png" 
                         fill
+                        unoptimized
                         className="object-cover"
                         alt="Gaurav Babu Sir" 
                         referrerPolicy="no-referrer"
@@ -152,8 +155,9 @@ const FacultyShowcase: React.FC = () => {
                    </div>
                    <div className="relative w-[90%] aspect-[4/5] self-end rounded-[2rem] overflow-hidden shadow-xl border-4 border-white">
                       <Image 
-                        src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?fit=crop&w=800&q=80" 
+                        src="/about-faculty-back.png" 
                         fill
+                        unoptimized
                         className="object-cover"
                         alt="Senior Faculty" 
                         referrerPolicy="no-referrer"

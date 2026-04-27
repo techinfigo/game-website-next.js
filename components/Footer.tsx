@@ -18,7 +18,8 @@ const Footer: React.FC = () => {
               <Link href="/" className="flex items-center gap-2 group">
                 <div className="relative w-12 h-12">
                    <Image 
-                      src="https://picsum.photos/seed/game/200"
+                      src="/game-logo.png"
+                       unoptimized
                       alt="GAME Academy Logo"
                       fill
                       className="object-contain group-hover:scale-105 transition-transform"
@@ -174,7 +175,7 @@ const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
            <div className="flex flex-col sm:flex-row items-center gap-2">
-              <span>© 2026 GAME Academy. All Rights Reserved.</span>
+              <span>&copy; 2026 GAME Academy. All Rights Reserved.</span>
               <span className="hidden sm:inline text-slate-700">|</span>
               <span>
                  Developed by <a href="https://techinfigo.com/" target="_blank" rel="noopener noreferrer" className="text-gameGold hover:text-white transition-colors font-bold">TECHINFIGO</a>

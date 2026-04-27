@@ -268,49 +268,49 @@ const GateExamPage: React.FC = () => {
   ];
 
   const gateOrganisers = [
-    { no: 1, institute: "IISc, Bangalore", year: "GATE – 1984" },
-    { no: 2, institute: "IIT, Madras", year: "GATE – 1985" },
-    { no: 3, institute: "IIT, Delhi", year: "GATE – 1986" },
-    { no: 4, institute: "IIT, Bombay", year: "GATE – 1987" },
-    { no: 5, institute: "IIT, Kharagpur", year: "GATE – 1988" },
-    { no: 6, institute: "IIT, Kanpur", year: "GATE – 1989" },
-    { no: 7, institute: "IISc, Bangalore", year: "GATE – 1990" },
-    { no: 8, institute: "IIT, Madras", year: "GATE – 1991" },
-    { no: 9, institute: "IIT, Delhi", year: "GATE – 1992" },
-    { no: 10, institute: "IIT, Bombay", year: "GATE – 1993" },
-    { no: 11, institute: "IIT, Kharagpur", year: "GATE – 1994" },
-    { no: 12, institute: "IIT, Kanpur", year: "GATE – 1995" },
-    { no: 13, institute: "IISc, Bangalore", year: "GATE – 1996" },
-    { no: 14, institute: "IIT, Madras", year: "GATE – 1997" },
-    { no: 15, institute: "IIT, Delhi", year: "GATE – 1998" },
-    { no: 16, institute: "IIT, Bombay", year: "GATE – 1999" },
-    { no: 17, institute: "IIT, Kharagpur", year: "GATE – 2000" },
-    { no: 18, institute: "IIT, Kanpur", year: "GATE – 2001" },
-    { no: 19, institute: "IISc, Bangalore", year: "GATE – 2002" },
-    { no: 20, institute: "IIT, Madras", year: "GATE – 2003" },
-    { no: 21, institute: "IIT, Delhi", year: "GATE – 2004" },
-    { no: 22, institute: "IIT, Bombay", year: "GATE – 2005" },
-    { no: 23, institute: "IIT, Kharagpur", year: "GATE – 2006" },
-    { no: 24, institute: "IIT, Kanpur", year: "GATE – 2007" },
-    { no: 25, institute: "IISc, Bangalore", year: "GATE – 2008" },
-    { no: 26, institute: "IIT, Roorkee", year: "GATE – 2009" },
-    { no: 27, institute: "IIT, Guwahati", year: "GATE – 2010" },
-    { no: 28, institute: "IIT, Madras", year: "GATE – 2011" },
-    { no: 29, institute: "IIT, Delhi", year: "GATE – 2012" },
-    { no: 30, institute: "IIT, Bombay", year: "GATE – 2013" },
-    { no: 31, institute: "IIT, Kharagpur", year: "GATE – 2014" },
-    { no: 32, institute: "IIT, Kanpur", year: "GATE – 2015" },
-    { no: 33, institute: "IISc, Bangalore", year: "GATE – 2016" },
-    { no: 34, institute: "IIT, Roorkee", year: "GATE – 2017" },
-    { no: 35, institute: "IIT, Guwahati", year: "GATE – 2018" },
-    { no: 36, institute: "IIT, Madras", year: "GATE – 2019" },
-    { no: 37, institute: "IIT, Delhi", year: "GATE – 2020" },
-    { no: 38, institute: "IIT, Bombay", year: "GATE – 2021" },
-    { no: 39, institute: "IIT, Kharagpur", year: "GATE – 2022" },
-    { no: 40, institute: "IIT, Kanpur", year: "GATE – 2023" },
-    { no: 41, institute: "IISc, Bangalore", year: "GATE – 2024" },
-    { no: 42, institute: "IIT, Roorkee*", year: "GATE – 2025*" },
-    { no: 43, institute: "IIT, Guwahati*", year: "GATE – 2026*" },
+    { no: 1, institute: "IISc, Bangalore", year: "GATE - 1984" },
+    { no: 2, institute: "IIT, Madras", year: "GATE - 1985" },
+    { no: 3, institute: "IIT, Delhi", year: "GATE - 1986" },
+    { no: 4, institute: "IIT, Bombay", year: "GATE - 1987" },
+    { no: 5, institute: "IIT, Kharagpur", year: "GATE - 1988" },
+    { no: 6, institute: "IIT, Kanpur", year: "GATE - 1989" },
+    { no: 7, institute: "IISc, Bangalore", year: "GATE - 1990" },
+    { no: 8, institute: "IIT, Madras", year: "GATE - 1991" },
+    { no: 9, institute: "IIT, Delhi", year: "GATE - 1992" },
+    { no: 10, institute: "IIT, Bombay", year: "GATE - 1993" },
+    { no: 11, institute: "IIT, Kharagpur", year: "GATE - 1994" },
+    { no: 12, institute: "IIT, Kanpur", year: "GATE - 1995" },
+    { no: 13, institute: "IISc, Bangalore", year: "GATE - 1996" },
+    { no: 14, institute: "IIT, Madras", year: "GATE - 1997" },
+    { no: 15, institute: "IIT, Delhi", year: "GATE - 1998" },
+    { no: 16, institute: "IIT, Bombay", year: "GATE - 1999" },
+    { no: 17, institute: "IIT, Kharagpur", year: "GATE - 2000" },
+    { no: 18, institute: "IIT, Kanpur", year: "GATE - 2001" },
+    { no: 19, institute: "IISc, Bangalore", year: "GATE - 2002" },
+    { no: 20, institute: "IIT, Madras", year: "GATE - 2003" },
+    { no: 21, institute: "IIT, Delhi", year: "GATE - 2004" },
+    { no: 22, institute: "IIT, Bombay", year: "GATE - 2005" },
+    { no: 23, institute: "IIT, Kharagpur", year: "GATE - 2006" },
+    { no: 24, institute: "IIT, Kanpur", year: "GATE - 2007" },
+    { no: 25, institute: "IISc, Bangalore", year: "GATE - 2008" },
+    { no: 26, institute: "IIT, Roorkee", year: "GATE - 2009" },
+    { no: 27, institute: "IIT, Guwahati", year: "GATE - 2010" },
+    { no: 28, institute: "IIT, Madras", year: "GATE - 2011" },
+    { no: 29, institute: "IIT, Delhi", year: "GATE - 2012" },
+    { no: 30, institute: "IIT, Bombay", year: "GATE - 2013" },
+    { no: 31, institute: "IIT, Kharagpur", year: "GATE - 2014" },
+    { no: 32, institute: "IIT, Kanpur", year: "GATE - 2015" },
+    { no: 33, institute: "IISc, Bangalore", year: "GATE - 2016" },
+    { no: 34, institute: "IIT, Roorkee", year: "GATE - 2017" },
+    { no: 35, institute: "IIT, Guwahati", year: "GATE - 2018" },
+    { no: 36, institute: "IIT, Madras", year: "GATE - 2019" },
+    { no: 37, institute: "IIT, Delhi", year: "GATE - 2020" },
+    { no: 38, institute: "IIT, Bombay", year: "GATE - 2021" },
+    { no: 39, institute: "IIT, Kharagpur", year: "GATE - 2022" },
+    { no: 40, institute: "IIT, Kanpur", year: "GATE - 2023" },
+    { no: 41, institute: "IISc, Bangalore", year: "GATE - 2024" },
+    { no: 42, institute: "IIT, Roorkee*", year: "GATE - 2025*" },
+    { no: 43, institute: "IIT, Guwahati*", year: "GATE - 2026*" },
   ];
 
   const psuCategories = [
@@ -432,7 +432,7 @@ const GateExamPage: React.FC = () => {
       date: <span className="font-black text-slate-900">March 27, 2026 to May 31, 2026</span>
     },
     {
-      event: "Score Cards available for download by paying a fee of ₹500 per test paper",
+      event: "Score Cards available for download by paying a fee of Rs. 500 per test paper",
       date: <span className="font-black text-slate-900">June 01, 2026 to December 31, 2026</span>
     }
   ];
@@ -441,48 +441,48 @@ const GateExamPage: React.FC = () => {
     {
       date: "Saturday, February 07, 2026",
       sessions: [
-        { time: "9:30 am to 12:30 pm (Forenoon Session – FN)", papers: "AG, ES, GG, IN, MA, MN, TF, XE, XL" },
-        { time: "2:30 pm to 5:30 pm (Afternoon Session – AN)", papers: "AE, BT, CH, CY, GE, PH, XH" }
+        { time: "9:30 am to 12:30 pm (Forenoon Session - FN)", papers: "AG, ES, GG, IN, MA, MN, TF, XE, XL" },
+        { time: "2:30 pm to 5:30 pm (Afternoon Session - AN)", papers: "AE, BT, CH, CY, GE, PH, XH" }
       ]
     },
     {
       date: "Sunday, February 08, 2026",
       sessions: [
-        { time: "9:30 am to 12:30 pm (Forenoon Session – FN)", papers: "CS-1, ST" },
-        { time: "2:30 pm to 5:30 pm (Afternoon Session – AN)", papers: "CS-2, EY, NM, PE" }
+        { time: "9:30 am to 12:30 pm (Forenoon Session - FN)", papers: "CS-1, ST" },
+        { time: "2:30 pm to 5:30 pm (Afternoon Session - AN)", papers: "CS-2, EY, NM, PE" }
       ]
     },
     {
       date: "Saturday, February 14, 2026",
       sessions: [
-        { time: "9:30 am to 12:30 pm (Forenoon Session – FN)", papers: "CE-1, EE, PI" },
-        { time: "2:30 pm to 5:30 pm (Afternoon Session – AN)", papers: "BM, CE-2, ME, MT" }
+        { time: "9:30 am to 12:30 pm (Forenoon Session - FN)", papers: "CE-1, EE, PI" },
+        { time: "2:30 pm to 5:30 pm (Afternoon Session - AN)", papers: "BM, CE-2, ME, MT" }
       ]
     },
     {
       date: "Sunday, February 15, 2026",
       sessions: [
-        { time: "9:30 am to 12:30 pm (Forenoon Session – FN)", papers: "EC" },
-        { time: "2:30 pm to 5:30 pm (Afternoon Session – AN)", papers: "AR, DA" }
+        { time: "9:30 am to 12:30 pm (Forenoon Session - FN)", papers: "EC" },
+        { time: "2:30 pm to 5:30 pm (Afternoon Session - AN)", papers: "AR, DA" }
       ]
     }
   ];
 
   const faqs = [
     { 
-      q: "Q.1 Is GAME’s online coaching enough to crack GATE?", 
+      q: "Q.1 Is GAME's online coaching enough to crack GATE?", 
       a: "Ans. Yes, with expert faculty, live classes, comprehensive study materials, and practice tests, GAME Academy provides all the tools to succeed." 
     },
     { 
-      q: "Q.2 What disciplines are covered in GAME’s GATE coaching?", 
+      q: "Q.2 What disciplines are covered in GAME's GATE coaching?", 
       a: "Ans. GAME offers courses for CE, ME, & XE as of now, ensuring syllabus coverage for all major disciplines." 
     },
     { 
-      q: "Q.3 Are GAME’s courses affordable?", 
+      q: "Q.3 Are GAME's courses affordable?", 
       a: "Ans. Absolutely. GAME offers competitive pricing, making quality education accessible to all students." 
     },
     { 
-      q: "Q.4 How do I enroll in GAME’s GATE courses?", 
+      q: "Q.4 How do I enroll in GAME's GATE courses?", 
       a: "Ans. Visit our website, explore the courses, and follow the simple enrollment process to start your GATE journey." 
     },
     { 
@@ -989,7 +989,7 @@ const GateExamPage: React.FC = () => {
                   <div className="absolute inset-0 bg-gameTeal/5 rounded-full blur-3xl transform rotate-12"></div>
                   <div className="relative bg-white rounded-[2.5rem] p-3 border border-slate-100 shadow-2xl">
                      <img 
-                        src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?fit=crop&w=800&q=80" 
+                        src="/prep-main.png" 
                         alt="GATE Aspirant" 
                         className="rounded-[2rem] w-full h-auto object-cover"
                      />
@@ -1863,7 +1863,7 @@ const GateExamPage: React.FC = () => {
                            </div>
                            <p className="text-white/80 font-medium leading-relaxed">
                               After May 31, candidates must pay
-                              <span className="text-white font-black block mt-2 text-xl">₹500 per test paper</span>
+                              <span className="text-white font-black block mt-2 text-xl">Rs. 500 per test paper</span>
                               <span className="text-xs opacity-70 block mt-1 uppercase tracking-widest">Until December 31, 2026</span>
                            </p>
                         </div>

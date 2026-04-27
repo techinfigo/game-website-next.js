@@ -114,7 +114,7 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
       )
     },
     {
-      q: "What job categories are listed on GAME Academy’s job notification?",
+      q: "What job categories are listed on GAME Academy's job notification?",
       a: "We list government and private sector opportunities, including roles for civil and mechanical engineers, along with exam schedules and preparation materials."
     },
     {

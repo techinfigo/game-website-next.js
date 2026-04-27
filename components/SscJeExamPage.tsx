@@ -99,8 +99,8 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
     {
       title: "Excellence Course - Civil Engineering",
       branch: "Civil",
-      price: "₹14,999",
-      originalPrice: "₹24,999",
+      price: "Rs. 14,999",
+      originalPrice: "Rs. 24,999",
       discount: "40% OFF",
       features: ["Full Syllabus Coverage", "Live & Recorded Classes", "PYQ Analysis", "Test Series Included"],
       image: "https://picsum.photos/seed/civil-eng/800/600",
@@ -109,8 +109,8 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
     {
       title: "Excellence Course - Mechanical Engineering",
       branch: "Mechanical",
-      price: "₹14,999",
-      originalPrice: "₹24,999",
+      price: "Rs. 14,999",
+      originalPrice: "Rs. 24,999",
       discount: "40% OFF",
       features: ["Full Syllabus Coverage", "Live & Recorded Classes", "PYQ Analysis", "Test Series Included"],
       image: "https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?fit=crop&w=800&q=80",
@@ -119,8 +119,8 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
     {
       title: "Excellence Course - Electrical Engineering",
       branch: "Electrical",
-      price: "₹14,999",
-      originalPrice: "₹24,999",
+      price: "Rs. 14,999",
+      originalPrice: "Rs. 24,999",
       discount: "40% OFF",
       features: ["Full Syllabus Coverage", "Live & Recorded Classes", "PYQ Analysis", "Test Series Included"],
       image: "https://images.unsplash.com/photo-1498084393753-b411b2d26b34?fit=crop&w=800&q=80",
@@ -793,7 +793,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                            </div>
                            <div className="font-bold text-slate-900">Level-6 Pay Matrix</div>
                         </div>
-                        <p className="text-xs text-slate-500">Starting basic pay of ₹35,400 with additional government perks.</p>
+                        <p className="text-xs text-slate-500">Starting basic pay of Rs. 35,400 with additional government perks.</p>
                      </div>
                   </div>
                </motion.div>

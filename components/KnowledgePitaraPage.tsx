@@ -90,7 +90,7 @@ const KnowledgePitaraPage: React.FC = () => {
       desc: "Live classes, Hardcopy Notes, 1:1 Mentorship.",
       icon: Crown,
       color: "bg-[#f2c537] text-black",
-      price: "₹24,999",
+      price: "Rs. 24,999",
       tag: "Best Seller"
     },
     {
@@ -101,7 +101,7 @@ const KnowledgePitaraPage: React.FC = () => {
       desc: "60+ Full length tests with deep analytics.",
       icon: PenTool,
       color: "bg-[#075d63] text-white",
-      price: "₹1,499",
+      price: "Rs. 1,499",
       tag: "Exam Ready"
     },
     {
@@ -112,7 +112,7 @@ const KnowledgePitaraPage: React.FC = () => {
       desc: "Weekly strategy calls with Ex-IES Officers.",
       icon: Star,
       color: "bg-slate-900 text-[#f2c537]",
-      price: "₹4,999",
+      price: "Rs. 4,999",
       tag: "Exclusive"
     }
   ];
@@ -278,7 +278,7 @@ const KnowledgePitaraPage: React.FC = () => {
                         {item.type === 'paid' ? (
                            <>
                               <div className="flex flex-col">
-                                 <span className="text-xs text-slate-400 font-bold line-through">₹{parseInt(item.price.replace(/[^0-9]/g, '')) * 1.5}</span>
+                                 <span className="text-xs text-slate-400 font-bold line-through">Rs. {parseInt(item.price.replace(/[^0-9]/g, '')) * 1.5}</span>
                                  <span className="text-xl font-black text-slate-900">{item.price}</span>
                               </div>
                               <button className="bg-gameBlack text-white px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-[#f2c537] hover:text-black transition-colors flex items-center gap-2 shadow-lg">

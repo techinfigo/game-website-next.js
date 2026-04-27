@@ -359,7 +359,7 @@ const RrbJeExamPage: React.FC = () => {
 
                   <div className="bg-slate-900 p-6 md:p-8 rounded-[2rem] text-white border-l-8 border-gameGold shadow-xl">
                      <p>
-                        These are <strong className="text-gameGold">Group ‘C’ posts at Level 6</strong> in the 7th CPC Pay Matrix, offering an initial pay of <strong className="text-white">₹35,400/-</strong> along with other allowances and benefits as per government norms.
+                        These are <strong className="text-gameGold">Group 'C' posts at Level 6</strong> in the 7th CPC Pay Matrix, offering an initial pay of <strong className="text-white">Rs. 35,400/-</strong> along with other allowances and benefits as per government norms.
                      </p>
                   </div>
                </div>

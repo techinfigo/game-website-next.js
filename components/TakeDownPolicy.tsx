@@ -69,7 +69,7 @@ const TakeDownPolicy: React.FC = () => {
              Take Down <span className="text-gameTeal">Policy</span>
            </h1>
            <p className="text-slate-600 text-lg leading-relaxed">
-             At GAME The Winners’ Choice, we respect intellectual property rights. This policy outlines how to report copyright infringements and our process for addressing them.
+             At GAME The Winners' Choice, we respect intellectual property rights. This policy outlines how to report copyright infringements and our process for addressing them.
            </p>
            <div className="flex items-center justify-center gap-2 mt-6 text-sm text-slate-400 font-medium">
               <Calendar size={14} />

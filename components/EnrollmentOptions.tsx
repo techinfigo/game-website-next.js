@@ -36,10 +36,11 @@ const EnrollmentOptions: React.FC = () => {
                 className="relative z-10 rounded-[2rem] overflow-hidden shadow-2xl border-2 border-slate-50 group max-w-[340px] mx-auto lg:mx-0"
               >
                  <Image 
-                    src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?fit=crop&w=600&h=800&q=80" 
+                    src="/enrollment-image.png" 
                     alt="Ready to Excel" 
                     width={600}
                     height={800}
+                    unoptimized
                     className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700"
                     referrerPolicy="no-referrer"
                  />
@@ -95,11 +96,11 @@ const EnrollmentOptions: React.FC = () => {
 
                  <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-2 leading-[1.1] tracking-tighter">
                     Ready to outsmart the competition? <br/>
-                    <span className="text-gameTeal">Let’s roll!</span>
+                    <span className="text-gameTeal">Let's roll!</span>
                  </h2>
                  
                  <p className="text-slate-500 text-sm md:text-base font-bold mb-5 leading-relaxed max-w-xl">
-                    Explore flexible enrollment options at India’s trusted institute. Expert-led programs customized for your success.
+                    Explore flexible enrollment options at India's trusted institute. Expert-led programs customized for your success.
                  </p>
 
                  <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5">

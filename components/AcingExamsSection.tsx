@@ -62,7 +62,8 @@ const AcingExamsSection: React.FC = () => {
           >
             <div className="relative w-full max-w-[380px] aspect-[4/5] rounded-[32px] border-[10px] border-white shadow-2xl overflow-hidden group">
               <Image 
-                src="/course-mentor-spotlight.png" 
+                src="/course-mentor-spotlight.png"
+                unoptimized 
                 alt="Gaurav Babu Sir" 
                 fill
                 priority

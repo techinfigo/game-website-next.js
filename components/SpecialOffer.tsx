@@ -53,7 +53,7 @@ const SpecialOffer: React.FC = () => {
                 </h2>
                 
                 <p className="text-slate-400 text-base mb-6 font-medium max-w-lg leading-relaxed">
-                   Score higher, stress less – your AIR 1 journey starts NOW!
+                   Score higher, stress less - your AIR 1 journey starts NOW!
                 </p>
 
                 <button className="bg-[#075d63] hover:bg-[#054a4f] text-white pl-8 pr-2 py-2 rounded-full font-bold text-sm uppercase tracking-wider flex items-center gap-4 transition-all shadow-[0_0_30px_rgba(7,93,99,0.4)] hover:shadow-[0_0_40px_rgba(7,93,99,0.6)] hover:-translate-y-1 group">
@@ -104,9 +104,10 @@ const SpecialOffer: React.FC = () => {
                 {/* Group Student Image */}
                 <div className="relative z-10 rounded-[2.5rem] overflow-hidden border-8 border-white/5 shadow-2xl w-[260px] md:w-[340px] aspect-[4/5]">
                    <Image 
-                      src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?fit=crop&w=600&h=800&q=80" 
+                      src="/special-offer-banner.png" 
                       alt="Special Offer" 
                       fill
+                      unoptimized
                       className="object-cover"
                       referrerPolicy="no-referrer"
                    />

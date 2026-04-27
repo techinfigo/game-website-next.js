@@ -44,7 +44,7 @@ const ReferEarn: React.FC = () => {
                    </h2>
                    
                    <p className="text-slate-600 mb-6 text-sm md:text-base leading-relaxed max-w-lg font-bold">
-                      Knowledge grows when shared. Invite your friends to GAME Academy. When they enroll, you both get <span className="font-black text-slate-900 bg-yellow-100 px-1 rounded">₹500 OFF</span> and premium study kits.
+                      Knowledge grows when shared. Invite your friends to GAME Academy. When they enroll, you both get <span className="font-black text-slate-900 bg-yellow-100 px-1 rounded">Rs. 500 OFF</span> and premium study kits.
                    </p>
                    
                    {/* 3-Step Process */}
@@ -115,7 +115,7 @@ const ReferEarn: React.FC = () => {
                       
                       <div className="space-y-0.5 mb-4">
                          <p className="text-[10px] font-black text-slate-400 uppercase tracking-wider">Reward Unlocked</p>
-                         <h3 className="text-2xl font-black text-slate-900">₹500 OFF</h3>
+                         <h3 className="text-2xl font-black text-slate-900">Rs. 500 OFF</h3>
                          <p className="text-xs font-bold text-slate-500">On next course purchase</p>
                       </div>
 

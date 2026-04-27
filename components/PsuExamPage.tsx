@@ -116,8 +116,8 @@ const PsuExamPage: React.FC = () => {
   ];
 
   const distributionOfMarks = [
-    { code: "AE, AG, BH, BT, CE, CH, CS, EC, EE, ES, IN, ME, MN, MT, NM, PE, PI, TF", ga: "15", compulsory: "85", optional: "—", total: "100" },
-    { code: "CY, DA, EY, MA, PH, ST", ga: "15", compulsory: "85", optional: "—", total: "100" },
+    { code: "AE, AG, BH, BT, CE, CH, CS, EC, EE, ES, IN, ME, MN, MT, NM, PE, PI, TF", ga: "15", compulsory: "85", optional: "-", total: "100" },
+    { code: "CY, DA, EY, MA, PH, ST", ga: "15", compulsory: "85", optional: "-", total: "100" },
     { code: "AR: Part A is Common and Compulsory. Part B1/B2 selected during exam.", ga: "15", compulsory: "60", optional: "25", total: "100" },
     { code: "GE: Part A is Common and Compulsory. Part B1/B2 selected during exam.", ga: "15", compulsory: "55", optional: "30", total: "100" },
     { code: "GG: Part A is Common and Compulsory. Part B1/B2 chosen at application.", ga: "15", compulsory: "25", optional: "60", total: "100" },
@@ -316,7 +316,7 @@ const PsuExamPage: React.FC = () => {
     {
       stage: "Stage 1: Shortlisting",
       method: "GATE Score / Written Test",
-      desc: "Most Maharatnas shortlist based on GATE rank. Others (like ISRO, BARC, BEL) conduct their own technical written exams.",
+      desc: "Shortlist based on GATE rank. Others (like ISRO, BARC, BEL) conduct their own technical written exams.",
       icon: ListChecks,
       color: "bg-blue-600"
     },
@@ -1280,7 +1280,7 @@ const PsuExamPage: React.FC = () => {
                         <h2 className="text-3xl md:text-5xl font-black mb-8 leading-tight">14. The PSU <span className="text-gameGold">Premium Lifestyle</span></h2>
                         <div className="space-y-6">
                            {[
-                              "Basic Pay: ₹50,000 - ₹1,60,000 (Level 10 equivalent)",
+                              "Basic Pay: Rs. 50,000 - Rs. 1,60,000 (Level 10 equivalent)",
                               "CTC Range: 15 LPA to 22 LPA for freshers",
                               "Housing: Luxury PSU colonies or high HRA",
                               "Insurance: 100% medical cover for family",
@@ -1294,7 +1294,7 @@ const PsuExamPage: React.FC = () => {
                         </div>
                      </div>
                      <div className="w-full lg:w-80 bg-white/10 backdrop-blur-xl border border-white/20 p-8 rounded-[3rem] text-center">
-                        <div className="text-gameGold font-black text-5xl mb-2">₹20L+</div>
+                        <div className="text-gameGold font-black text-5xl mb-2">Rs. 20L+</div>
                         <div className="text-xs uppercase tracking-widest font-black opacity-60 mb-8">Average CTC</div>
                         <p className="text-teal-50 text-sm font-medium leading-relaxed">
                            "A PSU job is not just a paycheck; it's a social security net and a platform to lead India's engineering future."
