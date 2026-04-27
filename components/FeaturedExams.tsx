@@ -71,8 +71,8 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Engineering Services Examination',
       icon: Trophy,
       color: 'text-purple-400',
-      image: "/exams/ese-bg.png",
-      logo: "/exams/ese-logo.png",
+      image: "/exams/ese-bg.jpg",
+      logo: "/exams/ese-logo.jpg",
       action: 'ese'
     },
     {
@@ -81,8 +81,8 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Graduate Aptitude Test in Engineering',
       icon: GraduationCap,
       color: 'text-blue-400',
-      image: "/exams/gate-bg.png",
-      logo: "/exams/gate-logo.png",
+      image: "/exams/gate-bg.jpg",
+      logo: "/exams/gate-logo.jpg",
       action: 'gate'
     },
     {
@@ -91,8 +91,8 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Public Sector Undertakings / Research & Development',
       icon: Briefcase,
       color: 'text-emerald-400',
-      image: "/exams/psu-bg.png",
-      logo: "/exams/psu-logo.png",
+      image: "/exams/psu-bg.jpg",
+      logo: "/exams/psu-logo.jpg",
       action: 'psu'
     },
     {
@@ -101,8 +101,8 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Staff Selection Commission Junior Engineer',
       icon: Building2,
       color: 'text-orange-400',
-      image: "/exams/ssc-bg.png",
-      logo: "/exams/ssc-logo.png",
+      image: "/exams/ssc-bg.jpg",
+      logo: "/exams/ssc-logo.jpg",
       action: 'ssc'
     },
     {
@@ -111,8 +111,8 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Railway Recruitment Board Junior Engineer',
       icon: Train,
       color: 'text-red-400',
-      image: "/exams/rrb-bg.png",
-      logo: "/exams/rrb-logo.png",
+      image: "/exams/rrb-bg.jpg",
+      logo: "/exams/rrb-logo.jpg",
       action: 'rrb'
     },
     {
@@ -121,8 +121,8 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'State Assistant Engineer / Junior Engineer',
       icon: MapPin,
       color: 'text-cyan-400',
-      image: "/exams/state-bg.png",
-      logo: "/exams/state-logo.png",
+      image: "/exams/state-bg.jpg",
+      logo: "/exams/state-logo.jpg",
       action: 'state'
     },
     {
@@ -131,8 +131,8 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Non Technical Exam',
       icon: BookOpen,
       color: 'text-indigo-400',
-      image: "/exams/nontech-bg.png",
-      logo: "/exams/nontech-logo.png",
+      image: "/exams/nontech-bg.jpg",
+      logo: "/exams/nontech-logo.jpg",
       action: 'nontech'
     }
   ];
