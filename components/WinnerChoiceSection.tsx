@@ -19,7 +19,7 @@ const WinnerChoiceSection: React.FC = () => {
       title: "Visionary Leadership",
       desc: "Under the guidance of Gaurav Babu Sir, we implement high-level engineering protocols to ensure our students lead the industry.",
       stats: [], 
-      image: "/winners-leadership.jpg",
+      image: "/winners-leadership.png",
       icon: User
     },
     {
