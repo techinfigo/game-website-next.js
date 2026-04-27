@@ -71,7 +71,8 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Engineering Services Examination',
       icon: Trophy,
       color: 'text-purple-400',
-      image: "/images/exams/exam-ese-card.png",
+      image: "/exams/ese-bg.png",
+      logo: "/exams/ese-logo.png",
       action: 'ese'
     },
     {
@@ -80,7 +81,8 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Graduate Aptitude Test in Engineering',
       icon: GraduationCap,
       color: 'text-blue-400',
-      image: "/images/exams/exam-gate-card.png",
+      image: "/exams/gate-bg.png",
+      logo: "/exams/gate-logo.png",
       action: 'gate'
     },
     {
@@ -89,7 +91,8 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Public Sector Undertakings / Research & Development',
       icon: Briefcase,
       color: 'text-emerald-400',
-      image: "/images/exams/exam-psu-card.png",
+      image: "/exams/psu-bg.png",
+      logo: "/exams/psu-logo.png",
       action: 'psu'
     },
     {
@@ -98,7 +101,8 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Staff Selection Commission Junior Engineer',
       icon: Building2,
       color: 'text-orange-400',
-      image: "/images/exams/exam-ssc-card.png",
+      image: "/exams/ssc-bg.png",
+      logo: "/exams/ssc-logo.png",
       action: 'ssc'
     },
     {
@@ -107,7 +111,8 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Railway Recruitment Board Junior Engineer',
       icon: Train,
       color: 'text-red-400',
-      image: "/images/exams/exam-rrb-card.png",
+      image: "/exams/rrb-bg.png",
+      logo: "/exams/rrb-logo.png",
       action: 'rrb'
     },
     {
@@ -116,7 +121,8 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'State Assistant Engineer / Junior Engineer',
       icon: MapPin,
       color: 'text-cyan-400',
-      image: "/images/exams/exam-state-card.png",
+      image: "/exams/state-bg.png",
+      logo: "/exams/state-logo.png",
       action: 'state'
     },
     {
@@ -125,7 +131,8 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Non Technical Exam',
       icon: BookOpen,
       color: 'text-indigo-400',
-      image: "/images/exams/exam-nontech-card.png",
+      image: "/exams/nontech-bg.png",
+      logo: "/exams/nontech-logo.png",
       action: 'nontech'
     }
   ];
@@ -225,9 +232,15 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
                       {/* Content */}
                       <div className="absolute inset-0 p-4 pb-5 flex flex-col">
                          
-                         {/* Floating Icon */}
-                         <div className={`w-9 h-9 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center mb-2 group-hover:bg-white group-hover:text-gameTeal transition-all ${item.color}`}>
-                            <item.icon size={16} strokeWidth={2} />
+                         {/* Floating Logo Placeholder */}
+                         <div className="relative w-24 h-12 mb-2 overflow-hidden flex items-center justify-center p-2 bg-white/10 backdrop-blur-md rounded-xl group-hover:bg-white transition-all border border-white/20">
+                            <Image 
+                              src={item.logo} 
+                              alt={`${item.title} Logo`} 
+                              fill
+                              className="object-contain p-1"
+                              unoptimized
+                            />
                          </div>
 
                          <div className="mt-auto">
