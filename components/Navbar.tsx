@@ -85,7 +85,7 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout }) => {
           {/* Logo */}
           <Link 
             href="/"
-            className="flex items-center gap-2 cursor-pointer group" 
+            className="flex items-center cursor-pointer group" 
             onClick={handleLinkClick}
           >
             <div className="relative w-12 h-12">
@@ -97,10 +97,6 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout }) => {
                 unoptimized
                 className="object-contain group-hover:scale-105 transition-transform"
               />
-            </div>
-            <div className="flex flex-col">
-              <span className={`text-xl font-extrabold leading-none tracking-tight ${scrolled ? 'text-slate-900' : 'text-slate-800'}`}>GAME</span>
-              <span className="text-[10px] text-gameGoldDark font-bold uppercase tracking-widest">Academy</span>
             </div>
           </Link>
 

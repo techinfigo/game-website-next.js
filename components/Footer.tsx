@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
            
            {/* Brand Column (Span 4) */}
            <div className="lg:col-span-4 space-y-6">
-              <Link href="/" className="flex items-center gap-2 group">
+              <Link href="/" className="flex items-center group">
                 <div className="relative w-12 h-12">
                    <Image 
                       src="/game-logo.png"
@@ -24,10 +24,6 @@ const Footer: React.FC = () => {
                       fill
                       className="object-contain group-hover:scale-105 transition-transform"
                    />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-2xl font-extrabold leading-none text-white tracking-tight">GAME</span>
-                  <span className="text-[10px] text-gameGold font-bold uppercase tracking-[0.25em]">Academy</span>
                 </div>
               </Link>
               <p className="text-slate-400 text-sm leading-relaxed max-w-xs">
