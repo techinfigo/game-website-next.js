@@ -88,7 +88,7 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout }) => {
             className="flex items-center cursor-pointer group" 
             onClick={handleLinkClick}
           >
-            <div className="relative w-44 h-16 md:w-56 md:h-20 transition-transform group-hover:scale-105">
+            <div className="relative w-32 h-14 md:w-40 md:h-16 transition-transform group-hover:scale-105">
               <Image 
                 src="/game-logo.png" 
                 alt="GAME Academy Logo"
