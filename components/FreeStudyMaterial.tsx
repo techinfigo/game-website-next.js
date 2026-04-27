@@ -128,7 +128,7 @@ const FreeStudyMaterial: React.FC = () => {
                        <div className="flex -space-x-1.5">
                           {[21,22,23].map((i) => (
                              <div key={i} className="w-7 h-7 rounded-full border-2 border-white bg-slate-200 overflow-hidden shadow-sm relative">
-                                <Image src={`https://i.pravatar.cc/100?img=${i}`} alt="Student" fill className="object-cover" referrerPolicy="no-referrer" />
+                                <Image src={`/images/achievers/avatar-${i}.png`} alt="Student" fill className="object-cover" referrerPolicy="no-referrer" />
                              </div>
                           ))}
                        </div>

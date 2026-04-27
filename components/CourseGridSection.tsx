@@ -14,7 +14,7 @@ const CourseGridSection: React.FC = () => {
                 branch: "Mechanical Engineering",
                 price: "Rs. 35,000",
                 originalPrice: "Rs. 50,000",
-                image: "https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?fit=crop&w=800&q=80",
+                image: "/images/courses/mech-excellence.png",
                 includes: ["1200+ Hrs Content", "1:1 Mentorship", "Hardcopy Notes", "24/7 Doubt Support"]
             },
             {
@@ -22,7 +22,7 @@ const CourseGridSection: React.FC = () => {
                 branch: "Mechanical Engineering",
                 price: "Rs. 24,999",
                 originalPrice: "Rs. 35,000",
-                image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?fit=crop&w=800&q=80",
+                image: "/images/courses/isro-drdo.png",
                 includes: ["Targeted Revision", "100+ Mock Tests", "Daily Practice Sets", "Concept Visualization"]
             }
         ],
@@ -32,7 +32,7 @@ const CourseGridSection: React.FC = () => {
                 branch: "Civil Engineering",
                 price: "Rs. 35,000",
                 originalPrice: "Rs. 50,000",
-                image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?fit=crop&w=800&q=80",
+                image: "/images/courses/gate-foundation.png",
                 includes: ["Structural Analysis", "Geotechnical Depth", "Standard PYQs", "Live Doubts"]
             },
             {
@@ -40,7 +40,7 @@ const CourseGridSection: React.FC = () => {
                 branch: "Civil Engineering",
                 price: "Rs. 24,999",
                 originalPrice: "Rs. 35,000",
-                image: "https://images.unsplash.com/photo-1590487988256-9ed24133863e?fit=crop&w=800&q=80",
+                image: "/images/courses/ese-premium.png",
                 includes: ["Formula Sheets", "Doubt Support", "Rank Improvement", "PYQ Analysis"]
             }
         ],
@@ -50,7 +50,7 @@ const CourseGridSection: React.FC = () => {
                 branch: "Engineering Sciences",
                 price: "Rs. 18,000",
                 originalPrice: "Rs. 25,000",
-                image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?fit=crop&w=800&q=80",
+                image: "/images/courses/upsc-prep.png",
                 includes: ["Maths + 2 Sections", "Fluid & Thermo", "Energy Science Add-on", "Concept Storytelling"]
             }
         ]

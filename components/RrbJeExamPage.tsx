@@ -24,7 +24,7 @@ const RrbJeExamPage: React.FC = () => {
       label: "Job Security",
       title: "Permanent government position with assured career progression.",
       desc: "Enjoy the ultimate stability that comes with a central government job, ensuring a secure future for you and your family with permanent tenure.",
-      image: "https://images.unsplash.com/photo-1589330694653-ded6df03f754?fit=crop&w=800&q=80", 
+      image: "/images/rrb-je/prestige.png", 
       icon: ShieldCheck,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10"
@@ -33,7 +33,7 @@ const RrbJeExamPage: React.FC = () => {
       label: "Attractive Salary & Perks",
       title: "Pay Level 6 with regular increments, DA, HRA, medical benefits, travel allowances, and pension under NPS.",
       desc: "Financial prosperity paired with unmatched railway-specific benefits like premium medical care and national travel passes.",
-      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?fit=crop&w=800&q=80", 
+      image: "/images/rrb-je/salary.png", 
       icon: Wallet,
       color: "text-gameGold",
       bg: "bg-gameGold/10"
@@ -42,7 +42,7 @@ const RrbJeExamPage: React.FC = () => {
       label: "Nationwide Opportunities",
       title: "Postings across India in various railway zones and production units.",
       desc: "Serve the nation across diverse geographies, from metropolitan hubs to production units, experiencing India's rich engineering heritage.",
-      image: "https://images.unsplash.com/photo-1532330694653-ded6df03f754?fit=crop&w=800&q=80", 
+      image: "/images/rrb-je/core-sectors.png", 
       icon: MapPin,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10"
@@ -51,7 +51,7 @@ const RrbJeExamPage: React.FC = () => {
       label: "Professional Growth",
       title: "Opportunities for promotions, departmental exams, and skill development.",
       desc: "A well-defined career ladder with merit-based fast-track promotions through regular departmental examinations.",
-      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?fit=crop&w=800&q=80", 
+      image: "/images/rrb-je/career-growth.png", 
       icon: TrendingUp,
       color: "text-gameGold",
       bg: "bg-gameGold/10"
@@ -60,7 +60,7 @@ const RrbJeExamPage: React.FC = () => {
       label: "Work with India’s Largest Employer",
       title: "Be part of the world’s 4th largest railway network.",
       desc: "Take pride in working for the Indian Railways, a global leader in transport and the backbone of the nation's logistical infrastructure.",
-      image: "https://images.unsplash.com/photo-1474487548417-781cb714c223?fit=crop&w=1200&q=80", 
+      image: "/images/rrb-je/railway-network.png", 
       icon: Train,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10"

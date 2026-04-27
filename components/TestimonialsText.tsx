@@ -15,7 +15,7 @@ const TestimonialsText: React.FC = () => {
       name: "Rohan Das",
       role: "GATE ME (AIR 45)",
       quote: "I never thought Thermodynamics could be this intuitive. The 'Foundation Course' didn't just help me crack GATE; it changed how I perceive Engineering completely.",
-      image: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?fit=crop&w=150&h=150&q=80",
+      image: "/images/achievers/avatar-1.png",
       rating: 5
     },
     {
@@ -23,7 +23,7 @@ const TestimonialsText: React.FC = () => {
       name: "Sneha Kapoor",
       role: "SSC-JE (Selected)",
       quote: "Consistency was my biggest enemy. The daily mentorship calls and structured targets kept me on track. The test series questions were 90% similar to the actual exam.",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?fit=crop&w=150&h=150&q=80",
+      image: "/images/achievers/avatar-2.png",
       rating: 5
     },
     {
@@ -31,7 +31,7 @@ const TestimonialsText: React.FC = () => {
       name: "Amit Verma",
       role: "ESE 2023 (AIR 12)",
       quote: "For ESE, you need depth. GAME Academy provided detailed notes that covered every minute detail. The interview guidance was the cherry on top.",
-      image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?fit=crop&w=150&h=150&q=80",
+      image: "/images/achievers/avatar-3.png",
       rating: 5
     },
     {
@@ -39,7 +39,7 @@ const TestimonialsText: React.FC = () => {
       name: "Priya Sharma",
       role: "GATE CS (AIR 15)",
       quote: "The coding concepts were explained so beautifully. Gaurav Sir's way of teaching is unique and very effective for students from any background.",
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?fit=crop&w=150&h=150&q=80",
+      image: "/images/achievers/avatar-4.png",
       rating: 5
     },
     {
@@ -47,7 +47,7 @@ const TestimonialsText: React.FC = () => {
       name: "Vikram Singh",
       role: "PSU (NTPC)",
       quote: "I cleared the NTPC interview in my first attempt. The mock interviews conducted by the panel gave me the confidence I needed to succeed.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=150&h=150&q=80",
+      image: "/images/achievers/avatar-5.png",
       rating: 4
     }
   ];

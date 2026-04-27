@@ -635,7 +635,7 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
                       {[1,2,3,4].map(i => (
                         <div key={i} className="relative w-10 h-10 rounded-full border-2 border-[#075d63] bg-slate-200 overflow-hidden shadow-lg">
                            <Image 
-                              src={`https://i.pravatar.cc/100?img=${i + 30}`} 
+                              src={`/images/achievers/avatar-${i}.png`} 
                               alt="User" 
                               fill
                               className="object-cover" 

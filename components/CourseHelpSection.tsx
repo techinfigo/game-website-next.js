@@ -22,10 +22,10 @@ const CourseHelpSection: React.FC = () => {
       icon: BookOpen,
       bgGradient: "from-[#075d63] to-[#0a4d52]",
       images: [
-        "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&q=80&w=400",
-        "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&q=80&w=400",
-        "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=400",
-        "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=400"
+        "/images/features/toolkit-1.png",
+        "/images/features/toolkit-2.png",
+        "/images/features/toolkit-3.png",
+        "/images/features/toolkit-4.png"
       ]
     },
     {
@@ -38,10 +38,10 @@ const CourseHelpSection: React.FC = () => {
       icon: Target,
       bgGradient: "from-[#b48e0b] to-[#8c6d09]",
       images: [
-        "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=400",
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=400",
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=400",
-        "https://images.unsplash.com/photo-1543286386-713bdd548da4?auto=format&fit=crop&q=80&w=400"
+        "/images/features/exam-edge-1.png",
+        "/images/features/exam-edge-2.png",
+        "/images/features/exam-edge-3.png",
+        "/images/features/exam-edge-4.png"
       ]
     },
     {
@@ -54,10 +54,10 @@ const CourseHelpSection: React.FC = () => {
       icon: Laptop,
       bgGradient: "from-[#053d41] to-[#075d63]",
       images: [
-        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=400",
-        "https://picsum.photos/seed/online-learning/400/400",
-        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=400",
-        "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&q=80&w=400"
+        "/images/features/flexi-learn-1.png",
+        "/images/features/flexi-learn-2.png",
+        "/images/features/flexi-learn-3.png",
+        "/images/features/flexi-learn-4.png"
       ]
     },
     {
@@ -70,10 +70,10 @@ const CourseHelpSection: React.FC = () => {
       icon: Users,
       bgGradient: "from-[#8c6d09] to-[#b48e0b]",
       images: [
-        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=400",
-        "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=400",
-        "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=400",
-        "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=400"
+        "/images/features/success-support-1.png",
+        "/images/features/success-support-2.png",
+        "/images/features/success-support-3.png",
+        "/images/features/success-support-4.png"
       ]
     }
   ];

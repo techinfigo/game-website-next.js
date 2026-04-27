@@ -88,7 +88,7 @@ const FacultyShowcase: React.FC = () => {
                                {[1,2,3].map(i => (
                                   <div key={i} className="relative w-9 h-9 rounded-full border-2 border-white bg-slate-200 overflow-hidden">
                                      <Image 
-                                       src={`https://i.pravatar.cc/100?img=${i+25}`} 
+                                       src={`/images/faculty/faculty-${i}.png`} 
                                        fill 
                                        className="object-cover" 
                                        alt="Student" 

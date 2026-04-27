@@ -44,25 +44,25 @@ const GateExamPage: React.FC = () => {
     {
       name: "Abhishek Singh",
       rank: "AIR 1 - GATE ME",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?fit=crop&w=600&h=800&q=80",
+      image: "/images/rankers/ranker-1.png",
       videoId: "D6HOo41x2Ls"
     },
     {
       name: "Ananya Ray",
       rank: "AIR 1 - GATE ME",
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?fit=crop&w=600&h=800&q=80",
+      image: "/images/rankers/ranker-2.png",
       videoId: "gvK9V0trlaw"
     },
     {
       name: "Siddharth S.",
       rank: "AIR 45 - ESE ME",
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?fit=crop&w=600&h=800&q=80",
+      image: "/images/rankers/ranker-3.png",
       videoId: "Ta7gKIxxya0"
     },
     {
       name: "Megha Gupta",
       rank: "AIR 4 - ESE ME",
-      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?fit=crop&w=600&h=800&q=80",
+      image: "/images/rankers/ranker-4.png",
       videoId: "D6HOo41x2Ls"
     }
   ];
@@ -109,7 +109,7 @@ const GateExamPage: React.FC = () => {
       icon: GraduationCap,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
-      image: "https://images.unsplash.com/photo-1541339907198-e08756ebafe3?fit=crop&w=600&q=80"
+      image: "/images/advantages/academic.png"
     },
     {
       title: "PSU Recruitment",
@@ -117,7 +117,7 @@ const GateExamPage: React.FC = () => {
       icon: Briefcase,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
-      image: "https://images.unsplash.com/photo-1541888941255-081d746fedff?fit=crop&w=600&q=80"
+      image: "/images/advantages/psu.png"
     },
     {
       title: "Opportunities Abroad",
@@ -125,7 +125,7 @@ const GateExamPage: React.FC = () => {
       icon: Globe,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
-      image: "https://images.unsplash.com/photo-1449034446853-66c86144b0ad?fit=crop&w=600&q=80"
+      image: "/images/advantages/abroad.png"
     },
     {
       title: "Research Opportunities",
@@ -133,7 +133,7 @@ const GateExamPage: React.FC = () => {
       icon: Microscope,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?fit=crop&w=600&q=80"
+      image: "/images/advantages/research.png"
     },
     {
       title: "Scholarships and Fellowships",
@@ -141,7 +141,7 @@ const GateExamPage: React.FC = () => {
       icon: Award,
       color: "text-gameGold",
       bg: "bg-gameGold/10",
-      image: "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?fit=crop&w=600&q=80"
+      image: "/images/advantages/scholarship.png"
     },
     {
       title: "Teaching Careers",
@@ -149,7 +149,7 @@ const GateExamPage: React.FC = () => {
       icon: BookOpen,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
-      image: "https://images.unsplash.com/photo-1524178232363-1fb28f74b0cd?fit=crop&w=600&q=80"
+      image: "/images/advantages/teaching.png"
     },
     {
       title: "Career Growth in Industry",
@@ -157,7 +157,7 @@ const GateExamPage: React.FC = () => {
       icon: TrendingUp,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
-      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?fit=crop&w=600&q=80"
+      image: "/images/advantages/industry.png"
     },
     {
       title: "Flexibility in Career",
@@ -165,7 +165,7 @@ const GateExamPage: React.FC = () => {
       icon: Layers,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
-      image: "https://images.unsplash.com/photo-1506784919140-239611dc6742?fit=crop&w=600&q=80"
+      image: "/images/advantages/flexibility.png"
     },
     {
       title: "Prestige and Recognition",
@@ -173,7 +173,7 @@ const GateExamPage: React.FC = () => {
       icon: Star,
       color: "text-gameGold",
       bg: "bg-gameGold/10",
-      image: "https://images.unsplash.com/photo-1523287562758-66c7ed58967f?fit=crop&w=600&q=80"
+      image: "/images/advantages/prestige.png"
     }
   ];
 

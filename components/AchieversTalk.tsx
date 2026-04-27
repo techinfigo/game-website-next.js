@@ -11,19 +11,19 @@ const AchieversTalk: React.FC = () => {
        name: "Rahul Singh",
        rank: "AIR-1 (GATE ME)",
        text: "The conceptual clarity I got from Gaurav Sir is unmatched. GAME Academy transformed my preparation.",
-       img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?fit=crop&w=200&h=200&q=80"
+       img: "/images/achievers/achiever-1.png"
     },
     {
        name: "Ananya Das",
        rank: "SSC-JE Selected",
        text: "The mentorship support here is what makes the difference. They guide you at every step of the journey.",
-       img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?fit=crop&w=200&h=200&q=80"
+       img: "/images/achievers/achiever-2.png"
     },
     {
        name: "Vikram Patel",
        rank: "AIR-15 (ESE)",
        text: "From basics to advanced levels, the flow of content is perfect. Highly recommended for serious aspirants.",
-       img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?fit=crop&w=200&h=200&q=80"
+       img: "/images/achievers/achiever-3.png"
     }
   ];
 

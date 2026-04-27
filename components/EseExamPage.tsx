@@ -540,7 +540,7 @@ const EseExamPage: React.FC = () => {
                >
                   <div className="relative bg-white rounded-[2.5rem] p-4 border border-gameTeal/10 shadow-2xl overflow-hidden group aspect-video">
                      <Image 
-                        src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?fit=crop&w=800&q=80" 
+                        src="/images/exams/ese-overview.png" 
                         alt="Infrastructure Project" 
                         fill
                         className="rounded-[2rem] object-cover transform group-hover:scale-105 transition-transform duration-700"

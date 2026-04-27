@@ -71,7 +71,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Engineering Services Examination',
       icon: Trophy,
       color: 'text-purple-400',
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?fit=crop&w=800&q=80",
+      image: "/images/exams/gate.png",
       action: 'ese'
     },
     {
@@ -80,7 +80,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Graduate Aptitude Test in Engineering',
       icon: GraduationCap,
       color: 'text-blue-400',
-      image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?fit=crop&w=800&q=80",
+      image: "/images/exams/ese.png",
       action: 'gate'
     },
     {
@@ -89,7 +89,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Public Sector Undertakings / Research & Development',
       icon: Briefcase,
       color: 'text-emerald-400',
-      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?fit=crop&w=800&q=80",
+      image: "/images/exams/psu.png",
       action: 'psu'
     },
     {
@@ -98,7 +98,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Staff Selection Commission Junior Engineer',
       icon: Building2,
       color: 'text-orange-400',
-      image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?fit=crop&w=800&q=80",
+      image: "/images/exams/ssc-je.png",
       action: 'ssc'
     },
     {
@@ -107,7 +107,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Railway Recruitment Board Junior Engineer',
       icon: Train,
       color: 'text-red-400',
-      image: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?fit=crop&w=800&q=80",
+      image: "/images/exams/rrb-je.png",
       action: 'rrb'
     },
     {
@@ -116,7 +116,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'State Assistant Engineer / Junior Engineer',
       icon: MapPin,
       color: 'text-cyan-400',
-      image: "https://images.unsplash.com/photo-1503387762-592fa580ba53?fit=crop&w=800&q=80",
+      image: "/images/exams/ae-je.png",
       action: 'state'
     },
     {
@@ -125,7 +125,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Non Technical Exam',
       icon: BookOpen,
       color: 'text-indigo-400',
-      image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?fit=crop&w=800&q=80",
+      image: "/images/exams/isro.png",
       action: 'nontech'
     }
   ];

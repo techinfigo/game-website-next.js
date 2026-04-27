@@ -17,7 +17,7 @@ const AboutSection: React.FC = () => {
               <div className="space-y-4 mt-8">
                  <div className="relative h-64 w-full">
                      <Image 
-                        src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?fit=crop&w=400&h=500&q=80" 
+                        src="/images/about/mission.png" 
                         alt="Engineering Students" 
                         fill
                         className="rounded-2xl shadow-lg object-cover" 
@@ -36,7 +36,7 @@ const AboutSection: React.FC = () => {
                  </div>
                  <div className="relative h-64 w-full">
                      <Image 
-                        src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?fit=crop&w=400&h=500&q=80" 
+                        src="/images/about/vision.png" 
                         alt="Classroom Learning" 
                         fill
                         className="rounded-2xl shadow-lg object-cover" 

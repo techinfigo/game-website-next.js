@@ -39,7 +39,7 @@ const AchieversSection: React.FC<AchieversSectionProps> = ({ onNavigate }) => {
       name: "Vikram Malhotra",
       rank: "AIR 8 GATE",
       exam: "ME 2023",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?fit=crop&w=600&h=800&q=80",
+      image: "/images/achievers/achiever-1.png",
       videoId: "D6HOo41x2Ls"
     },
     {
@@ -47,7 +47,7 @@ const AchieversSection: React.FC<AchieversSectionProps> = ({ onNavigate }) => {
       name: "Arjun Reddy",
       rank: "AIR 2 ESE",
       exam: "CE 2023",
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?fit=crop&w=600&h=800&q=80",
+      image: "/images/achievers/achiever-2.png",
       videoId: "gvK9V0trlaw"
     },
     {
@@ -55,7 +55,7 @@ const AchieversSection: React.FC<AchieversSectionProps> = ({ onNavigate }) => {
       name: "Aditi Rao",
       rank: "AIR 15 ESE",
       exam: "CE 2023",
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?fit=crop&w=600&h=800&q=80",
+      image: "/images/achievers/achiever-3.png",
       videoId: "Ta7gKIxxya0"
     },
     {
@@ -63,7 +63,7 @@ const AchieversSection: React.FC<AchieversSectionProps> = ({ onNavigate }) => {
       name: "Rahul Singh",
       rank: "AIR 1 GATE",
       exam: "ME 2023",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?fit=crop&w=600&h=800&q=80",
+      image: "/images/achievers/achiever-4.png",
       videoId: "1QV1hZ7c68Y"
     },
     {
@@ -71,7 +71,7 @@ const AchieversSection: React.FC<AchieversSectionProps> = ({ onNavigate }) => {
       name: "Priya Sharma",
       rank: "AIR 5 ESE",
       exam: "CE 2023",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?fit=crop&w=600&h=800&q=80",
+      image: "/images/achievers/achiever-5.png",
       videoId: "Vv9lARk4vcs"
     },
     {
@@ -79,7 +79,7 @@ const AchieversSection: React.FC<AchieversSectionProps> = ({ onNavigate }) => {
       name: "Amit Patel",
       rank: "AIR 12 SSC",
       exam: "EE 2023",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=600&h=800&q=80",
+      image: "/images/achievers/achiever-6.png",
       videoId: "bttDewEFDq4"
     },
     {
@@ -87,7 +87,7 @@ const AchieversSection: React.FC<AchieversSectionProps> = ({ onNavigate }) => {
       name: "Neha Gupta",
       rank: "AIR 3 GATE",
       exam: "CS 2023",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?fit=crop&w=600&h=800&q=80",
+      image: "/images/achievers/achiever-7.png",
       videoId: "D6HOo41x2Ls"
     },
     {
@@ -95,7 +95,7 @@ const AchieversSection: React.FC<AchieversSectionProps> = ({ onNavigate }) => {
       name: "Karan Johar",
       rank: "AIR 19 GATE",
       exam: "ME 2023",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?fit=crop&w=600&h=800&q=80",
+      image: "/images/achievers/achiever-8.png",
       videoId: "gvK9V0trlaw"
     }
   ];

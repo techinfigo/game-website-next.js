@@ -52,7 +52,7 @@ const BlogPage: React.FC = () => {
       authorRole: "Founder & Mentor",
       date: "Oct 12, 2025",
       readTime: "8 min read",
-      image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?fit=crop&w=1200&q=80",
+      image: "/images/blog/career-guidance.png",
       featured: true,
       tags: ["GATE", "Motivation", "Study Tips"]
     },
@@ -65,7 +65,7 @@ const BlogPage: React.FC = () => {
       authorRole: "Senior Faculty",
       date: "Oct 10, 2025",
       readTime: "12 min read",
-      image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?fit=crop&w=800&q=80",
+      image: "/images/blog/upsc-prep.png",
       tags: ["Mechanical", "Concepts", "Physics"]
     },
     {
@@ -77,7 +77,7 @@ const BlogPage: React.FC = () => {
       authorRole: "Editorial",
       date: "Oct 08, 2025",
       readTime: "6 min read",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?fit=crop&w=800&q=80",
+      image: "/images/blog/research-ops.png",
       tags: ["SSC JE", "RRB JE", "Comparison"]
     },
     {
@@ -89,7 +89,7 @@ const BlogPage: React.FC = () => {
       authorRole: "Founder",
       date: "Oct 05, 2025",
       readTime: "10 min read",
-      image: "https://images.unsplash.com/photo-1456324504439-367cee10d6e6?fit=crop&w=800&q=80",
+      image: "/images/blog/exam-success.png",
       tags: ["Roadmap", "College", "Planning"]
     },
     {
@@ -101,7 +101,7 @@ const BlogPage: React.FC = () => {
       authorRole: "Industry Expert",
       date: "Oct 01, 2025",
       readTime: "5 min read",
-      image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?fit=crop&w=800&q=80",
+      image: "/images/blog/engineering-skills.png",
       tags: ["Industry", "Jobs", "Future"]
     },
     {
@@ -113,7 +113,7 @@ const BlogPage: React.FC = () => {
       authorRole: "AIR-5 (ESE)",
       date: "Sep 28, 2025",
       readTime: "4 min read",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?fit=crop&w=800&q=80",
+      image: "/images/blog/leadership.png",
       tags: ["Mental Health", "Focus", "Success"]
     }
   ];
@@ -268,7 +268,7 @@ const BlogPage: React.FC = () => {
                <figure className="my-12">
                   <div className="relative aspect-video w-full rounded-[2rem] overflow-hidden shadow-xl">
                      <Image 
-                        src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?fit=crop&w=1200&q=80" 
+                        src="/images/blog/main-hero.png" 
                         alt="Study Setup" 
                         fill
                         className="object-cover"

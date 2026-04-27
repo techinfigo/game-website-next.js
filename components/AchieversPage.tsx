@@ -18,7 +18,7 @@ const ALL_STORIES = [
     name: "Rahul Singh", 
     rank: "AIR 1", 
     exam: "GATE ME 2023", 
-    img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?fit=crop&w=600&h=750&q=80", 
+    img: "/images/rankers/abhishek.png", 
     video: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Placeholder
     featured: true 
   },
@@ -29,12 +29,12 @@ const ALL_STORIES = [
     exam: "GATE ME", 
     quote: "The conceptual clarity I got from Gaurav Sir is unmatched. Every complex topic was broken down into simple, digestible parts.", 
     rating: 5,
-    img: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?fit=crop&w=200&h=200&q=80"
+    img: "/images/achievers/avatar-1.png"
   },
   {
     type: 'whatsapp',
     id: 10,
-    img: "https://picsum.photos/seed/whatsapp1/800/1200",
+    img: "/images/misc/whatsapp-result-1.png",
     caption: "Incredible results shared by our student on WhatsApp!"
   },
   { 
@@ -43,7 +43,7 @@ const ALL_STORIES = [
     name: "Priya Sharma", 
     rank: "AIR 5", 
     exam: "ESE CE 2023", 
-    img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?fit=crop&w=600&h=750&q=80", 
+    img: "/images/rankers/sneha.png", 
     video: "https://www.youtube.com/embed/dQw4w9WgXcQ" 
   },
   { 
@@ -53,12 +53,12 @@ const ALL_STORIES = [
     exam: "SSC-JE", 
     quote: "GAME Academy doesn't just teach you subjects; they teach you how to think like an engineer. Best decision of my life.", 
     rating: 5,
-    img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?fit=crop&w=200&h=200&q=80"
+    img: "/images/achievers/avatar-2.png"
   },
   {
     type: 'whatsapp',
     id: 11,
-    img: "https://picsum.photos/seed/whatsapp2/800/1000",
+    img: "/images/misc/whatsapp-result-2.png",
     caption: "Late night doubt clearing sessions paying off!"
   },
   { 
@@ -67,7 +67,7 @@ const ALL_STORIES = [
     name: "Amit Patel", 
     rank: "AIR 12", 
     exam: "SSC EE 2023", 
-    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=600&h=750&q=80", 
+    img: "/images/rankers/amit.png", 
     video: "https://www.youtube.com/embed/dQw4w9WgXcQ" 
   },
   { 
@@ -77,12 +77,12 @@ const ALL_STORIES = [
     exam: "ESE Civil", 
     quote: "The mentorship program kept me on track when I felt lost. It's not just a coaching center, it's a family.", 
     rating: 5,
-    img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?fit=crop&w=200&h=200&q=80"
+    img: "/images/achievers/avatar-3.png"
   },
   {
     type: 'whatsapp',
     id: 12,
-    img: "https://picsum.photos/seed/whatsapp3/800/1400",
+    img: "/images/misc/whatsapp-result-3.png",
     caption: "Another success story from our WhatsApp community."
   },
   { 
@@ -91,7 +91,7 @@ const ALL_STORIES = [
     name: "Neha Gupta", 
     rank: "AIR 3", 
     exam: "GATE CS 2023", 
-    img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?fit=crop&w=600&h=750&q=80", 
+    img: "/images/rankers/vikram.png", 
     video: "https://www.youtube.com/embed/dQw4w9WgXcQ" 
   },
   { 
@@ -101,7 +101,7 @@ const ALL_STORIES = [
     exam: "PSU (IOCL)", 
     quote: "I cleared IOCL interview in my first attempt thanks to the mock interview sessions. Highly recommended!", 
     rating: 5,
-    img: "https://images.unsplash.com/photo-1554151228-14d9def656ec?fit=crop&w=200&h=200&q=80"
+    img: "/images/achievers/avatar-4.png"
   },
   { 
     type: 'story',
@@ -110,7 +110,7 @@ const ALL_STORIES = [
     exam: "RRB-JE", 
     quote: "Affordable, accessible, and high quality. The free resources in Knowledge Pitaara were a lifesaver.", 
     rating: 4,
-    img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?fit=crop&w=200&h=200&q=80"
+    img: "/images/achievers/avatar-5.png"
   }
 ];
 

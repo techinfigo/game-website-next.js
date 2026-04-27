@@ -33,7 +33,7 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "AIR 1 - GATE 2024",
     category: "GATE",
     description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?fit=crop&w=600&q=80",
+    image: "/images/rankers/abhishek.png",
   },
   {
     id: "2",
@@ -41,7 +41,7 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "AIR 51 - UPSC CSE 2021",
     category: "UPSC",
     description: "The structured roadmap at GAME Academy kept me focused through all stages of CSE.",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?fit=crop&w=600&q=80",
+    image: "/images/rankers/akshay.png",
   },
   {
     id: "3",
@@ -49,14 +49,14 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "AIR 15 - ESE 2023",
     category: "ESE",
     description: "ESE requires consistency. Mentorship here is exceptional.",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?fit=crop&w=600&q=80",
+    image: "/images/rankers/sneha.png",
   },
   {
     id: "4",
     name: "Vikram Malhotra",
     designation: "Selected - ONGC",
     category: "PSU",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=600&q=80",
+    image: "/images/rankers/vikram.png",
   }
 ];
 
@@ -69,7 +69,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Mechanical Engineering",
     selectionYear: "2022",
     category: "UPSC/IAS",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?fit=crop&w=600&q=80"
+    image: "/images/rankers/akshay-ias.png"
   },
   {
     id: "j2",
@@ -79,7 +79,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Civil Engineering",
     selectionYear: "2023",
     category: "ESE",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?fit=crop&w=600&q=80"
+    image: "/images/rankers/meera.png"
   },
   {
     id: "j3",
@@ -89,7 +89,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Mechanical Engineering",
     selectionYear: "2021",
     category: "ISRO",
-    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?fit=crop&w=600&q=80"
+    image: "/images/rankers/sandeep.png"
   },
   {
     id: "j4",
@@ -99,7 +99,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Mechanical Engineering",
     selectionYear: "2022",
     category: "PSU/GATE",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?fit=crop&w=600&q=80"
+    image: "/images/rankers/rohan.png"
   }
 ];
 
@@ -399,7 +399,7 @@ const RankersPage: React.FC = () => {
                      {[1,2,3,4,5].map(i => (
                         <div key={i} className="relative w-10 h-10 rounded-full border-2 border-[#0f1115] bg-slate-800 overflow-hidden shadow-2xl">
                            <Image 
-                                  src={`https://i.pravatar.cc/150?img=${i + 15}`} 
+                                  src={`/images/achievers/avatar-${i}.png`} 
                                   alt="Achiever" 
                                   fill
                                   className="object-cover" 
