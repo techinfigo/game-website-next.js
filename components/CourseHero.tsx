@@ -50,7 +50,7 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
       hoverClass: 'hover:bg-[#229ED9] hover:border-[#229ED9]',
       iconColor: 'text-[#229ED9]',
       bgColor: 'bg-[#229ED9]/10',
-      link: '#'
+      link: 'https://t.me/gamebygauravbabu'
     },
     {
       id: 'whatsapp',
@@ -60,7 +60,7 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
       hoverClass: 'hover:bg-[#25D366] hover:border-[#25D366]',
       iconColor: 'text-[#25D366]',
       bgColor: 'bg-[#25D366]/10',
-      link: '#'
+      link: 'https://whatsapp.com/channel/0029VaWNuqVJpe8gdAkinR1T'
     },
     {
       id: 'youtube',
@@ -80,7 +80,7 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
       hoverClass: 'hover:bg-[#0077b5] hover:border-[#0077b5]',
       iconColor: 'text-[#0077b5]',
       bgColor: 'bg-[#0077b5]/10',
-      link: '#'
+      link: 'https://www.linkedin.com/company/gameacademyindia/'
     }
   ];
 
@@ -88,30 +88,30 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
   const videos = [
     {
       id: 1,
-      title: "Master GATE Strategy 2025",
-      views: "15k",
-      duration: "12:45",
-      thumbnail: "https://img.youtube.com/vi/D6HOo41x2Ls/maxresdefault.jpg",
-      videoId: "D6HOo41x2Ls",
-      tag: "Strategy"
+      title: "Complete Fluid Mechanics",
+      views: "1.5M+",
+      duration: "40+ Lectures",
+      thumbnail: "https://img.youtube.com/vi/bttDewEFDq4/maxresdefault.jpg",
+      videoId: "PLzpAOaJe3cEibAI-LLEUja3q34NaQdMgb",
+      tag: "Playlist"
     },
     {
       id: 2,
-      title: "College vs Exam Prep?",
-      views: "18k",
-      duration: "08:20",
-      thumbnail: "https://img.youtube.com/vi/gvK9V0trlaw/maxresdefault.jpg",
-      videoId: "gvK9V0trlaw",
-      tag: "Guidance"
+      title: "Strength of Materials",
+      views: "1.2M+",
+      duration: "50+ Lectures",
+      thumbnail: "https://img.youtube.com/vi/1QV1hZ7c68Y/maxresdefault.jpg",
+      videoId: "PL4z8h611VJ3CFbklGo60rhejqprcMHTSx",
+      tag: "Playlist"
     },
     {
       id: 3,
-      title: "Topper's Revision Secret",
-      views: "22k",
-      duration: "10:15",
-      thumbnail: "https://img.youtube.com/vi/Ta7gKIxxya0/maxresdefault.jpg",
-      videoId: "Ta7gKIxxya0",
-      tag: "Tips"
+      title: "Crack GATE in First Attempt",
+      views: "250k+",
+      duration: "45:20",
+      thumbnail: "https://img.youtube.com/vi/Vv9lARk4vcs/maxresdefault.jpg",
+      videoId: "Vv9lARk4vcs",
+      tag: "Strategy"
     }
   ];
 
@@ -365,10 +365,10 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
                         return (
                            <motion.div
                               key={video.id}
-                              className="absolute w-72 bg-white rounded-2xl p-2.5 shadow-2xl cursor-pointer border border-white/10"
+                              className="absolute w-80 bg-white rounded-3xl p-3 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] cursor-pointer border border-white/10 transition-shadow"
                               style={{
-                                  left: 'calc(50% - 9rem)',
-                                  top: 'calc(50% - 6rem)',
+                                  left: 'calc(50% - 10rem)',
+                                  top: 'calc(50% - 7.5rem)',
                               }}
                               initial={{ opacity: 0, x: 100, y: 0 }}
                               animate={{ 
@@ -581,7 +581,9 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
                    <iframe 
                       width="100%" 
                       height="100%" 
-                      src={`https://www.youtube.com/embed/${selectedVideo}?autoplay=1`} 
+                      src={selectedVideo?.startsWith('PL') 
+                        ? `https://www.youtube.com/embed?listType=playlist&list=${selectedVideo}&autoplay=1` 
+                        : `https://www.youtube.com/embed/${selectedVideo}?autoplay=1`}
                       title="YouTube video player" 
                       frameBorder="0" 
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
