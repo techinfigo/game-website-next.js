@@ -31,7 +31,7 @@ const WinnerChoiceSection: React.FC = () => {
         { label: "METHOD", value: "VISUALIZED" },
         { label: "RETENTION", value: "95%+" }
       ],
-      image: "/winners-methodology.jpg",
+      image: "/winners-methodology.png",
       icon: GraduationCap
     },
     {
