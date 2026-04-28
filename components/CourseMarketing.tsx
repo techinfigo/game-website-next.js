@@ -32,7 +32,7 @@ const CourseMarketing: React.FC = () => {
 
   return (
     <section className="relative w-full bg-slate-900 overflow-hidden">
-      <div className="relative w-full aspect-[1.8/1] md:aspect-[2.5/1] lg:aspect-[3.5/1] max-h-[440px]">
+      <div className="relative w-full aspect-[2/1] md:aspect-[3/1] lg:aspect-[4/1] max-h-[400px]">
         <AnimatePresence initial={false} custom={currentIndex}>
           <motion.img
             key={currentIndex}
@@ -47,20 +47,24 @@ const CourseMarketing: React.FC = () => {
         </AnimatePresence>
 
         {/* Navigation Arrows */}
-        <button 
-          onClick={prevSlide}
-          className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full backdrop-blur-sm transition-colors z-10"
-          aria-label="Previous slide"
-        >
-          <ChevronLeft size={24} />
-        </button>
-        <button 
-          onClick={nextSlide}
-          className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full backdrop-blur-sm transition-colors z-10"
-          aria-label="Next slide"
-        >
-          <ChevronRight size={24} />
-        </button>
+        <div className="absolute inset-y-0 left-4 flex items-center z-10">
+          <button 
+            onClick={prevSlide}
+            className="bg-black/30 hover:bg-black/50 text-white p-3 rounded-full backdrop-blur-sm transition-colors"
+            aria-label="Previous slide"
+          >
+            <ChevronLeft size={24} />
+          </button>
+        </div>
+        <div className="absolute inset-y-0 right-4 flex items-center z-10">
+          <button 
+            onClick={nextSlide}
+            className="bg-black/30 hover:bg-black/50 text-white p-3 rounded-full backdrop-blur-sm transition-colors"
+            aria-label="Next slide"
+          >
+            <ChevronRight size={24} />
+          </button>
+        </div>
 
         {/* Dots Indicators */}
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">

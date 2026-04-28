@@ -270,7 +270,7 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
                                             <a 
                                               href="https://www.youtube.com/@gblions" 
                                               target="_blank" 
-                                              className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 group/chan transition-all border border-transparent hover:border-slate-100"
+                                              className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 group/chan transition-all border border-slate-100 hover:border-slate-100"
                                             >
                                               <div className="w-8 h-8 rounded-lg bg-red-100 flex items-center justify-center text-red-600 group-hover/chan:bg-red-600 group-hover/chan:text-white transition-colors">
                                                 <Youtube size={16} />
@@ -445,18 +445,22 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
         {/* Navigation Controls */}
         {slides.length > 1 && (
            <>
-              <button 
-                 onClick={prevSlide}
-                 className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white z-20 transition-all"
-              >
-                 <ChevronLeft size={24} />
-              </button>
-              <button 
-                 onClick={nextSlide}
-                 className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white z-20 transition-all"
-              >
-                 <ChevronRight size={24} />
-              </button>
+              <div className="absolute inset-y-0 left-4 flex items-center z-20">
+                <button 
+                   onClick={prevSlide}
+                   className="w-10 h-10 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-all"
+                >
+                   <ChevronLeft size={24} />
+                </button>
+              </div>
+              <div className="absolute inset-y-0 right-4 flex items-center z-20">
+                <button 
+                   onClick={nextSlide}
+                   className="w-10 h-10 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-all"
+                >
+                   <ChevronRight size={24} />
+                </button>
+              </div>
               
               <div className="flex justify-center gap-2 mt-6 absolute bottom-6 left-1/2 -translate-x-1/2 z-20">
                  {slides.map((_, idx) => (
