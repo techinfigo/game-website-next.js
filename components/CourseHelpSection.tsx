@@ -38,10 +38,10 @@ const CourseHelpSection: React.FC = () => {
       icon: Target,
       bgGradient: "from-[#b48e0b] to-[#8c6d09]",
       images: [
-        "/images/ui/exam-edge-1.png",
-        "/images/ui/exam-edge-2.png",
-        "/images/ui/exam-edge-3.png",
-        "/images/ui/exam-edge-4.png"
+        "/exam-edge-1.png",
+        "/exam-edge-2.png",
+        "/exam-edge-3.png",
+        "exam-edge-4.png"
       ]
     },
     {
