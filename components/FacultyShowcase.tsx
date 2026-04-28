@@ -101,7 +101,7 @@ const FacultyShowcase: React.FC = () => {
                    <div className="absolute top-0 left-4 w-[60%] h-[380px] z-20">
                       <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden shadow-2xl border-[8px] border-white transform -rotate-2 hover:rotate-0 transition-all duration-500 group">
                          <Image 
-                            src="/about-faculty-front.jpg" 
+                            src="/about-faculty-front.jpeg" 
                             fill
                             priority
                             unoptimized
@@ -130,7 +130,7 @@ const FacultyShowcase: React.FC = () => {
                 <div className="lg:hidden flex flex-col gap-6 mt-8">
                    <div className="relative w-full aspect-[4/5] rounded-[2rem] overflow-hidden shadow-xl border-4 border-white">
                       <Image 
-                        src="/about-faculty-front.jpg" 
+                        src="/about-faculty-front.jpeg" 
                         fill
                         unoptimized
                         className="object-cover"

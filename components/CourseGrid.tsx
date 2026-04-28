@@ -395,9 +395,9 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
                             animate={{ opacity: 1, y: 0 }}
                             className="snap-start h-full shrink-0 w-[calc(100%-1rem)] md:w-[calc(50%-12px)] flex"
                           >
-                            <div className="group relative bg-white rounded-[2.5rem] border-2 border-slate-200/60 overflow-hidden transition-all duration-700 w-full min-h-[460px] md:min-h-[480px] flex flex-col md:flex-row ring-1 ring-slate-900/5 hover:border-gameTeal/30 cursor-pointer">
+                            <div className="group relative bg-white rounded-[2.5rem] border-2 border-slate-200/60 overflow-hidden transition-all duration-700 w-full min-h-[380px] md:min-h-[400px] flex flex-col md:flex-row ring-1 ring-slate-900/5 hover:border-gameTeal/30 cursor-pointer">
                               {/* LEFT SECTION: Visuals & Highlights */}
-                              <div className="w-full md:w-1/2 flex flex-col relative overflow-hidden bg-slate-100 border-b md:border-b-0 md:border-r border-slate-200 min-h-[250px] md:min-h-full">
+                              <div className="w-full md:w-1/2 flex flex-col relative overflow-hidden bg-slate-100 border-b md:border-b-0 md:border-r border-slate-200 min-h-[220px] md:min-h-full">
                                   {/* Image with Overlay */}
                                   <div className="absolute inset-0 overflow-hidden">
                                       <Image 
@@ -418,123 +418,122 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
                                       </div>
 
                                       {/* Vertical Highlights */}
-                                      <div className="absolute top-20 left-5 space-y-4 z-20">
+                                      <div className="absolute top-16 left-5 space-y-3 z-20">
                                           <div className="flex items-center gap-3 group/item">
-                                              <div className="w-9 h-9 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shrink-0 transition-all group-hover:bg-gameTeal group-hover:scale-110">
-                                                  <MessageSquare size={16} />
+                                              <div className="w-8 h-8 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shrink-0 transition-all group-hover:bg-gameTeal group-hover:scale-110">
+                                                  <MessageSquare size={14} />
                                               </div>
                                               <span className="text-[10px] font-black text-white uppercase tracking-tight opacity-0 group-hover:opacity-100 transition-opacity">Student's feedback</span>
                                           </div>
                                           <div className="flex items-center gap-3 group/item">
-                                              <div className="w-9 h-9 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shrink-0 transition-all group-hover:bg-gameTeal group-hover:scale-110">
-                                                  <Trophy size={16} />
+                                              <div className="w-8 h-8 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shrink-0 transition-all group-hover:bg-gameTeal group-hover:scale-110">
+                                                  <Trophy size={14} />
                                               </div>
                                               <span className="text-[10px] font-black text-white uppercase tracking-tight opacity-0 group-hover:opacity-100 transition-opacity">Selection (Results)</span>
                                           </div>
                                           <div className="flex items-center gap-3 group/item">
-                                              <div className="w-9 h-9 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shrink-0 transition-all group-hover:bg-gameTeal group-hover:scale-110">
-                                                  <PlayCircle size={16} />
+                                              <div className="w-8 h-8 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shrink-0 transition-all group-hover:bg-gameTeal group-hover:scale-110">
+                                                  <PlayCircle size={14} />
                                               </div>
                                               <span className="text-[10px] font-black text-white uppercase tracking-tight opacity-0 group-hover:opacity-100 transition-opacity">Live & Recorded</span>
                                           </div>
                                       </div>
 
-                                      {/* Bottom Action Area (Price & Button) */}
-                                      <div className="absolute bottom-0 left-0 right-0 p-5 z-20 bg-gradient-to-t from-slate-950 to-transparent">
-                                          <div className="flex items-center justify-between gap-4">
-                                              <div className="flex flex-col bg-white/10 backdrop-blur-xl px-4 py-2 rounded-2xl border border-white/20">
-                                                  <span className="text-[9px] font-black text-white/50 line-through tracking-widest uppercase mb-0.5">
-                                                      {course.originalPrice}
-                                                  </span>
-                                                  <span className="text-2xl font-black text-white tracking-tighter leading-none">
-                                                      {course.price}
-                                                  </span>
-                                              </div>
-
-                                              <button 
-                                                className="flex-1 py-3.5 rounded-xl bg-[#f2c537] text-black font-black text-[11px] uppercase tracking-[0.2em] hover:bg-white transition-all duration-500 flex items-center justify-center gap-2 shadow-xl"
-                                              >
-                                                Enroll Now <ChevronRight size={16} strokeWidth={3} />
-                                              </button>
+                                      {/* Bottom Action Area (Price Only) */}
+                                      <div className="absolute bottom-4 left-5 z-20">
+                                          <div className="flex items-baseline gap-3 bg-white/10 backdrop-blur-xl px-4 py-2 rounded-2xl border border-white/20 shadow-2xl">
+                                              <span className="text-2xl font-black text-white tracking-tighter leading-none">
+                                                  {course.price}
+                                              </span>
+                                              <span className="text-[11px] font-black text-[#f2c537] line-through tracking-widest uppercase opacity-90">
+                                                  {course.originalPrice}
+                                              </span>
                                           </div>
                                       </div>
                                   </div>
                               </div>
   
                               {/* RIGHT SECTION: Course Details */}
-                              <div className="w-full md:w-1/2 p-5 md:p-6 flex flex-col bg-white relative">
+                              <div className="w-full md:w-1/2 p-4 md:p-5 flex flex-col bg-white relative">
                                   {/* Section divider hint */}
-                                  <div className="hidden md:block absolute -left-1 text-slate-100 z-10 font-black text-[80px] pointer-events-none opacity-20">/</div>
+                                  <div className="hidden md:block absolute -left-1 text-slate-100 z-10 font-black text-[60px] pointer-events-none opacity-20">/</div>
                                   
                                   <div className="relative z-10 flex flex-col h-full">
                                       {/* Top Row */}
-                                      <div className="flex justify-between items-center mb-2">
-                                           <div className="px-4 py-2 rounded-2xl bg-gameTeal text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-lg shadow-gameTeal/30 border border-white/10">
+                                      <div className="flex justify-between items-center mb-1.5">
+                                           <div className="px-3 py-1.5 rounded-xl bg-gameTeal text-white text-[9px] font-black uppercase tracking-[0.2em] shadow-lg shadow-gameTeal/30 border border-white/10">
                                               {course.category.split(' ')[0]} Branch
                                            </div>
-                                           <div className="flex items-center gap-2 bg-gameGold/5 px-3 py-1.5 rounded-xl border border-gameGold/10">
+                                           <div className="flex items-center gap-1.5 bg-gameGold/5 px-2 py-1 rounded-xl border border-gameGold/10">
                                               <div className="flex gap-0.5">
                                                  {[1,2,3].map(i => (
-                                                   <Star key={i} size={12} className="text-gameGold fill-gameGold" />
+                                                   <Star key={i} size={10} className="text-gameGold fill-gameGold" />
                                                  ))}
                                               </div>
-                                              <span className="text-[10px] font-black text-gameGold uppercase tracking-tighter">Premium</span>
+                                              <span className="text-[9px] font-black text-gameGold uppercase tracking-tighter">Premium</span>
                                            </div>
                                       </div>
       
-                                      <h3 className="text-lg md:text-xl font-black text-slate-900 mb-1.5 leading-[1.1] tracking-tight group-hover:text-gameTeal transition-colors duration-300">
+                                      <h3 className="text-md md:text-lg font-black text-slate-900 mb-1 leading-[1.1] tracking-tight group-hover:text-gameTeal transition-colors duration-300">
                                          {course.title}
                                       </h3>
 
-                                      <div className="flex flex-col gap-1.5 mb-2.5">
-                                          <div className="flex items-center gap-3 bg-gameTeal/5 p-2 rounded-xl border border-gameTeal/10">
-                                              <div className="w-2 h-2 rounded-full bg-gameTeal shadow-[0_0_8px_rgba(7,93,99,0.6)]"></div>
-                                              <p className="text-xs font-bold text-slate-700">
-                                                  <span className="text-gameTeal/60 font-black uppercase text-[9px] tracking-wider">Exam:</span> {course.category}
+                                      <div className="flex flex-col gap-1 mb-2">
+                                          <div className="flex items-center gap-2.5 bg-gameTeal/5 p-1.5 rounded-xl border border-gameTeal/10">
+                                              <div className="w-1.5 h-1.5 rounded-full bg-gameTeal shadow-[0_0_8px_rgba(7,93,99,0.6)]"></div>
+                                              <p className="text-[11px] font-bold text-slate-700">
+                                                  <span className="text-gameTeal/60 font-black uppercase text-[8px] tracking-wider">Exam:</span> {course.category}
                                               </p>
                                           </div>
-                                          <div className="flex items-center gap-3 bg-slate-50 p-2 rounded-xl border border-slate-100">
-                                              <div className="w-2 h-2 rounded-full bg-slate-400"></div>
-                                              <p className="text-xs font-bold text-slate-700">
-                                                  <span className="text-slate-400 font-black uppercase text-[9px] tracking-wider">Target:</span> {course.eligibility}
+                                          <div className="flex items-center gap-2.5 bg-slate-50 p-1.5 rounded-xl border border-slate-100">
+                                              <div className="w-1.5 h-1.5 rounded-full bg-slate-400"></div>
+                                              <p className="text-[11px] font-bold text-slate-700">
+                                                  <span className="text-slate-400 font-black uppercase text-[8px] tracking-wider">Target:</span> {course.eligibility}
                                               </p>
                                           </div>
                                       </div>
       
                                       {/* Features Grid - Bento Style */}
-                                      <div className="grid grid-cols-3 gap-2 mb-3">
-                                          <div className="p-2.5 rounded-2xl bg-slate-50 border border-slate-100 text-center transition-all hover:bg-gameTeal/5 hover:border-gameTeal/30 group/feat">
-                                              <Clock size={16} className="text-gameTeal mx-auto mb-1.5 transition-transform group-hover/feat:scale-110" />
-                                              <span className="text-[10px] font-black text-slate-900 block leading-tight">{course.duration}</span>
+                                      <div className="grid grid-cols-3 gap-1.5 mb-2.5">
+                                          <div className="p-2 rounded-2xl bg-slate-50 border border-slate-100 text-center transition-all hover:bg-gameTeal/5 hover:border-gameTeal/30 group/feat">
+                                              <Clock size={14} className="text-gameTeal mx-auto mb-1 transition-transform group-hover/feat:scale-110" />
+                                              <span className="text-[9px] font-black text-slate-900 block leading-tight">{course.duration}</span>
                                           </div>
-                                          <div className="p-3 rounded-2xl bg-slate-50 border border-slate-100 text-center transition-all hover:bg-gameTeal/5 hover:border-gameTeal/30 group/feat">
-                                              <Globe size={16} className="text-gameTeal mx-auto mb-1.5 transition-transform group-hover/feat:scale-110" />
-                                              <span className="text-[10px] font-black text-slate-900 block leading-tight">Hinglish</span>
+                                          <div className="p-2 rounded-2xl bg-slate-50 border border-slate-100 text-center transition-all hover:bg-gameTeal/5 hover:border-gameTeal/30 group/feat">
+                                              <Globe size={14} className="text-gameTeal mx-auto mb-1 transition-transform group-hover/feat:scale-110" />
+                                              <span className="text-[9px] font-black text-slate-900 block leading-tight">Hinglish</span>
                                           </div>
-                                          <div className="p-3 rounded-2xl bg-slate-50 border border-slate-100 text-center transition-all hover:bg-gameTeal/5 hover:border-gameTeal/30 group/feat">
-                                              <Users size={16} className="text-gameTeal mx-auto mb-1.5 transition-transform group-hover/feat:scale-110" />
-                                              <span className="text-[10px] font-black text-slate-900 block leading-tight">1:1 Mentors</span>
+                                          <div className="p-2 rounded-2xl bg-slate-50 border border-slate-100 text-center transition-all hover:bg-gameTeal/5 hover:border-gameTeal/30 group/feat">
+                                              <Users size={14} className="text-gameTeal mx-auto mb-1 transition-transform group-hover/feat:scale-110" />
+                                              <span className="text-[9px] font-black text-slate-900 block leading-tight">1:1 Mentors</span>
                                           </div>
                                       </div>
 
                                       {/* Includes List - Aligned vertically in 1 column */}
-                                      <div className="flex flex-col gap-2.5 mb-4 bg-slate-50/50 p-3 rounded-2xl border border-slate-100">
+                                      <div className="flex flex-col gap-1.5 mb-3 bg-slate-50/50 p-2.5 rounded-2xl border border-slate-100">
                                           {[
                                               "1200+ hrs Content",
                                               "Test & Assignments",
                                               "24/7 Support",
                                               "Tech + Non Tech"
                                           ].map((item, i) => (
-                                              <div key={i} className="flex items-center gap-3">
-                                                  <div className="w-6 h-6 rounded-lg bg-gameTeal/10 flex items-center justify-center shrink-0 border border-gameTeal/20">
-                                                      <CheckCircle2 size={14} className="text-gameTeal" strokeWidth={3} />
+                                              <div key={i} className="flex items-center gap-2">
+                                                  <div className="w-5 h-5 rounded-lg bg-gameTeal/10 flex items-center justify-center shrink-0 border border-gameTeal/20">
+                                                      <CheckCircle2 size={12} className="text-gameTeal" strokeWidth={3} />
                                                   </div>
-                                                  <span className="text-sm font-bold text-slate-700">{item}</span>
+                                                  <span className="text-xs font-bold text-slate-700">{item}</span>
                                               </div>
                                           ))}
                                       </div>
       
-                                      {/* Bottom Area is now empty as action moved to left side */}
+                                      {/* Action Button */}
+                                      <div className="mt-auto pt-3">
+                                          <button 
+                                            className="w-full py-2 rounded-xl bg-[#075d63] text-white font-black text-[9px] uppercase tracking-[0.2em] hover:bg-[#f2c537] hover:text-black transition-all duration-500 flex items-center justify-center gap-2 shadow-lg shadow-gameTeal/10 border border-gameTeal/10"
+                                          >
+                                            Enroll Now <ChevronRight size={12} strokeWidth={3} />
+                                          </button>
+                                      </div>
                                   </div>
                               </div>
                             </div>
