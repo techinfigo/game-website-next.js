@@ -50,7 +50,7 @@ const CourseMarketing: React.FC = () => {
         <div className="absolute inset-y-0 left-4 flex items-center z-10">
           <button 
             onClick={prevSlide}
-            className="bg-black/30 hover:bg-black/50 text-white p-3 rounded-full backdrop-blur-sm transition-colors"
+            className="bg-black/30 hover:bg-black/50 text-white p-3 rounded-full backdrop-blur-sm transition-colors translate-y-1"
             aria-label="Previous slide"
           >
             <ChevronLeft size={24} />
@@ -59,7 +59,7 @@ const CourseMarketing: React.FC = () => {
         <div className="absolute inset-y-0 right-4 flex items-center z-10">
           <button 
             onClick={nextSlide}
-            className="bg-black/30 hover:bg-black/50 text-white p-3 rounded-full backdrop-blur-sm transition-colors"
+            className="bg-black/30 hover:bg-black/50 text-white p-3 rounded-full backdrop-blur-sm transition-colors translate-y-1"
             aria-label="Next slide"
           >
             <ChevronRight size={24} />

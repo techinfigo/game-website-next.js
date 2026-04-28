@@ -234,7 +234,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
                       <div className="absolute inset-0 border-[4px] border-white/5 rounded-[2.5rem] pointer-events-none group-hover:border-white/20 transition-colors z-[3]"></div>
 
                       {/* Content */}
-                      <div className="absolute inset-0 p-4 pb-2.5 flex flex-col z-[10]">
+                      <div className="absolute inset-0 p-4 pb-6 flex flex-col z-[10]">
                          
                          {/* Floating Logo Placeholder */}
                          <div className="relative w-12 h-12 mb-3 overflow-hidden flex items-center justify-center p-2 rounded-2xl transition-all">
@@ -247,7 +247,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
                             />
                          </div>
 
-                         <div className="mt-auto transform translate-y-[70px] group-hover:translate-y-[10px] transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]">
+                         <div className="mt-auto transform translate-y-[70px] group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]">
                             <h3 className="text-xl md:text-2xl font-black text-white mb-1 tracking-tight drop-shadow-lg leading-tight transition-all">
                                {item.title}
                             </h3>

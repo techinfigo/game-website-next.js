@@ -448,7 +448,7 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
               <div className="absolute inset-y-0 left-4 flex items-center z-20">
                 <button 
                    onClick={prevSlide}
-                   className="w-10 h-10 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-all"
+                   className="w-10 h-10 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-all translate-y-1"
                 >
                    <ChevronLeft size={24} />
                 </button>
@@ -456,7 +456,7 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
               <div className="absolute inset-y-0 right-4 flex items-center z-20">
                 <button 
                    onClick={nextSlide}
-                   className="w-10 h-10 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-all"
+                   className="w-10 h-10 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-all translate-y-1"
                 >
                    <ChevronRight size={24} />
                 </button>
