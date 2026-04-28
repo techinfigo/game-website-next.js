@@ -156,24 +156,72 @@ const CourseHelpSection: React.FC = () => {
                    </div>
 
                    {/* Image Collage Content */}
-                   <div className="flex-1 relative hidden md:flex items-center justify-center">
-                      <div className="relative w-full max-w-[340px] aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-white/10 group-hover:scale-105 transition-transform duration-700 grid grid-cols-2 grid-rows-2 gap-1">
-                         {feature.images.map((img, i) => (
-                           <div key={i} className="relative w-full h-full">
-                              <Image 
-                                src={img} 
-                                alt={`${feature.title} collage ${i}`} 
-                                fill
-                                className="object-cover"
-                                referrerPolicy="no-referrer"
-                              />
-                           </div>
-                         ))}
-                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 pointer-events-none"></div>
+                   <div className="flex-1 relative hidden md:flex items-center justify-center p-4">
+                      <div className="relative w-full max-w-[400px] aspect-square group-hover:scale-105 transition-transform duration-700">
                          
+                         {/* Image 1: Main Large */}
+                         <motion.div 
+                            whileHover={{ zIndex: 50, scale: 1.1 }}
+                            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                            className="absolute top-0 left-0 w-[60%] h-[60%] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 z-10 transform -rotate-2 cursor-pointer"
+                         >
+                            <Image 
+                              src={feature.images[0]} 
+                              alt={`${feature.title} 1`} 
+                              fill
+                              className="object-cover"
+                              referrerPolicy="no-referrer"
+                            />
+                         </motion.div>
+
+                         {/* Image 2: Support Top Right */}
+                         <motion.div 
+                            whileHover={{ zIndex: 50, scale: 1.1 }}
+                            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                            className="absolute top-[5%] right-0 w-[45%] h-[45%] rounded-2xl overflow-hidden shadow-xl border-2 border-white/10 z-[5] transform rotate-3 cursor-pointer"
+                         >
+                            <Image 
+                              src={feature.images[1]} 
+                              alt={`${feature.title} 2`} 
+                              fill
+                              className="object-cover"
+                              referrerPolicy="no-referrer"
+                            />
+                         </motion.div>
+
+                         {/* Image 3: Support Bottom Left */}
+                         <motion.div 
+                            whileHover={{ zIndex: 50, scale: 1.1 }}
+                            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                            className="absolute bottom-[5%] left-[5%] w-[40%] h-[40%] rounded-2xl overflow-hidden shadow-lg border-2 border-white/10 z-[8] transform rotate-1 cursor-pointer"
+                         >
+                            <Image 
+                              src={feature.images[2]} 
+                              alt={`${feature.title} 3`} 
+                              fill
+                              className="object-cover"
+                              referrerPolicy="no-referrer"
+                            />
+                         </motion.div>
+
+                         {/* Image 4: Main Bottom Right */}
+                         <motion.div 
+                            whileHover={{ zIndex: 50, scale: 1.1 }}
+                            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                            className="absolute bottom-0 right-[5%] w-[55%] h-[55%] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/30 z-[12] transform -rotate-1 cursor-pointer"
+                         >
+                            <Image 
+                              src={feature.images[3]} 
+                              alt={`${feature.title} 4`} 
+                              fill
+                              className="object-cover"
+                              referrerPolicy="no-referrer"
+                            />
+                         </motion.div>
+
                          {/* Floating Badge for Exam-Edge style */}
                          {feature.id === 2 && (
-                           <div className="absolute bottom-6 left-6 bg-black text-[#f2c537] text-[10px] font-bold px-4 py-2 rounded-full shadow-xl z-20 flex items-center gap-2 border border-white/10">
+                           <div className="absolute bottom-10 -right-4 bg-black text-[#f2c537] text-[10px] font-bold px-4 py-2 rounded-full shadow-2xl z-20 flex items-center gap-2 border border-white/10 whitespace-nowrap">
                              <Target size={12} /> Top 5% Rank
                            </div>
                          )}
