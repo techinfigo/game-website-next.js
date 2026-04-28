@@ -41,7 +41,7 @@ const CourseHelpSection: React.FC = () => {
         "/exam-edge-1.png",
         "/exam-edge-2.png",
         "/exam-edge-3.png",
-        "exam-edge-4.png"
+        "/exam-edge-4.png"
       ]
     },
     {
@@ -54,10 +54,10 @@ const CourseHelpSection: React.FC = () => {
       icon: Laptop,
       bgGradient: "from-[#053d41] to-[#075d63]",
       images: [
-        "/images/ui/flexi-learn-1.png",
-        "/images/ui/flexi-learn-2.png",
-        "/images/ui/flexi-learn-3.png",
-        "/images/ui/flexi-learn-4.png"
+        "/flexi-learn-1.png",
+        "/flexi-learn-2.png",
+        "/flexi-learn-3.png",
+        "/flexi-learn-4.png"
       ]
     },
     {
@@ -70,10 +70,10 @@ const CourseHelpSection: React.FC = () => {
       icon: Users,
       bgGradient: "from-[#8c6d09] to-[#b48e0b]",
       images: [
-        "/images/ui/success-support-1.png",
-        "/images/ui/success-support-2.png",
-        "/images/ui/success-support-3.png",
-        "/images/ui/success-support-4.png"
+        "/success-support-1.png",
+        "/success-support-2.png",
+        "/success-support-3.png",
+        "/success-support-4.png"
       ]
     }
   ];
