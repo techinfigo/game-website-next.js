@@ -213,7 +213,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
                    className="min-w-[240px] md:min-w-[260px] snap-center group pointer-events-auto"
                 >
                    {/* Container - Bit more rounded rounded-[3rem] */}
-                   <div className="relative h-[260px] md:h-[280px] rounded-[2rem] overflow-hidden bg-slate-900 border border-slate-200/10 transition-all duration-500 isolate">
+                   <div className="relative h-[300px] md:h-[320px] rounded-[2.5rem] overflow-hidden bg-slate-900 border border-slate-200/10 transition-all duration-500 isolate">
                       
                       {/* Background Image */}
                       <Image 
@@ -221,33 +221,37 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
                          alt={item.title} 
                          fill
                          draggable="false"
-                         className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-1000 grayscale group-hover:grayscale-0"
+                         className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-50 group-hover:scale-110 transition-all duration-1000 grayscale group-hover:grayscale-0"
                          referrerPolicy="no-referrer"
                       />
                       
                       {/* Gradient Overlays */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                      <div className="absolute inset-0 border-[4px] border-white/5 rounded-[2rem] pointer-events-none group-hover:border-gameGold/20 transition-colors"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-[1]"></div>
+                      
+                      {/* Hover Pulse Gradient */}
+                      <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gameTeal/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-[2]"></div>
+                      
+                      <div className="absolute inset-0 border-[4px] border-white/5 rounded-[2.5rem] pointer-events-none group-hover:border-white/20 transition-colors z-[3]"></div>
 
                       {/* Content */}
                       <div className="absolute inset-0 p-4 pb-5 flex flex-col">
                          
                          {/* Floating Logo Placeholder */}
-                         <div className="relative w-24 h-12 mb-2 overflow-hidden flex items-center justify-center p-2 bg-white/10 backdrop-blur-md rounded-xl group-hover:bg-white transition-all border border-white/20">
+                         <div className="relative w-12 h-12 mb-3 overflow-hidden flex items-center justify-center p-2 bg-white/10 backdrop-blur-md rounded-2xl group-hover:bg-white transition-all border border-white/20">
                             <Image 
                               src={item.logo} 
                               alt={`${item.title} Logo`} 
                               fill
-                              className="object-contain p-1"
+                              className="object-contain p-1.5"
                               unoptimized
                             />
                          </div>
 
-                         <div className="mt-auto">
-                            <h3 className="text-xl font-black text-white mb-0.5 tracking-tight drop-shadow-lg leading-tight">
+                         <div className="mt-auto transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]">
+                            <h3 className="text-xl md:text-2xl font-black text-white mb-1 tracking-tight drop-shadow-lg leading-tight transition-all">
                                {item.title}
                             </h3>
-                            <p className="text-white/60 text-[8px] font-black uppercase tracking-[0.15em] mb-2 line-clamp-1">
+                            <p className="text-white/60 text-[9px] font-black uppercase tracking-[0.2em] mb-5 line-clamp-1 transition-all group-hover:text-white/90">
                                {item.subtitle}
                             </p>
                             
@@ -259,11 +263,11 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
                                       e.preventDefault();
                                       return;
                                     }
-                                    handleNavigate('courses');
+                                    handleNavigate(item.action);
                                   }}
-                                  className="w-full bg-[#f2c537] text-black py-2 rounded-xl font-black text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-white transition-all shadow-xl active:scale-[0.98]"
+                                  className="w-full bg-[#f2c537] text-black py-3 rounded-xl font-black text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-white transition-all shadow-xl active:scale-[0.98]"
                                 >
-                                   Explore <ChevronRight size={12} />
+                                   Explore More <ChevronRight size={14} />
                                 </button>
                             </div>
                          </div>
