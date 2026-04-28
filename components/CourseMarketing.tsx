@@ -32,7 +32,7 @@ const CourseMarketing: React.FC = () => {
 
   return (
     <section className="relative w-full bg-slate-900 overflow-hidden">
-      <div className="relative w-full aspect-[21/9] md:aspect-[4/1] lg:aspect-[5/1] max-h-[350px]">
+      <div className="relative w-full aspect-[1.8/1] md:aspect-[2.5/1] lg:aspect-[3.5/1] max-h-[440px]">
         <AnimatePresence initial={false} custom={currentIndex}>
           <motion.img
             key={currentIndex}

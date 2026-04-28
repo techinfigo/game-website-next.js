@@ -527,9 +527,9 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
                                       </div>
       
                                       {/* Action Button */}
-                                      <div className="mt-auto pt-3">
+                                      <div className="mt-auto pt-2">
                                           <button 
-                                            className="w-full py-2 rounded-xl bg-[#075d63] text-white font-black text-[9px] uppercase tracking-[0.2em] hover:bg-[#f2c537] hover:text-black transition-all duration-500 flex items-center justify-center gap-2 shadow-lg shadow-gameTeal/10 border border-gameTeal/10"
+                                            className="w-full py-1.5 rounded-xl bg-[#075d63] text-white font-black text-[9px] uppercase tracking-[0.15em] hover:bg-[#f2c537] hover:text-black transition-all duration-500 flex items-center justify-center gap-2 shadow-lg shadow-gameTeal/10 border border-gameTeal/10"
                                           >
                                             Enroll Now <ChevronRight size={12} strokeWidth={3} />
                                           </button>
