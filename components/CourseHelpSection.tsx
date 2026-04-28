@@ -72,7 +72,7 @@ const CourseHelpSection: React.FC = () => {
       images: [
         "/success-support-1.png",
         "/success-support-2.png",
-        "/success-support-3.png",
+        "/success-support-3.jpg",
         "/success-support-4.png"
       ]
     }
