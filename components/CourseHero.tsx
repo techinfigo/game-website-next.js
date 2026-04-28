@@ -155,7 +155,7 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
   };
 
   return (
-    <section className={`relative ${isSection ? 'py-8' : 'pt-10 pb-8'} overflow-hidden bg-[#075d63] min-h-[380px] flex flex-col justify-center`}>
+    <section className={`relative ${isSection ? 'py-8' : 'pt-10 pb-8'} overflow-hidden bg-[#075d63] min-h-[440px] flex flex-col justify-center`}>
       
       {/* Dynamic Backgrounds */}
       <AnimatePresence mode="wait">
