@@ -47,27 +47,22 @@ const FreeStudyMaterial: React.FC = () => {
              viewport={{ once: true }}
            >
               <div className="relative bg-white p-3 rounded-[2rem] shadow-[0_20px_50px_-15px_rgba(7,93,99,0.1)] border border-slate-100 group transition-all duration-500">
-                 <div className="relative w-[240px] md:w-[280px] aspect-[4/5] rounded-[1.5rem] overflow-hidden bg-slate-900 border-2 border-white shadow-inner">
+                 <div className="relative w-[240px] md:w-[280px] aspect-[2/3] rounded-[1.5rem] overflow-hidden bg-slate-900 border-2 border-white shadow-inner">
                     <Image
                        src="/knowledge-pitara.png"
                        alt="Knowledge Pitara"
                        fill
                        unoptimized
-                       className="object-cover opacity-70 group-hover:scale-105 transition-transform duration-700"
+                       className="object-cover group-hover:scale-105 transition-transform duration-700"
                        referrerPolicy="no-referrer"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-gameTealDark/90 via-transparent to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-gameTealDark/40 via-transparent to-transparent"></div>
                     
                     <div className="absolute top-4 left-4 right-4 flex justify-between items-start">
                        <span className="bg-gameGold text-black text-[8px] font-black uppercase px-2 py-0.5 rounded shadow-lg">100% FREE</span>
                        <div className="w-8 h-8 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20">
                           <BookOpen size={14} className="text-white" />
                        </div>
-                    </div>
-
-                    <div className="absolute bottom-4 left-4 right-4 text-left">
-                       <p className="text-gameGold font-black text-[10px] uppercase tracking-[0.2em] mb-0.5">Knowledge</p>
-                       <h3 className="text-2xl font-black text-white leading-tight uppercase tracking-tight">Pitara</h3>
                     </div>
                  </div>
                  
