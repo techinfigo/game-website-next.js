@@ -395,9 +395,9 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
                             animate={{ opacity: 1, y: 0 }}
                             className="snap-start h-full shrink-0 w-[calc(100%-1rem)] md:w-[calc(50%-12px)] flex"
                           >
-                            <div className="group relative bg-white rounded-[2.5rem] border-2 border-slate-200/60 overflow-hidden transition-all duration-700 w-full min-h-[380px] md:min-h-[400px] flex flex-col md:flex-row ring-1 ring-slate-900/5 hover:border-gameTeal/30 cursor-pointer">
+                            <div className="group relative bg-white rounded-[2.5rem] border-2 border-slate-200/60 overflow-hidden transition-all duration-700 w-full h-full flex flex-col md:flex-row ring-1 ring-slate-900/5 hover:border-gameTeal/30 cursor-pointer">
                               {/* LEFT SECTION: Visuals & Highlights */}
-                              <div className="w-full md:w-1/2 flex flex-col relative overflow-hidden bg-slate-100 border-b md:border-b-0 md:border-r border-slate-200 min-h-[220px] md:min-h-full">
+                               <div className="w-full md:w-1/2 flex flex-col relative overflow-hidden bg-slate-100 border-b md:border-b-0 md:border-r border-slate-200 min-h-[240px] md:min-h-0 md:h-auto">
                                   {/* Image with Overlay */}
                                   <div className="absolute inset-0 overflow-hidden">
                                       <Image 
@@ -474,7 +474,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
                                            </div>
                                       </div>
       
-                                      <h3 className="text-md md:text-lg font-black text-slate-900 mb-1 leading-[1.1] tracking-tight group-hover:text-gameTeal transition-colors duration-300">
+                                      <h3 className="text-md md:text-lg font-black text-slate-900 mb-1 leading-[1.1] tracking-tight group-hover:text-gameTeal transition-colors duration-300 min-h-[2.2em] line-clamp-2">
                                          {course.title}
                                       </h3>
 

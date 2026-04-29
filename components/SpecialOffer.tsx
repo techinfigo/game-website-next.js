@@ -102,7 +102,7 @@ const SpecialOffer: React.FC = () => {
                 </div>
 
                 {/* Group Student Image */}
-                <div className="relative z-10 rounded-[2.5rem] overflow-hidden border-8 border-white/5 shadow-2xl w-[260px] md:w-[340px] aspect-[4/5]">
+                <div className="relative z-10 rounded-[2.5rem] overflow-hidden border-8 border-white/5 shadow-2xl w-[320px] md:w-[440px] aspect-square">
                    <Image 
                       src="/special-offer-banner.png" 
                       alt="Special Offer" 

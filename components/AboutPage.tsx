@@ -626,11 +626,11 @@ const AboutPage: React.FC = () => {
         </div>
         <div className="flex overflow-hidden group">
           <motion.div 
-            className="flex items-center gap-16 whitespace-nowrap px-8"
+            className="flex items-center gap-12 md:gap-20 whitespace-nowrap px-8"
             animate={{ x: isMarqueePaused ? undefined : ["0%", "-50%"] }}
             transition={{ 
               x: {
-                duration: 40, 
+                duration: 50, 
                 repeat: Infinity, 
                 ease: "linear",
               }
@@ -638,10 +638,33 @@ const AboutPage: React.FC = () => {
           >
             {[...Array(2)].map((_, i) => (
               <React.Fragment key={i}>
-                {["ONGC", "ISRO", "NTPC", "BARC", "DRDO", "L&T", "BHEL", "TATA PROJECTS", "SAIL", "GAIL", "IOCL", "BPCL", "CIL", "BEL", "NHAI", "RVNL"].map((company) => (
-                  <span key={company} className="text-xl md:text-3xl font-black text-white/20 hover:text-gameGold transition-all duration-300 cursor-default tracking-tighter select-none uppercase">
-                    {company}
-                  </span>
+                {[
+                  { name: "ONGC", logo: "https://picsum.photos/seed/ongc/200/200" },
+                  { name: "ISRO", logo: "https://picsum.photos/seed/isro/200/200" },
+                  { name: "NTPC", logo: "https://picsum.photos/seed/ntpc/200/200" },
+                  { name: "BARC", logo: "https://picsum.photos/seed/barc/200/200" },
+                  { name: "DRDO", logo: "https://picsum.photos/seed/drdo/200/200" },
+                  { name: "L&T", logo: "https://picsum.photos/seed/lt/200/200" },
+                  { name: "BHEL", logo: "https://picsum.photos/seed/bhel/200/200" },
+                  { name: "TATA PROJECTS", logo: "https://picsum.photos/seed/tata/200/200" },
+                  { name: "SAIL", logo: "https://picsum.photos/seed/sail/200/200" },
+                  { name: "GAIL", logo: "https://picsum.photos/seed/gail/200/200" },
+                  { name: "IOCL", logo: "https://picsum.photos/seed/iocl/200/200" },
+                  { name: "BPCL", logo: "https://picsum.photos/seed/bpcl/200/200" },
+                  { name: "CIL", logo: "https://picsum.photos/seed/cil/200/200" },
+                  { name: "BEL", logo: "https://picsum.photos/seed/bel/200/200" },
+                  { name: "NHAI", logo: "https://picsum.photos/seed/nhai/200/200" },
+                  { name: "RVNL", logo: "https://picsum.photos/seed/rvnl/200/200" }
+                ].map((company, idx) => (
+                  <div key={`${company.name}-${idx}`} className="relative w-16 md:w-24 h-16 md:h-24 flex items-center justify-center transition-all duration-500 cursor-default px-2">
+                    <Image
+                      src={company.logo}
+                      alt={company.name}
+                      fill
+                      className="object-contain"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
                 ))}
               </React.Fragment>
             ))}
