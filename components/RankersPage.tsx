@@ -33,7 +33,7 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "AIR 1 - GATE 2024",
     category: "GATE",
     description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
-    image: "/ranker-lg-1.png",
+    image: "https://picsum.photos/seed/rk1/400/500",
   },
   {
     id: "2",
@@ -41,7 +41,7 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "AIR 51 - UPSC CSE 2021",
     category: "UPSC",
     description: "The structured roadmap at GAME Academy kept me focused through all stages of CSE.",
-    image: "/ranker-lg-2.png",
+    image: "https://picsum.photos/seed/rk2/400/500",
   },
   {
     id: "3",
@@ -49,14 +49,14 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "AIR 15 - ESE 2023",
     category: "ESE",
     description: "ESE requires consistency. Mentorship here is exceptional.",
-    image: "/ranker-lg-3.png",
+    image: "https://picsum.photos/seed/rk3/400/500",
   },
   {
     id: "4",
     name: "Vikram Malhotra",
     designation: "Selected - ONGC",
     category: "PSU",
-    image: "/ranker-lg-4.png",
+    image: "https://picsum.photos/seed/rk4/400/500",
   }
 ];
 
@@ -69,7 +69,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Mechanical Engineering",
     selectionYear: "2022",
     category: "UPSC/IAS",
-    image: "/ranker-rk-5.png"
+    image: "https://picsum.photos/seed/jk1/400/500"
   },
   {
     id: "j2",
@@ -79,7 +79,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Civil Engineering",
     selectionYear: "2023",
     category: "ESE",
-    image: "/ranker-rk-6.png"
+    image: "https://picsum.photos/seed/jk2/400/500"
   },
   {
     id: "j3",
@@ -89,7 +89,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Mechanical Engineering",
     selectionYear: "2021",
     category: "ISRO",
-    image: "/ranker-rk-7.png"
+    image: "https://picsum.photos/seed/jk3/400/500"
   },
   {
     id: "j4",
@@ -99,7 +99,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Mechanical Engineering",
     selectionYear: "2022",
     category: "PSU/GATE",
-    image: "/ranker-rk-8.png"
+    image: "https://picsum.photos/seed/jk4/400/500"
   }
 ];
 
@@ -364,7 +364,7 @@ const RankersPage: React.FC = () => {
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-gameTeal selection:text-white -mt-20">
       
       {/* PREMIUM HERO SECTION - HEIGHT OPTIMIZED & VISIBILITY FIXED */}
-      <section className="relative pt-32 pb-10 lg:pt-40 lg:pb-14 overflow-hidden bg-[#0f1115] text-white">
+      <section className="relative pt-44 pb-14 lg:pt-56 lg:pb-20 overflow-hidden bg-[#0f1115] text-white">
          
          {/* Background Effects */}
          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gameTeal/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
@@ -399,7 +399,7 @@ const RankersPage: React.FC = () => {
                      {[1,2,3,4,5].map(i => (
                         <div key={i} className="relative w-10 h-10 rounded-full border-2 border-[#0f1115] bg-slate-800 overflow-hidden shadow-2xl">
                            <Image 
-                                  src={`/achiever-${i}.png`} 
+                                  src={`https://picsum.photos/seed/achiever${i}/100/100`} 
                                   alt="Achiever" 
                                   fill
                                   className="object-cover" 
@@ -414,38 +414,15 @@ const RankersPage: React.FC = () => {
          </div>
       </section>
 
-      {/* SECTION 1: Spotlight on our Rankers - HEIGHT OPTIMIZED */}
-      <section className="py-6 lg:py-8 bg-slate-200 relative overflow-hidden border-b border-slate-100">
-         <div className="max-w-[1280px] mx-auto px-8 mb-4 text-center">
-            <h2 className="text-2xl md:text-3xl font-black text-gameTeal">
-               Spotlight on our Rankers
+      {/* SECTION 1: Toppers Showcase / Featured Rankers - Detailed Profiles */}
+      <section className="py-10 lg:py-16 bg-gameTealDark relative overflow-hidden">
+         <div className="max-w-[1280px] mx-auto px-8 mb-8 text-center">
+            <h2 className="text-3xl md:text-5xl font-black text-white mb-4 tracking-tight">
+               Toppers Showcase / <span className="text-gameGold">Featured Rankers</span>
             </h2>
-         </div>
-
-         <div className="max-w-full mx-auto relative z-10">
-            {loading ? (
-               <div className="max-w-[1280px] mx-auto px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {[...Array(4)].map((_, i) => <RankerSkeleton key={i} />)}
-               </div>
-            ) : rankers.length > 0 ? (
-               <div className="space-y-2">
-                  <MarqueeRow items={row1} direction="left" speed={70} />
-                  <MarqueeRow items={row2} direction="right" speed={70} />
-               </div>
-            ) : (
-               <div className="max-w-[1280px] mx-auto px-8 text-center pt-10">
-                  <EmptyState onClear={() => {}} />
-               </div>
-            )}
-         </div>
-      </section>
-
-      {/* SECTION 2: Gaurav Sir's Students in Reputed Jobs Website - HEIGHT OPTIMIZED */}
-      <section className="py-6 lg:py-8 bg-gameTealDark relative overflow-hidden">
-         <div className="max-w-[1280px] mx-auto px-8 mb-4 text-center">
-            <h2 className="text-2xl md:text-3xl font-black text-white">
-               Gaurav Sir's Students in Reputed Jobs Website
-            </h2>
+            <p className="text-teal-50/70 font-bold max-w-2xl mx-auto text-sm md:text-base uppercase tracking-widest leading-relaxed">
+               Celebrating our students who secured positions in prestigious government organisations and PSUs through their exceptional performance in technical examinations.
+            </p>
          </div>
 
          <div className="max-w-full mx-auto relative z-10">
@@ -454,11 +431,40 @@ const RankersPage: React.FC = () => {
                   {[...Array(4)].map((_, i) => <RankerSkeleton key={i} />)}
                </div>
             ) : jobRankers.length > 0 ? (
-               <div className="space-y-2">
-                  <MarqueeRow items={row3} direction="left" speed={70} cardType="job" />
-                  <MarqueeRow items={row4} direction="right" speed={70} cardType="job" />
+               <div className="space-y-4">
+                  <MarqueeRow items={row3} direction="left" speed={60} cardType="job" />
+                  <MarqueeRow items={row4} direction="right" speed={60} cardType="job" />
                </div>
             ) : null}
+         </div>
+      </section>
+
+      {/* SECTION 2: Results Carousel / Slider - Wide Array of Success */}
+      <section className="py-10 lg:py-16 bg-slate-200 relative overflow-hidden border-b border-slate-300">
+         <div className="max-w-[1280px] mx-auto px-8 mb-8 text-center">
+            <h2 className="text-3xl md:text-5xl font-black text-gameTeal mb-4 tracking-tight">
+               Results Carousel / <span className="text-slate-900">Slider</span>
+            </h2>
+            <p className="text-slate-500 font-bold max-w-2xl mx-auto text-sm md:text-base uppercase tracking-widest leading-relaxed">
+               A panoramic view of our high achievers across GATE, ESE, and other technical streams, showcasing a consistent legacy of excellence.
+            </p>
+         </div>
+
+         <div className="max-w-full mx-auto relative z-10">
+            {loading ? (
+               <div className="max-w-[1280px] mx-auto px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {[...Array(4)].map((_, i) => <RankerSkeleton key={i} />)}
+               </div>
+            ) : rankers.length > 0 ? (
+               <div className="space-y-4">
+                  <MarqueeRow items={row1} direction="left" speed={70} />
+                  <MarqueeRow items={row2} direction="right" speed={70} />
+               </div>
+            ) : (
+               <div className="max-w-[1280px] mx-auto px-8 text-center pt-10">
+                  <EmptyState onClear={() => {}} />
+               </div>
+            )}
          </div>
       </section>
 

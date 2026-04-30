@@ -100,7 +100,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       eligibility: "BE/B.Tech",
       features: ["ISRO Syllabus", "Previous Papers", "Interview Guidance"],
       tag: "TARGET BATCH",
-      tagColor: "bg-blue-900 text-white",
+      tagColor: "bg-[#075d63] text-white",
       price: "Rs. 8,999",
       originalPrice: "Rs. 15,000",
       discount: "40% OFF",
@@ -118,7 +118,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       eligibility: "GATE Qualified",
       features: ["Scientific Concepts", "Research Methodology", "Interview Focus"],
       tag: "SCIENTIFIC OFFICER",
-      tagColor: "bg-teal-700 text-white",
+      tagColor: "bg-[#075d63] text-white",
       price: "Rs. 10,500",
       originalPrice: "Rs. 18,000",
       discount: "42% OFF",
@@ -138,7 +138,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       eligibility: "Graduates",
       features: ["Technical + HR", "Group Discussions", "Aptitude"],
       tag: "JOB ORIENTED",
-      tagColor: "bg-orange-600 text-white",
+      tagColor: "bg-[#f2c537] text-black",
       price: "Rs. 14,999",
       originalPrice: "Rs. 25,000",
       discount: "40% OFF",
@@ -176,7 +176,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       eligibility: "Civil Engineers",
       features: ["RCC, Steel, Surveying", "Short Notes", "Doubt Sessions"],
       tag: "LIVE NOW",
-      tagColor: "bg-emerald-600 text-white",
+      tagColor: "bg-[#075d63] text-white",
       price: "Rs. 12,999",
       originalPrice: "Rs. 20,000",
       discount: "35% OFF",
@@ -216,7 +216,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       eligibility: "B.Tech Civil",
       features: ["State Specific GK", "Hindi Language", "Technical Core"],
       tag: "STATE GOVT",
-      tagColor: "bg-purple-600 text-white",
+      tagColor: "bg-[#075d63] text-white",
       price: "Rs. 11,999",
       originalPrice: "Rs. 18,000",
       discount: "33% OFF",
@@ -265,7 +265,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
     catId === 'All' ? allCourses.length : allCourses.filter(c => c.category === catId).length;
 
   return (
-    <section id="course-grid" className="pt-4 pb-8 relative min-h-[400px] bg-slate-300">
+    <section id="course-grid" className="pt-4 pb-8 relative min-h-[400px] bg-slate-400">
        
        <style>{`
           .thin-scrollbar::-webkit-scrollbar {
@@ -298,7 +298,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
        <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-14 relative z-10">
           
           {/* CONTROL BAR */}
-          <div className="bg-white rounded-2xl shadow-lg shadow-slate-200/50 border border-slate-100 p-2.5 mb-4 flex flex-col lg:flex-row items-center justify-between gap-6 relative z-20">
+          <div className="bg-white rounded-2xl border border-slate-100 p-2.5 mb-4 flex flex-col lg:flex-row items-center justify-between gap-6 relative z-20">
              
              {/* Tabs */}
              <div className="flex overflow-x-auto thin-scrollbar w-full lg:w-auto gap-4 pb-6 lg:pb-0 items-center">
@@ -395,9 +395,9 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
                             animate={{ opacity: 1, y: 0 }}
                             className="snap-start h-full shrink-0 w-[calc(100%-1rem)] md:w-[calc(50%-12px)] flex"
                           >
-                            <div className="group relative bg-white rounded-[2.5rem] border-2 border-slate-200/60 overflow-hidden transition-all duration-700 w-full h-full flex flex-col md:flex-row ring-1 ring-slate-900/5 hover:border-gameTeal/30 cursor-pointer">
+                            <div className="group relative bg-white rounded-[2.5rem] border-2 border-slate-200/60 overflow-hidden transition-all duration-700 w-full h-full flex flex-col md:flex-row items-stretch ring-1 ring-slate-900/5 hover:border-gameTeal/30 cursor-pointer">
                               {/* LEFT SECTION: Visuals & Highlights */}
-                               <div className="w-full md:w-1/2 flex flex-col relative overflow-hidden bg-slate-100 border-b md:border-b-0 md:border-r border-slate-200 min-h-[240px] md:min-h-0 md:h-auto">
+                               <div className="w-full md:w-1/2 flex flex-col relative overflow-hidden bg-gray-200 border-b md:border-b-0 md:border-r border-slate-200 min-h-[240px] md:min-h-[400px]">
                                   {/* Image with Overlay */}
                                   <div className="absolute inset-0 overflow-hidden">
                                       <Image 
@@ -412,7 +412,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
                                       
                                       {/* Floating Badge */}
                                       <div className="absolute top-5 left-5 z-20">
-                                         <span className={`text-[10px] font-black px-3 py-2 rounded-xl shadow-2xl uppercase tracking-widest ${course.tagColor} border border-white/10 backdrop-blur-md`}>
+                                         <span className={`text-[10px] font-black px-3 py-2 rounded-xl uppercase tracking-widest ${course.tagColor} border border-white/10 backdrop-blur-md`}>
                                             {course.tag}
                                          </span>
                                       </div>
@@ -441,7 +441,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
 
                                       {/* Bottom Action Area (Price Only) */}
                                       <div className="absolute bottom-4 left-5 z-20">
-                                          <div className="flex items-baseline gap-3 bg-white/10 backdrop-blur-xl px-4 py-2 rounded-2xl border border-white/20 shadow-2xl">
+                                          <div className="flex items-baseline gap-3 bg-white/10 backdrop-blur-xl px-4 py-2 rounded-2xl border border-white/20">
                                               <span className="text-2xl font-black text-white tracking-tighter leading-none">
                                                   {course.price}
                                               </span>
@@ -461,26 +461,26 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
                                   <div className="relative z-10 flex flex-col h-full">
                                       {/* Top Row */}
                                       <div className="flex justify-between items-center mb-1.5">
-                                           <div className="px-3 py-1.5 rounded-xl bg-gameTeal text-white text-[9px] font-black uppercase tracking-[0.2em] shadow-lg shadow-gameTeal/30 border border-white/10">
+                                           <div className="px-3 py-1.5 rounded-xl bg-gameTeal text-white text-[9px] font-black uppercase tracking-[0.2em] border border-white/10">
                                               {course.category.split(' ')[0]} Branch
                                            </div>
-                                           <div className="flex items-center gap-1.5 bg-gameGold/5 px-2 py-1 rounded-xl border border-gameGold/10">
+                                           <div className="flex items-center gap-1.5 bg-gameGold/15 px-2 py-1 rounded-xl border border-gameGold/30">
                                               <div className="flex gap-0.5">
                                                  {[1,2,3].map(i => (
-                                                   <Star key={i} size={10} className="text-gameGold fill-gameGold" />
+                                                   <Star key={i} size={10} className="text-gameGoldDark fill-gameGoldDark" />
                                                  ))}
                                               </div>
-                                              <span className="text-[9px] font-black text-gameGold uppercase tracking-tighter">Premium</span>
+                                              <span className="text-[9px] font-black text-gameGoldDark uppercase tracking-tighter">Premium</span>
                                            </div>
                                       </div>
       
-                                      <h3 className="text-md md:text-lg font-black text-slate-900 mb-1 leading-[1.1] tracking-tight group-hover:text-gameTeal transition-colors duration-300 min-h-[2.2em] line-clamp-2">
+                                      <h3 className="text-md md:text-lg font-black text-slate-900 py-3 leading-[1.1] tracking-tight group-hover:text-gameTeal transition-colors duration-300 line-clamp-2">
                                          {course.title}
                                       </h3>
 
                                       <div className="flex flex-col gap-1 mb-2">
                                           <div className="flex items-center gap-2.5 bg-gameTeal/5 p-1.5 rounded-xl border border-gameTeal/10">
-                                              <div className="w-1.5 h-1.5 rounded-full bg-gameTeal shadow-[0_0_8px_rgba(7,93,99,0.6)]"></div>
+                                              <div className="w-1.5 h-1.5 rounded-full bg-gameTeal"></div>
                                               <p className="text-[11px] font-bold text-slate-700">
                                                   <span className="text-gameTeal/60 font-black uppercase text-[8px] tracking-wider">Exam:</span> {course.category}
                                               </p>
@@ -529,7 +529,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
                                       {/* Action Button */}
                                       <div className="mt-auto pt-2">
                                           <button 
-                                            className="w-full py-1.5 rounded-xl bg-[#075d63] text-white font-black text-[9px] uppercase tracking-[0.15em] hover:bg-[#f2c537] hover:text-black transition-all duration-500 flex items-center justify-center gap-2 shadow-lg shadow-gameTeal/10 border border-gameTeal/10"
+                                            className="w-full py-1.5 rounded-xl bg-[#075d63] text-white font-black text-[9px] uppercase tracking-[0.15em] hover:bg-[#f2c537] hover:text-black transition-all duration-500 flex items-center justify-center gap-2 border border-gameTeal/10"
                                           >
                                             Enroll Now <ChevronRight size={12} strokeWidth={3} />
                                           </button>
@@ -547,7 +547,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
                            const el = document.getElementById("course-row-0");
                            if (el) el.scrollBy({ left: -400, behavior: 'smooth' });
                         }}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 rounded-full bg-white shadow-xl border border-slate-200 flex items-center justify-center text-gameTeal opacity-0 group-hover/row:opacity-100 transition-opacity z-40 hover:bg-gameTeal hover:text-white"
+                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center text-gameTeal opacity-0 group-hover/row:opacity-100 transition-opacity z-40 hover:bg-gameTeal hover:text-white"
                      >
                         <ChevronRight size={24} className="rotate-180" />
                      </button>
@@ -556,7 +556,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
                            const el = document.getElementById("course-row-0");
                            if (el) el.scrollBy({ left: 400, behavior: 'smooth' });
                         }}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 rounded-full bg-white shadow-xl border border-slate-200 flex items-center justify-center text-gameTeal opacity-0 group-hover/row:opacity-100 transition-opacity z-40 hover:bg-gameTeal hover:text-white"
+                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center text-gameTeal opacity-0 group-hover/row:opacity-100 transition-opacity z-40 hover:bg-gameTeal hover:text-white"
                      >
                         <ChevronRight size={24} />
                      </button>

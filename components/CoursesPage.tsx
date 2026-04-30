@@ -22,7 +22,7 @@ const CoursesPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
+    <div className="min-h-screen bg-slate-400 font-sans text-slate-900">
       
       {/* 1. CourseMarketing (The main Hero/Banner section) */}
       <CourseMarketing />
