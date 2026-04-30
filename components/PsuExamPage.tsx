@@ -18,7 +18,7 @@ const GOVT_RD_FEATURES = [
     tagline: "Build for a Company. Or Build for a Country.",
     imageIdea: "Image Idea: A split-screen visual. Left side: A sleek, minimalist but anonymous office desk with a code editor. Right side: A powerful, wide-angle shot from behind an engineer at dawn, looking up at a majestic rocket on the launch pad, their silhouette small against its grandeur.",
     icon: Rocket,
-    image: "https://picsum.photos/seed/legacy/1200/800"
+    image: "/exams/feature-1.jpg"
   },
   {
     id: 2,
@@ -26,7 +26,7 @@ const GOVT_RD_FEATURES = [
     tagline: "One Career, Infinite Frontiers.",
     imageIdea: "Image Idea: A dynamic, circular infographic morphing between four iconic symbols: a satellite orbit transforming into a double-helix DNA strand, morphing into a composite material weave, and then into a cybersecurity shield. All is contained within the silhouette of India's map.",
     icon: Cpu,
-    image: "https://picsum.photos/seed/cuttingedge/1200/800"
+    image: "/exams/feature-2.jpg"
   },
   {
     id: 3,
@@ -34,7 +34,7 @@ const GOVT_RD_FEATURES = [
     tagline: "The Nation's Most Critical Problems Need Your Genius.",
     imageIdea: "Image Idea: An intense, close-up shot of a young scientist's eyes, reflected in the visor of a space helmet or the screen of a radar console. In the reflection, we see not their face, but the abstract visual of a successful missile interception or a satellite deployment.",
     icon: Brain,
-    image: "https://picsum.photos/seed/sovereign/1200/800"
+    image: "/exams/feature-3.jpg"
   },
   {
     id: 4,
@@ -42,7 +42,7 @@ const GOVT_RD_FEATURES = [
     tagline: "In a World of Noise, Focus on the Mission.",
     imageIdea: "Image Idea: A serene, time-lapse shot. In the foreground, a researcher in a lab coat calmly takes notes, bathed in steady light. Outside the window behind them, a dynamic cityscape with stock market graphs flashes and changes rapidly, but the researcher's world remains focused and undisturbed.",
     icon: Shield,
-    image: "https://picsum.photos/seed/stability/1200/800"
+    image: "/exams/feature-4.jpg"
   },
   {
     id: 5,
@@ -50,7 +50,7 @@ const GOVT_RD_FEATURES = [
     tagline: "Stand on the Shoulders of Giants. And Let Others Stand on Yours.",
     imageIdea: "Image Idea: A powerful, low-angle group shot. Not posing, but caught in a moment of collaborative triumph—a diverse team of young and senior scientists in a control room, all looking up at a large successful data screen, one senior scientist with a hand on a young recruit's shoulder.",
     icon: Users,
-    image: "https://picsum.photos/seed/teamwork/1200/800"
+    image: "/exams/feature-5.jpg"
   }
 ];
 
@@ -109,7 +109,6 @@ export default function PsuExamPage() {
 
       {/* GOVT R&D SECTION */}
       <section className="py-24 lg:py-32 bg-white relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] pointer-events-none"></div>
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-20 gap-8">
             <motion.div
@@ -227,7 +226,7 @@ export default function PsuExamPage() {
                 id: 1,
                 title: "1- The Best of Both Worlds: Professional Success and Personal Fulfilment.",
                 tagline: "Clean, dual-tone colour scheme (deep blue for trust/prestige, and vibrant orange for energy/reward).",
-                image: "https://picsum.photos/seed/psu-1/800/600",
+                image: "/exams/psu-1.jpg",
                 icon: Gem,
                 color: "bg-gameTeal"
               },
@@ -235,7 +234,7 @@ export default function PsuExamPage() {
                 id: 2,
                 title: "2- Be at the Forefront of National Growth.",
                 tagline: "Cinematic, inspiring, and grand. Emphasises scale and professional growth.",
-                image: "https://picsum.photos/seed/psu-2/800/600",
+                image: "/exams/psu-2.jpg",
                 icon: TrendingUp,
                 color: "bg-gameGoldDark"
               },
@@ -243,7 +242,7 @@ export default function PsuExamPage() {
                 id: 3,
                 title: "3- Accelerated Growth & Premium Rewards.",
                 tagline: "Visually rich and 3D. Metallic accents to denote premium value and success.",
-                image: "https://picsum.photos/seed/psu-3/800/600",
+                image: "/exams/psu-3.jpg",
                 icon: Wallet,
                 color: "bg-gameGold"
               },
@@ -251,7 +250,7 @@ export default function PsuExamPage() {
                 id: 4,
                 title: "4- A Universe of Opportunities Under One Roof.",
                 tagline: "Vibrant but organised. Shows diversity rooted in industrial solidity.",
-                image: "https://picsum.photos/seed/psu-4/800/600",
+                image: "/exams/psu-4.jpg",
                 icon: Landmark,
                 color: "bg-gameBlack"
               },
@@ -259,7 +258,7 @@ export default function PsuExamPage() {
                 id: 5,
                 title: "5- Work-Life Harmony with Substance.",
                 tagline: "Warm, authentic, and relatable. Focus on genuine sense of fulfilment.",
-                image: "https://picsum.photos/seed/psu-5/800/600",
+                image: "/exams/psu-5.jpg",
                 icon: Heart,
                 color: "bg-rose-500"
               }
@@ -454,8 +453,6 @@ export default function PsuExamPage() {
                viewport={{ once: true }}
                className="bg-gameBlack rounded-[5rem] p-10 lg:p-24 overflow-hidden relative group shadow-2xl"
             >
-              <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-15"></div>
-              
               <div className="relative z-10 text-center max-w-5xl mx-auto">
                 <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-2xl bg-gameTeal text-white font-black text-[11px] uppercase tracking-[0.2em] mb-12 shadow-lg shadow-gameTeal/20">
                   <Shield size={16} /> Defence Innovation Leader

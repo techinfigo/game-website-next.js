@@ -34,7 +34,7 @@ const FreeStudyMaterial: React.FC = () => {
     <section className="py-6 md:py-8 bg-slate-50 overflow-hidden relative">
       {/* Background Polish */}
       <div className="absolute top-0 right-0 w-80 h-80 bg-gameTeal/5 rounded-full blur-[80px] pointer-events-none translate-x-1/4 -translate-y-1/4"></div>
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.02] pointer-events-none"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-[0.02] pointer-events-none"></div>
 
       <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">

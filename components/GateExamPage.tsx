@@ -871,7 +871,7 @@ const GateExamPage: React.FC = () => {
       <section className="relative pt-20 pb-20 lg:pt-24 lg:pb-24 overflow-hidden bg-black text-white">
          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gameTeal/10 rounded-full blur-[120px] pointer-events-none"></div>
          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gameGold/5 rounded-full blur-[100px] pointer-events-none"></div>
-         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:24px_24px] opacity-10"></div>
 
          <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10 text-center">
             <motion.div
@@ -1020,7 +1020,7 @@ const GateExamPage: React.FC = () => {
 
       {/* HALL OF FAME / VIDEO TESTIMONIALS SECTION - UPDATED SPACING */}
       <section id="gate-hall-of-fame" className="py-12 bg-gameBlack text-white relative scroll-mt-32 overflow-hidden border-t border-white/5">
-         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+         <div className="absolute inset-0 bg-[radial-gradient(#ffffff10_1px,transparent_1px)] bg-[size:20px_20px] opacity-10"></div>
          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gameTeal/10 rounded-full blur-[100px] pointer-events-none"></div>
 
          <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10">
@@ -1201,7 +1201,7 @@ const GateExamPage: React.FC = () => {
                className="mt-32 p-1 bg-gradient-to-r from-transparent via-gameTeal/20 to-transparent rounded-[4rem]"
             >
                <div className="bg-[#075d63] p-10 md:p-16 rounded-[3.8rem] flex flex-col md:flex-row items-center justify-between gap-12 border border-white/10 shadow-3xl overflow-hidden relative">
-                  <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+                  <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:24px_24px] opacity-10"></div>
                   <div className="relative z-10 text-center md:text-left">
                      <h4 className="text-3xl md:text-5xl font-black text-white mb-4 tracking-tighter">Your technical future is waiting.</h4>
                      <p className="text-teal-50/70 font-bold text-lg">Initialize your preparation with India&apos;s most structured roadmap.</p>
@@ -2046,7 +2046,7 @@ const GateExamPage: React.FC = () => {
                         
                         <div className="flex gap-4">
                            <img 
-                              src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
+                              src="/images/badges/google-play-badge.svg" 
                               alt="Google Play" 
                               className="h-14 cursor-pointer hover:scale-105 transition-transform" 
                            />

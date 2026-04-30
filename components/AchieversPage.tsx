@@ -253,7 +253,7 @@ const MobilePhoneFrame = React.memo(({ children }: { children: React.ReactNode }
 const AchieversCTA = React.memo(() => (
   <section className="py-12 lg:py-16 bg-gameTealDark relative overflow-hidden">
      {/* Subtle background texture/pattern */}
-     <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 pointer-events-none"></div>
+     <div className="absolute inset-0 bg-slate-900/50 opacity-10 pointer-events-none"></div>
      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05)_0%,transparent_70%)] pointer-events-none"></div>
      
      <div className="max-w-[1080px] mx-auto px-8 md:px-10 lg:px-12 text-center relative z-10">
@@ -384,7 +384,7 @@ const AchieversPage: React.FC<AchieversPageProps> = () => {
          {/* Background Effects */}
          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gameTeal/10 rounded-full blur-[120px] pointer-events-none"></div>
          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gameGold/5 rounded-full blur-[100px] pointer-events-none"></div>
-         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+         <div className="absolute inset-0 bg-slate-900/50 opacity-10"></div>
 
          <div className="max-w-[1200px] mx-auto relative z-10 text-center">
             <motion.div

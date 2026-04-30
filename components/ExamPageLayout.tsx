@@ -50,7 +50,7 @@ const ExamPageLayout: React.FC<ExamPageProps> = ({ hero, overview, features, pat
       
       {/* 1. Hero Section */}
       <section className={`relative pt-10 pb-12 overflow-hidden text-white ${hero.bgGradient}`}>
-         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:32px_32px] opacity-10"></div>
          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-white/10 rounded-full blur-[120px] pointer-events-none"></div>
          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-black/10 rounded-full blur-[100px] pointer-events-none"></div>
 

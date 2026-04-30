@@ -670,7 +670,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       <section className="relative pt-16 pb-20 overflow-hidden bg-black text-white">
          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gameTeal/10 rounded-full blur-[120px] pointer-events-none"></div>
          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gameGold/5 rounded-full blur-[100px] pointer-events-none"></div>
-         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+         <div className="absolute inset-0 bg-slate-900/50"></div>
 
          <div className="max-w-[1200px] mx-auto px-8 md:px-10 lg:px-12 relative z-10 text-center">
             <motion.div

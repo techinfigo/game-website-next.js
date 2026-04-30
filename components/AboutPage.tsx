@@ -317,7 +317,7 @@ const AboutPage: React.FC = () => {
                           exit={{ opacity: 0, scale: 0.95 }}
                           className="w-full h-full bg-gameBlack rounded-[3.5rem] p-12 lg:p-16 relative overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] flex flex-col justify-between border border-white/5"
                         >
-                          <div className="absolute inset-0 bg-graph-paper opacity-[0.03] invert pointer-events-none"></div>
+                          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
                           <div className="absolute -top-24 -right-24 w-64 h-64 bg-gameTeal/10 rounded-full blur-[80px]"></div>
                           <div className="relative z-10 space-y-12">
                               <div><div className="text-gameGold font-black text-5xl mb-2 tracking-tighter">13+ Years</div><p className="text-white font-black text-[10px] uppercase tracking-[0.4em] opacity-50">Teaching Experience</p></div>
@@ -513,7 +513,7 @@ const AboutPage: React.FC = () => {
 
       {/* SECTION 5: OUR APPROACH - DYNAMIC JOURNEY ROADMAP */}
       <section className="relative py-12 lg:py-16 flex flex-col justify-center bg-slate-50 overflow-hidden border-y border-slate-100">
-         <div className="absolute inset-0 bg-graph-paper opacity-[0.03] pointer-events-none"></div>
+         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-[0.03] pointer-events-none"></div>
          <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10 w-full">
             {/* Main Title */}
             <motion.div {...fadeInUp} className="text-center mb-[clamp(1.5rem,4vh,3rem)]">
@@ -639,22 +639,22 @@ const AboutPage: React.FC = () => {
             {[...Array(2)].map((_, i) => (
               <React.Fragment key={i}>
                 {[
-                  { name: "ONGC", logo: "https://picsum.photos/seed/ongc/200/200" },
-                  { name: "ISRO", logo: "https://picsum.photos/seed/isro/200/200" },
-                  { name: "NTPC", logo: "https://picsum.photos/seed/ntpc/200/200" },
-                  { name: "BARC", logo: "https://picsum.photos/seed/barc/200/200" },
-                  { name: "DRDO", logo: "https://picsum.photos/seed/drdo/200/200" },
-                  { name: "L&T", logo: "https://picsum.photos/seed/lt/200/200" },
-                  { name: "BHEL", logo: "https://picsum.photos/seed/bhel/200/200" },
-                  { name: "TATA PROJECTS", logo: "https://picsum.photos/seed/tata/200/200" },
-                  { name: "SAIL", logo: "https://picsum.photos/seed/sail/200/200" },
-                  { name: "GAIL", logo: "https://picsum.photos/seed/gail/200/200" },
-                  { name: "IOCL", logo: "https://picsum.photos/seed/iocl/200/200" },
-                  { name: "BPCL", logo: "https://picsum.photos/seed/bpcl/200/200" },
-                  { name: "CIL", logo: "https://picsum.photos/seed/cil/200/200" },
-                  { name: "BEL", logo: "https://picsum.photos/seed/bel/200/200" },
-                  { name: "NHAI", logo: "https://picsum.photos/seed/nhai/200/200" },
-                  { name: "RVNL", logo: "https://picsum.photos/seed/rvnl/200/200" }
+                  { name: "ONGC", logo: "/rankers/logo-ongc.png" },
+                  { name: "ISRO", logo: "/rankers/logo-isro.png" },
+                  { name: "NTPC", logo: "/rankers/logo-ntpc.png" },
+                  { name: "BARC", logo: "/rankers/logo-barc.png" },
+                  { name: "DRDO", logo: "/rankers/logo-drdo.png" },
+                  { name: "L&T", logo: "/rankers/logo-lt.png" },
+                  { name: "BHEL", logo: "/rankers/logo-bhel.png" },
+                  { name: "TATA PROJECTS", logo: "/rankers/logo-tata.png" },
+                  { name: "SAIL", logo: "/rankers/logo-sail.png" },
+                  { name: "GAIL", logo: "/rankers/logo-gail.png" },
+                  { name: "IOCL", logo: "/rankers/logo-iocl.png" },
+                  { name: "BPCL", logo: "/rankers/logo-bpcl.png" },
+                  { name: "CIL", logo: "/rankers/logo-cil.png" },
+                  { name: "BEL", logo: "/rankers/logo-bel.png" },
+                  { name: "NHAI", logo: "/rankers/logo-nhai.png" },
+                  { name: "RVNL", logo: "/rankers/logo-rvnl.png" }
                 ].map((company, idx) => (
                   <div key={`${company.name}-${idx}`} className="relative w-16 md:w-24 h-16 md:h-24 flex items-center justify-center transition-all duration-500 cursor-default px-2">
                     <Image
@@ -917,7 +917,7 @@ const AboutPage: React.FC = () => {
 
       {/* SECTION 8: EDUCATORS - SPOTLIGHT & CAROUSEL REDESIGN */}
       <section className="relative py-8 lg:py-10 flex flex-col justify-center bg-[#0b0c10] overflow-hidden border-t border-white/5">
-         <div className="absolute inset-0 bg-graph-paper opacity-[0.03] pointer-events-none invert"></div>
+         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-[0.03] pointer-events-none invert"></div>
          <div className="max-w-[1280px] mx-auto px-6 md:px-10 lg:px-12 relative z-10 w-full">
             
             {/* Header Area */}

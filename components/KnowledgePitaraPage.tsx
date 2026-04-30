@@ -3,6 +3,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { 
   Play, BookOpen, Download, Video, FileText, 
   PenTool, Star, Crown, CheckCircle2, Lock, 
@@ -16,6 +17,7 @@ interface BaseResource {
   desc: string;
   icon: any;
   color: string;
+  image?: string;
 }
 
 interface FreeResource extends BaseResource {
@@ -47,7 +49,8 @@ const KnowledgePitaraPage: React.FC = () => {
       desc: "Complete conceptual clarity for beginners.",
       icon: Video,
       color: "bg-[#075d63]/10 text-[#075d63]",
-      action: "Watch Now"
+      action: "Watch Now",
+      image: "/publicknowledge-pitara/video-1.jpg"
     },
     {
       id: 2,
@@ -57,7 +60,8 @@ const KnowledgePitaraPage: React.FC = () => {
       desc: "All mechanical formulas in 20 pages.",
       icon: FileText,
       color: "bg-[#f2c537]/20 text-black",
-      action: "Download PDF"
+      action: "Download PDF",
+      image: "/publicknowledge-pitara/note-1.jpg"
     },
     {
       id: 3,
@@ -91,7 +95,8 @@ const KnowledgePitaraPage: React.FC = () => {
       icon: Crown,
       color: "bg-[#f2c537] text-black",
       price: "Rs. 24,999",
-      tag: "Best Seller"
+      tag: "Best Seller",
+      image: "/publicknowledge-pitara/course-1.jpg"
     },
     {
       id: 102,
@@ -130,7 +135,6 @@ const KnowledgePitaraPage: React.FC = () => {
       
       {/* 1. Hero Banner */}
       <section className="relative pt-4 pb-32 overflow-hidden bg-gradient-to-br from-slate-900 via-[#0f172a] to-slate-900 text-white">
-         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#075d63]/10 rounded-full blur-[120px] pointer-events-none"></div>
 
          <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10">
@@ -265,6 +269,18 @@ const KnowledgePitaraPage: React.FC = () => {
                            </span>
                         )}
                      </div>
+
+                     {item.image && (
+                        <div className="relative w-full h-40 rounded-2xl overflow-hidden mb-6 border border-slate-100">
+                           <Image 
+                              src={item.image} 
+                              alt={item.title} 
+                              fill 
+                              className="object-cover group-hover:scale-105 transition-transform duration-500"
+                              referrerPolicy="no-referrer"
+                           />
+                        </div>
+                     )}
 
                      <div className="mb-6 flex-grow">
                         <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">{item.category}</div>

@@ -114,7 +114,7 @@ const CourseHelpSection: React.FC = () => {
               <div className={`absolute inset-0 bg-gradient-to-br ${feature.bgGradient} opacity-90 transition-opacity duration-500`}></div>
               
               {/* Background Pattern/Noise */}
-              <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-overlay"></div>
+              <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:24px_24px] mix-blend-overlay"></div>
 
               {/* Content Container */}
               <div className="relative h-full w-full p-5 md:p-8 flex overflow-hidden">

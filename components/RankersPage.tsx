@@ -33,7 +33,7 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "AIR 1 - GATE 2024",
     category: "GATE",
     description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
-    image: "https://picsum.photos/seed/rk1/400/500",
+    image: "/rankers/ranker-1.jpg",
   },
   {
     id: "2",
@@ -41,7 +41,7 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "AIR 51 - UPSC CSE 2021",
     category: "UPSC",
     description: "The structured roadmap at GAME Academy kept me focused through all stages of CSE.",
-    image: "https://picsum.photos/seed/rk2/400/500",
+    image: "/rankers/ranker-2.jpg",
   },
   {
     id: "3",
@@ -49,14 +49,14 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "AIR 15 - ESE 2023",
     category: "ESE",
     description: "ESE requires consistency. Mentorship here is exceptional.",
-    image: "https://picsum.photos/seed/rk3/400/500",
+    image: "/rankers/ranker-3.jpg",
   },
   {
     id: "4",
     name: "Vikram Malhotra",
     designation: "Selected - ONGC",
     category: "PSU",
-    image: "https://picsum.photos/seed/rk4/400/500",
+    image: "/rankers/ranker-4.jpg",
   }
 ];
 
@@ -69,7 +69,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Mechanical Engineering",
     selectionYear: "2022",
     category: "UPSC/IAS",
-    image: "https://picsum.photos/seed/jk1/400/500"
+    image: "/rankers/job-1.jpg"
   },
   {
     id: "j2",
@@ -79,7 +79,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Civil Engineering",
     selectionYear: "2023",
     category: "ESE",
-    image: "https://picsum.photos/seed/jk2/400/500"
+    image: "/rankers/job-2.jpg"
   },
   {
     id: "j3",
@@ -89,7 +89,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Mechanical Engineering",
     selectionYear: "2021",
     category: "ISRO",
-    image: "https://picsum.photos/seed/jk3/400/500"
+    image: "/rankers/job-3.jpg"
   },
   {
     id: "j4",
@@ -99,7 +99,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Mechanical Engineering",
     selectionYear: "2022",
     category: "PSU/GATE",
-    image: "https://picsum.photos/seed/jk4/400/500"
+    image: "/rankers/job-4.jpg"
   }
 ];
 
@@ -249,7 +249,6 @@ const EmptyState = React.memo(({ onClear }: { onClear: () => void }) => (
 const RankersCTA = React.memo(() => (
   <section className="py-20 lg:py-24 bg-gameTeal relative overflow-hidden">
     <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_#0b8a91,_transparent)] opacity-40"></div>
-    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
     
     <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10 text-center text-white">
       <motion.div 
@@ -369,7 +368,6 @@ const RankersPage: React.FC = () => {
          {/* Background Effects */}
          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gameTeal/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gameGold/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4 pointer-events-none"></div>
-         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 pointer-events-none"></div>
 
          <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10 text-center">
             <motion.div
@@ -399,7 +397,7 @@ const RankersPage: React.FC = () => {
                      {[1,2,3,4,5].map(i => (
                         <div key={i} className="relative w-10 h-10 rounded-full border-2 border-[#0f1115] bg-slate-800 overflow-hidden shadow-2xl">
                            <Image 
-                                  src={`https://picsum.photos/seed/achiever${i}/100/100`} 
+                                  src={`/rankers/achiever-${i}.jpg`} 
                                   alt="Achiever" 
                                   fill
                                   className="object-cover" 

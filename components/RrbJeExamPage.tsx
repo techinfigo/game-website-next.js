@@ -288,7 +288,7 @@ const RrbJeExamPage: React.FC = () => {
       <section className="relative pt-32 pb-32 overflow-hidden bg-gameBlack text-white">
          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gameTeal/10 rounded-full blur-[120px] pointer-events-none"></div>
          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gameGold/5 rounded-full blur-[100px] pointer-events-none"></div>
-         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:24px_24px] opacity-10"></div>
 
          <div className="max-w-[1200px] mx-auto px-8 md:px-10 lg:px-12 relative z-10 text-center">
             <motion.div
@@ -1151,7 +1151,7 @@ const RrbJeExamPage: React.FC = () => {
 
       {/* 9. FINAL CTA */}
       <section className="py-24 bg-gameTeal text-white relative overflow-hidden">
-         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:24px_24px] opacity-10"></div>
          <div className="max-w-[1080px] mx-auto px-8 md:px-10 lg:px-12 text-center relative z-10">
             <h2 className="text-4xl md:text-5xl font-black mb-8 leading-tight">Your Journey to <br/> Indian Railways Starts Here!</h2>
             <p className="text-slate-100 text-lg mb-12 max-w-2xl mx-auto font-medium">

@@ -125,7 +125,7 @@ const JobUpdatesSection: React.FC<JobUpdatesSectionProps> = ({ onNavigate }) => 
 
   return (
     <section className="py-6 lg:py-8 bg-gameTealDark relative overflow-hidden">
-      <div className="absolute inset-0 bg-graph-paper opacity-[0.03] pointer-events-none invert"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-[0.03] pointer-events-none invert"></div>
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-white/5 rounded-full blur-[140px] pointer-events-none -translate-y-1/2 translate-x-1/4"></div>
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gameGold/10 rounded-full blur-[120px] pointer-events-none translate-y-1/2 -translate-x-1/3"></div>
       

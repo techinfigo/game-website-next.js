@@ -9,7 +9,7 @@ export const keyHighlights = [
     label: "Prestige & Security",
     title: "A Golden Ticket to a Respected & Secure Government Career.",
     desc: "Secure a Group B (Non-Gazetted) position that commands respect in society and provides lifelong stability.",
-    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800&q=80", 
+    image: "/images/exams/security.jpg", 
     icon: Shield,
     color: "text-gameTeal",
     bg: "bg-gameTeal/5"
@@ -18,7 +18,7 @@ export const keyHighlights = [
     label: "Salary & Perks",
     title: "Attractive & Progressive Salary with Fantastic Perks",
     desc: "Enjoy Level-6 pay scale with HRA, DA, medical benefits, and a lifestyle that ensures prosperity for you and your family.",
-    image: "https://images.unsplash.com/photo-1589723900234-453664d4ec18?auto=format&fit=crop&w=800&q=80", 
+    image: "/images/exams/salary.jpg", 
     icon: Wallet,
     color: "text-gameTeal",
     bg: "bg-gameTeal/5"
@@ -27,7 +27,7 @@ export const keyHighlights = [
     label: "Core Sectors",
     title: "Direct Entry into India's Core Infrastructure Sectors",
     desc: "Work on massive national projects like bridges, dams, and modern railways. See your engineering impact in real-time.",
-    image: "https://images.unsplash.com/photo-1503387263359-53b769212261?auto=format&fit=crop&w=800&q=80", 
+    image: "/images/exams/infrastructure.jpg", 
     icon: HardHat,
     color: "text-gameGoldDark",
     bg: "bg-gameGold/5"
@@ -36,7 +36,7 @@ export const keyHighlights = [
     label: "Career Growth",
     title: "Clear & Time-Bound Career Progression to Executive Ranks",
     desc: "Climb the ladder from Junior Engineer to Assistant Engineer, Executive Engineer, and up to Engineer-in-Chief.",
-    image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=800&q=80", 
+    image: "/images/exams/career-growth.jpg", 
     icon: TrendingUp,
     color: "text-gameTeal",
     bg: "bg-gameTeal/5"
@@ -70,7 +70,7 @@ export const sscJeCourses = [
     originalPrice: "Rs. 24,999",
     discount: "40% OFF",
     features: ["Full Syllabus Coverage", "Live & Recorded Classes", "PYQ Analysis", "Test Series Included"],
-    image: "https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?fit=crop&w=800&q=80",
+    image: "/images/courses/sscje-mech.png",
     tag: "Popular"
   },
   {
@@ -80,7 +80,7 @@ export const sscJeCourses = [
     originalPrice: "Rs. 24,999",
     discount: "40% OFF",
     features: ["Full Syllabus Coverage", "Live & Recorded Classes", "PYQ Analysis", "Test Series Included"],
-    image: "https://images.unsplash.com/photo-1498084393753-b411b2d26b34?fit=crop&w=800&q=80",
+    image: "/images/courses/sscje-elec.png",
     tag: "Trending"
   }
 ];
@@ -92,7 +92,7 @@ export const sscJeResults = [
     rank: "AIR 4",
     branch: "Civil",
     quote: "GAME Academy doesn't just teach you subjects; they teach you how to think like an engineer. Best decision of my life.",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?fit=crop&w=200&h=200&q=80"
+    image: "/images/achievers/ananya.png"
   },
   {
     name: "Amit Patel",
@@ -100,7 +100,7 @@ export const sscJeResults = [
     rank: "AIR 12",
     branch: "Electrical",
     quote: "The conceptual clarity I got from Gaurav Sir is unmatched. Every complex topic was broken down into simple parts.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=200&h=200&q=80"
+    image: "/images/achievers/amit.png"
   },
   {
     name: "Rajesh Kumar",
@@ -108,7 +108,7 @@ export const sscJeResults = [
     rank: "AIR 25",
     branch: "Mechanical",
     quote: "The mentorship program kept me on track when I felt lost. It's not just a coaching center, it's a family.",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?fit=crop&w=200&h=200&q=80"
+    image: "/images/achievers/rajesh.png"
   },
   {
     name: "Priya Sharma",
@@ -116,7 +116,7 @@ export const sscJeResults = [
     rank: "AIR 8",
     branch: "Civil",
     quote: "The test series and PYQ analysis provided by GAME were instrumental in my success. Highly recommended!",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?fit=crop&w=200&h=200&q=80"
+    image: "/images/achievers/priya.png"
   }
 ];
 

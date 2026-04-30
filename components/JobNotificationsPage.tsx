@@ -595,7 +595,7 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
         {/* Dynamic Background Elements */}
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gameTeal/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gameGold/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.07] pointer-events-none"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-[0.07] pointer-events-none"></div>
         
         <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
@@ -889,7 +889,7 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
       {/* SECTION 8: FAQ Section - UPDATED BACKGROUND TO THEME COLOR */}
       <section className="py-24 bg-gameTeal text-white relative overflow-hidden border-t border-white/10">
          {/* Background pattern matching other dark sections */}
-         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:24px_24px] opacity-10"></div>
          
          <div className="max-w-[1000px] mx-auto px-8 md:px-10 lg:px-12 relative z-10">
             <div className="text-center mb-16">
@@ -941,7 +941,7 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
 
       {/* FINAL CTA Section - COMPACT */}
       <section className="py-12 lg:py-16 bg-gameTeal text-white relative overflow-hidden">
-         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:24px_24px] opacity-10"></div>
          <div className="max-w-[1080px] mx-auto px-8 md:px-10 lg:px-12 text-center relative z-10">
             <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
                <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#f2c537] text-black text-[10px] font-black uppercase tracking-widest rounded-full mb-4 shadow-lg">

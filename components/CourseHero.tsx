@@ -168,7 +168,7 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
           className="absolute inset-0 z-0"
         >
            <div className={`absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] ${slides[currentSlide].bgGradient}`}></div>
-           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+           <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:24px_24px] opacity-10"></div>
         </motion.div>
       </AnimatePresence>
       

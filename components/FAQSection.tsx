@@ -34,7 +34,7 @@ const FAQSection: React.FC = () => {
   return (
     <section className="py-12 lg:py-16 bg-slate-50 relative overflow-hidden">
       {/* Background Decor */}
-      <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03]"></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-[0.03]"></div>
       
       <div className="max-w-[1200px] mx-auto px-8 md:px-10 lg:px-12 relative z-10">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">

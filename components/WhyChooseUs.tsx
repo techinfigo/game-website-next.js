@@ -32,7 +32,7 @@ const WhyChooseUs: React.FC = () => {
   return (
     <section className="py-16 lg:py-20 bg-white relative overflow-hidden">
       {/* Subtle Background Pattern */}
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03]"></div>
+      <div className="absolute inset-0 bg-slate-50/10"></div>
       
       <div className="max-w-[1200px] mx-auto px-8 md:px-10 lg:px-12 relative z-10">
         

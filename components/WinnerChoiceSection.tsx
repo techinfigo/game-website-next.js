@@ -75,7 +75,7 @@ const WinnerChoiceSection: React.FC = () => {
 
   return (
     <section className="py-12 md:py-16 bg-[#075d63] relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.05] pointer-events-none"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-[0.05] pointer-events-none"></div>
       
       <div className="max-w-[1400px] mx-auto px-8 md:px-10 lg:px-12 relative z-10">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-stretch">

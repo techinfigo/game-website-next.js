@@ -380,7 +380,7 @@ const BlogPage: React.FC = () => {
       
       {/* 1. Hero Section - Premium Teal Gradient */}
       <section className="relative pt-32 pb-20 bg-gradient-to-br from-[#075d63] to-[#043f42] text-white overflow-hidden rounded-b-[3rem] shadow-2xl">
-         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+         <div className="absolute inset-0 bg-slate-900/50 opacity-10"></div>
          <div className="absolute -top-24 -right-24 w-96 h-96 bg-white/10 rounded-full blur-[100px] pointer-events-none"></div>
          <div className="absolute bottom-0 left-0 w-full h-full bg-gradient-to-t from-[#043f42] via-transparent to-transparent opacity-80"></div>
 

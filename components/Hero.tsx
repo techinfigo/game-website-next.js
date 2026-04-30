@@ -70,7 +70,7 @@ const Hero: React.FC = () => {
       {/* Dynamic Decor Elements */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gameTeal/5 rounded-full blur-[100px] pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gameGold/5 rounded-full blur-[80px] pointer-events-none"></div>
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.02] pointer-events-none"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-[0.02] pointer-events-none"></div>
 
       <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10 w-full flex-grow flex flex-col justify-center">
         <div className="grid lg:grid-cols-12 gap-8 items-center min-h-[450px] lg:min-h-[550px]"> 

@@ -98,7 +98,7 @@ const ReferEarn: React.FC = () => {
                    <div className="absolute bottom-0 left-0 w-64 h-64 bg-gameGold/20 rounded-full blur-3xl"></div>
 
                    {/* Pattern */}
-                   <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.1] mix-blend-multiply"></div>
+                   <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-[0.1] mix-blend-multiply"></div>
 
                    {/* Floating Reward Card */}
                    <motion.div 

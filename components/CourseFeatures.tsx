@@ -48,7 +48,7 @@ const CourseFeatures: React.FC = () => {
   return (
     <section className="py-24 bg-white relative overflow-hidden">
        {/* Background Ambience - Light Theme */}
-       <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03]"></div>
+       <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-[0.03]"></div>
        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#075d63]/5 rounded-full blur-[150px] pointer-events-none"></div>
 
        <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10">

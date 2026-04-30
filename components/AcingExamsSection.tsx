@@ -9,7 +9,7 @@ const AcingExamsSection: React.FC = () => {
   return (
     <section className="relative w-full bg-[#075d63] py-9 overflow-hidden">
       {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:20px_20px] opacity-10 pointer-events-none"></div>
       
       <div className="max-w-7xl mx-auto px-8 md:px-10 lg:px-12 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">

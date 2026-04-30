@@ -6,7 +6,7 @@ import { Smartphone } from 'lucide-react';
 const FinalCTA: React.FC = () => {
   return (
     <section className="py-24 bg-gameTeal text-white relative overflow-hidden">
-       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-20"></div>
+       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:24px_24px] opacity-20"></div>
        <div className="max-w-[1080px] mx-auto px-8 md:px-10 lg:px-12 text-center relative z-10">
           <h2 className="text-4xl font-extrabold mb-6">Start Your Journey Today</h2>
           <p className="text-teal-100 text-lg mb-10 max-w-2xl mx-auto">
