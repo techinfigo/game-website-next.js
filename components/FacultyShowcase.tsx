@@ -72,7 +72,7 @@ const FacultyShowcase: React.FC = () => {
                    <div className="absolute top-10 right-0 w-[55%] h-[340px] z-10">
                       <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden shadow-xl border-[6px] border-white transform rotate-3 hover:rotate-0 transition-all duration-500">
                          <Image 
-                            src="/about-faculty-back.jpg" 
+                            src="/about-faculty-back.jpeg" 
                             fill
                             unoptimized
                             className="object-cover" 
@@ -101,7 +101,7 @@ const FacultyShowcase: React.FC = () => {
                    <div className="absolute top-0 left-4 w-[60%] h-[380px] z-20">
                       <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden shadow-2xl border-[8px] border-white transform -rotate-2 hover:rotate-0 transition-all duration-500 group">
                          <Image 
-                            src="/about-faculty-front.jpeg" 
+                            src="/about-faculty-front.jpg" 
                             fill
                             priority
                             unoptimized
