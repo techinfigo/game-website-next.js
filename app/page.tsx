@@ -1,4 +1,5 @@
 import React from 'react';
+// Force rebuild to clear runtime chunk errors
 import Hero from '@/components/Hero';
 import FeaturedExams from '@/components/FeaturedExams';
 import ReasonsSection from '@/components/ReasonsSection';
