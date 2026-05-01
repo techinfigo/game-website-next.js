@@ -71,7 +71,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Engineering Services Examination',
       icon: Trophy,
       color: 'text-purple-400',
-      image: "/exams/ese-bg.jpg",
+      image: "/exams/ese-bg.png",
       logo: "/exams/ese-logo.jpg",
       action: 'ese'
     },
