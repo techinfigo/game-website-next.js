@@ -639,22 +639,24 @@ const AboutPage: React.FC = () => {
             {[...Array(2)].map((_, i) => (
               <React.Fragment key={i}>
                 {[
-                  { name: "ONGC", logo: "/logo-ongc.png" },
-                  { name: "ISRO", logo: "/logo-isro.png" },
-                  { name: "NTPC", logo: "/logo-ntpc.png" },
-                  { name: "BARC", logo: "/logo-barc.png" },
-                  { name: "DRDO", logo: "/logo-drdo.png" },
-                  { name: "L&T", logo: "/logo-lt.png" },
-                  { name: "BHEL", logo: "/logo-bhel.png" },
-                  { name: "TATA PROJECTS", logo: "/logo-tata.png" },
-                  { name: "SAIL", logo: "/logo-sail.png" },
-                  { name: "GAIL", logo: "/logo-gail.png" },
-                  { name: "IOCL", logo: "/logo-iocl.png" },
-                  { name: "BPCL", logo: "/logo-bpcl.png" },
-                  { name: "CIL", logo: "/logo-cil.png" },
-                  { name: "BEL", logo: "/logo-bel.png" },
-                  { name: "NHAI", logo: "/logo-nhai.png" },
-                  { name: "RVNL", logo: "/logo-rvnl.png" }
+{ name: "UPPSC", logo: "/logo-uppsc.png" },
+{ name: "RSSB", logo: "/logo-rssb.png" },
+{ name: "MPPSC", logo: "/logo-mppsc.png" },
+{ name: "BPPSC", logo: "/logo-bppsc.png" },
+{ name: "RITES", logo: "/logo-rites.png" },
+{ name: "OIL INDIA", logo: "/logo-oil-india.png" },
+{ name: "NTPC", logo: "/logo-ntpc.png" },
+{ name: "NPCIL", logo: "/logo-npcil.png" },
+{ name: "NHPC", logo: "/logo-nhpc.png" },
+{ name: "ISRO", logo: "/logo-isro.png" },
+{ name: "IOCL", logo: "/logo-iocl.png" },
+{ name: "HPCL", logo: "/logo-hpcl.png" },
+{ name: "DRDO", logo: "/logo-drdo.png" },
+{ name: "BHEL", logo: "/logo-bhel.png" },
+{ name: "BDL", logo: "/logo-bdl.png" },
+{ name: "BEL", logo: "/logo-bel.png" },
+{ name: "BARC", logo: "/logo-barc.png" },
+{ name: "AAI", logo: "/logo-aai.png" },
                 ].map((company, idx) => (
                   <div key={`${company.name}-${idx}`} className="relative w-16 md:w-24 h-16 md:h-24 flex items-center justify-center transition-all duration-500 cursor-default px-2">
                     <Image
