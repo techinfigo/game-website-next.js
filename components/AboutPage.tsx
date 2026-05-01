@@ -639,22 +639,22 @@ const AboutPage: React.FC = () => {
             {[...Array(2)].map((_, i) => (
               <React.Fragment key={i}>
                 {[
-                  { name: "ONGC", logo: "/rankers/logo-ongc.png" },
-                  { name: "ISRO", logo: "/rankers/logo-isro.png" },
-                  { name: "NTPC", logo: "/rankers/logo-ntpc.png" },
-                  { name: "BARC", logo: "/rankers/logo-barc.png" },
-                  { name: "DRDO", logo: "/rankers/logo-drdo.png" },
-                  { name: "L&T", logo: "/rankers/logo-lt.png" },
-                  { name: "BHEL", logo: "/rankers/logo-bhel.png" },
-                  { name: "TATA PROJECTS", logo: "/rankers/logo-tata.png" },
-                  { name: "SAIL", logo: "/rankers/logo-sail.png" },
-                  { name: "GAIL", logo: "/rankers/logo-gail.png" },
-                  { name: "IOCL", logo: "/rankers/logo-iocl.png" },
-                  { name: "BPCL", logo: "/rankers/logo-bpcl.png" },
-                  { name: "CIL", logo: "/rankers/logo-cil.png" },
-                  { name: "BEL", logo: "/rankers/logo-bel.png" },
-                  { name: "NHAI", logo: "/rankers/logo-nhai.png" },
-                  { name: "RVNL", logo: "/rankers/logo-rvnl.png" }
+                  { name: "ONGC", logo: "/logo-ongc.png" },
+                  { name: "ISRO", logo: "/logo-isro.png" },
+                  { name: "NTPC", logo: "/logo-ntpc.png" },
+                  { name: "BARC", logo: "/logo-barc.png" },
+                  { name: "DRDO", logo: "/logo-drdo.png" },
+                  { name: "L&T", logo: "/logo-lt.png" },
+                  { name: "BHEL", logo: "/logo-bhel.png" },
+                  { name: "TATA PROJECTS", logo: "/logo-tata.png" },
+                  { name: "SAIL", logo: "/logo-sail.png" },
+                  { name: "GAIL", logo: "/logo-gail.png" },
+                  { name: "IOCL", logo: "/logo-iocl.png" },
+                  { name: "BPCL", logo: "/logo-bpcl.png" },
+                  { name: "CIL", logo: "/logo-cil.png" },
+                  { name: "BEL", logo: "/logo-bel.png" },
+                  { name: "NHAI", logo: "/logo-nhai.png" },
+                  { name: "RVNL", logo: "/logo-rvnl.png" }
                 ].map((company, idx) => (
                   <div key={`${company.name}-${idx}`} className="relative w-16 md:w-24 h-16 md:h-24 flex items-center justify-center transition-all duration-500 cursor-default px-2">
                     <Image
