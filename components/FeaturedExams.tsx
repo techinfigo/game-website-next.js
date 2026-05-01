@@ -131,8 +131,8 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Non Technical Exam',
       icon: BookOpen,
       color: 'text-indigo-400',
-      image: "/exams/nontech-bg.jpg",
-      logo: "/exams/nontech-logo.jpg",
+      image: "/exams/non-tech-bg.png",
+      logo: "/exams/non-tech-logo.jpg",
       action: 'nontech'
     }
   ];
