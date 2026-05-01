@@ -52,7 +52,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       label: "Prestige & Security",
       title: "A Golden Ticket to a Respected & Secure Government Career.",
       desc: "Secure a Group B (Non-Gazetted) position that commands respect in society and provides lifelong stability.",
-      image: "/images/exams/exam-ssc-1.png", 
+      image: "/exam-ssc-1.png", 
       icon: Shield,
       color: "text-gameTeal",
       bg: "bg-gameTeal/5"
@@ -61,7 +61,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       label: "Salary & Perks",
       title: "Attractive & Progressive Salary with Fantastic Perks",
       desc: "Enjoy Level-6 pay scale with HRA, DA, medical benefits, and a lifestyle that ensures prosperity for you and your family.",
-      image: "/images/exams/exam-ssc-2.png", 
+      image: "/exam-ssc-2.png", 
       icon: Wallet,
       color: "text-gameTeal",
       bg: "bg-gameTeal/5"
@@ -70,7 +70,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       label: "Core Sectors",
       title: "Direct Entry into India's Core Infrastructure Sectors",
       desc: "Work on massive national projects like bridges, dams, and modern railways. See your engineering impact in real-time.",
-      image: "/images/exams/exam-ssc-3.png", 
+      image: "/exam-ssc-3.png", 
       icon: HardHat,
       color: "text-gameGoldDark",
       bg: "bg-gameGold/5"
@@ -79,7 +79,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       label: "Career Growth",
       title: "Clear & Time-Bound Career Progression to Executive Ranks",
       desc: "Climb the ladder from Junior Engineer to Assistant Engineer, Executive Engineer, and up to Engineer-in-Chief.",
-      image: "/images/exams/exam-ssc-4.png", 
+      image: "/exam-ssc-4.png", 
       icon: TrendingUp,
       color: "text-gameTeal",
       bg: "bg-gameTeal/5"
@@ -88,7 +88,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       label: "Achievable Goal",
       title: "Achievable Goal with a Well-Defined Exam Pattern",
       desc: "With a structured syllabus and clarity in pattern, SSC-JE is an achievable dream for dedicated Diploma and Degree holders.",
-      image: "/images/exams/exam-ssc-5.png", 
+      image: "/exam-ssc-5.png", 
       icon: Target,
       color: "text-gameGoldDark",
       bg: "bg-gameGold/5"
@@ -780,7 +780,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                   <div className="absolute inset-0 bg-gameTeal/5 rounded-full blur-3xl transform rotate-12"></div>
                   <div className="relative bg-white rounded-[2.5rem] p-4 border border-slate-100 shadow-2xl aspect-video md:aspect-auto h-[400px]">
                      <Image 
-                        src="/images/exams/exam-ssc-hero.png" 
+                        src="/exam-ssc-hero.png" 
                         alt="SSC JE Engineer" 
                         fill
                         className="rounded-[2rem] object-cover"
