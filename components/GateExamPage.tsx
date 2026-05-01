@@ -109,7 +109,7 @@ const GateExamPage: React.FC = () => {
       icon: GraduationCap,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
-      image: "/images/ui/advantage-1.png",
+      image: "/advantage-1.png",
     },
     {
       title: "PSU Recruitment",
@@ -117,7 +117,7 @@ const GateExamPage: React.FC = () => {
       icon: Briefcase,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
-      image: "/images/ui/advantage-2.png",
+      image: "/advantage-2.png",
     },
     {
       title: "Opportunities Abroad",
@@ -125,7 +125,7 @@ const GateExamPage: React.FC = () => {
       icon: Globe,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
-      image: "/images/ui/advantage-3.png",
+      image: "/advantage-3.png",
     },
     {
       title: "Research Opportunities",
@@ -133,7 +133,7 @@ const GateExamPage: React.FC = () => {
       icon: Microscope,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
-      image: "/images/ui/advantage-4.png",
+      image: "/advantage-4.png",
     },
     {
       title: "Scholarships and Fellowships",
@@ -141,7 +141,7 @@ const GateExamPage: React.FC = () => {
       icon: Award,
       color: "text-gameGold",
       bg: "bg-gameGold/10",
-      image: "/images/ui/advantage-5.png",
+      image: "/advantage-5.png",
     },
     {
       title: "Teaching Careers",
@@ -149,7 +149,7 @@ const GateExamPage: React.FC = () => {
       icon: BookOpen,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
-      image: "/images/ui/advantage-6.png",
+      image: "/advantage-6.png",
     },
     {
       title: "Career Growth in Industry",
@@ -157,7 +157,7 @@ const GateExamPage: React.FC = () => {
       icon: TrendingUp,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
-      image: "/images/ui/advantage-7.png",
+      image: "/advantage-7.png",
     },
     {
       title: "Flexibility in Career",
@@ -165,7 +165,7 @@ const GateExamPage: React.FC = () => {
       icon: Layers,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
-      image: "/images/ui/advantage-8.png",
+      image: "/advantage-8.png",
     },
     {
       title: "Prestige and Recognition",
@@ -173,7 +173,7 @@ const GateExamPage: React.FC = () => {
       icon: Star,
       color: "text-gameGold",
       bg: "bg-gameGold/10",
-      image: "/images/ui/advantage-9.png",
+      image: "/advantage-9.png",
     }
   ];
 
