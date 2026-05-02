@@ -7,9 +7,9 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 // Placeholder banner images - replace with actual offer banners
 const banners = [
-  "/images/marketing/offer-1.png",
-  "/images/marketing/offer-2.png",
-  "/images/marketing/offer-3.png",
+  "/offer-1.png",
+  "/offer-2.png",
+  "/offer-3.png",
 ];
 
 const CourseMarketing: React.FC = () => {
