@@ -7,18 +7,27 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const students = [
-  { name: "Priya Sharma", rank: "AIR 15 (ESE)", img: "/ranker-rk-5.png" },
-  { name: "Rahul Verma", rank: "Selected (PSU)", img: "/ranker-rk-6.png" },
-  { name: "Amit Patel", rank: "AIR 8 (GATE)", img: "/ranker-rk-7.png" },
-  { name: "Sneha Reddy", rank: "AIR 22 (ESE)", img: "/ranker-rk-8.png" },
-  { name: "Vikram Das", rank: "Selected (BARC)", img: "/ranker-rk-5.png" },
-  { name: "Ananya Ray", rank: "AIR 1 (GATE ME)", img: "/ranker-rk-6.png" },
-  { name: "Siddharth S.", rank: "AIR 45 (ESE)", img: "/ranker-rk-7.png" },
-  { name: "Kavita J.", rank: "Selected (IOCL)", img: "/ranker-rk-8.png" },
-  { name: "Rohan M.", rank: "AIR 12 (SSC-JE)", img: "/ranker-rk-5.png" },
-  { name: "Megha Gupta", rank: "AIR 4 (ESE)", img: "/ranker-rk-6.png" },
-  { name: "Ishaan Kohli", rank: "Selected (ONGC)", img: "/ranker-rk-7.png" },
-  { name: "Tanya Bisht", rank: "AIR 31 (GATE)", img: "/ranker-rk-8.png" },
+  { name: "Akshay Pillay", rank: "AIR 51", img: "/rankers/ranker-1.jpg" },
+  { name: "Shivam Ranjan", rank: "AIR 1 (NM)", img: "/rankers/ranker-2.jpg" },
+  { name: "Ayush Sachin Kumar Chordiya", rank: "AIR 24 (PI)", img: "/rankers/ranker-3.jpg" },
+  { name: "Aman Nema", rank: "AIR 38 (PI)", img: "/rankers/ranker-4.jpg" },
+  { name: "Omkar Nishad", rank: "AIR 239 (PI)", img: "/rankers/ranker-5.jpg" },
+  { name: "Vishal Verma", rank: "AIR 240 (ME)", img: "/rankers/ranker-6.jpg" },
+  { name: "Ankit Gupta", rank: "AIR 496 (XE)", img: "/rankers/ranker-7.jpg" },
+  { name: "Anjali", rank: "AIR 556 (ME)", img: "/rankers/ranker-8.jpg" },
+  { name: "Sujoy Das", rank: "AIR 535 (ME)", img: "/rankers/ranker-9.jpg" },
+  { name: "Manish Kumar", rank: "AIR 267 (ME)", img: "/rankers/ranker-10.jpg" },
+  { name: "Harshit Kumar", rank: "AIR 5 (PI)", img: "/rankers/ranker-11.jpg" },
+  { name: "Rushabh", rank: "AIR 146 (PI)", img: "/rankers/ranker-12.jpg" },
+  { name: "Abhishek Kumar", rank: "AIR 410 (ME)", img: "/rankers/ranker-13.jpg" },
+  { name: "CHIRAG GOYAL", rank: "AIR 68 (ME)", img: "/rankers/ranker-14.jpg" },
+  { name: "Deepbhai Haresh Kumar Dave", rank: "AIR 197 (XE) / 343 (ME)", img: "/rankers/ranker-15.jpg" },
+  { name: "KAMAL KISHOR BHARDWAJ", rank: "AIR 408 (ME)", img: "/rankers/ranker-16.jpg" },
+  { name: "AKSHIT DINESH", rank: "AIR 33 (ME)", img: "/rankers/ranker-17.jpg" },
+  { name: "VIJAY PAL", rank: "AIR 52 (ME)", img: "/rankers/ranker-18.jpg" },
+  { name: "MAYUR BHARAT MORE", rank: "AIR 68 (PI) / 974 (ME)", img: "/rankers/ranker-19.jpg" },
+  { name: "HARSHIT KUMAR GUPTA", rank: "AIR 636 (ME)", img: "/rankers/ranker-20.jpg" },
+  { name: "PRAGYA SHARMA", rank: "AIR 905 (ME)", img: "/rankers/ranker-21.jpg" }
 ];
 
 const VerticalSlider = ({ items, speed, reverse = false }: { items: typeof students, speed: number, reverse?: boolean }) => {
@@ -145,13 +154,13 @@ const Hero: React.FC = () => {
              <div className="absolute inset-0 z-0 overflow-hidden mask-fade-top-bottom pointer-events-none opacity-30 scale-90">
                 <div className="flex gap-4 h-full px-4 lg:px-8">
                    <div className="flex-1">
-                      <VerticalSlider items={students.slice(0, 4)} speed={45} />
+                      <VerticalSlider items={students.slice(0, 7)} speed={45} />
                    </div>
                    <div className="flex-1 mt-12">
-                      <VerticalSlider items={students.slice(4, 8)} speed={35} reverse />
+                      <VerticalSlider items={students.slice(7, 14)} speed={35} reverse />
                    </div>
                    <div className="flex-1">
-                      <VerticalSlider items={students.slice(8, 12)} speed={55} />
+                      <VerticalSlider items={students.slice(14, 21)} speed={55} />
                    </div>
                 </div>
              </div>
