@@ -5,9 +5,7 @@ import React, { useEffect, useState, useMemo } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { 
-  Trophy, User, ArrowRight, Crown, 
-  Medal, Quote, Building2, Briefcase, 
-  GraduationCap, Calendar
+  ArrowRight
 } from 'lucide-react';
 
 // Single source of truth interface based on the Rankers sheet
@@ -26,131 +24,109 @@ interface Ranker {
 }
 
 // Optimized: Moved static data outside component to prevent re-creation on every render
-const MOCK_RANKERS: Ranker[] = [
-  {
-    id: "1",
-    name: "Abhishek Singh",
-    designation: "AIR 1 - GATE 2024",
-    category: "GATE",
+const MOCK_RANKERS: Ranker[] = Array.from({ length: 30 }, (_, i) => ({
+    id: `${i + 1}`,
+    name: [
+      "Abhishek Singh", "Akshay Pillay", "Sneha Reddy", "Vikram Malhotra", 
+      "Priya Sharma", "Rahul Verma", "Ananya Iyer", "Karthik Raja",
+      "Sowmya Rao", "Nitin Gadkari", "Arjun Mehra", "Ishita Dutta",
+      "Manish Pandey", "Riya Sen", "Aditya Roy", "Kavya Nair",
+      "Siddharth Malhotra", "Tara Sutaria", "Varun Dhawan", "Alia Bhatt",
+      "Ranbir Kapoor", "Kareena Kapoor", "Saif Ali Khan", "Taimur Ali",
+      "Shah Rukh Khan", "Salman Khan", "Aamir Khan", "Hrithik Roshan",
+      "Pankaj Tripathi", "Nawazuddin Siddiqui"
+    ][i] || `Ranker ${i + 1}`,
+    designation: [
+      "AIR 1 - GATE 2024", "AIR 51 - UPSC CSE 2021", "AIR 15 - ESE 2023", "Selected - ONGC",
+      "AIR 12 - BARC", "AIR 8 - GATE ME", "AIR 4 - ISRO", "AIR 22 - ESE EE",
+      "AIR 5 - GATE CE", "AIR 11 - HPCL", "AIR 3 - DRDO", "AIR 45 - GATE CS",
+      "AIR 2 - ESE ME", "AIR 18 - GAIL", "AIR 33 - NPCIL", "AIR 7 - GATE IN",
+      "AIR 9 - BEL", "AIR 27 - ESE CE", "AIR 14 - GATE CH", "AIR 31 - SAIL",
+      "AIR 6 - GATE AE", "AIR 19 - ESE IN", "AIR 25 - PSU ME", "AIR 4 - GATE XE",
+      "AIR 1 - ESE EE", "AIR 10 - ISRO ME", "AIR 22 - GATE MT", "AIR 40 - BARC",
+      "AIR 3 - ESE CE", "AIR 15 - GATE PI"
+    ][i] || `Ranker Designation ${i + 1}`,
+    category: ["GATE", "UPSC", "ESE", "PSU", "BARC", "ISRO", "DRDO"][i % 7],
     description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
-    image: "/rankers/ranker-1.jpg",
-  },
-  {
-    id: "2",
-    name: "Akshay Pillay",
-    designation: "AIR 51 - UPSC CSE 2021",
-    category: "UPSC",
-    description: "The structured roadmap at GAME Academy kept me focused through all stages of CSE.",
-    image: "/rankers/ranker-2.jpg",
-  },
-  {
-    id: "3",
-    name: "Sneha Reddy",
-    designation: "AIR 15 - ESE 2023",
-    category: "ESE",
-    description: "ESE requires consistency. Mentorship here is exceptional.",
-    image: "/rankers/ranker-3.jpg",
-  },
-  {
-    id: "4",
-    name: "Vikram Malhotra",
-    designation: "Selected - ONGC",
-    category: "PSU",
-    image: "/rankers/ranker-4.jpg",
-  }
-];
+    image: `/rankers/ranker-${i + 1}.jpg`,
+}));
 
-const MOCK_JOB_RANKERS: Ranker[] = [
-  {
-    id: "j1",
-    name: "Akshay Pillay",
-    organisation: "Government of India",
-    designation: "Sub Collector and Sub Divisional Magistrate",
-    branch: "Mechanical Engineering",
-    selectionYear: "2022",
-    category: "UPSC/IAS",
-    image: "/rankers/job-1.jpg"
-  },
-  {
-    id: "j2",
-    name: "Meera Krishnan",
-    organisation: "Indian Railways",
-    designation: "Assistant Divisional Engineer",
-    branch: "Civil Engineering",
-    selectionYear: "2023",
-    category: "ESE",
-    image: "/rankers/job-2.jpg"
-  },
-  {
-    id: "j3",
-    name: "Sandeep Rao",
-    organisation: "ISRO",
-    designation: "Scientist 'SC'",
-    branch: "Mechanical Engineering",
-    selectionYear: "2021",
-    category: "ISRO",
-    image: "/rankers/job-3.jpg"
-  },
-  {
-    id: "j4",
-    name: "Rohan Gupta",
-    organisation: "IOCL",
-    designation: "Operations Manager",
-    branch: "Mechanical Engineering",
-    selectionYear: "2022",
-    category: "PSU/GATE",
-    image: "/rankers/job-4.jpg"
-  }
-];
+const MOCK_JOB_RANKERS: Ranker[] = Array.from({ length: 20 }, (_, i) => ({
+    id: `j${i + 1}`,
+    name: [
+      "Akshay Pillay", "Meera Krishnan", "Sandeep Rao", "Rohan Gupta", 
+      "Deepak Jha", "Sonalika Singh", "Amitabh Bachchan", "Rajesh Khanna",
+      "Dilip Kumar", "Dev Anand", "Hema Malini", "Jaya Bachchan",
+      "Rekha G", "Sridevi K", "Madhuri Dixit", "Juhi Chawla",
+      "Kajol D", "Rani Mukherjee", "Aishwarya Rai", "Sushmita Sen"
+    ][i] || `Job Ranker ${i + 1}`,
+    organisation: [
+      "Government of India", "Indian Railways", "ISRO", "IOCL", 
+      "BPCL", "NTPC", "BHEL", "HAL", "PGCIL", "ONGC",
+      "BARC", "DRDO", "GAIL", "NHPC", "SAIL", "BEL",
+      "NPCIL", "HPCL", "CPCL", "MRPL"
+    ][i] || "Public Sector Unit",
+    designation: [
+      "Sub Collector", "Assistant Divisional Engineer", "Scientist 'SC'", "Operations Manager",
+      "Project Engineer", "Technical Executive", "Sr. Scientist", "District Manager",
+      "Chief Engineer", "Station Head", "Research Lead", "Field Officer",
+      "Executive Trainee", "Section Head", "Deputy Manager", "Assistant Manager",
+      "Shift Incharge", "Plant Head", "Safety Officer", "Quality Head"
+    ][i] || "Technical Lead",
+    branch: ["Mechanical", "Civil", "Electrical", "Electronics", "Instrumentation"][i % 5] + " Engineering",
+    selectionYear: `${2020 + (i % 5)}`,
+    category: ["UPSC/IAS", "ESE", "ISRO", "PSU/GATE", "GATE"][i % 5],
+    image: `/rankers/job-${(i % 10) + 1}.jpg`
+}));
 
 const RankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
   <div
-    className="group relative flex flex-col bg-[#050505] rounded-[2rem] transition-all duration-500 overflow-hidden h-[350px] w-full border border-white/5 shadow-2xl hover:shadow-gameTeal/10"
+    className="group relative flex flex-col bg-[#050505] rounded-[1.2rem] transition-all duration-500 overflow-hidden h-[260px] w-full border border-white/5 shadow-2xl hover:shadow-gameTeal/10"
   >
     {/* Full Card Image Background */}
     <Image 
         src={ranker.image} 
         alt={ranker.name} 
         fill
+        unoptimized
         className="object-cover transition-transform duration-1000 opacity-80 group-hover:opacity-100 group-hover:scale-110" 
         referrerPolicy="no-referrer"
     />
     
-    {/* Black-to-Transparent Gradient Overlay */}
-    <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent group-hover:from-[#050505] group-hover:via-[#050505]/70 transition-colors duration-500"></div>
+    {/* Gradient Overlay Adjusted for smaller height */}
+    <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[#050505] via-[#050505]/70 to-transparent transition-colors duration-500"></div>
     
-    {/* Category Badge - Gold accented */}
-    <div className="absolute top-4 left-4 z-10">
+    {/* Category Badge - More compact */}
+    <div className="absolute top-3 left-3 z-10">
         <span className="px-2 py-0.5 rounded-md bg-gameGold text-black text-[7px] font-black uppercase tracking-widest shadow-lg">
           {ranker.category}
         </span>
     </div>
 
-    {/* Integrated Info Block - Dark Theme */}
-    <div className="absolute bottom-0 inset-x-0 p-5 z-10 flex flex-col text-left">
+    {/* Integrated Info Block - Tighter spacing */}
+    <div className="absolute bottom-0 inset-x-0 p-4 z-10 flex flex-col text-left">
       <div className="space-y-1">
-        <h3 className="text-base font-black text-white leading-tight transition-colors line-clamp-1 group-hover:text-gameGold">
+        <h3 className="text-[15px] font-black text-white leading-tight transition-colors line-clamp-1 group-hover:text-gameGold">
           {ranker.name}
         </h3>
         
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 flex-wrap">
           <div className="flex items-center gap-1 bg-gameTeal/40 px-1.5 py-0.5 rounded border border-gameTeal/50 backdrop-blur-sm">
-            <Trophy size={9} className="text-gameGold fill-gameGold/20" />
             <span className="text-white font-black text-[8px] uppercase tracking-wider">
               {ranker.designation.split(' - ')[0]}
             </span>
           </div>
-          <span className="text-white/20 text-[9px]">|</span>
+          <span className="text-white/40 text-[9px]">|</span>
           <span className="text-gameGold font-bold text-[8px] uppercase tracking-wide italic line-clamp-1">
              {ranker.designation.split(' - ')[1] || ranker.category}
           </span>
         </div>
       </div>
       
-      {/* Verified Excellence Indicator */}
-      <div className="mt-3 pt-2.5 border-t border-white/10 flex items-center justify-between opacity-60 group-hover:opacity-100 transition-opacity">
+      {/* Verified Excellence Indicator - Minimalist */}
+      <div className="mt-2.5 pt-2 border-t border-white/10 flex items-center justify-between opacity-50 group-hover:opacity-100 transition-opacity">
          <span className="text-[6px] font-black text-gameTeal uppercase tracking-[0.2em]">Verified Excellence</span>
-         <div className="h-1 w-1 rounded-full bg-gameTeal animate-pulse"></div>
+         <div className="h-1 w-1 rounded-full bg-gameTeal"></div>
       </div>
     </div>
   </div>
@@ -158,64 +134,53 @@ const RankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
 
 const JobRankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
   <div
-    className="group relative flex flex-col bg-[#050505] rounded-[2rem] transition-all duration-500 overflow-hidden h-[350px] w-full border border-white/5"
+    className="group relative flex flex-col bg-[#050505] rounded-[1.2rem] transition-all duration-500 overflow-hidden h-[260px] w-full border border-white/5"
   >
-    {/* Top Image Section - Balanced visibility */}
-    <div className="relative h-[55%] w-full overflow-hidden">
+    {/* Top Image Section - Increased height to 65% for better visibility */}
+    <div className="relative h-[65%] w-full overflow-hidden">
       <Image 
           src={ranker.image} 
           alt={ranker.name} 
           fill
+          unoptimized
           className="object-cover transition-transform duration-1000 opacity-90 group-hover:opacity-100 group-hover:scale-110" 
           referrerPolicy="no-referrer"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent"></div>
       
-      {/* Category HUD */}
-      <div className="absolute top-4 left-4">
-          <div className="px-2.5 py-1 rounded-full bg-gameGold text-[#050505] text-[8px] font-black uppercase tracking-[0.2em] border border-white/10 shadow-lg">
+      {/* Category HUD - More compact */}
+      <div className="absolute top-3 left-3">
+          <div className="px-2 py-0.5 rounded-md bg-gameGold text-[#050505] text-[7px] font-black uppercase tracking-widest border border-white/10 shadow-lg">
             {ranker.category}
           </div>
       </div>
     </div>
 
-    {/* Identity & Stats Section - Enhanced visibility */}
-    <div className="flex-grow p-4 bg-[#050505] flex flex-col text-left justify-end">
-      <div className="mb-3">
-        <h3 className="text-xl font-black text-gameGold leading-tight mb-1 transition-colors line-clamp-1">
+    {/* Identity & Stats Section - Concise & Aligned */}
+    <div className="flex-grow p-3 bg-[#050505] flex flex-col text-left justify-start -mt-3 relative z-10">
+      <div className="mb-2">
+        <h3 className="text-[15px] font-black text-gameGold leading-tight transition-colors line-clamp-1">
           {ranker.name}
         </h3>
-        <div className="flex items-center gap-2 opacity-90">
-          <Building2 size={12} className="text-gameTeal" />
-          <p className="text-gameTeal font-black text-[10px] uppercase tracking-[0.1em] line-clamp-1">
+        <div className="flex items-center gap-1.5 opacity-80 mt-0.5">
+          <p className="text-gameTeal font-bold text-[9px] uppercase tracking-wide line-clamp-1">
             {ranker.organisation}
           </p>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-2 pt-3 border-t border-white/10">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-1.5">
-            <Briefcase size={10} className="text-slate-500" />
-            <p className="text-[8px] uppercase font-black text-slate-500 tracking-[0.1em]">Designation</p>
-          </div>
-          <p className="text-[10px] font-bold text-white italic leading-tight">{ranker.designation}</p>
+      <div className="space-y-1.5 pt-2 border-t border-white/10">
+        <div className="flex items-center gap-2">
+          <p className="text-[9px] font-medium text-white italic truncate">{ranker.designation}</p>
         </div>
         
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-1.5">
-            <GraduationCap size={10} className="text-slate-500" />
-            <p className="text-[8px] uppercase font-black text-slate-500 tracking-[0.1em]">Branch</p>
+        <div className="flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2 truncate">
+            <p className="text-[9px] font-bold text-slate-300 uppercase truncate">{ranker.branch}</p>
           </div>
-          <p className="text-[10px] font-black text-gameGold uppercase tracking-tight">{ranker.branch}</p>
-        </div>
-
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-1.5">
-            <Calendar size={10} className="text-slate-500" />
-            <p className="text-[8px] uppercase font-black text-slate-500 tracking-[0.1em]">Year</p>
+          <div className="flex items-center gap-1.5 shrink-0 bg-white/5 px-1.5 py-0.5 rounded">
+            <p className="text-[9px] font-black text-gameGold">{ranker.selectionYear}</p>
           </div>
-          <p className="text-[10px] font-black text-slate-300">{ranker.selectionYear}</p>
         </div>
       </div>
     </div>
@@ -224,13 +189,6 @@ const JobRankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
 
 const EmptyState = React.memo(({ onClear }: { onClear: () => void }) => (
   <div className="col-span-full py-40 flex flex-col items-center justify-center text-center px-6">
-    <motion.div 
-      initial={{ scale: 0.8, opacity: 0 }} 
-      animate={{ scale: 1, opacity: 1 }}
-      className="w-32 h-32 rounded-[3rem] bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-300 mb-10 shadow-inner"
-    >
-      <User size={60} strokeWidth={1.5} />
-    </motion.div>
     <h3 className="text-4xl font-black text-slate-900 mb-4 tracking-tight">
       Rankers will be updated soon.
     </h3>
@@ -311,14 +269,14 @@ const MarqueeRow = ({ items, direction = 'left', cardType = 'ranker', speed = 60
       onMouseLeave={() => setIsPaused(false)}
     >
       <div
-        className={`flex gap-6 w-max ${direction === 'left' ? 'animate-marquee-left' : 'animate-marquee-right'}`}
+        className={`flex gap-4 w-max ${direction === 'left' ? 'animate-marquee-left' : 'animate-marquee-right'}`}
         style={{
           animationDuration: `${speed}s`,
           animationPlayState: isPaused ? 'paused' : 'running'
         }}
       >
         {duplicatedItems.map((item, idx) => (
-          <div key={`${item.id}-${idx}`} className="w-[300px] shrink-0">
+          <div key={`${item.id}-${idx}`} className="w-[220px] shrink-0">
             {cardType === 'ranker' ? <RankerCard ranker={item} /> : <JobRankerCard ranker={item} />}
           </div>
         ))}
@@ -352,18 +310,18 @@ const RankersPage: React.FC = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Split rankers into groups for 4 rows total (2 sections x 2 rows)
-  const row1 = rankers.slice(0, Math.ceil(rankers.length / 2)) || [];
-  const row2 = rankers.slice(Math.ceil(rankers.length / 2)) || [];
+  // Updated slicing to match user specific counts (10 in row 1, 20 in row 2 for rankers; 10+10 for jobs)
+  const row1 = rankers.slice(0, 10) || [];
+  const row2 = rankers.slice(10, 30) || [];
   
-  const row3 = jobRankers.slice(0, Math.ceil(jobRankers.length / 2)) || [];
-  const row4 = jobRankers.slice(Math.ceil(jobRankers.length / 2)) || [];
+  const row3 = jobRankers.slice(0, 10) || [];
+  const row4 = jobRankers.slice(10, 20) || [];
 
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-gameTeal selection:text-white -mt-20">
       
       {/* PREMIUM HERO SECTION - HEIGHT OPTIMIZED & VISIBILITY FIXED */}
-      <section className="relative pt-44 pb-14 lg:pt-56 lg:pb-20 overflow-hidden bg-[#0f1115] text-white">
+      <section id="banner" className="relative pt-44 pb-14 lg:pt-56 lg:pb-20 overflow-hidden bg-[#0f1115] text-white">
          
          {/* Background Effects */}
          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gameTeal/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
@@ -376,9 +334,6 @@ const RankersPage: React.FC = () => {
                transition={{ duration: 0.8 }}
             >
                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-4">
-                  <div className="w-6 h-6 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-gameGold shadow-sm">
-                    <Trophy size={12} className="fill-gameGold" />
-                  </div>
                   <span className="text-[9px] font-black text-gameGold uppercase tracking-[0.3em]">Success Records</span>
                </div>
 
@@ -390,37 +345,16 @@ const RankersPage: React.FC = () => {
                <p className="text-base md:text-xl text-slate-400 font-bold max-w-2xl mx-auto leading-relaxed mt-4">
                   Celebrating the brilliance and hard work of students who mastered the engineering GAME.
                </p>
-
-               <div className="flex justify-center items-center gap-4 mt-8">
-                  <div className="h-px w-12 bg-gradient-to-r from-transparent to-white/20 rounded-full"></div>
-                  <div className="flex -space-x-2.5">
-                     {[1,2,3,4,5].map(i => (
-                        <div key={i} className="relative w-10 h-10 rounded-full border-2 border-[#0f1115] bg-slate-800 overflow-hidden shadow-2xl">
-                           <Image 
-                                  src={`/rankers/achiever-${i}.jpg`} 
-                                  alt="Achiever" 
-                                  fill
-                                  className="object-cover" 
-                                  referrerPolicy="no-referrer"
-                               />
-                        </div>
-                      ))}
-                  </div>
-                  <div className="h-px w-12 bg-gradient-to-l from-transparent to-white/20 rounded-full"></div>
-               </div>
             </motion.div>
          </div>
       </section>
 
       {/* SECTION 1: Toppers Showcase / Featured Rankers - Detailed Profiles */}
-      <section className="py-10 lg:py-16 bg-gameTealDark relative overflow-hidden">
-         <div className="max-w-[1280px] mx-auto px-8 mb-8 text-center">
-            <h2 className="text-3xl md:text-5xl font-black text-white mb-4 tracking-tight">
-               Toppers Showcase / <span className="text-gameGold">Featured Rankers</span>
+      <section className="py-8 lg:py-10 bg-gameTealDark relative overflow-hidden">
+         <div className="max-w-[1280px] mx-auto px-8 mb-6 text-center">
+            <h2 className="text-3xl md:text-5xl font-black text-white mb-2 tracking-tight">
+               Gaurav Sir&apos;s Students in Reputed Jobs Website
             </h2>
-            <p className="text-teal-50/70 font-bold max-w-2xl mx-auto text-sm md:text-base uppercase tracking-widest leading-relaxed">
-               Celebrating our students who secured positions in prestigious government organisations and PSUs through their exceptional performance in technical examinations.
-            </p>
          </div>
 
          <div className="max-w-full mx-auto relative z-10">
@@ -430,22 +364,19 @@ const RankersPage: React.FC = () => {
                </div>
             ) : jobRankers.length > 0 ? (
                <div className="space-y-4">
-                  <MarqueeRow items={row3} direction="left" speed={60} cardType="job" />
-                  <MarqueeRow items={row4} direction="right" speed={60} cardType="job" />
+                  <MarqueeRow items={row3} direction="left" speed={120} cardType="job" />
+                  <MarqueeRow items={row4} direction="right" speed={120} cardType="job" />
                </div>
             ) : null}
          </div>
       </section>
 
       {/* SECTION 2: Results Carousel / Slider - Wide Array of Success */}
-      <section className="py-10 lg:py-16 bg-slate-200 relative overflow-hidden border-b border-slate-300">
-         <div className="max-w-[1280px] mx-auto px-8 mb-8 text-center">
-            <h2 className="text-3xl md:text-5xl font-black text-gameTeal mb-4 tracking-tight">
-               Results Carousel / <span className="text-slate-900">Slider</span>
+      <section className="py-8 lg:py-10 bg-slate-200 relative overflow-hidden border-b border-slate-300">
+         <div className="max-w-[1280px] mx-auto px-8 mb-6 text-center">
+            <h2 className="text-3xl md:text-5xl font-black text-gameTeal mb-2 tracking-tight">
+               Spotlight on our Rankers
             </h2>
-            <p className="text-slate-500 font-bold max-w-2xl mx-auto text-sm md:text-base uppercase tracking-widest leading-relaxed">
-               A panoramic view of our high achievers across GATE, ESE, and other technical streams, showcasing a consistent legacy of excellence.
-            </p>
          </div>
 
          <div className="max-w-full mx-auto relative z-10">
@@ -455,8 +386,8 @@ const RankersPage: React.FC = () => {
                </div>
             ) : rankers.length > 0 ? (
                <div className="space-y-4">
-                  <MarqueeRow items={row1} direction="left" speed={70} />
-                  <MarqueeRow items={row2} direction="right" speed={70} />
+                  <MarqueeRow items={row1} direction="left" speed={100} />
+                  <MarqueeRow items={row2} direction="right" speed={100} />
                </div>
             ) : (
                <div className="max-w-[1280px] mx-auto px-8 text-center pt-10">
