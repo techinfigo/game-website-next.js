@@ -24,32 +24,176 @@ interface Ranker {
 }
 
 // Optimized: Moved static data outside component to prevent re-creation on every render
-const MOCK_RANKERS: Ranker[] = Array.from({ length: 30 }, (_, i) => ({
-    id: `${i + 1}`,
-    name: [
-      "Abhishek Singh", "Akshay Pillay", "Sneha Reddy", "Vikram Malhotra", 
-      "Priya Sharma", "Rahul Verma", "Ananya Iyer", "Karthik Raja",
-      "Sowmya Rao", "Nitin Gadkari", "Arjun Mehra", "Ishita Dutta",
-      "Manish Pandey", "Riya Sen", "Aditya Roy", "Kavya Nair",
-      "Siddharth Malhotra", "Tara Sutaria", "Varun Dhawan", "Alia Bhatt",
-      "Ranbir Kapoor", "Kareena Kapoor", "Saif Ali Khan", "Taimur Ali",
-      "Shah Rukh Khan", "Salman Khan", "Aamir Khan", "Hrithik Roshan",
-      "Pankaj Tripathi", "Nawazuddin Siddiqui"
-    ][i] || `Ranker ${i + 1}`,
-    designation: [
-      "AIR 1 - GATE 2024", "AIR 51 - UPSC CSE 2021", "AIR 15 - ESE 2023", "Selected - ONGC",
-      "AIR 12 - BARC", "AIR 8 - GATE ME", "AIR 4 - ISRO", "AIR 22 - ESE EE",
-      "AIR 5 - GATE CE", "AIR 11 - HPCL", "AIR 3 - DRDO", "AIR 45 - GATE CS",
-      "AIR 2 - ESE ME", "AIR 18 - GAIL", "AIR 33 - NPCIL", "AIR 7 - GATE IN",
-      "AIR 9 - BEL", "AIR 27 - ESE CE", "AIR 14 - GATE CH", "AIR 31 - SAIL",
-      "AIR 6 - GATE AE", "AIR 19 - ESE IN", "AIR 25 - PSU ME", "AIR 4 - GATE XE",
-      "AIR 1 - ESE EE", "AIR 10 - ISRO ME", "AIR 22 - GATE MT", "AIR 40 - BARC",
-      "AIR 3 - ESE CE", "AIR 15 - GATE PI"
-    ][i] || `Ranker Designation ${i + 1}`,
-    category: ["GATE", "UPSC", "ESE", "PSU", "BARC", "ISRO", "DRDO"][i % 7],
+const MOCK_RANKERS: Ranker[] = [
+  {
+    id: "1",
+    name: "Akshay Pillay",
+    designation: "AIR - 51",
+    category: "GATE",
     description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
-    image: `/rankers/ranker-${i + 1}.png`,
-}));
+    image: "/rankers/ranker-1.png"
+  },
+  {
+    id: "2",
+    name: "Shivam Ranjan",
+    designation: "AIR - 1 (NM)",
+    category: "GATE",
+    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    image: "/rankers/ranker-2.png"
+  },
+  {
+    id: "3",
+    name: "Ayush Sachin Kumar Chordiya",
+    designation: "AIR - 24 (PI)",
+    category: "GATE",
+    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    image: "/rankers/ranker-3.png"
+  },
+  {
+    id: "4",
+    name: "Aman Nema",
+    designation: "AIR - 38 (PI)",
+    category: "GATE",
+    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    image: "/rankers/ranker-4.png"
+  },
+  {
+    id: "5",
+    name: "Omkar Nishad",
+    designation: "AIR - 239 (PI)",
+    category: "GATE",
+    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    image: "/rankers/ranker-5.png"
+  },
+  {
+    id: "6",
+    name: "Vishal Verma",
+    designation: "AIR - 240 (ME)",
+    category: "GATE",
+    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    image: "/rankers/ranker-6.png"
+  },
+  {
+    id: "7",
+    name: "Ankit Gupta",
+    designation: "AIR - 496 (XE)",
+    category: "GATE",
+    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    image: "/rankers/ranker-7.png"
+  },
+  {
+    id: "8",
+    name: "Anjali",
+    designation: "AIR - 556 (ME)",
+    category: "GATE",
+    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    image: "/rankers/ranker-8.png"
+  },
+  {
+    id: "9",
+    name: "Sujoy Das",
+    designation: "AIR - 535 (ME)",
+    category: "GATE",
+    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    image: "/rankers/ranker-9.png"
+  },
+  {
+    id: "10",
+    name: "Manish Kumar",
+    designation: "AIR - 267 (ME)",
+    category: "GATE",
+    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    image: "/rankers/ranker-10.png"
+  },
+  {
+    id: "11",
+    name: "Harshit Kumar",
+    designation: "AIR - 5 (PI)",
+    category: "GATE",
+    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    image: "/rankers/ranker-11.png"
+  },
+  {
+    id: "12",
+    name: "Rushabh",
+    designation: "AIR - 146 (PI)",
+    category: "GATE",
+    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    image: "/rankers/ranker-12.png"
+  },
+  {
+    id: "13",
+    name: "Abhishek Kumar",
+    designation: "AIR - 410 (ME)",
+    category: "GATE",
+    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    image: "/rankers/ranker-13.png"
+  },
+  {
+    id: "14",
+    name: "Chirag Goyal",
+    designation: "AIR - 68 (ME)",
+    category: "GATE",
+    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    image: "/rankers/ranker-14.png"
+  },
+  {
+    id: "15",
+    name: "Deepbhai Haresh Kumar Dave",
+    designation: "AIR - 197 (XE) / AIR - 343 (ME)",
+    category: "GATE",
+    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    image: "/rankers/ranker-15.png"
+  },
+  {
+    id: "16",
+    name: "Kamal Kishor Bhardwaj",
+    designation: "AIR - 408 (ME)",
+    category: "GATE",
+    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    image: "/rankers/ranker-16.png"
+  },
+  {
+    id: "17",
+    name: "Akshit Dinesh",
+    designation: "AIR - 33 (ME)",
+    category: "GATE",
+    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    image: "/rankers/ranker-17.png"
+  },
+  {
+    id: "18",
+    name: "Vijay Pal",
+    designation: "AIR - 52 (ME)",
+    category: "GATE",
+    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    image: "/rankers/ranker-18.png"
+  },
+  {
+    id: "19",
+    name: "Mayur Bharat More",
+    designation: "AIR - 68 (PI) / AIR - 974 (ME)",
+    category: "GATE",
+    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    image: "/rankers/ranker-19.png"
+  },
+  {
+    id: "20",
+    name: "Harshit Kumar Gupta",
+    designation: "AIR - 636 (ME)",
+    category: "GATE",
+    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    image: "/rankers/ranker-20.png"
+  },
+  {
+    id: "21",
+    name: "Pragya Sharma",
+    designation: "AIR - 905 (ME)",
+    category: "GATE",
+    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    image: "/rankers/ranker-21.png"
+  }
+];
 
 const MOCK_JOB_RANKERS: Ranker[] = [
   {
