@@ -7,27 +7,27 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const students = [
-  { name: "Akshay Pillay", rank: "AIR 51", img: "/rankers/ranker-1.jpg" },
-  { name: "Shivam Ranjan", rank: "AIR 1 (NM)", img: "/rankers/ranker-2.jpg" },
-  { name: "Ayush Sachin Kumar Chordiya", rank: "AIR 24 (PI)", img: "/rankers/ranker-3.jpg" },
-  { name: "Aman Nema", rank: "AIR 38 (PI)", img: "/rankers/ranker-4.jpg" },
-  { name: "Omkar Nishad", rank: "AIR 239 (PI)", img: "/rankers/ranker-5.jpg" },
-  { name: "Vishal Verma", rank: "AIR 240 (ME)", img: "/rankers/ranker-6.jpg" },
-  { name: "Ankit Gupta", rank: "AIR 496 (XE)", img: "/rankers/ranker-7.jpg" },
-  { name: "Anjali", rank: "AIR 556 (ME)", img: "/rankers/ranker-8.jpg" },
-  { name: "Sujoy Das", rank: "AIR 535 (ME)", img: "/rankers/ranker-9.jpg" },
-  { name: "Manish Kumar", rank: "AIR 267 (ME)", img: "/rankers/ranker-10.jpg" },
-  { name: "Harshit Kumar", rank: "AIR 5 (PI)", img: "/rankers/ranker-11.jpg" },
-  { name: "Rushabh", rank: "AIR 146 (PI)", img: "/rankers/ranker-12.jpg" },
-  { name: "Abhishek Kumar", rank: "AIR 410 (ME)", img: "/rankers/ranker-13.jpg" },
-  { name: "CHIRAG GOYAL", rank: "AIR 68 (ME)", img: "/rankers/ranker-14.jpg" },
-  { name: "Deepbhai Haresh Kumar Dave", rank: "AIR 197 (XE) / 343 (ME)", img: "/rankers/ranker-15.jpg" },
-  { name: "KAMAL KISHOR BHARDWAJ", rank: "AIR 408 (ME)", img: "/rankers/ranker-16.jpg" },
-  { name: "AKSHIT DINESH", rank: "AIR 33 (ME)", img: "/rankers/ranker-17.jpg" },
-  { name: "VIJAY PAL", rank: "AIR 52 (ME)", img: "/rankers/ranker-18.jpg" },
-  { name: "MAYUR BHARAT MORE", rank: "AIR 68 (PI) / 974 (ME)", img: "/rankers/ranker-19.jpg" },
-  { name: "HARSHIT KUMAR GUPTA", rank: "AIR 636 (ME)", img: "/rankers/ranker-20.jpg" },
-  { name: "PRAGYA SHARMA", rank: "AIR 905 (ME)", img: "/rankers/ranker-21.jpg" }
+  { name: "Akshay Pillay", rank: "AIR 51", img: "/rankers/ranker-1.png" },
+  { name: "Shivam Ranjan", rank: "AIR 1 (NM)", img: "/rankers/ranker-2.png" },
+  { name: "Ayush Sachin Kumar Chordiya", rank: "AIR 24 (PI)", img: "/rankers/ranker-3.png" },
+  { name: "Aman Nema", rank: "AIR 38 (PI)", img: "/rankers/ranker-4.png" },
+  { name: "Omkar Nishad", rank: "AIR 239 (PI)", img: "/rankers/ranker-5.png" },
+  { name: "Vishal Verma", rank: "AIR 240 (ME)", img: "/rankers/ranker-6.png" },
+  { name: "Ankit Gupta", rank: "AIR 496 (XE)", img: "/rankers/ranker-7.png" },
+  { name: "Anjali", rank: "AIR 556 (ME)", img: "/rankers/ranker-8.png" },
+  { name: "Sujoy Das", rank: "AIR 535 (ME)", img: "/rankers/ranker-9.png" },
+  { name: "Manish Kumar", rank: "AIR 267 (ME)", img: "/rankers/ranker-10.png" },
+  { name: "Harshit Kumar", rank: "AIR 5 (PI)", img: "/rankers/ranker-11.png" },
+  { name: "Rushabh", rank: "AIR 146 (PI)", img: "/rankers/ranker-12.png" },
+  { name: "Abhishek Kumar", rank: "AIR 410 (ME)", img: "/rankers/ranker-13.png" },
+  { name: "CHIRAG GOYAL", rank: "AIR 68 (ME)", img: "/rankers/ranker-14.png" },
+  { name: "Deepbhai Haresh Kumar Dave", rank: "AIR 197 (XE) / 343 (ME)", img: "/rankers/ranker-15.png" },
+  { name: "KAMAL KISHOR BHARDWAJ", rank: "AIR 408 (ME)", img: "/rankers/ranker-16.png" },
+  { name: "AKSHIT DINESH", rank: "AIR 33 (ME)", img: "/rankers/ranker-17.png" },
+  { name: "VIJAY PAL", rank: "AIR 52 (ME)", img: "/rankers/ranker-18.png" },
+  { name: "MAYUR BHARAT MORE", rank: "AIR 68 (PI) / 974 (ME)", img: "/rankers/ranker-19.png" },
+  { name: "HARSHIT KUMAR GUPTA", rank: "AIR 636 (ME)", img: "/rankers/ranker-20.png" },
+  { name: "PRAGYA SHARMA", rank: "AIR 905 (ME)", img: "/rankers/ranker-21.png" }
 ];
 
 const VerticalSlider = ({ items, speed, reverse = false }: { items: typeof students, speed: number, reverse?: boolean }) => {
