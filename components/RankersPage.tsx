@@ -48,7 +48,7 @@ const MOCK_RANKERS: Ranker[] = Array.from({ length: 30 }, (_, i) => ({
     ][i] || `Ranker Designation ${i + 1}`,
     category: ["GATE", "UPSC", "ESE", "PSU", "BARC", "ISRO", "DRDO"][i % 7],
     description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
-    image: `/rankers/ranker-${i + 1}.jpg`,
+    image: `/rankers/ranker-${i + 1}.png`,
 }));
 
 const MOCK_JOB_RANKERS: Ranker[] = [
@@ -60,7 +60,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Mechanical Engineering",
     selectionYear: "2022",
     category: "UPSC/IAS",
-    image: "/rankers/job-1.jpg"
+    image: "/rankers/job-1.png"
   },
   {
     id: "j2",
@@ -70,7 +70,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Mechanical Engineering",
     selectionYear: "2022",
     category: "MOD",
-    image: "/rankers/job-2.jpg"
+    image: "/rankers/job-2.png"
   },
   {
     id: "j3",
@@ -80,7 +80,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Production & Industrial Engineering",
     selectionYear: "2021",
     category: "ISRO",
-    image: "/rankers/job-3.jpg"
+    image: "/rankers/job-3.png"
   },
   {
     id: "j4",
@@ -90,7 +90,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Mechanical Engineering",
     selectionYear: "2023",
     category: "ISRO",
-    image: "/rankers/job-4.jpg"
+    image: "/rankers/job-4.png"
   },
   {
     id: "j5",
@@ -100,7 +100,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Mechanical Engineering",
     selectionYear: "2020",
     category: "BARC",
-    image: "/rankers/job-5.jpg"
+    image: "/rankers/job-5.png"
   },
   {
     id: "j6",
@@ -110,7 +110,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Mechanical Engineering",
     selectionYear: "2024",
     category: "PSU",
-    image: "/rankers/job-6.jpg"
+    image: "/rankers/job-6.png"
   },
   {
     id: "j7",
@@ -120,7 +120,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Mechanical Engineering",
     selectionYear: "2023",
     category: "PSU",
-    image: "/rankers/job-7.jpg"
+    image: "/rankers/job-7.png"
   },
   {
     id: "j8",
@@ -130,7 +130,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Mechanical Engineering",
     selectionYear: "2024",
     category: "PSU",
-    image: "/rankers/job-8.jpg"
+    image: "/rankers/job-8.png"
   },
   {
     id: "j9",
@@ -140,7 +140,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Civil Engineering",
     selectionYear: "2020",
     category: "JOB",
-    image: "/rankers/job-9.jpg"
+    image: "/rankers/job-9.png"
   },
   {
     id: "j10",
@@ -150,7 +150,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Mechanical Engineering",
     selectionYear: "2022",
     category: "PSU",
-    image: "/rankers/job-10.jpg"
+    image: "/rankers/job-10.png"
   },
   {
     id: "j11",
@@ -160,7 +160,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Mechanical Engineering",
     selectionYear: "2024",
     category: "PSU",
-    image: "/rankers/job-11.jpg"
+    image: "/rankers/job-11.png"
   },
   {
     id: "j12",
@@ -170,7 +170,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Mechanical Engineering",
     selectionYear: "2022",
     category: "PSU",
-    image: "/rankers/job-12.jpg"
+    image: "/rankers/job-12.png"
   },
   {
     id: "j13",
@@ -180,7 +180,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Mechanical Engineering",
     selectionYear: "2021",
     category: "PSU",
-    image: "/rankers/job-13.jpg"
+    image: "/rankers/job-13.png"
   },
   {
     id: "j14",
@@ -190,7 +190,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Mechanical Engineering",
     selectionYear: "2024",
     category: "JOB",
-    image: "/rankers/job-14.jpg"
+    image: "/rankers/job-14.png"
   },
   {
     id: "j15",
@@ -200,7 +200,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Civil Engineering",
     selectionYear: "2022",
     category: "ESE",
-    image: "/rankers/job-15.jpg"
+    image: "/rankers/job-15.png"
   },
   {
     id: "j16",
@@ -210,7 +210,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Mechanical Engineering",
     selectionYear: "2019/2024",
     category: "PSU",
-    image: "/rankers/job-16.jpg"
+    image: "/rankers/job-16.png"
   },
   {
     id: "j17",
@@ -220,7 +220,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Production Engineering",
     selectionYear: "2017",
     category: "PSU",
-    image: "/rankers/job-17.jpg"
+    image: "/rankers/job-17.png"
   },
   {
     id: "j18",
@@ -230,7 +230,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Mechanical Engineering",
     selectionYear: "2024",
     category: "PSU",
-    image: "/rankers/job-18.jpg"
+    image: "/rankers/job-18.png"
   },
   {
     id: "j19",
@@ -240,7 +240,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Mechanical Engineering",
     selectionYear: "2024",
     category: "BARC",
-    image: "/rankers/job-19.jpg"
+    image: "/rankers/job-19.png"
   },
   {
     id: "j20",
@@ -250,7 +250,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Mechanical Engineering",
     selectionYear: "2024",
     category: "PSU",
-    image: "/rankers/job-20.jpg"
+    image: "/rankers/job-20.png"
   }
 ];
 
