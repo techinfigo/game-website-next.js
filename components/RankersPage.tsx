@@ -51,33 +51,208 @@ const MOCK_RANKERS: Ranker[] = Array.from({ length: 30 }, (_, i) => ({
     image: `/rankers/ranker-${i + 1}.jpg`,
 }));
 
-const MOCK_JOB_RANKERS: Ranker[] = Array.from({ length: 20 }, (_, i) => ({
-    id: `j${i + 1}`,
-    name: [
-      "Akshay Pillay", "Meera Krishnan", "Sandeep Rao", "Rohan Gupta", 
-      "Deepak Jha", "Sonalika Singh", "Amitabh Bachchan", "Rajesh Khanna",
-      "Dilip Kumar", "Dev Anand", "Hema Malini", "Jaya Bachchan",
-      "Rekha G", "Sridevi K", "Madhuri Dixit", "Juhi Chawla",
-      "Kajol D", "Rani Mukherjee", "Aishwarya Rai", "Sushmita Sen"
-    ][i] || `Job Ranker ${i + 1}`,
-    organisation: [
-      "Government of India", "Indian Railways", "ISRO", "IOCL", 
-      "BPCL", "NTPC", "BHEL", "HAL", "PGCIL", "ONGC",
-      "BARC", "DRDO", "GAIL", "NHPC", "SAIL", "BEL",
-      "NPCIL", "HPCL", "CPCL", "MRPL"
-    ][i] || "Public Sector Unit",
-    designation: [
-      "Sub Collector", "Assistant Divisional Engineer", "Scientist 'SC'", "Operations Manager",
-      "Project Engineer", "Technical Executive", "Sr. Scientist", "District Manager",
-      "Chief Engineer", "Station Head", "Research Lead", "Field Officer",
-      "Executive Trainee", "Section Head", "Deputy Manager", "Assistant Manager",
-      "Shift Incharge", "Plant Head", "Safety Officer", "Quality Head"
-    ][i] || "Technical Lead",
-    branch: ["Mechanical", "Civil", "Electrical", "Electronics", "Instrumentation"][i % 5] + " Engineering",
-    selectionYear: `${2020 + (i % 5)}`,
-    category: ["UPSC/IAS", "ESE", "ISRO", "PSU/GATE", "GATE"][i % 5],
-    image: `/rankers/job-${(i % 10) + 1}.jpg`
-}));
+const MOCK_JOB_RANKERS: Ranker[] = [
+  {
+    id: "j1",
+    name: "Akshay Pillay",
+    organisation: "Government of India",
+    designation: "Sub Collector and Sub Divisional Magistrate",
+    branch: "Mechanical Engineering",
+    selectionYear: "2022",
+    category: "UPSC/IAS",
+    image: "/rankers/job-1.jpg"
+  },
+  {
+    id: "j2",
+    name: "Dr. Sahil Garg",
+    organisation: "Ministry of Defence, Indian Navy",
+    designation: "Assistant Professor Indian Navy (Group A Gazetted)",
+    branch: "Mechanical Engineering",
+    selectionYear: "2022",
+    category: "MOD",
+    image: "/rankers/job-2.jpg"
+  },
+  {
+    id: "j3",
+    name: "Akash Jaiswal",
+    organisation: "ISRO, Bengaluru",
+    designation: "Scientist -SC",
+    branch: "Production & Industrial Engineering",
+    selectionYear: "2021",
+    category: "ISRO",
+    image: "/rankers/job-3.jpg"
+  },
+  {
+    id: "j4",
+    name: "Deepbhai Haresh Kumar Dave",
+    organisation: "ISRO, NLC",
+    designation: "Scientist/Engineer 'SC' Mechanical",
+    branch: "Mechanical Engineering",
+    selectionYear: "2023",
+    category: "ISRO",
+    image: "/rankers/job-4.jpg"
+  },
+  {
+    id: "j5",
+    name: "Dileep Kumar Chaudhary",
+    organisation: "Bhabha Atomic Research Centre",
+    designation: "Scientific Officer OCES",
+    branch: "Mechanical Engineering",
+    selectionYear: "2020",
+    category: "BARC",
+    image: "/rankers/job-5.jpg"
+  },
+  {
+    id: "j6",
+    name: "Govind Kumar",
+    organisation: "Bharat Electronics Limited",
+    designation: "Deputy Engineer",
+    branch: "Mechanical Engineering",
+    selectionYear: "2024",
+    category: "PSU",
+    image: "/rankers/job-6.jpg"
+  },
+  {
+    id: "j7",
+    name: "Chirag Goyal",
+    organisation: "Indian Oil Corporation Ltd (IOCL)",
+    designation: "Aviation Officer",
+    branch: "Mechanical Engineering",
+    selectionYear: "2023",
+    category: "PSU",
+    image: "/rankers/job-7.jpg"
+  },
+  {
+    id: "j8",
+    name: "Anant Kumar Gautam",
+    organisation: "IOCL",
+    designation: "Executive officer",
+    branch: "Mechanical Engineering",
+    selectionYear: "2024",
+    category: "PSU",
+    image: "/rankers/job-8.jpg"
+  },
+  {
+    id: "j9",
+    name: "Swati Mishra",
+    organisation: "Hindustan Zinc Limited",
+    designation: "Assistant Manager",
+    branch: "Civil Engineering",
+    selectionYear: "2020",
+    category: "JOB",
+    image: "/rankers/job-9.jpg"
+  },
+  {
+    id: "j10",
+    name: "Prashant Mishra",
+    organisation: "GAIL (India) Limited",
+    designation: "Senior Engineer",
+    branch: "Mechanical Engineering",
+    selectionYear: "2022",
+    category: "PSU",
+    image: "/rankers/job-10.jpg"
+  },
+  {
+    id: "j11",
+    name: "Suarabh Chaubey",
+    organisation: "NALCO",
+    designation: "Patent Examiner",
+    branch: "Mechanical Engineering",
+    selectionYear: "2024",
+    category: "PSU",
+    image: "/rankers/job-11.jpg"
+  },
+  {
+    id: "j12",
+    name: "Rahul Singh Yadav",
+    organisation: "NTPC",
+    designation: "Engineer",
+    branch: "Mechanical Engineering",
+    selectionYear: "2022",
+    category: "PSU",
+    image: "/rankers/job-12.jpg"
+  },
+  {
+    id: "j13",
+    name: "Kamna Pandey",
+    organisation: "NTPC Limited",
+    designation: "Engineer",
+    branch: "Mechanical Engineering",
+    selectionYear: "2021",
+    category: "PSU",
+    image: "/rankers/job-13.jpg"
+  },
+  {
+    id: "j14",
+    name: "Aasif Procha",
+    organisation: "PSPCL",
+    designation: "Assistant Engineer",
+    branch: "Mechanical Engineering",
+    selectionYear: "2024",
+    category: "JOB",
+    image: "/rankers/job-14.jpg"
+  },
+  {
+    id: "j15",
+    name: "Pooja H",
+    organisation: "Water Resources Department",
+    designation: "Assistant Engineer",
+    branch: "Civil Engineering",
+    selectionYear: "2022",
+    category: "ESE",
+    image: "/rankers/job-15.jpg"
+  },
+  {
+    id: "j16",
+    name: "Bhavya Malviya",
+    organisation: "NTPC Kahalgaon",
+    designation: "Assistant Executive Operations",
+    branch: "Mechanical Engineering",
+    selectionYear: "2019/2024",
+    category: "PSU",
+    image: "/rankers/job-16.jpg"
+  },
+  {
+    id: "j17",
+    name: "Rajat Rai",
+    organisation: "ONGC",
+    designation: "Asst. Exe. Engineer",
+    branch: "Production Engineering",
+    selectionYear: "2017",
+    category: "PSU",
+    image: "/rankers/job-17.jpg"
+  },
+  {
+    id: "j18",
+    name: "Garima",
+    organisation: "Bharat Dynamics Limited",
+    designation: "Executive Trainee",
+    branch: "Mechanical Engineering",
+    selectionYear: "2024",
+    category: "PSU",
+    image: "/rankers/job-18.jpg"
+  },
+  {
+    id: "j19",
+    name: "Anjali",
+    organisation: "NPCIL",
+    designation: "Executive Trainee",
+    branch: "Mechanical Engineering",
+    selectionYear: "2024",
+    category: "BARC",
+    image: "/rankers/job-19.jpg"
+  },
+  {
+    id: "j20",
+    name: "Sujoy Das",
+    organisation: "IOCL",
+    designation: "Executive Trainee | AIR 535 ME",
+    branch: "Mechanical Engineering",
+    selectionYear: "2024",
+    category: "PSU",
+    image: "/rankers/job-20.jpg"
+  }
+];
 
 const RankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
   <div
@@ -289,9 +464,11 @@ const RankersPage: React.FC = () => {
   const [rankers, setRankers] = useState<Ranker[]>([]);
   const [jobRankers, setJobRankers] = useState<Ranker[]>([]);
   const [loading, setLoading] = useState(true);
+  const [hasMounted, setHasMounted] = useState(false);
 
   // DATA FETCH: Fetching directly from the simulated sheet source
   useEffect(() => {
+    setHasMounted(true);
     const fetchRankersFromSheet = async () => {
       setLoading(true);
       try {
@@ -309,6 +486,11 @@ const RankersPage: React.FC = () => {
     fetchRankersFromSheet();
     window.scrollTo(0, 0);
   }, []);
+
+  // Performance guard: Don't render complex interactive content until mounted
+  if (!hasMounted) {
+    return <div className="min-h-screen bg-[#0f1115]" />;
+  }
 
   // Updated slicing to match user specific counts (10 in row 1, 20 in row 2 for rankers; 10+10 for jobs)
   const row1 = rankers.slice(0, 10) || [];
