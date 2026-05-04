@@ -88,28 +88,28 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
   const videos = [
     {
       id: 1,
-      title: "Complete Fluid Mechanics",
+      title: "Complete Fluid Mechanics Revision",
       views: "1.5M+",
       duration: "40+ Lectures",
-      thumbnail: "https://img.youtube.com/vi/bttDewEFDq4/maxresdefault.jpg",
-      videoId: "PLzpAOaJe3cEibAI-LLEUja3q34NaQdMgb",
+      thumbnail: "https://i.ytimg.com/vi/4KwSGcjrA6c/hqdefault.jpg",
+      videoId: "4KwSGcjrA6c",
       tag: "Playlist"
     },
     {
       id: 2,
-      title: "Strength of Materials",
+      title: "Strength of Materials (SOM) Revision",
       views: "1.2M+",
       duration: "50+ Lectures",
-      thumbnail: "https://img.youtube.com/vi/1QV1hZ7c68Y/maxresdefault.jpg",
-      videoId: "PL4z8h611VJ3CFbklGo60rhejqprcMHTSx",
+      thumbnail: "https://i.ytimg.com/vi/hVensU0cwEs/hqdefault.jpg",
+      videoId: "hVensU0cwEs",
       tag: "Playlist"
     },
     {
       id: 3,
-      title: "Crack GATE in First Attempt",
+      title: "Strategy to Crack GATE in 1st Attempt",
       views: "250k+",
       duration: "45:20",
-      thumbnail: "https://img.youtube.com/vi/Vv9lARk4vcs/maxresdefault.jpg",
+      thumbnail: "https://i.ytimg.com/vi/Vv9lARk4vcs/hqdefault.jpg",
       videoId: "Vv9lARk4vcs",
       tag: "Strategy"
     }
