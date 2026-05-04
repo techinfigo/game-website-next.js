@@ -276,7 +276,7 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
                                                 <Youtube size={16} />
                                               </div>
                                               <div className="text-left">
-                                                <div className="text-xs font-black text-slate-800">GATE Academy</div>
+                                                <div className="text-xs font-black text-slate-800">GAME- GATE & ESE</div>
                                                 <div className="text-[9px] font-bold text-slate-400 uppercase tracking-tight">Full Lectures & Concepts</div>
                                               </div>
                                               <ExternalLink size={12} className="ml-auto text-slate-300" />
@@ -290,7 +290,7 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
                                                 <Sparkles size={16} />
                                               </div>
                                               <div className="text-left">
-                                                <div className="text-xs font-black text-slate-800">SSC JE & AE</div>
+                                                <div className="text-xs font-black text-slate-800">GAME- AE & JE</div>
                                                 <div className="text-[9px] font-bold text-slate-400 uppercase tracking-tight">Exam Updates & Tips</div>
                                               </div>
                                               <ExternalLink size={12} className="ml-auto text-slate-300" />
