@@ -338,7 +338,7 @@ const AboutPage: React.FC = () => {
             <div className="lg:w-5/12 order-2 lg:order-1 w-full">
               <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="flex gap-[clamp(0.5rem,1.5vw,1rem)] items-center justify-center">
                 <div className="w-2/3 h-[clamp(250px,50vh,400px)] rounded-[clamp(1.5rem,4vh,3rem)] overflow-hidden shadow-2xl relative border-4 border-slate-50">
-                  <Image src="/gallery-hero.png
+                  <Image src="/about-hero.png
 " alt="Main Mentorship" fill className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-gameTeal/20 to-transparent"></div>
                 </div>
