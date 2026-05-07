@@ -70,7 +70,7 @@ const AboutPage: React.FC = () => {
     role: "Founder & Chief Mentor",
     expLabel: "13+ YRS EXP.",
     exp: "13+ YEARS OF TEACHING EXCELLENCE",
-    img: "/gaurav-sir.png",
+    img: "/about-faculty-gaurav.png",
     stats: [
       { label: "Mentored 1 Lakh+ Students", icon: Users },
       { label: "GATE & ESE Expert", icon: Trophy },
@@ -85,7 +85,7 @@ const AboutPage: React.FC = () => {
       role: "Senior Mentor",
       expLabel: "10+ YRS EXP.",
       exp: "10+ YEARS OF TEACHING EXPERIENCE",
-    img: "/gaurav-sir.png",
+      img: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?fit=crop&w=600&q=80",
       stats: [
         { label: "Achieved ESE AIR 63, 90", icon: Medal },
         { label: "Mentored 50k+ Students", icon: Users },
@@ -98,7 +98,7 @@ const AboutPage: React.FC = () => {
       role: "Thermal Expert",
       expLabel: "9+ YRS EXP.",
       exp: "9+ YEARS OF TEACHING EXPERIENCE",
-    img: "/gaurav-sir.png",
+      img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?fit=crop&w=600&q=80",
       stats: [
         { label: "Gate Qualified AIR 80", icon: Medal },
         { label: "60,000+ Students Mentored", icon: Users },
@@ -111,7 +111,7 @@ const AboutPage: React.FC = () => {
       role: "PSU Specialist",
       expLabel: "10+ YRS EXP.",
       exp: "10+ YEARS OF TEACHING EXPERIENCE",
-    img: "/gaurav-sir.png",
+      img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?fit=crop&w=600&q=80",
       stats: [
         { label: "Fluid Mechanics Expert", icon: Target },
         { label: "Industry Recognition", icon: Award },
@@ -124,12 +124,116 @@ const AboutPage: React.FC = () => {
       role: "SOM Expert",
       expLabel: "7+ YRS EXP.",
       exp: "7+ YEARS OF TEACHING EXPERIENCE",
-    img: "/gaurav-sir.png",
+      img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?fit=crop&w=600&q=80",
       stats: [
         { label: "Strength of Materials Guru", icon: Layers },
         { label: "Problem Solving Pro", icon: Zap },
         { label: "Industrial Expertise", icon: Award },
         { label: "Mentored 8,000+ students", icon: Users }
+      ]
+    },
+    { 
+      name: "Sandeep Singh", 
+      role: "Thermodynamics Expert",
+      expLabel: "8+ YRS EXP.",
+      exp: "8+ YEARS OF TEACHING EXPERIENCE",
+      img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=600&q=80",
+      stats: [
+        { label: "Mentored 30k+ Students", icon: Users },
+        { label: "GATE Ranker", icon: Medal },
+        { label: "Energy Systems Pro", icon: Zap },
+        { label: "Expert Consultant", icon: Briefcase }
+      ]
+    },
+    { 
+      name: "Rahul Verma", 
+      role: "Production Pro",
+      expLabel: "12+ YRS EXP.",
+      exp: "12+ YEARS OF TEACHING EXPERIENCE",
+      img: "https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?fit=crop&w=600&q=80",
+      stats: [
+        { label: "Manufacturing Expert", icon: Settings },
+        { label: "Industry Veteran", icon: Briefcase },
+        { label: "Mentored 45k+ Students", icon: Users },
+        { label: "Research Specialist", icon: Microscope }
+      ]
+    },
+    { 
+      name: "Priya Sharma", 
+      role: "Design Specialist",
+      expLabel: "6+ YRS EXP.",
+      exp: "6+ YEARS OF TEACHING EXPERIENCE",
+      img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?fit=crop&w=600&q=80",
+      stats: [
+        { label: "Visual Learning Expert", icon: Lightbulb },
+        { label: "GATE Qualified", icon: Trophy },
+        { label: "Concept Artist", icon: Sparkles },
+        { label: "Problem Solver", icon: Target }
+      ]
+    },
+    { 
+      name: "Amit Kumar", 
+      role: "Industrial Guru",
+      expLabel: "11+ YRS EXP.",
+      exp: "11+ YEARS OF TEACHING EXPERIENCE",
+      img: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?fit=crop&w=600&q=80",
+      stats: [
+        { label: "Optimization Pro", icon: Zap },
+        { label: "ESE Top Ranker", icon: Medal },
+        { label: "Mentored 20k+ Students", icon: Users },
+        { label: "Strategy Expert", icon: Target }
+      ]
+    },
+    { 
+      name: "Vikram Rathore", 
+      role: "Materials King",
+      expLabel: "9+ YRS EXP.",
+      exp: "9+ YEARS OF TEACHING EXPERIENCE",
+      img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?fit=crop&w=600&q=80",
+      stats: [
+        { label: "Material Science Expert", icon: Atom },
+        { label: "Industrial Consultant", icon: Briefcase },
+        { label: "Innovation Head", icon: Lightbulb },
+        { label: "GATE Coach", icon: GraduationCap }
+      ]
+    },
+    { 
+      name: "Ishita Gupta", 
+      role: "Hydraulics Pro",
+      expLabel: "5+ YRS EXP.",
+      exp: "5+ YEARS OF TEACHING EXPERIENCE",
+      img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?fit=crop&w=600&q=80",
+      stats: [
+        { label: "Fluid Dynamics expert", icon: Compass },
+        { label: "National Merit Holder", icon: Star },
+        { label: "Mentored 10k+ Students", icon: Users },
+        { label: "Modern Pedagogy", icon: Sparkles }
+      ]
+    },
+    { 
+      name: "Karan Johar", 
+      role: "Mechatronics Pro",
+      expLabel: "14+ YRS EXP.",
+      exp: "14+ YEARS OF TEACHING EXPERIENCE",
+      img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?fit=crop&w=600&q=80",
+      stats: [
+        { label: "Robotics Expert", icon: Cpu },
+        { label: "Tech Innovator", icon: Lightbulb },
+        { label: "Mentored 70k+ Students", icon: Users },
+        { label: "Legacy Educator", icon: Trophy }
+      ]
+    },
+    { 
+      name: "Nikhil Pandey", 
+      role: "Maths & Aptitude",
+      expLabel: "8+ YRS EXP.",
+      exp: "8+ YEARS OF TEACHING EXPERIENCE",
+      img: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?fit=crop&w=600&q=80",
+      stats: [
+        { label: "Quant Specialist", icon: Target },
+        { label: "Problem Solving Guru", icon: Zap },
+        { label: "Mentored 35k+ Students", icon: Users },
+        { label: "GATE topper", icon: Medal }
       ]
     }
   ];
@@ -234,15 +338,15 @@ const AboutPage: React.FC = () => {
             <div className="lg:w-5/12 order-2 lg:order-1 w-full">
               <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="flex gap-[clamp(0.5rem,1.5vw,1rem)] items-center justify-center">
                 <div className="w-2/3 h-[clamp(250px,50vh,400px)] rounded-[clamp(1.5rem,4vh,3rem)] overflow-hidden shadow-2xl relative border-4 border-slate-50">
-                  <Image src="/gallery-hero.png" alt="Main Mentorship" fill unoptimized className="w-full h-full object-cover" />
+                  <Image src="/about-hero-main.png" alt="Main Mentorship" fill className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-gameTeal/20 to-transparent"></div>
                 </div>
                 <div className="w-1/3 flex flex-col gap-[clamp(0.5rem,1.5vw,1rem)]">
                   <div className="h-[clamp(120px,24vh,195px)] rounded-[clamp(1.25rem,3vh,2.5rem)] overflow-hidden shadow-xl border-2 border-slate-50 relative">
-                    <Image src="/student-learnings.png" alt="Student Learning" fill unoptimized className="w-full h-full object-cover" />
+                    <Image src="/about-hero-sub1.png" alt="Student Learning" fill className="w-full h-full object-cover" />
                   </div>
                   <div className="h-[clamp(120px,24vh,195px)] rounded-[clamp(1.25rem,3vh,2.5rem)] overflow-hidden shadow-xl border-2 border-slate-200 relative">
-                    <Image src="/achiever-greatness.png" alt="Achiever Greatness" fill unoptimized className="w-full h-full object-cover" />
+                    <Image src="/about-hero-sub2.png" alt="Achiever Greatness" fill className="w-full h-full object-cover" />
                   </div>
                 </div>
               </motion.div>
@@ -250,7 +354,7 @@ const AboutPage: React.FC = () => {
             <div className="lg:w-7/12 order-1 lg:order-2 flex flex-col justify-center">
               <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="flex flex-col justify-center">
                 <h1 className="text-[clamp(1.75rem,3.5vw,3.25rem)] font-black text-slate-900 leading-tight mb-[clamp(0.25rem,1vh,0.75rem)] tracking-tight">
-                  Gaurav's Academy for <span className="text-[#075d63]">Mentorship & Education</span>
+                  Gaurav’s Academy for <span className="text-[#075d63]">Mentorship & Education</span>
                 </h1>
 
                 <div className="mb-[clamp(0.25rem,1.5vh,0.75rem)]">
@@ -317,7 +421,7 @@ const AboutPage: React.FC = () => {
                           exit={{ opacity: 0, scale: 0.95 }}
                           className="w-full h-full bg-gameBlack rounded-[3.5rem] p-12 lg:p-16 relative overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] flex flex-col justify-between border border-white/5"
                         >
-                          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
+                          <div className="absolute inset-0 bg-graph-paper opacity-[0.03] invert pointer-events-none"></div>
                           <div className="absolute -top-24 -right-24 w-64 h-64 bg-gameTeal/10 rounded-full blur-[80px]"></div>
                           <div className="relative z-10 space-y-12">
                               <div><div className="text-gameGold font-black text-5xl mb-2 tracking-tighter">13+ Years</div><p className="text-white font-black text-[10px] uppercase tracking-[0.4em] opacity-50">Teaching Experience</p></div>
@@ -425,10 +529,9 @@ const AboutPage: React.FC = () => {
                   
                   <div className="relative z-10 rounded-[clamp(2rem,6vh,4rem)] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] bg-slate-800 border-8 border-white/5 h-[clamp(250px,50vh,450px)] w-full">
                      <Image 
-                       src="/gaurav-education.png" 
+                       src="/about-mentor.png" 
                        alt="Gaurav Babu Sir" 
                        fill
-                       unoptimized
                        className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-105" 
                        referrerPolicy="no-referrer"
                      />
@@ -513,7 +616,7 @@ const AboutPage: React.FC = () => {
 
       {/* SECTION 5: OUR APPROACH - DYNAMIC JOURNEY ROADMAP */}
       <section className="relative py-12 lg:py-16 flex flex-col justify-center bg-slate-50 overflow-hidden border-y border-slate-100">
-         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-[0.03] pointer-events-none"></div>
+         <div className="absolute inset-0 bg-graph-paper opacity-[0.03] pointer-events-none"></div>
          <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10 w-full">
             {/* Main Title */}
             <motion.div {...fadeInUp} className="text-center mb-[clamp(1.5rem,4vh,3rem)]">
@@ -626,11 +729,11 @@ const AboutPage: React.FC = () => {
         </div>
         <div className="flex overflow-hidden group">
           <motion.div 
-            className="flex items-center gap-12 md:gap-20 whitespace-nowrap px-8"
+            className="flex items-center gap-16 whitespace-nowrap px-8"
             animate={{ x: isMarqueePaused ? undefined : ["0%", "-50%"] }}
             transition={{ 
               x: {
-                duration: 50, 
+                duration: 40, 
                 repeat: Infinity, 
                 ease: "linear",
               }
@@ -638,35 +741,10 @@ const AboutPage: React.FC = () => {
           >
             {[...Array(2)].map((_, i) => (
               <React.Fragment key={i}>
-                {[
-{ name: "UPPSC", logo: "/logo-uppsc.png" },
-{ name: "RSSB", logo: "/logo-rssb.png" },
-{ name: "MPPSC", logo: "/logo-mppsc.png" },
-{ name: "BPPSC", logo: "/logo-bppsc.png" },
-{ name: "RITES", logo: "/logo-rites.png" },
-{ name: "OIL INDIA", logo: "/logo-oil-india.png" },
-{ name: "NTPC", logo: "/logo-ntpc.png" },
-{ name: "NPCIL", logo: "/logo-npcil.png" },
-{ name: "NHPC", logo: "/logo-nhpc.png" },
-{ name: "ISRO", logo: "/logo-isro.png" },
-{ name: "IOCL", logo: "/logo-iocl.png" },
-{ name: "HPCL", logo: "/logo-hpcl.png" },
-{ name: "DRDO", logo: "/logo-drdo.png" },
-{ name: "BHEL", logo: "/logo-bhel.png" },
-{ name: "BDL", logo: "/logo-bdl.png" },
-{ name: "BEL", logo: "/logo-bel.png" },
-{ name: "BARC", logo: "/logo-barc.png" },
-{ name: "AAI", logo: "/logo-aai.png" },
-                ].map((company, idx) => (
-                  <div key={`${company.name}-${idx}`} className="relative w-16 md:w-24 h-16 md:h-24 flex items-center justify-center transition-all duration-500 cursor-default px-2">
-                    <Image
-                      src={company.logo}
-                      alt={company.name}
-                      fill
-                      className="object-contain"
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
+                {["ONGC", "ISRO", "NTPC", "BARC", "DRDO", "L&T", "BHEL", "TATA PROJECTS", "SAIL", "GAIL", "IOCL", "BPCL", "CIL", "BEL", "NHAI", "RVNL"].map((company) => (
+                  <span key={company} className="text-xl md:text-3xl font-black text-white/20 hover:text-gameGold transition-all duration-300 cursor-default tracking-tighter select-none uppercase">
+                    {company}
+                  </span>
                 ))}
               </React.Fragment>
             ))}
@@ -819,10 +897,9 @@ const AboutPage: React.FC = () => {
                >
                   <div className="absolute inset-0 rounded-[clamp(1.5rem,4vh,2.5rem)] overflow-hidden border border-white/10 shadow-2xl">
                      <Image 
-                        src="/visionary-leader.png" 
+                        src="/about-leadership.png" 
                         alt="Gaurav Babu Sir" 
                         fill
-                        unoptimized
                         className="w-full h-full object-cover grayscale-[15%] brightness-90 group-hover:brightness-100 transition-all duration-700" 
                         referrerPolicy="no-referrer"
                      />
@@ -919,7 +996,7 @@ const AboutPage: React.FC = () => {
 
       {/* SECTION 8: EDUCATORS - SPOTLIGHT & CAROUSEL REDESIGN */}
       <section className="relative py-8 lg:py-10 flex flex-col justify-center bg-[#0b0c10] overflow-hidden border-t border-white/5">
-         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-[0.03] pointer-events-none invert"></div>
+         <div className="absolute inset-0 bg-graph-paper opacity-[0.03] pointer-events-none invert"></div>
          <div className="max-w-[1280px] mx-auto px-6 md:px-10 lg:px-12 relative z-10 w-full">
             
             {/* Header Area */}
@@ -959,7 +1036,6 @@ const AboutPage: React.FC = () => {
                         src={chiefMentor.img} 
                         alt={chiefMentor.name} 
                         fill
-                        unoptimized
                         className="object-cover transition-all duration-1000 group-hover:scale-110" 
                         referrerPolicy="no-referrer"
                      />
@@ -1000,16 +1076,14 @@ const AboutPage: React.FC = () => {
                      </h4>
                      <div className="flex gap-2">
                         <button 
-                           onClick={() => setFacultySlide(prev => Math.max(0, prev - 1))}
-                           disabled={facultySlide === 0}
-                           className={`w-8 h-8 rounded-full flex items-center justify-center transition-all border shrink-0 ${facultySlide === 0 ? 'bg-white/5 text-white/20 border-white/5 cursor-not-allowed' : 'bg-white/10 text-white border-white/10 hover:bg-gameTeal hover:border-gameTeal'}`}
+                           onClick={() => setFacultySlide(prev => (prev - 1 + Math.ceil(facultyMembers.length / 2)) % Math.ceil(facultyMembers.length / 2))}
+                           className="w-8 h-8 rounded-full flex items-center justify-center transition-all border shrink-0 bg-white/10 text-white border-white/10 hover:bg-gameTeal hover:border-gameTeal"
                         >
                            <ChevronLeft className="w-4 h-4" />
                         </button>
                         <button 
-                           onClick={() => setFacultySlide(prev => Math.min(Math.ceil(facultyMembers.length / 2) - 1, prev + 1))}
-                           disabled={facultySlide >= Math.ceil(facultyMembers.length / 2) - 1}
-                           className={`w-8 h-8 rounded-full flex items-center justify-center transition-all border shrink-0 ${facultySlide >= Math.ceil(facultyMembers.length / 2) - 1 ? 'bg-white/5 text-white/20 border-white/5 cursor-not-allowed' : 'bg-white/10 text-white border-white/10 hover:bg-gameTeal hover:border-gameTeal'}`}
+                           onClick={() => setFacultySlide(prev => (prev + 1) % Math.ceil(facultyMembers.length / 2))}
+                           className="w-8 h-8 rounded-full flex items-center justify-center transition-all border shrink-0 bg-white/10 text-white border-white/10 hover:bg-gameTeal hover:border-gameTeal"
                         >
                            <ChevronRight className="w-4 h-4" />
                         </button>
@@ -1034,12 +1108,11 @@ const AboutPage: React.FC = () => {
                                  onClick={() => setSelectedFaculty(fac)}
                                  className="bg-[#12141c] rounded-3xl overflow-hidden border border-white/5 shadow-2xl flex flex-col group hover:border-gameTeal/30 transition-all duration-500 cursor-pointer h-full"
                               >
-                                 <div className="h-[160px] lg:h-[200px] relative overflow-hidden bg-[#0a0a0a]">
+                                 <div className="h-[220px] lg:h-[280px] relative overflow-hidden bg-[#0a0a0a]">
                                     <Image 
                                        src={fac.img} 
                                        alt={fac.name} 
                                        fill
-                                       unoptimized
                                        className="object-cover transition-all duration-700 group-hover:scale-105" 
                                        referrerPolicy="no-referrer"
                                     />
@@ -1120,7 +1193,6 @@ const AboutPage: React.FC = () => {
                         src={selectedFaculty.img} 
                         alt={selectedFaculty.name} 
                         fill
-                        unoptimized
                         className="object-cover grayscale-[10%]" 
                         referrerPolicy="no-referrer"
                      />
