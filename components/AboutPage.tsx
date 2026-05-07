@@ -81,11 +81,12 @@ const AboutPage: React.FC = () => {
 
   const facultyMembers = [
     { 
-      name: "Harshit Agarwal", 
+      name: "Priyam Mishra", 
       role: "Senior Mentor",
       expLabel: "10+ YRS EXP.",
       exp: "10+ YEARS OF TEACHING EXPERIENCE",
-      img: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?fit=crop&w=600&q=80",
+      img: "/Priyam-Mishra-Sir.jpg
+",
       stats: [
         { label: "Achieved ESE AIR 63, 90", icon: Medal },
         { label: "Mentored 50k+ Students", icon: Users },
