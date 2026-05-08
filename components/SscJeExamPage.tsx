@@ -52,7 +52,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       label: "Prestige & Security",
       title: "A Golden Ticket to a Respected & Secure Government Career.",
       desc: "Secure a Group B (Non-Gazetted) position that commands respect in society and provides lifelong stability.",
-      image: "/exam-ssc-1.png", 
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?fit=crop&w=800&q=80", 
       icon: Shield,
       color: "text-gameTeal",
       bg: "bg-gameTeal/5"
@@ -61,7 +61,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       label: "Salary & Perks",
       title: "Attractive & Progressive Salary with Fantastic Perks",
       desc: "Enjoy Level-6 pay scale with HRA, DA, medical benefits, and a lifestyle that ensures prosperity for you and your family.",
-      image: "/exam-ssc-2.png", 
+      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?fit=crop&w=800&q=80", 
       icon: Wallet,
       color: "text-gameTeal",
       bg: "bg-gameTeal/5"
@@ -70,7 +70,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       label: "Core Sectors",
       title: "Direct Entry into India's Core Infrastructure Sectors",
       desc: "Work on massive national projects like bridges, dams, and modern railways. See your engineering impact in real-time.",
-      image: "/exam-ssc-3.png", 
+      image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800&q=80", 
       icon: HardHat,
       color: "text-gameGoldDark",
       bg: "bg-gameGold/5"
@@ -79,7 +79,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       label: "Career Growth",
       title: "Clear & Time-Bound Career Progression to Executive Ranks",
       desc: "Climb the ladder from Junior Engineer to Assistant Engineer, Executive Engineer, and up to Engineer-in-Chief.",
-      image: "/exam-ssc-4.png", 
+      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80", 
       icon: TrendingUp,
       color: "text-gameTeal",
       bg: "bg-gameTeal/5"
@@ -88,7 +88,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       label: "Achievable Goal",
       title: "Achievable Goal with a Well-Defined Exam Pattern",
       desc: "With a structured syllabus and clarity in pattern, SSC-JE is an achievable dream for dedicated Diploma and Degree holders.",
-      image: "/exam-ssc-5.png", 
+      image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?fit=crop&w=800&q=80", 
       icon: Target,
       color: "text-gameGoldDark",
       bg: "bg-gameGold/5"
@@ -99,31 +99,31 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
     {
       title: "Excellence Course - Civil Engineering",
       branch: "Civil",
-      price: "Rs. 14,999",
-      originalPrice: "Rs. 24,999",
+      price: "₹14,999",
+      originalPrice: "₹24,999",
       discount: "40% OFF",
       features: ["Full Syllabus Coverage", "Live & Recorded Classes", "PYQ Analysis", "Test Series Included"],
-      image: "/images/courses/ssc-civil.png",
+      image: "https://picsum.photos/seed/civil-eng/800/600",
       tag: "Best Seller"
     },
     {
       title: "Excellence Course - Mechanical Engineering",
       branch: "Mechanical",
-      price: "Rs. 14,999",
-      originalPrice: "Rs. 24,999",
+      price: "₹14,999",
+      originalPrice: "₹24,999",
       discount: "40% OFF",
       features: ["Full Syllabus Coverage", "Live & Recorded Classes", "PYQ Analysis", "Test Series Included"],
-      image: "/images/courses/ssc-mech.png",
+      image: "https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?fit=crop&w=800&q=80",
       tag: "Popular"
     },
     {
       title: "Excellence Course - Electrical Engineering",
       branch: "Electrical",
-      price: "Rs. 14,999",
-      originalPrice: "Rs. 24,999",
+      price: "₹14,999",
+      originalPrice: "₹24,999",
       discount: "40% OFF",
       features: ["Full Syllabus Coverage", "Live & Recorded Classes", "PYQ Analysis", "Test Series Included"],
-      image: "/images/courses/ssc-elec.png",
+      image: "https://images.unsplash.com/photo-1498084393753-b411b2d26b34?fit=crop&w=800&q=80",
       tag: "Trending"
     }
   ];
@@ -135,7 +135,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       rank: "AIR 4",
       branch: "Civil",
       quote: "GAME Academy doesn't just teach you subjects; they teach you how to think like an engineer. Best decision of my life.",
-      image: "/images/achievers/achiever-ssc-1.png"
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?fit=crop&w=200&h=200&q=80"
     },
     {
       name: "Amit Patel",
@@ -143,7 +143,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       rank: "AIR 12",
       branch: "Electrical",
       quote: "The conceptual clarity I got from Gaurav Sir is unmatched. Every complex topic was broken down into simple parts.",
-      image: "/images/achievers/achiever-ssc-2.png"
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=200&h=200&q=80"
     },
     {
       name: "Rajesh Kumar",
@@ -151,7 +151,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       rank: "AIR 25",
       branch: "Mechanical",
       quote: "The mentorship program kept me on track when I felt lost. It's not just a coaching center, it's a family.",
-      image: "/images/achievers/achiever-ssc-3.png"
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?fit=crop&w=200&h=200&q=80"
     },
     {
       name: "Priya Sharma",
@@ -159,7 +159,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       rank: "AIR 8",
       branch: "Civil",
       quote: "The test series and PYQ analysis provided by GAME were instrumental in my success. Highly recommended!",
-      image: "/images/achievers/achiever-ssc-4.png"
+      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?fit=crop&w=200&h=200&q=80"
     }
   ];
 
@@ -670,7 +670,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       <section className="relative pt-16 pb-20 overflow-hidden bg-black text-white">
          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gameTeal/10 rounded-full blur-[120px] pointer-events-none"></div>
          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gameGold/5 rounded-full blur-[100px] pointer-events-none"></div>
-         <div className="absolute inset-0 bg-slate-900/50"></div>
+         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
 
          <div className="max-w-[1200px] mx-auto px-8 md:px-10 lg:px-12 relative z-10 text-center">
             <motion.div
@@ -780,7 +780,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                   <div className="absolute inset-0 bg-gameTeal/5 rounded-full blur-3xl transform rotate-12"></div>
                   <div className="relative bg-white rounded-[2.5rem] p-4 border border-slate-100 shadow-2xl aspect-video md:aspect-auto h-[400px]">
                      <Image 
-                        src="/exam-ssc-hero.png" 
+                        src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?fit=crop&w=800&q=80" 
                         alt="SSC JE Engineer" 
                         fill
                         className="rounded-[2rem] object-cover"
@@ -793,7 +793,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                            </div>
                            <div className="font-bold text-slate-900">Level-6 Pay Matrix</div>
                         </div>
-                        <p className="text-xs text-slate-500">Starting basic pay of Rs. 35,400 with additional government perks.</p>
+                        <p className="text-xs text-slate-500">Starting basic pay of ₹35,400 with additional government perks.</p>
                      </div>
                   </div>
                </motion.div>
@@ -826,11 +826,11 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                      whileInView={{ opacity: 1, y: 0 }} 
                      viewport={{ once: true }} 
                      transition={{ duration: 0.6 }}
-                     className={`flex flex-col lg:flex-row items-center gap-12 ${i % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
+                     className={`flex flex-col lg:flex-row items-center gap-16 ${i % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
                   >
-                     <div className="lg:w-1/2 relative">
+                     <div className="lg:w-5/12 relative">
                         <div className="absolute inset-0 bg-gameTeal/5 rounded-full blur-3xl transform rotate-12"></div>
-                        <div className="relative rounded-[2.5rem] p-3 border border-white bg-white shadow-2xl overflow-hidden group aspect-video lg:aspect-square">
+                        <div className="relative rounded-[2.5rem] p-2 border border-white bg-white shadow-2xl overflow-hidden group aspect-[4/3]">
                            <Image 
                               src={item.image} 
                               alt={item.label} 
@@ -845,14 +845,14 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                         </div>
                      </div>
 
-                     <div className="lg:w-1/2">
+                     <div className="lg:w-7/12">
                         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-xl bg-white border border-slate-200 text-gameTeal font-black text-xs uppercase tracking-widest mb-4 shadow-sm">
                            {item.label}
                         </div>
-                        <h3 className="text-2xl md:text-4xl font-black text-slate-900 mb-4 leading-tight group-hover:text-gameTeal transition-colors">
+                        <h3 className="text-2xl md:text-4xl font-black text-slate-900 mb-6 leading-tight group-hover:text-gameTeal transition-colors">
                            {item.title}
                         </h3>
-                        <p className="text-slate-600 text-lg md:text-xl font-medium leading-relaxed mb-6">
+                        <p className="text-slate-600 text-lg md:text-xl font-medium leading-relaxed mb-8">
                            {item.desc}
                         </p>
                         <button className="bg-gameTeal text-white px-8 py-3 rounded-xl font-bold hover:bg-gameTealDark transition-all shadow-lg flex items-center gap-2 group">
