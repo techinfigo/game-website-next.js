@@ -4,16 +4,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Mail, Lock, ArrowRight, Eye, EyeOff, Phone, KeyRound, Loader2 } from 'lucide-react';
-import { auth, db } from '../firebase';
-import { 
-  RecaptchaVerifier, 
-  signInWithPhoneNumber, 
-  ConfirmationResult,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  updateProfile
-} from 'firebase/auth';
-import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore';
+import { useAuth } from '@/providers/AuthProvider';
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -34,9 +25,6 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess }) =
   const [isLoading, setIsLoading] = useState(false);
   const [registrationSuccess, setRegistrationSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [confirmationResult, setConfirmationResult] = useState<ConfirmationResult | null>(null);
-  const recaptchaRef = useRef<HTMLDivElement>(null);
-  const recaptchaVerifier = useRef<RecaptchaVerifier | null>(null);
 
   // Email/Password State
   const [email, setEmail] = useState('');
@@ -54,7 +42,6 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess }) =
       setIsLoading(false);
       setRegistrationSuccess(false);
       setError(null);
-      setConfirmationResult(null);
       setEmail('');
       setPassword('');
       setFullName('');
@@ -68,122 +55,59 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess }) =
     setError(null);
   }, [loginMethod, isLogin]);
 
-  const setupRecaptcha = () => {
-    if (!recaptchaVerifier.current && recaptchaRef.current) {
-      try {
-        recaptchaVerifier.current = new RecaptchaVerifier(auth, recaptchaRef.current, {
-          size: 'invisible',
-          callback: () => {
-            console.log('Recaptcha resolved');
-          }
-        });
-      } catch (err) {
-        console.error('Recaptcha init error:', err);
-      }
-    }
-  };
+  const { login } = useAuth();
 
   const handleSendOtp = async () => {
     if (phoneNumber.length < 10) return;
-    
-    setError(null);
     setIsLoading(true);
-    setupRecaptcha();
-
-    try {
-      const formattedPhone = `+91${phoneNumber}`;
-      const appVerifier = recaptchaVerifier.current;
-      
-      if (!appVerifier) throw new Error('Recaptcha not initialized');
-
-      const result = await signInWithPhoneNumber(auth, formattedPhone, appVerifier);
-      setConfirmationResult(result);
+    // Mock OTP sending
+    setTimeout(() => {
       setShowOtp(true);
       setTimer(60);
-    } catch (err: any) {
-      console.error('OTP Send Error:', err);
-      setError(err.message || 'Failed to send OTP. Please try again.');
-      if (recaptchaVerifier.current) {
-        recaptchaVerifier.current.clear();
-        recaptchaVerifier.current = null;
-      }
-    } finally {
       setIsLoading(false);
-    }
+    }, 1000);
   };
 
   const handleVerifyOtp = async () => {
-    if (otp.length !== 6 || !confirmationResult) return;
-    
-    setError(null);
+    if (otp.length !== 6) return;
     setIsLoading(true);
-
-    try {
-      const userCredential = await confirmationResult.confirm(otp);
-      const user = userCredential.user;
-
-      // Check if user exists in Firestore
-      const userDoc = await getDoc(doc(db, 'users', user.uid));
-      
-      if (!userDoc.exists()) {
-        // Create new user profile if it doesn't exist
-        await setDoc(doc(db, 'users', user.uid), {
-          uid: user.uid,
-          phoneNumber: user.phoneNumber,
-          displayName: fullName || 'Student',
-          role: 'student',
-          createdAt: serverTimestamp()
-        });
-      }
-
+    // Mock OTP verification
+    setTimeout(() => {
+      login({
+        displayName: fullName || 'Student',
+        phoneNumber: `+91${phoneNumber}`,
+        email: email || null,
+        uid: 'mock-user-' + Math.random().toString(36).substr(2, 9)
+      });
       if (onSuccess) onSuccess();
       onClose();
-    } catch (err: any) {
-      console.error('OTP Verify Error:', err);
-      setError('Invalid OTP. Please check and try again.');
-    } finally {
       setIsLoading(false);
-    }
+    }, 1000);
   };
 
   const handleEmailAction = async () => {
     if (!email || !password) return;
-    
-    setError(null);
     setIsLoading(true);
-
-    try {
+    // Mock Email Auth
+    setTimeout(() => {
       if (isLogin) {
-        await signInWithEmailAndPassword(auth, email, password);
+        login({
+          displayName: fullName || 'Student',
+          email: email,
+          phoneNumber: phoneNumber ? `+91${phoneNumber}` : null,
+          uid: 'mock-user-' + Math.random().toString(36).substr(2, 9)
+        });
         if (onSuccess) onSuccess();
         onClose();
       } else {
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
-
-        await updateProfile(user, { displayName: fullName });
-
-        await setDoc(doc(db, 'users', user.uid), {
-          uid: user.uid,
-          email: user.email,
-          displayName: fullName,
-          phoneNumber: phoneNumber ? `+91${phoneNumber}` : null,
-          role: 'student',
-          createdAt: serverTimestamp()
-        });
-
         setRegistrationSuccess(true);
         setTimeout(() => {
           setIsLogin(true);
           setRegistrationSuccess(false);
         }, 3000);
       }
-    } catch (err: any) {
-      console.error('Email Auth Error:', err);
-      setError(err.message || 'Authentication failed.');
-    } finally {
       setIsLoading(false);
-    }
+    }, 1000);
   };
 
   return (
@@ -259,7 +183,6 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess }) =
 
                    {/* Form */}
                    <div className="relative">
-                     <div ref={recaptchaRef}></div>
                       <AnimatePresence mode="wait">
                         {registrationSuccess ? (
                           <motion.div
@@ -314,7 +237,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess }) =
                                          <label className="text-xs font-bold text-slate-700 dark:text-gray-300 uppercase tracking-wider ml-1">Mobile Number</label>
                                          <div className="relative group">
                                              <div className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 font-bold border-r border-slate-300 dark:border-white/10 pr-2 mr-2 text-sm flex items-center gap-1 pointer-events-none">
-                                                 <span>IN</span> +91
+                                                 <span>🇮🇳</span> +91
                                              </div>
                                              <input 
                                                  type="tel" 
