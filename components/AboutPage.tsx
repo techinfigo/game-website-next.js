@@ -71,7 +71,7 @@ const AboutPage: React.FC = () => {
     role: "GATE & ESE Expert",
     expLabel: "13+ YRS EXP.",
     exp: "13+ YEARS OF TEACHING EXPERIENCE (ME & CE)",
-    img: "/faculty/gaurav-sir2.jpg",
+    img: "/faculty/gaurav-sir2.png",
     stats: [
       { label: "Mentored 1 Lakh+ Students", icon: Users },
       { label: "Specialist in ME & CE Subjects", icon: Target },
@@ -1037,7 +1037,7 @@ const AboutPage: React.FC = () => {
                         src={chiefMentor.img} 
                         alt={chiefMentor.name} 
                         fill
-                        className="object-cover transition-all duration-1000 group-hover:scale-110" 
+                        className="object-cover object-top transition-all duration-1000 group-hover:scale-110" 
                         referrerPolicy="no-referrer"
                      />
                      <div className="absolute inset-0 bg-gradient-to-t from-[#12141c] via-transparent to-transparent opacity-90"></div>
@@ -1114,7 +1114,7 @@ const AboutPage: React.FC = () => {
                                        src={fac.img} 
                                        alt={fac.name} 
                                        fill
-                                       className="object-cover transition-all duration-700 group-hover:scale-105" 
+                                       className="object-cover object-top transition-all duration-700 group-hover:scale-105" 
                                        referrerPolicy="no-referrer"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-[#12141c] via-transparent to-transparent opacity-60"></div>
