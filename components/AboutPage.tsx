@@ -71,7 +71,7 @@ const AboutPage: React.FC = () => {
     role: "GATE & ESE Expert",
     expLabel: "13+ YRS EXP.",
     exp: "13+ YEARS OF TEACHING EXPERIENCE (ME & CE)",
-    img: "/faculty/gaurav-sir.png",
+    img: "/faculty/gaurav-sir2.png",
     stats: [
       { label: "Mentored 1 Lakh+ Students", icon: Users },
       { label: "Specialist in ME & CE Subjects", icon: Target },
