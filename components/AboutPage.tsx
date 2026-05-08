@@ -8,6 +8,7 @@ import {
   Award, CheckCircle2, Phone, MessageCircle,
   Wrench, Layers, Cpu, ChevronRight, Medal, Briefcase,
   Activity, Flame, Zap, BookOpen, GraduationCap, Star, Sparkles, TrendingUp, Quote as QuoteIcon, History, Landmark, Mic2, UserCheck, ShieldCheck, Lightbulb, Smartphone, Rocket, Eye, Shield, HardHat, Microscope, Compass, Atom, Settings, Calendar, ChevronLeft, ArrowUpRight, MonitorPlay, Fingerprint, Crosshair, Hexagon,
+  Droplets, Globe,
   Crown, X
 } from 'lucide-react';
 
@@ -67,70 +68,147 @@ const AboutPage: React.FC = () => {
 
   const chiefMentor = { 
     name: "Gaurav Babu Sir", 
-    role: "Founder & Chief Mentor",
+    role: "GATE & ESE Expert",
     expLabel: "13+ YRS EXP.",
-    exp: "13+ YEARS OF TEACHING EXCELLENCE",
-    img: "/about-faculty-gaurav.png",
+    exp: "13+ YEARS OF TEACHING EXPERIENCE (ME & CE)",
+    img: "/gaurav-sir.png",
     stats: [
       { label: "Mentored 1 Lakh+ Students", icon: Users },
-      { label: "GATE & ESE Expert", icon: Trophy },
-      { label: "Mechanical & Civil Guru", icon: Landmark },
-      { label: "Visionary Educator", icon: Lightbulb }
+      { label: "Specialist in ME & CE Subjects", icon: Target },
+      { label: "Motivational Speaker & Live Coach", icon: Mic2 },
+      { label: "Cracked GATE, IOCL, BPCL, MoD", icon: Landmark }
     ]
   };
 
   const facultyMembers = [
     { 
-      name: "Priyam Mishra", 
-      role: "Senior Mentor",
+      name: "Harshit Agarwal Sir", 
+      role: "King of Thermal Science",
       expLabel: "10+ YRS EXP.",
       exp: "10+ YEARS OF TEACHING EXPERIENCE",
-      img: "/Priyam-Mishra-Sir.jpg
-",
+      img: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?fit=crop&w=600&q=80",
       stats: [
         { label: "Achieved ESE AIR 63, 90", icon: Medal },
-        { label: "Mentored 50k+ Students", icon: Users },
-        { label: "King of Thermal Science", icon: Trophy },
-        { label: "ISRO, ONGC, SAIL Letters", icon: Briefcase }
+        { label: "Mentored 50,000+ Students", icon: Users },
+        { label: "Offers: ISRO, ONGC, IOCL", icon: Briefcase },
+        { label: "Thermal Science Expert", icon: Flame }
       ]
     },
     { 
       name: "Varun Sir", 
-      role: "Thermal Expert",
+      role: "Thermal Applications Expert",
       expLabel: "9+ YRS EXP.",
       exp: "9+ YEARS OF TEACHING EXPERIENCE",
       img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?fit=crop&w=600&q=80",
       stats: [
-        { label: "Gate Qualified AIR 80", icon: Medal },
-        { label: "60,000+ Students Mentored", icon: Users },
-        { label: "Mech Engineering Expert", icon: Award },
-        { label: "Industrial Recognized", icon: Briefcase }
+        { label: "Gate Qualified AIR 80 in 2014", icon: Medal },
+        { label: "Mentored 60,000+ Students", icon: Users },
+        { label: "Fluid Mechanics Expert", icon: Droplets },
+        { label: "Thermodynamics Specialist", icon: Zap }
       ]
     },
     { 
-      name: "Atul Vaish", 
-      role: "PSU Specialist",
-      expLabel: "10+ YRS EXP.",
-      exp: "10+ YEARS OF TEACHING EXPERIENCE",
+      name: "Atul Vaish Sir", 
+      role: "Quant & Reasoning Guru",
+      expLabel: "9+ YRS EXP.",
+      exp: "9+ YEARS OF TEACHING EXPERIENCE",
       img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?fit=crop&w=600&q=80",
       stats: [
-        { label: "Fluid Mechanics Expert", icon: Target },
-        { label: "Industry Recognition", icon: Award },
-        { label: "Mentored 15,000+ students", icon: Users },
-        { label: "GATE Top Ranker", icon: Medal }
+        { label: "Teachers Excellence Award", icon: Award },
+        { label: "Gate Qualified 5 Times", icon: Medal },
+        { label: "Cleared JTO, TTA PSUs", icon: Briefcase },
+        { label: "Maths & Electrical Expert", icon: Zap }
       ]
     },
     { 
-      name: "Aditya Shukla", 
-      role: "SOM Expert",
-      expLabel: "7+ YRS EXP.",
-      exp: "7+ YEARS OF TEACHING EXPERIENCE",
+      name: "Aditya Shukla Sir", 
+      role: "Engineering Maths Expert",
+      expLabel: "14 YRS EXP.",
+      exp: "14 YEARS OF TEACHING EXPERIENCE",
       img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?fit=crop&w=600&q=80",
       stats: [
-        { label: "Strength of Materials Guru", icon: Layers },
-        { label: "Problem Solving Pro", icon: Zap },
-        { label: "Industrial Expertise", icon: Award },
-        { label: "Mentored 8,000+ students", icon: Users }
+        { label: "Gate Qualified AIR 638", icon: Medal },
+        { label: "Trained 75,000+ Students", icon: Users },
+        { label: "Applied Maths from DAVV", icon: GraduationCap },
+        { label: "Engineering Mathematics", icon: BookOpen }
+      ]
+    },
+    { 
+      name: "Atul Ranjan Sir", 
+      role: "Core Physics Specialist",
+      expLabel: "12 YRS EXP.",
+      exp: "12 YEARS OF TEACHING EXPERIENCE",
+      img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=600&q=80",
+      stats: [
+        { label: "2x Gate Qualified", icon: Medal },
+        { label: "Mentored 20,000+ students", icon: Users },
+        { label: "Qualified in BARC exam", icon: Target },
+        { label: "Physics & Math Analysis", icon: Microscope }
+      ]
+    },
+    { 
+      name: "Hariveer Sir", 
+      role: "Mechanical Engineering Expert",
+      expLabel: "12+ YRS EXP.",
+      exp: "12+ YEARS OF TEACHING EXPERIENCE",
+      img: "https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?fit=crop&w=600&q=80",
+      stats: [
+        { label: "M.Tech (CAD-CAM) from NITS", icon: GraduationCap },
+        { label: "Authored Practice Books", icon: BookOpen },
+        { label: "Expert in TOM & SOM", icon: Settings },
+        { label: "Machine Design Specialist", icon: Wrench }
+      ]
+    },
+    { 
+      name: "Vipin Sir", 
+      role: "Power Plant Specialist",
+      expLabel: "6+ YRS EXP.",
+      exp: "6+ YEARS OF TEACHING EXPERIENCE",
+      img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?fit=crop&w=600&q=80",
+      stats: [
+        { label: "IIT KGP & Polimi Italy", icon: GraduationCap },
+        { label: "5+ Yrs Industry & Research", icon: Briefcase },
+        { label: "RAC & IC Engines Expert", icon: Settings },
+        { label: "Heat & Mass Transfer", icon: Flame }
+      ]
+    },
+    { 
+      name: "Ankit Jain Sir", 
+      role: "Civil Engineering Expert",
+      expLabel: "7+ YRS EXP.",
+      exp: "7+ YEARS OF TEACHING EXPERIENCE",
+      img: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?fit=crop&w=600&q=80",
+      stats: [
+        { label: "3x Gate Qualified", icon: Medal },
+        { label: "PhD Entrance IIT B/I", icon: Landmark },
+        { label: "5000+ Hours Teaching", icon: Calendar },
+        { label: "Steel & Transportation Pro", icon: HardHat }
+      ]
+    },
+    { 
+      name: "Tina Ma'am", 
+      role: "Biology Specialist",
+      expLabel: "11+ YRS EXP.",
+      exp: "11+ YEARS OF TEACHING EXPERIENCE",
+      img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?fit=crop&w=600&q=80",
+      stats: [
+        { label: "Medical Exam Expert", icon: Activity },
+        { label: "NEET-UG & NEET-PG Guru", icon: Target },
+        { label: "11+ Years Experience", icon: Calendar },
+        { label: "Advanced Biology Coach", icon: Microscope }
+      ]
+    },
+    { 
+      name: "Priyam Mishra Sir", 
+      role: "GS & Maths Expert",
+      expLabel: "4+ YRS EXP.",
+      exp: "4+ YEARS OF TEACHING EXPERIENCE",
+      img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?fit=crop&w=600&q=80",
+      stats: [
+        { label: "GS & Mathematics Expert", icon: BookOpen },
+        { label: "History & Polity Specialist", icon: Landmark },
+        { label: "Current Affairs Guru", icon: Globe },
+        { label: "Geography Educator", icon: Compass }
       ]
     },
     { 
@@ -138,7 +216,7 @@ const AboutPage: React.FC = () => {
       role: "Thermodynamics Expert",
       expLabel: "8+ YRS EXP.",
       exp: "8+ YEARS OF TEACHING EXPERIENCE",
-      img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=600&q=80",
+      img: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?fit=crop&w=600&q=80",
       stats: [
         { label: "Mentored 30k+ Students", icon: Users },
         { label: "GATE Ranker", icon: Medal },
@@ -147,94 +225,16 @@ const AboutPage: React.FC = () => {
       ]
     },
     { 
-      name: "Rahul Verma", 
-      role: "Production Pro",
-      expLabel: "12+ YRS EXP.",
-      exp: "12+ YEARS OF TEACHING EXPERIENCE",
-      img: "https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?fit=crop&w=600&q=80",
-      stats: [
-        { label: "Manufacturing Expert", icon: Settings },
-        { label: "Industry Veteran", icon: Briefcase },
-        { label: "Mentored 45k+ Students", icon: Users },
-        { label: "Research Specialist", icon: Microscope }
-      ]
-    },
-    { 
       name: "Priya Sharma", 
       role: "Design Specialist",
       expLabel: "6+ YRS EXP.",
       exp: "6+ YEARS OF TEACHING EXPERIENCE",
-      img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?fit=crop&w=600&q=80",
+      img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?fit=crop&w=600&q=80",
       stats: [
         { label: "Visual Learning Expert", icon: Lightbulb },
         { label: "GATE Qualified", icon: Trophy },
         { label: "Concept Artist", icon: Sparkles },
         { label: "Problem Solver", icon: Target }
-      ]
-    },
-    { 
-      name: "Amit Kumar", 
-      role: "Industrial Guru",
-      expLabel: "11+ YRS EXP.",
-      exp: "11+ YEARS OF TEACHING EXPERIENCE",
-      img: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?fit=crop&w=600&q=80",
-      stats: [
-        { label: "Optimization Pro", icon: Zap },
-        { label: "ESE Top Ranker", icon: Medal },
-        { label: "Mentored 20k+ Students", icon: Users },
-        { label: "Strategy Expert", icon: Target }
-      ]
-    },
-    { 
-      name: "Vikram Rathore", 
-      role: "Materials King",
-      expLabel: "9+ YRS EXP.",
-      exp: "9+ YEARS OF TEACHING EXPERIENCE",
-      img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?fit=crop&w=600&q=80",
-      stats: [
-        { label: "Material Science Expert", icon: Atom },
-        { label: "Industrial Consultant", icon: Briefcase },
-        { label: "Innovation Head", icon: Lightbulb },
-        { label: "GATE Coach", icon: GraduationCap }
-      ]
-    },
-    { 
-      name: "Ishita Gupta", 
-      role: "Hydraulics Pro",
-      expLabel: "5+ YRS EXP.",
-      exp: "5+ YEARS OF TEACHING EXPERIENCE",
-      img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?fit=crop&w=600&q=80",
-      stats: [
-        { label: "Fluid Dynamics expert", icon: Compass },
-        { label: "National Merit Holder", icon: Star },
-        { label: "Mentored 10k+ Students", icon: Users },
-        { label: "Modern Pedagogy", icon: Sparkles }
-      ]
-    },
-    { 
-      name: "Karan Johar", 
-      role: "Mechatronics Pro",
-      expLabel: "14+ YRS EXP.",
-      exp: "14+ YEARS OF TEACHING EXPERIENCE",
-      img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?fit=crop&w=600&q=80",
-      stats: [
-        { label: "Robotics Expert", icon: Cpu },
-        { label: "Tech Innovator", icon: Lightbulb },
-        { label: "Mentored 70k+ Students", icon: Users },
-        { label: "Legacy Educator", icon: Trophy }
-      ]
-    },
-    { 
-      name: "Nikhil Pandey", 
-      role: "Maths & Aptitude",
-      expLabel: "8+ YRS EXP.",
-      exp: "8+ YEARS OF TEACHING EXPERIENCE",
-      img: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?fit=crop&w=600&q=80",
-      stats: [
-        { label: "Quant Specialist", icon: Target },
-        { label: "Problem Solving Guru", icon: Zap },
-        { label: "Mentored 35k+ Students", icon: Users },
-        { label: "GATE topper", icon: Medal }
       ]
     }
   ];
@@ -339,8 +339,7 @@ const AboutPage: React.FC = () => {
             <div className="lg:w-5/12 order-2 lg:order-1 w-full">
               <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="flex gap-[clamp(0.5rem,1.5vw,1rem)] items-center justify-center">
                 <div className="w-2/3 h-[clamp(250px,50vh,400px)] rounded-[clamp(1.5rem,4vh,3rem)] overflow-hidden shadow-2xl relative border-4 border-slate-50">
-                  <Image src="/about-hero.png
-" alt="Main Mentorship" fill className="w-full h-full object-cover" />
+                  <Image src="/about-hero-main.png" alt="Main Mentorship" fill className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-gameTeal/20 to-transparent"></div>
                 </div>
                 <div className="w-1/3 flex flex-col gap-[clamp(0.5rem,1.5vw,1rem)]">
