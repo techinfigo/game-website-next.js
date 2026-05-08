@@ -1,45 +1,48 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { onAuthStateChanged, User } from 'firebase/auth';
-import { auth } from '@/firebase';
 
 interface AuthContextType {
   isLoggedIn: boolean;
-  user: User | null;
+  user: any | null;
   isLoginOpen: boolean;
   setIsLoginOpen: (open: boolean) => void;
   openLogin: () => void;
   closeLogin: () => void;
-  logout: () => Promise<void>;
+  login: (userData: any) => void;
+  logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<any>(null);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
 
+  // Initialize from localStorage if available
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-      setUser(firebaseUser);
-      setIsLoggedIn(!!firebaseUser);
-    });
-    return () => unsubscribe();
+    const storedUser = localStorage.getItem('mock_user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+      setIsLoggedIn(true);
+    }
   }, []);
 
   const openLogin = () => setIsLoginOpen(true);
   const closeLogin = () => setIsLoginOpen(false);
   
-  const logout = async () => {
-    try {
-      await auth.signOut();
-      setIsLoggedIn(false);
-      setUser(null);
-    } catch (error) {
-      console.error('Logout Error:', error);
-    }
+  const login = (userData: any) => {
+    setUser(userData);
+    setIsLoggedIn(true);
+    localStorage.setItem('mock_user', JSON.stringify(userData));
+    setIsLoginOpen(false);
+  };
+
+  const logout = () => {
+    setIsLoggedIn(false);
+    setUser(null);
+    localStorage.removeItem('mock_user');
   };
 
   return (
@@ -50,6 +53,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setIsLoginOpen, 
       openLogin, 
       closeLogin, 
+      login,
       logout 
     }}>
       {children}
