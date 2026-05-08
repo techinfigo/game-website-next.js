@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import { Rocket, Globe, Target, Shield, Users, Sparkles, Briefcase, TrendingUp, Award, Building2, Coffee, Atom, Droplets, Flame, Zap, Wind, Factory, Mountain, Cpu, Ship, Plane, ScrollText, ChevronDown } from 'lucide-react';
 
 const PsuExamPage: React.FC = () => {
@@ -11,29 +12,29 @@ const PsuExamPage: React.FC = () => {
       badge: "REGISTRATION",
       title: "GATE 2026 Registration Open",
       buttonText: "Register Now",
-      image: "GATE 2026 REGISTRATION OPEN",
-      bgColor: "bg-gradient-to-br from-[#004d50] to-[#002b2e]"
+      imageUrl: "https://picsum.photos/seed/gate-reg/1200/800",
+      bgColor: "bg-[#004d50]"
     },
     {
       badge: "MOCK TEST",
       title: "Free GATE Mock Test",
       buttonText: "Start Test",
-      image: "Free GATE Mock Test Series 2026",
-      bgColor: "bg-gradient-to-br from-[#f0bd2d]/20 to-[#002b2e]"
+      imageUrl: "https://picsum.photos/seed/gate-mock/1200/800",
+      bgColor: "bg-[#002b2e]"
     },
     {
       badge: "PSU JOBS",
       title: "Top PSU Recruitment Through GATE",
       buttonText: "Explore Jobs",
-      image: "Top PSU Recruitment Through GATE",
-      bgColor: "bg-gradient-to-br from-[#004d50] to-[#002b2e]"
+      imageUrl: "https://picsum.photos/seed/psu-jobs/1200/800",
+      bgColor: "bg-[#004d50]"
     },
     {
       badge: "IIT M.TECH",
       title: "IIT Admission Through GATE",
       buttonText: "Check Cutoffs",
-      image: "IIT Admission Through GATE",
-      bgColor: "bg-gradient-to-br from-[#f0bd2d]/20 to-[#002b2e]"
+      imageUrl: "https://picsum.photos/seed/iit-mtech/1200/800",
+      bgColor: "bg-[#002b2e]"
     }
   ];
 
@@ -133,15 +134,24 @@ const PsuExamPage: React.FC = () => {
                            animate={{ opacity: 1 }}
                            exit={{ opacity: 0 }}
                            transition={{ duration: 0.4 }}
-                           className={`absolute inset-0 ${slides[activeSlide].bgColor} flex flex-col p-8`}
+                           className="absolute inset-0 flex flex-col p-8"
                         >
-                           {/* Small badge top left instead of center center */}
-                           <div className="bg-gameGold text-gameBlack px-2 py-0.5 rounded text-[8px] font-black uppercase mb-auto self-start">
+                           <Image 
+                              src={slides[activeSlide].imageUrl} 
+                              alt={slides[activeSlide].title}
+                              fill
+                              className="object-cover"
+                              referrerPolicy="no-referrer"
+                           />
+                           <div className="absolute inset-0 bg-gradient-to-t from-[#001c1e] via-transparent to-[#001c1e]/60"></div>
+                           
+                           {/* Small badge top left */}
+                           <div className="relative z-10 bg-gameGold text-gameBlack px-2 py-0.5 rounded text-[8px] font-black uppercase mb-auto self-start">
                               {slides[activeSlide].badge}
                            </div>
                            
-                           {/* Button bottom right corner as requested */}
-                           <div className="mt-auto self-end">
+                           {/* Button bottom right corner */}
+                           <div className="relative z-10 mt-auto self-end">
                               <button className="group flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white font-black text-xs uppercase tracking-widest hover:bg-gameGold hover:text-gameBlack transition-all">
                                  {slides[activeSlide].buttonText}
                                  <TrendingUp size={14} className="group-hover:translate-x-1 transition-transform" />
@@ -149,8 +159,8 @@ const PsuExamPage: React.FC = () => {
                            </div>
                            
                            {/* Decorative Elements */}
-                           <div className="absolute top-8 right-8 opacity-5">
-                              <Atom size={100} />
+                           <div className="absolute top-8 right-8 opacity-20 z-10 text-white">
+                              <Atom size={60} />
                            </div>
                         </motion.div>
                      </AnimatePresence>
@@ -177,8 +187,16 @@ const PsuExamPage: React.FC = () => {
                               i === activeSlide ? 'border-gameTeal scale-105 shadow-lg shadow-gameTeal/20' : 'border-white/10 opacity-30 hover:opacity-100'
                            }`}
                         >
-                           <div className={`absolute inset-0 ${slide.bgColor} flex flex-col items-center justify-center p-2`}>
-                              <div className="text-[5px] font-black text-white/40 mb-1 leading-none">{slide.badge}</div>
+                           <Image 
+                              src={slide.imageUrl} 
+                              alt={slide.title}
+                              fill
+                              className="object-cover"
+                              referrerPolicy="no-referrer"
+                           />
+                           <div className="absolute inset-0 bg-black/40"></div>
+                           <div className="absolute inset-0 flex flex-col items-center justify-center p-2">
+                              <div className="text-[5px] font-black text-white mb-1 leading-none drop-shadow-md">{slide.badge}</div>
                            </div>
                         </button>
                      ))}
@@ -397,17 +415,36 @@ const PsuExamPage: React.FC = () => {
                ))}
 
                <motion.div 
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.5 }}
-                  className="hidden lg:flex flex-col items-center justify-center p-6 rounded-[2rem] border-2 border-dashed border-slate-200 text-center"
+                  transition={{ delay: 0.5, duration: 0.5 }}
+                  className="group flex h-full"
                >
-                  <Building2 size={32} className="text-slate-200 mb-4" />
-                  <h3 className="text-xl font-black text-slate-300 mb-2">India&apos;s Pillars</h3>
-                  <p className="text-slate-400 font-bold text-xs leading-relaxed">
-                     Modern infrastructure built on excellence.
-                  </p>
+                  <div className="bg-[#0f172a] rounded-[2rem] border border-white/10 hover:border-gameGold transition-all duration-500 overflow-hidden flex flex-col w-full relative shadow-2xl">
+                     <div className="p-8 flex-grow">
+                        <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-gameGold group-hover:scale-110 group-hover:bg-gameGold group-hover:text-white transition-all duration-500 mb-6 shadow-glow-gold/10">
+                           <Building2 size={28} />
+                        </div>
+                        <h3 className="text-xl font-black text-white leading-tight mb-3 group-hover:text-gameGold transition-colors">
+                           India&apos;s Pillars
+                        </h3>
+                        <p className="text-slate-400 text-sm font-bold leading-relaxed">
+                           Public Sector Units (PSUs) form the core of India&apos;s industrial and socioeconomic progress.
+                        </p>
+                     </div>
+                     <div className="p-6 pt-4 bg-white/5 border-t border-white/5">
+                        <span className="text-[10px] font-black text-white/20 uppercase tracking-widest block mb-1">National Mission</span>
+                        <p className="text-gameGold font-black text-[11px] leading-tight italic">
+                           Powering the nation&apos;s future through excellence.
+                        </p>
+                     </div>
+                     
+                     {/* Decorative element */}
+                     <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
+                        <Building2 size={120} strokeWidth={1} className="text-white" />
+                     </div>
+                  </div>
                </motion.div>
             </div>
          </div>
