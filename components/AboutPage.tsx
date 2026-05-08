@@ -71,7 +71,7 @@ const AboutPage: React.FC = () => {
     role: "GATE & ESE Expert",
     expLabel: "13+ YRS EXP.",
     exp: "13+ YEARS OF TEACHING EXPERIENCE (ME & CE)",
-    img: "/gaurav-sir.png",
+    img: "/faculty/gaurav-sir.png",
     stats: [
       { label: "Mentored 1 Lakh+ Students", icon: Users },
       { label: "Specialist in ME & CE Subjects", icon: Target },
@@ -86,7 +86,7 @@ const AboutPage: React.FC = () => {
       role: "King of Thermal Science",
       expLabel: "10+ YRS EXP.",
       exp: "10+ YEARS OF TEACHING EXPERIENCE",
-      img: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?fit=crop&w=600&q=80",
+      img: "/faculty/harshit-sir.png",
       stats: [
         { label: "Achieved ESE AIR 63, 90", icon: Medal },
         { label: "Mentored 50,000+ Students", icon: Users },
@@ -99,7 +99,7 @@ const AboutPage: React.FC = () => {
       role: "Thermal Applications Expert",
       expLabel: "9+ YRS EXP.",
       exp: "9+ YEARS OF TEACHING EXPERIENCE",
-      img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?fit=crop&w=600&q=80",
+      img: "/faculty/varun-sir.png",
       stats: [
         { label: "Gate Qualified AIR 80 in 2014", icon: Medal },
         { label: "Mentored 60,000+ Students", icon: Users },
@@ -112,7 +112,7 @@ const AboutPage: React.FC = () => {
       role: "Quant & Reasoning Guru",
       expLabel: "9+ YRS EXP.",
       exp: "9+ YEARS OF TEACHING EXPERIENCE",
-      img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?fit=crop&w=600&q=80",
+      img: "/faculty/atul-vaish-sir.png",
       stats: [
         { label: "Teachers Excellence Award", icon: Award },
         { label: "Gate Qualified 5 Times", icon: Medal },
@@ -125,7 +125,7 @@ const AboutPage: React.FC = () => {
       role: "Engineering Maths Expert",
       expLabel: "14 YRS EXP.",
       exp: "14 YEARS OF TEACHING EXPERIENCE",
-      img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?fit=crop&w=600&q=80",
+      img: "/faculty/aditya-shukla-sir.png",
       stats: [
         { label: "Gate Qualified AIR 638", icon: Medal },
         { label: "Trained 75,000+ Students", icon: Users },
@@ -138,7 +138,7 @@ const AboutPage: React.FC = () => {
       role: "Core Physics Specialist",
       expLabel: "12 YRS EXP.",
       exp: "12 YEARS OF TEACHING EXPERIENCE",
-      img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=600&q=80",
+      img: "/faculty/atul-ranjan-sir.png",
       stats: [
         { label: "2x Gate Qualified", icon: Medal },
         { label: "Mentored 20,000+ students", icon: Users },
@@ -151,7 +151,7 @@ const AboutPage: React.FC = () => {
       role: "Mechanical Engineering Expert",
       expLabel: "12+ YRS EXP.",
       exp: "12+ YEARS OF TEACHING EXPERIENCE",
-      img: "https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?fit=crop&w=600&q=80",
+      img: "/faculty/hariveer-sir.png",
       stats: [
         { label: "M.Tech (CAD-CAM) from NITS", icon: GraduationCap },
         { label: "Authored Practice Books", icon: BookOpen },
@@ -164,7 +164,7 @@ const AboutPage: React.FC = () => {
       role: "Power Plant Specialist",
       expLabel: "6+ YRS EXP.",
       exp: "6+ YEARS OF TEACHING EXPERIENCE",
-      img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?fit=crop&w=600&q=80",
+      img: "/faculty/vipin-sir.png",
       stats: [
         { label: "IIT KGP & Polimi Italy", icon: GraduationCap },
         { label: "5+ Yrs Industry & Research", icon: Briefcase },
@@ -177,7 +177,7 @@ const AboutPage: React.FC = () => {
       role: "Civil Engineering Expert",
       expLabel: "7+ YRS EXP.",
       exp: "7+ YEARS OF TEACHING EXPERIENCE",
-      img: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?fit=crop&w=600&q=80",
+      img: "/faculty/ankit-jain-sir.png",
       stats: [
         { label: "3x Gate Qualified", icon: Medal },
         { label: "PhD Entrance IIT B/I", icon: Landmark },
@@ -190,7 +190,7 @@ const AboutPage: React.FC = () => {
       role: "Biology Specialist",
       expLabel: "11+ YRS EXP.",
       exp: "11+ YEARS OF TEACHING EXPERIENCE",
-      img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?fit=crop&w=600&q=80",
+      img: "/faculty/tina-maam.png",
       stats: [
         { label: "Medical Exam Expert", icon: Activity },
         { label: "NEET-UG & NEET-PG Guru", icon: Target },
@@ -203,7 +203,7 @@ const AboutPage: React.FC = () => {
       role: "GS & Maths Expert",
       expLabel: "4+ YRS EXP.",
       exp: "4+ YEARS OF TEACHING EXPERIENCE",
-      img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?fit=crop&w=600&q=80",
+      img: "/faculty/priyam-mishra-sir.png",
       stats: [
         { label: "GS & Mathematics Expert", icon: BookOpen },
         { label: "History & Polity Specialist", icon: Landmark },
@@ -216,7 +216,7 @@ const AboutPage: React.FC = () => {
       role: "Thermodynamics Expert",
       expLabel: "8+ YRS EXP.",
       exp: "8+ YEARS OF TEACHING EXPERIENCE",
-      img: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?fit=crop&w=600&q=80",
+      img: "/faculty/sandeep-singh-sir.png",
       stats: [
         { label: "Mentored 30k+ Students", icon: Users },
         { label: "GATE Ranker", icon: Medal },
@@ -229,7 +229,7 @@ const AboutPage: React.FC = () => {
       role: "Design Specialist",
       expLabel: "6+ YRS EXP.",
       exp: "6+ YEARS OF TEACHING EXPERIENCE",
-      img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?fit=crop&w=600&q=80",
+      img: "/faculty/priya-sharma-maam.png",
       stats: [
         { label: "Visual Learning Expert", icon: Lightbulb },
         { label: "GATE Qualified", icon: Trophy },
