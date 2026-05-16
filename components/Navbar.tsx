@@ -92,7 +92,7 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout, user }
           >
             <div className="relative h-16 w-60 md:w-72 lg:w-80">
               <Image 
-                src="/logo.png" 
+                src="/game-logo.png" 
                 alt="GAME Academy Logo" 
                 fill
                 className="object-contain"
