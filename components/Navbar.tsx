@@ -2,11 +2,12 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { 
   Menu, X, ChevronDown, Sparkles, GraduationCap, Trophy, Microscope, 
   Building2, Train, MapPin, Atom, BookOpen, Backpack, Video, 
   MessageSquare, Lightbulb, FileText, Info, Phone, Rss,
-  LogOut
+  LayoutDashboard, MonitorPlay, LogOut
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
@@ -86,15 +87,17 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout, user }
           {/* Logo */}
           <Link 
             href="/"
-            className="flex items-center gap-2 cursor-pointer group" 
+            className="flex items-center cursor-pointer group shrink-0 mr-8 lg:mr-12" 
             onClick={handleLinkClick}
           >
-            <div className="w-10 h-10 bg-gradient-to-br from-gameTeal to-teal-700 rounded-xl flex items-center justify-center text-white font-extrabold text-xl shadow-lg group-hover:scale-105 transition-transform">
-                G
-            </div>
-            <div className="flex flex-col">
-              <span className={`text-xl font-extrabold leading-none tracking-tight ${scrolled ? 'text-slate-900' : 'text-slate-800'}`}>GAME</span>
-              <span className="text-[10px] text-gameGoldDark font-bold uppercase tracking-widest">Academy</span>
+            <div className="relative h-16 w-60 md:w-72 lg:w-80">
+              <Image 
+                src="/logo.svg" 
+                alt="GAME Academy Logo" 
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
           </Link>
 
@@ -217,6 +220,13 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout, user }
                     <p className="text-sm font-bold text-slate-900 truncate">{user?.displayName || 'Student'}</p>
                     <p className="text-[10px] text-slate-500 truncate">{user?.email || user?.phoneNumber || ''}</p>
                   </div>
+                  <Link 
+                    href="/dashboard"
+                    onClick={handleLinkClick}
+                    className="w-full text-left px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-gameTeal transition-colors flex items-center gap-2"
+                  >
+                    <MonitorPlay size={16} /> My Dashboard
+                  </Link>
                   <button 
                     onClick={onLogout}
                     className="w-full text-left px-4 py-3 text-xs font-black text-red-500 uppercase tracking-[0.2em] hover:bg-red-50 transition-all flex items-center gap-2"
@@ -323,6 +333,13 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout, user }
                         <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{user?.email || 'Student Account'}</p>
                       </div>
                     </div>
+                    <Link 
+                        href="/dashboard"
+                        onClick={handleLinkClick}
+                        className="w-full bg-gameTeal text-white py-4 rounded-xl font-black text-xs uppercase tracking-[0.2em] shadow-lg flex items-center justify-center gap-2 border border-gameTeal"
+                    >
+                        <LayoutDashboard size={18} /> My Dashboard
+                    </Link>
                     <button 
                         onClick={() => {
                           onLogout();
