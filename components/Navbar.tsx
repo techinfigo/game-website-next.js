@@ -87,12 +87,12 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout, user }
           {/* Logo */}
           <Link 
             href="/"
-            className="flex items-center cursor-pointer group shrink-0 mr-8 lg:mr-12" 
+            className="flex items-center cursor-pointer group shrink-0" 
             onClick={handleLinkClick}
           >
-            <div className="relative h-16 w-60 md:w-72 lg:w-80">
+            <div className="relative h-16 w-56 md:w-64 lg:w-72 -ml-2">
               <Image 
-                src="/game-logo.png" 
+                src="/logo.svg" 
                 alt="GAME Academy Logo" 
                 fill
                 className="object-contain"
