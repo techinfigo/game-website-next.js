@@ -679,7 +679,7 @@ const RankersPage: React.FC = () => {
       <section className="py-8 lg:py-10 bg-gameTealDark relative overflow-hidden">
          <div className="max-w-[1280px] mx-auto px-8 mb-6 text-center">
             <h2 className="text-3xl md:text-5xl font-black text-white mb-2 tracking-tight">
-               Gaurav Sir&apos;s Students in Reputed Jobs Website
+               Gaurav Sir&apos;s Students in Reputed Jobs
             </h2>
          </div>
 
