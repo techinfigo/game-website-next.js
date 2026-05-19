@@ -14,7 +14,7 @@ const CourseGridSection: React.FC = () => {
                 branch: "Mechanical Engineering",
                 price: "Rs. 35,000",
                 originalPrice: "Rs. 50,000",
-                image: "/images/courses/course-1.png",
+                image: "/public/courses/course.png",
                 includes: ["1200+ Hrs Content", "1:1 Mentorship", "Hardcopy Notes", "24/7 Doubt Support"]
             },
             {
