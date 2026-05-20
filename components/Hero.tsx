@@ -108,7 +108,7 @@ const Hero: React.FC = () => {
                 
                 <p className="text-sm text-slate-500 mb-4 leading-relaxed font-bold max-w-md mx-auto lg:mx-0">
                    Join India's trusted mentorship platform. Visualized learning with <br />
-                   <span className="text-gameTeal font-black">Gaurav Babu Sir</span> <span className="text-slate-900 font-black px-1">(13+ yrs Exp).</span>
+                   <span className="text-gameTeal font-black">Gaurav Babu Sir</span> <span className="text-slate-900 font-black px-1">(14+ yrs Exp).</span>
                 </p>
 
                 <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-3 mb-6">
