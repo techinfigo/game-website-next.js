@@ -139,7 +139,7 @@ const Hero: React.FC = () => {
 
                 <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-3 mb-6">
                     <Link 
-                      href="/gate"
+                      href="#exams"
                       className="bg-gameTeal text-white px-8 py-4 rounded-xl font-black text-[11px] uppercase tracking-[0.2em] shadow-xl hover:bg-gameTealDark hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 group whitespace-nowrap"
                     >
                        SELECT GOAL <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -240,13 +240,6 @@ const Hero: React.FC = () => {
           </div>
         </div>
       </div>
-
-      <style>{`
-        .mask-fade-top-bottom {
-          mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
-          -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
-        }
-      `}</style>
     </section>
   );
 };
