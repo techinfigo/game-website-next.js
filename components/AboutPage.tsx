@@ -80,7 +80,7 @@ const AboutPage: React.FC = () => {
     role: "Founder & Chief Mentor",
     expLabel: "13+ YRS EXP.",
     exp: "13+ YEARS OF TEACHING EXCELLENCE",
-    img: "/gaurav-sir2.jpg",
+    img: "/faculty/gaurav-sir2.jpg",
     stats: [
       { label: "Mentored 1 Lakh+ Students", icon: Users },
       { label: "GATE & ESE Expert", icon: Trophy },
@@ -95,7 +95,7 @@ const AboutPage: React.FC = () => {
       role: "Senior Mentor",
       expLabel: "10+ YRS EXP.",
       exp: "10+ YEARS OF TEACHING EXPERIENCE",
-    img: "/harshit-sir.png",
+    img: "/faculty/harshit-sir.png",
       stats: [
         { label: "Achieved ESE AIR 63, 90", icon: Medal },
         { label: "Mentored 50k+ Students", icon: Users },
@@ -108,7 +108,7 @@ const AboutPage: React.FC = () => {
       role: "Thermal Expert",
       expLabel: "9+ YRS EXP.",
       exp: "9+ YEARS OF TEACHING EXPERIENCE",
-    img: "/varun-sir.png
+    img: "/faculty/varun-sir.png
 ",
       stats: [
         { label: "Gate Qualified AIR 80", icon: Medal },
@@ -122,7 +122,7 @@ const AboutPage: React.FC = () => {
       role: "PSU Specialist",
       expLabel: "10+ YRS EXP.",
       exp: "10+ YEARS OF TEACHING EXPERIENCE",
-    img: "/atul-vaish-sir.png
+    img: "/faculty/atul-vaish-sir.png
 ",
       stats: [
         { label: "Fluid Mechanics Expert", icon: Target },
@@ -136,7 +136,7 @@ const AboutPage: React.FC = () => {
       role: "SOM Expert",
       expLabel: "7+ YRS EXP.",
       exp: "7+ YEARS OF TEACHING EXPERIENCE",
-    img: "/aditya-shukla-sir.png",
+    img: "/faculty/aditya-shukla-sir.png",
       stats: [
         { label: "Strength of Materials Guru", icon: Layers },
         { label: "Problem Solving Pro", icon: Zap },
