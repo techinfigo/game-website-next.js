@@ -81,7 +81,7 @@ const ResultsSlider: React.FC = () => {
   const extendedAchievers = [...achievers, ...achievers, ...achievers];
 
   return (
-    <section className="py-16 bg-[#09090b] relative overflow-hidden">
+    <section id="rankers" className="py-16 bg-[#09090b] relative overflow-hidden">
         {/* Background Gradients */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#09090b] via-[#0f1115] to-[#09090b] pointer-events-none z-0"></div>
         
@@ -93,7 +93,7 @@ const ResultsSlider: React.FC = () => {
                        <span className="text-xs">HALL OF FAME</span>
                     </div>
                     <h2 className="text-4xl md:text-5xl font-black text-white leading-tight">
-                        Spotlight on our <span className="text-[#075d63]">Results</span>
+                        Spotlight on our <span className="text-[#075d63]">Rankers</span>
                     </h2>
                 </div>
                 
