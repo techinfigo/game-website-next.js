@@ -36,67 +36,51 @@ const AchieversSection: React.FC<AchieversSectionProps> = ({ onNavigate }) => {
   const achievers: Achiever[] = [
     {
       id: 1,
-      name: "Vikram Malhotra",
-      rank: "AIR 8 GATE",
-      exam: "ME 2023",
-      image: "/achiever-1.png",
-      videoId: "D6HOo41x2Ls"
+      name: "Devansh Bajpai",
+      rank: "AIR 13",
+      exam: "GATE ME",
+      image: "https://img.youtube.com/vi/QZC0IzzoSS0/hqdefault.jpg",
+      videoId: "QZC0IzzoSS0"
     },
     {
       id: 2,
-      name: "Arjun Reddy",
-      rank: "AIR 2 ESE",
-      exam: "CE 2023",
-      image: "/achiever-2.png",
-      videoId: "gvK9V0trlaw"
+      name: "Rohan Kulkarni",
+      rank: "AIR 4",
+      exam: "GATE ME",
+      image: "https://img.youtube.com/vi/qzevZxEawpA/hqdefault.jpg",
+      videoId: "qzevZxEawpA"
     },
     {
       id: 3,
-      name: "Aditi Rao",
-      rank: "AIR 15 ESE",
-      exam: "CE 2023",
-      image: "/achiever-3.png",
-      videoId: "Ta7gKIxxya0"
+      name: "Siddhesh Gaikwad",
+      rank: "AIR 2",
+      exam: "GATE ME",
+      image: "https://img.youtube.com/vi/nLDQgHBYTc0/hqdefault.jpg",
+      videoId: "nLDQgHBYTc0"
     },
     {
       id: 4,
-      name: "Rahul Singh",
-      rank: "AIR 1 GATE",
-      exam: "ME 2023",
-      image: "/achiever-4.png",
-      videoId: "1QV1hZ7c68Y"
+      name: "Harsh Vardhan",
+      rank: "AIR 26",
+      exam: "GATE ME",
+      image: "https://img.youtube.com/vi/7RoM5q7nte4/hqdefault.jpg",
+      videoId: "7RoM5q7nte4"
     },
     {
       id: 5,
-      name: "Priya Sharma",
-      rank: "AIR 5 ESE",
-      exam: "CE 2023",
-      image: "/achiever-5.png",
-      videoId: "Vv9lARk4vcs"
+      name: "Praveen Kumar",
+      rank: "AIR 1",
+      exam: "GATE ME",
+      image: "https://img.youtube.com/vi/CjFRWUCyvSI/hqdefault.jpg",
+      videoId: "CjFRWUCyvSI"
     },
     {
       id: 6,
-      name: "Amit Patel",
-      rank: "AIR 12 SSC",
-      exam: "EE 2023",
-      image: "/achiever-6.png",
-      videoId: "bttDewEFDq4"
-    },
-    {
-      id: 7,
-      name: "Neha Gupta",
-      rank: "AIR 3 GATE",
-      exam: "CS 2023",
-      image: "/achiever-7.png",
-      videoId: "D6HOo41x2Ls"
-    },
-    {
-      id: 8,
-      name: "Karan Johar",
-      rank: "AIR 19 GATE",
-      exam: "ME 2023",
-      image: "/achiever-8.png",
-      videoId: "gvK9V0trlaw"
+      name: "Vikram Rathore",
+      rank: "AIR 8",
+      exam: "GATE ME",
+      image: "https://img.youtube.com/vi/35F4plJjhFM/hqdefault.jpg",
+      videoId: "35F4plJjhFM"
     }
   ];
 
@@ -196,7 +180,7 @@ const AchieversSection: React.FC<AchieversSectionProps> = ({ onNavigate }) => {
                                                 src={student.image} 
                                                 alt={student.name} 
                                                 fill
-                                                className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-110" 
+                                                className="w-full h-full object-cover transition-all duration-500 scale-100 group-hover:scale-110" 
                                                 referrerPolicy="no-referrer"
                                             />
                                             
