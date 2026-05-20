@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 
 const SpecialOffer: React.FC = () => {
   return (
-    <section className="bg-[#18181b] text-white py-8 md:py-12 relative overflow-hidden">
+    <section id="offers" className="bg-[#18181b] text-white py-8 md:py-12 relative overflow-hidden">
        
        <div className="max-w-[1200px] mx-auto px-8 md:px-10 lg:px-12 relative z-10">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
