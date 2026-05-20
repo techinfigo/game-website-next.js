@@ -436,7 +436,7 @@ const AboutPage: React.FC = () => {
                   
                   <div className="relative z-10 rounded-[clamp(2rem,6vh,4rem)] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] bg-slate-800 border-8 border-white/5 h-[clamp(250px,50vh,450px)] w-full">
                      <Image 
-                       src="/gaurav-education.png" 
+                       src="/about-mentor.png" 
                        alt="Gaurav Babu Sir" 
                        fill
                        unoptimized
