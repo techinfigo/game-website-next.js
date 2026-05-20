@@ -78,7 +78,7 @@ const AcingExamsSection: React.FC = () => {
                 </div>
                 <h3 className="text-3xl font-black text-white mb-1">Gaurav Babu Sir</h3>
                 <p className="text-white/80 text-sm font-medium">
-                  11+ Years Experience • Ex-IES Officer
+                  14+ Years Experience • Ex-IES Officer
                 </p>
               </div>
             </div>
