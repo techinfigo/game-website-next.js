@@ -104,7 +104,7 @@ const AchieversSection: React.FC<AchieversSectionProps> = ({ onNavigate }) => {
   const extendedAchievers = [...achievers, ...achievers, ...achievers];
 
   return (
-    <section className="py-10 lg:py-14 bg-[#09090b] relative overflow-hidden">
+    <section id="rankers" className="py-10 lg:py-14 bg-[#09090b] relative overflow-hidden">
         {/* Background Gradients */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#09090b] via-[#0f1115] to-[#09090b] pointer-events-none z-0"></div>
         <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-gameTeal/10 rounded-full blur-[120px] pointer-events-none"></div>
@@ -119,7 +119,7 @@ const AchieversSection: React.FC<AchieversSectionProps> = ({ onNavigate }) => {
                        <span className="text-[#f2c537] text-[10px] font-black tracking-[0.3em] uppercase">HALL OF FAME</span>
                     </div>
                     <h2 className="text-3xl md:text-4xl font-black text-white leading-tight">
-                        Spotlight on our <span className="text-[#075d63]">Results</span>
+                        Spotlight on our <span className="text-[#075d63]">Rankers</span>
                     </h2>
                 </div>
                 
