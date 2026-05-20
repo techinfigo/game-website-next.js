@@ -108,8 +108,7 @@ const AboutPage: React.FC = () => {
       role: "Thermal Expert",
       expLabel: "9+ YRS EXP.",
       exp: "9+ YEARS OF TEACHING EXPERIENCE",
-    img: "/faculty/varun-sir.png
-",
+    img: "/faculty/varun-sir.png",
       stats: [
         { label: "Gate Qualified AIR 80", icon: Medal },
         { label: "60,000+ Students Mentored", icon: Users },
@@ -122,8 +121,7 @@ const AboutPage: React.FC = () => {
       role: "PSU Specialist",
       expLabel: "10+ YRS EXP.",
       exp: "10+ YEARS OF TEACHING EXPERIENCE",
-    img: "/faculty/atul-vaish-sir.png
-",
+    img: "/faculty/atul-vaish-sir.png",
       stats: [
         { label: "Fluid Mechanics Expert", icon: Target },
         { label: "Industry Recognition", icon: Award },
