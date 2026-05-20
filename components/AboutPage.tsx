@@ -69,8 +69,8 @@ const AboutPage: React.FC = () => {
   const chiefMentor = { 
     name: "Gaurav Babu Sir", 
     role: "GATE & ESE Expert",
-    expLabel: "13+ YRS EXP.",
-    exp: "13+ YEARS OF TEACHING EXPERIENCE (ME & CE)",
+    expLabel: "14+ YRS EXP.",
+    exp: "14+ YEARS OF TEACHING EXPERIENCE (ME & CE)",
     img: "/faculty/gaurav-sir2.jpg",
     stats: [
       { label: "Mentored 1 Lakh+ Students", icon: Users },
