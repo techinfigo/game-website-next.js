@@ -236,13 +236,13 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
                       {/* Content */}
                       <div className="absolute inset-0 p-4 pb-6 flex flex-col z-[10]">
                          
-                         {/* Floating Logo Placeholder */}
-                         <div className="relative w-12 h-12 mb-3 overflow-hidden flex items-center justify-center p-2 rounded-2xl transition-all">
+                         {/* Floating Logo Container */}
+                         <div className="relative w-12 h-12 mb-3 overflow-hidden flex items-center justify-center p-1.5 rounded-xl transition-all bg-white/10 backdrop-blur-sm border border-white/10 group-hover:scale-110 duration-500">
                             <Image 
                               src={item.logo} 
                               alt={`${item.title} Logo`} 
                               fill
-                              className="object-contain p-1.5"
+                              className="object-contain p-1 rounded-lg"
                               unoptimized
                             />
                          </div>
