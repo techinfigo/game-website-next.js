@@ -3,6 +3,7 @@
 
 import React, { useEffect, useState, useMemo } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { 
   ArrowRight
@@ -455,17 +456,17 @@ const JobRankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
   <div
     className="group relative flex flex-col bg-[#050505] rounded-[1.2rem] transition-all duration-500 overflow-hidden h-[260px] w-full border border-white/5"
   >
-    {/* Top Image Section - Increased height to 65% for better visibility */}
-    <div className="relative h-[65%] w-full overflow-hidden">
+    {/* Top Image Section - Increased height to 65% for better visibility with object-contain */}
+    <div className="relative h-[65%] w-full overflow-hidden bg-[#07090e]">
       <Image 
           src={ranker.image} 
           alt={ranker.name} 
           fill
           unoptimized
-          className="object-cover transition-transform duration-1000 opacity-90 group-hover:opacity-100 group-hover:scale-110" 
+          className="object-contain p-1 transition-transform duration-1000 opacity-90 group-hover:opacity-100 group-hover:scale-105" 
           referrerPolicy="no-referrer"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent pointer-events-none"></div>
       
       {/* Category HUD - More compact */}
       <div className="absolute top-3 left-3">
@@ -543,12 +544,18 @@ const RankersCTA = React.memo(() => (
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-gameTeal px-10 py-4 rounded-2xl font-black text-xs uppercase tracking-[0.2em] hover:bg-gameGold hover:text-black transition-all shadow-2xl hover:-translate-y-2 flex items-center justify-center gap-3 group">
+            <Link 
+              href="/#exams" 
+              className="bg-white text-gameTeal px-10 py-4 rounded-2xl font-black text-xs uppercase tracking-[0.2em] hover:bg-gameGold hover:text-black transition-all shadow-2xl hover:-translate-y-2 flex items-center justify-center gap-3 group"
+            >
                 START YOUR JOURNEY <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button className="bg-transparent border-2 border-white/20 text-white px-10 py-4 rounded-2xl font-black text-xs uppercase tracking-[0.2em] hover:bg-white/10 transition-all">
+            </Link>
+            <Link 
+              href="/courses" 
+              className="bg-transparent border-2 border-white/20 text-white px-10 py-4 rounded-2xl font-black text-xs uppercase tracking-[0.2em] hover:bg-white/10 transition-all flex items-center justify-center"
+            >
                 EXPLORE COURSES
-            </button>
+            </Link>
           </div>
       </motion.div>
     </div>
