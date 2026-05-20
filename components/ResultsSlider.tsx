@@ -21,59 +21,45 @@ const ResultsSlider: React.FC = () => {
   const achievers: Achiever[] = [
     {
       id: 1,
-      name: "Vikram Malhotra",
-      rank: "AIR 8 GATE",
-      exam: "ME 2023",
-      image: "/images/rankers/ranker-1.png",
+      name: "Devansh Bajpai",
+      rank: "AIR 13",
+      exam: "GATE ME",
+      image: "https://img.youtube.com/vi/QZC0IzzoSS0/hqdefault.jpg",
     },
     {
       id: 2,
-      name: "Arjun Reddy",
-      rank: "AIR 2 ESE",
-      exam: "CE 2023",
-      image: "/images/rankers/ranker-2.png",
+      name: "Rohan Kulkarni",
+      rank: "AIR 4",
+      exam: "GATE ME",
+      image: "https://img.youtube.com/vi/qzevZxEawpA/hqdefault.jpg",
     },
     {
       id: 3,
-      name: "Aditi Rao",
-      rank: "AIR 15 ESE",
-      exam: "CE 2023",
-      image: "/images/rankers/ranker-3.png",
+      name: "Siddhesh Gaikwad",
+      rank: "AIR 2",
+      exam: "GATE ME",
+      image: "https://img.youtube.com/vi/nLDQgHBYTc0/hqdefault.jpg",
     },
     {
       id: 4,
-      name: "Rahul Singh",
-      rank: "AIR 1 GATE",
-      exam: "ME 2023",
-      image: "/images/rankers/ranker-4.png",
+      name: "Harsh Vardhan",
+      rank: "AIR 26",
+      exam: "GATE ME",
+      image: "https://img.youtube.com/vi/7RoM5q7nte4/hqdefault.jpg",
     },
     {
       id: 5,
-      name: "Priya Sharma",
-      rank: "AIR 5 ESE",
-      exam: "CE 2023",
-      image: "/images/rankers/ranker-5.png",
+      name: "Praveen Kumar",
+      rank: "AIR 1",
+      exam: "GATE ME",
+      image: "https://img.youtube.com/vi/CjFRWUCyvSI/hqdefault.jpg",
     },
     {
       id: 6,
-      name: "Amit Patel",
-      rank: "AIR 12 SSC",
-      exam: "EE 2023",
-      image: "/images/rankers/ranker-6.png",
-    },
-    {
-      id: 7,
-      name: "Neha Gupta",
-      rank: "AIR 3 GATE",
-      exam: "CS 2023",
-      image: "/images/rankers/ranker-7.png",
-    },
-    {
-      id: 8,
-      name: "Karan Johar",
-      rank: "AIR 19 GATE",
-      exam: "ME 2023",
-      image: "/images/rankers/ranker-8.png",
+      name: "Vikram Rathore",
+      rank: "AIR 8",
+      exam: "GATE ME",
+      image: "https://img.youtube.com/vi/35F4plJjhFM/hqdefault.jpg",
     }
   ];
 
@@ -141,7 +127,7 @@ const ResultsSlider: React.FC = () => {
                                     src={student.image} 
                                     alt={student.name} 
                                     fill
-                                    className="object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-110" 
+                                    className="object-cover transition-all duration-500 scale-100 group-hover:scale-110" 
                                     referrerPolicy="no-referrer"
                                 />
                                 
