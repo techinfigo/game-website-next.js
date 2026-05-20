@@ -116,7 +116,7 @@ const FacultyShowcase: React.FC = () => {
                       
                       {/* Floating Badge Left (Black) */}
                       <div className="absolute bottom-6 -left-8 bg-[#0f172a] text-white p-4 rounded-2xl shadow-2xl shadow-slate-900/30 border border-white/10 z-30 flex items-center gap-4 animate-[float_4s_ease-in-out_infinite]">
-                         <div className="bg-gameGold text-black w-12 h-12 rounded-xl flex items-center justify-center font-black text-xl">13+</div>
+                         <div className="bg-gameGold text-black w-12 h-12 rounded-xl flex items-center justify-center font-black text-xl">14+</div>
                          <div>
                             <div className="text-[9px] text-slate-400 uppercase font-black tracking-widest mb-0.5">Years of</div>
                             <div className="font-black text-base leading-none text-white">Excellence</div>
@@ -138,7 +138,7 @@ const FacultyShowcase: React.FC = () => {
                         referrerPolicy="no-referrer"
                       />
                       <div className="absolute bottom-4 left-4 right-auto bg-[#0f172a] text-white p-3.5 rounded-xl shadow-lg border border-white/10 flex items-center gap-3 max-w-[180px]">
-                         <div className="bg-gameGold text-black w-10 h-10 rounded-lg flex items-center justify-center font-black text-lg">13+</div>
+                         <div className="bg-gameGold text-black w-10 h-10 rounded-lg flex items-center justify-center font-black text-lg">14+</div>
                          <div>
                             <div className="text-[9px] text-slate-400 uppercase font-black tracking-wider">Years of</div>
                             <div className="font-black text-sm leading-none">Excellence</div>
