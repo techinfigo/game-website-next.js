@@ -95,7 +95,7 @@ const AboutPage: React.FC = () => {
       role: "Senior Mentor",
       expLabel: "10+ YRS EXP.",
       exp: "10+ YEARS OF TEACHING EXPERIENCE",
-    img: "/gaurav-sir.png",
+    img: "/about-hero-sub1.png",
       stats: [
         { label: "Achieved ESE AIR 63, 90", icon: Medal },
         { label: "Mentored 50k+ Students", icon: Users },
@@ -244,15 +244,16 @@ const AboutPage: React.FC = () => {
             <div className="lg:w-5/12 order-2 lg:order-1 w-full">
               <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="flex gap-[clamp(0.5rem,1.5vw,1rem)] items-center justify-center">
                 <div className="w-2/3 h-[clamp(250px,50vh,400px)] rounded-[clamp(1.5rem,4vh,3rem)] overflow-hidden shadow-2xl relative border-4 border-slate-50">
-                  <Image src="/gallery-hero.png" alt="Main Mentorship" fill unoptimized className="w-full h-full object-cover" />
+                  <Image src="/about-hero.png" alt="Main Mentorship" fill unoptimized className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-gameTeal/20 to-transparent"></div>
                 </div>
                 <div className="w-1/3 flex flex-col gap-[clamp(0.5rem,1.5vw,1rem)]">
                   <div className="h-[clamp(120px,24vh,195px)] rounded-[clamp(1.25rem,3vh,2.5rem)] overflow-hidden shadow-xl border-2 border-slate-50 relative">
-                    <Image src="/student-learnings.png" alt="Student Learning" fill unoptimized className="w-full h-full object-cover" />
+                    <Image src="/about-hero-sub1.png
+" alt="Student Learning" fill unoptimized className="w-full h-full object-cover" />
                   </div>
                   <div className="h-[clamp(120px,24vh,195px)] rounded-[clamp(1.25rem,3vh,2.5rem)] overflow-hidden shadow-xl border-2 border-slate-200 relative">
-                    <Image src="/achiever-greatness.png" alt="Achiever Greatness" fill unoptimized className="w-full h-full object-cover" />
+                    <Image src="/about-hero-sub2.png" alt="Achiever Greatness" fill unoptimized className="w-full h-full object-cover" />
                   </div>
                 </div>
               </motion.div>
