@@ -925,9 +925,9 @@ const AboutPage: React.FC = () => {
 
       <FacultyShowcase />
 
-      {/* SECTION 8: EDUCATORS - SPOTLIGHT & CAROUSEL REDESIGN */}
-      <section id="educators" className="relative py-8 lg:py-10 flex flex-col justify-center bg-[#0b0c10] overflow-hidden border-t border-white/5">
-         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-[0.03] pointer-events-none invert"></div>
+     {/* SECTION 8: EDUCATORS - SPOTLIGHT & CAROUSEL REDESIGN */}
+      <section className="relative py-8 lg:py-10 flex flex-col justify-center bg-[#0b0c10] overflow-hidden border-t border-white/5">
+         <div className="absolute inset-0 bg-graph-paper opacity-[0.03] pointer-events-none invert"></div>
          <div className="max-w-[1280px] mx-auto px-6 md:px-10 lg:px-12 relative z-10 w-full">
             
             {/* Header Area */}
@@ -967,8 +967,7 @@ const AboutPage: React.FC = () => {
                         src={chiefMentor.img} 
                         alt={chiefMentor.name} 
                         fill
-                        unoptimized
-                        className="object-cover transition-all duration-1000 group-hover:scale-110" 
+                        className="object-cover object-top transition-all duration-1000 group-hover:scale-110" 
                         referrerPolicy="no-referrer"
                      />
                      <div className="absolute inset-0 bg-gradient-to-t from-[#12141c] via-transparent to-transparent opacity-90"></div>
@@ -1004,20 +1003,18 @@ const AboutPage: React.FC = () => {
                <div className="lg:w-[60%] flex flex-col">
                   <div className="flex items-center justify-between mb-4">
                      <h4 className="text-white font-black text-xs uppercase tracking-widest flex items-center gap-3">
-                        <Users className="text-gameTeal w-4 h-4" /> Expert Faculty Team
+                        <Users className="text-gameGold w-4 h-4" /> Expert Faculty Team
                      </h4>
                      <div className="flex gap-2">
                         <button 
-                           onClick={() => setFacultySlide(prev => Math.max(0, prev - 1))}
-                           disabled={facultySlide === 0}
-                           className={`w-8 h-8 rounded-full flex items-center justify-center transition-all border shrink-0 ${facultySlide === 0 ? 'bg-white/5 text-white/20 border-white/5 cursor-not-allowed' : 'bg-white/10 text-white border-white/10 hover:bg-gameTeal hover:border-gameTeal'}`}
+                           onClick={() => setFacultySlide(prev => (prev - 1 + Math.ceil(facultyMembers.length / 2)) % Math.ceil(facultyMembers.length / 2))}
+                           className="w-8 h-8 rounded-full flex items-center justify-center transition-all border shrink-0 bg-white/10 text-white border-white/10 hover:bg-gameGold hover:border-gameGold hover:text-black"
                         >
                            <ChevronLeft className="w-4 h-4" />
                         </button>
                         <button 
-                           onClick={() => setFacultySlide(prev => Math.min(Math.ceil(facultyMembers.length / 2) - 1, prev + 1))}
-                           disabled={facultySlide >= Math.ceil(facultyMembers.length / 2) - 1}
-                           className={`w-8 h-8 rounded-full flex items-center justify-center transition-all border shrink-0 ${facultySlide >= Math.ceil(facultyMembers.length / 2) - 1 ? 'bg-white/5 text-white/20 border-white/5 cursor-not-allowed' : 'bg-white/10 text-white border-white/10 hover:bg-gameTeal hover:border-gameTeal'}`}
+                           onClick={() => setFacultySlide(prev => (prev + 1) % Math.ceil(facultyMembers.length / 2))}
+                           className="w-8 h-8 rounded-full flex items-center justify-center transition-all border shrink-0 bg-white/10 text-white border-white/10 hover:bg-gameGold hover:border-gameGold hover:text-black"
                         >
                            <ChevronRight className="w-4 h-4" />
                         </button>
@@ -1040,35 +1037,34 @@ const AboutPage: React.FC = () => {
                                  exit={{ opacity: 0, x: -20 }}
                                  transition={{ delay: i * 0.1 }}
                                  onClick={() => setSelectedFaculty(fac)}
-                                 className="bg-[#12141c] rounded-3xl overflow-hidden border border-white/5 shadow-2xl flex flex-col group hover:border-gameTeal/30 transition-all duration-500 cursor-pointer h-full"
+                                 className="bg-[#12141c] rounded-3xl overflow-hidden border border-white/5 shadow-2xl flex flex-col group hover:border-gameGold/30 transition-all duration-500 cursor-pointer h-full"
                               >
-                                 <div className="h-[160px] lg:h-[200px] relative overflow-hidden bg-[#0a0a0a]">
+                                 <div className="h-[220px] lg:h-[280px] relative overflow-hidden bg-[#0a0a0a]">
                                     <Image 
                                        src={fac.img} 
                                        alt={fac.name} 
                                        fill
-                                       unoptimized
-                                       className="object-cover transition-all duration-700 group-hover:scale-105" 
+                                       className="object-cover object-top transition-all duration-700 group-hover:scale-105" 
                                        referrerPolicy="no-referrer"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-[#12141c] via-transparent to-transparent opacity-60"></div>
                                  </div>
 
                                  <div className="p-4 flex-1 flex flex-col justify-center">
-                                    <div className="inline-flex items-center gap-2 px-2 py-1 bg-gameTeal/10 border border-gameTeal/20 rounded-lg mb-2 w-fit">
-                                       <Sparkles size={12} className="text-gameTeal" />
-                                       <span className="text-gameTeal font-black text-[9px] uppercase tracking-widest">{fac.expLabel}</span>
+                                    <div className="inline-flex items-center gap-2 px-2 py-1 bg-gameGold/10 border border-gameGold/20 rounded-lg mb-2 w-fit">
+                                       <Sparkles size={12} className="text-gameGold" />
+                                       <span className="text-gameGold font-black text-[9px] uppercase tracking-widest">{fac.expLabel}</span>
                                     </div>
-                                    <h4 className="text-lg font-black text-white mb-0.5 leading-tight group-hover:text-gameTeal transition-colors">
+                                    <h4 className="text-lg font-black text-white mb-0.5 leading-tight group-hover:text-gameGold transition-colors">
                                        {fac.name}
                                     </h4>
                                     <p className="text-slate-400 font-black text-[9px] uppercase tracking-widest mb-4">{fac.role}</p>
                                     
                                     <div className="mt-auto flex items-center gap-3">
-                                       <div className="bg-white/5 text-white px-3 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest border border-white/10 group-hover:bg-gameTeal group-hover:border-gameTeal transition-all">
+                                       <div className="bg-white/5 text-white px-3 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest border border-white/10 group-hover:bg-gameGold group-hover:border-gameGold group-hover:text-black transition-all">
                                           View Profile
                                        </div>
-                                       <div className="w-7 h-7 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white group-hover:bg-gameTeal transition-all shrink-0">
+                                       <div className="w-7 h-7 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white group-hover:bg-gameGold group-hover:text-black transition-all shrink-0">
                                           <ChevronRight className="w-4 h-4" strokeWidth={3} />
                                        </div>
                                     </div>
@@ -1083,7 +1079,7 @@ const AboutPage: React.FC = () => {
                   <div className="mt-4 flex items-center gap-4">
                      <div className="h-1 bg-white/10 flex-grow rounded-full overflow-hidden">
                         <motion.div 
-                           className="h-full bg-gameTeal"
+                           className="h-full bg-gameGold"
                            initial={{ width: "0%" }}
                            animate={{ width: `${((facultySlide + 1) / Math.ceil(facultyMembers.length / 2)) * 100}%` }}
                         />
@@ -1128,7 +1124,6 @@ const AboutPage: React.FC = () => {
                         src={selectedFaculty.img} 
                         alt={selectedFaculty.name} 
                         fill
-                        unoptimized
                         className="object-cover grayscale-[10%]" 
                         referrerPolicy="no-referrer"
                      />
@@ -1177,6 +1172,7 @@ const AboutPage: React.FC = () => {
             </motion.div>
          )}
       </AnimatePresence>
+
 
       {/* REASONS SECTION - Interactive Expanding Accordion */}
       <section className="relative py-12 lg:py-16 flex flex-col justify-center bg-white overflow-hidden border-t border-slate-100">
