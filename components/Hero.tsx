@@ -7,27 +7,46 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const students = [
-  { name: "Akshay Pillay", rank: "AIR 51", img: "/rankers/ranker-1.png" },
-  { name: "Shivam Ranjan", rank: "AIR 1 (NM)", img: "/rankers/ranker-2.png" },
-  { name: "Ayush Sachin Kumar Chordiya", rank: "AIR 24 (PI)", img: "/rankers/ranker-3.png" },
-  { name: "Aman Nema", rank: "AIR 38 (PI)", img: "/rankers/ranker-4.png" },
-  { name: "Omkar Nishad", rank: "AIR 239 (PI)", img: "/rankers/ranker-5.png" },
-  { name: "Vishal Verma", rank: "AIR 240 (ME)", img: "/rankers/ranker-6.png" },
-  { name: "Ankit Gupta", rank: "AIR 496 (XE)", img: "/rankers/ranker-7.png" },
-  { name: "Anjali", rank: "AIR 556 (ME)", img: "/rankers/ranker-8.png" },
-  { name: "Sujoy Das", rank: "AIR 535 (ME)", img: "/rankers/ranker-9.png" },
-  { name: "Manish Kumar", rank: "AIR 267 (ME)", img: "/rankers/ranker-10.png" },
-  { name: "Harshit Kumar", rank: "AIR 5 (PI)", img: "/rankers/ranker-11.png" },
-  { name: "Rushabh", rank: "AIR 146 (PI)", img: "/rankers/ranker-12.png" },
-  { name: "Abhishek Kumar", rank: "AIR 410 (ME)", img: "/rankers/ranker-13.png" },
-  { name: "CHIRAG GOYAL", rank: "AIR 68 (ME)", img: "/rankers/ranker-14.png" },
-  { name: "Deepbhai Haresh Kumar Dave", rank: "AIR 197 (XE) / 343 (ME)", img: "/rankers/ranker-15.png" },
-  { name: "KAMAL KISHOR BHARDWAJ", rank: "AIR 408 (ME)", img: "/rankers/ranker-16.png" },
-  { name: "AKSHIT DINESH", rank: "AIR 33 (ME)", img: "/rankers/ranker-17.png" },
-  { name: "VIJAY PAL", rank: "AIR 52 (ME)", img: "/rankers/ranker-18.png" },
-  { name: "MAYUR BHARAT MORE", rank: "AIR 68 (PI) / 974 (ME)", img: "/rankers/ranker-19.png" },
-  { name: "HARSHIT KUMAR GUPTA", rank: "AIR 636 (ME)", img: "/rankers/ranker-20.png" },
-  { name: "PRAGYA SHARMA", rank: "AIR 905 (ME)", img: "/rankers/ranker-21.png" }
+  { name: "Akshay Pillay", org: "Govt. of India", designation: "Sub Collector & SDM", img: "/rankers/ranker-1.png" },
+  { name: "Dr. Sahil Garg", org: "Ministry of Defence", designation: "Group A Gazetted / Asst. Prof", img: "/rankers/ranker-2.png" },
+  { name: "Akash Jaiswal", org: "ISRO, Bengaluru", designation: "Scientist - SC", img: "/rankers/ranker-3.png" },
+  { name: "Deepbhai Haresh Kumar Dave", org: "ISRO, NLC", designation: "Scientist/Engineer 'SC'", img: "/rankers/ranker-4.png" },
+  { name: "Dileep Kumar Chaudhary", org: "BARC", designation: "Scientific Officer OCES", img: "/rankers/ranker-5.png" },
+  { name: "Govind Kumar", org: "Bharat Electronics Ltd", designation: "Deputy Engineer", img: "/rankers/ranker-6.png" },
+  { name: "Chirag Goyal", org: "IOCL", designation: "Aviation Officer", img: "/rankers/ranker-7.png" },
+  { name: "Anant Kumar Gautam", org: "IOCL", designation: "Executive Officer", img: "/rankers/ranker-8.png" },
+  { name: "Swati Mishra", org: "Hindustan Zinc Ltd", designation: "Assistant Manager", img: "/rankers/ranker-9.png" },
+  { name: "Prashant Mishra", org: "GAIL (India) Ltd", designation: "Senior Engineer", img: "/rankers/ranker-10.png" },
+  { name: "Suarabh Chaubey", org: "NALCO", designation: "Patent Examiner", img: "/rankers/ranker-11.png" },
+  { name: "Rahul Singh Yadav", org: "NTPC", designation: "Engineer", img: "/rankers/ranker-12.png" },
+  { name: "Kamna Pandey", org: "NTPC Limited", designation: "Engineer", img: "/rankers/ranker-13.png" },
+  { name: "Aasif Procha", org: "PSPCL", designation: "Assistant Engineer", img: "/rankers/ranker-14.png" },
+  { name: "Pooja H", org: "WRD", designation: "Assistant Engineer", img: "/rankers/ranker-15.png" },
+  { name: "Bhavya Malviya", org: "NTPC Kahalgaon", designation: "Asst. Exec Operations", img: "/rankers/ranker-16.png" },
+  { name: "Rajat Rai", org: "ONGC", designation: "Asst. Exe. Engineer", img: "/rankers/ranker-17.png" },
+  { name: "Garima", org: "Bharat Dynamics Ltd", designation: "Executive Trainee", img: "/rankers/ranker-18.png" },
+  { name: "Anjali", org: "NPCIL", designation: "Executive Trainee", img: "/rankers/ranker-19.png" },
+  { name: "Sujoy Das", org: "IOCL", designation: "Executive Trainee", img: "/rankers/ranker-20.png" },
+  { name: "Abhishek Kumar", org: "NPCIL", designation: "ET - Mechanical", img: "/rankers/ranker-21.png" },
+  { name: "Parul Singh", org: "CPWD", designation: "Junior Engineer", img: "/rankers/ranker-1.png" },
+  { name: "Neelam Kushwaha", org: "SSC (Irrigation)", designation: "Junior Engineer", img: "/rankers/ranker-2.png" },
+  { name: "Ankit Kumar", org: "BARC", designation: "Stipendiary Trainee", img: "/rankers/ranker-3.png" },
+  { name: "Vijay Pal", org: "NTPC", designation: "Engg. Exec Trainee", img: "/rankers/ranker-4.png" },
+  { name: "Vindhyeshwari Upadhyay", org: "BHEL & RRB-JE", designation: "Junior Engineer", img: "/rankers/ranker-5.png" },
+  { name: "Akash Gupta", org: "NTPC", designation: "Engg. Exec Trainee", img: "/rankers/ranker-6.png" },
+  { name: "Deepak Devlal", org: "DIAT", designation: "Aerospace Engg", img: "/rankers/ranker-7.png" },
+  { name: "Abhishek Kumar", org: "NTPC", designation: "Engg. Exec Trainee", img: "/rankers/ranker-8.png" },
+  { name: "Pankaj Kushwah", org: "BARC", designation: "Scientific Assistant", img: "/rankers/ranker-9.png" },
+  { name: "Sangeeta", org: "BARC", designation: "Scientific Assistant", img: "/rankers/ranker-10.png" },
+  { name: "Pushp Kumar Singh", org: "RSSB", designation: "Junior Engineer", img: "/rankers/ranker-11.png" },
+  { name: "Aditi Rathore", org: "ONGC", designation: "Asst. Exe. Engineer", img: "/rankers/ranker-12.png" },
+  { name: "Smaranika Moharana", org: "OPSC", designation: "Asst. Exe. Engineer", img: "/rankers/ranker-13.png" },
+  { name: "Abhishek Tiwari", org: "BHEL", designation: "Executive Trainee", img: "/rankers/ranker-14.png" },
+  { name: "Mukunda Buragohain", org: "Assam Govt", designation: "Junior Engineer", img: "/rankers/ranker-15.png" },
+  { name: "Harpreet", org: "HSPCB", designation: "Asst. Env. Engineer", img: "/rankers/ranker-16.png" },
+  { name: "Kapil Sharma", org: "NLCIL", designation: "Executive Engineer", img: "/rankers/ranker-17.png" },
+  { name: "Rajesh Sahu", org: "ISRO", designation: "Technical Assistant", img: "/rankers/ranker-18.png" },
+  { name: "Monu Kumar", org: "Coal India Ltd", designation: "Management Trainee", img: "/rankers/ranker-19.png" }
 ];
 
 const VerticalSlider = ({ items, speed, reverse = false }: { items: typeof students, speed: number, reverse?: boolean }) => {
@@ -58,12 +77,19 @@ const VerticalSlider = ({ items, speed, reverse = false }: { items: typeof stude
               className="object-cover grayscale-[10%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110" 
               referrerPolicy="no-referrer"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-            <div className="absolute bottom-3 left-3 right-3 text-white z-10 text-left">
-              <div className="bg-gameGold text-black text-[7px] font-black uppercase px-2 py-0.5 rounded-md w-fit mb-1 shadow-lg">
-                {student.rank}
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+            <div className="absolute bottom-2.5 left-2.5 right-2.5 text-white z-10 text-left">
+              <div className="flex flex-col gap-1">
+                <p className="text-[12px] font-black leading-tight drop-shadow-lg text-white">{student.name}</p>
+                <div className="flex items-center">
+                  <span className="bg-gameGold text-black text-[8px] font-black uppercase px-1.5 py-0.5 rounded shadow-md w-fit truncate max-w-full">
+                    {student.org}
+                  </span>
+                </div>
+                <p className="text-[9px] font-black text-white/90 uppercase tracking-tight line-clamp-1 border-l-2 border-gameGold/60 pl-1.5 leading-none">
+                   {student.designation}
+                </p>
               </div>
-              <p className="text-[10px] font-black leading-tight drop-shadow-md">{student.name}</p>
             </div>
           </div>
         ))}
@@ -154,13 +180,13 @@ const Hero: React.FC = () => {
              <div className="absolute inset-0 z-0 overflow-hidden mask-fade-top-bottom pointer-events-none opacity-30 scale-90">
                 <div className="flex gap-4 h-full px-4 lg:px-8">
                    <div className="flex-1">
-                      <VerticalSlider items={students.slice(0, 7)} speed={45} />
+                      <VerticalSlider items={students.slice(0, 13)} speed={45} />
                    </div>
                    <div className="flex-1 mt-12">
-                      <VerticalSlider items={students.slice(7, 14)} speed={35} reverse />
+                      <VerticalSlider items={students.slice(13, 26)} speed={35} reverse />
                    </div>
                    <div className="flex-1">
-                      <VerticalSlider items={students.slice(14, 21)} speed={55} />
+                      <VerticalSlider items={students.slice(26, 40)} speed={55} />
                    </div>
                 </div>
              </div>
