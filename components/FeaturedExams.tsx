@@ -71,7 +71,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Engineering Services Examination',
       icon: Trophy,
       color: 'text-purple-400',
-      image: "/exams/ese-bg.png",
+      image: "/exams/ese-bg.jpg",
       logo: "/exams/ese-logo.jpg",
       action: 'ese'
     },
@@ -121,8 +121,8 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'State Assistant Engineer / Junior Engineer',
       icon: MapPin,
       color: 'text-cyan-400',
-      image: "/exams/state-ae-je-bg.png",
-      logo: "/exams/state-ae-je-logo.jpg",
+      image: "/exams/state-bg.jpg",
+      logo: "/exams/state-logo.jpg",
       action: 'state'
     },
     {
@@ -131,14 +131,14 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Non Technical Exam',
       icon: BookOpen,
       color: 'text-indigo-400',
-      image: "/exams/non-tech-bg.png",
-      logo: "/exams/non-tech-logo.jpg",
+      image: "/exams/nontech-bg.jpg",
+      logo: "/exams/nontech-logo.jpg",
       action: 'nontech'
     }
   ];
 
   return (
-    <section className="py-8 md:py-10 bg-white relative overflow-hidden">
+    <section id="exams" className="py-8 md:py-10 bg-white relative overflow-hidden">
        {/* Background Decoration */}
        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-[0.02]"></div>
        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-teal-50 rounded-full blur-[120px] -z-10"></div>
