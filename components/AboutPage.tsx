@@ -8,7 +8,6 @@ import {
   Award, CheckCircle2, Phone, MessageCircle,
   Wrench, Layers, Cpu, ChevronRight, Medal, Briefcase,
   Activity, Flame, Zap, BookOpen, GraduationCap, Star, Sparkles, TrendingUp, Quote as QuoteIcon, History, Landmark, Mic2, UserCheck, ShieldCheck, Lightbulb, Smartphone, Rocket, Eye, Shield, HardHat, Microscope, Compass, Atom, Settings, Calendar, ChevronLeft, ArrowUpRight, MonitorPlay, Fingerprint, Crosshair, Hexagon,
-  Droplets, Globe,
   Crown, X
 } from 'lucide-react';
 
@@ -48,7 +47,17 @@ const AboutPage: React.FC = () => {
   const [facultySlide, setFacultySlide] = useState(0);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if (window.location.hash) {
+      setTimeout(() => {
+        const id = window.location.hash.replace('#', '');
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 350);
+    } else {
+      window.scrollTo(0, 0);
+    }
   }, []);
 
   // Auto-play for the new About Slider
@@ -68,173 +77,69 @@ const AboutPage: React.FC = () => {
 
   const chiefMentor = { 
     name: "Gaurav Babu Sir", 
-    role: "GATE & ESE Expert",
-    expLabel: "14+ YRS EXP.",
-    exp: "14+ YEARS OF TEACHING EXPERIENCE (ME & CE)",
-    img: "/faculty/gaurav-sir2.jpg",
+    role: "Founder & Chief Mentor",
+    expLabel: "13+ YRS EXP.",
+    exp: "13+ YEARS OF TEACHING EXCELLENCE",
+    img: "/gaurav-sir.png",
     stats: [
       { label: "Mentored 1 Lakh+ Students", icon: Users },
-      { label: "Specialist in ME & CE Subjects", icon: Target },
-      { label: "Motivational Speaker & Live Coach", icon: Mic2 },
-      { label: "Cracked GATE, IOCL, BPCL, MoD", icon: Landmark }
+      { label: "GATE & ESE Expert", icon: Trophy },
+      { label: "Mechanical & Civil Guru", icon: Landmark },
+      { label: "Visionary Educator", icon: Lightbulb }
     ]
   };
 
   const facultyMembers = [
     { 
-      name: "Harshit Agarwal Sir", 
-      role: "King of Thermal Science",
+      name: "Harshit Agarwal", 
+      role: "Senior Mentor",
       expLabel: "10+ YRS EXP.",
       exp: "10+ YEARS OF TEACHING EXPERIENCE",
-      img: "/faculty/harshit-sir.png",
+    img: "/gaurav-sir.png",
       stats: [
         { label: "Achieved ESE AIR 63, 90", icon: Medal },
-        { label: "Mentored 50,000+ Students", icon: Users },
-        { label: "Offers: ISRO, ONGC, IOCL", icon: Briefcase },
-        { label: "Thermal Science Expert", icon: Flame }
+        { label: "Mentored 50k+ Students", icon: Users },
+        { label: "King of Thermal Science", icon: Trophy },
+        { label: "ISRO, ONGC, SAIL Letters", icon: Briefcase }
       ]
     },
     { 
       name: "Varun Sir", 
-      role: "Thermal Applications Expert",
+      role: "Thermal Expert",
       expLabel: "9+ YRS EXP.",
       exp: "9+ YEARS OF TEACHING EXPERIENCE",
-      img: "/faculty/varun-sir.png",
+    img: "/gaurav-sir.png",
       stats: [
-        { label: "Gate Qualified AIR 80 in 2014", icon: Medal },
-        { label: "Mentored 60,000+ Students", icon: Users },
-        { label: "Fluid Mechanics Expert", icon: Droplets },
-        { label: "Thermodynamics Specialist", icon: Zap }
+        { label: "Gate Qualified AIR 80", icon: Medal },
+        { label: "60,000+ Students Mentored", icon: Users },
+        { label: "Mech Engineering Expert", icon: Award },
+        { label: "Industrial Recognized", icon: Briefcase }
       ]
     },
     { 
-      name: "Atul Vaish Sir", 
-      role: "Quant & Reasoning Guru",
-      expLabel: "9+ YRS EXP.",
-      exp: "9+ YEARS OF TEACHING EXPERIENCE",
-      img: "/faculty/atul-vaish-sir.png",
+      name: "Atul Vaish", 
+      role: "PSU Specialist",
+      expLabel: "10+ YRS EXP.",
+      exp: "10+ YEARS OF TEACHING EXPERIENCE",
+    img: "/gaurav-sir.png",
       stats: [
-        { label: "Teachers Excellence Award", icon: Award },
-        { label: "Gate Qualified 5 Times", icon: Medal },
-        { label: "Cleared JTO, TTA PSUs", icon: Briefcase },
-        { label: "Maths & Electrical Expert", icon: Zap }
+        { label: "Fluid Mechanics Expert", icon: Target },
+        { label: "Industry Recognition", icon: Award },
+        { label: "Mentored 15,000+ students", icon: Users },
+        { label: "GATE Top Ranker", icon: Medal }
       ]
     },
     { 
-      name: "Aditya Shukla Sir", 
-      role: "Engineering Maths Expert",
-      expLabel: "14 YRS EXP.",
-      exp: "14 YEARS OF TEACHING EXPERIENCE",
-      img: "/faculty/aditya-shukla-sir.png",
-      stats: [
-        { label: "Gate Qualified AIR 638", icon: Medal },
-        { label: "Trained 75,000+ Students", icon: Users },
-        { label: "Applied Maths from DAVV", icon: GraduationCap },
-        { label: "Engineering Mathematics", icon: BookOpen }
-      ]
-    },
-    { 
-      name: "Atul Ranjan Sir", 
-      role: "Core Physics Specialist",
-      expLabel: "12 YRS EXP.",
-      exp: "12 YEARS OF TEACHING EXPERIENCE",
-      img: "/faculty/atul-ranjan-sir.png",
-      stats: [
-        { label: "2x Gate Qualified", icon: Medal },
-        { label: "Mentored 20,000+ students", icon: Users },
-        { label: "Qualified in BARC exam", icon: Target },
-        { label: "Physics & Math Analysis", icon: Microscope }
-      ]
-    },
-    { 
-      name: "Hariveer Sir", 
-      role: "Mechanical Engineering Expert",
-      expLabel: "12+ YRS EXP.",
-      exp: "12+ YEARS OF TEACHING EXPERIENCE",
-      img: "/faculty/hariveer-sir.png",
-      stats: [
-        { label: "M.Tech (CAD-CAM) from NITS", icon: GraduationCap },
-        { label: "Authored Practice Books", icon: BookOpen },
-        { label: "Expert in TOM & SOM", icon: Settings },
-        { label: "Machine Design Specialist", icon: Wrench }
-      ]
-    },
-    { 
-      name: "Vipin Sir", 
-      role: "Power Plant Specialist",
-      expLabel: "6+ YRS EXP.",
-      exp: "6+ YEARS OF TEACHING EXPERIENCE",
-      img: "/faculty/vipin-sir.png",
-      stats: [
-        { label: "IIT KGP & Polimi Italy", icon: GraduationCap },
-        { label: "5+ Yrs Industry & Research", icon: Briefcase },
-        { label: "RAC & IC Engines Expert", icon: Settings },
-        { label: "Heat & Mass Transfer", icon: Flame }
-      ]
-    },
-    { 
-      name: "Ankit Jain Sir", 
-      role: "Civil Engineering Expert",
+      name: "Aditya Shukla", 
+      role: "SOM Expert",
       expLabel: "7+ YRS EXP.",
       exp: "7+ YEARS OF TEACHING EXPERIENCE",
-      img: "/faculty/ankit-jain-sir.png",
+    img: "/gaurav-sir.png",
       stats: [
-        { label: "3x Gate Qualified", icon: Medal },
-        { label: "PhD Entrance IIT B/I", icon: Landmark },
-        { label: "5000+ Hours Teaching", icon: Calendar },
-        { label: "Steel & Transportation Pro", icon: HardHat }
-      ]
-    },
-    { 
-      name: "Tina Ma'am", 
-      role: "Biology Specialist",
-      expLabel: "11+ YRS EXP.",
-      exp: "11+ YEARS OF TEACHING EXPERIENCE",
-      img: "/faculty/tina-maam.png",
-      stats: [
-        { label: "Medical Exam Expert", icon: Activity },
-        { label: "NEET-UG & NEET-PG Guru", icon: Target },
-        { label: "11+ Years Experience", icon: Calendar },
-        { label: "Advanced Biology Coach", icon: Microscope }
-      ]
-    },
-    { 
-      name: "Priyam Mishra Sir", 
-      role: "GS & Maths Expert",
-      expLabel: "4+ YRS EXP.",
-      exp: "4+ YEARS OF TEACHING EXPERIENCE",
-      img: "/faculty/priyam-mishra-sir.png",
-      stats: [
-        { label: "GS & Mathematics Expert", icon: BookOpen },
-        { label: "History & Polity Specialist", icon: Landmark },
-        { label: "Current Affairs Guru", icon: Globe },
-        { label: "Geography Educator", icon: Compass }
-      ]
-    },
-    { 
-      name: "Sandeep Singh", 
-      role: "Thermodynamics Expert",
-      expLabel: "8+ YRS EXP.",
-      exp: "8+ YEARS OF TEACHING EXPERIENCE",
-      img: "/faculty/sandeep-singh-sir.png",
-      stats: [
-        { label: "Mentored 30k+ Students", icon: Users },
-        { label: "GATE Ranker", icon: Medal },
-        { label: "Energy Systems Pro", icon: Zap },
-        { label: "Expert Consultant", icon: Briefcase }
-      ]
-    },
-    { 
-      name: "Priya Sharma", 
-      role: "Design Specialist",
-      expLabel: "6+ YRS EXP.",
-      exp: "6+ YEARS OF TEACHING EXPERIENCE",
-      img: "/faculty/priya-sharma-maam.png",
-      stats: [
-        { label: "Visual Learning Expert", icon: Lightbulb },
-        { label: "GATE Qualified", icon: Trophy },
-        { label: "Concept Artist", icon: Sparkles },
-        { label: "Problem Solver", icon: Target }
+        { label: "Strength of Materials Guru", icon: Layers },
+        { label: "Problem Solving Pro", icon: Zap },
+        { label: "Industrial Expertise", icon: Award },
+        { label: "Mentored 8,000+ students", icon: Users }
       ]
     }
   ];
@@ -278,7 +183,7 @@ const AboutPage: React.FC = () => {
     {
       id: "01",
       title: "The Innovator - Gaurav Babu Sir",
-      desc: "A GATE & ESE expert with over 14 years of experience in the Mechanical and Civil domains, he has mentored 1 lakh+ students to successfully crack top engineering exams nationwide.",
+      desc: "A GATE & ESE expert with over 13 years of experience in the Mechanical and Civil domains, he has mentored 1 lakh+ students to successfully crack top engineering exams nationwide.",
       icon: Lightbulb,
       color: "bg-[#021f21]",
     },
@@ -339,15 +244,15 @@ const AboutPage: React.FC = () => {
             <div className="lg:w-5/12 order-2 lg:order-1 w-full">
               <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="flex gap-[clamp(0.5rem,1.5vw,1rem)] items-center justify-center">
                 <div className="w-2/3 h-[clamp(250px,50vh,400px)] rounded-[clamp(1.5rem,4vh,3rem)] overflow-hidden shadow-2xl relative border-4 border-slate-50">
-                  <Image src="/about-hero.png" alt="Main Mentorship" fill className="w-full h-full object-cover" />
+                  <Image src="/gallery-hero.png" alt="Main Mentorship" fill unoptimized className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-gameTeal/20 to-transparent"></div>
                 </div>
                 <div className="w-1/3 flex flex-col gap-[clamp(0.5rem,1.5vw,1rem)]">
                   <div className="h-[clamp(120px,24vh,195px)] rounded-[clamp(1.25rem,3vh,2.5rem)] overflow-hidden shadow-xl border-2 border-slate-50 relative">
-                    <Image src="/about-hero-sub1.png" alt="Student Learning" fill className="w-full h-full object-cover" />
+                    <Image src="/student-learnings.png" alt="Student Learning" fill unoptimized className="w-full h-full object-cover" />
                   </div>
                   <div className="h-[clamp(120px,24vh,195px)] rounded-[clamp(1.25rem,3vh,2.5rem)] overflow-hidden shadow-xl border-2 border-slate-200 relative">
-                    <Image src="/about-hero-sub2.png" alt="Achiever Greatness" fill className="w-full h-full object-cover" />
+                    <Image src="/achiever-greatness.png" alt="Achiever Greatness" fill unoptimized className="w-full h-full object-cover" />
                   </div>
                 </div>
               </motion.div>
@@ -355,7 +260,7 @@ const AboutPage: React.FC = () => {
             <div className="lg:w-7/12 order-1 lg:order-2 flex flex-col justify-center">
               <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="flex flex-col justify-center">
                 <h1 className="text-[clamp(1.75rem,3.5vw,3.25rem)] font-black text-slate-900 leading-tight mb-[clamp(0.25rem,1vh,0.75rem)] tracking-tight">
-                  Gaurav’s Academy for <span className="text-[#075d63]">Mentorship & Education</span>
+                  Gaurav's Academy for <span className="text-[#075d63]">Mentorship & Education</span>
                 </h1>
 
                 <div className="mb-[clamp(0.25rem,1.5vh,0.75rem)]">
@@ -401,7 +306,7 @@ const AboutPage: React.FC = () => {
                <motion.div {...fadeInUp} className="lg:w-[60%] flex flex-col justify-center">
                   <div className="mb-10"><h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter mb-4">About GAME</h2><div className="w-24 h-2.5 bg-gameTeal rounded-full"></div></div>
                   <div className="flex flex-col gap-8 text-lg lg:text-xl text-slate-600 leading-[1.8] font-medium">
-                     <p>It all started with a vision to redefine the way students prepare for the biggest exams of their careers. <span className="font-black text-slate-900 underline decoration-gameGold/40 decoration-4 underline-offset-4">Gaurav Babu Sir</span>, an experienced mentor and educator, noticed a gap in how competitive exams were approached. He saw students struggling, not just with concepts, but with motivation, direction, and mentorship. With over <span className="font-black text-gameTeal">14+ years of teaching experience</span>, he knew there had to be a better way.</p>
+                     <p>It all started with a vision to redefine the way students prepare for the biggest exams of their careers. <span className="font-black text-slate-900 underline decoration-gameGold/40 decoration-4 underline-offset-4">Gaurav Babu Sir</span>, an experienced mentor and educator, noticed a gap in how competitive exams were approached. He saw students struggling, not just with concepts, but with motivation, direction, and mentorship. With over <span className="font-black text-gameTeal">13+ years of teaching experience</span>, he knew there had to be a better way.</p>
                      <p>Thus, Gaurav's Academy for Mentorship & Education (GAME Academy) was born. GAME Academy wasn’t just created to teach, it was created to inspire, to guide, and to transform the lives of every student who walked through its doors. From humble beginnings, our academy has grown into a beacon of hope and success for thousands of Mechanical and Civil Engineering aspirants across India.</p>
                      <p className="bg-slate-50 p-8 rounded-[2.5rem] border-l-8 border-gameGold font-bold text-slate-800 shadow-sm italic">
                         Our commitment to quality education and individual attention has helped us build a strong reputation in the industry. We have a track record of producing top-ranking students who have gone on to achieve great success in their careers. We are proud to be a part of their success stories.
@@ -422,10 +327,10 @@ const AboutPage: React.FC = () => {
                           exit={{ opacity: 0, scale: 0.95 }}
                           className="w-full h-full bg-gameBlack rounded-[3.5rem] p-12 lg:p-16 relative overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] flex flex-col justify-between border border-white/5"
                         >
-                          <div className="absolute inset-0 bg-graph-paper opacity-[0.03] invert pointer-events-none"></div>
+                          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
                           <div className="absolute -top-24 -right-24 w-64 h-64 bg-gameTeal/10 rounded-full blur-[80px]"></div>
                           <div className="relative z-10 space-y-12">
-                              <div><div className="text-gameGold font-black text-5xl mb-2 tracking-tighter">14+ Years</div><p className="text-white font-black text-[10px] uppercase tracking-[0.4em] opacity-50">Teaching Experience</p></div>
+                              <div><div className="text-gameGold font-black text-5xl mb-2 tracking-tighter">13+ Years</div><p className="text-white font-black text-[10px] uppercase tracking-[0.4em] opacity-50">Teaching Experience</p></div>
                               <div className="space-y-4"><div className="h-px bg-white/10 w-full"></div><h4 className="text-gameTeal font-black text-2xl uppercase tracking-widest leading-none">GAME Academy</h4><p className="text-slate-400 font-bold text-sm leading-relaxed">To inspire, to guide, and to transform.</p></div>
                               <div><div className="flex items-center gap-2 mb-2"><div className="w-6 h-6 rounded-lg bg-gameGold flex items-center justify-center text-black"><Trophy size={14} /></div><span className="text-white font-black text-[10px] uppercase tracking-[0.25em]">Qualified Engineers</span></div><p className="text-slate-500 text-xs font-medium">Mechanical & Civil Domains</p></div>
                           </div>
@@ -530,9 +435,10 @@ const AboutPage: React.FC = () => {
                   
                   <div className="relative z-10 rounded-[clamp(2rem,6vh,4rem)] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] bg-slate-800 border-8 border-white/5 h-[clamp(250px,50vh,450px)] w-full">
                      <Image 
-                       src="/about-mentor.png" 
+                       src="/gaurav-education.png" 
                        alt="Gaurav Babu Sir" 
                        fill
+                       unoptimized
                        className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-105" 
                        referrerPolicy="no-referrer"
                      />
@@ -617,7 +523,7 @@ const AboutPage: React.FC = () => {
 
       {/* SECTION 5: OUR APPROACH - DYNAMIC JOURNEY ROADMAP */}
       <section className="relative py-12 lg:py-16 flex flex-col justify-center bg-slate-50 overflow-hidden border-y border-slate-100">
-         <div className="absolute inset-0 bg-graph-paper opacity-[0.03] pointer-events-none"></div>
+         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-[0.03] pointer-events-none"></div>
          <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10 w-full">
             {/* Main Title */}
             <motion.div {...fadeInUp} className="text-center mb-[clamp(1.5rem,4vh,3rem)]">
@@ -713,7 +619,6 @@ const AboutPage: React.FC = () => {
                           </div>
                        </div>
                     </motion.div>
-    
                   ))}
                </div>
             </div>
@@ -731,11 +636,11 @@ const AboutPage: React.FC = () => {
         </div>
         <div className="flex overflow-hidden group">
           <motion.div 
-            className="flex items-center gap-16 whitespace-nowrap px-8"
+            className="flex items-center gap-12 md:gap-20 whitespace-nowrap px-8"
             animate={{ x: isMarqueePaused ? undefined : ["0%", "-50%"] }}
             transition={{ 
               x: {
-                duration: 40, 
+                duration: 50, 
                 repeat: Infinity, 
                 ease: "linear",
               }
@@ -743,10 +648,33 @@ const AboutPage: React.FC = () => {
           >
             {[...Array(2)].map((_, i) => (
               <React.Fragment key={i}>
-                {["ONGC", "ISRO", "NTPC", "BARC", "DRDO", "L&T", "BHEL", "TATA PROJECTS", "SAIL", "GAIL", "IOCL", "BPCL", "CIL", "BEL", "NHAI", "RVNL"].map((company) => (
-                  <span key={company} className="text-xl md:text-3xl font-black text-white/20 hover:text-gameGold transition-all duration-300 cursor-default tracking-tighter select-none uppercase">
-                    {company}
-                  </span>
+                {[
+                  { name: "ONGC", logo: "/rankers/logo-ongc.png" },
+                  { name: "ISRO", logo: "/rankers/logo-isro.png" },
+                  { name: "NTPC", logo: "/rankers/logo-ntpc.png" },
+                  { name: "BARC", logo: "/rankers/logo-barc.png" },
+                  { name: "DRDO", logo: "/rankers/logo-drdo.png" },
+                  { name: "L&T", logo: "/rankers/logo-lt.png" },
+                  { name: "BHEL", logo: "/rankers/logo-bhel.png" },
+                  { name: "TATA PROJECTS", logo: "/rankers/logo-tata.png" },
+                  { name: "SAIL", logo: "/rankers/logo-sail.png" },
+                  { name: "GAIL", logo: "/rankers/logo-gail.png" },
+                  { name: "IOCL", logo: "/rankers/logo-iocl.png" },
+                  { name: "BPCL", logo: "/rankers/logo-bpcl.png" },
+                  { name: "CIL", logo: "/rankers/logo-cil.png" },
+                  { name: "BEL", logo: "/rankers/logo-bel.png" },
+                  { name: "NHAI", logo: "/rankers/logo-nhai.png" },
+                  { name: "RVNL", logo: "/rankers/logo-rvnl.png" }
+                ].map((company, idx) => (
+                  <div key={`${company.name}-${idx}`} className="relative w-16 md:w-24 h-16 md:h-24 flex items-center justify-center transition-all duration-500 cursor-default px-2">
+                    <Image
+                      src={company.logo}
+                      alt={company.name}
+                      fill
+                      className="object-contain"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
                 ))}
               </React.Fragment>
             ))}
@@ -854,7 +782,7 @@ const AboutPage: React.FC = () => {
                      Visionary Leadership <span className="text-gameTeal">& Impact</span>
                   </h2>
                   <p className="text-slate-400 text-[clamp(0.875rem,1.2vw,1.125rem)] font-medium leading-relaxed opacity-80 max-w-3xl mx-auto">
-                     Gaurav Babu Sir, teaching for 14+ years, is the visionary founder of GAME Academy. Renowned for his visualized teaching protocols, he has mentored over one lakh students. Under his leadership, GAME was established in 2021 to provide elite coaching for engineering aspirants across the nation.
+                     Gaurav Babu Sir, teaching for 13+ years, is the visionary founder of GAME Academy. Renowned for his visualized teaching protocols, he has mentored over one lakh students. Under his leadership, GAME was established in 2021 to provide elite coaching for engineering aspirants across the nation.
                   </p>
                </motion.div>
             </div>
@@ -899,9 +827,10 @@ const AboutPage: React.FC = () => {
                >
                   <div className="absolute inset-0 rounded-[clamp(1.5rem,4vh,2.5rem)] overflow-hidden border border-white/10 shadow-2xl">
                      <Image 
-                        src="/about-leadership.png" 
+                        src="/visionary-leader.png" 
                         alt="Gaurav Babu Sir" 
                         fill
+                        unoptimized
                         className="w-full h-full object-cover grayscale-[15%] brightness-90 group-hover:brightness-100 transition-all duration-700" 
                         referrerPolicy="no-referrer"
                      />
@@ -997,8 +926,8 @@ const AboutPage: React.FC = () => {
       <FacultyShowcase />
 
       {/* SECTION 8: EDUCATORS - SPOTLIGHT & CAROUSEL REDESIGN */}
-      <section className="relative py-8 lg:py-10 flex flex-col justify-center bg-[#0b0c10] overflow-hidden border-t border-white/5">
-         <div className="absolute inset-0 bg-graph-paper opacity-[0.03] pointer-events-none invert"></div>
+      <section id="educators" className="relative py-8 lg:py-10 flex flex-col justify-center bg-[#0b0c10] overflow-hidden border-t border-white/5">
+         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-[0.03] pointer-events-none invert"></div>
          <div className="max-w-[1280px] mx-auto px-6 md:px-10 lg:px-12 relative z-10 w-full">
             
             {/* Header Area */}
@@ -1038,7 +967,8 @@ const AboutPage: React.FC = () => {
                         src={chiefMentor.img} 
                         alt={chiefMentor.name} 
                         fill
-                        className="object-cover object-top transition-all duration-1000 group-hover:scale-110" 
+                        unoptimized
+                        className="object-cover transition-all duration-1000 group-hover:scale-110" 
                         referrerPolicy="no-referrer"
                      />
                      <div className="absolute inset-0 bg-gradient-to-t from-[#12141c] via-transparent to-transparent opacity-90"></div>
@@ -1078,14 +1008,16 @@ const AboutPage: React.FC = () => {
                      </h4>
                      <div className="flex gap-2">
                         <button 
-                           onClick={() => setFacultySlide(prev => (prev - 1 + Math.ceil(facultyMembers.length / 2)) % Math.ceil(facultyMembers.length / 2))}
-                           className="w-8 h-8 rounded-full flex items-center justify-center transition-all border shrink-0 bg-white/10 text-white border-white/10 hover:bg-gameTeal hover:border-gameTeal"
+                           onClick={() => setFacultySlide(prev => Math.max(0, prev - 1))}
+                           disabled={facultySlide === 0}
+                           className={`w-8 h-8 rounded-full flex items-center justify-center transition-all border shrink-0 ${facultySlide === 0 ? 'bg-white/5 text-white/20 border-white/5 cursor-not-allowed' : 'bg-white/10 text-white border-white/10 hover:bg-gameTeal hover:border-gameTeal'}`}
                         >
                            <ChevronLeft className="w-4 h-4" />
                         </button>
                         <button 
-                           onClick={() => setFacultySlide(prev => (prev + 1) % Math.ceil(facultyMembers.length / 2))}
-                           className="w-8 h-8 rounded-full flex items-center justify-center transition-all border shrink-0 bg-white/10 text-white border-white/10 hover:bg-gameTeal hover:border-gameTeal"
+                           onClick={() => setFacultySlide(prev => Math.min(Math.ceil(facultyMembers.length / 2) - 1, prev + 1))}
+                           disabled={facultySlide >= Math.ceil(facultyMembers.length / 2) - 1}
+                           className={`w-8 h-8 rounded-full flex items-center justify-center transition-all border shrink-0 ${facultySlide >= Math.ceil(facultyMembers.length / 2) - 1 ? 'bg-white/5 text-white/20 border-white/5 cursor-not-allowed' : 'bg-white/10 text-white border-white/10 hover:bg-gameTeal hover:border-gameTeal'}`}
                         >
                            <ChevronRight className="w-4 h-4" />
                         </button>
@@ -1110,12 +1042,13 @@ const AboutPage: React.FC = () => {
                                  onClick={() => setSelectedFaculty(fac)}
                                  className="bg-[#12141c] rounded-3xl overflow-hidden border border-white/5 shadow-2xl flex flex-col group hover:border-gameTeal/30 transition-all duration-500 cursor-pointer h-full"
                               >
-                                 <div className="h-[220px] lg:h-[280px] relative overflow-hidden bg-[#0a0a0a]">
+                                 <div className="h-[160px] lg:h-[200px] relative overflow-hidden bg-[#0a0a0a]">
                                     <Image 
                                        src={fac.img} 
                                        alt={fac.name} 
                                        fill
-                                       className="object-cover object-top transition-all duration-700 group-hover:scale-105" 
+                                       unoptimized
+                                       className="object-cover transition-all duration-700 group-hover:scale-105" 
                                        referrerPolicy="no-referrer"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-[#12141c] via-transparent to-transparent opacity-60"></div>
@@ -1195,6 +1128,7 @@ const AboutPage: React.FC = () => {
                         src={selectedFaculty.img} 
                         alt={selectedFaculty.name} 
                         fill
+                        unoptimized
                         className="object-cover grayscale-[10%]" 
                         referrerPolicy="no-referrer"
                      />
