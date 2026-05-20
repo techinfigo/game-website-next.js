@@ -117,7 +117,6 @@ const ALL_STORIES = [
 const HERO_STATS = [
   { val: "50+", label: "AIR 1 Ranks" },
   { val: "5000+", label: "Selections" },
-  { val: "100Cr+", label: "Scholarships" },
   { val: "4.9/5", label: "Student Rating" },
 ];
 
@@ -407,7 +406,7 @@ const AchieversPage: React.FC<AchieversPageProps> = () => {
                </p>
 
                {/* Stats Row */}
-               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto border-t border-white/10 pt-6">
+               <div className="grid grid-cols-3 gap-6 max-w-3xl mx-auto border-t border-white/10 pt-6">
                   {HERO_STATS.map((stat, i) => (
                      <div key={i} className="text-center">
                         <div className="text-2xl font-black text-white mb-0.5">{stat.val}</div>
