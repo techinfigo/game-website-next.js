@@ -4,8 +4,19 @@ import React from 'react';
 import Image from 'next/image';
 import { CheckCircle2, ArrowRight, Award, Users } from 'lucide-react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const FacultyShowcase: React.FC = () => {
+  const handleScrollToEducators = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (typeof window !== 'undefined' && window.location.pathname === '/about') {
+      e.preventDefault();
+      const element = document.getElementById('educators');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  };
+
   return (
     <section className="py-8 lg:py-10 bg-slate-300 overflow-hidden relative border-t border-slate-300">
        
@@ -22,7 +33,7 @@ const FacultyShowcase: React.FC = () => {
                 </h2>
                 
                 <p className="text-sm md:text-base leading-relaxed mb-4 text-slate-600">
-                   <strong className="text-slate-900">Gaurav Babu Sir</strong>, a seasoned Mechanical & Civil Expert with <span className="text-gameGoldDark font-black">14+ Years of experience</span> in teaching, has successfully cracked exams like GATE, IOCL, BPCL, and Ministry of Defence.
+                   <strong className="text-slate-900">Gaurav Babu Sir</strong>, a seasoned Mechanical & Civil Expert with <span className="text-gameGoldDark font-black">13+ Years of experience</span> in teaching, has successfully cracked exams like GATE, IOCL, BPCL, and Ministry of Defence.
                 </p>
 
                 <div className="space-y-3 mb-6">
@@ -52,9 +63,9 @@ const FacultyShowcase: React.FC = () => {
                    </p>
                 </div>
 
-                <button className="bg-gameTeal text-white px-8 py-3.5 rounded-xl font-black text-base uppercase tracking-wider shadow-xl shadow-gameTeal/20 hover:bg-gameTealDark hover:-translate-y-1 transition-all flex items-center gap-3 group">
+                <Link href="/about#educators" onClick={handleScrollToEducators} className="bg-gameTeal text-white px-8 py-3.5 rounded-xl font-black text-base uppercase tracking-wider shadow-xl shadow-gameTeal/20 hover:bg-gameTealDark hover:-translate-y-1 transition-all flex items-center justify-center gap-3 group w-fit">
                    View All Faculties <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                </button>
+                </Link>
              </div>
 
              {/* Visual Composition - Width 58% */}
@@ -72,7 +83,7 @@ const FacultyShowcase: React.FC = () => {
                    <div className="absolute top-10 right-0 w-[55%] h-[340px] z-10">
                       <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden shadow-xl border-[6px] border-white transform rotate-3 hover:rotate-0 transition-all duration-500">
                          <Image 
-                            src="/about-faculty-back.jpeg" 
+                            src="/about-faculty-back.jpg" 
                             fill
                             unoptimized
                             className="object-cover" 
@@ -101,7 +112,7 @@ const FacultyShowcase: React.FC = () => {
                    <div className="absolute top-0 left-4 w-[60%] h-[380px] z-20">
                       <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden shadow-2xl border-[8px] border-white transform -rotate-2 hover:rotate-0 transition-all duration-500 group">
                          <Image 
-                            src="/about-faculty-front.jpg" 
+                            src="/about-faculty-front.jpeg" 
                             fill
                             priority
                             unoptimized
@@ -116,7 +127,7 @@ const FacultyShowcase: React.FC = () => {
                       
                       {/* Floating Badge Left (Black) */}
                       <div className="absolute bottom-6 -left-8 bg-[#0f172a] text-white p-4 rounded-2xl shadow-2xl shadow-slate-900/30 border border-white/10 z-30 flex items-center gap-4 animate-[float_4s_ease-in-out_infinite]">
-                         <div className="bg-gameGold text-black w-12 h-12 rounded-xl flex items-center justify-center font-black text-xl">14+</div>
+                         <div className="bg-gameGold text-black w-12 h-12 rounded-xl flex items-center justify-center font-black text-xl">13+</div>
                          <div>
                             <div className="text-[9px] text-slate-400 uppercase font-black tracking-widest mb-0.5">Years of</div>
                             <div className="font-black text-base leading-none text-white">Excellence</div>
@@ -138,7 +149,7 @@ const FacultyShowcase: React.FC = () => {
                         referrerPolicy="no-referrer"
                       />
                       <div className="absolute bottom-4 left-4 right-auto bg-[#0f172a] text-white p-3.5 rounded-xl shadow-lg border border-white/10 flex items-center gap-3 max-w-[180px]">
-                         <div className="bg-gameGold text-black w-10 h-10 rounded-lg flex items-center justify-center font-black text-lg">14+</div>
+                         <div className="bg-gameGold text-black w-10 h-10 rounded-lg flex items-center justify-center font-black text-lg">13+</div>
                          <div>
                             <div className="text-[9px] text-slate-400 uppercase font-black tracking-wider">Years of</div>
                             <div className="font-black text-sm leading-none">Excellence</div>
