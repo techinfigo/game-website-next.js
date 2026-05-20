@@ -828,7 +828,8 @@ const AboutPage: React.FC = () => {
                >
                   <div className="absolute inset-0 rounded-[clamp(1.5rem,4vh,2.5rem)] overflow-hidden border border-white/10 shadow-2xl">
                      <Image 
-                        src="/visionary-leader.png" 
+                        src="/about-leadership.png
+" 
                         alt="Gaurav Babu Sir" 
                         fill
                         unoptimized
