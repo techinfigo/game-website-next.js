@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Sparkles, Trophy, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 const AcingExamsSection: React.FC = () => {
   return (
@@ -43,12 +44,12 @@ const AcingExamsSection: React.FC = () => {
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <button className="bg-white text-[#075d63] px-6 py-3 rounded-xl font-black text-sm flex items-center gap-2 hover:bg-teal-50 transition-all shadow-xl">
+              <Link href="#offers" className="bg-white text-[#075d63] px-6 py-3 rounded-xl font-black text-sm flex items-center gap-2 hover:bg-teal-50 transition-all shadow-xl">
                 View Offers <ArrowRight size={16} />
-              </button>
-              <button className="border-2 border-white/20 text-white px-6 py-3 rounded-xl font-black text-sm flex items-center gap-2 hover:bg-white/10 transition-all">
+              </Link>
+              <Link href="#rankers" className="border-2 border-white/20 text-white px-6 py-3 rounded-xl font-black text-sm flex items-center gap-2 hover:bg-white/10 transition-all">
                 <Trophy size={16} /> Top Rankers
-              </button>
+              </Link>
             </div>
           </motion.div>
 
