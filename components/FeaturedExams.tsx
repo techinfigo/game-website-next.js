@@ -92,7 +92,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       icon: Briefcase,
       color: 'text-emerald-400',
       image: "/exams/psu-bg.jpg",
-      logo: "/logo-bhel.png",
+      logo: "/exams/logo-bhel.png",
       action: 'psu'
     },
     {
