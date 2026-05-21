@@ -115,9 +115,10 @@ const ALL_STORIES = [
 ];
 
 const HERO_STATS = [
-  { val: "50+", label: "AIR 1 Ranks" },
-  { val: "5000+", label: "Selections" },
-  { val: "4.9/5", label: "Student Rating" },
+  { val: "1000+", label: "PSU selections" },
+  { val: "2,000+", label: "rank holders" },
+  { val: "10,000+", label: "student community" },
+  { val: "4.9/5", label: "student rating" },
 ];
 
 const FILTER_TABS = [
@@ -401,12 +402,12 @@ const AchieversPage: React.FC<AchieversPageProps> = () => {
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-gameTeal via-teal-400 to-gameGold underline decoration-white/20 decoration-8 underline-offset-8">Excellence</span>
                </h1>
 
-               <p className="text-base md:text-xl text-slate-400 max-w-2xl mx-auto mb-6 leading-relaxed mt-4">
-                  Real stories of grit, perseverance, and triumph. Meet the students who turned their dreams into reality with GAME.
+               <p className="text-base md:text-xl text-slate-300 max-w-2xl mx-auto mb-6 leading-relaxed mt-4 font-semibold">
+                  Mentorship-driven learning for GATE, PSU, AE/JE, and ESE aspirants
                </p>
 
                {/* Stats Row */}
-               <div className="grid grid-cols-3 gap-6 max-w-3xl mx-auto border-t border-white/10 pt-6">
+               <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto border-t border-white/10 pt-6">
                   {HERO_STATS.map((stat, i) => (
                      <div key={i} className="text-center">
                         <div className="text-2xl font-black text-white mb-0.5">{stat.val}</div>
