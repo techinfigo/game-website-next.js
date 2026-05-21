@@ -37,217 +37,549 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
   const allCourses = [
     // GATE / ESE Category
     {
-      title: "Foundation Course (ME) 2025/2026",
-      tagline: "Start Early, Finish Strong",
-      image: "/coursetest.png",
-      duration: "26 Months",
-      eligibility: "2nd/3rd Year",
-      features: ["1200+ Hrs Content", "Weekly Tests", "1:1 Mentorship"],
-      tag: "TWO-YEAR SUBSCRIPTION",
+      title: "Lakshya Basic (ME) 2027",
+      tagline: "Comprehensive Foundation for GATE & PSUs",
+      image: "/public/courses/course.png",
+      duration: "12 Months",
+      eligibility: "Final year / PSUs job seekers",
+      features: [
+        "24/7 Access to Recorded Sessions",
+        "Topic-wise Assignments with solutions",
+        "No Cost EMIs available",
+        "Effective Study Plan by Gaurav Babu sir"
+      ],
+      tag: "BASIC BATCH",
       tagColor: "bg-[#075d63] text-white",
-      price: "Rs. 35,000",
-      originalPrice: "Rs. 50,000",
-      discount: "30% OFF",
+      price: "Rs. 6,999",
+      originalPrice: "Rs. 13,999",
+      discount: "50% OFF",
       category: "GATE / ESE",
       btnColor: "bg-[#075d63] hover:bg-[#043f42]",
-      enrolledCount: "15.2k",
-      liveCount: "420",
-      rating: 4.9
+      enrolledCount: "11.2k",
+      liveCount: "350",
+      rating: 4.8,
+      branch: "Mechanical",
+      exam: "GATE / ESE / PSUs / ISRO / BARC",
+      language: "Hinglish",
+      mentorship: "No"
     },
     {
-      title: "Lakshya Course (ME) GATE 2025",
-      tagline: "Focused & Time Bound",
-      image: "/images/courses/course-2.png",
-      duration: "14 Months",
+      title: "Lakshya Advance (ME) 2027",
+      tagline: "Advance Practice & Concept Building",
+      image: "/public/courses/course.png",
+      duration: "12 Months",
       eligibility: "Final Year / Droppers",
-      features: ["Targeted Syllabus", "100+ Mock Exams", "Doubt Solving"],
-      tag: "BEST SELLER",
+      features: [
+        "Live & Recorded Classes",
+        "Topic-wise Tests + Assignments",
+        "2000+ practice questions",
+        "24/7 Doubt Support"
+      ],
+      tag: "ADVANCE BATCH",
       tagColor: "bg-[#f2c537] text-black",
-      price: "Rs. 24,999",
-      originalPrice: "Rs. 35,000",
-      discount: "30% OFF",
+      price: "Rs. 11,999",
+      originalPrice: "Rs. 23,999",
+      discount: "50% OFF",
       category: "GATE / ESE",
       btnColor: "bg-[#f2c537] hover:bg-[#d8b32f] text-black",
       enrolledCount: "8.5k",
       liveCount: "1,150",
-      rating: 4.8
+      rating: 4.9,
+      branch: "Mechanical",
+      exam: "GATE / ESE / PSUs / ISRO / BARC",
+      language: "Hinglish",
+      mentorship: "Yes"
     },
     {
-      title: "ESE (CE) Comprehensive 2025",
-      tagline: "Engineering Services Mastery",
-      image: "/images/courses/course-3.png",
-      duration: "18 Months",
-      eligibility: "Civil Aspirants",
-      features: ["Tech + Non-Tech", "Mains Answer Writing", "Interview Guide"],
-      tag: "PREMIUM BATCH",
+      title: "Lakshya (ME) - Exclusive Mentorship Program",
+      tagline: "1:1 Live Guided Mentorship & Learning",
+      image: "/public/courses/course.png",
+      duration: "15-30 Months",
+      eligibility: "2nd/3rd Year",
+      features: [
+        "Complete Tech. + Non Tech. Coverage",
+        "Live + Recorded Lectures",
+        "Test + Assignments",
+        "24/7 Doubt Support Group"
+      ],
+      tag: "EXCLUSIVE MENTORSHIP",
       tagColor: "bg-slate-800 text-white",
-      price: "Rs. 42,000",
-      originalPrice: "Rs. 60,000",
-      discount: "30% OFF",
+      price: "Rs. 14,999",
+      originalPrice: "Rs. 29,999",
+      discount: "50% OFF",
       category: "GATE / ESE",
       btnColor: "bg-[#075d63] hover:bg-[#043f42]",
-      enrolledCount: "4.8k",
-      liveCount: "210",
-      rating: 5.0
+      enrolledCount: "5.4k",
+      liveCount: "410",
+      rating: 5.0,
+      branch: "Mechanical",
+      exam: "GATE / ESE / PSUs / ISRO / BARC / AE & JE",
+      language: "Hinglish",
+      mentorship: "Yes"
     },
-
-    // Govt R&D
     {
-      title: "ISRO Scientist/Engineer (ME)",
-      tagline: "Reach for the Stars",
-      image: "/images/courses/course-4.png",
-      duration: "6 Months",
-      eligibility: "BE/B.Tech",
-      features: ["ISRO Syllabus", "Previous Papers", "Interview Guidance"],
-      tag: "TARGET BATCH",
+      title: "Foundation Course (ME) 2027/2028",
+      tagline: "Complete Two-Year Mastery Program",
+      image: "/public/courses/course.png",
+      duration: "24 Months",
+      eligibility: "2nd/3rd Year",
+      features: [
+        "Live & Recorded Classes",
+        "Topic-wise Tests & Assignments",
+        "24/7 Doubt Support Group",
+        "No Cost EMIs available"
+      ],
+      tag: "FOUNDATION BATCH",
       tagColor: "bg-[#075d63] text-white",
-      price: "Rs. 8,999",
-      originalPrice: "Rs. 15,000",
-      discount: "40% OFF",
-      category: "Govt R&D",
-      btnColor: "bg-blue-900 hover:bg-blue-800",
-      enrolledCount: "3.2k",
-      liveCount: "150",
-      rating: 4.7
+      price: "Rs. 14,999",
+      originalPrice: "Rs. 29,999",
+      discount: "50% OFF",
+      category: "GATE / ESE",
+      btnColor: "bg-[#075d63] hover:bg-[#043f42]",
+      enrolledCount: "15.2k",
+      liveCount: "420",
+      rating: 4.9,
+      branch: "Mechanical",
+      exam: "GATE / ESE / PSUs / ISRO / BARC",
+      language: "Hinglish",
+      mentorship: "Yes"
     },
     {
-      title: "BARC OCES/DGFS Prep",
-      tagline: "Nuclear Science Career",
-      image: "/images/courses/course-5.png",
-      duration: "8 Months",
-      eligibility: "GATE Qualified",
-      features: ["Scientific Concepts", "Research Methodology", "Interview Focus"],
-      tag: "SCIENTIFIC OFFICER",
-      tagColor: "bg-[#075d63] text-white",
-      price: "Rs. 10,500",
-      originalPrice: "Rs. 18,000",
-      discount: "42% OFF",
-      category: "Govt R&D",
-      btnColor: "bg-teal-700 hover:bg-teal-800",
-      enrolledCount: "1.8k",
-      liveCount: "95",
-      rating: 4.9
-    },
-
-    // PSUs
-    {
-      title: "PSU Excellence Batch (ME)",
-      tagline: "HPCL, ONGC, NTPC & More",
-      image: "/images/courses/course-6.png",
+      title: "Lakshya Pro - Selection Guarantee Course",
+      tagline: "Guaranteed Selection or Full Refund Support",
+      image: "/public/courses/course.png",
       duration: "12 Months",
-      eligibility: "Graduates",
-      features: ["Technical + HR", "Group Discussions", "Aptitude"],
-      tag: "JOB ORIENTED",
+      eligibility: "GATE, ESE & PSUs Aspirants",
+      features: [
+        "Live and recorded depth content",
+        "Customise course planner for GATE",
+        "Quality Question practice",
+        "Guaranteed selection in GATE 2027"
+      ],
+      tag: "GUARANTEED SELECT",
       tagColor: "bg-[#f2c537] text-black",
       price: "Rs. 14,999",
-      originalPrice: "Rs. 25,000",
-      discount: "40% OFF",
+      originalPrice: "Rs. 29,999",
+      discount: "50% OFF",
+      category: "GATE / ESE",
+      btnColor: "bg-[#f2c537] hover:bg-[#d8b32f] text-black",
+      enrolledCount: "4.2k",
+      liveCount: "280",
+      rating: 4.9,
+      branch: "Mechanical",
+      exam: "GATE, ESE, PSUs",
+      language: "Hinglish",
+      mentorship: "Yes"
+    },
+    {
+      title: "Lakshya Course (CE)",
+      tagline: "Complete Civil Engineering Specialization",
+      image: "/public/courses/course.png",
+      duration: "12 Months",
+      eligibility: "B.Tech 1st to Final year",
+      features: [
+        "24/7 Recorded Sessions",
+        "70+ Marks Covered",
+        "Topic-wise Tests & Assignments",
+        "Previous Year Questions Access"
+      ],
+      tag: "LAKSHYA CIVIL",
+      tagColor: "bg-[#075d63] text-white",
+      price: "Rs. 6,999",
+      originalPrice: "Rs. 13,999",
+      discount: "50% OFF",
+      category: "GATE / ESE",
+      btnColor: "bg-[#075d63] hover:bg-[#043f42]",
+      enrolledCount: "7.8k",
+      liveCount: "135",
+      rating: 4.8,
+      branch: "Civil",
+      exam: "GATE, PSUs",
+      language: "Hinglish",
+      mentorship: "Yes"
+    },
+    {
+      title: "Aadhaaram Course",
+      tagline: "Basic Engineering Foundation for Semesters & Exams",
+      image: "/public/courses/course.png",
+      duration: "12 Months",
+      eligibility: "1st year to final year",
+      features: [
+        "Live + Recorded Sessions",
+        "Topic-wise Assignments + Tests",
+        "FREE General Aptitude Course",
+        "24x7 Academic Support & Guidance"
+      ],
+      tag: "AADHAARAM BATCH",
+      tagColor: "bg-emerald-600 text-white",
+      price: "Rs. 999",
+      originalPrice: "Rs. 3,999",
+      discount: "75% OFF",
+      category: "GATE / ESE",
+      btnColor: "bg-[#075d63] hover:bg-[#043f42]",
+      enrolledCount: "16.5k",
+      liveCount: "680",
+      rating: 4.7,
+      branch: "Multi-Branch",
+      exam: "Semester Exams, GATE, PSUs",
+      language: "Hinglish",
+      mentorship: "No"
+    },
+    {
+      title: "Aarambh Course - Combo (Thermal + SOM)",
+      tagline: "Target Mechanical Combo Special",
+      image: "/public/courses/course.png",
+      duration: "12 Months",
+      eligibility: "B,Tech. 1st, 2nd year",
+      features: [
+        "Full Depth Recorded & Updated Lectures",
+        "High-Quality Lecture Notes",
+        "Topic-wise Test + Assignments",
+        "Smart Tips to Avoid Silly Mistakes"
+      ],
+      tag: "COMBO BATCH",
+      tagColor: "bg-orange-600 text-white",
+      price: "Rs. 4,999",
+      originalPrice: "Rs. 11,999",
+      discount: "58% OFF",
+      category: "PSUs", // Will display under PSUs filters nicely
+      btnColor: "bg-[#075d63] hover:bg-[#043f42]",
+      enrolledCount: "3.5k",
+      liveCount: "90",
+      rating: 4.6,
+      branch: "Mechanical",
+      exam: "GATE/ ESE/PSUs / College semesters",
+      language: "Hinglish",
+      mentorship: "No"
+    },
+    {
+      title: "Aarambh Course - Combo (EM + Maths)",
+      tagline: "Solid Foundation in Mechanics & Maths",
+      image: "/public/courses/course.png",
+      duration: "6 Months",
+      eligibility: "B,Tech. 1st, 2nd year",
+      features: [
+        "Full Depth Recorded & Updated Lectures",
+        "High-Quality Lecture Notes",
+        "Topic-wise Test + Assignments",
+        "Tips & Tricks For Silly Mistakes"
+      ],
+      tag: "COMBO BATCH",
+      tagColor: "bg-orange-600 text-white",
+      price: "Rs. 4,009",
+      originalPrice: "Rs. 8,009",
+      discount: "50% OFF",
       category: "PSUs",
-      btnColor: "bg-orange-600 hover:bg-orange-700",
-      enrolledCount: "5.5k",
-      liveCount: "300",
-      rating: 4.6
+      btnColor: "bg-[#075d63] hover:bg-[#043f42]",
+      enrolledCount: "2.9k",
+      liveCount: "110",
+      rating: 4.7,
+      branch: "Mechanical",
+      exam: "GATE/ ESE/PSUs / College semesters",
+      language: "Hinglish",
+      mentorship: "Yes"
+    },
+    {
+      title: "Aarambh Course - Combo (Surveying + SOM)",
+      tagline: "Solid Foundation in Civil Surveying & SOM",
+      image: "/public/courses/course.png",
+      duration: "6 Months",
+      eligibility: "B,Tech. 1st, 2nd year",
+      features: [
+        "Full Depth Recorded & Updated Lectures",
+        "High-Quality Lecture Notes",
+        "Topic-wise Test + Assignments",
+        "Tips & Tricks For Silly Mistakes"
+      ],
+      tag: "COMBO BATCH",
+      tagColor: "bg-orange-600 text-white",
+      price: "Rs. 4,009",
+      originalPrice: "Rs. 8,009",
+      discount: "50% OFF",
+      category: "PSUs",
+      btnColor: "bg-[#075d63] hover:bg-[#043f42]",
+      enrolledCount: "1.8k",
+      liveCount: "45",
+      rating: 4.5,
+      branch: "Civil",
+      exam: "GATE/ ESE/PSUs / College semesters",
+      language: "Hinglish",
+      mentorship: "Yes"
+    },
+    {
+      title: "Quick Practice Course | GATE 2027",
+      tagline: "Most Expected Questions Mock & Hacks",
+      image: "/public/courses/course.png",
+      duration: "6 Months",
+      eligibility: "GATE Aspirants",
+      features: [
+        "Most Expected Questions",
+        "Practice questions",
+        "5 Time-Bound Mock Tests",
+        "Important tips and tricks to save time"
+      ],
+      tag: "PRACTICE BATCH",
+      tagColor: "bg-purple-600 text-white",
+      price: "Rs. 321",
+      originalPrice: "Rs. 800",
+      discount: "60% OFF",
+      category: "Govt R&D", // Placing under Govt R&D
+      btnColor: "bg-[#075d63] hover:bg-[#043f42]",
+      enrolledCount: "6.3k",
+      liveCount: "320",
+      rating: 4.8,
+      branch: "Mechanical",
+      exam: "GATE",
+      language: "Hinglish",
+      mentorship: "No"
+    },
+    {
+      title: "GATE - XE (B+E) Full Course",
+      tagline: "Engineering Science Fluid Mechanics & Thermodynamics",
+      image: "/public/courses/course.png",
+      duration: "12 Months",
+      eligibility: "B.Tech 3rd year & 4th year",
+      features: [
+        "Cover XE - (A + B + E)",
+        "24/7 recorded access",
+        "Assignments + Tests",
+        "24/7 Doubt Solving Support"
+      ],
+      tag: "XE SPECIAL",
+      tagColor: "bg-[#075d63] text-white",
+      price: "Rs. 4,999",
+      originalPrice: "Rs. 13,999",
+      discount: "64% OFF",
+      category: "GATE / ESE",
+      btnColor: "bg-[#075d63] hover:bg-[#043f42]",
+      enrolledCount: "1.2k",
+      liveCount: "35",
+      rating: 4.9,
+      branch: "Engineering Science",
+      exam: "GATE - XE",
+      language: "Hinglish",
+      mentorship: "No"
+    },
+    {
+      title: "GATE - XE (D+E) Full Course",
+      tagline: "Engineering Science Solid Mechanics & Thermodynamics",
+      image: "/public/courses/course.png",
+      duration: "12 Months",
+      eligibility: "B.Tech 3rd year & 4th year",
+      features: [
+        "Cover XE - (A + D + E)",
+        "24/7 recorded access",
+        "Assignments + Tests",
+        "24/7 Doubt Support"
+      ],
+      tag: "XE SPECIAL",
+      tagColor: "bg-[#075d63] text-white",
+      price: "Rs. 4,999",
+      originalPrice: "Rs. 13,999",
+      discount: "64% OFF",
+      category: "GATE / ESE",
+      btnColor: "bg-[#075d63] hover:bg-[#043f42]",
+      enrolledCount: "0.9k",
+      liveCount: "25",
+      rating: 4.8,
+      branch: "Engineering Science",
+      exam: "GATE - XE",
+      language: "Hinglish",
+      mentorship: "No"
+    },
+    {
+      title: "GATE - XE (B+D) Full Course",
+      tagline: "Engineering Science Fluid Mechanics & Solid Mechanics",
+      image: "/public/courses/course.png",
+      duration: "12 Months",
+      eligibility: "B.Tech 3rd year & 4th year",
+      features: [
+        "Cover XE - (A + B + D)",
+        "24/7 recorded access",
+        "Assignments + Tests",
+        "24/7 Academic Support & Guidance"
+      ],
+      tag: "XE SPECIAL",
+      tagColor: "bg-[#075d63] text-white",
+      price: "Rs. 4,999",
+      originalPrice: "Rs. 13,999",
+      discount: "64% OFF",
+      category: "GATE / ESE",
+      btnColor: "bg-[#075d63] hover:bg-[#043f42]",
+      enrolledCount: "1.1k",
+      liveCount: "40",
+      rating: 4.9,
+      branch: "Engineering Science",
+      exam: "GATE - XE",
+      language: "Hinglish",
+      mentorship: "No"
+    },
+    {
+      title: "Vijeta Test Series (ME) 2027",
+      tagline: "Premium High Quality Tests for ME",
+      image: "/public/courses/course.png",
+      duration: "12 Months",
+      eligibility: "GATE/PSUs Aspirants",
+      features: [
+        "150+ Topic-Wise Tests",
+        "10+ Subject-Wise Tests",
+        "15+ Full-Length Tests",
+        "Detailed Solutions with Explanations"
+      ],
+      tag: "TEST SERIES",
+      tagColor: "bg-slate-700 text-white",
+      price: "Rs. 480",
+      originalPrice: "Rs. 1,600",
+      discount: "70% OFF",
+      category: "GATE / ESE",
+      btnColor: "bg-slate-700 hover:bg-slate-800 text-white",
+      enrolledCount: "9.2k",
+      liveCount: "180",
+      rating: 4.9,
+      branch: "Mechanical",
+      exam: "GATE, ESE, PSUs",
+      language: "English",
+      mentorship: "No"
     },
 
-    // SSC JE
+    // SSC JE Category
     {
-      title: "SSC-JE (EE) Selection Batch",
-      tagline: "Crack Junior Engineer Exam",
-      image: "/images/courses/course-7.png",
+      title: "Excellence Course (ME)",
+      tagline: "Junior Engineer Special Batch",
+      image: "/public/courses/course.png",
       duration: "12 Months",
-      eligibility: "Diploma & Degree",
-      features: ["Tech + Non-Tech", "5000+ Questions", "Bilingual Classes"],
-      tag: "NEW BATCH",
+      eligibility: "Diploma Final Year",
+      features: [
+        "Live + Recorded Sessions",
+        "Tech. + Non-Tech. Coverage",
+        "Topic-wise Tests & Assignments",
+        "24/7 Doubt Solving Support"
+      ],
+      tag: "EXCELLENCE BATCH",
       tagColor: "bg-[#f2c537] text-black",
-      price: "Rs. 12,999",
-      originalPrice: "Rs. 20,000",
-      discount: "35% OFF",
+      price: "Rs. 6,999",
+      originalPrice: "Rs. 13,999",
+      discount: "50% OFF",
       category: "SSC JE",
       btnColor: "bg-[#f2c537] hover:bg-[#d8b32f] text-black",
       enrolledCount: "12.1k",
       liveCount: "850",
-      rating: 4.8
+      rating: 4.8,
+      branch: "Mechanical",
+      exam: "SSC-JE, RRB-JE, State AE-JE",
+      language: "Hinglish",
+      mentorship: "Yes"
     },
     {
-      title: "SSC-JE (Civil) Ranker's Batch",
-      tagline: "Build Your Govt Career",
-      image: "/images/courses/course-8.png",
+      title: "Excellence Course (CE)",
+      tagline: "Junior Engineer Civil Comprehensive Batch",
+      image: "/public/courses/course.png",
       duration: "12 Months",
-      eligibility: "Civil Engineers",
-      features: ["RCC, Steel, Surveying", "Short Notes", "Doubt Sessions"],
-      tag: "LIVE NOW",
-      tagColor: "bg-[#075d63] text-white",
-      price: "Rs. 12,999",
-      originalPrice: "Rs. 20,000",
-      discount: "35% OFF",
+      eligibility: "Diploma Final Year",
+      features: [
+        "Live + Recorded Sessions",
+        "Tech. + Non-Tech. Coverage",
+        "Topic-wise Tests & Assignments",
+        "24/7 Doubt Solving Support"
+      ],
+      tag: "EXCELLENCE BATCH",
+      tagColor: "bg-[#f2c537] text-black",
+      price: "Rs. 6,999",
+      originalPrice: "Rs. 13,999",
+      discount: "50% OFF",
       category: "SSC JE",
-      btnColor: "bg-emerald-600 hover:bg-emerald-700",
+      btnColor: "bg-[#f2c537] hover:bg-[#d8b32f] text-black",
       enrolledCount: "10.5k",
       liveCount: "720",
-      rating: 4.7
+      rating: 4.7,
+      branch: "Civil",
+      exam: "SSC-JE, RRB-JE, State AE-JE",
+      language: "Hinglish",
+      mentorship: "Yes"
+    },
+    {
+      title: "Vijeta Test Series (ME) 2027 (SSC-JE)",
+      tagline: "Specialised Tests for Junior Engineer ME",
+      image: "/public/courses/course.png",
+      duration: "12 months",
+      eligibility: "SSC-JE & All State AE-JE Aspirants",
+      features: [
+        "Tech. + Non Tech. Coverage",
+        "135+ Topic-Wise Tests",
+        "15+ Subject-Wise Tests",
+        "20+ Full-Length Tests"
+      ],
+      tag: "TEST SERIES",
+      tagColor: "bg-[#f2c537] text-black",
+      price: "Rs. 288",
+      originalPrice: "Rs. 600",
+      discount: "52% OFF",
+      category: "SSC JE",
+      btnColor: "bg-[#f2c537] hover:bg-[#d8b32f] text-black",
+      enrolledCount: "4.5k",
+      liveCount: "190",
+      rating: 4.8,
+      branch: "Mechanical",
+      exam: "SSC-JE, RRB-JE, State AE-JE",
+      language: "English",
+      mentorship: "No"
+    },
+    {
+      title: "Vijeta Test Series (CE) 2027 (SSC-JE)",
+      tagline: "Specialised Tests for Junior Engineer CE",
+      image: "/public/courses/course.png",
+      duration: "12 Months",
+      eligibility: "SSC-JE & All State AE-JE Aspirants",
+      features: [
+        "Tech. + Non Tech. Coverage",
+        "185+ Topic-Wise Tests",
+        "15+ Subject-Wise Tests",
+        "40+ Full-Length Tests"
+      ],
+      tag: "TEST SERIES",
+      tagColor: "bg-[#f2c537] text-black",
+      price: "Rs. 500",
+      originalPrice: "Rs. 1,000",
+      discount: "50% OFF",
+      category: "State AE / JE", // Placing in State AE / JE category tab
+      btnColor: "bg-[#f2c537] hover:bg-[#d8b32f] text-black",
+      enrolledCount: "5.1k",
+      liveCount: "220",
+      rating: 4.8,
+      branch: "Civil",
+      exam: "SSC-JE, RRB-JE, State AE-JE",
+      language: "English",
+      mentorship: "No"
     },
 
-    // RRB JE
+    // Non-Tech Category
     {
-      title: "RRB-JE (ME) Express Batch",
-      tagline: "Railway Recruitment Board",
-      image: "/images/courses/course-9.png",
-      duration: "6 Months",
-      eligibility: "Fast Track Prep",
-      features: ["CBT-1 & CBT-2", "General Science", "100+ Mock Tests"],
-      tag: "EXPRESS",
-      tagColor: "bg-[#075d63] text-white",
-      price: "Rs. 8,999",
-      originalPrice: "Rs. 15,000",
-      discount: "40% OFF",
-      category: "RRB JE",
-      btnColor: "bg-[#075d63] hover:bg-[#043f42]",
-      enrolledCount: "9.3k",
-      liveCount: "620",
-      rating: 4.5
-    },
-
-    // State AE / JE
-    {
-      title: "UPPSC-AE Civil Batch",
-      tagline: "State Engineering Services",
-      image: "/images/courses/course-10.png",
-      duration: "10 Months",
-      eligibility: "B.Tech Civil",
-      features: ["State Specific GK", "Hindi Language", "Technical Core"],
-      tag: "STATE GOVT",
-      tagColor: "bg-[#075d63] text-white",
-      price: "Rs. 11,999",
-      originalPrice: "Rs. 18,000",
-      discount: "33% OFF",
-      category: "State AE / JE",
-      btnColor: "bg-purple-600 hover:bg-purple-700",
-      enrolledCount: "4.1k",
-      liveCount: "250",
-      rating: 4.6
-    },
-
-    // Non-Tech
-    {
-      title: "General Studies (GS) Master",
-      tagline: "For ESE & State Exams",
-      image: "/images/courses/course-11.png",
-      duration: "6 Months",
-      eligibility: "All Branches",
-      features: ["Hist, Pol, Geo, Eco", "Current Affairs", "ESE Ethics & ICT"],
-      tag: "NON-TECH SPECIAL",
-      tagColor: "bg-slate-200 text-slate-800",
-      price: "Rs. 5,999",
-      originalPrice: "Rs. 10,000",
-      discount: "40% OFF",
+      title: "Beyond Boundaries: GS Mastery Course",
+      tagline: "Master General Studies for ESE, SSC, RRB & PSUs",
+      image: "/public/courses/course.png",
+      duration: "12 Months",
+      eligibility: "All Prep Aspirants (ME, CE, EE, CS)",
+      features: [
+        "Recorded Video Lectures",
+        "Doubt Resolution Support",
+        "Regular Tests & Assignments",
+        "Top Educators from Across India"
+      ],
+      tag: "GS MASTERY BATCH",
+      tagColor: "bg-slate-800 text-white",
+      price: "Rs. 699",
+      originalPrice: "Rs. 2,000",
+      discount: "65% OFF",
       category: "Non-Tech",
       btnColor: "bg-[#075d63] hover:bg-[#043f42]",
       enrolledCount: "22k",
       liveCount: "1.5k",
-      rating: 4.9
-    },
-
-    // No IIT-JEE courses - inactive
+      rating: 4.9,
+      branch: "ME/CE/EE/CS",
+      exam: "SSC, RRB, ESE & PSUs Exams",
+      language: "Hinglish",
+      mentorship: "Yes"
+    }
   ];
 
   const filteredCourses = allCourses.filter(c => {
@@ -462,7 +794,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
                                       {/* Top Row */}
                                       <div className="flex justify-between items-center mb-1.5">
                                            <div className="px-3 py-1.5 rounded-xl bg-gameTeal text-white text-[9px] font-black uppercase tracking-[0.2em] border border-white/10">
-                                              {course.category.split(' ')[0]} Branch
+                                              {course.branch || 'Mechanical'} Branch
                                            </div>
                                            <div className="flex items-center gap-1.5 bg-gameGold/15 px-2 py-1 rounded-xl border border-gameGold/30">
                                               <div className="flex gap-0.5">
@@ -482,7 +814,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
                                           <div className="flex items-center gap-2.5 bg-gameTeal/5 p-1.5 rounded-xl border border-gameTeal/10">
                                               <div className="w-1.5 h-1.5 rounded-full bg-gameTeal"></div>
                                               <p className="text-[11px] font-bold text-slate-700">
-                                                  <span className="text-gameTeal/60 font-black uppercase text-[8px] tracking-wider">Exam:</span> {course.category}
+                                                  <span className="text-gameTeal/60 font-black uppercase text-[8px] tracking-wider">Exam:</span> {course.exam || course.category}
                                               </p>
                                           </div>
                                           <div className="flex items-center gap-2.5 bg-slate-50 p-1.5 rounded-xl border border-slate-100">
@@ -501,27 +833,22 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
                                           </div>
                                           <div className="p-2 rounded-2xl bg-slate-50 border border-slate-100 text-center transition-all hover:bg-gameTeal/5 hover:border-gameTeal/30 group/feat">
                                               <Globe size={14} className="text-gameTeal mx-auto mb-1 transition-transform group-hover/feat:scale-110" />
-                                              <span className="text-[9px] font-black text-slate-900 block leading-tight">Hinglish</span>
+                                              <span className="text-[9px] font-black text-slate-900 block leading-tight">{course.language || 'Hinglish'}</span>
                                           </div>
                                           <div className="p-2 rounded-2xl bg-slate-50 border border-slate-100 text-center transition-all hover:bg-gameTeal/5 hover:border-gameTeal/30 group/feat">
                                               <Users size={14} className="text-gameTeal mx-auto mb-1 transition-transform group-hover/feat:scale-110" />
-                                              <span className="text-[9px] font-black text-slate-900 block leading-tight">1:1 Mentors</span>
+                                              <span className="text-[9px] font-black text-slate-900 block leading-tight">{course.mentorship === 'Yes' ? '1:1 Mentors' : 'Self Study'}</span>
                                           </div>
                                       </div>
 
                                       {/* Includes List - Aligned vertically in 1 column */}
                                       <div className="flex flex-col gap-1.5 mb-3 bg-slate-50/50 p-2.5 rounded-2xl border border-slate-100">
-                                          {[
-                                              "1200+ hrs Content",
-                                              "Test & Assignments",
-                                              "24/7 Support",
-                                              "Tech + Non Tech"
-                                          ].map((item, i) => (
+                                          {(course.features || []).map((item, i) => (
                                               <div key={i} className="flex items-center gap-2">
                                                   <div className="w-5 h-5 rounded-lg bg-gameTeal/10 flex items-center justify-center shrink-0 border border-gameTeal/20">
                                                       <CheckCircle2 size={12} className="text-gameTeal" strokeWidth={3} />
                                                   </div>
-                                                  <span className="text-xs font-bold text-slate-700">{item}</span>
+                                                  <span className="text-xs font-bold text-slate-700 leading-tight">{item}</span>
                                               </div>
                                           ))}
                                       </div>
