@@ -39,7 +39,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
     {
       title: "Lakshya Basic (ME) 2027",
       tagline: "Comprehensive Foundation for GATE & PSUs",
-      image: "/public/courses/course.png",
+      image: "/coursetest.png",
       duration: "12 Months",
       eligibility: "Final year / PSUs job seekers",
       features: [
