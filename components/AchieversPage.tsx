@@ -411,7 +411,7 @@ const AchieversPage: React.FC<AchieversPageProps> = () => {
                   {HERO_STATS.map((stat, i) => (
                      <div key={i} className="text-center">
                         <div className="text-2xl font-black text-white mb-0.5">{stat.val}</div>
-                        <div className="text-[9px] font-bold text-gameTeal uppercase tracking-wider">{stat.label}</div>
+                        <div className="text-[9px] font-bold text-gameGold uppercase tracking-wider">{stat.label}</div>
                      </div>
                   ))}
                </div>
