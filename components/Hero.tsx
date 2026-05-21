@@ -74,7 +74,7 @@ const VerticalSlider = ({ items, speed, reverse = false }: { items: typeof stude
               alt={student.name} 
               fill
               unoptimized
-              className="object-cover grayscale-[10%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110" 
+              className="object-cover rounded-2xl grayscale-[10%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110" 
               referrerPolicy="no-referrer"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
@@ -177,7 +177,7 @@ const Hero: React.FC = () => {
           {/* RIGHT VISUAL AREA */}
           <div className="lg:col-span-7 relative h-full flex items-end justify-center">
              
-             <div className="absolute inset-0 z-0 overflow-hidden mask-fade-top-bottom pointer-events-none opacity-30 scale-90">
+             <div className="absolute -inset-y-12 inset-x-0 z-0 overflow-hidden mask-fade-top-bottom pointer-events-none opacity-30 scale-x-95">
                 <div className="flex gap-4 h-full px-4 lg:px-8">
                    <div className="flex-1">
                       <VerticalSlider items={students.slice(0, 13)} speed={45} />
