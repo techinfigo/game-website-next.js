@@ -39,7 +39,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
     {
       title: "Foundation Course (ME) 2025/2026",
       tagline: "Start Early, Finish Strong",
-      image: "/public/courses/course.png",
+      image: "/coursetest.png",
       duration: "26 Months",
       eligibility: "2nd/3rd Year",
       features: ["1200+ Hrs Content", "Weekly Tests", "1:1 Mentorship"],
