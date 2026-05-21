@@ -156,7 +156,7 @@ const AchieversSection: React.FC<AchieversSectionProps> = ({ onNavigate }) => {
                                             <iframe 
                                                 width="100%" 
                                                 height="100%" 
-                                                src={`https://www.youtube.com/embed/${student.videoId}?autoplay=1&rel=0`} 
+                                                src={`https://www.youtube.com/embed/${student.videoId}?autoplay=1&controls=0&modestbranding=1&iv_load_policy=3&rel=0&showinfo=0&disablekb=1&fs=0`} 
                                                 title={student.name} 
                                                 frameBorder="0" 
                                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
