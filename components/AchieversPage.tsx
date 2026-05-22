@@ -1179,11 +1179,23 @@ const MobilePhoneFrame = React.memo(({ children }: { children: React.ReactNode }
     </div>
     
     {/* WhatsApp Header Mock */}
-    <div className="bg-[#075e54] pt-8 pb-3 px-4 flex items-center gap-3 z-20 relative">
-      <div className="w-8 h-8 rounded-full bg-white/20"></div>
-      <div className="flex-1">
-        <div className="w-20 h-2 bg-white/40 rounded-full mb-1"></div>
-        <div className="w-12 h-1.5 bg-white/20 rounded-full"></div>
+    <div className="bg-[#075e54] pt-8 pb-3 px-3 flex items-center gap-2 z-20 relative shadow-md">
+      <div className="relative w-8 h-8 rounded-full overflow-hidden border border-white/20 shrink-0 bg-white/10">
+        <Image 
+          src="/faculty/gaurav-sir2.jpg" 
+          alt="Gaurav Sir" 
+          fill
+          unoptimized
+          className="object-cover object-top"
+          referrerPolicy="no-referrer"
+        />
+      </div>
+      <div className="flex-1 min-w-0">
+        <h4 className="text-white font-black text-[11px] leading-tight truncate">Gaurav Sir</h4>
+        <div className="flex items-center gap-1">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#25d366] animate-pulse"></span>
+          <span className="text-[#d8f5e1] text-[9px] font-bold">online</span>
+        </div>
       </div>
     </div>
 
@@ -1195,7 +1207,7 @@ const MobilePhoneFrame = React.memo(({ children }: { children: React.ReactNode }
     {/* Bottom Bar */}
     <div className="absolute bottom-0 left-0 w-full h-12 bg-white border-t border-slate-100 z-20 flex items-center px-4 gap-2">
        <div className="flex-1 h-8 bg-slate-100 rounded-full"></div>
-       <div className="w-8 h-8 rounded-full bg-[#128c7e] flex items-center justify-center text-white">
+       <div className="w-8 h-8 rounded-full bg-[#128c7e] flex items-center justify-center text-white font-black">
           <MessageSquare size={14} fill="currentColor" />
        </div>
     </div>
@@ -1330,7 +1342,21 @@ const AchieversPage: React.FC<AchieversPageProps> = () => {
 
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
-  const whatsappStories = ALL_STORIES.filter(s => s.type === 'whatsapp');
+  // Generate exactly 43 WhatsApp stories so that 43 screenshots are visible in the mobile simulator.
+  // We map the image names sequence to /whatsapp-result-1.png through /whatsapp-result-43.png.
+  const whatsappStories = Array.from({ length: 43 }, (_, index) => {
+    const originalWhatsAppItems = ALL_STORIES.filter(s => s.type === 'whatsapp');
+    const originalIndex = index % Math.max(1, originalWhatsAppItems.length);
+    const originalItem = originalWhatsAppItems[originalIndex] || {
+      caption: `Outstanding score in the exams masterclass with Gaurav Sir! Screenshot #${index + 1}`
+    };
+    return {
+      type: 'whatsapp',
+      id: 10 + index,
+      img: `/whatsapp-result-${index + 1}.png`,
+      caption: originalItem.caption || `Outstanding score in the exams masterclass with Gaurav Sir! Student feedback #${index + 1}`
+    };
+  });
   const videoStories = ALL_STORIES.filter(s => s.type === 'video');
   const textStories = ALL_STORIES.filter(s => s.type === 'story');
 
