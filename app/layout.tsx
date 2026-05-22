@@ -24,6 +24,51 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (typeof window !== 'undefined') {
+                // Catch standard error events (including script element loading errors)
+                window.addEventListener('error', function(event) {
+                  var message = (event && event.message) || '';
+                  var target = event && event.target;
+                  var isScriptError = target && target.tagName === 'SCRIPT';
+                  var src = target && (target.src || target.getAttribute('src') || '');
+                  
+                  if (
+                    message.indexOf('ChunkLoadError') > -1 ||
+                    message.indexOf('Loading chunk') > -1 ||
+                    message.toLowerCase().indexOf('unexpected token') > -1 ||
+                    (isScriptError && (src.indexOf('_next/static/chunks') > -1 || src.indexOf('app/courses/page') > -1))
+                  ) {
+                    console.warn('Next.js chunk loading error or stale layout script detected, forcing auto-reload...');
+                    event.preventDefault();
+                    window.location.reload(true);
+                  }
+                }, true);
+
+                // Catch unhandled promise rejections (Next.js lazy page load promises)
+                window.addEventListener('unhandledrejection', function(event) {
+                  var reason = event && event.reason;
+                  var reasonStr = reason ? (reason.message || reason.toString() || '') : '';
+                  
+                  if (
+                    reasonStr.indexOf('ChunkLoadError') > -1 ||
+                    reasonStr.indexOf('Loading chunk') > -1 ||
+                    reasonStr.toLowerCase().indexOf('unexpected token') > -1 ||
+                    reasonStr.indexOf('Loading CSS chunk') > -1
+                  ) {
+                    console.warn('Next.js dynamic import chunk promise rejected, forcing auto-reload...');
+                    event.preventDefault();
+                    window.location.reload(true);
+                  }
+                });
+              }
+            `
+          }}
+        />
+      </head>
       <body className={`${inter.variable} font-sans min-h-screen bg-white text-slate-900 selection:bg-gameTeal selection:text-white`}>
         <AuthProvider>
           <NavbarWrapper />
