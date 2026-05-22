@@ -122,8 +122,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       icon: MapPin,
       color: 'text-cyan-400',
       image: "/exams/state-ae-je-bg.png",
-      logo: "/exams/state-ae-je-logo.jpg
-",
+      logo: "/exams/state-ae-je-logo.jpg",
       action: 'state'
     },
     {
