@@ -1126,6 +1126,12 @@ const TestimonialCard = React.memo(({ item }: { item: any }) => {
 
 // WhatsApp Screenshot Card - SIMPLIFIED FOR PHONE VIEW
 const WhatsAppPhoneCard = React.memo(({ item }: { item: any }) => {
+  const [imageError, setImageError] = useState(false);
+
+  if (imageError) {
+    return null;
+  }
+
   return (
     <div className="mb-4 last:mb-0 relative w-full aspect-[9/16] bg-[#e5ddd5]/45 rounded-xl shadow-sm overflow-hidden select-none">
       <Image 
@@ -1135,6 +1141,7 @@ const WhatsAppPhoneCard = React.memo(({ item }: { item: any }) => {
         unoptimized
         className="w-full h-full object-contain" 
         referrerPolicy="no-referrer"
+        onError={() => setImageError(true)}
       />
     </div>
   );
@@ -1154,11 +1161,14 @@ const MobilePhoneFrame = React.memo(({ children }: { children: React.ReactNode }
 
     const scroll = () => {
       if (!isPaused && scrollContainer) {
-        scrollContainer.scrollTop += scrollSpeed;
-        
-        // Loop back to top smoothly if reached close to bottom
-        if (scrollContainer.scrollTop >= scrollContainer.scrollHeight - scrollContainer.clientHeight - 2) {
-          scrollContainer.scrollTop = 0;
+        const canScroll = scrollContainer.scrollHeight > scrollContainer.clientHeight;
+        if (canScroll) {
+          scrollContainer.scrollTop += scrollSpeed;
+          
+          // Loop back to top smoothly if reached close to bottom
+          if (scrollContainer.scrollTop >= scrollContainer.scrollHeight - scrollContainer.clientHeight - 2) {
+            scrollContainer.scrollTop = 0;
+          }
         }
       }
       animationFrameId = requestAnimationFrame(scroll);
@@ -1352,9 +1362,9 @@ const AchieversPage: React.FC<AchieversPageProps> = () => {
 
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
-  // Generate exactly 43 WhatsApp stories so that 43 screenshots are visible in the mobile simulator.
-  // We map the image names sequence to /whatsapp-result-1.png through /whatsapp-result-43.png.
-  const whatsappStories = Array.from({ length: 43 }, (_, index) => {
+  // Generate exactly 12 WhatsApp stories to only display the 12 screenshots with actual images.
+  // We map the image names sequence to /whatsapp-result-1.png through /whatsapp-result-12.png.
+  const whatsappStories = Array.from({ length: 12 }, (_, index) => {
     const originalWhatsAppItems = ALL_STORIES.filter(s => s.type === 'whatsapp');
     const originalIndex = index % Math.max(1, originalWhatsAppItems.length);
     const originalItem = originalWhatsAppItems[originalIndex] || {
