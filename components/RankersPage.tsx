@@ -445,8 +445,8 @@ const RankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
       
       {/* Verified Excellence Indicator - Minimalist */}
       <div className="mt-2.5 pt-2 border-t border-white/10 flex items-center justify-between opacity-50 group-hover:opacity-100 transition-opacity">
-         <span className="text-[6px] font-black text-gameTeal uppercase tracking-[0.2em]">Verified Excellence</span>
-         <div className="h-1 w-1 rounded-full bg-gameTeal"></div>
+         <span className="text-[6px] font-black text-gameGold uppercase tracking-[0.2em]">Verified Excellence</span>
+         <div className="h-1 w-1 rounded-full bg-gameGold"></div>
       </div>
     </div>
   </div>
