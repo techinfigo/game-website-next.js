@@ -5,6 +5,30 @@ import React from 'react';
 import Image from 'next/image';
 import { Quote, Star } from 'lucide-react';
 
+const TestimonialAvatar: React.FC<{ src?: string; name: string }> = ({ src, name }) => {
+  const [error, setError] = React.useState(false);
+  const firstLetter = name ? name.trim().charAt(0).toUpperCase() : '?';
+
+  if (!src || error) {
+    return (
+      <div className="w-full h-full rounded-full bg-gradient-to-br from-[#075d63] to-teal-500 text-white flex items-center justify-center font-black text-lg shadow-inner">
+        {firstLetter}
+      </div>
+    );
+  }
+
+  return (
+    <Image 
+      src={src} 
+      alt={name} 
+      fill
+      className="object-cover rounded-full" 
+      referrerPolicy="no-referrer"
+      onError={() => setError(true)}
+    />
+  );
+};
+
 const AchieversTalk: React.FC = () => {
   const testimonials = [
     {
@@ -54,14 +78,8 @@ const AchieversTalk: React.FC = () => {
                   </p>
 
                   <div className="flex items-center gap-4">
-                     <div className="relative w-12 h-12 rounded-full overflow-hidden">
-                        <Image 
-                           src={t.img} 
-                           alt={t.name} 
-                           fill
-                           className="object-cover" 
-                           referrerPolicy="no-referrer"
-                        />
+                     <div className="relative w-12 h-12 rounded-full overflow-hidden shrink-0">
+                        <TestimonialAvatar src={t.img} name={t.name} />
                      </div>
                      <div>
                         <h4 className="font-bold text-slate-900">{t.name}</h4>
