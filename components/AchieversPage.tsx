@@ -1126,93 +1126,103 @@ const TestimonialCard = React.memo(({ item }: { item: any }) => {
 
 // WhatsApp Screenshot Card - SIMPLIFIED FOR PHONE VIEW
 const WhatsAppPhoneCard = React.memo(({ item }: { item: any }) => {
-  const [imageError, setImageError] = useState(false);
-
   return (
-    <div className="mb-4 last:mb-0 relative w-full aspect-[2/3] bg-[#efeae2] rounded-2xl shadow-sm border border-emerald-600/10 overflow-hidden flex flex-col justify-between p-3 select-none">
-      {!imageError ? (
-        <Image 
-          src={item.img} 
-          alt={item.caption || "WhatsApp Screenshot"} 
-          fill
-          unoptimized
-          className="w-full h-full rounded-2xl object-cover" 
-          referrerPolicy="no-referrer"
-          onError={() => setImageError(true)}
-        />
-      ) : (
-        <div className="w-full h-full flex flex-col justify-between text-slate-800 relative">
-          {/* Mock message bubble */}
-          <div className="space-y-2">
-            <div className="bg-white/90 backdrop-blur-sm shadow-[0_1px_2px_rgba(0,0,0,0.05)] rounded-lg py-1 px-1.5 text-[8.5px] text-slate-500 text-center font-bold">
-              🔒 Messages & calls are secure.
-            </div>
-            
-            <div className="bg-[#e2f9cb] self-end rounded-lg p-2 shadow-sm text-[10px] font-semibold leading-normal relative ml-3 border border-emerald-600/10">
-              <p className="text-slate-800 text-[9.5px] leading-snug">{item.caption || "Outstanding score in the exams masterclass!"}</p>
-              <div className="flex items-center justify-end gap-0.5 text-[8px] text-slate-400 font-bold mt-1">
-                <span>10:42 AM</span>
-                <span className="text-[#34b7f1] text-[10px] ml-1">✓✓</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-2 text-center bg-white/60 backdrop-blur-sm p-1.5 rounded-xl border border-slate-200">
-             <span className="text-[8px] font-black text-emerald-800 bg-emerald-100 px-1.5 py-0.5 rounded uppercase tracking-wider">
-                Screenshot #{item.id - 9}
-             </span>
-             <p className="text-[7.5px] text-slate-500 font-bold mt-1">Place image at:</p>
-             <code className="text-[7px] text-emerald-700 bg-slate-100 px-1 py-0.5 rounded block font-mono mt-0.5 font-bold truncate">public{item.img}</code>
-          </div>
-        </div>
-      )}
+    <div className="mb-4 last:mb-0 relative w-full aspect-[9/16] bg-[#e5ddd5]/45 rounded-xl shadow-sm overflow-hidden select-none">
+      <Image 
+        src={item.img} 
+        alt={item.caption || "WhatsApp Screenshot"} 
+        fill
+        unoptimized
+        className="w-full h-full object-contain" 
+        referrerPolicy="no-referrer"
+      />
     </div>
   );
 });
 
-// Mobile Phone Frame Component
-const MobilePhoneFrame = React.memo(({ children }: { children: React.ReactNode }) => (
-  <div className="relative mx-auto w-full max-w-[280px] aspect-[9/19] bg-slate-900 rounded-[2.5rem] border-[6px] border-slate-800 shadow-[0_0_40px_rgba(0,0,0,0.15)] overflow-hidden">
-    {/* Notch/Dynamic Island */}
-    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-5 bg-slate-800 rounded-b-xl z-30 flex items-center justify-center">
-      <div className="w-8 h-1 bg-slate-700 rounded-full"></div>
-    </div>
-    
-    {/* WhatsApp Header Mock */}
-    <div className="bg-[#075e54] pt-8 pb-3 px-3 flex items-center gap-2 z-20 relative shadow-md">
-      <div className="relative w-8 h-8 rounded-full overflow-hidden border border-white/20 shrink-0 bg-white/10">
-        <Image 
-          src="/faculty/gaurav-sir2.jpg" 
-          alt="Gaurav Sir" 
-          fill
-          unoptimized
-          className="object-cover object-top"
-          referrerPolicy="no-referrer"
-        />
+// Mobile Phone Frame Component with Auto Scroll and Touch/Hover Pause
+const MobilePhoneFrame = React.memo(({ children }: { children: React.ReactNode }) => {
+  const scrollRef = React.useRef<HTMLDivElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    let animationFrameId: number;
+    const scrollSpeed = 0.5; // continuous scroll speed
+
+    const scroll = () => {
+      if (!isPaused && scrollContainer) {
+        scrollContainer.scrollTop += scrollSpeed;
+        
+        // Loop back to top smoothly if reached close to bottom
+        if (scrollContainer.scrollTop >= scrollContainer.scrollHeight - scrollContainer.clientHeight - 2) {
+          scrollContainer.scrollTop = 0;
+        }
+      }
+      animationFrameId = requestAnimationFrame(scroll);
+    };
+
+    animationFrameId = requestAnimationFrame(scroll);
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [isPaused]);
+
+  return (
+    <div 
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={() => setIsPaused(true)}
+      onTouchEnd={() => setIsPaused(false)}
+      className="relative mx-auto w-full max-w-[280px] aspect-[9/19] bg-slate-900 rounded-[2.5rem] border-[6px] border-slate-800 shadow-[0_0_40px_rgba(0,0,0,0.15)] overflow-hidden"
+    >
+      {/* Notch/Dynamic Island */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-5 bg-slate-800 rounded-b-xl z-30 flex items-center justify-center">
+        <div className="w-8 h-1 bg-slate-700 rounded-full"></div>
       </div>
-      <div className="flex-1 min-w-0">
-        <h4 className="text-white font-black text-[11px] leading-tight truncate">Gaurav Sir</h4>
-        <div className="flex items-center gap-1">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#25d366] animate-pulse"></span>
-          <span className="text-[#d8f5e1] text-[9px] font-bold">online</span>
+      
+      {/* WhatsApp Header Mock */}
+      <div className="bg-[#075e54] pt-8 pb-3 px-3 flex items-center gap-2 z-20 relative shadow-md">
+        <div className="relative w-8 h-8 rounded-full overflow-hidden border border-white/20 shrink-0 bg-white/10">
+          <Image 
+            src="/faculty/gaurav-sir2.jpg" 
+            alt="Gaurav Sir" 
+            fill
+            unoptimized
+            className="object-cover object-top"
+            referrerPolicy="no-referrer"
+          />
+        </div>
+        <div className="flex-1 min-w-0">
+          <h4 className="text-white font-black text-[11px] leading-tight truncate">Gaurav Sir</h4>
+          <div className="flex items-center gap-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#25d366] animate-pulse"></span>
+            <span className="text-[#d8f5e1] text-[9px] font-bold">{isPaused ? 'paused' : 'online'}</span>
+          </div>
         </div>
       </div>
-    </div>
 
-    {/* Scrollable Content Area */}
-    <div className="absolute inset-0 pt-24 pb-6 px-3 overflow-y-auto scrollbar-hide bg-[#e5ddd5]">
-      {children}
+      {/* Scrollable Content Area */}
+      <div 
+        ref={scrollRef} 
+        className="absolute inset-0 pt-24 pb-6 px-3 overflow-y-auto scrollbar-hide bg-[#e5ddd5]"
+      >
+        {children}
+      </div>
+      
+      {/* Bottom Bar */}
+      <div className="absolute bottom-0 left-0 w-full h-12 bg-white border-t border-slate-100 z-20 flex items-center px-4 gap-2">
+         <div className="flex-1 h-8 bg-slate-100 rounded-full"></div>
+         <div className="w-8 h-8 rounded-full bg-[#128c7e] flex items-center justify-center text-white font-black">
+            <MessageSquare size={14} fill="currentColor" />
+         </div>
+      </div>
     </div>
-    
-    {/* Bottom Bar */}
-    <div className="absolute bottom-0 left-0 w-full h-12 bg-white border-t border-slate-100 z-20 flex items-center px-4 gap-2">
-       <div className="flex-1 h-8 bg-slate-100 rounded-full"></div>
-       <div className="w-8 h-8 rounded-full bg-[#128c7e] flex items-center justify-center text-white font-black">
-          <MessageSquare size={14} fill="currentColor" />
-       </div>
-    </div>
-  </div>
-));
+  );
+});
 
 // Optimized: Extracted CTA Section into a memoized sub-component - HEIGHT OPTIMIZED
 const AchieversCTA = React.memo(() => (
