@@ -4,14 +4,14 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, Quote, Star, Trophy, Video, MessageSquare, Sparkles, Crown, CheckCircle2, ArrowRight, X } from 'lucide-react';
+import { Play, Quote, Star, Trophy, Video, MessageSquare, Sparkles, Crown, CheckCircle2, ArrowRight, X, Search, ChevronLeft, ChevronRight, SlidersHorizontal } from 'lucide-react';
 
 interface AchieversPageProps {
   initialFilter?: 'all' | 'video' | 'story';
 }
 
 // Optimized: Moved static data outside component to prevent re-creation on every render
-const ALL_STORIES = [
+export const ALL_STORIES = [
   { 
     type: 'video',
     id: 1,
@@ -21,15 +21,6 @@ const ALL_STORIES = [
     img: "/ranker-lg-1.png", 
     video: "https://www.youtube.com/embed/D6HOo41x2Ls", // Standard video ID
     featured: true 
-  },
-  { 
-    type: 'story',
-    id: 2,
-    name: "Siddharth Verma", 
-    exam: "GATE ME", 
-    quote: "The conceptual clarity I got from Gaurav Sir is unmatched. Every complex topic was broken down into simple, digestible parts.", 
-    rating: 5,
-    img: "/achiever-1.png"
   },
   {
     type: 'whatsapp',
@@ -46,15 +37,6 @@ const ALL_STORIES = [
     img: "/ranker-lg-2.png", 
     video: "https://www.youtube.com/embed/gvK9V0trlaw" 
   },
-  { 
-    type: 'story',
-    id: 4,
-    name: "Ananya Das", 
-    exam: "SSC-JE", 
-    quote: "GAME Academy doesn't just teach you subjects; they teach you how to think like an engineer. Best decision of my life.", 
-    rating: 5,
-    img: "/achiever-2.png"
-  },
   {
     type: 'whatsapp',
     id: 11,
@@ -69,15 +51,6 @@ const ALL_STORIES = [
     exam: "SSC EE 2023", 
     img: "/ranker-rk-5.png", 
     video: "https://www.youtube.com/embed/dQw4w9WgXcQ" 
-  },
-  { 
-    type: 'story',
-    id: 6,
-    name: "Rajesh Kumar", 
-    exam: "ESE Civil", 
-    quote: "The mentorship program kept me on track when I felt lost. It's not just a coaching center, it's a family.", 
-    rating: 5,
-    img: "/achiever-3.png"
   },
   {
     type: 'whatsapp',
@@ -94,23 +67,852 @@ const ALL_STORIES = [
     img: "/ranker-rk-6.png", 
     video: "https://www.youtube.com/embed/dQw4w9WgXcQ" 
   },
-  { 
+  {
     type: 'story',
-    id: 8,
-    name: "Meera Iyer", 
-    exam: "PSU (IOCL)", 
-    quote: "I cleared IOCL interview in my first attempt thanks to the mock interview sessions. Highly recommended!", 
+    id: 201,
+    name: "Jitendra",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE, ESE, SSC JE / RRB JE / State AE & JE",
+    quote: "Every basic to basic things was teached very well ...all faculties are amazing..... technical team will resolve your error within few hours ...",
     rating: 5,
-    img: "/achiever-4.png"
+    img: "/images/achievers/avatar-1.png"
   },
-  { 
+  {
     type: 'story',
-    id: 9,
-    name: "Kabir Singh", 
-    exam: "RRB-JE", 
-    quote: "Affordable, accessible, and high quality. The free resources in Knowledge Pitaara were a lifesaver.", 
+    id: 202,
+    name: "Sahil Gupta",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE, ESE, PSUs, BARC, ISRO",
+    quote: "Gaurav sir explains all the concepts in a very lucid, easy to understand manner he simply makes u fall in love to mechanical subjects ❤️",
+    rating: 5,
+    img: "/images/achievers/avatar-2.png"
+  },
+  {
+    type: 'story',
+    id: 203,
+    name: "Sasmita Pradhan",
+    branch: "Civil",
+    course: "Excellence Course | AE & JE",
+    targetExams: "SSC JE / RRB JE / State AE & JE",
+    quote: "Such a beautiful platform i think i m too late for knowing this app .Thank you Gaurav Babu sir and all sir nd madam to study us , Thank u sir for giving me a platform where i can achieve my goal.",
+    rating: 5,
+    img: "/images/achievers/avatar-3.png"
+  },
+  {
+    type: 'story',
+    id: 204,
+    name: "Utkarsh Kumar Singh",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE, ESE, PSUs",
+    quote: "Gaurav Babu sir has been a very great teacher and mentor. Under his guidance I have gained a lot of confidence to crack these competitive exams. Gaurav sir is so helpful and his courses are outstanding. He is second to none. I consider myself very lucky to be a student of GAME Academy. Sir delivers the concepts in such lucid and easy manner that it is easy to understand very complex concepts, formulas and definitions. Everything is explained in such a way that it becomes very easy to grasp those.",
+    rating: 5,
+    img: "/images/achievers/avatar-4.png"
+  },
+  {
+    type: 'story',
+    id: 205,
+    name: "Aryan Prakash Rai",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE, ESE",
+    quote: "••The content in the course is excellent.\n••Beside this it has also helped me in maintaining patience and keeping me calm while preparing.\n••It also boosted my confidence and helped me overcome the panic situation while preparing for exams.",
+    rating: 5,
+    img: "/images/achievers/avatar-5.png"
+  },
+  {
+    type: 'story',
+    id: 206,
+    name: "Naveed Ahmad Bhat",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE",
+    quote: "First of all I want to thank you whole GAME team and also Gaurav babu sir. It was best decision I made when I join game platform. I was facing lot of difficulties in many Subjects not many overall in every subject but the way Gaurav sir teaches is totally different everyone knows ,also student end to end interaction which makes Game special. Finally I can say \"Mari toa life change kardi game nay as student of mechanical engineering\"",
+    rating: 5,
+    img: "/images/achievers/avatar-1.png"
+  },
+  {
+    type: 'story',
+    id: 207,
+    name: "Anurag Tripathi",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE",
+    quote: "It was a great experience getting enrolled in the course and learning everything from basics",
+    rating: 5,
+    img: "/images/achievers/avatar-2.png"
+  },
+  {
+    type: 'story',
+    id: 208,
+    name: "Abhishek Maddheshiya",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE",
+    quote: "Crystal clear",
+    rating: 5,
+    img: "/images/achievers/avatar-3.png"
+  },
+  {
+    type: 'story',
+    id: 209,
+    name: "Kavya mandloi",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE, PSUs",
+    quote: "Motivated and dedicated towards my journey",
+    rating: 5,
+    img: "/images/achievers/avatar-4.png"
+  },
+  {
+    type: 'story',
+    id: 210,
+    name: "Abhiram Sharma",
+    branch: "Mechanical",
+    course: "Foundation | 2 Yr GATE Course",
+    targetExams: "GATE",
+    quote: "Gaurav babu sir, the god of mechanical engineering we can say that, her teaching Style and the ability to deliver indepth concept is very very excellent.",
+    rating: 5,
+    img: "/images/achievers/avatar-5.png"
+  },
+  {
+    type: 'story',
+    id: 211,
+    name: "Ritik badgotya",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE, ESE, PSUs, BARC, ISRO, DRDO, SSC JE / RRB JE / State AE & JE",
+    quote: "Marvelous each and every point crystal clear with visiblevilization",
+    rating: 5,
+    img: "/images/achievers/avatar-1.png"
+  },
+  {
+    type: 'story',
+    id: 212,
+    name: "Ajay Tanhaji Rathod",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE, ESE, PSUs, BARC, ISRO, DRDO",
+    quote: "I had joined with Gaurav sir during my 2nd year of engineering and start following him. Before joining with him I have 0 knowledge of mechanical engineering Now I am confidently say that the college facilities from which I mug up the subject I CAN TEACH THEM THOSE SUBJECTS WHICH I MUG UP FROM THEM NOT ONLY TEACH I WIL GIVE THEM FEELING AS WELL OF THAT SUBJECT . AND THIS THINGS ARE POSSIBLE BECAUSE OF GAURAV SIR . I DON'T HAVE WORDS TO EXPLAIN YOUR ROLE IN MY LIFE.",
+    rating: 5,
+    img: "/images/achievers/avatar-2.png"
+  },
+  {
+    type: 'story',
+    id: 213,
+    name: "Subhrajit Goswami",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE, PSUs",
+    quote: "Gaurav sir is the reason I was able to pass in my exams. I fell in love with subjects like SOM, Manufacturing after studying them from Gaurav sir. Me and my friends we feel blessed thatbwe came to know about Gaurav sir at the right time and he saved us. His teaching is divine and as a person he is a legend, he is so good at heart, 24×7 he thinks only about the welfare of his students. I deeply feel that he works even harder than we as students do, he is more sincere for us than we ourselves. His team is as good as him, every teacher on GAME is perfect at delivering concepts . This platform deserves much more love and I'm sure very soon it will shine.",
+    rating: 5,
+    img: "/images/achievers/avatar-3.png"
+  },
+  {
+    type: 'story',
+    id: 214,
+    name: "Tushar Panchal",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE, ESE, PSUs, BARC, ISRO, DRDO, SSC JE / RRB JE / State AE & JE",
+    quote: "I learn everything regarding gate exam from gaurav sir...it's been a great journey",
     rating: 4,
-    img: "/achiever-5.png"
+    img: "/images/achievers/avatar-4.png"
+  },
+  {
+    type: 'story',
+    id: 215,
+    name: "Subham Saha",
+    branch: "Mechanical",
+    course: "Excellence Course | AE & JE",
+    targetExams: "PSUs, SSC JE / RRB JE / State AE & JE",
+    quote: "Thanks to Gaurav Babu sir for making the subjects that once I found difficult now my favourite ones also Thanks to the Game team for making the learning experience smooth for me. These words aren’t enough to express my gratitude towards Gaurav Babu sir, I am always grateful to Gaurav Babu sir for guiding me in this journey",
+    rating: 5,
+    img: "/images/achievers/avatar-5.png"
+  },
+  {
+    type: 'story',
+    id: 216,
+    name: "SUJOY DAS",
+    branch: "Mechanical",
+    course: "Foundation | 2 Yr GATE Course",
+    targetExams: "GATE, PSUs",
+    quote: "Excellence life achievement. The legendary of som (Gaurav Babu), whose guidance helped me achieve my dream job at India's top PSU, IOCL, as a Grade A officer. After completing my B.Tech in 2020, I couldn't afford expensive GATE coaching (Rs. 50,000). I joined a private company, but my dreams were crushed. Two years later, I discovered Gaurav Babu's Game Academic Founder platform, which offered an affordable GATE course (Rs. 15,000). With renewed determination, I studied 15 hours a day for 5 months during this time motivation from Gaurav Babu's videos its very help us, and get result of gate 2024 excellent rank (1st attempt gate2022 rank 11777 and after studied from game academy behalf gourav babu 2nd attempt gate2024 rank 535 ).He's not only my teacher but also my guru. Thank you, Gaurav Babu, for inspiring me to crack GATE and achieve my dream.",
+    rating: 5,
+    img: "/images/achievers/avatar-1.png"
+  },
+  {
+    type: 'story',
+    id: 217,
+    name: "Aakash paudwal",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE, PSUs, BARC, ISRO, SSC JE / RRB JE / State AE & JE",
+    quote: "Gaurav sir hamesa basic sy padhte hy or top level tk lekr jaate hy, gaurav sir concept ky saath saath aapko ek kabil insaan,imaandaar ,manavta such ky saath bolna or ek dusre ki madad krna bhi sikhate hy,m kbhi sir sy personal nhi mila hu lekin sir sy baat krke (voice call) sy bhut motivation milta hy, m hmesha aapka rini rhunga sir Thankyou sir. M lakshya batch2.0 ka student hu app m class ky saath saath aapko whatsapp group sir ki personal mentorship bhi milti hy",
+    rating: 5,
+    img: "/images/achievers/avatar-2.png"
+  },
+  {
+    type: 'story',
+    id: 218,
+    name: "Sandesh Chavan",
+    branch: "Mechanical",
+    course: "Foundation | 2 Yr GATE Course",
+    targetExams: "GATE, PSUs, BARC, ISRO, DRDO",
+    quote: "Yes, it's really helpful to me.",
+    rating: 5,
+    img: "/images/achievers/avatar-3.png"
+  },
+  {
+    type: 'story',
+    id: 219,
+    name: "Abhishek Gajanan Ingale",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE",
+    quote: "When I was wondering on you tube, with lots of confusion, then suddenly I got gaurav sirs som series,from that moment till now I am connected with gaurav sir. The unique think of game is ,this platform makes your subject ready,not for perticular exam . before joining game I was at minus level but ,now I can say that the level is 60.",
+    rating: 4,
+    img: "/images/achievers/avatar-4.png"
+  },
+  {
+    type: 'story',
+    id: 220,
+    name: "Samir khatib",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE",
+    quote: "Engineering ki padhai fullfill karke padhana sikha hy ham ne sir se",
+    rating: 5,
+    img: "/images/achievers/avatar-5.png"
+  },
+  {
+    type: 'story',
+    id: 221,
+    name: "Nishant kaushik",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE, ESE, PSUs, BARC, ISRO, DRDO",
+    quote: "GAME Academy is really a flamboyant platform for gate aspirant Highly thankful for Gaurav sir ji",
+    rating: 5,
+    img: "/images/achievers/avatar-1.png"
+  },
+  {
+    type: 'story',
+    id: 222,
+    name: "Dhwanil Patel",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE",
+    quote: "In depth knowledge in preparation",
+    rating: 5,
+    img: "/images/achievers/avatar-2.png"
+  },
+  {
+    type: 'story',
+    id: 223,
+    name: "Pragya Sharma",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE",
+    quote: "The way Gaurav sir and team take lectures, helped me to gain a lot of technical knowledge of mechanical engineering subjects and everything was so helpful in solving problems of GATE previous years and variety of questions.",
+    rating: 5,
+    img: "/images/achievers/avatar-3.png"
+  },
+  {
+    type: 'story',
+    id: 224,
+    name: "Mohit kumar shaw",
+    branch: "Mechanical",
+    course: "Excellence Course | AE & JE",
+    targetExams: "GATE, ESE, PSUs, BARC, ISRO, DRDO, SSC JE / RRB JE / State AE & JE",
+    quote: "yes ek baar ma placement hogaya",
+    rating: 4,
+    img: "/images/achievers/avatar-4.png"
+  },
+  {
+    type: 'story',
+    id: 225,
+    name: "Nishant kaushik",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE, ESE, PSUs, BARC, ISRO, DRDO",
+    quote: "Gaurav sir is god of mechanical engineering",
+    rating: 5,
+    img: "/images/achievers/avatar-5.png"
+  },
+  {
+    type: 'story',
+    id: 226,
+    name: "V NiranjanKumar",
+    branch: "Others",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE",
+    quote: "Excellent",
+    rating: 5,
+    img: "/images/achievers/avatar-1.png"
+  },
+  {
+    type: 'story',
+    id: 227,
+    name: "SUNEEL KUMAR",
+    branch: "Mechanical",
+    course: "Excellence Course | AE & JE",
+    targetExams: "SSC JE / RRB JE / State AE & JE",
+    quote: "After watching Sir's class I started preparing after 10 years. I am enjoying it a lot. Soon I will get a JE job.",
+    rating: 5,
+    img: "/images/achievers/avatar-2.png"
+  },
+  {
+    type: 'story',
+    id: 228,
+    name: "Abhinav Singh",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE, ESE, PSUs, SSC JE / RRB JE / State AE & JE",
+    quote: "The course content that Gaurav sir teaches with is very sorted and well researched, therefore less book reference and reading is required. The notes that I have made in his respective subjects is very helpful in all kinds of psu and gate exams.",
+    rating: 4,
+    img: "/images/achievers/avatar-3.png"
+  },
+  {
+    type: 'story',
+    id: 229,
+    name: "Anurag Tripathi",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE",
+    quote: "It impacted a lot as i never thought that i would ever get a chance to study in an IIT but GAME and its team made a dream come true for me",
+    rating: 5,
+    img: "/images/achievers/avatar-4.png"
+  },
+  {
+    type: 'story',
+    id: 230,
+    name: "Nikhil Gaur",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE, ESE, PSUs",
+    quote: "Sir's teaching style is unique and in every video sir shared his experiences which helps us .",
+    rating: 5,
+    img: "/images/achievers/avatar-5.png"
+  },
+  {
+    type: 'story',
+    id: 231,
+    name: "Subhrajit Goswami",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE, PSUs",
+    quote: "Gaurav sir is the reason I have confidence in myself that I will be able to do it. I know if he's there with me and if I sincerely follow his steps I will surely secure a good job. His way of teaching is godly and I find a complete guide in him who can lead me to success",
+    rating: 5,
+    img: "/images/achievers/avatar-1.png"
+  },
+  {
+    type: 'story',
+    id: 232,
+    name: "Venkatsuresh",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE, BARC, ISRO",
+    quote: "I loved each and everything the concepts and everything. I fell in love with mechanical engineering.",
+    rating: 5,
+    img: "/images/achievers/avatar-2.png"
+  },
+  {
+    type: 'story',
+    id: 233,
+    name: "Sandesh Chavan",
+    branch: "Mechanical",
+    course: "Foundation | 2 Yr GATE Course",
+    targetExams: "GATE, PSUs, ISRO",
+    quote: "It really helpful to me. If I join to Gaurav sir during my Btech l was topper of uni. I never seen teacher like Gaurav sir.",
+    rating: 5,
+    img: "/images/achievers/avatar-3.png"
+  },
+  {
+    type: 'story',
+    id: 234,
+    name: "Abhishek Kumar Singh",
+    branch: "Mechanical",
+    course: "Excellence Course | AE & JE",
+    targetExams: "SSC JE / RRB JE / State AE & JE",
+    quote: "Gaurav Babu teaching style awesome....He started any topic from basic to high level.",
+    rating: 5,
+    img: "/images/achievers/avatar-4.png"
+  },
+  {
+    type: 'story',
+    id: 235,
+    name: "Bhavna Navrang",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE",
+    quote: "It helps me a lot to understand the basic concepts of Mechanical engineering subject . Bless to be a part of GAME",
+    rating: 5,
+    img: "/images/achievers/avatar-5.png"
+  },
+  {
+    type: 'story',
+    id: 236,
+    name: "Suddu kumar",
+    branch: "Mechanical",
+    course: "Excellence Course | AE & JE",
+    targetExams: "SSC JE / RRB JE / State AE & JE",
+    quote: "Kafi acha padhate hai Gaurav babu sir",
+    rating: 5,
+    img: "/images/achievers/avatar-1.png"
+  },
+  {
+    type: 'story',
+    id: 237,
+    name: "Hemant Kumar Rawate",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE, ESE, PSUs",
+    quote: "Yes it impacted me a lot build confidence",
+    rating: 5,
+    img: "/images/achievers/avatar-2.png"
+  },
+  {
+    type: 'story',
+    id: 238,
+    name: "Dhwanil M Patel",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE",
+    quote: "Yes",
+    rating: 5,
+    img: "/images/achievers/avatar-3.png"
+  },
+  {
+    type: 'story',
+    id: 239,
+    name: "SOURAV KAR",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "PSUs, BARC, ISRO, DRDO",
+    quote: "I can't say enough about Gaurav Sir's lectures.His lectures made my technical concept clear.Not only the lectures,but his positive mindset and motivation has really helped me out in my preparation journey.",
+    rating: 5,
+    img: "/images/achievers/avatar-4.png"
+  },
+  {
+    type: 'story',
+    id: 240,
+    name: "Sher Khan",
+    branch: "Mechanical",
+    course: "Foundation | 2 Yr GATE Course",
+    targetExams: "GATE, ESE, PSUs",
+    quote: "Cool Mind",
+    rating: 4,
+    img: "/images/achievers/avatar-5.png"
+  },
+  {
+    type: 'story',
+    id: 241,
+    name: "Aryan Prakash Rai",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE, ESE",
+    quote: "I have become more confident and the content is too good.",
+    rating: 5,
+    img: "/images/achievers/avatar-1.png"
+  },
+  {
+    type: 'story',
+    id: 242,
+    name: "Nikhil Gaur",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE, PSUs",
+    quote: "Gaurav sir is a true mechanical lover and the way he is teaching it's fabulous .",
+    rating: 5,
+    img: "/images/achievers/avatar-2.png"
+  },
+  {
+    type: 'story',
+    id: 243,
+    name: "Dhananjay kumar",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE, SSC JE / RRB JE / State AE & JE",
+    quote: "Gaurav babu is not only the best teacher for mechanical engineer but also he is also so sensitive for students who faces many problems during journey of preparation . Particularly in case of SOM, FM & production no one can replace him . He delivers his knowledge like he has taken responsibility to make me succeed. So crystal concept and illustration is given related to daily life uses. I have purchased his course GATE 2023 . I am very thankful for him .",
+    rating: 5,
+    img: "/images/achievers/avatar-3.png"
+  },
+  {
+    type: 'story',
+    id: 244,
+    name: "Prakash Rawal",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE, PSUs",
+    quote: "Gaurav sir is the best teacher I've ever seen before not only for teaching but also for proper way to guide even they had knew what's going on students mind. Lot of love by heart and sould.",
+    rating: 5,
+    img: "/images/achievers/avatar-4.png"
+  },
+  {
+    type: 'story',
+    id: 245,
+    name: "Ashish Ranjan",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE, PSUs, BARC, ISRO, DRDO",
+    quote: "Genuinely, when I was in college, teachers used to skip many topics and there were several topics and a few subjects which I was unable to understand. After joining GAME those topics become easy to understand for me, I'm a slow learner.",
+    rating: 5,
+    img: "/images/achievers/avatar-5.png"
+  },
+  {
+    type: 'story',
+    id: 246,
+    name: "Abhiram Sharma",
+    branch: "Mechanical",
+    course: "Foundation | 2 Yr GATE Course",
+    targetExams: "GATE, PSUs",
+    quote: "Excellent Gaurav babu sir is a God of mechanical engineering.",
+    rating: 5,
+    img: "/images/achievers/avatar-1.png"
+  },
+  {
+    type: 'story',
+    id: 247,
+    name: "Bhavna Navrang",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE, PSUs",
+    quote: "My journey was truly magical under Gaurav Sir's expert guidance. His unique teaching style brought subjects and concepts to life, making them tangible and easy to grasp.",
+    rating: 5,
+    img: "/images/achievers/avatar-2.png"
+  },
+  {
+    type: 'story',
+    id: 248,
+    name: "Venkatsuresh",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE, PSUs, BARC, ISRO, DRDO",
+    quote: "Yes. I am actually understanding the concepts here very well. I don't have words to express the sir's teaching but one thing is I am not giving up on my dreams.",
+    rating: 5,
+    img: "/images/achievers/avatar-3.png"
+  },
+  {
+    type: 'story',
+    id: 249,
+    name: "Shashank kumar singh",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE, PSUs, BARC",
+    quote: "Amazing learning experience under Gaurav Sir. Concepts are crystal clear now.",
+    rating: 5,
+    img: "/images/achievers/avatar-4.png"
+  },
+  {
+    type: 'story',
+    id: 250,
+    name: "Tushar Panchal",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE, ESE, PSUs, ISRO, DRDO, SSC JE / RRB JE / State AE & JE",
+    quote: "Gaurav sir teaching helped me to change my mindset. Before preparation i always underestimate myself.. But after listening to gaurav sir..he helped me to transform myself.",
+    rating: 5,
+    img: "/images/achievers/avatar-5.png"
+  },
+  {
+    type: 'story',
+    id: 251,
+    name: "Subhrajit Goswami",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE, PSUs, SSC JE / RRB JE / State AE & JE",
+    quote: "Since 2021 Gaurav sir's lecture are my single source of knowledge, I have stopped looking for books, pdfs or any other platform and have single handedly followed his lectures that have allowed me to score good in my graduation exams and I'm now targeting the PSU exams for a stable job since the job I'm in right now is a fixed term contract basis.",
+    rating: 5,
+    img: "/images/achievers/avatar-1.png"
+  },
+  {
+    type: 'story',
+    id: 252,
+    name: "Sourabh Tandon",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE",
+    quote: "Gaurav babu sir is the best teacher in the world because he understands students feeling and situations. Everytime he motivate us don't lose hope. Thank you sir (a+b) ka Square + bracket () square",
+    rating: 5,
+    img: "/images/achievers/avatar-2.png"
+  },
+  {
+    type: 'story',
+    id: 253,
+    name: "Rakesh Moharana",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE",
+    quote: "Gaurav babu and the teams are also teaching and motivated through out our preparation journey.",
+    rating: 5,
+    img: "/images/achievers/avatar-3.png"
+  },
+  {
+    type: 'story',
+    id: 254,
+    name: "Varun Rao",
+    branch: "Mechanical",
+    course: "Foundation | 2 Yr GATE Course",
+    targetExams: "GATE",
+    quote: "Practical learning experience",
+    rating: 5,
+    img: "/images/achievers/avatar-4.png"
+  },
+  {
+    type: 'story',
+    id: 255,
+    name: "Shariq Shabbir",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE",
+    quote: "Gaurav sir is my idol teacher, i want to become a better person like gaurav sir",
+    rating: 5,
+    img: "/images/achievers/avatar-5.png"
+  },
+  {
+    type: 'story',
+    id: 256,
+    name: "Sandeep Badwaik",
+    branch: "Mechanical",
+    course: "Foundation | 2 Yr GATE Course",
+    targetExams: "GATE, PSUs, BARC, ISRO",
+    quote: "I have started preparation for GATE by watching his YouTube Videos and then I have purchased his Game course. His teaching is absolutely good.",
+    rating: 4,
+    img: "/images/achievers/avatar-1.png"
+  },
+  {
+    type: 'story',
+    id: 257,
+    name: "Santanu behera",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE",
+    quote: "gaurav sir's content is super good . It help me boost my confidence",
+    rating: 5,
+    img: "/images/achievers/avatar-2.png"
+  },
+  {
+    type: 'story',
+    id: 258,
+    name: "Shreya",
+    branch: "Civil",
+    course: "Excellence Course | AE & JE",
+    targetExams: "SSC JE / RRB JE / State AE & JE",
+    quote: "Explanation were very clear and easy to understand, excellence individual support to students who need extra help.",
+    rating: 5,
+    img: "/images/achievers/avatar-3.png"
+  },
+  {
+    type: 'story',
+    id: 259,
+    name: "Aniruddha Ghosh",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE",
+    quote: "I like the way of teaching, easy to catch up contents.",
+    rating: 5,
+    img: "/images/achievers/avatar-4.png"
+  },
+  {
+    type: 'story',
+    id: 260,
+    name: "Manish Bhardwaj",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE, ESE, PSUs, BARC, ISRO, DRDO, SSC JE / RRB JE / State AE & JE",
+    quote: "Gaurav sir is an excellent teacher and mentor. Because of him only I have got the confidence to appear for the exams.",
+    rating: 5,
+    img: "/images/achievers/avatar-5.png"
+  },
+  {
+    type: 'story',
+    id: 261,
+    name: "Abhishek kumar",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE, ESE, PSUs",
+    quote: "I like all the courses of gaurav sir but SOM and manufacturing was very good.",
+    rating: 5,
+    img: "/images/achievers/avatar-1.png"
+  },
+  {
+    type: 'story',
+    id: 262,
+    name: "Soumya Malik",
+    branch: "Mechanical",
+    course: "RRB JE Course",
+    targetExams: "GATE, ISRO, DRDO, SSC JE / RRB JE / State AE & JE",
+    quote: "Direction change of my life",
+    rating: 5,
+    img: "/images/achievers/avatar-2.png"
+  },
+  {
+    type: 'story',
+    id: 263,
+    name: "Sanjay pandey",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE, ESE, DRDO, SSC JE / RRB JE / State AE & JE, IAS MECHANICAL OPTIONAL",
+    quote: "Courses is not just limited upto competitive exam but it's useful for daily life as well ..sir teach us how to change your overall presonality.",
+    rating: 5,
+    img: "/images/achievers/avatar-3.png"
+  },
+  {
+    type: 'story',
+    id: 264,
+    name: "Ubaid Amir Rizwi",
+    branch: "Mechanical",
+    course: "Excellence Course | AE & JE",
+    targetExams: "SSC JE / RRB JE",
+    quote: "He's a brilliant teacher. Only because of him I enrolled the batch for AE/JE exams. His teaching skills are impressive. He could make me understand every single topic that he taught. Unlike other teachers, Gaurav Babu sir teaches almost every subject of Mechanical except thermal part which is not everyone's cup of tea. So we love him & hatts off to him.",
+    rating: 4,
+    img: "/images/achievers/avatar-4.png"
+  },
+  {
+    type: 'story',
+    id: 265,
+    name: "Awdhesh Kumar",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE",
+    quote: "Khash Gaurav babu sir se pdhna tha isliye hum join kiye, I am so lucky mujhe sir se pdhne ka moka mila, Hur ek subject sir bahut acche se pdhtae, hur ek sentence /hur ek line ka feel dilate, pdhane ke baad koi daught nhi reh jata, Gaurav babu sir kebl mujhe psnd nhi yha tk ki mae Made easy ka student reh chuka hu yha bhi sir ke chahne wale bahut hain mujhe yha kafhi students bole SOM pdhna /smjhna sir se sikhe hain hum loeg , aaj bhi made easy mae agr Production or design kisi ko smj nhi aata to bahut saare students hain jo yhi suggest krte Gaurav babu sir ke ek baar lectures dekh lo kbhi daught nhi rhega, mae library mae pdhta hu Sir ka platform or App sbhi ko bahut psnd aaya, regionable price pe esa content aaj tk kisi ne provide nhi kiya, Thank you so much, Please ase he blessing apni bnae rkhye ga,",
+    rating: 5,
+    img: "/images/achievers/avatar-5.png"
+  },
+  {
+    type: 'story',
+    id: 266,
+    name: "A M rakesh",
+    branch: "Mechanical",
+    course: "Lakshya Exclusive Mentorship Course",
+    targetExams: "GATE, BARC, ISRO",
+    quote: "This is 2nd time I enrolled in game academy , Only after joining game academy, i was able to crack my dream barc exam last time. Before joining game i wasn't able to solve problems and couldn't able to atleast crack exam to see interview panel. Thanks to GAME Academy and Gaurav sir. I will continue my preparation and let my dream come true .",
+    rating: 5,
+    img: "/images/achievers/avatar-1.png"
+  },
+  {
+    type: 'story',
+    id: 267,
+    name: "Ashok Kumar Saini",
+    branch: "Civil",
+    course: "RRB JE Course",
+    targetExams: "GATE, SSC JE / RRB JE / State AE & JE, Rajasthan jen, aen",
+    quote: "Gaurav sir ko youtube par padate dekha tha",
+    rating: 5,
+    img: "/images/achievers/avatar-2.png"
+  },
+  {
+    type: 'story',
+    id: 268,
+    name: "Rati Prakash Rout",
+    branch: "Mechanical",
+    course: "Lakshya Exclusive Mentorship Course",
+    targetExams: "GATE, DRDO, SSC JE / RRB JE / State AE & JE",
+    quote: "Superb",
+    rating: 5,
+    img: "/images/achievers/avatar-3.png"
+  },
+  {
+    type: 'story',
+    id: 269,
+    name: "Mayank Pandey",
+    branch: "Mechanical",
+    course: "Lakshya | 1 Yr GATE Course",
+    targetExams: "GATE",
+    quote: "Gaurav Babu Sir always promote the engagement of student with the engineering world by made him feel the impact of different concepts of engineering related to the impact and how they impact the world.",
+    rating: 5,
+    img: "/images/achievers/avatar-4.png"
+  },
+  {
+    type: 'story',
+    id: 270,
+    name: "Abhinav pandey",
+    branch: "Mechanical",
+    course: "Lakshya Pro 1 yr GATE Course",
+    targetExams: "GATE, PSUs",
+    quote: "Pehle kabhi feel hi ney hua saare subject alag alag padhe...... But sir n saare concept ko ek krke engineering bna dii ab mja bhi aata hai aur tough jesi koi chiz ney lgti i hope jldi hi sir ko proud krne ka mauka dunga",
+    rating: 5,
+    img: "/images/achievers/avatar-5.png"
+  },
+  {
+    type: 'story',
+    id: 271,
+    name: "Karan Kumar Jatav",
+    branch: "Mechanical",
+    course: "Lakshya Pro 1 yr GATE Course",
+    targetExams: "GATE",
+    quote: "This course and Gaurav Babu Sir have really brought a lot of clarity to my preparation. The way he teaches is so simple that even when the concepts go deep, there’s no confusion at all. His real-life examples make even the toughest topics easy to understand. If I’m a mechanical engineer today, it’s all because of Gaurav Babu Sir.",
+    rating: 5,
+    img: "/images/achievers/avatar-1.png"
+  },
+  {
+    type: 'story',
+    id: 272,
+    name: "Shivani Meena",
+    branch: "Mechanical",
+    course: "Foundation | 2 Yr GATE Course",
+    targetExams: "GATE, PSUs, SSC JE / RRB JE / State AE & JE",
+    quote: "Sir aapka teaching way bhut accha h 3 sal ke downfall ke bad dobara mene apni teyari suru ki h aapke vedio dekh ke ek new energy mili h thanku so much sir",
+    rating: 5,
+    img: "/images/achievers/avatar-2.png"
+  },
+  {
+    type: 'story',
+    id: 273,
+    name: "Sandesh Chavan",
+    branch: "Mechanical",
+    course: "Aadhaaram - Engineering Mathematics Mastery Course",
+    targetExams: "GATE",
+    quote: "It helps me to clear my all subjects bough Gaurav sir is not only the teachers he is story tell, that way all the concepts are clear in one shirt. Thanks Gaurav sir and team.",
+    rating: 5,
+    img: "/images/achievers/avatar-3.png"
+  },
+  {
+    type: 'story',
+    id: 274,
+    name: "Vaseem Mohammed",
+    branch: "Mechanical",
+    course: "Aadhaaram - Engineering Mathematics Mastery Course",
+    targetExams: "GATE",
+    quote: "I did mathematics from other educators prior but the quality content that gaurav babu sir provides is worth every penny. Enrolled for calculus as i didnt understood calculus from other educators i that taught but gaurav sir nailed it, he start from complete zero level .",
+    rating: 5,
+    img: "/images/achievers/avatar-4.png"
+  },
+  {
+    type: 'story',
+    id: 275,
+    name: "DHIRAJ KUMAR",
+    branch: "Mechanical",
+    course: "Aadhaaram - Engineering Mathematics Mastery Course",
+    targetExams: "GATE",
+    quote: "Clear all the concept sequential manner",
+    rating: 5,
+    img: "/images/achievers/avatar-5.png"
+  },
+  {
+    type: 'story',
+    id: 276,
+    name: "Rohan yadav",
+    branch: "Mechanical",
+    course: "Lakshya Pro 1 yr GATE Course",
+    targetExams: "GATE",
+    quote: "Jis topic se dar lag ta tha vo ab easy lag te he pyq toh bahut easy lag te he sir ke notes se Bahar nahi jata muge exam gourav sir ke supporte se hi exam ki study start kiya ta kiu ki un ke lecture ne sare doubt clear kar diye",
+    rating: 5,
+    img: "/images/achievers/avatar-1.png"
+  },
+  {
+    type: 'story',
+    id: 277,
+    name: "SAYAN SAHA",
+    branch: "Mechanical",
+    course: "Aadhaaram - Engineering Mathematics Mastery Course",
+    targetExams: "GATE, BARC, ISRO, SSC JE / RRB JE / State AE & JE",
+    quote: "Since 2020, I am watching his lectures on Mechanical subjects and I found that, a student with zero knowledge will have a very strong grip on all subjects of Mechanical Engineering Stream.",
+    rating: 5,
+    img: "/images/achievers/avatar-2.png"
   }
 ];
 
@@ -194,33 +996,61 @@ const TestimonialAvatar: React.FC<{ src?: string; name: string }> = ({ src, name
 };
 
 // Optimized: Extracted Testimonial Card into a memoized sub-component - TALLER DESIGN
-const TestimonialCard = React.memo(({ item }: { item: any }) => (
-  <div className="bg-white p-5 rounded-2xl shadow-md shadow-slate-200/30 border border-slate-100 relative group hover:border-gameTeal/30 transition-all duration-300 h-[260px] md:h-[300px] flex flex-col justify-center">
-    <div className="absolute top-4 right-5 opacity-5 group-hover:opacity-10 transition-opacity">
-      <Quote size={40} className="text-gameTeal" />
-    </div>
-    
-    <div className="flex items-center gap-3 mb-4 relative z-10">
-      <div className="w-12 h-12 rounded-full p-0.5 bg-gradient-to-br from-gameTeal to-teal-100 shadow-md relative overflow-hidden">
-        <TestimonialAvatar src={item.img} name={item.name} />
+const TestimonialCard = React.memo(({ item }: { item: any }) => {
+  const branchColor = item.branch === 'Civil' 
+    ? 'bg-amber-50 text-amber-800 border-amber-200' 
+    : 'bg-teal-50 text-[#075d63] border-teal-100';
+
+  return (
+    <div className="bg-white p-5 rounded-2xl shadow-md shadow-slate-200/30 border border-slate-100 relative group hover:border-[#075d63]/30 transition-all duration-300 h-[280px] md:h-[320px] flex flex-col justify-between overflow-hidden">
+      <div className="absolute top-4 right-5 opacity-5 group-hover:opacity-10 transition-opacity">
+        <Quote size={40} className="text-[#075d63]" />
       </div>
+      
       <div>
-        <h4 className="font-black text-slate-900 text-base leading-tight">{item.name}</h4>
-        <span className="text-[9px] font-black text-slate-400 uppercase tracking-[0.1em]">{item.exam}</span>
+        <div className="flex items-center gap-3 mb-3 relative z-10">
+          <div className="w-11 h-11 rounded-full p-0.5 bg-gradient-to-br from-[#075d63] to-teal-100 shadow-sm relative overflow-hidden shrink-0">
+            <TestimonialAvatar src={item.img} name={item.name} />
+          </div>
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-1.5 flex-wrap">
+              <h4 className="font-extrabold text-slate-900 text-sm md:text-base leading-tight truncate">{item.name}</h4>
+              <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded-full border shrink-0 ${branchColor}`}>
+                {item.branch || 'Mechanical'}
+              </span>
+            </div>
+            <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider truncate mt-0.5" title={item.course}>
+              {item.course || "Lakshya | 1 Yr GATE"}
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-center justify-between mb-2 relative z-10">
+          <div className="flex gap-0.5 items-center">
+            {[...Array(5)].map((_, idx) => (
+              <Star 
+                key={idx} 
+                size={12} 
+                fill={idx < (item.rating || 0) ? "#f2c537" : "none"} 
+                className={idx < (item.rating || 0) ? "text-[#f2c537]" : "text-slate-200"} 
+              />
+            ))}
+            <span className="text-[10px] font-black text-slate-500 ml-1">({item.rating || 5}/5)</span>
+          </div>
+          <span className="text-[9px] font-extrabold text-[#075d63] bg-[#075d63]/5 px-2 py-0.5 rounded uppercase tracking-wide truncate max-w-[120px]">
+            {item.targetExams ? `${item.targetExams.split('/')[0].split(',')[0]}` : "GATE Course"}
+          </span>
+        </div>
+      </div>
+
+      <div className="flex-1 mt-1 overflow-y-auto scrollbar-thin relative z-10 pr-1">
+        <p className="text-slate-600 leading-relaxed text-[12px] md:text-[13px] font-medium italic">
+          "{item.quote}"
+        </p>
       </div>
     </div>
-
-    <div className="flex gap-1 mb-4 text-gameGold">
-      {[...Array(5)].map((_, idx) => (
-        <Star key={idx} size={14} fill={idx < (item.rating || 0) ? "currentColor" : "none"} className={idx < (item.rating || 0) ? "" : "text-slate-200"} />
-      ))}
-    </div>
-
-    <p className="text-slate-700 leading-relaxed text-sm font-medium relative z-10 italic">
-      "{item.quote}"
-    </p>
-  </div>
-));
+  );
+});
 
 // WhatsApp Screenshot Card - SIMPLIFIED FOR PHONE VIEW
 const WhatsAppPhoneCard = React.memo(({ item }: { item: any }) => (
@@ -307,6 +1137,20 @@ const AchieversPage: React.FC<AchieversPageProps> = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  // Spreadsheet Directory state
+  const [dbSearch, setDbSearch] = useState('');
+  const [dbBranch, setDbBranch] = useState('all');
+  const [dbCourse, setDbCourse] = useState('all');
+  const [dbRating, setDbRating] = useState('all');
+  const [dbPage, setDbPage] = useState(1);
+  const [expandedQuotes, setExpandedQuotes] = useState<number[]>([]);
+
+  const toggleExpandQuote = (id: number) => {
+    setExpandedQuotes(prev => 
+      prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]
+    );
+  };
+
   const useDraggableScroll = (loopCount: number = 3) => {
     const ref = React.useRef<HTMLDivElement>(null);
     const [isDragging, setIsDragging] = useState(false);
@@ -388,6 +1232,39 @@ const AchieversPage: React.FC<AchieversPageProps> = () => {
   // Create looped arrays
   const loopedVideoStories = [...videoStories, ...videoStories, ...videoStories];
   const loopedTextStories = [...textStories, ...textStories, ...textStories];
+
+  // Filtering logic for the Interactive Database spreadsheet
+  const filteredDbStories = textStories.filter(story => {
+    const matchesSearch = dbSearch === '' || 
+      story.name?.toLowerCase().includes(dbSearch.toLowerCase()) ||
+      story.course?.toLowerCase().includes(dbSearch.toLowerCase()) ||
+      story.targetExams?.toLowerCase().includes(dbSearch.toLowerCase()) ||
+      story.quote?.toLowerCase().includes(dbSearch.toLowerCase()) ||
+      story.branch?.toLowerCase().includes(dbSearch.toLowerCase());
+
+    const matchesBranch = dbBranch === 'all' || story.branch === dbBranch;
+    
+    const matchesCourse = dbCourse === 'all' || (
+      dbCourse === 'lakshya' && story.course?.toLowerCase().includes('lakshya') ||
+      dbCourse === 'excellence' && story.course?.toLowerCase().includes('excellence') ||
+      dbCourse === 'foundation' && story.course?.toLowerCase().includes('foundation') ||
+      dbCourse === 'aadhaaram' && story.course?.toLowerCase().includes('aadhaaram') ||
+      dbCourse === 'mentorship' && story.course?.toLowerCase().includes('mentorship')
+    );
+
+    const matchesRating = dbRating === 'all' || (story.rating && story.rating >= parseInt(dbRating));
+
+    return matchesSearch && matchesBranch && matchesCourse && matchesRating;
+  });
+
+  const ITEMS_PER_PAGE = 8;
+  const totalPages = Math.ceil(filteredDbStories.length / ITEMS_PER_PAGE);
+  const currentPageStories = filteredDbStories.slice((dbPage - 1) * ITEMS_PER_PAGE, dbPage * ITEMS_PER_PAGE);
+
+  // Auto reset page on filter change
+  useEffect(() => {
+    setDbPage(1);
+  }, [dbSearch, dbBranch, dbCourse, dbRating]);
 
   const handlePlayVideo = (videoUrl: string) => {
     setActiveVideo(videoUrl);
@@ -519,6 +1396,382 @@ const AchieversPage: React.FC<AchieversPageProps> = () => {
             </div>
          </div>
       </section>
+
+      {/* 3. Interactive Student Feedback Database */}
+      <section className="py-8 lg:py-12 px-8 md:px-10 lg:px-12 bg-white relative border-t border-slate-100">
+         <div className="max-w-[1400px] mx-auto">
+            
+            {/* Database Header */}
+            <div className="mb-8">
+               <div className="inline-flex items-center gap-2 px-2.5 py-0.5 bg-gameTeal/10 border border-gameTeal/20 text-[#075d63] rounded-full text-[10px] font-bold uppercase tracking-widest mb-3">
+                  <SlidersHorizontal size={12} /> Verified Spreadsheet Directory
+               </div>
+               <h2 className="text-3xl font-black text-slate-900 tracking-tight leading-tight">
+                  Student Feedback Database
+               </h2>
+               <p className="text-slate-500 text-xs mt-1 max-w-xl">
+                  Filter, search, and browse all {filteredDbStories.length} detailed review responses collected directly from our verified student surveys.
+               </p>
+            </div>
+
+            {/* Filter controls */}
+            <div className="bg-slate-50 rounded-2xl p-5 border border-slate-100 mb-6 flex flex-col md:flex-row gap-4 justify-between items-stretch md:items-end">
+               
+               {/* Search Bar */}
+               <div className="flex-1 min-w-0">
+                  <label className="block text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">Search Submissions</label>
+                  <div className="relative">
+                     <span className="absolute inset-y-0 left-3 flex items-center text-slate-400 pointer-events-none">
+                        <Search size={16} />
+                     </span>
+                     <input 
+                        type="text" 
+                        value={dbSearch}
+                        onChange={(e) => setDbSearch(e.target.value)}
+                        placeholder="Search student name, courses, exams, or feedback text..."
+                        className="w-full pl-10 pr-4 py-2 text-xs bg-white border border-slate-200 rounded-xl focus:border-[#075d63] focus:ring-1 focus:ring-[#075d63] outline-none transition-all shadow-sm"
+                     />
+                  </div>
+               </div>
+
+               {/* Branch Filter */}
+               <div className="w-full md:w-36 shrink-0">
+                  <label className="block text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">Branch</label>
+                  <select 
+                     value={dbBranch}
+                     onChange={(e) => setDbBranch(e.target.value)}
+                     className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs focus:border-[#075d63] focus:ring-1 focus:ring-[#075d63] outline-none transition-all shadow-sm font-semibold text-slate-800"
+                  >
+                     <option value="all">All Branches</option>
+                     <option value="Mechanical">Mechanical</option>
+                     <option value="Civil">Civil</option>
+                  </select>
+               </div>
+
+               {/* Course Filter */}
+               <div className="w-full md:w-44 shrink-0">
+                  <label className="block text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">Course Enrolled</label>
+                  <select 
+                     value={dbCourse}
+                     onChange={(e) => setDbCourse(e.target.value)}
+                     className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs focus:border-[#075d63] focus:ring-1 focus:ring-[#075d63] outline-none transition-all shadow-sm font-semibold text-slate-800"
+                  >
+                     <option value="all">All Courses</option>
+                     <option value="lakshya">Lakshya Courses</option>
+                     <option value="excellence">Excellence Courses</option>
+                     <option value="foundation">Foundation Courses</option>
+                     <option value="aadhaaram">Aadhaaram Maths</option>
+                     <option value="mentorship">Mentorship Exclusive</option>
+                  </select>
+               </div>
+
+               {/* Rating Filter */}
+               <div className="w-full md:w-32 shrink-0">
+                  <label className="block text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">Min Rating</label>
+                  <select 
+                     value={dbRating}
+                     onChange={(e) => setDbRating(e.target.value)}
+                     className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs focus:border-[#075d63] focus:ring-1 focus:ring-[#075d63] outline-none transition-all shadow-sm font-semibold text-[#075d63]"
+                  >
+                     <option value="all">All Ratings</option>
+                     <option value="5">⭐⭐⭐⭐⭐ (5.0)</option>
+                     <option value="4">⭐⭐⭐⭐ (4.0+)</option>
+                  </select>
+               </div>
+
+               {/* Clear Option button if any filters applied */}
+               {(dbSearch !== '' || dbBranch !== 'all' || dbCourse !== 'all' || dbRating !== 'all') && (
+                  <button 
+                     onClick={() => {
+                        setDbSearch('');
+                        setDbBranch('all');
+                        setDbCourse('all');
+                        setDbRating('all');
+                     }}
+                     className="text-[10px] font-black text-rose-600 hover:text-rose-700 uppercase tracking-widest py-2.5 px-1 shrink-0 self-center"
+                  >
+                     Reset
+                  </button>
+               )}
+
+            </div>
+
+            {/* Structured Grid/Spreadsheet View */}
+            <div className="border border-slate-100 rounded-2xl overflow-hidden shadow-xl shadow-slate-100/50 bg-white">
+               
+               {/* Desktop Spreadsheet (Visible on md and up) */}
+               <div className="hidden md:block overflow-x-auto">
+                  <table className="w-full border-collapse text-left" id="reviews-spreadsheet">
+                     <thead>
+                        <tr className="bg-slate-900 text-white text-[10px] font-black uppercase tracking-wider border-b border-slate-800">
+                           <th className="py-4 px-5 w-[18%]">Student Name</th>
+                           <th className="py-4 px-4 w-[11%] text-center">Branch</th>
+                           <th className="py-4 px-4 w-[22%]">Course Enrolled</th>
+                           <th className="py-4 px-4 w-[20%]">Target Exams</th>
+                           <th className="py-4 px-4 w-[10%] text-center">Survey Rating</th>
+                           <th className="py-4 px-5 w-[29%]">Impact & Feedback</th>
+                        </tr>
+                     </thead>
+                     <tbody className="divide-y divide-slate-100 divide-dotted text-xs text-slate-700">
+                        {currentPageStories.length === 0 ? (
+                           <tr>
+                              <td colSpan={6} className="py-12 text-center text-slate-400 font-medium text-sm">
+                                 No matching student feedback responses found in the database.
+                              </td>
+                           </tr>
+                        ) : (
+                           currentPageStories.map((story) => {
+                              const isCivil = story.branch === 'Civil';
+                              const isExpanded = expandedQuotes.includes(story.id);
+                              
+                              return (
+                                 <tr key={story.id} className="hover:bg-slate-50/50 transition-colors group">
+                                    {/* Name Row */}
+                                    <td className="py-3 px-5 font-bold text-slate-900">
+                                       <div className="flex items-center gap-3">
+                                          <div className="w-8 h-8 rounded-full p-0.5 bg-gradient-to-br from-gameTeal/20 to-teal-100 relative overflow-hidden shrink-0">
+                                             <TestimonialAvatar src={story.img} name={story.name} />
+                                          </div>
+                                          <span className="truncate">{story.name}</span>
+                                       </div>
+                                    </td>
+                                    
+                                    {/* Branch Pill */}
+                                    <td className="py-3 px-4 text-center">
+                                       <span className={`inline-block text-[9px] font-black px-2.5 py-0.5 rounded-full border ${
+                                          isCivil 
+                                             ? "bg-amber-50 text-amber-800 border-amber-200" 
+                                             : "bg-teal-50 text-[#075d63] border-teal-100"
+                                       }`}>
+                                          {story.branch || 'Mechanical'}
+                                       </span>
+                                    </td>
+
+                                    {/* Course Details */}
+                                    <td className="py-3 px-4 font-semibold text-slate-800 group-hover:text-black">
+                                       {story.course || 'Lakshya | 1 Yr GATE Course'}
+                                    </td>
+
+                                    {/* Target Exams List */}
+                                    <td className="py-3 px-4">
+                                       <div className="flex flex-wrap gap-1">
+                                          {story.targetExams?.split(',').map((exam, idx) => (
+                                             <span key={idx} className="bg-slate-50 border border-slate-200 text-slate-600 text-[8px] px-1.5 py-0.5 rounded font-black uppercase tracking-wide">
+                                                {exam.trim()}
+                                             </span>
+                                          )) || <span className="text-slate-400">-</span>}
+                                       </div>
+                                    </td>
+
+                                    {/* Numeric Rating with Star */}
+                                    <td className="py-3 px-4 text-center font-bold">
+                                       <div className="flex items-center justify-center gap-1">
+                                          <Star size={11} fill="#f2c537" className="text-[#f2c537]" />
+                                          <span className="text-slate-800">{story.rating}.0</span>
+                                       </div>
+                                    </td>
+
+                                    {/* Quote / Feedback Text */}
+                                    <td className="py-3 px-5 relative">
+                                       <div className="leading-relaxed font-semibold">
+                                          {isExpanded ? (
+                                             <div className="whitespace-normal">
+                                                "{story.quote}"
+                                                <button 
+                                                   onClick={() => toggleExpandQuote(story.id)}
+                                                   className="text-[10px] font-extrabold text-[#075d63] ml-2 underline uppercase hover:text-black cursor-pointer"
+                                                >
+                                                   Show less
+                                                </button>
+                                             </div>
+                                          ) : (
+                                             <div className="whitespace-normal">
+                                                "{story.quote?.slice(0, 100)}{story.quote?.length > 100 ? '...' : ''}"
+                                                {story.quote?.length > 100 && (
+                                                   <button 
+                                                      onClick={() => toggleExpandQuote(story.id)}
+                                                      className="text-[10px] font-extrabold text-[#075d63] ml-2 underline uppercase hover:text-black cursor-pointer whitespace-nowrap"
+                                                   >
+                                                      Read entire text
+                                                   </button>
+                                                )}
+                                             </div>
+                                          )}
+                                       </div>
+                                    </td>
+                                 </tr>
+                              );
+                           })
+                        )}
+                     </tbody>
+                  </table>
+               </div>
+
+               {/* Mobile Dense List (Visible on mobile only) */}
+               <div className="md:hidden divide-y divide-slate-100">
+                  {currentPageStories.length === 0 ? (
+                     <div className="py-12 text-center text-slate-400 text-xs">
+                        No matching student feedback responses found.
+                     </div>
+                  ) : (
+                     currentPageStories.map((story) => {
+                        const isCivil = story.branch === 'Civil';
+                        const isExpanded = expandedQuotes.includes(story.id);
+                        
+                        return (
+                           <div key={story.id} className="p-4 bg-white hover:bg-slate-50/50">
+                              <div className="flex items-center justify-between mb-2">
+                                 <div className="flex items-center gap-2">
+                                    <div className="w-8 h-8 rounded-full p-0.5 bg-gradient-to-br from-gameTeal/20 to-teal-100 relative overflow-hidden shrink-0">
+                                       <TestimonialAvatar src={story.img} name={story.name} />
+                                    </div>
+                                    <div>
+                                       <h4 className="font-extrabold text-slate-900 text-sm">{story.name}</h4>
+                                       <span className={`inline-block text-[8px] font-black px-1.5 py-0.5 rounded-full border ${
+                                          isCivil 
+                                             ? "bg-amber-50 text-amber-800 border-amber-200" 
+                                             : "bg-teal-50 text-[#075d63] border-teal-100"
+                                       }`}>
+                                          {story.branch || 'Mechanical'}
+                                       </span>
+                                    </div>
+                                 </div>
+
+                                 <div className="flex items-center gap-0.5 bg-slate-50 border border-slate-100 px-2 py-0.5 rounded-lg">
+                                    <Star size={10} fill="#f2c537" className="text-[#f2c537]" />
+                                    <span className="text-[10px] font-bold text-slate-700">{story.rating}.0</span>
+                                 </div>
+                              </div>
+
+                              <div className="space-y-1.5 text-[11px] mb-3">
+                                 <div>
+                                    <span className="text-slate-400 font-extrabold uppercase text-[9px] tracking-wider block">Course Enrolled:</span>
+                                    <span className="font-semibold text-slate-800">{story.course}</span>
+                                 </div>
+                                 <div>
+                                    <span className="text-slate-400 font-extrabold uppercase text-[9px] tracking-wider block">Target Exams:</span>
+                                    <div className="flex flex-wrap gap-1 mt-0.5">
+                                       {story.targetExams?.split(',').map((exam, idx) => (
+                                          <span key={idx} className="bg-slate-50 border border-slate-200 text-slate-600 text-[8px] px-1 py-0.2 rounded font-black uppercase">
+                                             {exam.trim()}
+                                          </span>
+                                       ))}
+                                    </div>
+                                 </div>
+                              </div>
+
+                              <div className="bg-slate-50/50 p-2.5 rounded-lg border border-slate-100/50 text-[11.5px] leading-relaxed font-semibold">
+                                 {isExpanded ? (
+                                    <p>
+                                       "{story.quote}"
+                                       <button 
+                                          onClick={() => toggleExpandQuote(story.id)}
+                                          className="text-[9px] font-black text-[#075d63] ml-1 uppercase underline block mt-1"
+                                       >
+                                          Show Less
+                                       </button>
+                                    </p>
+                                 ) : (
+                                    <p>
+                                       "{story.quote?.slice(0, 80)}{story.quote?.length > 80 ? '...' : ''}"
+                                       {story.quote?.length > 80 && (
+                                          <button 
+                                             onClick={() => toggleExpandQuote(story.id)}
+                                             className="text-[9px] font-black text-[#075d63] ml-1 uppercase underline inline"
+                                          >
+                                             Read full
+                                          </button>
+                                       )}
+                                    </p>
+                                 )}
+                              </div>
+
+                           </div>
+                        );
+                     })
+                  )}
+               </div>
+
+            </div>
+
+            {/* Pagination Controls */}
+            {totalPages > 1 && (
+               <div className="flex items-center justify-between border-t border-slate-100 bg-white px-4 py-3 sm:px-6 mt-4">
+                  <div className="flex flex-1 justify-between sm:hidden">
+                     <button
+                        onClick={() => setDbPage(p => Math.max(p - 1, 1))}
+                        disabled={dbPage === 1}
+                        className={`relative inline-flex items-center rounded-xl border border-slate-200 bg-white px-4 py-2 text-xs font-black text-slate-700 hover:bg-slate-50 transition-colors uppercase cursor-pointer ${
+                           dbPage === 1 ? 'opacity-50 pointer-events-none' : ''
+                        }`}
+                     >
+                        Previous
+                     </button>
+                     <button
+                        onClick={() => setDbPage(p => Math.min(p + 1, totalPages))}
+                        disabled={dbPage === totalPages}
+                        className={`relative ml-3 inline-flex items-center rounded-xl border border-slate-200 bg-white px-4 py-2 text-xs font-black text-slate-700 hover:bg-slate-50 transition-colors uppercase cursor-pointer ${
+                           dbPage === totalPages ? 'opacity-50 pointer-events-none' : ''
+                        }`}
+                     >
+                        Next
+                     </button>
+                  </div>
+                  <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+                     <div>
+                        <p className="text-xs text-slate-500">
+                           Showing <span className="font-extrabold text-slate-900">{((dbPage - 1) * ITEMS_PER_PAGE) + 1}</span> to{' '}
+                           <span className="font-extrabold text-slate-900">
+                              {Math.min(dbPage * ITEMS_PER_PAGE, filteredDbStories.length)}
+                           </span>{' '}
+                           of <span className="font-extrabold text-slate-900">{filteredDbStories.length}</span> verified submissions
+                        </p>
+                      </div>
+                      <div>
+                         <nav className="isolate inline-flex -space-x-px rounded-xl shadow-sm gap-1" aria-label="Pagination">
+                            <button
+                               onClick={() => setDbPage(p => Math.max(p - 1, 1))}
+                               disabled={dbPage === 1}
+                               className={`relative inline-flex items-center rounded-l-md px-2.5 py-1.5 text-slate-400 hover:bg-slate-50 focus:z-20 border border-slate-200 rounded-lg bg-white cursor-pointer ${
+                                  dbPage === 1 ? 'opacity-40 pointer-events-none' : ''
+                               }`}
+                            >
+                               <span className="sr-only">Previous</span>
+                               <ChevronLeft size={16} />
+                            </button>
+                            
+                            {[...Array(totalPages)].map((_, i) => (
+                               <button
+                                  key={i + 1}
+                                  onClick={() => setDbPage(i + 1)}
+                                  className={`relative inline-flex items-center px-3.5 py-1.5 text-xs font-bold rounded-lg ${
+                                     dbPage === (i + 1)
+                                        ? 'z-10 bg-[#075d63] text-white border border-[#075d63]'
+                                        : 'text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 hover:border-slate-300'
+                                  }`}
+                               >
+                                  {i + 1}
+                               </button>
+                            ))}
+
+                            <button
+                               onClick={() => setDbPage(p => Math.min(p + 1, totalPages))}
+                               disabled={dbPage === totalPages}
+                               className={`relative inline-flex items-center rounded-r-md px-2.5 py-1.5 text-slate-400 hover:bg-slate-50 focus:z-20 border border-slate-200 rounded-lg bg-white cursor-pointer ${
+                                  dbPage === totalPages ? 'opacity-40 pointer-events-none' : ''
+                               }`}
+                            >
+                               <span className="sr-only">Next</span>
+                               <ChevronRight size={16} />
+                            </button>
+                         </nav>
+                      </div>
+                   </div>
+                </div>
+             )}
+
+          </div>
+       </section>
 
       {/* 3. CTA Section */}
       <AchieversCTA />
