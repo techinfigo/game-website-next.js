@@ -115,10 +115,10 @@ const ALL_STORIES = [
 ];
 
 const HERO_STATS = [
-  { val: "1000+", label: "PSU selections" },
-  { val: "2,000+", label: "rank holders" },
-  { val: "10,000+", label: "student community" },
-  { val: "4.9/5", label: "student rating" },
+  { val: "50+", label: "AIR 1 Ranks" },
+  { val: "5000+", label: "Selections" },
+  { val: "100Cr+", label: "Scholarships" },
+  { val: "4.9/5", label: "Student Rating" },
 ];
 
 const FILTER_TABS = [
@@ -169,6 +169,30 @@ const RankerCard = React.memo(({ item, onPlay }: { item: any, onPlay?: () => voi
   </div>
 ));
 
+const TestimonialAvatar: React.FC<{ src?: string; name: string }> = ({ src, name }) => {
+  const [error, setError] = React.useState(false);
+  const firstLetter = name ? name.trim().charAt(0).toUpperCase() : '?';
+
+  if (!src || error) {
+    return (
+      <div className="w-full h-full rounded-full bg-gradient-to-br from-[#075d63] to-teal-500 text-white flex items-center justify-center font-black text-lg shadow-inner">
+        {firstLetter}
+      </div>
+    );
+  }
+
+  return (
+    <Image 
+      src={src} 
+      alt={name} 
+      fill
+      className="w-full h-full rounded-full object-cover border-2 border-white" 
+      referrerPolicy="no-referrer"
+      onError={() => setError(true)}
+    />
+  );
+};
+
 // Optimized: Extracted Testimonial Card into a memoized sub-component - TALLER DESIGN
 const TestimonialCard = React.memo(({ item }: { item: any }) => (
   <div className="bg-white p-5 rounded-2xl shadow-md shadow-slate-200/30 border border-slate-100 relative group hover:border-gameTeal/30 transition-all duration-300 h-[260px] md:h-[300px] flex flex-col justify-center">
@@ -178,13 +202,7 @@ const TestimonialCard = React.memo(({ item }: { item: any }) => (
     
     <div className="flex items-center gap-3 mb-4 relative z-10">
       <div className="w-12 h-12 rounded-full p-0.5 bg-gradient-to-br from-gameTeal to-teal-100 shadow-md relative overflow-hidden">
-        <Image 
-          src={item.img} 
-          alt={item.name} 
-          fill
-          className="w-full h-full rounded-full object-cover border-2 border-white" 
-          referrerPolicy="no-referrer"
-        />
+        <TestimonialAvatar src={item.img} name={item.name} />
       </div>
       <div>
         <h4 className="font-black text-slate-900 text-base leading-tight">{item.name}</h4>
@@ -402,16 +420,16 @@ const AchieversPage: React.FC<AchieversPageProps> = () => {
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-gameTeal via-teal-400 to-gameGold underline decoration-white/20 decoration-8 underline-offset-8">Excellence</span>
                </h1>
 
-               <p className="text-base md:text-xl text-slate-300 max-w-2xl mx-auto mb-6 leading-relaxed mt-4 font-semibold">
-                  Mentorship-driven learning for GATE, PSU, AE/JE, and ESE aspirants
+               <p className="text-base md:text-xl text-slate-400 max-w-2xl mx-auto mb-6 leading-relaxed mt-4">
+                  Real stories of grit, perseverance, and triumph. Meet the students who turned their dreams into reality with GAME.
                </p>
 
                {/* Stats Row */}
-               <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto border-t border-white/10 pt-6">
+               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto border-t border-white/10 pt-6">
                   {HERO_STATS.map((stat, i) => (
                      <div key={i} className="text-center">
                         <div className="text-2xl font-black text-white mb-0.5">{stat.val}</div>
-                        <div className="text-[9px] font-bold text-gameGold uppercase tracking-wider">{stat.label}</div>
+                        <div className="text-[9px] font-bold text-gameTeal uppercase tracking-wider">{stat.label}</div>
                      </div>
                   ))}
                </div>
