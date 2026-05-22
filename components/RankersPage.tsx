@@ -22,176 +22,198 @@ interface Ranker {
   organisation?: string; // For Reputed Jobs section
   branch?: string;       // For Reputed Jobs section
   selectionYear?: string; // For Reputed Jobs section
+  college?: string;      // For custom student college/institution
 }
 
 // Optimized: Moved static data outside component to prevent re-creation on every render
 const MOCK_RANKERS: Ranker[] = [
   {
     id: "1",
-    name: "Akshay Pillay",
-    designation: "AIR - 51",
+    name: "Anurag Tripathi",
+    college: "IIT Roper",
+    designation: "GATE",
     category: "GATE",
-    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    selectionYear: "2024",
     image: "/rankers/ranker-1.png"
   },
   {
     id: "2",
-    name: "Shivam Ranjan",
-    designation: "AIR - 1 (NM)",
+    name: "Jyoti Verma",
+    college: "IIT Roorkee",
+    designation: "GATE",
     category: "GATE",
-    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    selectionYear: "2024",
     image: "/rankers/ranker-2.png"
   },
   {
     id: "3",
-    name: "Ayush Sachin Kumar Chordiya",
-    designation: "AIR - 24 (PI)",
+    name: "Pankaj Kushwaha",
+    college: "IIT ISM Dhanbaad",
+    designation: "GATE",
     category: "GATE",
-    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    selectionYear: "2024",
     image: "/rankers/ranker-3.png"
   },
   {
     id: "4",
-    name: "Aman Nema",
-    designation: "AIR - 38 (PI)",
+    name: "Tejas",
+    college: "IIT Hyderabad",
+    designation: "GATE",
     category: "GATE",
-    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    selectionYear: "2024",
     image: "/rankers/ranker-4.png"
   },
   {
     id: "5",
-    name: "Omkar Nishad",
-    designation: "AIR - 239 (PI)",
+    name: "Kapil Sharma",
+    college: "IIT Guwahati",
+    designation: "GATE",
     category: "GATE",
-    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    selectionYear: "2024",
     image: "/rankers/ranker-5.png"
   },
   {
     id: "6",
-    name: "Vishal Verma",
-    designation: "AIR - 240 (ME)",
+    name: "Harshit Kumar Gupta",
+    college: "IIT Delhi",
+    designation: "GATE",
     category: "GATE",
-    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    selectionYear: "2024",
     image: "/rankers/ranker-6.png"
   },
   {
     id: "7",
-    name: "Ankit Gupta",
-    designation: "AIR - 496 (XE)",
+    name: "Nikhil",
+    college: "IIT Guwahati",
+    designation: "GATE",
     category: "GATE",
-    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    selectionYear: "2024",
     image: "/rankers/ranker-7.png"
   },
   {
     id: "8",
-    name: "Anjali",
-    designation: "AIR - 556 (ME)",
+    name: "Rahul",
+    organisation: "IIT Kharagpur",
+    designation: "GATE",
     category: "GATE",
-    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    selectionYear: "2024",
     image: "/rankers/ranker-8.png"
   },
   {
     id: "9",
-    name: "Sujoy Das",
-    designation: "AIR - 535 (ME)",
+    name: "Sumit",
+    college: "IIT Hyderabad",
+    designation: "GATE",
     category: "GATE",
-    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    selectionYear: "2024",
     image: "/rankers/ranker-9.png"
   },
   {
     id: "10",
-    name: "Manish Kumar",
-    designation: "AIR - 267 (ME)",
+    name: "Kamal Kishor Bharadwaj",
+    college: "IIT Delhi",
+    designation: "GATE",
     category: "GATE",
-    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    selectionYear: "2025",
     image: "/rankers/ranker-10.png"
   },
   {
     id: "11",
-    name: "Harshit Kumar",
-    designation: "AIR - 5 (PI)",
+    name: "Pragya Sharma",
+    college: "IISc Bengaluru",
+    designation: "GATE",
     category: "GATE",
-    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    selectionYear: "2025",
     image: "/rankers/ranker-11.png"
   },
   {
     id: "12",
-    name: "Rushabh",
-    designation: "AIR - 146 (PI)",
+    name: "Ashish Ranjan",
+    college: "IIT Patna",
+    designation: "GATE",
     category: "GATE",
-    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    selectionYear: "2025",
     image: "/rankers/ranker-12.png"
   },
   {
     id: "13",
-    name: "Abhishek Kumar",
-    designation: "AIR - 410 (ME)",
+    name: "Manish Madhwal",
+    college: "IIT Roorkee",
+    designation: "GATE",
     category: "GATE",
-    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    selectionYear: "2025",
     image: "/rankers/ranker-13.png"
   },
   {
     id: "14",
-    name: "Chirag Goyal",
-    designation: "AIR - 68 (ME)",
+    name: "Pranav Sharma",
+    college: "IIT Delhi",
+    designation: "GATE",
     category: "GATE",
-    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    selectionYear: "2025",
     image: "/rankers/ranker-14.png"
   },
   {
     id: "15",
-    name: "Deepbhai Haresh Kumar Dave",
-    designation: "AIR - 197 (XE) / AIR - 343 (ME)",
+    name: "Khusro Sheikh",
+    college: "IIT Patna",
+    designation: "GATE",
     category: "GATE",
-    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    selectionYear: "2025",
     image: "/rankers/ranker-15.png"
   },
   {
     id: "16",
-    name: "Kamal Kishor Bhardwaj",
-    designation: "AIR - 408 (ME)",
+    name: "Prem Narwade",
+    college: "IIT Palakkad",
+    designation: "GATE",
     category: "GATE",
-    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    selectionYear: "2025",
     image: "/rankers/ranker-16.png"
   },
   {
     id: "17",
-    name: "Akshit Dinesh",
-    designation: "AIR - 33 (ME)",
+    name: "Nagendra Pratap Chaudhary",
+    college: "IIT Kharagpur",
+    designation: "GATE",
     category: "GATE",
-    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    selectionYear: "2025",
     image: "/rankers/ranker-17.png"
   },
   {
     id: "18",
-    name: "Vijay Pal",
-    designation: "AIR - 52 (ME)",
+    name: "Sanaul Kazi",
+    organisation: "RRB-JE Ranchi",
+    designation: "GATE",
     category: "GATE",
-    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    selectionYear: "2025",
     image: "/rankers/ranker-18.png"
   },
   {
     id: "19",
-    name: "Mayur Bharat More",
-    designation: "AIR - 68 (PI) / AIR - 974 (ME)",
+    name: "Amit",
+    organisation: "RRB-JE Bombay",
+    designation: "GATE",
     category: "GATE",
-    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    selectionYear: "2025",
     image: "/rankers/ranker-19.png"
   },
   {
     id: "20",
-    name: "Harshit Kumar Gupta",
-    designation: "AIR - 636 (ME)",
+    name: "Saurabh Dubey",
+    college: "IIT Bhubaneswar",
+    designation: "GATE",
     category: "GATE",
-    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    selectionYear: "2025",
     image: "/rankers/ranker-20.png"
   },
   {
     id: "21",
-    name: "Pragya Sharma",
-    designation: "AIR - 905 (ME)",
+    name: "Mohit",
+    college: "RRB-JE Mumbai",
+    designation: "GATE",
     category: "GATE",
-    description: "The conceptual depth and visualization techniques provided by Gaurav Sir are unmatched.",
+    selectionYear: "2026",
     image: "/rankers/ranker-21.png"
   }
 ];
@@ -401,7 +423,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
 
 const RankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
   <div
-    className="group relative flex flex-col bg-[#050505] rounded-[1.2rem] transition-all duration-500 overflow-hidden h-[260px] w-full border border-white/5 shadow-2xl hover:shadow-gameTeal/10"
+    className="group relative flex flex-col bg-[#050505] rounded-[1rem] transition-all duration-500 overflow-hidden h-[210px] w-full border border-white/5 shadow-2xl hover:shadow-gameTeal/10"
   >
     {/* Full Card Image Background */}
     <Image 
@@ -414,38 +436,38 @@ const RankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
     />
     
     {/* Gradient Overlay Adjusted for smaller height */}
-    <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[#050505] via-[#050505]/70 to-transparent transition-colors duration-500"></div>
+    <div className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-[#050505] via-[#050505]/90 to-transparent transition-colors duration-500"></div>
     
     {/* Category Badge - More compact */}
-    <div className="absolute top-3 left-3 z-10">
-        <span className="px-2 py-0.5 rounded-md bg-gameGold text-black text-[7px] font-black uppercase tracking-widest shadow-lg">
+    <div className="absolute top-2 left-2 z-10">
+        <span className="px-1.5 py-0.5 rounded bg-gameGold text-black text-[6px] font-black uppercase tracking-widest shadow-lg">
           {ranker.category}
         </span>
     </div>
 
-    {/* Integrated Info Block - Tighter spacing */}
-    <div className="absolute bottom-0 inset-x-0 p-4 z-10 flex flex-col text-left">
-      <div className="space-y-1">
-        <h3 className="text-[15px] font-black text-white leading-tight transition-colors line-clamp-1 group-hover:text-gameGold">
-          {ranker.name}
-        </h3>
-        
-        <div className="flex items-center gap-1.5 flex-wrap">
-          <div className="flex items-center gap-1 bg-gameTeal/40 px-1.5 py-0.5 rounded border border-gameTeal/50 backdrop-blur-sm">
-            <span className="text-white font-black text-[8px] uppercase tracking-wider">
-              {ranker.designation.split(' - ')[0]}
-            </span>
-          </div>
-          <span className="text-white/40 text-[9px]">|</span>
-          <span className="text-gameGold font-bold text-[8px] uppercase tracking-wide italic line-clamp-1">
-             {ranker.designation.split(' - ')[1] || ranker.category}
-          </span>
-        </div>
+    {/* Integrated Info Block - Tighter spacing, clear White text format */}
+    <div className="absolute bottom-0 inset-x-0 p-3 z-10 flex flex-col text-left">
+      <div className="space-y-0.5 font-sans text-[9px] text-white">
+        <p className="font-extrabold text-white leading-tight">
+          Name : {ranker.name}
+        </p>
+        {ranker.college ? (
+          <p className="font-extrabold text-white leading-tight">
+            College : {ranker.college}
+          </p>
+        ) : (
+          <p className="font-extrabold text-white leading-tight">
+            Selected in : {ranker.organisation}
+          </p>
+        )}
+        <p className="font-extrabold text-white leading-tight">
+          Selection year : {ranker.selectionYear}
+        </p>
       </div>
       
       {/* Verified Excellence Indicator - Minimalist */}
-      <div className="mt-2.5 pt-2 border-t border-white/10 flex items-center justify-between opacity-50 group-hover:opacity-100 transition-opacity">
-         <span className="text-[6px] font-black text-gameGold uppercase tracking-[0.2em]">Verified Excellence</span>
+      <div className="mt-1.5 pt-1.5 border-t border-white/10 flex items-center justify-between opacity-50 group-hover:opacity-100 transition-opacity">
+         <span className="text-[5px] font-black text-gameGold uppercase tracking-[0.2em]">{ranker.college ? "Verified IITian" : "Verified excellence"}</span>
          <div className="h-1 w-1 rounded-full bg-gameGold"></div>
       </div>
     </div>
@@ -454,10 +476,10 @@ const RankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
 
 const JobRankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
   <div
-    className="group relative flex flex-col bg-[#050505] rounded-[1.2rem] transition-all duration-500 overflow-hidden h-[260px] w-full border border-white/5"
+    className="group relative flex flex-col bg-[#050505] rounded-[1rem] transition-all duration-500 overflow-hidden h-[210px] w-full border border-white/5"
   >
-    {/* Top Image Section - Increased height to 65% for better visibility with object-contain */}
-    <div className="relative h-[65%] w-full overflow-hidden bg-[#07090e]">
+    {/* Top Image Section - Height adjusted to 60% for better ratio in shorter cards */}
+    <div className="relative h-[60%] w-full overflow-hidden bg-[#07090e]">
       <Image 
           src={ranker.image} 
           alt={ranker.name} 
@@ -469,37 +491,37 @@ const JobRankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
       <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent pointer-events-none"></div>
       
       {/* Category HUD - More compact */}
-      <div className="absolute top-3 left-3">
-          <div className="px-2 py-0.5 rounded-md bg-gameGold text-[#050505] text-[7px] font-black uppercase tracking-widest border border-white/10 shadow-lg">
+      <div className="absolute top-2 left-2">
+          <div className="px-1.5 py-0.5 rounded bg-gameGold text-[#050505] text-[6px] font-black uppercase tracking-widest border border-white/10 shadow-lg">
             {ranker.category}
           </div>
       </div>
     </div>
 
     {/* Identity & Stats Section - Concise & Aligned */}
-    <div className="flex-grow p-3 bg-[#050505] flex flex-col text-left justify-start -mt-3 relative z-10">
-      <div className="mb-2">
-        <h3 className="text-[15px] font-black text-gameGold leading-tight transition-colors line-clamp-1">
+    <div className="flex-grow p-2.5 bg-[#050505] flex flex-col text-left justify-start -mt-2 relative z-10">
+      <div className="mb-1">
+        <h3 className="text-[13px] font-black text-gameGold leading-tight transition-colors line-clamp-1">
           {ranker.name}
         </h3>
-        <div className="flex items-center gap-1.5 mt-0.5">
-          <p className="text-white font-bold text-[9px] uppercase tracking-wide line-clamp-1">
+        <div className="flex items-center gap-1 mt-0.5">
+          <p className="text-white font-bold text-[8px] uppercase tracking-wide line-clamp-1">
             {ranker.organisation}
           </p>
         </div>
       </div>
 
-      <div className="space-y-1.5 pt-2 border-t border-white/10">
-        <div className="flex items-center gap-2">
-          <p className="text-[9px] font-medium text-white italic truncate">{ranker.designation}</p>
+      <div className="space-y-1 pt-1.5 border-t border-white/10">
+        <div className="flex items-center gap-1">
+          <p className="text-[8px] font-medium text-white italic truncate">{ranker.designation}</p>
         </div>
         
-        <div className="flex items-center justify-between gap-2">
-          <div className="flex items-center gap-2 truncate">
-            <p className="text-[9px] font-bold text-slate-300 uppercase truncate">{ranker.branch}</p>
+        <div className="flex items-center justify-between gap-1">
+          <div className="flex items-center gap-1 truncate">
+            <p className="text-[8px] font-bold text-slate-300 uppercase truncate">{ranker.branch}</p>
           </div>
-          <div className="flex items-center gap-1.5 shrink-0 bg-white/5 px-1.5 py-0.5 rounded">
-            <p className="text-[9px] font-black text-gameGold">{ranker.selectionYear}</p>
+          <div className="flex items-center gap-1 shrink-0 bg-white/5 px-1 py-0.5 rounded">
+            <p className="text-[8px] font-black text-gameGold">{ranker.selectionYear}</p>
           </div>
         </div>
       </div>
@@ -602,7 +624,7 @@ const MarqueeRow = ({ items, direction = 'left', cardType = 'ranker', speed = 60
         }}
       >
         {duplicatedItems.map((item, idx) => (
-          <div key={`${item.id}-${idx}`} className="w-[220px] shrink-0">
+          <div key={`${item.id}-${idx}`} className="w-[175px] md:w-[180px] shrink-0">
             {cardType === 'ranker' ? <RankerCard ranker={item} /> : <JobRankerCard ranker={item} />}
           </div>
         ))}
