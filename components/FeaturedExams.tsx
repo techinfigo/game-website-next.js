@@ -121,8 +121,9 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'State Assistant Engineer / Junior Engineer',
       icon: MapPin,
       color: 'text-cyan-400',
-      image: "/exams/state-bg.jpg",
-      logo: "/exams/state-logo.jpg",
+      image: "/exams/state-ae-je-bg.png",
+      logo: "/exams/state-ae-je-logo.jpg
+",
       action: 'state'
     },
     {
@@ -131,8 +132,8 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Non Technical Exam',
       icon: BookOpen,
       color: 'text-indigo-400',
-      image: "/exams/nontech-bg.jpg",
-      logo: "/exams/nontech-logo.jpg",
+      image: "/exams/non-tech-bg.png",
+      logo: "/exams/non-tech-logo.jpg",
       action: 'nontech'
     }
   ];
