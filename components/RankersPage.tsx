@@ -482,8 +482,8 @@ const JobRankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
         <h3 className="text-[15px] font-black text-gameGold leading-tight transition-colors line-clamp-1">
           {ranker.name}
         </h3>
-        <div className="flex items-center gap-1.5 opacity-80 mt-0.5">
-          <p className="text-gameTeal font-bold text-[9px] uppercase tracking-wide line-clamp-1">
+        <div className="flex items-center gap-1.5 mt-0.5">
+          <p className="text-white font-bold text-[9px] uppercase tracking-wide line-clamp-1">
             {ranker.organisation}
           </p>
         </div>
