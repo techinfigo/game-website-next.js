@@ -425,29 +425,29 @@ const RankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
   <div
     className="group relative flex flex-col bg-[#050505] rounded-[1rem] transition-all duration-500 overflow-hidden h-[210px] w-full border border-white/5 shadow-2xl hover:shadow-gameTeal/10"
   >
-    {/* Full Card Image Background */}
-    <Image 
-        src={ranker.image} 
-        alt={ranker.name} 
-        fill
-        unoptimized
-        className="object-cover transition-transform duration-1000 opacity-80 group-hover:opacity-100 group-hover:scale-110" 
-        referrerPolicy="no-referrer"
-    />
-    
-    {/* Gradient Overlay Adjusted for smaller height */}
-    <div className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-[#050505] via-[#050505]/90 to-transparent transition-colors duration-500"></div>
-    
-    {/* Category Badge - More compact */}
-    <div className="absolute top-2 left-2 z-10">
-        <span className="px-1.5 py-0.5 rounded bg-gameGold text-black text-[6px] font-black uppercase tracking-widest shadow-lg">
-          {ranker.category}
-        </span>
+    {/* Top Image Container - Fully visible, using object-contain to prevent cropping or hiding the image */}
+    <div className="relative h-[55%] w-full overflow-hidden bg-[#07090e]">
+      <Image 
+          src={ranker.image} 
+          alt={ranker.name} 
+          fill
+          unoptimized
+          className="object-contain p-1 transition-transform duration-1000 opacity-95 group-hover:scale-105" 
+          referrerPolicy="no-referrer"
+      />
+      <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-[#050505] to-transparent pointer-events-none"></div>
+      
+      {/* Category Badge */}
+      <div className="absolute top-2 left-2 z-10">
+          <span className="px-1.5 py-0.5 rounded bg-gameGold text-black text-[6px] font-black uppercase tracking-widest shadow-lg">
+            {ranker.category}
+          </span>
+      </div>
     </div>
 
-    {/* Integrated Info Block - Tighter spacing, clear White text format */}
-    <div className="absolute bottom-0 inset-x-0 p-3 z-10 flex flex-col text-left">
-      <div className="space-y-0.5 font-sans text-[9px] text-white">
+    {/* Dedicated Bottom Info Block - Clean background, fully visible white text details utilising key space-saving styles */}
+    <div className="flex-grow py-1.5 px-2.5 bg-[#050505] flex flex-col justify-center relative z-10">
+      <div className="space-y-0.5 font-sans text-[10px] text-white">
         <p className="font-extrabold text-white leading-tight">
           Name : {ranker.name}
         </p>
@@ -463,12 +463,6 @@ const RankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
         <p className="font-extrabold text-white leading-tight">
           Selection year : {ranker.selectionYear}
         </p>
-      </div>
-      
-      {/* Verified Excellence Indicator - Minimalist */}
-      <div className="mt-1.5 pt-1.5 border-t border-white/10 flex items-center justify-between opacity-50 group-hover:opacity-100 transition-opacity">
-         <span className="text-[5px] font-black text-gameGold uppercase tracking-[0.2em]">{ranker.college ? "Verified IITian" : "Verified excellence"}</span>
-         <div className="h-1 w-1 rounded-full bg-gameGold"></div>
       </div>
     </div>
   </div>
