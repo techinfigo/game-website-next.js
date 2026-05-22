@@ -26,7 +26,7 @@ export const ALL_STORIES = [
     type: 'whatsapp',
     id: 10,
     img: "/whatsapp-result-1.png",
-    caption: "Incredible results shared by our student on WhatsApp!"
+    caption: "Cracked GATE Mechanical with Gaurav Babu Sir's mentorship! Best conceptual learning ever!"
   },
   { 
     type: 'video',
@@ -41,7 +41,7 @@ export const ALL_STORIES = [
     type: 'whatsapp',
     id: 11,
     img: "/whatsapp-result-2.png",
-    caption: "Late night doubt clearing sessions paying off!"
+    caption: "Highest score in Thermal Engineering! Doubts cleared in record time on the WhatsApp group."
   },
   { 
     type: 'video',
@@ -56,7 +56,7 @@ export const ALL_STORIES = [
     type: 'whatsapp',
     id: 12,
     img: "/whatsapp-result-3.png",
-    caption: "Another success story from our WhatsApp community."
+    caption: "Selected in IOCL as Officer! Huge thanks to Gaurav Babu Sir's test series and live classes."
   },
   { 
     type: 'video',
@@ -66,6 +66,78 @@ export const ALL_STORIES = [
     exam: "GATE CS 2023", 
     img: "/ranker-rk-6.png", 
     video: "https://www.youtube.com/embed/dQw4w9WgXcQ" 
+  },
+  {
+    type: 'whatsapp',
+    id: 13,
+    img: "/whatsapp-result-4.png",
+    caption: "Amazing response from student on Strength of Materials concepts. Understood all basic laws!"
+  },
+  {
+    type: 'whatsapp',
+    id: 14,
+    img: "/whatsapp-result-5.png",
+    caption: "Cracked ESE Civil Engineering! Outstanding visual lectures provided by Gaurav Sir."
+  },
+  {
+    type: 'whatsapp',
+    id: 15,
+    img: "/whatsapp-result-6.png",
+    caption: "Student got selected in ONGC! Sent heartfelt gratitude to the personal mentorship program."
+  },
+  {
+    type: 'whatsapp',
+    id: 16,
+    img: "/whatsapp-result-7.png",
+    caption: "Perfect score in Fluid Mechanics mock test series! 100% doubt resolution."
+  },
+  {
+    type: 'whatsapp',
+    id: 17,
+    img: "/whatsapp-result-8.png",
+    caption: "GATE score of 820+ achieved by studying exclusively with GAME Academy online batch."
+  },
+  {
+    type: 'whatsapp',
+    id: 18,
+    img: "/whatsapp-result-9.png",
+    caption: "Double selection letters from ISRO & BARC! Truly magical teaching modules."
+  },
+  {
+    type: 'whatsapp',
+    id: 19,
+    img: "/whatsapp-result-10.png",
+    caption: "Cleared PSU interviews with supreme confidence. Mentorship mocks were key."
+  },
+  {
+    type: 'whatsapp',
+    id: 20,
+    img: "/whatsapp-result-11.png",
+    caption: "GATE Mechanical ESE rank booster batch helped solve previous year questions easily."
+  },
+  {
+    type: 'whatsapp',
+    id: 21,
+    img: "/whatsapp-result-12.png",
+    caption: "Got selected in Coal India Limited (CIL)! Overwhelmed with joy and gratitude."
+  },
+  {
+    type: 'whatsapp',
+    id: 22,
+    img: "/whatsapp-result-13.png",
+    caption: "Conceptual clarity has reached another level. Formulas are on my fingertips!"
+  },
+  {
+    type: 'whatsapp',
+    id: 23,
+    img: "/whatsapp-result-14.png",
+    caption: "Late night doubt clearing session screenshots. Gaurav Sir's dedication is unparalleled!"
+  },
+  {
+    type: 'whatsapp',
+    id: 24,
+    img: "/whatsapp-result-15.png",
+    caption: "Selected in Ministry of Defence! Life-changing guidance from GAME expert team!"
   },
   {
     type: 'story',
@@ -1053,17 +1125,50 @@ const TestimonialCard = React.memo(({ item }: { item: any }) => {
 });
 
 // WhatsApp Screenshot Card - SIMPLIFIED FOR PHONE VIEW
-const WhatsAppPhoneCard = React.memo(({ item }: { item: any }) => (
-  <div className="mb-4 last:mb-0 relative w-full aspect-[2/3]">
-    <Image 
-      src={item.img} 
-      alt="WhatsApp Screenshot" 
-      fill
-      className="w-full h-auto rounded-2xl shadow-sm object-contain" 
-      referrerPolicy="no-referrer"
-    />
-  </div>
-));
+const WhatsAppPhoneCard = React.memo(({ item }: { item: any }) => {
+  const [imageError, setImageError] = useState(false);
+
+  return (
+    <div className="mb-4 last:mb-0 relative w-full aspect-[2/3] bg-[#efeae2] rounded-2xl shadow-sm border border-emerald-600/10 overflow-hidden flex flex-col justify-between p-3 select-none">
+      {!imageError ? (
+        <Image 
+          src={item.img} 
+          alt={item.caption || "WhatsApp Screenshot"} 
+          fill
+          unoptimized
+          className="w-full h-full rounded-2xl object-cover" 
+          referrerPolicy="no-referrer"
+          onError={() => setImageError(true)}
+        />
+      ) : (
+        <div className="w-full h-full flex flex-col justify-between text-slate-800 relative">
+          {/* Mock message bubble */}
+          <div className="space-y-2">
+            <div className="bg-white/90 backdrop-blur-sm shadow-[0_1px_2px_rgba(0,0,0,0.05)] rounded-lg py-1 px-1.5 text-[8.5px] text-slate-500 text-center font-bold">
+              🔒 Messages & calls are secure.
+            </div>
+            
+            <div className="bg-[#e2f9cb] self-end rounded-lg p-2 shadow-sm text-[10px] font-semibold leading-normal relative ml-3 border border-emerald-600/10">
+              <p className="text-slate-800 text-[9.5px] leading-snug">{item.caption || "Outstanding score in the exams masterclass!"}</p>
+              <div className="flex items-center justify-end gap-0.5 text-[8px] text-slate-400 font-bold mt-1">
+                <span>10:42 AM</span>
+                <span className="text-[#34b7f1] text-[10px] ml-1">✓✓</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-2 text-center bg-white/60 backdrop-blur-sm p-1.5 rounded-xl border border-slate-200">
+             <span className="text-[8px] font-black text-emerald-800 bg-emerald-100 px-1.5 py-0.5 rounded uppercase tracking-wider">
+                Screenshot #{item.id - 9}
+             </span>
+             <p className="text-[7.5px] text-slate-500 font-bold mt-1">Place image at:</p>
+             <code className="text-[7px] text-emerald-700 bg-slate-100 px-1 py-0.5 rounded block font-mono mt-0.5 font-bold truncate">public{item.img}</code>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+});
 
 // Mobile Phone Frame Component
 const MobilePhoneFrame = React.memo(({ children }: { children: React.ReactNode }) => (
