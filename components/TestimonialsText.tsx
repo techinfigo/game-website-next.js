@@ -1,10 +1,33 @@
-
 'use client';
 
 import React, { useRef } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Star, Quote, ChevronLeft, ChevronRight, BadgeCheck, MessageCircle } from 'lucide-react';
+
+const TestimonialAvatar: React.FC<{ src?: string; name: string }> = ({ src, name }) => {
+  const [error, setError] = React.useState(false);
+  const firstLetter = name ? name.trim().charAt(0).toUpperCase() : '?';
+
+  if (!src || error) {
+    return (
+      <div className="w-full h-full rounded-full bg-gradient-to-br from-[#075d63] to-teal-500 text-white flex items-center justify-center font-black text-lg shadow-inner">
+        {firstLetter}
+      </div>
+    );
+  }
+
+  return (
+    <Image 
+      src={src} 
+      alt={name} 
+      fill
+      className="rounded-full object-cover border-2 border-white" 
+      referrerPolicy="no-referrer"
+      onError={() => setError(true)}
+    />
+  );
+};
 
 const TestimonialsText: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -124,13 +147,7 @@ const TestimonialsText: React.FC = () => {
                    {/* User Info */}
                    <div className="flex items-center gap-3 mb-4 relative z-10">
                       <div className="relative w-14 h-14 rounded-full p-0.5 bg-gradient-to-br from-gameTeal/20 to-slate-100 shrink-0 overflow-hidden">
-                         <Image 
-                           src={item.image} 
-                           alt={item.name} 
-                           fill
-                           className="rounded-full object-cover border-2 border-white"
-                           referrerPolicy="no-referrer"
-                         />
+                         <TestimonialAvatar src={item.image} name={item.name} />
                       </div>
                       <div>
                          <h4 className="font-extrabold text-slate-900 text-base leading-tight">{item.name}</h4>
