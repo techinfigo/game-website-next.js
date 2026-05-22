@@ -12,36 +12,36 @@ const GBVideos: React.FC = () => {
   const videos = [
     {
       id: 1,
-      title: "The Ultimate Strategy to Crack GATE 2025",
-      subtitle: "Roadmap to AIR 1",
-      thumbnail: "/images/blog/video-thumb-1.png",
-      duration: "45:20",
-      views: "125k",
-      tag: "Must Watch",
+      title: "Crack GATE in First Attempt",
+      subtitle: "Proven Strategy by Gaurav Babu Sir",
+      thumbnail: "https://img.youtube.com/vi/Vv9lARk4vcs/maxresdefault.jpg",
+      duration: "14:15",
+      views: "245k",
+      tag: "GATE Strategy",
       tagColor: "bg-red-50 text-red-600 border-red-100",
-      videoId: "D6HOo41x2Ls" 
+      videoId: "Vv9lARk4vcs" 
     },
     {
       id: 2,
-      title: "5 Mistakes Every Aspirant Makes",
-      subtitle: "Avoid these pitfalls",
-      thumbnail: "/images/blog/video-thumb-2.png",
-      duration: "12:15",
-      views: "89k",
-      tag: "Strategy",
+      title: "How to Convert Units?",
+      subtitle: "Visualized Units & Dimensions Guidance",
+      thumbnail: "https://img.youtube.com/vi/czIYgYQkRFU/maxresdefault.jpg",
+      duration: "1:08:42",
+      views: "195k",
+      tag: "Basic Mechanics",
       tagColor: "bg-amber-50 text-amber-600 border-amber-100",
-      videoId: "Ta7gKIxxya0"
+      videoId: "czIYgYQkRFU"
     },
     {
       id: 3,
-      title: "How to Manage College & GATE Prep?",
-      subtitle: "Time Management Hacks",
-      thumbnail: "/images/blog/video-thumb-3.png",
-      duration: "30:00",
-      views: "200k",
-      tag: "Time Mgmt",
+      title: "How to attempt GATE Test Series",
+      subtitle: "Analyzing Errors & Tracking Score Improvements",
+      thumbnail: "https://img.youtube.com/vi/ggnZchS4AZ4/maxresdefault.jpg",
+      duration: "19:35",
+      views: "135k",
+      tag: "Test Strategy",
       tagColor: "bg-teal-50 text-teal-600 border-teal-100",
-      videoId: "gvK9V0trlaw"
+      videoId: "ggnZchS4AZ4"
     }
   ];
 
