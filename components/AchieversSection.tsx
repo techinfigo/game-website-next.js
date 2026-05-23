@@ -37,14 +37,14 @@ const AchieversSection: React.FC<AchieversSectionProps> = ({ onNavigate }) => {
     {
       id: 1,
       name: "Devansh Bajpai",
-      rank: "AIR 13",
-      exam: "GATE ME",
+      year: "2025",
+     college: "IIT Patna",
       image: "https://img.youtube.com/vi/QZC0IzzoSS0/hqdefault.jpg",
       videoId: "QZC0IzzoSS0"
     },
     {
       id: 2,
-      name: "Rohan Kulkarni",
+      name: "Khusro Sheikh",
       rank: "AIR 4",
       exam: "GATE ME",
       image: "https://img.youtube.com/vi/qzevZxEawpA/hqdefault.jpg",
