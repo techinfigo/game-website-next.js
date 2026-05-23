@@ -80,6 +80,8 @@ const HeaderAvatar = ({ index }: { index: number }) => {
 const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn, openLogin, onNavigate }) => {
   const router = useRouter();
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [statusFilter, setStatusFilter] = useState<'All' | 'Open' | 'Closed'>('All');
 
   const handleNavigate = (page: string) => {
     if (onNavigate) {
@@ -100,45 +102,448 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
   const jobs: Job[] = [
     {
       id: 1,
-      notification: "Maharashtra State Electricity Distribution",
-      eligibility: "BCA,",
-      branches: [],
-      startDate: "January 31, 2025",
-      endDate: "February 28, 2025",
-      status: "Closed",
-      pdfLink: "#"
+      notification: "NTPC Limited",
+      eligibility: "B.Tech/BE",
+      branches: ["CE"],
+      startDate: "15 May 2026",
+      endDate: "29 May 2026",
+      status: "Open",
+      pdfLink: "https://ntpc.co.in/",
+      usefulLinks: "https://ntpc.co.in/",
+      recommendedCourse: "Link"
     },
     {
       id: 2,
-      notification: "National Thermal Power Corporation (NTPC)",
-      eligibility: "B.Tech,",
-      branches: [],
-      startDate: "December 1, 2024",
-      endDate: "January 31, 2025",
-      status: "Yet to start",
-      pdfLink: "#"
+      notification: "Defence Research & Development Laboratory (DRDL) DRDO",
+      eligibility: "BE/B.Tech or ME/M.Tech",
+      branches: ["ME & Other Branches"],
+      startDate: "Interview Dates:\n* Mechanical: 01–03 June 2026\n* Aeronautical/Aerospace: 04 June 2026\n* ECE: 05 June 2026",
+      endDate: "5 June 2026",
+      status: "Open",
+      pdfLink: "https://drdo.gov.in/drdo/en",
+      usefulLinks: "https://drdo.gov.in/drdo/en",
+      recommendedCourse: "Link"
     },
     {
       id: 3,
-      notification: "State Bank of India (SBI)",
-      eligibility: "B.Tech,BCA,BBA,",
-      branches: [],
-      startDate: "January 10, 2025",
-      endDate: "February 7, 2025",
+      notification: "Bihar Police Subordinate Services Commission",
+      eligibility: "Diploma (ECE/ETC/IT/EEE)",
+      branches: ["ECE/ETC/IT/EEE"],
+      startDate: "21 May 2026",
+      endDate: "21 June 2026",
       status: "Open",
-      pdfLink: "#"
+      pdfLink: "http://www.bpssc.bih.nic.in/",
+      usefulLinks: "http://www.bpssc.bih.nic.in/",
+      recommendedCourse: "Link"
     },
     {
       id: 4,
-      notification: "Gas Authority Of India Ltd",
-      eligibility: "BBA,",
-      branches: [],
-      startDate: "January 1, 2025",
-      endDate: "January 31, 2025",
+      notification: "National Highways Authority of India (NHAI)",
+      eligibility: "B.Tech/BE",
+      branches: ["CE"],
+      startDate: "15 May 2026",
+      endDate: "15 June 2026",
       status: "Open",
-      pdfLink: "#"
+      pdfLink: "https://nhai.gov.in/#/",
+      usefulLinks: "https://nhai.gov.in/#/",
+      recommendedCourse: "Link"
+    },
+    {
+      id: 5,
+      notification: "HPCL Rajasthan Refinery Limited (HRRL)",
+      eligibility: "B.Tech/BE",
+      branches: ["ME & Other Branches"],
+      startDate: "14 May 2026",
+      endDate: "3 June 2026",
+      status: "Open",
+      pdfLink: "https://hrrl.in/Hrrl/home.jsp",
+      usefulLinks: "https://hrrl.in/Hrrl/home.jsp",
+      recommendedCourse: "Link"
+    },
+    {
+      id: 6,
+      notification: "Railway Recruitment Board (RRB)",
+      eligibility: "BE/B.Tech/Diploma",
+      branches: ["ME & Other Branches"],
+      startDate: "15 May 2026",
+      endDate: "14 June 2026",
+      status: "Open",
+      pdfLink: "https://www.rrbapply.gov.in/",
+      usefulLinks: "https://www.rrbapply.gov.in/",
+      recommendedCourse: "Link"
+    },
+    {
+      id: 7,
+      notification: "Indian Army",
+      eligibility: "B.Tech/BE",
+      branches: ["ME", "CE & Other"],
+      startDate: "13 May 2026",
+      endDate: "11 June 2026",
+      status: "Open",
+      pdfLink: "https://joinindianarmy.nic.in/index.htm",
+      usefulLinks: "https://joinindianarmy.nic.in/index.htm",
+      recommendedCourse: ""
+    },
+    {
+      id: 8,
+      notification: "North Eastern Electric Power Corporation Limited (NEEPCO)",
+      eligibility: "BE/B.Tech/AIME",
+      branches: ["ME", "CE & EE"],
+      startDate: "14 May 2026",
+      endDate: "3 June 2026",
+      status: "Open",
+      pdfLink: "https://neepco.co.in/",
+      usefulLinks: "https://neepco.co.in/",
+      recommendedCourse: ""
+    },
+    {
+      id: 9,
+      notification: "CHHATTISGARH PUBLIC SERVICE COMMISSION",
+      eligibility: "B.Tech/BE",
+      branches: ["ME", "CE & EE"],
+      startDate: "13 May 2026",
+      endDate: "11 June 2026",
+      status: "Open",
+      pdfLink: "https://psc.cg.gov.in/",
+      usefulLinks: "https://psc.cg.gov.in/",
+      recommendedCourse: ""
+    },
+    {
+      id: 10,
+      notification: "Assam Public Service Commission",
+      eligibility: "Diploma in EE",
+      branches: ["EE"],
+      startDate: "11 May 2026",
+      endDate: "10 June 2026",
+      status: "Open",
+      pdfLink: "https://apscrecruitment.in",
+      usefulLinks: "https://apscrecruitment.in",
+      recommendedCourse: "Link"
+    },
+    {
+      id: 11,
+      notification: "NTPC Limited (Environment)",
+      eligibility: "Degree in Environment",
+      branches: ["CE/Env Engg"],
+      startDate: "8 May 2026",
+      endDate: "22 May 2026",
+      status: "Open",
+      pdfLink: "https://careers.ntpc.co.in",
+      usefulLinks: "https://careers.ntpc.co.in",
+      recommendedCourse: "Link"
+    },
+    {
+      id: 12,
+      notification: "Gujarat Public Service Commission (GPSC)",
+      eligibility: "B.Tech/BE",
+      branches: ["ME & CE"],
+      startDate: "5 May 2026",
+      endDate: "19 May 2026",
+      status: "Closed",
+      pdfLink: "https://gpsc-ojas.gujarat.gov.in",
+      usefulLinks: "https://gpsc-ojas.gujarat.gov.in",
+      recommendedCourse: "Link"
+    },
+    {
+      id: 13,
+      notification: "Coal India Limited (B.Tech)",
+      eligibility: "B.Tech/BE",
+      branches: ["ME", "CE & EE"],
+      startDate: "12 May 2026",
+      endDate: "11 June 2026",
+      status: "Open",
+      pdfLink: "https://www.coalindia.in",
+      usefulLinks: "https://www.coalindia.in",
+      recommendedCourse: ""
+    },
+    {
+      id: 14,
+      notification: "Coal India Limited (Higher Degree)",
+      eligibility: "Higher Degree",
+      branches: ["Mining"],
+      startDate: "8 May 2026",
+      endDate: "7 June 2026",
+      status: "Open",
+      pdfLink: "https://www.coalindia.in",
+      usefulLinks: "https://www.coalindia.in",
+      recommendedCourse: ""
+    },
+    {
+      id: 15,
+      notification: "The Indian Navy",
+      eligibility: "BE/B.Tech or ME/M.Tech",
+      branches: ["CS/CSE/CE/IT/SS"],
+      startDate: "16 May 2026",
+      endDate: "1 June 2026",
+      status: "Open",
+      pdfLink: "https://www.joinindiannavy.gov.in",
+      usefulLinks: "https://www.joinindiannavy.gov.in",
+      recommendedCourse: "Link"
+    },
+    {
+      id: 16,
+      notification: "Rail Land Development Authority (RLDA)",
+      eligibility: "B.Tech/BE",
+      branches: ["CE/EE"],
+      startDate: "2 May 2026",
+      endDate: "22 May 2026",
+      status: "Open",
+      pdfLink: "https://rlda.indianrailways.gov.in",
+      usefulLinks: "https://rlda.indianrailways.gov.in",
+      recommendedCourse: "Link"
+    },
+    {
+      id: 17,
+      notification: "DRDO IRDE",
+      eligibility: "B.Tech/BE",
+      branches: ["ME & Other Branches"],
+      startDate: "Apply within 21 days",
+      endDate: "-",
+      status: "Closed",
+      pdfLink: "https://www.drdo.gov.in",
+      usefulLinks: "https://www.drdo.gov.in",
+      recommendedCourse: "Link"
+    },
+    {
+      id: 18,
+      notification: "Tripura Public Service Commission (TPSC)",
+      eligibility: "B.Tech/BE",
+      branches: ["CS/IT/ECE"],
+      startDate: "12 May 2026",
+      endDate: "5 June 2026",
+      status: "Open",
+      pdfLink: "https://tpsc.tripura.gov.in",
+      usefulLinks: "https://tpsc.tripura.gov.in",
+      recommendedCourse: "Link"
+    },
+    {
+      id: 19,
+      notification: "Krishak Bharati Cooperative Ltd. (KRIBHCO)",
+      eligibility: "B.Tech/BE",
+      branches: ["ME & Other Branches"],
+      startDate: "-",
+      endDate: "21 May 2026",
+      status: "Open",
+      pdfLink: "https://www.kribhco.net",
+      usefulLinks: "https://www.kribhco.net",
+      recommendedCourse: "Link"
+    },
+    {
+      id: 20,
+      notification: "Meghalaya Energy Corporation Limited (MeECL)",
+      eligibility: "B.Tech/BE",
+      branches: ["Electrical / EEE / CSE / IT"],
+      startDate: "22 April 2026",
+      endDate: "15 May 2026",
+      status: "Closed",
+      pdfLink: "https://meecl.nic.in/",
+      usefulLinks: "https://meecl.nic.in/",
+      recommendedCourse: "Link"
+    },
+    {
+      id: 21,
+      notification: "National Highways & Infrastructure Dev Corp (NHIDCL)",
+      eligibility: "B.Tech/BE",
+      branches: ["CE"],
+      startDate: "9 May 2026",
+      endDate: "8 June 2026",
+      status: "Open",
+      pdfLink: "https://www.nhidcl.com/en",
+      usefulLinks: "https://www.nhidcl.com/en",
+      recommendedCourse: "Link"
+    },
+    {
+      id: 22,
+      notification: "Indian Farmers Fertiliser Cooperative (IFFCO)",
+      eligibility: "B.Tech/BE",
+      branches: ["ME", "CE & Other"],
+      startDate: "-",
+      endDate: "30 April 2026",
+      status: "Closed",
+      pdfLink: "https://www.iffco.in/en/corporate",
+      usefulLinks: "https://www.iffco.in/en/corporate",
+      recommendedCourse: ""
+    },
+    {
+      id: 23,
+      notification: "Punjab National Bank (PNB)",
+      eligibility: "B.Tech/BE",
+      branches: ["ME", "CE & EE"],
+      startDate: "21 April 2026",
+      endDate: "5 May 2026",
+      status: "Closed",
+      pdfLink: "https://pnb.bank.in/hi/",
+      usefulLinks: "https://pnb.bank.in/hi/",
+      recommendedCourse: ""
+    },
+    {
+      id: 24,
+      notification: "Indo-Tibetan Border Police (ITBP)",
+      eligibility: "B.Tech/BE",
+      branches: ["CE"],
+      startDate: "21 April 2026",
+      endDate: "20 May 2026",
+      status: "Open",
+      pdfLink: "https://www.itbpolice.nic.in/",
+      usefulLinks: "https://www.itbpolice.nic.in/",
+      recommendedCourse: "Link"
+    },
+    {
+      id: 25,
+      notification: "National Thermal Power Corporation (NTPC)",
+      eligibility: "B.Tech/BE",
+      branches: ["ME & EE"],
+      startDate: "23 April 2026",
+      endDate: "4 May 2026",
+      status: "Closed",
+      pdfLink: "https://www.ntpc.co.in/",
+      usefulLinks: "https://www.ntpc.co.in/",
+      recommendedCourse: "Link"
+    },
+    {
+      id: 26,
+      notification: "Madhya Pradesh Pollution Control Board (MPPCB)",
+      eligibility: "B.Tech/BE",
+      branches: ["CE/Environmental Engg."],
+      startDate: "10 April 2026",
+      endDate: "30 April 2026",
+      status: "Closed",
+      pdfLink: "https://www.mppcb.mp.gov.in/",
+      usefulLinks: "https://www.mppcb.mp.gov.in/",
+      recommendedCourse: "Link"
+    },
+    {
+      id: 27,
+      notification: "Power Grid Corporation of India Limited",
+      eligibility: "Diploma in CE & EE",
+      branches: ["CE/EE"],
+      startDate: "20 April 2026",
+      endDate: "11 May 2026",
+      status: "Closed",
+      pdfLink: "https://www.powergrid.in/en/job-opportunities",
+      usefulLinks: "https://www.powergrid.in/en/job-opportunities",
+      recommendedCourse: "Link"
+    },
+    {
+      id: 28,
+      notification: "New Mangalore Port Authority (NMPA)",
+      eligibility: "B.Tech/BE",
+      branches: ["ME", "CE & EE"],
+      startDate: "14 April 2026",
+      endDate: "4 May 2026",
+      status: "Closed",
+      pdfLink: "https://newmangaloreport.gov.in/index.php/vacancy",
+      usefulLinks: "https://newmangaloreport.gov.in/index.php/vacancy",
+      recommendedCourse: ""
+    },
+    {
+      id: 29,
+      notification: "U.P. Co-operative Institutional Service Board, Lucknow",
+      eligibility: "B.Tech/BE",
+      branches: ["ME & Other Branches"],
+      startDate: "25 April 2026",
+      endDate: "15 May 2026",
+      status: "Closed",
+      pdfLink: "https://www.upcisb.upsdc.gov.in/",
+      usefulLinks: "https://www.upcisb.upsdc.gov.in/",
+      recommendedCourse: "Link"
+    },
+    {
+      id: 30,
+      notification: "Punjab State Power Corporation (PSPCL)",
+      eligibility: "BE/B.Tech/Diploma",
+      branches: ["EE / EEE"],
+      startDate: "20 April 2026",
+      endDate: "10 May 2026",
+      status: "Closed",
+      pdfLink: "https://www.pspcl.in/Recruitment",
+      usefulLinks: "https://www.pspcl.in/Recruitment",
+      recommendedCourse: "Link"
+    },
+    {
+      id: 31,
+      notification: "SSB Sub Inspector",
+      eligibility: "B.Tech/BE",
+      branches: ["CE & Other Branches"],
+      startDate: "21 March 2026",
+      endDate: "20 April 2026",
+      status: "Closed",
+      pdfLink: "https://recruitment.ssb.gov.in",
+      usefulLinks: "https://recruitment.ssb.gov.in",
+      recommendedCourse: "Link"
+    },
+    {
+      id: 32,
+      notification: "South Eastern Coalfields Limited (SECL)",
+      eligibility: "BE/B.Tech/Diploma",
+      branches: ["EE"],
+      startDate: "15 April 2026",
+      endDate: "14 May 2026",
+      status: "Closed",
+      pdfLink: "https://secl-cil.in/jobs_secl",
+      usefulLinks: "https://secl-cil.in/jobs_secl",
+      recommendedCourse: "Link"
+    },
+    {
+      id: 33,
+      notification: "Nuclear Power Corporation of India Limited",
+      eligibility: "B.E/B.Tech + GATE Score Card",
+      branches: ["EC/EE/CS"],
+      startDate: "10 April 2026",
+      endDate: "30 April 2026",
+      status: "Closed",
+      pdfLink: "https://npcilcareers.co.in",
+      usefulLinks: "https://npcilcareers.co.in",
+      recommendedCourse: "Link"
+    },
+    {
+      id: 34,
+      notification: "Northern Coalfields Limited",
+      eligibility: "Diploma CE",
+      branches: ["CE"],
+      startDate: "9 April 2026",
+      endDate: "1 May 2026",
+      status: "Closed",
+      pdfLink: "https://www.nclcil.in/data-listing/pages/recruitment",
+      usefulLinks: "https://www.nclcil.in/data-listing/pages/recruitment",
+      recommendedCourse: "Link"
+    },
+    {
+      id: 35,
+      notification: "M.P Pollution Control Board",
+      eligibility: "B.Tech/BE",
+      branches: ["CE & Other Branches"],
+      startDate: "10 April 2026",
+      endDate: "30 April 2026",
+      status: "Closed",
+      pdfLink: "https://www.mppcb.mp.gov.in/",
+      usefulLinks: "https://www.mppcb.mp.gov.in/",
+      recommendedCourse: "Link"
+    },
+    {
+      id: 36,
+      notification: "VRDE, DRDO",
+      eligibility: "B.E/B.Tech + GATE Score Card",
+      branches: ["ME & EE"],
+      startDate: "-",
+      endDate: "30 April 2026",
+      status: "Closed",
+      pdfLink: "https://www.drdo.gov.in/drdo/labs-and-establishments/vehicles-research-and-development-establishment-vrde",
+      usefulLinks: "https://www.drdo.gov.in/drdo/labs-and-establishments/vehicles-research-and-development-establishment-vrde",
+      recommendedCourse: "View Courses Link"
     }
   ];
+
+  // Client-side search and status filter engine for seamless lookups
+  const filteredJobs = jobs.filter(job => {
+    const sQuery = searchQuery.trim().toLowerCase();
+    const matchesSearch = !sQuery || 
+      job.notification.toLowerCase().includes(sQuery) || 
+      job.eligibility.toLowerCase().includes(sQuery) ||
+      job.branches.some(b => b.toLowerCase().includes(sQuery));
+    const matchesStatus = statusFilter === 'All' || job.status === statusFilter;
+    return matchesSearch && matchesStatus;
+  });
 
   const categories = [
     { name: "GATE", icon: GraduationCap, color: "text-blue-600", bg: "bg-blue-50", desc: "Graduate Aptitude Test in Engineering" },
@@ -820,67 +1225,258 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
                   </h2>
                   <p className="text-slate-500 font-bold uppercase tracking-widest text-xs">Stay ahead in the race with real-time career updates</p>
                </div>
-               <div className="flex items-center gap-4 bg-slate-50 p-2 rounded-2xl border border-slate-200 w-full md:w-auto">
+               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 bg-slate-50 p-2 rounded-2xl border border-slate-200 w-full md:w-auto">
                   <div className="relative flex-1 md:w-64">
                      <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-                     <input type="text" placeholder="Search Org or Post..." className="w-full bg-white border border-slate-200 rounded-xl px-10 py-2.5 text-sm focus:outline-none focus:border-[#075d63] transition-all" />
+                     <input 
+                        type="text" 
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        placeholder="Search Org, Post or Branch..." 
+                        className="w-full bg-white border border-slate-200 rounded-xl px-10 py-2.5 text-sm focus:outline-none focus:border-[#075d63] transition-all" 
+                     />
                   </div>
-                  <button className="bg-white border border-slate-200 p-2.5 rounded-xl text-slate-600 hover:bg-[#075d63] hover:text-white transition-all shadow-sm">
-                     <Filter size={20} />
-                  </button>
+                  <div className="flex items-center gap-1 bg-white border border-slate-200 p-1 rounded-xl">
+                     {(['All', 'Open', 'Closed'] as const).map((filter) => (
+                        <button
+                           key={filter}
+                           onClick={() => setStatusFilter(filter)}
+                           className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all ${
+                              statusFilter === filter
+                                 ? 'bg-[#075d63] text-white shadow-md'
+                                 : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                           }`}
+                        >
+                           {filter}
+                        </button>
+                     ))}
+                  </div>
                </div>
             </div>
 
             <div className="bg-white rounded-[2.5rem] shadow-2xl border border-slate-200 overflow-hidden relative">
-               {/* Container with fixed height roughly for 10 rows + header */}
-               <div className="overflow-x-auto h-[800px] no-scrollbar">
-                  <table className="w-full text-left border-collapse min-w-[1200px]">
+               
+               {/* 🖥️ DESKTOP VIEW: Sleek 5-Column Table (No Horizontal Scroll) */}
+               <div className="hidden lg:block overflow-y-auto h-[800px] no-scrollbar">
+                  <table className="w-full text-left border-collapse table-fixed">
                      <thead className="sticky top-0 z-30">
                         <tr className="bg-[#fdfbf6] text-slate-900 text-[13px] font-bold border-b-2 border-gameGold">
-                           <th className="p-4 border-r border-slate-200 w-[5%] text-center">Sr. No</th>
-                           <th className="p-4 border-r border-slate-200 w-[20%]">Job Notification</th>
-                           <th className="p-4 border-r border-slate-200 w-[10%]">Eligbility</th>
-                           <th className="p-4 border-r border-slate-200 w-[10%]">Branches</th>
-                           <th className="p-4 border-r border-slate-200 w-[10%]">Start Date</th>
-                           <th className="p-4 border-r border-slate-200 w-[10%]">End Date</th>
-                           <th className="p-4 border-r border-slate-200 w-[10%]">Status</th>
-                           <th className="p-4 border-r border-slate-200 w-[8%] text-center">Detailed Pdf</th>
-                           <th className="p-4 border-r border-slate-200 w-[8%] text-center">Usefull links</th>
-                           <th className="p-4 w-[9%] text-center">Recommended Course</th>
+                           <th className="p-4 border-r border-slate-200 w-[12%] text-center">Sr. No & Status</th>
+                           <th className="p-4 border-r border-slate-200 w-[38%]">Job Announcement</th>
+                           <th className="p-4 border-r border-slate-200 w-[20%]">Important Dates</th>
+                           <th className="p-4 border-r border-slate-200 w-[16%] text-center font-bold">Official Links</th>
+                           <th className="p-4 w-[14%] text-center font-bold">Recommended Course</th>
                         </tr>
                      </thead>
                      <tbody className="text-[14px] text-slate-700 divide-y divide-slate-100 relative bg-white">
-                        {jobs.map((job, idx) => (
+                        {filteredJobs.map((job, idx) => (
                            <tr 
                              key={job.id} 
                              className={`transition-all duration-300 border-b border-slate-100 ${!isLoggedIn && idx > 2 ? 'blur-[4px] opacity-30 select-none pointer-events-none' : 'hover:bg-slate-50/80'}`}
                            >
-                              <td className="p-4 border-r border-slate-100 text-center font-medium text-slate-500">{job.id}</td>
-                              <td className="p-4 border-r border-slate-100 font-medium text-slate-700">{job.notification}</td>
-                              <td className="p-4 border-r border-slate-100 font-medium text-slate-600">{job.eligibility}</td>
+                              {/* Sr No & Status Badge */}
                               <td className="p-4 border-r border-slate-100 text-center">
-                                 {job.branches.length > 0 ? job.branches.join(", ") : ""}
-                              </td>
-                              <td className="p-4 border-r border-slate-100 text-slate-600 font-medium">{job.startDate}</td>
-                              <td className="p-4 border-r border-slate-100 text-slate-600 font-medium">{job.endDate}</td>
-                              <td className="p-4 border-r border-slate-100">
-                                 <div className="flex items-center gap-2">
-                                    <span className={`w-2 h-2 rounded-full ${job.status === 'Closed' ? 'bg-red-500' : job.status === 'Yet to start' ? 'bg-yellow-500' : 'bg-green-500'}`}></span>
-                                    <span className="text-[13px] font-medium text-slate-700">{job.status}</span>
+                                 <div className="flex flex-col items-center justify-center gap-1.5">
+                                    <span className="font-bold text-slate-400 text-sm">#{String(job.id).padStart(2, '0')}</span>
+                                    <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-black ${
+                                       job.status === 'Closed' 
+                                          ? 'bg-rose-50 text-rose-600 border border-rose-100' 
+                                          : 'bg-emerald-50 text-emerald-600 border border-emerald-100'
+                                    }`}>
+                                       <span className={`w-1.5 h-1.5 rounded-full ${job.status === 'Closed' ? 'bg-rose-500 animate-pulse' : 'bg-emerald-500 animate-bounce'}`}></span>
+                                       {job.status}
+                                    </span>
                                  </div>
                               </td>
-                              <td className="p-4 border-r border-slate-100 text-center">
-                                 <button className="text-red-500 hover:scale-110 transition-transform inline-flex justify-center">
-                                    <FileText size={18} />
-                                 </button>
+
+                              {/* Job Details (Title & Badges) */}
+                              <td className="p-4 border-r border-slate-100">
+                                 <div className="flex flex-col gap-2">
+                                    <div className="font-extrabold text-slate-800 leading-tight text-sm">
+                                       {job.notification}
+                                    </div>
+                                    <div className="flex flex-wrap gap-1.5 items-center mt-1">
+                                       {job.eligibility && (
+                                          <span className="text-[10px] font-bold bg-[#075d63]/5 text-[#075d63] px-2 py-0.5 rounded-md border border-[#075d63]/10">
+                                             {job.eligibility}
+                                          </span>
+                                       )}
+                                       {job.branches && job.branches.map((branch, bIdx) => (
+                                          <span key={bIdx} className="text-[10px] font-bold bg-amber-50 text-amber-700 px-2 py-0.5 rounded-md border border-amber-200">
+                                             {branch}
+                                          </span>
+                                       ))}
+                                    </div>
+                                 </div>
                               </td>
-                              <td className="p-4 border-r border-slate-100 text-center"></td>
-                              <td className="p-4 text-center"></td>
-                           </tr>
-                        ))}
-                     </tbody>
-                  </table>
-               </div>
+
+                              {/* Dates Stack */}
+                              <td className="p-4 border-r border-slate-100">
+                                 <div className="flex flex-col gap-1 text-[12px] font-medium text-slate-600">
+                                    <div className="flex items-start gap-1">
+                                       <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider shrink-0 mt-0.5">Start:</span>
+                                       <span className="font-bold text-slate-700 whitespace-pre-line leading-tight">{job.startDate}</span>
+                                     </div>
+                                     <div className="flex items-center gap-1 border-t border-dashed border-slate-100 pt-1">
+                                        <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider shrink-0">End:</span>
+                                        <span className="font-black text-rose-600 whitespace-nowrap">{job.endDate}</span>
+                                     </div>
+                                  </div>
+                               </td>
+
+                               {/* Quick Action Buttons */}
+                               <td className="p-4 border-r border-slate-100 text-center">
+                                  <div className="flex flex-row items-center justify-center gap-1.5">
+                                     {job.pdfLink ? (
+                                        <a 
+                                           href={job.pdfLink} 
+                                           target="_blank" 
+                                           rel="noopener noreferrer" 
+                                           className="inline-flex items-center justify-center gap-1 px-2.5 py-1.5 rounded-lg text-[11px] font-black text-rose-700 bg-rose-50 border border-rose-100 hover:bg-rose-100 hover:scale-105 active:scale-95 transition-all shadow-sm"
+                                           title="View PDF Document"
+                                        >
+                                           <FileText size={13} />
+                                           <span>PDF</span>
+                                        </a>
+                                     ) : (
+                                        <span className="text-slate-300">-</span>
+                                     )}
+
+                                     {job.usefulLinks ? (
+                                        <a 
+                                           href={job.usefulLinks} 
+                                           target="_blank" 
+                                           rel="noopener noreferrer" 
+                                           className="inline-flex items-center justify-center gap-1 px-2.5 py-1.5 rounded-lg text-[11px] font-black text-[#075d63] bg-[#075d63]/5 border border-[#075d63]/10 hover:bg-[#075d63]/10 hover:scale-105 active:scale-95 transition-all shadow-sm"
+                                           title="Official Website / Apply Link"
+                                        >
+                                           <span>Apply</span> <ExternalLinkIcon size={11} />
+                                        </a>
+                                     ) : (
+                                        <span className="text-slate-300">-</span>
+                                     )}
+                                  </div>
+                               </td>
+
+                               {/* recommendedCourse Link */}
+                               <td className="p-4 text-center">
+                                  {job.recommendedCourse ? (
+                                     <a 
+                                        href={job.recommendedCourse.startsWith('http') ? job.recommendedCourse : 'https://clppenny.page.link/cTBm'}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center justify-center gap-1 px-3 py-1.5 rounded-lg text-[11px] font-black text-amber-900 bg-[#fdfbf6] border border-amber-300 hover:bg-amber-100 hover:scale-105 active:scale-95 transition-all shadow-sm whitespace-nowrap"
+                                     >
+                                        <span>Start Prep Now</span>
+                                     </a>
+                                  ) : (
+                                     <span className="text-slate-300">-</span>
+                                  )}
+                               </td>
+                            </tr>
+                         ))}
+                      </tbody>
+                   </table>
+                </div>
+
+                {/* 📱 MOBILE & TABLET VIEW: Staggered Dynamic Cards (No Horizontal Scroll) */}
+                <div className="block lg:hidden overflow-y-auto h-[800px] no-scrollbar p-4 md:p-6 space-y-4 bg-slate-50/10">
+                   {filteredJobs.map((job, idx) => (
+                      <div 
+                         key={job.id} 
+                         className={`bg-white border border-slate-200/80 rounded-2xl p-5 hover:border-slate-300 transition-all duration-300 shadow-sm flex flex-col gap-3 relative ${
+                            !isLoggedIn && idx > 2 ? 'blur-[4px] opacity-30 select-none pointer-events-none' : ''
+                         }`}
+                      >
+                         {/* Header metadata row */}
+                         <div className="flex items-center justify-between">
+                            <span className="text-xs font-black text-slate-400 bg-slate-100 px-2.5 py-1 rounded-md">
+                               #{String(job.id).padStart(2, '0')}
+                            </span>
+                            <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-black ${
+                               job.status === 'Closed' 
+                                  ? 'bg-rose-50 text-rose-600 border border-rose-100' 
+                                  : 'bg-emerald-50 text-emerald-600 border border-emerald-100'
+                            }`}>
+                               <span className={`w-1.5 h-1.5 rounded-full ${job.status === 'Closed' ? 'bg-rose-500 animate-pulse' : 'bg-emerald-500 animate-bounce'}`}></span>
+                               {job.status}
+                            </span>
+                         </div>
+
+                         {/* Title and Organization */}
+                         <div>
+                            <h4 className="font-extrabold text-slate-950 text-base leading-snug">
+                               {job.notification}
+                            </h4>
+                            <div className="flex flex-wrap gap-1.5 mt-2">
+                               {job.eligibility && (
+                                  <span className="text-[10px] font-bold bg-[#075d63]/5 text-[#075d63] px-2.5 py-0.5 rounded-lg border border-[#075d63]/10">
+                                     {job.eligibility}
+                                  </span>
+                               )}
+                               {job.branches && job.branches.map((branch, bIdx) => (
+                                  <span key={bIdx} className="text-[10px] font-bold bg-amber-50 text-amber-700 px-2.5 py-0.5 rounded-lg border border-amber-200">
+                                     {branch}
+                                  </span>
+                               ))}
+                            </div>
+                         </div>
+
+                         {/* Dates layout */}
+                         <div className="bg-slate-50 rounded-xl p-3 grid grid-cols-2 gap-3 text-xs border border-slate-100 mt-1">
+                            <div className="flex flex-col">
+                               <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider">Start Date</span>
+                               <span className="font-bold text-slate-700 mt-0.5 whitespace-pre-line leading-tight">{job.startDate}</span>
+                            </div>
+                            <div className="flex flex-col border-l border-slate-200 pl-3">
+                               <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider">End Date</span>
+                               <span className="font-extrabold text-rose-600 mt-0.5 whitespace-nowrap">{job.endDate}</span>
+                            </div>
+                         </div>
+
+                         {/* Adaptive layout for links and recommended course */}
+                         <div className="flex flex-wrap sm:flex-nowrap gap-2 pt-2 border-t border-slate-100 mt-1">
+                            {job.pdfLink ? (
+                               <a 
+                                  href={job.pdfLink} 
+                                  target="_blank" 
+                                  rel="noopener noreferrer" 
+                                  className="flex-1 min-w-[70px] inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl text-xs font-black text-rose-700 bg-rose-50 border border-rose-100 hover:bg-rose-100 transition-all shadow-sm"
+                               >
+                                  <FileText size={14} />
+                                  <span>PDF</span>
+                               </a>
+                            ) : (
+                               <span className="text-slate-300 text-xs py-2">-</span>
+                            )}
+
+                            {job.usefulLinks ? (
+                               <a 
+                                  href={job.usefulLinks} 
+                                  target="_blank" 
+                                  rel="noopener noreferrer" 
+                                  className="flex-1 min-w-[70px] inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl text-xs font-black text-[#075d63] bg-[#075d63]/5 border border-[#075d63]/10 hover:bg-[#075d63]/10 transition-all shadow-sm"
+                               >
+                                  <span>Apply</span> <ExternalLinkIcon size={12} />
+                               </a>
+                            ) : (
+                               <span className="text-slate-300 text-xs py-2">-</span>
+                            )}
+
+                            {job.recommendedCourse && (
+                               <a 
+                                  href={job.recommendedCourse.startsWith('http') ? job.recommendedCourse : 'https://clppenny.page.link/cTBm'}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="w-full sm:w-auto inline-flex items-center justify-center gap-1 py-2 px-3 rounded-xl text-xs font-black text-amber-900 bg-[#fdfbf6] border border-amber-300 hover:bg-amber-100 transition-all shadow-sm text-center"
+                               >
+                                  <span>Start Prep Now</span>
+                               </a>
+                            )}
+                         </div>
+                      </div>
+                   ))}
+                </div>
 
                {/* LOGIN GRADIENT OVERLAY - Adjusted to start after row 3 and cover full scroll area */}
                {!isLoggedIn && (
