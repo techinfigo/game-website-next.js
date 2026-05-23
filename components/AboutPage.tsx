@@ -237,7 +237,7 @@ const AboutPage: React.FC = () => {
                <motion.div {...fadeInUp} className="lg:w-[60%] flex flex-col justify-center">
                   <div className="mb-10"><h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter mb-4">About GAME</h2><div className="w-24 h-2.5 bg-gameTeal rounded-full"></div></div>
                   <div className="flex flex-col gap-8 text-lg lg:text-xl text-slate-600 leading-[1.8] font-medium">
-                     <p>It all started with a vision to redefine the way students prepare for the biggest exams of their careers. <span className="font-black text-slate-900 underline decoration-gameGold/40 decoration-4 underline-offset-4">Gaurav Babu Sir</span>, an experienced mentor and educator, noticed a gap in how competitive exams were approached. He saw students struggling, not just with concepts, but with motivation, direction, and mentorship. With over <span className="font-black text-gameTeal">13+ years of teaching experience</span>, he knew there had to be a better way.</p>
+                     <p>It all started with a vision to redefine the way students prepare for the biggest exams of their careers. <span className="font-black text-slate-900 underline decoration-gameGold/40 decoration-4 underline-offset-4">Gaurav Babu Sir</span>, an experienced mentor and educator, noticed a gap in how competitive exams were approached. He saw students struggling, not just with concepts, but with motivation, direction, and mentorship. With over <span className="font-black text-gameTeal">14+ years of teaching experience</span>, he knew there had to be a better way.</p>
                      <p>Thus, Gaurav's Academy for Mentorship & Education (GAME Academy) was born. GAME Academy wasn’t just created to teach, it was created to inspire, to guide, and to transform the lives of every student who walked through its doors. From humble beginnings, our academy has grown into a beacon of hope and success for thousands of Mechanical and Civil Engineering aspirants across India.</p>
                      <p className="bg-slate-50 p-8 rounded-[2.5rem] border-l-8 border-gameGold font-bold text-slate-800 shadow-sm italic">
                         Our commitment to quality education and individual attention has helped us build a strong reputation in the industry. We have a track record of producing top-ranking students who have gone on to achieve great success in their careers. We are proud to be a part of their success stories.
@@ -261,7 +261,7 @@ const AboutPage: React.FC = () => {
                           <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
                           <div className="absolute -top-24 -right-24 w-64 h-64 bg-gameTeal/10 rounded-full blur-[80px]"></div>
                           <div className="relative z-10 space-y-12">
-                              <div><div className="text-gameGold font-black text-5xl mb-2 tracking-tighter">13+ Years</div><p className="text-white font-black text-[10px] uppercase tracking-[0.4em] opacity-50">Teaching Experience</p></div>
+                              <div><div className="text-gameGold font-black text-5xl mb-2 tracking-tighter">14+ Years</div><p className="text-white font-black text-[10px] uppercase tracking-[0.4em] opacity-50">Teaching Experience</p></div>
                               <div className="space-y-4"><div className="h-px bg-white/10 w-full"></div><h4 className="text-gameTeal font-black text-2xl uppercase tracking-widest leading-none">GAME Academy</h4><p className="text-slate-400 font-bold text-sm leading-relaxed">To inspire, to guide, and to transform.</p></div>
                               <div><div className="flex items-center gap-2 mb-2"><div className="w-6 h-6 rounded-lg bg-gameGold flex items-center justify-center text-black"><Trophy size={14} /></div><span className="text-white font-black text-[10px] uppercase tracking-[0.25em]">Qualified Engineers</span></div><p className="text-slate-500 text-xs font-medium">Mechanical & Civil Domains</p></div>
                           </div>
@@ -713,7 +713,7 @@ const AboutPage: React.FC = () => {
                      Visionary Leadership <span className="text-gameTeal">& Impact</span>
                   </h2>
                   <p className="text-slate-400 text-[clamp(0.875rem,1.2vw,1.125rem)] font-medium leading-relaxed opacity-80 max-w-3xl mx-auto">
-                     Gaurav Babu Sir, teaching for 13+ years, is the visionary founder of GAME Academy. Renowned for his visualized teaching protocols, he has mentored over one lakh students. Under his leadership, GAME was established in 2021 to provide elite coaching for engineering aspirants across the nation.
+                     Gaurav Babu Sir, teaching for 14+ years, is the visionary founder of GAME Academy. Renowned for his visualized teaching protocols, he has mentored over one lakh students. Under his leadership, GAME was established in 2021 to provide elite coaching for engineering aspirants across the nation.
                   </p>
                </motion.div>
             </div>
