@@ -37,8 +37,8 @@ const AchieversSection: React.FC<AchieversSectionProps> = ({ onNavigate }) => {
     {
       id: 1,
       name: "Devansh Bajpai",
-      year: "2025",
-     college: "IIT Patna",
+     rank: "2025",
+     exam: "IIT Patna",
       image: "https://img.youtube.com/vi/QZC0IzzoSS0/hqdefault.jpg",
       videoId: "QZC0IzzoSS0"
     },
