@@ -22,7 +22,7 @@ const ReasonsSection: React.FC = () => {
     {
       id: "01",
       title: "The Innovator - Gaurav Babu Sir",
-      desc: "A GATE & ESE expert with over 13 years of experience in the Mechanical and Civil domains, he has mentored 1 lakh+ students to successfully crack top engineering exams nationwide.",
+      desc: "A GATE & ESE expert with over 14 years of experience in the Mechanical and Civil domains, he has mentored 1 lakh+ students to successfully crack top engineering exams nationwide.",
       icon: Lightbulb,
       color: "bg-[#021f21]", // Darkest
     },
