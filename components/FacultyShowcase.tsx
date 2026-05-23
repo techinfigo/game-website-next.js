@@ -36,7 +36,7 @@ const FacultyShowcase: React.FC = () => {
                 </h2>
                 
                 <p className="text-sm md:text-base leading-relaxed mb-4 text-slate-600">
-                   <strong className="text-slate-900">Gaurav Babu Sir</strong>, a seasoned Mechanical & Civil Expert with <span className="text-gameGoldDark font-black">13+ Years of experience</span> in teaching, has successfully cracked exams like GATE, IOCL, BPCL, and Ministry of Defence.
+                   <strong className="text-slate-900">Gaurav Babu Sir</strong>, a seasoned Mechanical & Civil Expert with <span className="text-gameGoldDark font-black">14+ Years of experience</span> in teaching, has successfully cracked exams like GATE, IOCL, BPCL, and Ministry of Defence.
                 </p>
 
                 <div className="space-y-3 mb-6">
