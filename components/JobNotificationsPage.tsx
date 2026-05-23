@@ -33,6 +33,18 @@ interface JobNotificationsPageProps {
   onNavigate?: (page: string) => void;
 }
 
+// ==============================================================
+// 🌟 EASY IMAGES CUSTOMIZATION 🌟
+// Change any of the paths below to update the avatars on the page!
+// You can use a local path (like "/avatar-1.png") or any web link.
+// ==============================================================
+const AVATAR_IMAGES = [
+  '/avatar-1.png', // Avatar 1
+  '/avatar-2.png', // Avatar 2
+  '/avatar-3.png', // Avatar 3
+  '/avatar-4.png', // Avatar 4
+];
+
 const HeaderAvatar = ({ index }: { index: number }) => {
   const [error, setError] = useState(false);
   const fallbacks = [
@@ -42,12 +54,13 @@ const HeaderAvatar = ({ index }: { index: number }) => {
     { letter: 'P', bg: 'from-fuchsia-400 to-pink-600' },
   ];
   const item = fallbacks[(index - 1) % fallbacks.length];
+  const avatarSrc = AVATAR_IMAGES[(index - 1) % AVATAR_IMAGES.length];
 
   return (
-    <div className="relative w-10 h-10 rounded-full border-2 border-[#075d63] bg-slate-205 overflow-hidden shadow-lg flex items-center justify-center shrink-0">
-      {!error ? (
+    <div className="relative w-10 h-10 rounded-full border-2 border-[#075d63] bg-slate-200 overflow-hidden shadow-lg flex items-center justify-center shrink-0">
+      {!error && avatarSrc ? (
         <Image 
-          src={`/avatar-${index}.png`} 
+          src={avatarSrc} 
           alt={`User Avatar ${index}`} 
           fill
           unoptimized
