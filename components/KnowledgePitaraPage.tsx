@@ -4,6 +4,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useAuth } from '@/providers/AuthProvider';
 import { 
   Play, BookOpen, Download, Video, FileText, 
   PenTool, Star, Crown, CheckCircle2, Lock, 
@@ -34,6 +35,7 @@ interface PaidResource extends BaseResource {
 type Resource = FreeResource | PaidResource;
 
 const KnowledgePitaraPage: React.FC = () => {
+  const { isLoggedIn, openLogin } = useAuth();
   const [activeTab, setActiveTab] = useState<'all' | 'free' | 'paid'>('all');
 
   useEffect(() => {
@@ -297,15 +299,15 @@ const KnowledgePitaraPage: React.FC = () => {
                                  <span className="text-xs text-slate-400 font-bold line-through">Rs. {parseInt(item.price.replace(/[^0-9]/g, '')) * 1.5}</span>
                                  <span className="text-xl font-black text-slate-900">{item.price}</span>
                               </div>
-                              <button className="bg-gameBlack text-white px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-[#f2c537] hover:text-black transition-colors flex items-center gap-2 shadow-lg">
+                              <button onClick={() => { if (!isLoggedIn) { openLogin(); } }} className="bg-gameBlack text-white px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-[#f2c537] hover:text-black transition-colors flex items-center gap-2 shadow-lg">
                                  Unlock <Lock size={14} />
                               </button>
                            </>
                         ) : (
                            <>
                               <span className="text-sm font-bold text-[#075d63] flex items-center gap-1"><Sparkles size={12} /> Free Access</span>
-                              <button className="bg-slate-100 text-slate-900 px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-[#075d63] hover:text-white transition-colors flex items-center gap-2 group/btn">
-                                 {item.action} <ArrowRight size={14} className="group-hover/btn:translate-x-0.5 transition-transform" />
+                              <button onClick={() => { if (!isLoggedIn) { openLogin(); } else { window.open("https://docs.google.com/spreadsheets/d/1xi1kyaIeNijUVVmLWXl-rzwaEUu5V8GrknNFtjOWP5s/edit?usp=sharing", "_blank"); } }} className="bg-slate-100 text-slate-900 px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-[#075d63] hover:text-white transition-colors flex items-center gap-2 group/btn cursor-pointer">
+                                 {isLoggedIn ? item.action : "LOGIN TO ACCESS"} <ArrowRight size={14} className="group-hover/btn:translate-x-0.5 transition-transform" />
                               </button>
                            </>
                         )}
