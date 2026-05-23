@@ -50,7 +50,7 @@ const FreeStudyMaterial: React.FC = () => {
       <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
 
-           {/* LEFT CONTENT: Visual Anchor */}
+           {/* LEFT CONTENT: Visual Anchor - REDUCED HEIGHT */}
            <motion.div
              className="lg:w-[40%] relative flex justify-center lg:justify-start"
              initial={{ opacity: 0, x: -30 }}
@@ -84,7 +84,7 @@ const FreeStudyMaterial: React.FC = () => {
               </div>
            </motion.div>
 
-           {/* RIGHT CONTENT: Information Area */}
+           {/* RIGHT CONTENT: Information Area - TIGHTENED */}
            <div className="lg:w-[60%] flex flex-col justify-center py-2">
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
@@ -104,7 +104,7 @@ const FreeStudyMaterial: React.FC = () => {
                     Unlock the "Knowledge Pitara"—our curated vault of visual hacks, and resources designed for toppers.
                  </p>
 
-                 {/* Optimized Feature Grid */}
+                 {/* Optimized Feature Grid - COMPACT */}
                  <div className="grid grid-cols-1 gap-2 mb-4">
                     {features.map((item, i) => (
                        <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-white border border-slate-100 hover:border-gameTeal/30 hover:shadow-lg transition-all group">
@@ -119,10 +119,10 @@ const FreeStudyMaterial: React.FC = () => {
                     ))}
                  </div>
 
-                 {/* Balanced CTA Area */}
+                 {/* Balanced CTA Area - COMPACT */}
                  <div className="flex flex-col sm:flex-row items-center gap-6 pt-2">
                     <a 
-                       href={isLoggedIn ? "https://docs.google.com/spreadsheets/d/1xi1kyaIeNijUVVmLWXl-rzwaEUu5V8GrknNFtjOWP5s/edit?usp=sharing" : undefined}
+                       href={isLoggedIn ? "https://docs.google.com/spreadsheets/d/1xi1kyaIeNijUVVmLWXl-rzwaEUu5V8GrknNFtjOWP5s/edit?usp=sharing" : "#"}
                        onClick={handleAccess}
                        target={isLoggedIn ? "_blank" : undefined}
                        rel="noopener noreferrer"
@@ -146,7 +146,7 @@ const FreeStudyMaterial: React.FC = () => {
                     </div>
                  </div>
 
-                 {/* Tags */}
+                 {/* Compact Tag Row */}
                  <div className="flex flex-wrap gap-1.5 mt-4 pt-4 border-t border-slate-100">
                     {['FREE TESTS', 'PYQs', 'FORMULA SHEETS', 'NOTES'].map((tag, i) => (
                        <span key={i} className="px-2 py-1 bg-slate-200/50 text-[8px] font-black text-slate-500 uppercase rounded-md hover:bg-gameTeal hover:text-white transition-colors cursor-default">
