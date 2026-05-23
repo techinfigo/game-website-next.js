@@ -33,22 +33,32 @@ interface JobNotificationsPageProps {
   onNavigate?: (page: string) => void;
 }
 
-const AvatarWithFallback = ({ index, initial, bgClass }: { index: number; initial: string; bgClass: string }) => {
-  const [imgError, setImgError] = useState(false);
-  const src = `/images/achievers/avatar-${index}.png`;
+const HeaderAvatar = ({ index }: { index: number }) => {
+  const [error, setError] = useState(false);
+  const fallbacks = [
+    { letter: 'A', bg: 'from-amber-400 to-orange-500' },
+    { letter: 'S', bg: 'from-teal-400 to-[#075d63]' },
+    { letter: 'K', bg: 'from-blue-400 to-indigo-600' },
+    { letter: 'P', bg: 'from-fuchsia-400 to-pink-600' },
+  ];
+  const item = fallbacks[(index - 1) % fallbacks.length];
 
   return (
-    <div className={`relative w-10 h-10 rounded-full border-2 border-[#075d63] overflow-hidden shadow-lg flex items-center justify-center font-black text-sm tracking-tight ${bgClass}`}>
-      {!imgError ? (
-        <img 
-          src={src} 
-          alt={`Avatar ${index}`} 
-          className="w-full h-full object-cover"
-          onError={() => setImgError(true)}
+    <div className="relative w-10 h-10 rounded-full border-2 border-[#075d63] bg-slate-205 overflow-hidden shadow-lg flex items-center justify-center shrink-0">
+      {!error ? (
+        <Image 
+          src={`/avatar-${index}.png`} 
+          alt={`User Avatar ${index}`} 
+          fill
+          unoptimized
+          className="object-cover" 
           referrerPolicy="no-referrer"
+          onError={() => setError(true)}
         />
       ) : (
-        <span className="text-shadow-sm">{initial}</span>
+        <div className={`w-full h-full bg-gradient-to-br ${item.bg} text-white flex items-center justify-center text-xs font-black`}>
+          {item.letter}
+        </div>
       )}
     </div>
   );
@@ -56,7 +66,6 @@ const AvatarWithFallback = ({ index, initial, bgClass }: { index: number; initia
 
 const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn, openLogin, onNavigate }) => {
   const router = useRouter();
-  const [searchTerm, setSearchTerm] = useState('');
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
   const handleNavigate = (page: string) => {
@@ -78,435 +87,43 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
   const jobs: Job[] = [
     {
       id: 1,
-      notification: "NTPC Limited",
-      eligibility: "B.Tech/BE",
-      branches: ["CE"],
-      startDate: "15 May 2026",
-      endDate: "29 May 2026",
-      status: "Open",
-      pdfLink: "https://careers.ntpc.co.in",
-      usefulLinks: "https://careers.ntpc.co.in",
-      recommendedCourse: "Link"
+      notification: "Maharashtra State Electricity Distribution",
+      eligibility: "BCA,",
+      branches: [],
+      startDate: "January 31, 2025",
+      endDate: "February 28, 2025",
+      status: "Closed",
+      pdfLink: "#"
     },
     {
       id: 2,
-      notification: "Defence Research & Development Laboratory (DRDL) DRDO",
-      eligibility: "BE/B.Tech or ME/M.Tech",
-      branches: ["ME", "Other Branches"],
-      startDate: "Interview June 1-3, 2026",
-      endDate: "5 June 2026",
-      status: "Open",
-      pdfLink: "https://drdo.gov.in/drdo/en",
-      usefulLinks: "https://drdo.gov.in/drdo/en",
-      recommendedCourse: "Link"
+      notification: "National Thermal Power Corporation (NTPC)",
+      eligibility: "B.Tech,",
+      branches: [],
+      startDate: "December 1, 2024",
+      endDate: "January 31, 2025",
+      status: "Yet to start",
+      pdfLink: "#"
     },
     {
       id: 3,
-      notification: "Bihar Police Subordinate Services Commission",
-      eligibility: "Diploma (ECE/ETC/IT/EEE)",
-      branches: ["ECE", "ETC", "IT", "EEE"],
-      startDate: "21 May 2026",
-      endDate: "21 June 2026",
+      notification: "State Bank of India (SBI)",
+      eligibility: "B.Tech,BCA,BBA,",
+      branches: [],
+      startDate: "January 10, 2025",
+      endDate: "February 7, 2025",
       status: "Open",
-      pdfLink: "https://bpssc.bih.gov.in",
-      usefulLinks: "https://bpssc.bih.gov.in",
-      recommendedCourse: "Link"
+      pdfLink: "#"
     },
     {
       id: 4,
-      notification: "National Highways Authority of India (NHAI)",
-      eligibility: "B.Tech/BE",
-      branches: ["CE"],
-      startDate: "15 May 2026",
-      endDate: "15 June 2026",
+      notification: "Gas Authority Of India Ltd",
+      eligibility: "BBA,",
+      branches: [],
+      startDate: "January 1, 2025",
+      endDate: "January 31, 2025",
       status: "Open",
-      pdfLink: "https://nhai.gov.in/",
-      usefulLinks: "https://nhai.gov.in/",
-      recommendedCourse: "Link"
-    },
-    {
-      id: 5,
-      notification: "HPCL Rajasthan Refinery Limited (HRRL)",
-      eligibility: "B.Tech/BE",
-      branches: ["ME", "Other Branches"],
-      startDate: "14 May 2026",
-      endDate: "3 June 2026",
-      status: "Open",
-      pdfLink: "https://hrrl.in/",
-      usefulLinks: "https://hrrl.in/",
-      recommendedCourse: "Link"
-    },
-    {
-      id: 6,
-      notification: "Railway Recruitment Board (RRB)",
-      eligibility: "BE/B.Tech/Diploma",
-      branches: ["ME", "Other Branches"],
-      startDate: "15 May 2026",
-      endDate: "14 June 2026",
-      status: "Open",
-      pdfLink: "https://www.rrbapply.gov.in/",
-      usefulLinks: "https://www.rrbapply.gov.in/",
-      recommendedCourse: "Link"
-    },
-    {
-      id: 7,
-      notification: "Indian Army",
-      eligibility: "B.Tech/BE",
-      branches: ["ME", "CE", "Other Branches"],
-      startDate: "13 May 2026",
-      endDate: "11 June 2026",
-      status: "Open",
-      pdfLink: "https://joinindianarmy.nic.in/index.htm",
-      usefulLinks: "https://joinindianarmy.nic.in/index.htm",
-      recommendedCourse: "Link"
-    },
-    {
-      id: 8,
-      notification: "North Eastern Electric Power Corporation Limited (NEEPCO)",
-      eligibility: "BE/B.Tech/AMIE",
-      branches: ["ME", "CE", "EE"],
-      startDate: "14 May 2026",
-      endDate: "3 June 2026",
-      status: "Open",
-      pdfLink: "https://neepco.co.in/",
-      usefulLinks: "https://neepco.co.in/",
-      recommendedCourse: "Link"
-    },
-    {
-      id: 9,
-      notification: "CHHATTISGARH PUBLIC SERVICE COMMISSION",
-      eligibility: "B.Tech/BE",
-      branches: ["ME", "CE", "EE"],
-      startDate: "13 May 2026",
-      endDate: "11 June 2026",
-      status: "Open",
-      pdfLink: "https://psc.cg.gov.in/",
-      usefulLinks: "https://psc.cg.gov.in/",
-      recommendedCourse: "Link"
-    },
-    {
-      id: 10,
-      notification: "Assam Public Service Commission",
-      eligibility: "Diploma in Electrical Engineering",
-      branches: ["EE"],
-      startDate: "11 May 2026",
-      endDate: "10 June 2026",
-      status: "Open",
-      pdfLink: "https://apscrecruitment.in",
-      usefulLinks: "https://apscrecruitment.in",
-      recommendedCourse: "Link"
-    },
-    {
-      id: 11,
-      notification: "NTPC Limited",
-      eligibility: "Degree in Environment",
-      branches: ["CE", "Environmental Engg."],
-      startDate: "8 May 2026",
-      endDate: "22 May 2026",
-      status: "Open",
-      pdfLink: "https://careers.ntpc.co.in",
-      usefulLinks: "https://careers.ntpc.co.in",
-      recommendedCourse: "Link"
-    },
-    {
-      id: 12,
-      notification: "Gujarat Public Service Commission (GPSC)",
-      eligibility: "B.Tech/BE",
-      branches: ["ME", "CE"],
-      startDate: "5 May 2026",
-      endDate: "19 May 2026",
-      status: "Closed",
-      pdfLink: "https://gpsc-ojas.gujarat.gov.in",
-      usefulLinks: "https://gpsc-ojas.gujarat.gov.in",
-      recommendedCourse: "Link"
-    },
-    {
-      id: 13,
-      notification: "Coal India Limited",
-      eligibility: "B.Tech/BE",
-      branches: ["ME", "CE", "EE"],
-      startDate: "12 May 2026",
-      endDate: "11 June 2026",
-      status: "Open",
-      pdfLink: "https://www.coalindia.in",
-      usefulLinks: "https://www.coalindia.in",
-      recommendedCourse: "Link"
-    },
-    {
-      id: 14,
-      notification: "Coal India Limited",
-      eligibility: "Higher Degree in Engg.",
-      branches: ["Mining"],
-      startDate: "8 May 2026",
-      endDate: "7 June 2026",
-      status: "Open",
-      pdfLink: "https://www.coalindia.in",
-      usefulLinks: "https://www.coalindia.in",
-      recommendedCourse: "Link"
-    },
-    {
-      id: 15,
-      notification: "The Indian Navy",
-      eligibility: "BE/B.Tech or ME/M.Tech",
-      branches: ["CS", "CSE", "CE", "IT", "SS"],
-      startDate: "16 May 2026",
-      endDate: "1 June 2026",
-      status: "Open",
-      pdfLink: "https://www.joinindiannavy.gov.in",
-      usefulLinks: "https://www.joinindiannavy.gov.in",
-      recommendedCourse: "Link"
-    },
-    {
-      id: 16,
-      notification: "Rail Land Development Authority (RLDA)",
-      eligibility: "B.Tech/BE",
-      branches: ["CE", "EE"],
-      startDate: "2 May 2026",
-      endDate: "22 May 2026",
-      status: "Open",
-      pdfLink: "https://rlda.indianrailways.gov.in",
-      usefulLinks: "https://rlda.indianrailways.gov.in",
-      recommendedCourse: "Link"
-    },
-    {
-      id: 17,
-      notification: "DRDO IRDE",
-      eligibility: "B.Tech/BE",
-      branches: ["ME", "Other Branches"],
-      startDate: "Apply within 21 days",
-      endDate: "Apply within 21 days",
-      status: "Closed",
-      pdfLink: "https://www.drdo.gov.in",
-      usefulLinks: "https://www.drdo.gov.in",
-      recommendedCourse: "Link"
-    },
-    {
-      id: 18,
-      notification: "Tripura Public Service Commission (TPSC)",
-      eligibility: "B.Tech/BE",
-      branches: ["CS", "IT", "ECE"],
-      startDate: "12 May 2026",
-      endDate: "5 June 2026",
-      status: "Open",
-      pdfLink: "https://tpsc.tripura.gov.in",
-      usefulLinks: "https://tpsc.tripura.gov.in",
-      recommendedCourse: "Link"
-    },
-    {
-      id: 19,
-      notification: "Krishak Bharati Cooperative Ltd. (KRIBHCO)",
-      eligibility: "B.Tech/BE",
-      branches: ["ME", "Other Branches"],
-      startDate: "--",
-      endDate: "21 May 2026",
-      status: "Open",
-      pdfLink: "https://www.kribhco.net",
-      usefulLinks: "https://www.kribhco.net",
-      recommendedCourse: "Link"
-    },
-    {
-      id: 20,
-      notification: "Meghalaya Energy Corporation Limited (MeECL)",
-      eligibility: "B.Tech/BE",
-      branches: ["Electrical", "EEE", "CSE", "IT"],
-      startDate: "22 April 2026",
-      endDate: "15 May 2026",
-      status: "Closed",
-      pdfLink: "https://meecl.nic.in/",
-      usefulLinks: "https://meecl.nic.in/",
-      recommendedCourse: "Link"
-    },
-    {
-      id: 21,
-      notification: "National Highways & Infrastructure Development Corporation Ltd. (NHIDCL)",
-      eligibility: "B.Tech/BE",
-      branches: ["CE"],
-      startDate: "9 May 2026",
-      endDate: "8 June 2026",
-      status: "Open",
-      pdfLink: "https://www.nhidcl.com",
-      usefulLinks: "https://www.nhidcl.com",
-      recommendedCourse: "Link"
-    },
-    {
-      id: 22,
-      notification: "Indian Farmers Fertiliser Cooperative Limited",
-      eligibility: "B.Tech/BE",
-      branches: ["ME", "CE", "Other Branches"],
-      startDate: "--",
-      endDate: "30 April 2026",
-      status: "Closed",
-      pdfLink: "https://www.iffco.in",
-      usefulLinks: "https://www.iffco.in",
-      recommendedCourse: "Link"
-    },
-    {
-      id: 23,
-      notification: "Punjab National Bank (PNB)",
-      eligibility: "B.Tech/BE",
-      branches: ["ME", "CE", "EE"],
-      startDate: "21 April 2026",
-      endDate: "5 May 2026",
-      status: "Closed",
-      pdfLink: "https://pnb.bank.in",
-      usefulLinks: "https://pnb.bank.in",
-      recommendedCourse: "Link"
-    },
-    {
-      id: 24,
-      notification: "Indo-Tibetan Border Police (ITBP)",
-      eligibility: "B.Tech/BE",
-      branches: ["CE"],
-      startDate: "21 April 2026",
-      endDate: "20 May 2026",
-      status: "Open",
-      pdfLink: "https://www.itbpolice.nic.in",
-      usefulLinks: "https://www.itbpolice.nic.in",
-      recommendedCourse: "Link"
-    },
-    {
-      id: 25,
-      notification: "National Thermal Power Corporation",
-      eligibility: "B.Tech/BE",
-      branches: ["ME", "EE"],
-      startDate: "23 April 2026",
-      endDate: "4 May 2026",
-      status: "Closed",
-      pdfLink: "https://www.ntpc.co.in",
-      usefulLinks: "https://www.ntpc.co.in",
-      recommendedCourse: "Link"
-    },
-    {
-      id: 26,
-      notification: "Madhya Pradesh Pollution Control Board (MPPCB)",
-      eligibility: "B.Tech/BE",
-      branches: ["CE", "Environmental Engg."],
-      startDate: "10 April 2026",
-      endDate: "30 April 2026",
-      status: "Closed",
-      pdfLink: "https://www.mppcb.mp.gov.in/",
-      usefulLinks: "https://www.mppcb.mp.gov.in/",
-      recommendedCourse: "Link"
-    },
-    {
-      id: 27,
-      notification: "Power Grid Corporation of India Limited",
-      eligibility: "Diploma in CE & EE",
-      branches: ["CE", "EE"],
-      startDate: "20 April 2026",
-      endDate: "11 May 2026",
-      status: "Closed",
-      pdfLink: "https://www.powergrid.in",
-      usefulLinks: "https://www.powergrid.in",
-      recommendedCourse: "Link"
-    },
-    {
-      id: 28,
-      notification: "New Mangalore Port Authority (NMPA)",
-      eligibility: "B.Tech/BE",
-      branches: ["ME", "CE", "EE"],
-      startDate: "14 April 2026",
-      endDate: "4 May 2026",
-      status: "Closed",
-      pdfLink: "https://newmangaloreport.gov.in",
-      usefulLinks: "https://newmangaloreport.gov.in",
-      recommendedCourse: "Link"
-    },
-    {
-      id: 29,
-      notification: "U.P. Co-operative Institutional Service Board, Lucknow",
-      eligibility: "B.Tech/BE",
-      branches: ["ME", "Other Branches"],
-      startDate: "25 April 2026",
-      endDate: "15 May 2026",
-      status: "Closed",
-      pdfLink: "https://www.upcisb.upsdc.gov.in/",
-      usefulLinks: "https://www.upcisb.upsdc.gov.in/",
-      recommendedCourse: "Link"
-    },
-    {
-      id: 30,
-      notification: "Punjab State Power Corporation (PSPCL)",
-      eligibility: "BE/B.Tech/Diploma",
-      branches: ["EE", "EEE"],
-      startDate: "20 April 2026",
-      endDate: "10 May 2026",
-      status: "Closed",
-      pdfLink: "https://www.pspcl.in",
-      usefulLinks: "https://www.pspcl.in",
-      recommendedCourse: "Link"
-    },
-    {
-      id: 31,
-      notification: "SSB Sub Inspector",
-      eligibility: "B.Tech/BE",
-      branches: ["CE", "Other Branches"],
-      startDate: "21 March 2026",
-      endDate: "20 April 2026",
-      status: "Closed",
-      pdfLink: "https://recruitment.ssb.gov.in",
-      usefulLinks: "https://recruitment.ssb.gov.in",
-      recommendedCourse: "Link"
-    },
-    {
-      id: 32,
-      notification: "South Eastern Coalfields Limited (SECL)",
-      eligibility: "BE/B.Tech/Diploma",
-      branches: ["EE"],
-      startDate: "15 April 2026",
-      endDate: "14 May 2026",
-      status: "Closed",
-      pdfLink: "https://secl-cil.in",
-      usefulLinks: "https://secl-cil.in",
-      recommendedCourse: "Link"
-    },
-    {
-      id: 33,
-      notification: "Nuclear Power Corporation of India Limited",
-      eligibility: "B.E/B.Tech + GATE Score Card",
-      branches: ["EC", "EE", "CS"],
-      startDate: "10 April 2026",
-      endDate: "30 April 2026",
-      status: "Closed",
-      pdfLink: "https://npcilcareers.co.in",
-      usefulLinks: "https://npcilcareers.co.in",
-      recommendedCourse: "Link"
-    },
-    {
-      id: 34,
-      notification: "Northern Coalfields Limited",
-      eligibility: "Diploma CE",
-      branches: ["CE"],
-      startDate: "9 April 2026",
-      endDate: "1 May 2026",
-      status: "Closed",
-      pdfLink: "https://www.nclcil.in/",
-      usefulLinks: "https://www.nclcil.in/",
-      recommendedCourse: "Link"
-    },
-    {
-      id: 35,
-      notification: "M.P Pollution Control Board",
-      eligibility: "B.Tech/BE",
-      branches: ["CE", "Other Branches"],
-      startDate: "10 April 2026",
-      endDate: "30 April 2026",
-      status: "Closed",
-      pdfLink: "https://www.mppcb.mp.gov.in/",
-      usefulLinks: "https://www.mppcb.mp.gov.in/",
-      recommendedCourse: "Link"
-    },
-    {
-      id: 36,
-      notification: "VRDE, DRDO",
-      eligibility: "B.E/B.Tech + GATE Score Card",
-      branches: ["ME", "EE"],
-      startDate: "--",
-      endDate: "30 April 2026",
-      status: "Closed",
-      pdfLink: "https://www.drdo.gov.in",
-      usefulLinks: "https://www.drdo.gov.in",
-      recommendedCourse: "Link"
+      pdfLink: "#"
     }
   ];
 
@@ -1046,18 +663,8 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
                 
                 <div className="flex items-center gap-4 px-6 py-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
                    <div className="flex -space-x-3">
-                      {[
-                        { idx: 1, initial: "P", bg: "bg-gradient-to-tr from-teal-600 to-emerald-400 text-white" },
-                        { idx: 2, initial: "A", bg: "bg-gradient-to-tr from-amber-500 to-amber-300 text-slate-900" },
-                        { idx: 3, initial: "S", bg: "bg-gradient-to-tr from-indigo-600 to-purple-400 text-white" },
-                        { idx: 4, initial: "D", bg: "bg-gradient-to-tr from-rose-500 to-orange-400 text-white" }
-                      ].map(avatar => (
-                        <AvatarWithFallback 
-                           key={avatar.idx}
-                           index={avatar.idx} 
-                           initial={avatar.initial} 
-                           bgClass={avatar.bg} 
-                        />
+                      {[1,2,3,4].map(i => (
+                        <HeaderAvatar key={i} index={i} />
                       ))}
                    </div>
                    <div className="flex flex-col">
@@ -1203,16 +810,10 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
                <div className="flex items-center gap-4 bg-slate-50 p-2 rounded-2xl border border-slate-200 w-full md:w-auto">
                   <div className="relative flex-1 md:w-64">
                      <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-                     <input 
-                        type="text" 
-                        placeholder="Search Org or Post..." 
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        className="w-full bg-white border border-slate-200 rounded-xl px-10 py-2.5 text-sm focus:outline-none focus:border-[#075d63] transition-all" 
-                     />
+                     <input type="text" placeholder="Search Org or Post..." className="w-full bg-white border border-slate-200 rounded-xl px-10 py-2.5 text-sm focus:outline-none focus:border-[#075d63] transition-all" />
                   </div>
-                  <button className="bg-white border border-slate-100 p-2.5 rounded-xl text-slate-400 transition-all shadow-sm cursor-default">
-                     <Filter size={18} />
+                  <button className="bg-white border border-slate-200 p-2.5 rounded-xl text-slate-600 hover:bg-[#075d63] hover:text-white transition-all shadow-sm">
+                     <Filter size={20} />
                   </button>
                </div>
             </div>
@@ -1225,22 +826,18 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
                         <tr className="bg-[#fdfbf6] text-slate-900 text-[13px] font-bold border-b-2 border-gameGold">
                            <th className="p-4 border-r border-slate-200 w-[5%] text-center">Sr. No</th>
                            <th className="p-4 border-r border-slate-200 w-[20%]">Job Notification</th>
-                           <th className="p-4 border-r border-slate-200 w-[10%]">Eligibility</th>
+                           <th className="p-4 border-r border-slate-200 w-[10%]">Eligbility</th>
                            <th className="p-4 border-r border-slate-200 w-[10%]">Branches</th>
                            <th className="p-4 border-r border-slate-200 w-[10%]">Start Date</th>
                            <th className="p-4 border-r border-slate-200 w-[10%]">End Date</th>
                            <th className="p-4 border-r border-slate-200 w-[10%]">Status</th>
                            <th className="p-4 border-r border-slate-200 w-[8%] text-center">Detailed Pdf</th>
-                           <th className="p-4 border-r border-slate-200 w-[8%] text-center">Useful Links</th>
+                           <th className="p-4 border-r border-slate-200 w-[8%] text-center">Usefull links</th>
                            <th className="p-4 w-[9%] text-center">Recommended Course</th>
                         </tr>
                      </thead>
                      <tbody className="text-[14px] text-slate-700 divide-y divide-slate-100 relative bg-white">
-                        {jobs.filter(job => 
-                           job.notification.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           job.eligibility.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           job.branches.some(b => b.toLowerCase().includes(searchTerm.toLowerCase()))
-                        ).map((job, idx) => (
+                        {jobs.map((job, idx) => (
                            <tr 
                              key={job.id} 
                              className={`transition-all duration-300 border-b border-slate-100 ${!isLoggedIn && idx > 2 ? 'blur-[4px] opacity-30 select-none pointer-events-none' : 'hover:bg-slate-50/80'}`}
@@ -1260,43 +857,12 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
                                  </div>
                               </td>
                               <td className="p-4 border-r border-slate-100 text-center">
-                                 {job.pdfLink ? (
-                                    <a 
-                                       href={job.pdfLink} 
-                                       target="_blank" 
-                                       rel="noopener noreferrer" 
-                                       className="text-red-500 hover:scale-110 transition-transform inline-flex justify-center"
-                                    >
-                                       <FileText size={18} />
-                                    </a>
-                                 ) : (
-                                    <span className="text-slate-300">-</span>
-                                 )}
-                              </td>
-                              <td className="p-4 border-r border-slate-100 text-center">
-                                 {job.usefulLinks ? (
-                                    <a 
-                                       href={job.usefulLinks} 
-                                       target="_blank" 
-                                       rel="noopener noreferrer" 
-                                       className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-teal-50 text-gameTeal hover:bg-gameTeal hover:text-white text-xs font-semibold transition-all border border-teal-100"
-                                    >
-                                       <span>Apply</span>
-                                       <ExternalLinkIcon size={12} />
-                                    </a>
-                                 ) : (
-                                    <span className="text-slate-300">-</span>
-                                 )}
-                              </td>
-                              <td className="p-4 text-center">
-                                 <button 
-                                    id={`prep-btn-${job.id}`}
-                                    onClick={() => handleNavigate('courses')}
-                                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-amber-50 text-amber-700 hover:bg-gameGold hover:text-black text-xs font-bold transition-all border border-amber-100 whitespace-nowrap"
-                                 >
-                                    Start Prep Now
+                                 <button className="text-red-500 hover:scale-110 transition-transform inline-flex justify-center">
+                                    <FileText size={18} />
                                  </button>
                               </td>
+                              <td className="p-4 border-r border-slate-100 text-center"></td>
+                              <td className="p-4 text-center"></td>
                            </tr>
                         ))}
                      </tbody>
