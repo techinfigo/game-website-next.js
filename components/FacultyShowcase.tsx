@@ -130,7 +130,7 @@ const FacultyShowcase: React.FC = () => {
                       
                       {/* Floating Badge Left (Black) */}
                       <div className="absolute bottom-6 -left-8 bg-[#0f172a] text-white p-4 rounded-2xl shadow-2xl shadow-slate-900/30 border border-white/10 z-30 flex items-center gap-4">
-                         <div className="bg-gameGold text-black w-12 h-12 rounded-xl flex items-center justify-center font-black text-xl">13+</div>
+                         <div className="bg-gameGold text-black w-12 h-12 rounded-xl flex items-center justify-center font-black text-xl">14+</div>
                          <div>
                             <div className="text-[9px] text-slate-400 uppercase font-black tracking-widest mb-0.5">Years of</div>
                             <div className="font-black text-base leading-none text-white">Excellence</div>
