@@ -86,7 +86,7 @@ const FacultyShowcase: React.FC = () => {
                    <div className="absolute top-10 right-0 w-[55%] h-[340px] z-10">
                       <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden shadow-xl border-[6px] border-white transform rotate-3 hover:rotate-0 transition-all duration-500">
                          <Image 
-                            src="/about-faculty-back.jpg" 
+                            src="/about-faculty-back.jpeg" 
                             fill
                             unoptimized
                             className="object-cover" 
@@ -115,7 +115,7 @@ const FacultyShowcase: React.FC = () => {
                    <div className="absolute top-0 left-4 w-[60%] h-[380px] z-20">
                       <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden shadow-2xl border-[8px] border-white transform -rotate-2 hover:rotate-0 transition-all duration-500 group">
                          <Image 
-                            src="/about-faculty-front.jpeg" 
+                            src="/about-faculty-front.jpg" 
                             fill
                             priority
                             unoptimized
@@ -152,7 +152,7 @@ const FacultyShowcase: React.FC = () => {
                         referrerPolicy="no-referrer"
                       />
                       <div className="absolute bottom-4 left-4 right-auto bg-[#0f172a] text-white p-3.5 rounded-xl shadow-lg border border-white/10 flex items-center gap-3 max-w-[180px]">
-                         <div className="bg-gameGold text-black w-10 h-10 rounded-lg flex items-center justify-center font-black text-lg">13+</div>
+                         <div className="bg-gameGold text-black w-10 h-10 rounded-lg flex items-center justify-center font-black text-lg">14+</div>
                          <div>
                             <div className="text-[9px] text-slate-400 uppercase font-black tracking-wider">Years of</div>
                             <div className="font-black text-sm leading-none">Excellence</div>
