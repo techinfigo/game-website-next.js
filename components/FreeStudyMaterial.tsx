@@ -128,14 +128,20 @@ const FreeStudyMaterial: React.FC = () => {
                        rel="noopener noreferrer"
                        className="group bg-[#075d63] hover:bg-[#054a4f] text-white px-8 h-12 rounded-xl font-black text-[10px] uppercase tracking-[0.2em] flex items-center justify-center gap-3 shadow-lg transition-all hover:-translate-y-1 w-full sm:w-auto cursor-pointer"
                     >
-                       ACCESS NOW <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                       {isLoggedIn ? "ACCESS NOW" : "LOGIN TO ACCESS"} <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                     </a>
 
                     <div className="flex items-center gap-3">
                        <div className="flex -space-x-1.5">
-                          {[21,22,23].map((i) => (
+                          {[1, 2, 3].map((i) => (
                              <div key={i} className="w-7 h-7 rounded-full border-2 border-white bg-slate-200 overflow-hidden shadow-sm relative">
-                                <Image src={`/avatar-${i - 20}.png`} alt="Student" fill className="object-cover" referrerPolicy="no-referrer" />
+                                <Image
+                                   src={`/avatar-${i}.png`}
+                                   alt="Student"
+                                   fill
+                                   className="object-cover"
+                                   referrerPolicy="no-referrer"
+                                />
                              </div>
                           ))}
                        </div>
