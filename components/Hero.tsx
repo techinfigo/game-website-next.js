@@ -7,26 +7,26 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const students = [
-  { name: "Akshay Pillay", org: "Govt. of India", designation: "Sub Collector & SDM", img: "/avatar-1.png" },
-  { name: "Dr. Sahil Garg", org: "Ministry of Defence", designation: "Group A Gazetted / Asst. Prof", img: "/avatar-2.png" },
-  { name: "Akash Jaiswal", org: "ISRO, Bengaluru", designation: "Scientist - SC", img: "/avatar-3.png" },
-  { name: "Deepbhai Haresh Kumar Dave", org: "ISRO, NLC", designation: "Scientist/Engineer 'SC'", img: "/avatar-4.png" },
-  { name: "Dileep Kumar Chaudhary", org: "BARC", designation: "Scientific Officer OCES", img: "/avatar-1.png" },
-  { name: "Govind Kumar", org: "Bharat Electronics Ltd", designation: "Deputy Engineer", img: "/avatar-2.png" },
-  { name: "Chirag Goyal", org: "IOCL", designation: "Aviation Officer", img: "/avatar-3.png" },
-  { name: "Anant Kumar Gautam", org: "IOCL", designation: "Executive Officer", img: "/avatar-4.png" },
-  { name: "Swati Mishra", org: "Hindustan Zinc Ltd", designation: "Assistant Manager", img: "/avatar-1.png" },
-  { name: "Prashant Mishra", org: "GAIL (India) Ltd", designation: "Senior Engineer", img: "/avatar-2.png" },
-  { name: "Suarabh Chaubey", org: "NALCO", designation: "Patent Examiner", img: "/avatar-3.png" },
-  { name: "Rahul Singh Yadav", org: "NTPC", designation: "Engineer", img: "/avatar-4.png" },
-  { name: "Kamna Pandey", org: "NTPC Limited", designation: "Engineer", img: "/avatar-1.png" },
-  { name: "Aasif Procha", org: "PSPCL", designation: "Assistant Engineer", img: "/avatar-2.png" },
-  { name: "Pooja H", org: "WRD", designation: "Assistant Engineer", img: "/avatar-3.png" },
-  { name: "Bhavya Malviya", org: "NTPC Kahalgaon", designation: "Asst. Exec Operations", img: "/avatar-4.png" },
-  { name: "Rajat Rai", org: "ONGC", designation: "Asst. Exe. Engineer", img: "/avatar-1.png" },
-  { name: "Garima", org: "Bharat Dynamics Ltd", designation: "Executive Trainee", img: "/avatar-2.png" },
-  { name: "Anjali", org: "NPCIL", designation: "Executive Trainee", img: "/avatar-3.png" },
-  { name: "Sujoy Das", org: "IOCL", designation: "Executive Trainee", img: "/avatar-4.png" },
+  { name: "Akshay Pillay", org: "Govt. of India", designation: "Sub Collector & SDM", img: "/rankers /job-1.png" },
+  { name: "Dr. Sahil Garg", org: "Ministry of Defence", designation: "Group A Gazetted / Asst. Prof", img: "/rankers /job-2.png },
+  { name: "Akash Jaiswal", org: "ISRO, Bengaluru", designation: "Scientist - SC", img: "/rankers /job-3.png" },
+  { name: "Deepbhai Haresh Kumar Dave", org: "ISRO, NLC", designation: "Scientist/Engineer 'SC'", img: "/rankers /job-4.png" },
+  { name: "Dileep Kumar Chaudhary", org: "BARC", designation: "Scientific Officer OCES", img: "/rankers /job-5.png" },
+  { name: "Govind Kumar", org: "Bharat Electronics Ltd", designation: "Deputy Engineer", img: "/rankers /job-6.png },
+  { name: "Chirag Goyal", org: "IOCL", designation: "Aviation Officer", img: "/rankers /job-7.png" },
+  { name: "Anant Kumar Gautam", org: "IOCL", designation: "Executive Officer", img: "/rankers /job-8.png" },
+  { name: "Swati Mishra", org: "Hindustan Zinc Ltd", designation: "Assistant Manager", img: "/rankers /job-9.png" },
+  { name: "Prashant Mishra", org: "GAIL (India) Ltd", designation: "Senior Engineer", img: "/rankers /job-10.png },
+  { name: "Suarabh Chaubey", org: "NALCO", designation: "Patent Examiner", img: "//rankers /job-11.png" },
+  { name: "Rahul Singh Yadav", org: "NTPC", designation: "Engineer", img: "/rankers /job-12.png" },
+  { name: "Kamna Pandey", org: "NTPC Limited", designation: "Engineer", img: "/rankers /job-13.png" },
+  { name: "Aasif Procha", org: "PSPCL", designation: "Assistant Engineer", img: "/rankers /job-14.png },
+  { name: "Pooja H", org: "WRD", designation: "Assistant Engineer", img: "/rankers /job-15.png" },
+  { name: "Bhavya Malviya", org: "NTPC Kahalgaon", designation: "Asst. Exec Operations", img: "/rankers /job-16.png" },
+  { name: "Rajat Rai", org: "ONGC", designation: "Asst. Exe. Engineer", img: "/rankers /job-17.png" },
+  { name: "Garima", org: "Bharat Dynamics Ltd", designation: "Executive Trainee", img: "/rankers /job-18.png },
+  { name: "Anjali", org: "NPCIL", designation: "Executive Trainee", img: "/rankers /job-19.png" },
+  { name: "Sujoy Das", org: "IOCL", designation: "Executive Trainee", img: "/rankers /job-20.png" },
 ];
 
 const SafeRankerImage = ({ src, alt, fill, className, ...props }: any) => {
@@ -38,7 +38,7 @@ const SafeRankerImage = ({ src, alt, fill, className, ...props }: any) => {
 
   const handleFallback = () => {
     const code = alt ? alt.charCodeAt(0) % 4 : 0;
-    const avatars = ["/avatar-1.png", "/avatar-2.png", "/avatar-3.png", "/avatar-4.png"];
+    const avatars = ["/avatar-1.png", "/rankers /job-1.png, "/avatar-3.png", "/rankers /job-1.png"];
     setImgSrc(avatars[code]);
   };
 
