@@ -5,7 +5,31 @@ import Image from 'next/image';
 import { CheckCircle2, ArrowRight, Award } from 'lucide-react';
 import { useRouter, usePathname } from 'next/navigation';
 
-const FacultyShowcase: React.FC = () => {
+// Easily customize your faculty profile images here!
+// Place your custom images in the "public" folder of your project (e.g. public/about-faculty-front.jpg)
+// and update the paths below. When you push to GitHub, these files will load seamlessly.
+export const FACULTY_SHOWCASE_IMAGES = {
+  front: '/about-faculty-front.jpg', // Main image (front)
+  back: '/about-faculty-back.jpeg',   // Secondary image (back / collage element)
+  // Customize your student avatar small images here:
+  avatars: [
+    '/avatar-1.png',
+    '/avatar-2.png',
+    '/avatar-3.png',
+  ],
+};
+
+interface FacultyShowcaseProps {
+  frontImage?: string;
+  backImage?: string;
+  avatars?: string[];
+}
+
+const FacultyShowcase: React.FC<FacultyShowcaseProps> = ({ 
+  frontImage = FACULTY_SHOWCASE_IMAGES.front,
+  backImage = FACULTY_SHOWCASE_IMAGES.back,
+  avatars = FACULTY_SHOWCASE_IMAGES.avatars
+}) => {
   const router = useRouter();
   const pathname = usePathname();
 
@@ -86,7 +110,7 @@ const FacultyShowcase: React.FC = () => {
                    <div className="absolute top-10 right-0 w-[55%] h-[340px] z-10">
                       <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden shadow-xl border-[6px] border-white transform rotate-3 hover:rotate-0 transition-all duration-500">
                          <Image 
-                            src="/about-faculty-back.jpeg" 
+                            src={backImage} 
                             fill
                             unoptimized
                             className="object-cover" 
@@ -99,9 +123,18 @@ const FacultyShowcase: React.FC = () => {
                       <div className="absolute -bottom-4 -right-4 bg-white p-3.5 rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] z-30">
                          <div className="flex items-center gap-3">
                             <div className="flex -space-x-3">
-                                <div className="relative w-9 h-9 rounded-full border-2 border-white bg-gameTeal flex items-center justify-center text-[10px] font-bold text-white shadow-sm">G</div>
-                                <div className="relative w-9 h-9 rounded-full border-2 border-white bg-gameGold flex items-center justify-center text-[10px] font-bold text-black shadow-sm">A</div>
-                                <div className="relative w-9 h-9 rounded-full border-2 border-white bg-slate-800 flex items-center justify-center text-[10px] font-bold text-white shadow-sm">M</div>
+                               {avatars.map((avatarUrl, idx) => (
+                                  <div key={idx} className="relative w-9 h-9 rounded-full border-2 border-white overflow-hidden shadow-sm bg-slate-100 flex items-center justify-center">
+                                     <Image 
+                                        src={avatarUrl} 
+                                        alt={`Student Avatar ${idx + 1}`} 
+                                        fill
+                                        unoptimized
+                                        className="object-cover rounded-full" 
+                                        referrerPolicy="no-referrer"
+                                     />
+                                  </div>
+                               ))}
                             </div>
                             <div className="text-left">
                                 <div className="text-gameTeal font-black text-lg leading-none">100k+</div>
@@ -115,7 +148,7 @@ const FacultyShowcase: React.FC = () => {
                    <div className="absolute top-0 left-4 w-[60%] h-[380px] z-20">
                       <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden shadow-2xl border-[8px] border-white transform -rotate-2 hover:rotate-0 transition-all duration-500 group">
                          <Image 
-                            src="/about-faculty-front.jpg" 
+                            src={frontImage} 
                             fill
                             priority
                             unoptimized
@@ -144,7 +177,7 @@ const FacultyShowcase: React.FC = () => {
                 <div className="lg:hidden flex flex-col gap-6 mt-8">
                    <div className="relative w-full aspect-[4/5] rounded-[2rem] overflow-hidden shadow-xl border-4 border-white">
                       <Image 
-                        src="/about-faculty-front.jpeg" 
+                        src={frontImage} 
                         fill
                         unoptimized
                         className="object-cover"
@@ -155,13 +188,13 @@ const FacultyShowcase: React.FC = () => {
                          <div className="bg-gameGold text-black w-10 h-10 rounded-lg flex items-center justify-center font-black text-lg">14+</div>
                          <div>
                             <div className="text-[9px] text-slate-400 uppercase font-black tracking-wider">Years of</div>
-                            <div className="font-black text-sm leading-none">Excellence</div>
+                             <div className="font-black text-sm leading-none">Excellence</div>
                          </div>
                       </div>
                    </div>
                    <div className="relative w-[90%] aspect-[4/5] self-end rounded-[2rem] overflow-hidden shadow-xl border-4 border-white">
                       <Image 
-                        src="/about-faculty-back.jpg" 
+                        src={backImage} 
                         fill
                         unoptimized
                         className="object-cover"
