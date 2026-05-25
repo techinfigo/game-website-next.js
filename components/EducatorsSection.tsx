@@ -12,8 +12,8 @@ import {
 export const chiefMentor = { 
   name: "Gaurav Babu Sir", 
   role: "Founder & Chief Mentor",
-  expLabel: "14+ YRS EXP.",
-  exp: "14+ YEARS OF TEACHING EXCELLENCE",
+  expLabel: "13+ YRS EXP.",
+  exp: "13+ YEARS OF TEACHING EXCELLENCE",
   img: "/faculty/gaurav-sir2.jpg",
   stats: [
     { label: "Mentored 1 Lakh+ Students", icon: Users },
@@ -74,6 +74,84 @@ export const facultyMembers = [
       { label: "Problem Solving Pro", icon: Zap },
       { label: "Industrial Expertise", icon: Award },
       { label: "Mentored 8,000+ students", icon: Users }
+    ]
+  },
+  { 
+    name: "Abhishek Singh Sir", 
+    role: "Civil Engineering Lead",
+    expLabel: "11+ YRS EXP.",
+    exp: "11+ YEARS OF CIVIL DESIGN & R&D",
+    img: "/avatar-1.png",
+    stats: [
+      { label: "Achieved ESE AIR 12", icon: Medal },
+      { label: "Structural Analysis Guru", icon: Layers },
+      { label: "Mentored 40k+ Students", icon: Users },
+      { label: "Ex-IES Officer, CPWD Dept.", icon: Briefcase }
+    ]
+  },
+  { 
+    name: "Priyanka Ma'am", 
+    role: "General Aptitude Head",
+    expLabel: "8+ YRS EXP.",
+    exp: "8+ YEARS OF QUANT & APTITUDE MENTORSHIP",
+    img: "/avatar-2.png",
+    stats: [
+      { label: "Logical Reasoning Specialist", icon: Lightbulb },
+      { label: "Tuned 25,000+ Aspirants", icon: Users },
+      { label: "Quantitative Aptitude Pro", icon: Target },
+      { label: "National Pedagogy Award", icon: Award }
+    ]
+  },
+  { 
+    name: "Pradeep Rawat Sir", 
+    role: "Electrical Machines Expert",
+    expLabel: "12+ YRS EXP.",
+    exp: "12+ YEARS OF CORE ELECTRICAL INDUCTION",
+    img: "/avatar-3.png",
+    stats: [
+      { label: "Power Systems Specialist", icon: Layers },
+      { label: "BSNL JTO & ESE Merit List", icon: Medal },
+      { label: "Mentored 35,000+ Engineers", icon: Users },
+      { label: "Ex-PowerGrid Senior Engineer", icon: Briefcase }
+    ]
+  },
+  { 
+    name: "Dr. Mukul Dixit", 
+    role: "Manufacturing Tech Lead",
+    expLabel: "15+ YRS EXP.",
+    exp: "15+ YEARS OF POST-GRADUATE R&D",
+    img: "/avatar-4.png",
+    stats: [
+      { label: "Ph.D. in Metrology & Robotics", icon: Landmark },
+      { label: "Published 4 Master Manuals", icon: Lightbulb },
+      { label: "Material Science Innovator", icon: Target },
+      { label: "Inspirational Research Mentor", icon: Trophy }
+    ]
+  },
+  { 
+    name: "Neeraj Kumar Sir", 
+    role: "Fluid Mechanics Maestro",
+    expLabel: "10+ YRS EXP.",
+    exp: "10+ YEARS OF GATE & ESE EXCELLENCE",
+    img: "/avatar-1.png",
+    stats: [
+      { label: "GATE Scorer 99.8 Percentile", icon: Medal },
+      { label: "Hydraulics & Turbomachinery Pro", icon: Award },
+      { label: "Mentored 30k+ GATE Students", icon: Users },
+      { label: "Top-Rated Technical Coach", icon: Trophy }
+    ]
+  },
+  { 
+    name: "Sanjay Rathi Sir", 
+    role: "Electronics & Network Leader",
+    expLabel: "16+ YRS EXP.",
+    exp: "16+ YEARS OF CORE SCIENTIFIC EDUCATION",
+    img: "/avatar-2.png",
+    stats: [
+      { label: "Superb Network Pedagogy", icon: Sparkles },
+      { label: "Ex-IES Officer, Class-1", icon: Briefcase },
+      { label: "Mentored over 1 Lakh Engineers", icon: Users },
+      { label: "Co-Authored 3 GATE Guidebooks", icon: Lightbulb }
     ]
   }
 ];
