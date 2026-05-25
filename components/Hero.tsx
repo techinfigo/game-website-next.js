@@ -27,7 +27,6 @@ const students = [
   { name: "Garima", org: "Bharat Dynamics Ltd", designation: "Executive Trainee", img: "/rankers/job-18.png" },
   { name: "Anjali", org: "NPCIL", designation: "Executive Trainee", img: "/rankers/job-19.png" },
   { name: "Sujoy Das", org: "IOCL", designation: "Executive Trainee", img: "/rankers/job-20.png" },
-  { name: "Abhishek Kumar", org: "NPCIL", designation: "ET - Mechanical", img: "/rankers/job-21.png" },
   { name: "Parul Singh", org: "CPWD", designation: "Junior Engineer", img: "/rankers/job-1.png" },
   { name: "Neelam Kushwaha", org: "SSC (Irrigation)", designation: "Junior Engineer", img: "/rankers/job-2.png" },
   { name: "Ankit Kumar", org: "BARC", designation: "Stipendiary Trainee", img: "/rankers/job-3.png" },
