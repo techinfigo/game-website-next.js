@@ -587,7 +587,6 @@ const AboutPage: React.FC = () => {
                   { name: "DRDO", logo: "/logo-drdo.png" },
                   { name: "L&T", logo: "/logo-lt.png" },
                   { name: "BHEL", logo: "/logo-bhel.png" },
-                  { name: "TATA PROJECTS", logo: "/logo-tata.png" },
                   { name: "SAIL", logo: "/logo-sail.png" },
                   { name: "GAIL", logo: "/logo-gail.png" },
                   { name: "IOCL", logo: "/logo-iocl.png" },
