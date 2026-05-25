@@ -12,8 +12,8 @@ import {
 export const chiefMentor = { 
   name: "Gaurav Babu Sir", 
   role: "Founder & Chief Mentor",
-  expLabel: "13+ YRS EXP.",
-  exp: "13+ Years (ME & CE) Teaching Experience in GATE/ESE",
+  expLabel: "14+ YRS EXP.",
+  exp: "14+ Years (ME & CE) Teaching Experience in GATE/ESE",
   img: "/faculty/gaurav-sir2.jpg",
   stats: [
     { label: "Mentored 1L+ Students Across India", icon: Users },
