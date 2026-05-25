@@ -68,7 +68,7 @@ export const facultyMembers = [
     role: "Mechanical Engineering Lead",
     expLabel: "12+ YRS EXP.",
     exp: "12+ years of teaching experience",
-    img: "/avatar-1.png",
+    img: "/hariveer-sir.png",
     stats: [
       { label: "M.TECH (CAD-CAM & Automation) NITS", icon: Landmark },
       { label: "Qualified GATE multiple times & authored practice books", icon: Medal },
@@ -94,7 +94,7 @@ export const facultyMembers = [
     role: "Mechanical Expert & Industry Researcher",
     expLabel: "6+ YRS EXP.",
     exp: "6+ years of teaching experience",
-    img: "/avatar-2.png",
+    img: "/faculty/vipin-sir.png",
     stats: [
       { label: "M.Tech, IIT Kharagpur & M.Sc, Politecnico Di Milano, Italy", icon: Landmark },
       { label: "5+ Years Industry & Research Experience", icon: Briefcase },
@@ -107,7 +107,7 @@ export const facultyMembers = [
     role: "Civil Engineering Lead",
     expLabel: "7+ YRS EXP.",
     exp: "7+ years of teaching experience",
-    img: "/avatar-3.png",
+    img: "/faculty/ankit-jain-sir.png",
     stats: [
       { label: "Gate qualified 3 times, Qualified Ph.D Entrance in IIT Bombay/Indore", icon: Medal },
       { label: "More than 5000+ Hours of high-impact teaching experience", icon: Lightbulb },
@@ -133,7 +133,7 @@ export const facultyMembers = [
     role: "Biology & Medical Head",
     expLabel: "11+ YRS EXP.",
     exp: "11+ years of teaching experience",
-    img: "/avatar-4.png",
+    img: "/faculty/tina-maam.png",
     stats: [
       { label: "11+ years of experience in different medical exams", icon: Award },
       { label: "Specialize Prep for NEET-UG, NEET-PG etc.", icon: Target },
@@ -146,7 +146,7 @@ export const facultyMembers = [
     role: "GS Subjects & Mathematics Maestro",
     expLabel: "4+ YRS EXP.",
     exp: "4+ years of teaching experience",
-    img: "/avatar-1.png",
+    img: "/faculty/priyam-mishra-sir.png",
     stats: [
       { label: "Teaching GS subjects and Maths across diverse engineering exams", icon: Sparkles },
       { label: "Expert in History, Geography, Polity, Current Affairs", icon: Target },
