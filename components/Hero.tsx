@@ -7,27 +7,52 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const students = [
-  { name: "Akshay Pillay", org: "Govt. of India", designation: "Sub Collector & SDM", img: "/rankers/job-1.png" },
-  { name: "Dr. Sahil Garg", org: "Ministry of Defence", designation: "Group A Gazetted / Asst. Prof", img: "/rankers/job-2.png" },
-  { name: "Akash Jaiswal", org: "ISRO, Bengaluru", designation: "Scientist - SC", img: "/rankers/job-3.png" },
-  { name: "Deepbhai Haresh Kumar Dave", org: "ISRO, NLC", designation: "Scientist/Engineer 'SC'", img: "/rankers/job-4.png" },
-  { name: "Dileep Kumar Chaudhary", org: "BARC", designation: "Scientific Officer OCES", img: "/rankers/job-5.png" },
-  { name: "Govind Kumar", org: "Bharat Electronics Ltd", designation: "Deputy Engineer", img: "/rankers/job-6.png" },
-  { name: "Chirag Goyal", org: "IOCL", designation: "Aviation Officer", img: "/rankers/job-7.png" },
-  { name: "Anant Kumar Gautam", org: "IOCL", designation: "Executive Officer", img: "/rankers/job-8.png" },
-  { name: "Swati Mishra", org: "Hindustan Zinc Ltd", designation: "Assistant Manager", img: "/rankers/job-9.png" },
-  { name: "Prashant Mishra", org: "GAIL (India) Ltd", designation: "Senior Engineer", img: "/rankers/job-10.png" },
-  { name: "Suarabh Chaubey", org: "NALCO", designation: "Patent Examiner", img: "/rankers/job-11.png" },
-  { name: "Rahul Singh Yadav", org: "NTPC", designation: "Engineer", img: "/rankers/job-12.png" },
-  { name: "Kamna Pandey", org: "NTPC Limited", designation: "Engineer", img: "/rankers/job-13.png" },
-  { name: "Aasif Procha", org: "PSPCL", designation: "Assistant Engineer", img: "/rankers/job-14.png" },
-  { name: "Pooja H", org: "WRD", designation: "Assistant Engineer", img: "/rankers/job-15.png" },
-  { name: "Bhavya Malviya", org: "NTPC Kahalgaon", designation: "Asst. Exec Operations", img: "/rankers/job-16.png" },
-  { name: "Rajat Rai", org: "ONGC", designation: "Asst. Exe. Engineer", img: "/rankers/job-17.png" },
-  { name: "Garima", org: "Bharat Dynamics Ltd", designation: "Executive Trainee", img: "/rankers/job-18.png" },
-  { name: "Anjali", org: "NPCIL", designation: "Executive Trainee", img: "/rankers/job-19.png" },
-  { name: "Sujoy Das", org: "IOCL", designation: "Executive Trainee", img: "/rankers/job-20.png" },
+  { name: "Akshay Pillay", org: "Govt. of India", designation: "Sub Collector & SDM", img: "/avatar-1.png" },
+  { name: "Dr. Sahil Garg", org: "Ministry of Defence", designation: "Group A Gazetted / Asst. Prof", img: "/avatar-2.png" },
+  { name: "Akash Jaiswal", org: "ISRO, Bengaluru", designation: "Scientist - SC", img: "/avatar-3.png" },
+  { name: "Deepbhai Haresh Kumar Dave", org: "ISRO, NLC", designation: "Scientist/Engineer 'SC'", img: "/avatar-4.png" },
+  { name: "Dileep Kumar Chaudhary", org: "BARC", designation: "Scientific Officer OCES", img: "/avatar-1.png" },
+  { name: "Govind Kumar", org: "Bharat Electronics Ltd", designation: "Deputy Engineer", img: "/avatar-2.png" },
+  { name: "Chirag Goyal", org: "IOCL", designation: "Aviation Officer", img: "/avatar-3.png" },
+  { name: "Anant Kumar Gautam", org: "IOCL", designation: "Executive Officer", img: "/avatar-4.png" },
+  { name: "Swati Mishra", org: "Hindustan Zinc Ltd", designation: "Assistant Manager", img: "/avatar-1.png" },
+  { name: "Prashant Mishra", org: "GAIL (India) Ltd", designation: "Senior Engineer", img: "/avatar-2.png" },
+  { name: "Suarabh Chaubey", org: "NALCO", designation: "Patent Examiner", img: "/avatar-3.png" },
+  { name: "Rahul Singh Yadav", org: "NTPC", designation: "Engineer", img: "/avatar-4.png" },
+  { name: "Kamna Pandey", org: "NTPC Limited", designation: "Engineer", img: "/avatar-1.png" },
+  { name: "Aasif Procha", org: "PSPCL", designation: "Assistant Engineer", img: "/avatar-2.png" },
+  { name: "Pooja H", org: "WRD", designation: "Assistant Engineer", img: "/avatar-3.png" },
+  { name: "Bhavya Malviya", org: "NTPC Kahalgaon", designation: "Asst. Exec Operations", img: "/avatar-4.png" },
+  { name: "Rajat Rai", org: "ONGC", designation: "Asst. Exe. Engineer", img: "/avatar-1.png" },
+  { name: "Garima", org: "Bharat Dynamics Ltd", designation: "Executive Trainee", img: "/avatar-2.png" },
+  { name: "Anjali", org: "NPCIL", designation: "Executive Trainee", img: "/avatar-3.png" },
+  { name: "Sujoy Das", org: "IOCL", designation: "Executive Trainee", img: "/avatar-4.png" },
 ];
+
+const SafeRankerImage = ({ src, alt, fill, className, ...props }: any) => {
+  const [imgSrc, setImgSrc] = React.useState(src);
+
+  React.useEffect(() => {
+    setImgSrc(src);
+  }, [src]);
+
+  const handleFallback = () => {
+    const code = alt ? alt.charCodeAt(0) % 4 : 0;
+    const avatars = ["/avatar-1.png", "/avatar-2.png", "/avatar-3.png", "/avatar-4.png"];
+    setImgSrc(avatars[code]);
+  };
+
+  return (
+    <Image
+      {...props}
+      src={imgSrc || "/avatar-1.png"}
+      alt={alt}
+      fill={fill}
+      className={className}
+      onError={handleFallback}
+    />
+  );
+};
 
 const VerticalSlider = ({ items, speed, reverse = false }: { items: typeof students, speed: number, reverse?: boolean }) => {
   const doubledItems = [...items, ...items, ...items];
@@ -49,7 +74,7 @@ const VerticalSlider = ({ items, speed, reverse = false }: { items: typeof stude
             key={idx} 
             className="w-full aspect-[4/5] rounded-[1.5rem] overflow-hidden relative shadow-xl border-[4px] border-white bg-white group"
           >
-            <Image 
+            <SafeRankerImage 
               src={student.img} 
               alt={student.name} 
               fill
@@ -79,6 +104,10 @@ const VerticalSlider = ({ items, speed, reverse = false }: { items: typeof stude
 };
 
 const Hero: React.FC = () => {
+  const col1 = students.filter((_, i) => i % 3 === 0);
+  const col2 = students.filter((_, i) => i % 3 === 1);
+  const col3 = students.filter((_, i) => i % 3 === 2);
+
   return (
     <section className="relative bg-white overflow-hidden min-h-[550px] lg:min-h-[650px] flex flex-col pt-20 lg:pt-28 pb-0">
       
@@ -86,7 +115,7 @@ const Hero: React.FC = () => {
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gameTeal/5 rounded-full blur-[100px] pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gameGold/5 rounded-full blur-[80px] pointer-events-none"></div>
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-[0.02] pointer-events-none"></div>
-
+ 
       <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10 w-full flex-grow flex flex-col justify-center">
         <div className="grid lg:grid-cols-12 gap-8 items-center min-h-[450px] lg:min-h-[550px]"> 
           
@@ -106,7 +135,7 @@ const Hero: React.FC = () => {
                       #1 GATE & ESE INSTITUTE
                    </span>
                 </div>
-
+ 
                 <h1 className="text-3xl lg:text-5xl font-black text-slate-900 leading-[1] mb-2 tracking-tighter">
                    Crack <span className="text-gameTeal">Competitive</span> <br/>
                    Exams Like a <span className="text-gameGold">Pro Player</span>
@@ -116,7 +145,7 @@ const Hero: React.FC = () => {
                    Join India's trusted mentorship platform. Visualized learning with <br />
                    <span className="text-gameTeal font-black">Gaurav Babu Sir</span> <span className="text-slate-900 font-black px-1">(14+ yrs Exp).</span>
                 </p>
-
+ 
                 <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-3 mb-6">
                     <Link 
                       href="#exams"
@@ -131,7 +160,7 @@ const Hero: React.FC = () => {
                        <Briefcase size={16} className="text-gameTeal" /> JOB UPDATES
                     </Link>
                 </div>
-
+ 
                 <div className="flex items-center justify-center lg:justify-start gap-6 pt-6 border-t border-slate-100">
                    <div className="group">
                       <div className="text-2xl font-black text-slate-900 leading-none mb-1 group-hover:text-gameTeal transition-colors line-clamp-1">100k+</div>
@@ -153,20 +182,20 @@ const Hero: React.FC = () => {
                 </div>
              </motion.div>
           </div>
-
+ 
           {/* RIGHT VISUAL AREA */}
           <div className="lg:col-span-7 relative h-full flex items-end justify-center">
              
              <div className="absolute -inset-y-12 inset-x-0 z-0 overflow-hidden mask-fade-top-bottom pointer-events-none opacity-30 scale-x-95">
                 <div className="flex gap-4 h-full px-4 lg:px-8">
                    <div className="flex-1">
-                      <VerticalSlider items={students.slice(0, 13)} speed={45} />
+                      <VerticalSlider items={col1} speed={45} />
                    </div>
                    <div className="flex-1 mt-12">
-                      <VerticalSlider items={students.slice(13, 26)} speed={35} reverse />
+                      <VerticalSlider items={col2} speed={35} reverse />
                    </div>
                    <div className="flex-1">
-                      <VerticalSlider items={students.slice(26, 40)} speed={55} />
+                      <VerticalSlider items={col3} speed={55} />
                    </div>
                 </div>
              </div>
