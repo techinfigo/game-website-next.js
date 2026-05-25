@@ -27,25 +27,6 @@ const students = [
   { name: "Garima", org: "Bharat Dynamics Ltd", designation: "Executive Trainee", img: "/rankers/job-18.png" },
   { name: "Anjali", org: "NPCIL", designation: "Executive Trainee", img: "/rankers/job-19.png" },
   { name: "Sujoy Das", org: "IOCL", designation: "Executive Trainee", img: "/rankers/job-20.png" },
-  { name: "Parul Singh", org: "CPWD", designation: "Junior Engineer", img: "/rankers/job-1.png" },
-  { name: "Neelam Kushwaha", org: "SSC (Irrigation)", designation: "Junior Engineer", img: "/rankers/job-2.png" },
-  { name: "Ankit Kumar", org: "BARC", designation: "Stipendiary Trainee", img: "/rankers/job-3.png" },
-  { name: "Vijay Pal", org: "NTPC", designation: "Engg. Exec Trainee", img: "/rankers/job-4.png" },
-  { name: "Vindhyeshwari Upadhyay", org: "BHEL & RRB-JE", designation: "Junior Engineer", img: "/rankers/job-5.png" },
-  { name: "Akash Gupta", org: "NTPC", designation: "Engg. Exec Trainee", img: "/rankers/job-6.png" },
-  { name: "Deepak Devlal", org: "DIAT", designation: "Aerospace Engg", img: "/rankers/job-7.png" },
-  { name: "Abhishek Kumar", org: "NTPC", designation: "Engg. Exec Trainee", img: "/rankers/job-8.png" },
-  { name: "Pankaj Kushwah", org: "BARC", designation: "Scientific Assistant", img: "/rankers/job-9.png" },
-  { name: "Sangeeta", org: "BARC", designation: "Scientific Assistant", img: "/rankers/job-10.png" },
-  { name: "Pushp Kumar Singh", org: "RSSB", designation: "Junior Engineer", img: "/rankers/job-11.png" },
-  { name: "Aditi Rathore", org: "ONGC", designation: "Asst. Exe. Engineer", img: "/rankers/job-12.png" },
-  { name: "Smaranika Moharana", org: "OPSC", designation: "Asst. Exe. Engineer", img: "/rankers/job-13.png" },
-  { name: "Abhishek Tiwari", org: "BHEL", designation: "Executive Trainee", img: "/rankers/job-14.png" },
-  { name: "Mukunda Buragohain", org: "Assam Govt", designation: "Junior Engineer", img: "/rankers/job-15.png" },
-  { name: "Harpreet", org: "HSPCB", designation: "Asst. Env. Engineer", img: "/rankers/job-16.png" },
-  { name: "Kapil Sharma", org: "NLCIL", designation: "Executive Engineer", img: "/rankers/job-17.png" },
-  { name: "Rajesh Sahu", org: "ISRO", designation: "Technical Assistant", img: "/rankers/job-18.png" },
-  { name: "Monu Kumar", org: "Coal India Ltd", designation: "Management Trainee", img: "/rankers/job-19.png" }
 ];
 
 const VerticalSlider = ({ items, speed, reverse = false }: { items: typeof students, speed: number, reverse?: boolean }) => {
