@@ -68,7 +68,7 @@ export const facultyMembers = [
     role: "Mechanical Engineering Lead",
     expLabel: "12+ YRS EXP.",
     exp: "12+ years of teaching experience",
-    img: "/hariveer-sir.png",
+    img: "/faculty/hariveer-sir.png",
     stats: [
       { label: "M.TECH (CAD-CAM & Automation) NITS", icon: Landmark },
       { label: "Qualified GATE multiple times & authored practice books", icon: Medal },
