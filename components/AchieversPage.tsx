@@ -15,11 +15,11 @@ export const ALL_STORIES = [
   { 
     type: 'video',
     id: 1,
-    name: "Rahul Singh", 
-    rank: "AIR 1", 
-    exam: "GATE ME 2023", 
-    img: "/ranker-lg-1.png", 
-    video: "https://www.youtube.com/embed/D6HOo41x2Ls", // Standard video ID
+    name: "Mukunda Buragohain", 
+    rank: "Junior Engineer (Civil)", 
+    exam: "Assam Govt. · 2025", 
+    img: "https://img.youtube.com/vi/UAK_6p0SQlo/hqdefault.jpg", 
+    video: "https://www.youtube.com/embed/UAK_6p0SQlo", // Standard video ID
     featured: true 
   },
   {
@@ -31,11 +31,11 @@ export const ALL_STORIES = [
   { 
     type: 'video',
     id: 3,
-    name: "Priya Sharma", 
-    rank: "AIR 5", 
-    exam: "ESE CE 2023", 
-    img: "/ranker-lg-2.png", 
-    video: "https://www.youtube.com/embed/gvK9V0trlaw" 
+    name: "Harpreet", 
+    rank: "Asst. Environmental Engineer", 
+    exam: "Haryana SPCB - Civil · 2025", 
+    img: "https://img.youtube.com/vi/IadaXYQRxjM/hqdefault.jpg", 
+    video: "https://www.youtube.com/embed/IadaXYQRxjM" 
   },
   {
     type: 'whatsapp',
@@ -46,11 +46,11 @@ export const ALL_STORIES = [
   { 
     type: 'video',
     id: 5,
-    name: "Amit Patel", 
-    rank: "AIR 12", 
-    exam: "SSC EE 2023", 
-    img: "/ranker-rk-5.png", 
-    video: "https://www.youtube.com/embed/dQw4w9WgXcQ" 
+    name: "Parul Singh", 
+    rank: "Junior Engineer (Civil)", 
+    exam: "CPWD · 2023", 
+    img: "https://img.youtube.com/vi/gnJYMXouHJs/hqdefault.jpg", 
+    video: "https://www.youtube.com/embed/gnJYMXouHJs" 
   },
   {
     type: 'whatsapp',
@@ -61,11 +61,20 @@ export const ALL_STORIES = [
   { 
     type: 'video',
     id: 7,
-    name: "Neha Gupta", 
-    rank: "AIR 3", 
-    exam: "GATE CS 2023", 
-    img: "/ranker-rk-6.png", 
-    video: "https://www.youtube.com/embed/dQw4w9WgXcQ" 
+    name: "Anurag Tripathi", 
+    rank: "IIT Ropar", 
+    exam: "Selection Year · 2024", 
+    img: "https://img.youtube.com/vi/3rpUFtkOTWU/hqdefault.jpg", 
+    video: "https://www.youtube.com/embed/3rpUFtkOTWU" 
+  },
+  { 
+    type: 'video',
+    id: 8,
+    name: "Anjali", 
+    rank: "AIR 556 (ME) · Executive Trainee", 
+    exam: "NPCIL · 2024", 
+    img: "https://img.youtube.com/vi/Etba1HTOBUI/hqdefault.jpg", 
+    video: "https://www.youtube.com/embed/Etba1HTOBUI" 
   },
   {
     type: 'whatsapp',
@@ -1269,7 +1278,7 @@ interface AchieversPageProps {
   initialFilter?: 'all' | 'video' | 'story';
 }
 
-const AchieversPage: React.FC<AchieversPageProps> = () => {
+const AchieversPage: React.FC<AchieversPageProps> = ({ initialFilter = 'all' }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
