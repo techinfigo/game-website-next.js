@@ -5,13 +5,14 @@ import LoginModal from './LoginModal';
 import { useAuth } from '@/providers/AuthProvider';
 
 const LoginModalWrapper: React.FC = () => {
-  const { isLoginOpen, closeLogin } = useAuth();
+  const { isLoginOpen, closeLogin, initialView } = useAuth();
   
   return (
     <LoginModal 
       isOpen={isLoginOpen}
       onClose={closeLogin}
       onSuccess={closeLogin}
+      initialView={initialView}
     />
   );
 };
