@@ -1144,19 +1144,17 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
                <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <button className="bg-[#f2c537] text-black px-10 py-4 rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-white transition-all shadow-2xl hover:-translate-y-1 flex items-center justify-center gap-3">
                      Enroll in Excellence Course <ChevronRight size={18} />
-                 <div className="flex justify-center">
-  <div className="flex justify-center mt-8">
-  <a
-    href="https://t.me/gamebygauravbabu"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="bg-transparent border-2 border-white/20 text-white px-10 py-4 rounded-2xl font-black uppercase tracking-widest hover:bg-white/10 transition-all flex items-center justify-center gap-2"
-  >
-    <Bell size={18} />
-    <span>Join Telegram Alerts</span>
-  </a>
-</div>           
-                 </motion.div>
+                  </button>
+                  <a
+                     href="https://t.me/gamebygauravbabu"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="bg-transparent border-2 border-white/20 text-white px-10 py-4 rounded-2xl font-black uppercase tracking-widest hover:bg-white/10 transition-all flex items-center justify-center gap-2"
+                  >
+                     <Bell size={18} /> Join Telegram Alerts
+                  </a>
+               </div>
+            </motion.div>
          </div>
       </section>
 
