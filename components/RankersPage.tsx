@@ -34,7 +34,7 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "GATE",
     category: "GATE",
     selectionYear: "2024",
-    image: "/rankers/ranker-1.png"
+    image: "/rankers/student1.png"
   },
   {
     id: "2",
@@ -43,7 +43,7 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "GATE",
     category: "GATE",
     selectionYear: "2024",
-    image: "/rankers/ranker-2.png"
+    image: "/rankers/student2.png"
   },
   {
     id: "3",
@@ -52,7 +52,7 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "GATE",
     category: "GATE",
     selectionYear: "2024",
-    image: "/rankers/ranker-3.png"
+    image: "/rankers/student3.png"
   },
   {
     id: "4",
@@ -61,7 +61,7 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "GATE",
     category: "GATE",
     selectionYear: "2024",
-    image: "/rankers/ranker-4.png"
+    image: "/rankers/student4.png"
   },
   {
     id: "5",
@@ -70,7 +70,7 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "GATE",
     category: "GATE",
     selectionYear: "2024",
-    image: "/rankers/ranker-5.png"
+    image: "/rankers/student5.png"
   },
   {
     id: "6",
@@ -79,7 +79,7 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "GATE",
     category: "GATE",
     selectionYear: "2024",
-    image: "/rankers/ranker-6.png"
+    image: "/rankers/student6.png"
   },
   {
     id: "7",
@@ -88,7 +88,7 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "GATE",
     category: "GATE",
     selectionYear: "2024",
-    image: "/rankers/ranker-7.png"
+    image: "/rankers/student7.png"
   },
   {
     id: "8",
@@ -97,7 +97,7 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "GATE",
     category: "GATE",
     selectionYear: "2024",
-    image: "/rankers/ranker-8.png"
+    image: "/rankers/student8.png"
   },
   {
     id: "9",
@@ -106,7 +106,7 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "GATE",
     category: "GATE",
     selectionYear: "2024",
-    image: "/rankers/ranker-9.png"
+    image: "/rankers/student9.png"
   },
   {
     id: "10",
@@ -115,7 +115,7 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "GATE",
     category: "GATE",
     selectionYear: "2025",
-    image: "/rankers/ranker-10.png"
+    image: "/rankers/student10.png"
   },
   {
     id: "11",
@@ -124,7 +124,7 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "GATE",
     category: "GATE",
     selectionYear: "2025",
-    image: "/rankers/ranker-11.png"
+    image: "/rankers/student11.png"
   },
   {
     id: "12",
@@ -133,7 +133,7 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "GATE",
     category: "GATE",
     selectionYear: "2025",
-    image: "/rankers/ranker-12.png"
+    image: "/rankers/student12.png"
   },
   {
     id: "13",
@@ -142,7 +142,7 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "GATE",
     category: "GATE",
     selectionYear: "2025",
-    image: "/rankers/ranker-13.png"
+    image: "/rankers/student13.png"
   },
   {
     id: "14",
@@ -151,7 +151,7 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "GATE",
     category: "GATE",
     selectionYear: "2025",
-    image: "/rankers/ranker-14.png"
+    image: "/rankers/student14.png"
   },
   {
     id: "15",
@@ -160,7 +160,7 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "GATE",
     category: "GATE",
     selectionYear: "2025",
-    image: "/rankers/ranker-15.png"
+    image: "/rankers/student15.png"
   },
   {
     id: "16",
@@ -169,7 +169,7 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "GATE",
     category: "GATE",
     selectionYear: "2025",
-    image: "/rankers/ranker-16.png"
+    image: "/rankers/student16.png"
   },
   {
     id: "17",
@@ -178,7 +178,7 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "GATE",
     category: "GATE",
     selectionYear: "2025",
-    image: "/rankers/ranker-17.png"
+    image: "/rankers/student17.png"
   },
   {
     id: "18",
@@ -187,7 +187,7 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "GATE",
     category: "GATE",
     selectionYear: "2025",
-    image: "/rankers/ranker-18.png"
+    image: "/rankers/student18.png"
   },
   {
     id: "19",
@@ -196,7 +196,7 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "GATE",
     category: "GATE",
     selectionYear: "2025",
-    image: "/rankers/ranker-19.png"
+    image: "/rankers/student19.png"
   },
   {
     id: "20",
@@ -205,17 +205,9 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "GATE",
     category: "GATE",
     selectionYear: "2025",
-    image: "/rankers/ranker-20.png"
+    image: "/rankers/student20.png"
   },
-  {
-    id: "21",
-    name: "Mohit",
-    college: "RRB-JE Mumbai",
-    designation: "GATE",
-    category: "GATE",
-    selectionYear: "2026",
-    image: "/rankers/ranker-21.png"
-  }
+
 ];
 
 const MOCK_JOB_RANKERS: Ranker[] = [
