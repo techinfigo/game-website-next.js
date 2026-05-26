@@ -425,17 +425,17 @@ const RankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
   <div
     className="group relative flex flex-col bg-[#050505] rounded-[1rem] transition-all duration-500 overflow-hidden h-[210px] w-full border border-white/5 shadow-2xl hover:shadow-gameTeal/10"
   >
-    {/* Top Image Container - Fully visible, using object-contain to prevent cropping or hiding the image */}
+    {/* Top Image Container - Fully visible, using object-cover to prevent black letterboxing on the sides */}
     <div className="relative h-[55%] w-full overflow-hidden bg-[#07090e]">
       <Image 
           src={ranker.image} 
           alt={ranker.name} 
           fill
           unoptimized
-          className="object-contain p-1 transition-transform duration-1000 opacity-95 group-hover:scale-105" 
+          className="object-cover transition-transform duration-1000 opacity-95 group-hover:scale-105" 
           referrerPolicy="no-referrer"
       />
-      <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-[#050505] to-transparent pointer-events-none"></div>
+      <div className="absolute inset-x-0 bottom-0 h-1/5 bg-gradient-to-t from-[#050505] to-transparent pointer-events-none"></div>
       
       {/* Category Badge */}
       <div className="absolute top-2 left-2 z-10">
@@ -472,17 +472,17 @@ const JobRankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
   <div
     className="group relative flex flex-col bg-[#050505] rounded-[1rem] transition-all duration-500 overflow-hidden h-[210px] w-full border border-white/5"
   >
-    {/* Top Image Section - Height adjusted to 60% for better ratio in shorter cards */}
+    {/* Top Image Section - Edge-to-edge cover to render the full student photo brightly */}
     <div className="relative h-[60%] w-full overflow-hidden bg-[#07090e]">
       <Image 
           src={ranker.image} 
           alt={ranker.name} 
           fill
           unoptimized
-          className="object-contain p-1 transition-transform duration-1000 opacity-90 group-hover:opacity-100 group-hover:scale-105" 
+          className="object-cover transition-transform duration-1000 opacity-95 group-hover:opacity-100 group-hover:scale-105" 
           referrerPolicy="no-referrer"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent pointer-events-none"></div>
+      <div className="absolute inset-x-0 bottom-0 h-1/5 bg-gradient-to-t from-[#050505] to-transparent pointer-events-none"></div>
       
       {/* Category HUD - More compact */}
       <div className="absolute top-2 left-2">
