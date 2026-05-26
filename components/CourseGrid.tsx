@@ -20,6 +20,15 @@ interface CourseGridProps {
 
 const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, searchTerm, setSearchTerm }) => {
   
+  // Helper to calculate discount percentage
+  const calculateDiscount = (price: string, originalPrice: string) => {
+    const p = parseInt(price.replace(/[^\d]/g, ''));
+    const op = parseInt(originalPrice.replace(/[^\d]/g, ''));
+    if (isNaN(p) || isNaN(op) || op <= 0) return "SAVE";
+    const disc = Math.round(((op - p) / op) * 100);
+    return `${disc}% OFF`;
+  };
+  
   // Updated Category Order: SSC JE moved next to GATE / ESE
   const categories = [
     { id: 'All', label: 'All Courses', icon: LayoutGrid },
@@ -771,15 +780,26 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
                                           </div>
                                       </div>
 
-                                      {/* Bottom Action Area (Price Only) */}
+                                      {/* Bottom Action Area (Slim & Refined) */}
                                       <div className="absolute bottom-4 left-5 z-20">
-                                          <div className="flex items-baseline gap-3 bg-white/10 backdrop-blur-xl px-4 py-2 rounded-2xl border border-white/20">
-                                              <span className="text-2xl font-black text-white tracking-tighter leading-none">
-                                                  {course.price}
-                                              </span>
-                                              <span className="text-[11px] font-black text-[#f2c537] line-through tracking-widest uppercase opacity-90">
-                                                  {course.originalPrice}
-                                              </span>
+                                          <div className="flex items-center gap-3.5 bg-slate-950/80 backdrop-blur-xl px-4.5 py-2.5 rounded-[1.4rem] border border-white/10 shadow-[0_15px_40px_rgba(0,0,0,0.5)] group/price transition-all duration-500 hover:bg-black hover:border-white/20">
+                                              <div className="flex flex-col">
+                                                  <span className="text-xl md:text-2xl font-[1000] text-white tracking-tighter leading-none">
+                                                      {course.price}
+                                                  </span>
+                                                  <span className="text-[8px] font-black text-white/30 line-through tracking-wider uppercase mt-1">
+                                                      {course.originalPrice}
+                                                  </span>
+                                              </div>
+                                              
+                                              <div className="w-[1px] h-6 bg-white/10"></div>
+                                              
+                                              <div className="flex items-center gap-1 bg-gameGold px-2.5 py-1.5 rounded-lg shadow-[0_4px_12px_rgba(242,197,55,0.25)] shrink-0">
+                                                  <Sparkles size={8} className="text-black" />
+                                                  <span className="text-[9px] font-[1000] text-black uppercase tracking-wide">
+                                                      {calculateDiscount(course.price, course.originalPrice)}
+                                                  </span>
+                                              </div>
                                           </div>
                                       </div>
                                   </div>
