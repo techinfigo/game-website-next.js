@@ -1591,7 +1591,13 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
                      Enroll in Excellence Course <ChevronRight size={18} />
                   </button>
                   <button className="bg-transparent border-2 border-white/20 text-white px-10 py-4 rounded-2xl font-black uppercase tracking-widest hover:bg-white/10 transition-all flex items-center justify-center gap-2">
-                     <Bell size={18} /> Join Telegram Alerts
+                    <a
+  href="https://t.me/gamebygauravbabu"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="bg-transparent border-2 border-white/20 text-white px-10 py-4 rounded-2xl font-black uppercase tracking-widest hover:bg-white/10 transition-all flex items-center justify-center gap-2"
+> 
+                    <Bell size={18} /> Join Telegram Alerts
                   </button>
                </div>
             </motion.div>
