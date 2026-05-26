@@ -29,7 +29,7 @@ interface Job {
 
 interface JobNotificationsPageProps {
   isLoggedIn: boolean;
-  openLogin: () => void;
+  openLogin: (view?: 'login' | 'register') => void;
   onNavigate?: (page: string) => void;
 }
 
@@ -1075,7 +1075,10 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
               </p>
               
               <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start items-center">
-                <button className="w-full sm:w-auto bg-[#f2c537] text-black px-12 py-5 rounded-2xl font-black text-sm uppercase tracking-[0.2em] shadow-[0_20px_50px_rgba(242,197,55,0.3)] hover:bg-white hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3 group">
+                <button 
+                  onClick={() => openLogin('register')}
+                  className="w-full sm:w-auto bg-[#f2c537] text-black px-12 py-5 rounded-2xl font-black text-sm uppercase tracking-[0.2em] shadow-[0_20px_50px_rgba(242,197,55,0.3)] hover:bg-white hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3 group"
+                >
                    Sign Up for Alerts <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </button>
                 
@@ -1501,7 +1504,7 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
                               Get instant access to salary details, eligibility checks, and official application links.
                            </p>
                            <button 
-                              onClick={openLogin}
+                              onClick={() => openLogin()}
                               className="w-full bg-gameTeal text-white py-4 rounded-xl font-black text-xs uppercase tracking-[0.2em] shadow-xl hover:bg-gameTealDark hover:-translate-y-1 transition-all flex items-center justify-center gap-3 group"
                            >
                               Login Now <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
