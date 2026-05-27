@@ -48,7 +48,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
     {
       title: "Lakshya Basic (ME) 2027",
       tagline: "Comprehensive Foundation for GATE & PSUs",
-      image: "/courses/lakshya_basic_me_2027.jpg",
+      image: "/courses/lakshya_basic_me_2027.png",
       duration: "12 Months",
       eligibility: "Final year / PSUs job seekers",
       features: [
@@ -70,12 +70,13 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       branch: "Mechanical",
       exam: "GATE / ESE / PSUs / ISRO / BARC",
       language: "Hinglish",
-      mentorship: "No"
+      mentorship: "No",
+      enrollLink: "https://courses.gameacademy.in/wlp/lakshya-basic-me-course"
     },
     {
       title: "Lakshya Advance (ME) 2027",
       tagline: "Advance Practice & Concept Building",
-      image: "/courses/lakshya_advance_me_2027.jpg",
+      image: "/courses/lakshya_advance_me_2027.png",
       duration: "12 Months",
       eligibility: "Final Year / Droppers",
       features: [
@@ -97,12 +98,13 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       branch: "Mechanical",
       exam: "GATE / ESE / PSUs / ISRO / BARC",
       language: "Hinglish",
-      mentorship: "Yes"
+      mentorship: "Yes",
+      enrollLink: "https://courses.gameacademy.in/wlp/lakshya-advance-gate-course"
     },
     {
       title: "Lakshya (ME) - Exclusive Mentorship Program",
       tagline: "1:1 Live Guided Mentorship & Learning",
-      image: "/courses/lakshya_me_exclusive.jpg",
+      image: "/courses/lakshya_me_exclusive.png",
       duration: "15-30 Months",
       eligibility: "2nd/3rd Year",
       features: [
@@ -124,12 +126,13 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       branch: "Mechanical",
       exam: "GATE / ESE / PSUs / ISRO / BARC / AE & JE",
       language: "Hinglish",
-      mentorship: "Yes"
+      mentorship: "Yes",
+      enrollLink: "https://courses.gameacademy.in/wlp/lakshya-exclusive-course-me"
     },
     {
       title: "Foundation Course (ME) 2027/2028",
       tagline: "Complete Two-Year Mastery Program",
-      image: "/courses/foundation_me_2027_2028.jpg",
+      image: "/courses/foundation_me_2027_2028.png",
       duration: "24 Months",
       eligibility: "2nd/3rd Year",
       features: [
@@ -151,12 +154,13 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       branch: "Mechanical",
       exam: "GATE / ESE / PSUs / ISRO / BARC",
       language: "Hinglish",
-      mentorship: "Yes"
+      mentorship: "Yes",
+      enrollLink: "https://courses.gameacademy.in/wlp/foundation-course-gate-me"
     },
     {
       title: "Lakshya Pro - Selection Guarantee Course",
       tagline: "Guaranteed Selection or Full Refund Support",
-      image: "/courses/lakshya_pro.jpg",
+      image: "/courses/lakshya_pro.png",
       duration: "12 Months",
       eligibility: "GATE, ESE & PSUs Aspirants",
       features: [
@@ -178,12 +182,13 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       branch: "Mechanical",
       exam: "GATE, ESE, PSUs",
       language: "Hinglish",
-      mentorship: "Yes"
+      mentorship: "Yes",
+      enrollLink: "https://courses.gameacademy.in"
     },
     {
       title: "Lakshya Course (CE)",
       tagline: "Complete Civil Engineering Specialization",
-      image: "/courses/lakshya_ce.jpg",
+      image: "/courses/lakshya_ce.png",
       duration: "12 Months",
       eligibility: "B.Tech 1st to Final year",
       features: [
@@ -205,12 +210,13 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       branch: "Civil",
       exam: "GATE, PSUs",
       language: "Hinglish",
-      mentorship: "Yes"
+      mentorship: "Yes",
+      enrollLink: "https://courses.gameacademy.in/wlp/lakshya-civil-course"
     },
     {
       title: "Aadhaaram Course",
       tagline: "Basic Engineering Foundation for Semesters & Exams",
-      image: "/courses/aadhaaram.jpg",
+      image: "/courses/aadhaaram.png",
       duration: "12 Months",
       eligibility: "1st year to final year",
       features: [
@@ -232,12 +238,13 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       branch: "Multi-Branch",
       exam: "Semester Exams, GATE, PSUs",
       language: "Hinglish",
-      mentorship: "No"
+      mentorship: "No",
+      enrollLink: "https://courses.gameacademy.in/wlp/aadhaaram-course-new-year"
     },
     {
       title: "Aarambh Course - Combo (Thermal + SOM)",
       tagline: "Target Mechanical Combo Special",
-      image: "/courses/aarambh_thermal_som.jpg",
+      image: "/courses/aarambh_thermal_som.png",
       duration: "12 Months",
       eligibility: "B,Tech. 1st, 2nd year",
       features: [
@@ -259,12 +266,13 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       branch: "Mechanical",
       exam: "GATE/ ESE/PSUs / College semesters",
       language: "Hinglish",
-      mentorship: "No"
+      mentorship: "No",
+      enrollLink: "https://courses.gameacademy.in"
     },
     {
       title: "Aarambh Course - Combo (EM + Maths)",
       tagline: "Solid Foundation in Mechanics & Maths",
-      image: "/courses/aarambh_em_maths.jpg",
+      image: "/courses/aarambh_em_maths.png",
       duration: "6 Months",
       eligibility: "B,Tech. 1st, 2nd year",
       features: [
@@ -286,12 +294,13 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       branch: "Mechanical",
       exam: "GATE/ ESE/PSUs / College semesters",
       language: "Hinglish",
-      mentorship: "Yes"
+      mentorship: "Yes",
+      enrollLink: "https://courses.gameacademy.in"
     },
     {
       title: "Aarambh Course - Combo (Surveying + SOM)",
       tagline: "Solid Foundation in Civil Surveying & SOM",
-      image: "/courses/aarambh_surveying_som.jpg",
+      image: "/courses/aarambh_surveying_som.png",
       duration: "6 Months",
       eligibility: "B,Tech. 1st, 2nd year",
       features: [
@@ -313,12 +322,13 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       branch: "Civil",
       exam: "GATE/ ESE/PSUs / College semesters",
       language: "Hinglish",
-      mentorship: "Yes"
+      mentorship: "Yes",
+      enrollLink: "https://courses.gameacademy.in"
     },
     {
       title: "Quick Practice Course | GATE 2027",
       tagline: "Most Expected Questions Mock & Hacks",
-      image: "/courses/quick_practice_gate_2027.jpg",
+      image: "/courses/quick_practice_gate_2027.png",
       duration: "6 Months",
       eligibility: "GATE Aspirants",
       features: [
@@ -340,12 +350,13 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       branch: "Mechanical",
       exam: "GATE",
       language: "Hinglish",
-      mentorship: "No"
+      mentorship: "No",
+      enrollLink: "https://courses.gameacademy.in"
     },
     {
       title: "GATE - XE (B+E) Full Course",
       tagline: "Engineering Science Fluid Mechanics & Thermodynamics",
-      image: "/courses/gate_xe_be.jpg",
+      image: "/courses/gate_xe_be.png",
       duration: "12 Months",
       eligibility: "B.Tech 3rd year & 4th year",
       features: [
@@ -367,12 +378,13 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       branch: "Engineering Science",
       exam: "GATE - XE",
       language: "Hinglish",
-      mentorship: "No"
+      mentorship: "No",
+      enrollLink: "https://courses.gameacademy.in"
     },
     {
       title: "GATE - XE (D+E) Full Course",
       tagline: "Engineering Science Solid Mechanics & Thermodynamics",
-      image: "/courses/gate_xe_de.jpg",
+      image: "/courses/gate_xe_de.png",
       duration: "12 Months",
       eligibility: "B.Tech 3rd year & 4th year",
       features: [
@@ -394,12 +406,13 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       branch: "Engineering Science",
       exam: "GATE - XE",
       language: "Hinglish",
-      mentorship: "No"
+      mentorship: "No",
+      enrollLink: "https://courses.gameacademy.in"
     },
     {
       title: "GATE - XE (B+D) Full Course",
       tagline: "Engineering Science Fluid Mechanics & Solid Mechanics",
-      image: "/courses/gate_xe_bd.jpg",
+      image: "/courses/gate_xe_bd.png",
       duration: "12 Months",
       eligibility: "B.Tech 3rd year & 4th year",
       features: [
@@ -421,12 +434,13 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       branch: "Engineering Science",
       exam: "GATE - XE",
       language: "Hinglish",
-      mentorship: "No"
+      mentorship: "No",
+      enrollLink: "https://courses.gameacademy.in"
     },
     {
       title: "Vijeta Test Series (ME) 2027",
       tagline: "Premium High Quality Tests for ME",
-      image: "/courses/vijeta_ts_me.jpg",
+      image: "/courses/vijeta_ts_me.png",
       duration: "12 Months",
       eligibility: "GATE/PSUs Aspirants",
       features: [
@@ -448,14 +462,15 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       branch: "Mechanical",
       exam: "GATE, ESE, PSUs",
       language: "English",
-      mentorship: "No"
+      mentorship: "No",
+      enrollLink: "https://courses.gameacademy.in/wlp/vijeta-test-series-gate-me-new"
     },
 
     // SSC JE Category
     {
       title: "Excellence Course (ME)",
       tagline: "Junior Engineer Special Batch",
-      image: "/courses/excellence_me.jpg",
+      image: "/courses/excellence_me.png",
       duration: "12 Months",
       eligibility: "Diploma Final Year",
       features: [
@@ -477,12 +492,13 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       branch: "Mechanical",
       exam: "SSC-JE, RRB-JE, State AE-JE",
       language: "Hinglish",
-      mentorship: "Yes"
+      mentorship: "Yes",
+      enrollLink: "https://courses.gameacademy.in/wlp/excellence-ae-je-mechanical"
     },
     {
       title: "Excellence Course (CE)",
       tagline: "Junior Engineer Civil Comprehensive Batch",
-      image: "/courses/excellence_ce.jpg",
+      image: "/courses/excellence_ce.png",
       duration: "12 Months",
       eligibility: "Diploma Final Year",
       features: [
@@ -504,12 +520,13 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       branch: "Civil",
       exam: "SSC-JE, RRB-JE, State AE-JE",
       language: "Hinglish",
-      mentorship: "Yes"
+      mentorship: "Yes",
+      enrollLink: "https://courses.gameacademy.in/wlp/excellence-ae-je-civil"
     },
     {
       title: "Vijeta Test Series (ME) 2027 (SSC-JE)",
       tagline: "Specialised Tests for Junior Engineer ME",
-      image: "/courses/vijeta_ts_me_sscje.jpg",
+      image: "/courses/vijeta_ts_me_sscje.png",
       duration: "12 months",
       eligibility: "SSC-JE & All State AE-JE Aspirants",
       features: [
@@ -531,12 +548,13 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       branch: "Mechanical",
       exam: "SSC-JE, RRB-JE, State AE-JE",
       language: "English",
-      mentorship: "No"
+      mentorship: "No",
+      enrollLink: "https://courses.gameacademy.in"
     },
     {
       title: "Vijeta Test Series (CE) 2027 (SSC-JE)",
       tagline: "Specialised Tests for Junior Engineer CE",
-      image: "/courses/vijeta_ts_ce_sscje.jpg",
+      image: "/courses/vijeta_ts_ce_sscje.png",
       duration: "12 Months",
       eligibility: "SSC-JE & All State AE-JE Aspirants",
       features: [
@@ -558,14 +576,15 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       branch: "Civil",
       exam: "SSC-JE, RRB-JE, State AE-JE",
       language: "English",
-      mentorship: "No"
+      mentorship: "No",
+      enrollLink: "https://courses.gameacademy.in"
     },
-
-    // Non-Tech Category
+ 
+     // Non-Tech Category
     {
       title: "Beyond Boundaries: GS Mastery Course",
       tagline: "Master General Studies for ESE, SSC, RRB & PSUs",
-      image: "/courses/beyond_boundaries_gs.jpg",
+      image: "/courses/beyond_boundaries_gs.png",
       duration: "12 Months",
       eligibility: "All Prep Aspirants (ME, CE, EE, CS)",
       features: [
@@ -587,7 +606,8 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       branch: "ME/CE/EE/CS",
       exam: "SSC, RRB, ESE & PSUs Exams",
       language: "Hinglish",
-      mentorship: "Yes"
+      mentorship: "Yes",
+      enrollLink: "https://courses.gameacademy.in"
     }
   ];
 
@@ -849,11 +869,14 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       
                                       {/* Action Button */}
                                       <div className="mt-auto pt-2">
-                                          <button 
-                                            className="w-full py-1.5 rounded-xl bg-[#075d63] text-white font-black text-[9px] uppercase tracking-[0.15em] hover:bg-[#f2c537] hover:text-black transition-all duration-500 flex items-center justify-center gap-2 border border-gameTeal/10"
+                                          <a 
+                                            href={course.enrollLink || "https://courses.gameacademy.in"}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="w-full py-1.5 rounded-xl bg-[#075d63] text-white font-black text-[9px] uppercase tracking-[0.15em] hover:bg-[#f2c537] hover:text-black transition-all duration-500 flex items-center justify-center gap-2 border border-gameTeal/10 decoration-none text-center"
                                           >
                                             Enroll Now <ChevronRight size={12} strokeWidth={3} />
-                                          </button>
+                                          </a>
                                       </div>
                                   </div>
                               </div>
