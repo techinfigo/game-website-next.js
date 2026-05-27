@@ -10,8 +10,11 @@ import { useRouter } from 'next/navigation';
 interface Achiever {
   id: number;
   name: string;
-  rank: string;
-  exam: string;
+  college?: string;
+  selectionYear?: string;
+  company?: string;
+  designation?: string;
+  organisation?: string;
   image: string;
   videoId: string;
 }
@@ -36,51 +39,51 @@ const AchieversSection: React.FC<AchieversSectionProps> = ({ onNavigate }) => {
   const achievers: Achiever[] = [
     {
       id: 1,
-      name: "Devansh Bajpai",
-     rank: "2025",
-     exam: "IIT Patna",
-      image: "https://img.youtube.com/vi/QZC0IzzoSS0/hqdefault.jpg",
-      videoId: "QZC0IzzoSS0"
+      name: "Ashish Ranjan",
+      college: "IIT Patna",
+      selectionYear: "2025",
+      image: "/achiever-1.png",
+      videoId: "D6HOo41x2Ls"
     },
     {
       id: 2,
       name: "Khusro Sheikh",
-      rank: "AIR 4",
-      exam: "GATE ME",
-      image: "https://img.youtube.com/vi/qzevZxEawpA/hqdefault.jpg",
-      videoId: "qzevZxEawpA"
+      college: "IIT Patna",
+      selectionYear: "2025",
+      image: "/achiever-2.png",
+      videoId: "gvK9V0trlaw"
     },
     {
       id: 3,
-      name: "Siddhesh Gaikwad",
-      rank: "AIR 2",
-      exam: "GATE ME",
-      image: "https://img.youtube.com/vi/nLDQgHBYTc0/hqdefault.jpg",
-      videoId: "nLDQgHBYTc0"
+      name: "Prem Narwade",
+      college: "IIT Palakkad",
+      selectionYear: "2025",
+      image: "/achiever-3.png",
+      videoId: "Ta7gKIxxya0"
     },
     {
       id: 4,
-      name: "Harsh Vardhan",
-      rank: "AIR 26",
-      exam: "GATE ME",
-      image: "https://img.youtube.com/vi/7RoM5q7nte4/hqdefault.jpg",
-      videoId: "7RoM5q7nte4"
+      name: "Sujoy Das",
+      company: "IOCL",
+      designation: "Executive Trainee",
+      image: "/achiever-4.png",
+      videoId: "1QV1hZ7c68Y"
     },
     {
       id: 5,
-      name: "Praveen Kumar",
-      rank: "AIR 1",
-      exam: "GATE ME",
-      image: "https://img.youtube.com/vi/CjFRWUCyvSI/hqdefault.jpg",
-      videoId: "CjFRWUCyvSI"
+      name: "Rajesh Sahu",
+      organisation: "ISRO",
+      designation: "Technical Assistant",
+      image: "/achiever-5.png",
+      videoId: "Vv9lARk4vcs"
     },
     {
       id: 6,
-      name: "Vikram Rathore",
-      rank: "AIR 8",
-      exam: "GATE ME",
-      image: "https://img.youtube.com/vi/35F4plJjhFM/hqdefault.jpg",
-      videoId: "35F4plJjhFM"
+      name: "Kapil Sharma",
+      organisation: "NLCIL",
+      designation: "Executive Engineer",
+      image: "/achiever-6.png",
+      videoId: "bttDewEFDq4"
     }
   ];
 
@@ -88,7 +91,7 @@ const AchieversSection: React.FC<AchieversSectionProps> = ({ onNavigate }) => {
   const extendedAchievers = [...achievers, ...achievers, ...achievers];
 
   return (
-    <section id="rankers" className="py-10 lg:py-14 bg-[#09090b] relative overflow-hidden">
+    <section className="py-10 lg:py-14 bg-[#09090b] relative overflow-hidden">
         {/* Background Gradients */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#09090b] via-[#0f1115] to-[#09090b] pointer-events-none z-0"></div>
         <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-gameTeal/10 rounded-full blur-[120px] pointer-events-none"></div>
@@ -103,7 +106,7 @@ const AchieversSection: React.FC<AchieversSectionProps> = ({ onNavigate }) => {
                        <span className="text-[#f2c537] text-[10px] font-black tracking-[0.3em] uppercase">HALL OF FAME</span>
                     </div>
                     <h2 className="text-3xl md:text-4xl font-black text-white leading-tight">
-                        Spotlight on our <span className="text-[#075d63]">Rankers</span>
+                        Spotlight on our <span className="text-[#075d63]">Results</span>
                     </h2>
                 </div>
                 
@@ -156,7 +159,7 @@ const AchieversSection: React.FC<AchieversSectionProps> = ({ onNavigate }) => {
                                             <iframe 
                                                 width="100%" 
                                                 height="100%" 
-                                                src={`https://www.youtube.com/embed/${student.videoId}?autoplay=1&controls=0&modestbranding=1&iv_load_policy=3&rel=0&showinfo=0&disablekb=1&fs=0`} 
+                                                src={`https://www.youtube.com/embed/${student.videoId}?autoplay=1&rel=0`} 
                                                 title={student.name} 
                                                 frameBorder="0" 
                                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -180,36 +183,50 @@ const AchieversSection: React.FC<AchieversSectionProps> = ({ onNavigate }) => {
                                                 src={student.image} 
                                                 alt={student.name} 
                                                 fill
-                                                className="w-full h-full object-cover transition-all duration-500 scale-100 group-hover:scale-110" 
+                                                className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-110" 
                                                 referrerPolicy="no-referrer"
                                             />
                                             
-                                            {/* Gradient Overlay */}
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90 group-hover:opacity-80 transition-opacity"></div>
+                                            {/* Dark Gradient Overlay */}
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/50 opacity-90 group-hover:opacity-85 transition-opacity duration-300 z-10 pointer-events-none"></div>
+
+                                            {/* Info Overlay at the Top of the Card */}
+                                            <div className="absolute top-3.5 left-3.5 right-3.5 bg-black/75 backdrop-blur-md border border-white/10 px-3.5 py-3 rounded-2xl z-20 shadow-xl text-left transition-all duration-300 group-hover:border-[#f2c537]/30 group-hover:bg-black/85">
+                                                <p className="text-[12px] font-black text-[#f2c537] uppercase tracking-wide leading-tight line-clamp-1">{student.name}</p>
+                                                
+                                                {student.college && (
+                                                    <p className="text-[10px] font-bold text-white mt-1.5 leading-none">
+                                                        College: <span className="font-medium text-slate-300">{student.college}</span>
+                                                    </p>
+                                                )}
+                                                {student.company && (
+                                                    <p className="text-[10px] font-bold text-white mt-1.5 leading-none">
+                                                        Company: <span className="font-medium text-slate-300">{student.company}</span>
+                                                    </p>
+                                                )}
+                                                {student.organisation && (
+                                                    <p className="text-[10px] font-bold text-white mt-1.5 leading-none">
+                                                        Org: <span className="font-medium text-slate-300">{student.organisation}</span>
+                                                    </p>
+                                                )}
+                                                
+                                                {student.designation && (
+                                                    <p className="text-[9px] font-semibold text-slate-300 mt-1 leading-tight line-clamp-1 border-t border-white/5 pt-1.5 mt-1.5">
+                                                        {student.designation}
+                                                    </p>
+                                                )}
+                                                {student.selectionYear && (
+                                                    <p className="text-[9px] font-semibold text-[#f2c537] mt-1 leading-none border-t border-white/5 pt-1.5 mt-1.5">
+                                                        Year: <span className="text-white font-bold">{student.selectionYear}</span>
+                                                    </p>
+                                                )}
+                                            </div>
 
                                             {/* Play Button Overlay */}
-                                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-75 group-hover:scale-100 z-30">
-                                            <div className="w-12 h-12 bg-white/20 backdrop-blur-md border border-white/40 rounded-full flex items-center justify-center shadow-lg text-white">
-                                                <Play size={20} fill="currentColor" />
-                                            </div>
-                                            </div>
-
-                                            {/* Rank Badge */}
-                                            <div className="absolute top-3 left-3 z-20 translate-y-[-10px] opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                                            <div className="bg-[#f2c537] text-black text-[9px] font-extrabold px-2.5 py-1 rounded-lg uppercase tracking-wider inline-flex items-center gap-1.5 shadow-lg">
-                                                <Crown size={10} fill="currentColor" /> {student.rank}
-                                            </div>
-                                            </div>
-
-                                            {/* Content */}
-                                            <div className="absolute bottom-0 left-0 right-0 p-4 pt-8 bg-gradient-to-t from-black to-transparent">
-                                                <div className="text-[#f2c537] text-[9px] font-black uppercase tracking-widest mb-0.5 opacity-0 group-hover:opacity-100 transition-opacity delay-100 transform translate-y-2 group-hover:translate-y-0 duration-300">
-                                                {student.rank}
+                                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-75 group-hover:scale-100 z-20">
+                                                <div className="w-12 h-12 bg-[#f2c537] border border-white/20 rounded-full flex items-center justify-center shadow-lg text-black hover:scale-110 active:scale-95 transition-transform duration-250">
+                                                    <Play size={20} fill="currentColor" className="ml-1 text-black" />
                                                 </div>
-                                                <h3 className="text-lg font-bold text-white leading-tight mb-0.5 group-hover:text-[#f2c537] transition-colors">{student.name}</h3>
-                                                <p className="text-slate-400 text-[10px] font-bold uppercase tracking-widest group-hover:text-white transition-colors">
-                                                {student.exam}
-                                                </p>
                                             </div>
                                         </>
                                     )}
