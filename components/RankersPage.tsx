@@ -417,8 +417,8 @@ const RankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
   <div
     className="group relative flex flex-col bg-[#050505] rounded-[1.2rem] transition-all duration-500 overflow-hidden h-[285px] w-full border border-white/5 shadow-2xl hover:shadow-gameTeal/15 hover:border-white/10"
   >
-    {/* Top Image Container - Expanded height to 65% for huge student visual prominence */}
-    <div className="relative h-[65%] w-full overflow-hidden bg-[#07090e]">
+    {/* Top Image Container - Expanded height to 74% to maximize student photo size and push info down */}
+    <div className="relative h-[74%] w-full overflow-hidden bg-[#07090e]">
       <Image 
           src={ranker.image} 
           alt={ranker.name} 
@@ -437,23 +437,23 @@ const RankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
       </div>
     </div>
 
-    {/* Dedicated Bottom Info Block - Balanced padding & space for pristine layout */}
-    <div className="flex-grow py-3 px-3 bg-[#050505] flex flex-col justify-center relative z-10">
-      <div className="space-y-1 font-sans text-[10.5px] text-white">
+    {/* Dedicated Bottom Info Block - Compact padding & aligned down at the bottom edge */}
+    <div className="flex-grow pb-2.5 pt-1 px-3 bg-[#050505] flex flex-col justify-end relative z-10 font-sans text-[10px]">
+      <div className="space-y-0.5 font-sans text-[10px] text-white">
         <p className="font-extrabold text-white leading-tight">
-          Name : {ranker.name}
+          <span className="text-gameGold">Name :</span> {ranker.name}
         </p>
         {ranker.college ? (
           <p className="font-extrabold text-white leading-tight">
-            College : {ranker.college}
+            <span className="text-gameGold">College :</span> {ranker.college}
           </p>
         ) : (
           <p className="font-extrabold text-white leading-tight">
-            Selected in : {ranker.organisation}
+            <span className="text-gameGold">Selected in :</span> {ranker.organisation}
           </p>
         )}
         <p className="font-extrabold text-white leading-tight">
-          Selection year : {ranker.selectionYear}
+          <span className="text-gameGold">Selection year :</span> {ranker.selectionYear}
         </p>
       </div>
     </div>
@@ -465,7 +465,7 @@ const JobRankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
     className="group relative flex flex-col bg-[#050505] rounded-[1.2rem] transition-all duration-500 overflow-hidden h-[285px] w-full border border-white/5 shadow-2xl hover:shadow-gameTeal/15 hover:border-white/10"
   >
     {/* Top Image Section - Expanded edge-to-edge cover to render the student photo fully and beautifully */}
-    <div className="relative h-[65%] w-full overflow-hidden bg-[#07090e]">
+    <div className="relative h-[72%] w-full overflow-hidden bg-[#07090e]">
       <Image 
           src={ranker.image} 
           alt={ranker.name} 
@@ -484,30 +484,30 @@ const JobRankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
       </div>
     </div>
 
-    {/* Identity & Stats Section - Perfectly Aligned bottom panel */}
-    <div className="flex-grow p-3 bg-[#050505] flex flex-col text-left justify-between relative z-10 w-full">
-      <div className="mb-1">
-        <h3 className="text-[13.5px] font-black text-gameGold leading-tight transition-colors line-clamp-1">
+    {/* Identity & Stats Section - Perfectly Aligned bottom panel closer to bottom */}
+    <div className="flex-grow p-2.5 pt-1.5 bg-[#050505] flex flex-col text-left justify-end relative z-10 w-full">
+      <div className="mb-0.5">
+        <h3 className="text-[12px] font-black text-gameGold leading-tight transition-colors line-clamp-1">
           {ranker.name}
         </h3>
         <div className="flex items-center gap-1 mt-0.5">
-          <p className="text-white font-bold text-[8.5px] uppercase tracking-wide line-clamp-1">
+          <p className="text-white font-bold text-[8px] uppercase tracking-wide line-clamp-1">
             {ranker.organisation}
           </p>
         </div>
       </div>
 
-      <div className="space-y-1 pt-2 border-t border-white/10">
+      <div className="space-y-0.5 pt-1.5 border-t border-white/10">
         <div className="flex items-center gap-1">
-          <p className="text-[8.5px] font-medium text-white italic truncate">{ranker.designation}</p>
+          <p className="text-[8px] font-medium text-white italic truncate">{ranker.designation}</p>
         </div>
         
         <div className="flex items-center justify-between gap-1">
           <div className="flex items-center gap-1 truncate">
-            <p className="text-[8.5px] font-bold text-slate-300 uppercase truncate">{ranker.branch}</p>
+            <p className="text-[8px] font-bold text-slate-300 uppercase truncate">{ranker.branch}</p>
           </div>
-          <div className="flex items-center gap-1 shrink-0 bg-white/5 px-1.5 py-0.5 rounded">
-            <p className="text-[8.5px] font-black text-gameGold">{ranker.selectionYear}</p>
+          <div className="flex items-center gap-1 shrink-0 bg-white/5 px-1 py-0.5 rounded">
+            <p className="text-[8px] font-black text-gameGold">{ranker.selectionYear}</p>
           </div>
         </div>
       </div>
