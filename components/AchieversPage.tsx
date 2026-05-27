@@ -1025,29 +1025,13 @@ const RankerCard = React.memo(({ item, onPlay }: { item: any, onPlay?: () => voi
         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
         referrerPolicy="no-referrer"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/10 to-transparent opacity-70"></div>
       
-      {/* Play Button */}
-      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <div className="w-12 h-12 rounded-full bg-gameGold text-black flex items-center justify-center shadow-2xl transform scale-75 group-hover:scale-100 transition-transform">
-          <Play size={20} className="ml-1 fill-current" />
+      {/* Clean Play Icon Overlay */}
+      <div className="absolute inset-0 flex items-center justify-center z-20">
+        <div className="w-11 h-11 bg-[#f2c537] rounded-full flex items-center justify-center shadow-xl text-black group-hover:scale-110 transition-all duration-300">
+          <Play size={18} fill="currentColor" className="ml-0.5 text-black" />
         </div>
       </div>
-
-      {/* Rank Badge */}
-      <div className="absolute top-3 left-3">
-        <div className="bg-white/90 backdrop-blur-md text-slate-900 text-[10px] font-black px-2.5 py-1 rounded-md uppercase tracking-wider shadow-lg flex items-center gap-1.5 border border-white/50">
-          <Trophy size={10} className="text-gameGold fill-gameGold" /> {item.rank}
-        </div>
-      </div>
-    </div>
-
-    <div className="absolute bottom-0 left-0 w-full p-5 text-white">
-      <div className="w-8 h-0.5 bg-gameGold rounded-full mb-2"></div>
-      <h3 className="text-xl font-bold mb-0.5 leading-tight">{item.name}</h3>
-      <p className="text-slate-300 text-[11px] font-medium uppercase tracking-wide flex items-center gap-1.5">
-        <CheckCircle2 size={12} className="text-gameTeal" /> {item.exam}
-      </p>
     </div>
   </div>
 ));
@@ -1354,6 +1338,16 @@ const AchieversPage: React.FC<AchieversPageProps> = ({ initialFilter = 'all' }) 
       }
     };
 
+    const scroll = (direction: 'left' | 'right') => {
+      if (!ref.current) return;
+      const clientWidth = ref.current.clientWidth;
+      const amount = clientWidth * 0.75;
+      ref.current.scrollBy({
+        left: direction === 'left' ? -amount : amount,
+        behavior: 'smooth'
+      });
+    };
+
     return {
       events: {
         ref,
@@ -1362,7 +1356,8 @@ const AchieversPage: React.FC<AchieversPageProps> = ({ initialFilter = 'all' }) 
         onMouseLeave: onMouseUp,
         onMouseMove,
       },
-      handleItemClick
+      handleItemClick,
+      scroll
     };
   };
 
@@ -1503,12 +1498,22 @@ const AchieversPage: React.FC<AchieversPageProps> = ({ initialFilter = 'all' }) 
                         <p className="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Video & Written Testimonials</p>
                      </div>
                      <div className="hidden md:flex gap-2">
-                        <div className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-400">
+                        <button 
+                           type="button"
+                           onClick={() => { videoSlider.scroll('left'); textSlider.scroll('left'); }}
+                           className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-700 hover:text-[#075d63] hover:bg-slate-100 hover:border-[#075d63]/30 cursor-pointer transition-all active:scale-95"
+                           aria-label="Scroll left"
+                        >
                            <ArrowRight size={18} className="rotate-180" />
-                        </div>
-                        <div className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-900">
+                        </button>
+                        <button 
+                           type="button"
+                           onClick={() => { videoSlider.scroll('right'); textSlider.scroll('right'); }}
+                           className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-700 hover:text-[#075d63] hover:bg-slate-100 hover:border-[#075d63]/30 cursor-pointer transition-all active:scale-95"
+                           aria-label="Scroll right"
+                        >
                            <ArrowRight size={18} />
-                        </div>
+                        </button>
                      </div>
                   </div>
 
