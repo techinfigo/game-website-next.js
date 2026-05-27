@@ -10,11 +10,6 @@ import { useRouter } from 'next/navigation';
 interface Achiever {
   id: number;
   name: string;
-  college?: string;
-  selectionYear?: string;
-  company?: string;
-  designation?: string;
-  organisation?: string;
   image: string;
   videoId: string;
 }
@@ -39,51 +34,81 @@ const AchieversSection: React.FC<AchieversSectionProps> = ({ onNavigate }) => {
   const achievers: Achiever[] = [
     {
       id: 1,
-      name: "Ashish Ranjan",
-      college: "IIT Patna",
-      selectionYear: "2025",
-      image: "/achiever-1.png",
-      videoId: "D6HOo41x2Ls"
+      name: "Short 1",
+      image: "https://img.youtube.com/vi/ZrmsiLyxumA/hqdefault.jpg",
+      videoId: "ZrmsiLyxumA"
     },
     {
       id: 2,
-      name: "Khusro Sheikh",
-      college: "IIT Patna",
-      selectionYear: "2025",
-      image: "/achiever-2.png",
-      videoId: "gvK9V0trlaw"
+      name: "Short 2",
+      image: "https://img.youtube.com/vi/8VgAYyFJ2pw/hqdefault.jpg",
+      videoId: "8VgAYyFJ2pw"
     },
     {
       id: 3,
-      name: "Prem Narwade",
-      college: "IIT Palakkad",
-      selectionYear: "2025",
-      image: "/achiever-3.png",
-      videoId: "Ta7gKIxxya0"
+      name: "Short 3",
+      image: "https://img.youtube.com/vi/3rpUFtkOTWU/hqdefault.jpg",
+      videoId: "3rpUFtkOTWU"
     },
     {
       id: 4,
-      name: "Sujoy Das",
-      company: "IOCL",
-      designation: "Executive Trainee",
-      image: "/achiever-4.png",
-      videoId: "1QV1hZ7c68Y"
+      name: "Short 4",
+      image: "https://img.youtube.com/vi/Etba1HTOBUI/hqdefault.jpg",
+      videoId: "Etba1HTOBUI"
     },
     {
       id: 5,
-      name: "Rajesh Sahu",
-      organisation: "ISRO",
-      designation: "Technical Assistant",
-      image: "/achiever-5.png",
-      videoId: "Vv9lARk4vcs"
+      name: "Short 5",
+      image: "https://img.youtube.com/vi/35F4plJjhFM/hqdefault.jpg",
+      videoId: "35F4plJjhFM"
     },
     {
       id: 6,
-      name: "Kapil Sharma",
-      organisation: "NLCIL",
-      designation: "Executive Engineer",
-      image: "/achiever-6.png",
-      videoId: "bttDewEFDq4"
+      name: "Short 6",
+      image: "https://img.youtube.com/vi/QZC0IzzoSS0/hqdefault.jpg",
+      videoId: "QZC0IzzoSS0"
+    },
+    {
+      id: 7,
+      name: "Short 7",
+      image: "https://img.youtube.com/vi/qzevZxEawpA/hqdefault.jpg",
+      videoId: "qzevZxEawpA"
+    },
+    {
+      id: 8,
+      name: "Short 8",
+      image: "https://img.youtube.com/vi/nLDQgHBYTc0/hqdefault.jpg",
+      videoId: "nLDQgHBYTc0"
+    },
+    {
+      id: 9,
+      name: "Short 9",
+      image: "https://img.youtube.com/vi/7RoM5q7nte4/hqdefault.jpg",
+      videoId: "7RoM5q7nte4"
+    },
+    {
+      id: 10,
+      name: "Short 10",
+      image: "https://img.youtube.com/vi/CjFRWUCyvSI/hqdefault.jpg",
+      videoId: "CjFRWUCyvSI"
+    },
+    {
+      id: 11,
+      name: "Short 11",
+      image: "https://img.youtube.com/vi/57n5RJ1qT08/hqdefault.jpg",
+      videoId: "57n5RJ1qT08"
+    },
+    {
+      id: 12,
+      name: "Short 12",
+      image: "https://img.youtube.com/vi/cHDgQ1_c9eg/hqdefault.jpg",
+      videoId: "cHDgQ1_c9eg"
+    },
+    {
+      id: 13,
+      name: "Short 13",
+      image: "https://img.youtube.com/vi/oICGmQUIivg/hqdefault.jpg",
+      videoId: "oICGmQUIivg"
     }
   ];
 
@@ -151,81 +176,44 @@ const AchieversSection: React.FC<AchieversSectionProps> = ({ onNavigate }) => {
                             return (
                                 <div 
                                     key={cardKey}
-                                    className={`relative w-[220px] h-[300px] rounded-[1.5rem] overflow-hidden group flex-shrink-0 border transition-all duration-300 ${isPlaying ? 'border-[#f2c537] ring-1 ring-[#f2c537]/50' : 'border-white/5 hover:border-[#f2c537]/50 cursor-pointer'}`}
+                                    className={`relative w-[210px] h-[310px] rounded-[1.5rem] overflow-hidden flex-shrink-0 border ${isPlaying ? 'border-[#f2c537] ring-1 ring-[#f2c537]/50' : 'border-white/5 cursor-pointer'}`}
                                     onClick={() => !isPlaying && setPlayingCardKey(cardKey)}
                                 >
                                     {isPlaying ? (
-                                        <div className="w-full h-full relative bg-black">
+                                        <div className="w-full h-full relative bg-black overflow-hidden rounded-[1.5rem]">
                                             <iframe 
-                                                width="100%" 
-                                                height="100%" 
-                                                src={`https://www.youtube.com/embed/${student.videoId}?autoplay=1&rel=0`} 
+                                                src={`https://www.youtube.com/embed/${student.videoId}?autoplay=1&rel=0&controls=0&modestbranding=1&iv_load_policy=3&fs=0&disablekb=1&showinfo=0`} 
                                                 title={student.name} 
                                                 frameBorder="0" 
                                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                                 allowFullScreen
-                                                className="w-full h-full"
+                                                className="w-full h-full object-cover pointer-events-none"
                                             ></iframe>
                                             <button 
                                                 onClick={(e) => {
                                                     e.stopPropagation();
                                                     setPlayingCardKey(null);
                                                 }}
-                                                className="absolute top-3 right-3 p-1.5 bg-black/60 hover:bg-red-600 text-white rounded-full transition-colors z-10 backdrop-blur-sm"
+                                                className="absolute top-3 right-3 p-1.5 bg-black/60 hover:bg-red-600 text-white rounded-full transition-colors z-30 backdrop-blur-sm border border-white/10 pointer-events-auto"
                                             >
                                                 <X size={16} />
                                             </button>
                                         </div>
                                     ) : (
                                         <>
-                                            {/* Image */}
+                                            {/* Clean and Raw Thumbnail Image - No hover grayscale/scale/transition */}
                                             <Image 
                                                 src={student.image} 
                                                 alt={student.name} 
                                                 fill
-                                                className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-110" 
+                                                className="w-full h-full object-cover" 
                                                 referrerPolicy="no-referrer"
                                             />
                                             
-                                            {/* Dark Gradient Overlay */}
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/50 opacity-90 group-hover:opacity-85 transition-opacity duration-300 z-10 pointer-events-none"></div>
-
-                                            {/* Info Overlay at the Top of the Card */}
-                                            <div className="absolute top-3.5 left-3.5 right-3.5 bg-black/75 backdrop-blur-md border border-white/10 px-3.5 py-3 rounded-2xl z-20 shadow-xl text-left transition-all duration-300 group-hover:border-[#f2c537]/30 group-hover:bg-black/85">
-                                                <p className="text-[12px] font-black text-[#f2c537] uppercase tracking-wide leading-tight line-clamp-1">{student.name}</p>
-                                                
-                                                {student.college && (
-                                                    <p className="text-[10px] font-bold text-white mt-1.5 leading-none">
-                                                        College: <span className="font-medium text-slate-300">{student.college}</span>
-                                                    </p>
-                                                )}
-                                                {student.company && (
-                                                    <p className="text-[10px] font-bold text-white mt-1.5 leading-none">
-                                                        Company: <span className="font-medium text-slate-300">{student.company}</span>
-                                                    </p>
-                                                )}
-                                                {student.organisation && (
-                                                    <p className="text-[10px] font-bold text-white mt-1.5 leading-none">
-                                                        Org: <span className="font-medium text-slate-300">{student.organisation}</span>
-                                                    </p>
-                                                )}
-                                                
-                                                {student.designation && (
-                                                    <p className="text-[9px] font-semibold text-slate-300 mt-1 leading-tight line-clamp-1 border-t border-white/5 pt-1.5 mt-1.5">
-                                                        {student.designation}
-                                                    </p>
-                                                )}
-                                                {student.selectionYear && (
-                                                    <p className="text-[9px] font-semibold text-[#f2c537] mt-1 leading-none border-t border-white/5 pt-1.5 mt-1.5">
-                                                        Year: <span className="text-white font-bold">{student.selectionYear}</span>
-                                                    </p>
-                                                )}
-                                            </div>
-
-                                            {/* Play Button Overlay */}
-                                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-75 group-hover:scale-100 z-20">
-                                                <div className="w-12 h-12 bg-[#f2c537] border border-white/20 rounded-full flex items-center justify-center shadow-lg text-black hover:scale-110 active:scale-95 transition-transform duration-250">
-                                                    <Play size={20} fill="currentColor" className="ml-1 text-black" />
+                                            {/* Static Play Button Icon Overlay in the Center */}
+                                            <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                                <div className="w-11 h-11 bg-[#f2c537] rounded-full flex items-center justify-center shadow-xl text-black">
+                                                    <Play size={18} fill="currentColor" className="ml-0.5 text-black" />
                                                 </div>
                                             </div>
                                         </>
