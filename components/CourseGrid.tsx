@@ -751,34 +751,9 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
                                       />
                                       <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/20 to-transparent"></div>
                                       
-                                      {/* Floating Badge */}
-                                      <div className="absolute top-5 left-5 z-20">
-                                         <span className={`text-[10px] font-black px-3 py-2 rounded-xl uppercase tracking-widest ${course.tagColor} border border-white/10 backdrop-blur-md`}>
-                                            {course.tag}
-                                         </span>
-                                      </div>
+                                      {/* Floating Badge removed as requested */}
 
-                                      {/* Vertical Highlights */}
-                                      <div className="absolute top-16 left-5 space-y-3 z-20">
-                                          <div className="flex items-center gap-3 group/item">
-                                              <div className="w-8 h-8 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shrink-0 transition-all group-hover:bg-gameTeal group-hover:scale-110">
-                                                  <MessageSquare size={14} />
-                                              </div>
-                                              <span className="text-[10px] font-black text-white uppercase tracking-tight opacity-0 group-hover:opacity-100 transition-opacity">Student's feedback</span>
-                                          </div>
-                                          <div className="flex items-center gap-3 group/item">
-                                              <div className="w-8 h-8 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shrink-0 transition-all group-hover:bg-gameTeal group-hover:scale-110">
-                                                  <Trophy size={14} />
-                                              </div>
-                                              <span className="text-[10px] font-black text-white uppercase tracking-tight opacity-0 group-hover:opacity-100 transition-opacity">Selection (Results)</span>
-                                          </div>
-                                          <div className="flex items-center gap-3 group/item">
-                                              <div className="w-8 h-8 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shrink-0 transition-all group-hover:bg-gameTeal group-hover:scale-110">
-                                                  <PlayCircle size={14} />
-                                              </div>
-                                              <span className="text-[10px] font-black text-white uppercase tracking-tight opacity-0 group-hover:opacity-100 transition-opacity">Live & Recorded</span>
-                                          </div>
-                                      </div>
+
 
                                       {/* Bottom Action Area (Slim & Refined) */}
                                       <div className="absolute bottom-4 left-5 z-20">
