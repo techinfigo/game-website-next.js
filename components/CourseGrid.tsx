@@ -48,7 +48,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
     {
       title: "Lakshya Basic (ME) 2027",
       tagline: "Comprehensive Foundation for GATE & PSUs",
-      image: "/courses/lakshya_basic_me_2027.png",
+      image: "/courses/lakshya_basic_me_2027.jpg",
       duration: "12 Months",
       eligibility: "Final year / PSUs job seekers",
       features: [
@@ -75,7 +75,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
     {
       title: "Lakshya Advance (ME) 2027",
       tagline: "Advance Practice & Concept Building",
-      image: "/courses/lakshya_advance_me_2027.png",
+      image: "/courses/lakshya_advance_me_2027.jpg",
       duration: "12 Months",
       eligibility: "Final Year / Droppers",
       features: [
@@ -102,7 +102,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
     {
       title: "Lakshya (ME) - Exclusive Mentorship Program",
       tagline: "1:1 Live Guided Mentorship & Learning",
-      image: "/courses/lakshya_me_exclusive.png",
+      image: "/courses/lakshya_me_exclusive.jpg",
       duration: "15-30 Months",
       eligibility: "2nd/3rd Year",
       features: [
@@ -129,7 +129,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
     {
       title: "Foundation Course (ME) 2027/2028",
       tagline: "Complete Two-Year Mastery Program",
-      image: "/courses/foundation_me_2027_2028.png",
+      image: "/courses/foundation_me_2027_2028.jpg",
       duration: "24 Months",
       eligibility: "2nd/3rd Year",
       features: [
@@ -156,7 +156,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
     {
       title: "Lakshya Pro - Selection Guarantee Course",
       tagline: "Guaranteed Selection or Full Refund Support",
-      image: "/courses/lakshya_pro.png",
+      image: "/courses/lakshya_pro.jpg",
       duration: "12 Months",
       eligibility: "GATE, ESE & PSUs Aspirants",
       features: [
@@ -183,7 +183,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
     {
       title: "Lakshya Course (CE)",
       tagline: "Complete Civil Engineering Specialization",
-      image: "/courses/lakshya_ce.png",
+      image: "/courses/lakshya_ce.jpg",
       duration: "12 Months",
       eligibility: "B.Tech 1st to Final year",
       features: [
@@ -210,7 +210,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
     {
       title: "Aadhaaram Course",
       tagline: "Basic Engineering Foundation for Semesters & Exams",
-      image: "/courses/aadhaaram.png",
+      image: "/courses/aadhaaram.jpg",
       duration: "12 Months",
       eligibility: "1st year to final year",
       features: [
@@ -237,7 +237,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
     {
       title: "Aarambh Course - Combo (Thermal + SOM)",
       tagline: "Target Mechanical Combo Special",
-      image: "/courses/aarambh_thermal_som.png",
+      image: "/courses/aarambh_thermal_som.jpg",
       duration: "12 Months",
       eligibility: "B,Tech. 1st, 2nd year",
       features: [
@@ -264,7 +264,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
     {
       title: "Aarambh Course - Combo (EM + Maths)",
       tagline: "Solid Foundation in Mechanics & Maths",
-      image: "/courses/aarambh_em_maths.png",
+      image: "/courses/aarambh_em_maths.jpg",
       duration: "6 Months",
       eligibility: "B,Tech. 1st, 2nd year",
       features: [
@@ -291,7 +291,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
     {
       title: "Aarambh Course - Combo (Surveying + SOM)",
       tagline: "Solid Foundation in Civil Surveying & SOM",
-      image: "/courses/aarambh_surveying_som.png",
+      image: "/courses/aarambh_surveying_som.jpg",
       duration: "6 Months",
       eligibility: "B,Tech. 1st, 2nd year",
       features: [
@@ -318,7 +318,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
     {
       title: "Quick Practice Course | GATE 2027",
       tagline: "Most Expected Questions Mock & Hacks",
-      image: "/courses/quick_practice_gate_2027.png",
+      image: "/courses/quick_practice_gate_2027.jpg",
       duration: "6 Months",
       eligibility: "GATE Aspirants",
       features: [
@@ -345,7 +345,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
     {
       title: "GATE - XE (B+E) Full Course",
       tagline: "Engineering Science Fluid Mechanics & Thermodynamics",
-      image: "/courses/gate_xe_be.png",
+      image: "/courses/gate_xe_be.jpg",
       duration: "12 Months",
       eligibility: "B.Tech 3rd year & 4th year",
       features: [
@@ -372,7 +372,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
     {
       title: "GATE - XE (D+E) Full Course",
       tagline: "Engineering Science Solid Mechanics & Thermodynamics",
-      image: "/courses/gate_xe_de.png",
+      image: "/courses/gate_xe_de.jpg",
       duration: "12 Months",
       eligibility: "B.Tech 3rd year & 4th year",
       features: [
@@ -399,7 +399,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
     {
       title: "GATE - XE (B+D) Full Course",
       tagline: "Engineering Science Fluid Mechanics & Solid Mechanics",
-      image: "/courses/gate_xe_bd.png",
+      image: "/courses/gate_xe_bd.jpg",
       duration: "12 Months",
       eligibility: "B.Tech 3rd year & 4th year",
       features: [
@@ -426,7 +426,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
     {
       title: "Vijeta Test Series (ME) 2027",
       tagline: "Premium High Quality Tests for ME",
-      image: "/courses/vijeta_ts_me.png",
+      image: "/courses/vijeta_ts_me.jpg",
       duration: "12 Months",
       eligibility: "GATE/PSUs Aspirants",
       features: [
@@ -455,7 +455,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
     {
       title: "Excellence Course (ME)",
       tagline: "Junior Engineer Special Batch",
-      image: "/courses/excellence_me.png",
+      image: "/courses/excellence_me.jpg",
       duration: "12 Months",
       eligibility: "Diploma Final Year",
       features: [
@@ -482,7 +482,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
     {
       title: "Excellence Course (CE)",
       tagline: "Junior Engineer Civil Comprehensive Batch",
-      image: "/courses/excellence_ce.png",
+      image: "/courses/excellence_ce.jpg",
       duration: "12 Months",
       eligibility: "Diploma Final Year",
       features: [
@@ -509,7 +509,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
     {
       title: "Vijeta Test Series (ME) 2027 (SSC-JE)",
       tagline: "Specialised Tests for Junior Engineer ME",
-      image: "/courses/vijeta_ts_me_sscje.png",
+      image: "/courses/vijeta_ts_me_sscje.jpg",
       duration: "12 months",
       eligibility: "SSC-JE & All State AE-JE Aspirants",
       features: [
@@ -536,7 +536,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
     {
       title: "Vijeta Test Series (CE) 2027 (SSC-JE)",
       tagline: "Specialised Tests for Junior Engineer CE",
-      image: "/courses/vijeta_ts_ce_sscje.png",
+      image: "/courses/vijeta_ts_ce_sscje.jpg",
       duration: "12 Months",
       eligibility: "SSC-JE & All State AE-JE Aspirants",
       features: [
@@ -565,7 +565,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
     {
       title: "Beyond Boundaries: GS Mastery Course",
       tagline: "Master General Studies for ESE, SSC, RRB & PSUs",
-      image: "/courses/beyond_boundaries_gs.png",
+      image: "/courses/beyond_boundaries_gs.jpg",
       duration: "12 Months",
       eligibility: "All Prep Aspirants (ME, CE, EE, CS)",
       features: [
