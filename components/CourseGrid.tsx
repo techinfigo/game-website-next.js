@@ -749,7 +749,6 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
                                          className="object-cover transition-transform duration-1000 group-hover:scale-105" 
                                          referrerPolicy="no-referrer"
                                       />
-                                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/20 to-transparent"></div>
                                       
                                       {/* Floating Badge removed as requested */}
 
