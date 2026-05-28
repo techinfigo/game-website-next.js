@@ -5,6 +5,7 @@ import React from 'react';
 import { Facebook, Twitter, Instagram, Youtube, MapPin, Phone, Mail, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { EXAM_PAGES_DISABLED, DISABLED_EXAMPAGES_IDS } from './examconfig';
 
 const Footer: React.FC = () => {
   return (
@@ -15,7 +16,7 @@ const Footer: React.FC = () => {
            
            {/* Brand Column (Span 4) */}
            <div className="lg:col-span-4 space-y-6">
-              <Link href="/" className="flex items-center group">
+              <Link href="/" prefetch={false} className="flex items-center group">
                 <div className="relative w-32 h-12">
                    <Image 
                       src="/game-logo.png"
@@ -82,6 +83,7 @@ const Footer: React.FC = () => {
                     <li key={i}>
                        <Link 
                           href={`/${link.page}`}
+                          prefetch={false}
                           className="text-sm hover:text-gameGold transition-colors flex items-center gap-1 group w-full text-left"
                        >
                           <ChevronRight size={12} className="text-gameTeal group-hover:text-gameGold group-hover:translate-x-0.5 transition-all" />
@@ -112,6 +114,13 @@ const Footer: React.FC = () => {
                     <li key={i}>
                        <Link 
                           href={`/${item.page}`}
+                          onClick={(e) => {
+                             if (EXAM_PAGES_DISABLED && DISABLED_EXAMPAGES_IDS.includes(item.page)) {
+                                e.preventDefault();
+                                window.dispatchEvent(new CustomEvent('show-coming-soon', { detail: { examName: item.label } }));
+                             }
+                          }}
+                          prefetch={false}
                           className="text-sm hover:text-gameGold transition-colors flex items-center gap-2 group w-full text-left"
                        >
                           <span className="w-1 h-1 rounded-full bg-slate-600 group-hover:bg-gameGold transition-colors"></span>
@@ -196,10 +205,10 @@ const Footer: React.FC = () => {
               </span>
            </div>
            <div className="flex gap-6">
-              <Link href="/privacy" className="hover:text-gameGold transition-colors">Privacy Policy</Link>
-              <Link href="/terms" className="hover:text-gameGold transition-colors">Terms of Use</Link>
-              <Link href="/refund" className="hover:text-gameGold transition-colors">Refund Policy</Link>
-              <Link href="/takedown" className="hover:text-gameGold transition-colors">Takedown Policy</Link>
+              <Link href="/privacy" prefetch={false} className="hover:text-gameGold transition-colors">Privacy Policy</Link>
+              <Link href="/terms" prefetch={false} className="hover:text-gameGold transition-colors">Terms of Use</Link>
+              <Link href="/refund" prefetch={false} className="hover:text-gameGold transition-colors">Refund Policy</Link>
+              <Link href="/takedown" prefetch={false} className="hover:text-gameGold transition-colors">Takedown Policy</Link>
            </div>
         </div>
 
