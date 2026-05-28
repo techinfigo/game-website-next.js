@@ -46,20 +46,30 @@ export async function POST(req: NextRequest) {
     try {
       const existing = await adminAuth.getUserByPhoneNumber(phoneNumber);
       uid = existing.uid;
-    } catch {
+    } catch (lookupErr: any) {
+      if (lookupErr.code !== 'auth/user-not-found') {
+        // Re-throw anything that isn't a missing-user error so the outer
+        // catch can surface it properly instead of silently creating a duplicate
+        throw lookupErr;
+      }
       const created = await adminAuth.createUser({ phoneNumber });
       uid = created.uid;
       isNewUser = true;
     }
 
-    if (isNewUser) {
-      await adminDb.collection('users').doc(uid).set({
+    // Ensure Firestore doc exists — covers new users AND existing users
+    // whose doc was never created or was deleted
+    const userDocRef = adminDb.collection('users').doc(uid);
+    const userDoc = await userDocRef.get();
+    if (!userDoc.exists) {
+      await userDocRef.set({
         uid,
         phoneNumber,
         displayName: 'Student',
         role: 'student',
         createdAt: FieldValue.serverTimestamp(),
       });
+      isNewUser = true;
     }
 
     const customToken = await adminAuth.createCustomToken(uid);
