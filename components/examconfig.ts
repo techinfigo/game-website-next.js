@@ -38,11 +38,21 @@ declare global {
 export const triggerComingSoonModal = (examName: string) => {
   if (typeof window !== 'undefined') {
     const win = window as any;
+    
+    // 1. Direct window function trigger
     if (win.showComingSoonModal) {
-      win.showComingSoonModal(examName);
-    } else {
-      // Fallback custom event in case of early load
+      try {
+        win.showComingSoonModal(examName);
+      } catch (err) {
+        console.warn("Direct modal triggering failed:", err);
+      }
+    }
+    
+    // 2. CustomEvent dispatcher trigger (redundant backup layer)
+    try {
       window.dispatchEvent(new CustomEvent('show-coming-soon', { detail: { examName } }));
+    } catch (err) {
+      console.warn("Custom event trigger failed:", err);
     }
   }
 };
