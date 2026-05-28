@@ -10,6 +10,13 @@ export default function ComingSoonModal() {
   const [examName, setExamName] = useState('');
 
   useEffect(() => {
+    const handleShow = (name?: string) => {
+      setExamName(name || 'Examination Page');
+      setIsOpen(true);
+    };
+
+    window.showComingSoonModal = handleShow;
+
     const handleShowComingSoon = (e: Event) => {
       const customEvent = e as CustomEvent<{ examName: string }>;
       if (customEvent.detail && customEvent.detail.examName) {
@@ -22,6 +29,7 @@ export default function ComingSoonModal() {
 
     window.addEventListener('show-coming-soon', handleShowComingSoon);
     return () => {
+      window.showComingSoonModal = undefined;
       window.removeEventListener('show-coming-soon', handleShowComingSoon);
     };
   }, []);
@@ -54,6 +62,7 @@ export default function ComingSoonModal() {
 
             {/* Close Button */}
             <button
+              type="button"
               onClick={() => setIsOpen(false)}
               className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2 rounded-full hover:bg-slate-50 transition-colors"
               id="coming-soon-close-btn"
@@ -91,6 +100,7 @@ export default function ComingSoonModal() {
             {/* Action Buttons */}
             <div className="w-full flex flex-col gap-2.5">
               <button
+                type="button"
                 onClick={() => setIsOpen(false)}
                 className="w-full bg-[#075d63] text-white py-3.5 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-[#043c40] hover:-translate-y-0.5 transition-all shadow-lg shadow-[#075d63]/15"
                 id="coming-soon-btn-ok"
