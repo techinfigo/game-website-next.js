@@ -9,7 +9,9 @@ import {
   signInWithCustomToken,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  updateProfile
+  updateProfile,
+  browserLocalPersistence,
+  setPersistence,
 } from 'firebase/auth';
 import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
 
@@ -115,6 +117,9 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
         throw new Error(data.error || 'Invalid OTP. Please try again.');
       }
 
+      // Ensure session survives mobile browser restarts
+      await setPersistence(auth, browserLocalPersistence);
+
       // Sign into Firebase with custom token issued by our API route
       const userCredential = await signInWithCustomToken(auth, data.token);
       const user = userCredential.user;
@@ -125,6 +130,8 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
         await setDoc(doc(db, 'users', user.uid), { displayName: fullName }, { merge: true });
       }
 
+      // Small wait for onAuthStateChanged to propagate on mobile before closing
+      await new Promise<void>(resolve => setTimeout(resolve, 300));
       if (onSuccess) onSuccess();
       onClose();
     } catch (err: any) {
