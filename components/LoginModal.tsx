@@ -46,9 +46,9 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
     return () => clearInterval(id);
   }, [timer]);
 
-  // Reset when modal closes
+  // Reset state when modal opens — NOT on close, to avoid flashing during exit animation
   useEffect(() => {
-    if (!isOpen) {
+    if (isOpen) {
       setPhoneNumber('');
       setOtp('');
       setShowOtp(false);
@@ -60,7 +60,6 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
       setEmail('');
       setPassword('');
       setFullName('');
-    } else {
       setIsLogin(initialView === 'login');
     }
   }, [isOpen, initialView]);
@@ -129,6 +128,17 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
     }
   };
 
+  const getEmailErrorMessage = (code: string): string => {
+    switch (code) {
+      case 'auth/invalid-email':        return 'Please enter a valid email address';
+      case 'auth/wrong-password':       return 'Incorrect password. Please try again';
+      case 'auth/user-not-found':       return 'No account found with this email';
+      case 'auth/weak-password':        return 'Password must be at least 6 characters';
+      case 'auth/email-already-in-use': return 'An account with this email already exists';
+      default:                          return 'Something went wrong. Please try again';
+    }
+  };
+
   const handleEmailAction = async () => {
     if (!email || !password) return;
 
@@ -162,8 +172,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
         }, 3000);
       }
     } catch (err: any) {
-      console.error('Email Auth Error:', err);
-      setError(err.message || 'Authentication failed.');
+      setError(getEmailErrorMessage(err.code));
     } finally {
       setIsLoading(false);
     }
