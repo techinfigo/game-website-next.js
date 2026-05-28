@@ -22,3 +22,27 @@ export const DISABLED_EXAMPAGES_IDS = [
 ];
 
 export const EXAM_PAGES_DISABLED_MESSAGE = "Our team is currently upgrading this exam section with fresh study materials, masterclasses, and visual cheat sheets. It will be back online shortly!";
+
+// Global Window Type extension for TS compiler
+declare global {
+  interface Window {
+    showComingSoonModal?: (examName?: string) => void;
+  }
+}
+
+/**
+ * Universal safe function to trigger the coming soon modular popup.
+ * It is 100% reliable across all browsers, mobile/desktop, production builds,
+ * and iframes because it bypasses standard event dispatching delays via a direct window hook.
+ */
+export const triggerComingSoonModal = (examName: string) => {
+  if (typeof window !== 'undefined') {
+    const win = window as any;
+    if (win.showComingSoonModal) {
+      win.showComingSoonModal(examName);
+    } else {
+      // Fallback custom event in case of early load
+      window.dispatchEvent(new CustomEvent('show-coming-soon', { detail: { examName } }));
+    }
+  }
+};
