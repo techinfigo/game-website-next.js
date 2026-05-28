@@ -159,41 +159,58 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout }) => {
                                   <div className="absolute -top-4 left-0 w-full h-4 bg-transparent"></div>
 
                                   <div className={`grid ${item.layout === 'grid' ? 'grid-cols-2 gap-2' : 'grid-cols-1 gap-1'}`}>
-                                      {item.dropdown.map((subItem) => (
-                                          <Link
-                                              key={subItem.name}
-                                              href={`/${subItem.id}`}
-                                              prefetch={false}
-                                              onClick={(e) => {
-                                                  if (EXAM_PAGES_DISABLED && DISABLED_EXAMPAGES_IDS.includes(subItem.id)) {
-                                                      e.preventDefault();
+                                      {item.dropdown.map((subItem) => {
+                                          const isPageDisabled = EXAM_PAGES_DISABLED && DISABLED_EXAMPAGES_IDS.includes(subItem.id);
+                                          const commonClasses = "flex items-center gap-3 p-3 rounded-xl transition-all duration-200 group/item hover:bg-slate-50 border border-transparent hover:border-slate-100 text-left w-full";
+                                          
+                                          const innerContent = (
+                                              <>
+                                                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 transition-all duration-300 ${
+                                                      item.highlight && subItem.id === 'gate' 
+                                                      ? 'bg-gameTeal text-white shadow-lg shadow-gameTeal/30' 
+                                                      : 'bg-slate-100 text-slate-500 group-hover/item:bg-gameTeal group-hover/item:text-white'
+                                                  }`}>
+                                                      {subItem.icon && <subItem.icon size={20} strokeWidth={1.5} />}
+                                                  </div>
+                                                  <div>
+                                                      <div className="text-sm font-bold text-slate-700 group-hover/item:text-gameTeal transition-colors leading-tight">
+                                                          {subItem.name}
+                                                      </div>
+                                                      {subItem.desc && (
+                                                          <div className="text-[10px] font-medium text-slate-400 group-hover/item:text-slate-500 mt-0.5">
+                                                              {subItem.desc}
+                                                          </div>
+                                                      )}
+                                                  </div>
+                                              </>
+                                          );
+
+                                          return isPageDisabled ? (
+                                              <button
+                                                  key={subItem.name}
+                                                  type="button"
+                                                  onClick={() => {
                                                       window.dispatchEvent(new CustomEvent('show-coming-soon', { detail: { examName: subItem.name } }));
-                                                  } else {
+                                                  }}
+                                                  className={commonClasses}
+                                              >
+                                                  {innerContent}
+                                              </button>
+                                          ) : (
+                                              <Link
+                                                  key={subItem.name}
+                                                  href={`/${subItem.id}`}
+                                                  prefetch={false}
+                                                  onClick={() => {
                                                       handleLinkClick();
                                                       setActiveDropdown(null);
-                                                  }
-                                              }}
-                                              className="flex items-center gap-3 p-3 rounded-xl transition-all duration-200 group/item hover:bg-slate-50 border border-transparent hover:border-slate-100"
-                                          >
-                                              <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 transition-all duration-300 ${
-                                                  item.highlight && subItem.id === 'gate' 
-                                                  ? 'bg-gameTeal text-white shadow-lg shadow-gameTeal/30' 
-                                                  : 'bg-slate-100 text-slate-500 group-hover/item:bg-gameTeal group-hover/item:text-white'
-                                              }`}>
-                                                  {subItem.icon && <subItem.icon size={20} strokeWidth={1.5} />}
-                                              </div>
-                                              <div>
-                                                  <div className="text-sm font-bold text-slate-700 group-hover/item:text-gameTeal transition-colors leading-tight">
-                                                      {subItem.name}
-                                                  </div>
-                                                  {subItem.desc && (
-                                                      <div className="text-[10px] font-medium text-slate-400 group-hover/item:text-slate-500 mt-0.5">
-                                                          {subItem.desc}
-                                                      </div>
-                                                  )}
-                                              </div>
-                                          </Link>
-                                      ))}
+                                                  }}
+                                                  className={commonClasses}
+                                              >
+                                                  {innerContent}
+                                              </Link>
+                                          );
+                                      })}
                                   </div>
                               </motion.div>
                           )}
@@ -303,30 +320,45 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout }) => {
                                           exit={{ height: 0, opacity: 0 }}
                                           className="pl-2 pr-2 pb-2 grid grid-cols-1 gap-2"
                                       >
-                                          {item.dropdown.map((subItem) => (
-                                              <Link
-                                                  key={subItem.name}
-                                                  href={`/${subItem.id}`}
-                                                  prefetch={false}
-                                                  onClick={(e) => {
-                                                      if (EXAM_PAGES_DISABLED && DISABLED_EXAMPAGES_IDS.includes(subItem.id)) {
-                                                          e.preventDefault();
+                                          {item.dropdown.map((subItem) => {
+                                              const isPageDisabled = EXAM_PAGES_DISABLED && DISABLED_EXAMPAGES_IDS.includes(subItem.id);
+                                              const commonClasses = "flex items-center gap-3 p-3 rounded-xl bg-slate-50 active:bg-slate-100 transition-colors text-left w-full";
+                                              
+                                              const innerContent = (
+                                                  <>
+                                                      <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-gameTeal shadow-sm shrink-0">
+                                                          {subItem.icon && <subItem.icon size={16} />}
+                                                      </div>
+                                                      <div>
+                                                          <div className="text-sm font-bold text-slate-700">{subItem.name}</div>
+                                                          <div className="text-[10px] text-slate-400 font-medium">{subItem.desc}</div>
+                                                      </div>
+                                                  </>
+                                              );
+
+                                              return isPageDisabled ? (
+                                                  <button
+                                                      key={subItem.name}
+                                                      type="button"
+                                                      onClick={() => {
                                                           window.dispatchEvent(new CustomEvent('show-coming-soon', { detail: { examName: subItem.name } }));
-                                                      } else {
-                                                          handleLinkClick();
-                                                      }
-                                                  }}
-                                                  className="flex items-center gap-3 p-3 rounded-xl bg-slate-50 active:bg-slate-100 transition-colors"
-                                              >
-                                                  <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-gameTeal shadow-sm shrink-0">
-                                                      {subItem.icon && <subItem.icon size={16} />}
-                                                  </div>
-                                                  <div>
-                                                      <div className="text-sm font-bold text-slate-700">{subItem.name}</div>
-                                                      <div className="text-[10px] text-slate-400 font-medium">{subItem.desc}</div>
-                                                  </div>
-                                              </Link>
-                                          ))}
+                                                      }}
+                                                      className={commonClasses}
+                                                  >
+                                                      {innerContent}
+                                                  </button>
+                                              ) : (
+                                                  <Link
+                                                      key={subItem.name}
+                                                      href={`/${subItem.id}`}
+                                                      prefetch={false}
+                                                      onClick={handleLinkClick}
+                                                      className={commonClasses}
+                                                  >
+                                                      {innerContent}
+                                                  </Link>
+                                              );
+                                          })}
                                       </motion.div>
                                   )}
                               </AnimatePresence>
