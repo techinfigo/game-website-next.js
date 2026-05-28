@@ -15,7 +15,7 @@ export default function ComingSoonModal() {
       setIsOpen(true);
     };
 
-    window.showComingSoonModal = handleShow;
+    (window as any).showComingSoonModal = handleShow;
 
     const handleShowComingSoon = (e: Event) => {
       const customEvent = e as CustomEvent<{ examName: string }>;
@@ -29,7 +29,7 @@ export default function ComingSoonModal() {
 
     window.addEventListener('show-coming-soon', handleShowComingSoon);
     return () => {
-      window.showComingSoonModal = undefined;
+      (window as any).showComingSoonModal = undefined;
       window.removeEventListener('show-coming-soon', handleShowComingSoon);
     };
   }, []);
