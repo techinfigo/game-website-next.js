@@ -9,6 +9,7 @@ import {
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { EXAM_PAGES_DISABLED, DISABLED_EXAMPAGES_IDS } from './examconfig';
 
 interface FeaturedExamsProps {
   onNavigate?: (page: string) => void;
@@ -22,6 +23,24 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
   const [scrollLeft, setScrollLeft] = useState(0);
 
   const handleNavigate = (page: string) => {
+    const cleanId = page.startsWith('/') ? page.substring(1) : page;
+    if (EXAM_PAGES_DISABLED && DISABLED_EXAMPAGES_IDS.includes(cleanId)) {
+      const categoriesMap: Record<string, string> = {
+        ese: 'ESE',
+        gate: 'GATE',
+        psu: 'PSUs / R&D',
+        ssc: 'SSC JE',
+        rrb: 'RRB JE',
+        state: 'State AE / JE',
+        iit: 'IIT-JEE / NEET',
+        nontech: 'Non Tech',
+        school: '9th - 12th'
+      };
+      const examName = categoriesMap[cleanId] || 'Exam Series';
+      window.dispatchEvent(new CustomEvent('show-coming-soon', { detail: { examName } }));
+      return;
+    }
+
     if (onNavigate) {
       onNavigate(page);
     } else {
@@ -71,7 +90,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Engineering Services Examination',
       icon: Trophy,
       color: 'text-purple-400',
-      image: "/exams/ese-bg.png",
+      image: "/exams/ese-bg.jpg",
       logo: "/exams/ese-logo.jpg",
       action: 'ese'
     },
@@ -92,7 +111,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       icon: Briefcase,
       color: 'text-emerald-400',
       image: "/exams/psu-bg.jpg",
-      logo: "/exams/logo-bhel.png",
+      logo: "/exams/psu-logo.jpg",
       action: 'psu'
     },
     {
@@ -121,8 +140,8 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'State Assistant Engineer / Junior Engineer',
       icon: MapPin,
       color: 'text-cyan-400',
-      image: "/exams/state-ae-je-bg.png",
-      logo: "/exams/state-ae-je-logo.jpg",
+      image: "/exams/state-bg.jpg",
+      logo: "/exams/state-logo.jpg",
       action: 'state'
     },
     {
@@ -131,14 +150,14 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Non Technical Exam',
       icon: BookOpen,
       color: 'text-indigo-400',
-      image: "/exams/non-tech-bg.png",
-      logo: "/exams/non-tech-logo.jpg",
+      image: "/exams/nontech-bg.jpg",
+      logo: "/exams/nontech-logo.jpg",
       action: 'nontech'
     }
   ];
 
   return (
-    <section id="exams" className="py-8 md:py-10 bg-white relative overflow-hidden">
+    <section className="py-8 md:py-10 bg-white relative overflow-hidden">
        {/* Background Decoration */}
        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-[0.02]"></div>
        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-teal-50 rounded-full blur-[120px] -z-10"></div>
@@ -236,13 +255,13 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
                       {/* Content */}
                       <div className="absolute inset-0 p-4 pb-6 flex flex-col z-[10]">
                          
-                         {/* Floating Logo Container */}
-                         <div className="relative w-12 h-12 mb-3 overflow-hidden flex items-center justify-center transition-all group-hover:scale-110 duration-500 rounded-xl">
+                         {/* Floating Logo Placeholder */}
+                         <div className="relative w-12 h-12 mb-3 overflow-hidden flex items-center justify-center p-2 rounded-2xl transition-all">
                             <Image 
                               src={item.logo} 
                               alt={`${item.title} Logo`} 
                               fill
-                              className="object-contain p-0.5"
+                              className="object-contain p-1.5"
                               unoptimized
                             />
                          </div>
