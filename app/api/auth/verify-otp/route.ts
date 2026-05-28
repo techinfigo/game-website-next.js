@@ -1,0 +1,69 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { FieldValue } from 'firebase-admin/firestore';
+import { getAdminAuth, getAdminDb } from '@/lib/firebase-admin';
+
+export async function POST(req: NextRequest) {
+  const { phone, otp } = await req.json();
+
+  if (!phone || !/^\d{10}$/.test(phone) || !otp) {
+    return NextResponse.json({ error: 'Phone and OTP required' }, { status: 400 });
+  }
+
+  const authKey = process.env.NEXT_PUBLIC_MSG91_AUTH_KEY;
+  if (!authKey) {
+    return NextResponse.json({ error: 'MSG91 credentials not configured' }, { status: 500 });
+  }
+
+  // Step 1: Verify OTP with MSG91
+  try {
+    const res = await fetch('https://control.msg91.com/api/v5/otp/verify', {
+      method: 'POST',
+      headers: {
+        authkey: authKey,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ mobile: `91${phone}`, otp }),
+    });
+    const data = await res.json();
+    if (data.type !== 'success') {
+      return NextResponse.json({ error: 'Invalid or expired OTP' }, { status: 400 });
+    }
+  } catch {
+    return NextResponse.json({ error: 'OTP verification failed' }, { status: 500 });
+  }
+
+  // Step 2: Find or create Firebase user by phone number
+  const phoneNumber = `+91${phone}`;
+  try {
+    const adminAuth = getAdminAuth();
+    const adminDb = getAdminDb();
+
+    let uid: string;
+    let isNewUser = false;
+
+    try {
+      const existing = await adminAuth.getUserByPhoneNumber(phoneNumber);
+      uid = existing.uid;
+    } catch {
+      const created = await adminAuth.createUser({ phoneNumber });
+      uid = created.uid;
+      isNewUser = true;
+    }
+
+    if (isNewUser) {
+      await adminDb.collection('users').doc(uid).set({
+        uid,
+        phoneNumber,
+        displayName: 'Student',
+        role: 'student',
+        createdAt: FieldValue.serverTimestamp(),
+      });
+    }
+
+    const customToken = await adminAuth.createCustomToken(uid);
+    return NextResponse.json({ token: customToken, isNewUser });
+  } catch (err: any) {
+    console.error('Firebase Admin error:', err.message);
+    return NextResponse.json({ error: 'Failed to create session' }, { status: 500 });
+  }
+}

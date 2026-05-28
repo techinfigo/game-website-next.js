@@ -1,20 +1,17 @@
 
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Mail, Lock, ArrowRight, Eye, EyeOff, Phone, KeyRound, Loader2 } from 'lucide-react';
 import { auth, db } from '../firebase';
-import { 
-  RecaptchaVerifier, 
-  signInWithPhoneNumber, 
-  ConfirmationResult,
+import {
+  signInWithCustomToken,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   updateProfile
 } from 'firebase/auth';
-import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore';
-import firebaseConfig from '../firebase-applet-config.json';
+import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -25,9 +22,9 @@ interface LoginModalProps {
 
 const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, initialView = 'login' }) => {
   const [showPassword, setShowPassword] = useState(false);
-  const [isLogin, setIsLogin] = useState(true); // Toggle between Login and Signup
+  const [isLogin, setIsLogin] = useState(true);
   const [loginMethod, setLoginMethod] = useState<'phone' | 'email'>('phone');
-  
+
   // Phone Login State
   const [phoneNumber, setPhoneNumber] = useState('');
   const [otp, setOtp] = useState('');
@@ -36,16 +33,20 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
   const [isLoading, setIsLoading] = useState(false);
   const [registrationSuccess, setRegistrationSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [confirmationResult, setConfirmationResult] = useState<ConfirmationResult | null>(null);
-  const recaptchaRef = useRef<HTMLDivElement>(null);
-  const recaptchaVerifier = useRef<RecaptchaVerifier | null>(null);
 
   // Email/Password State
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [fullName, setFullName] = useState('');
 
-  // Reset states when method changes or modal closes
+  // Countdown timer for OTP resend
+  useEffect(() => {
+    if (timer <= 0) return;
+    const id = setInterval(() => setTimer(t => t - 1), 1000);
+    return () => clearInterval(id);
+  }, [timer]);
+
+  // Reset when modal closes
   useEffect(() => {
     if (!isOpen) {
       setPhoneNumber('');
@@ -56,7 +57,6 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
       setIsLoading(false);
       setRegistrationSuccess(false);
       setError(null);
-      setConfirmationResult(null);
       setEmail('');
       setPassword('');
       setFullName('');
@@ -72,126 +72,58 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
     setError(null);
   }, [loginMethod, isLogin]);
 
-  const setupRecaptcha = () => {
-    if (!recaptchaVerifier.current && recaptchaRef.current) {
-      try {
-        recaptchaVerifier.current = new RecaptchaVerifier(auth, recaptchaRef.current, {
-          size: 'invisible',
-          callback: () => {
-            console.log('Recaptcha resolved');
-          }
-        });
-      } catch (err) {
-        console.error('Recaptcha init error:', err);
-      }
-    }
-  };
-
   const handleSendOtp = async () => {
-    if (phoneNumber.length < 10) return;
-    
+    if (phoneNumber.length !== 10) return;
+
     setError(null);
     setIsLoading(true);
 
-    const isMock = firebaseConfig.projectId === "remixed-project-id";
-    if (isMock) {
-      try {
-        await new Promise(resolve => setTimeout(resolve, 800)); // Simulate network latency
-        setShowOtp(true);
-        setTimer(60);
-        
-        const mockResult = {
-          verificationId: "mock-verification-id",
-          confirm: async (code: string) => {
-            await new Promise(resolve => setTimeout(resolve, 600));
-            if (code && code.length === 6) {
-              const mockUser = {
-                uid: `mock-user-${phoneNumber}`,
-                phoneNumber: `+91${phoneNumber}`,
-                displayName: fullName || 'Student',
-                email: null,
-                emailVerified: false,
-                isAnonymous: false,
-                metadata: {},
-                providerData: []
-              };
-              localStorage.setItem('mock_user', JSON.stringify(mockUser));
-              window.dispatchEvent(new Event('local-auth-change'));
-              return {
-                user: mockUser as any,
-                providerId: null,
-                operationType: 'signIn'
-              } as any;
-            } else {
-              throw new Error('Invalid verification code.');
-            }
-          }
-        } as unknown as ConfirmationResult;
-        setConfirmationResult(mockResult);
-      } catch (err: any) {
-        setError('Failed to initiate demo verification.');
-      } finally {
-        setIsLoading(false);
-      }
-      return;
-    }
-
-    setupRecaptcha();
-
     try {
-      const formattedPhone = `+91${phoneNumber}`;
-      const appVerifier = recaptchaVerifier.current;
-      
-      if (!appVerifier) throw new Error('Recaptcha not initialized');
-
-      const result = await signInWithPhoneNumber(auth, formattedPhone, appVerifier);
-      setConfirmationResult(result);
+      const res = await fetch('/api/auth/send-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone: phoneNumber }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Failed to send OTP');
       setShowOtp(true);
       setTimer(60);
     } catch (err: any) {
-      console.error('OTP Send Error:', err);
       setError(err.message || 'Failed to send OTP. Please try again.');
-      if (recaptchaVerifier.current) {
-        recaptchaVerifier.current.clear();
-        recaptchaVerifier.current = null;
-      }
     } finally {
       setIsLoading(false);
     }
   };
 
   const handleVerifyOtp = async () => {
-    if (otp.length !== 6 || !confirmationResult) return;
-    
+    if (otp.length !== 6) return;
+
     setError(null);
     setIsLoading(true);
 
     try {
-      const userCredential = await confirmationResult.confirm(otp);
+      const res = await fetch('/api/auth/verify-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone: phoneNumber, otp }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Invalid OTP');
+
+      // Sign into Firebase with custom token issued by our API route
+      const userCredential = await signInWithCustomToken(auth, data.token);
       const user = userCredential.user;
 
-      const isMock = firebaseConfig.projectId === "remixed-project-id";
-      if (!isMock) {
-        // Check if user exists in Firestore
-        const userDoc = await getDoc(doc(db, 'users', user.uid));
-        
-        if (!userDoc.exists()) {
-          // Create new user profile if it doesn't exist
-          await setDoc(doc(db, 'users', user.uid), {
-            uid: user.uid,
-            phoneNumber: user.phoneNumber,
-            displayName: fullName || 'Student',
-            role: 'student',
-            createdAt: serverTimestamp()
-          });
-        }
+      // Update display name in Firebase Auth + Firestore if provided
+      if (fullName) {
+        await updateProfile(user, { displayName: fullName });
+        await setDoc(doc(db, 'users', user.uid), { displayName: fullName }, { merge: true });
       }
 
       if (onSuccess) onSuccess();
       onClose();
     } catch (err: any) {
-      console.error('OTP Verify Error:', err);
-      setError('Invalid OTP. Please check and try again.');
+      setError(err.message || 'Verification failed. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -199,43 +131,9 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
 
   const handleEmailAction = async () => {
     if (!email || !password) return;
-    
+
     setError(null);
     setIsLoading(true);
-
-    const isMock = firebaseConfig.projectId === "remixed-project-id";
-    if (isMock) {
-      try {
-        await new Promise(resolve => setTimeout(resolve, 800));
-        if (isLogin) {
-          const mockUser = {
-            uid: `mock-user-email-${email.replace(/[@.]/g, '')}`,
-            phoneNumber: null,
-            displayName: fullName || email.split('@')[0],
-            email: email,
-            emailVerified: true,
-            isAnonymous: false,
-            metadata: {},
-            providerData: []
-          };
-          localStorage.setItem('mock_user', JSON.stringify(mockUser));
-          window.dispatchEvent(new Event('local-auth-change'));
-          if (onSuccess) onSuccess();
-          onClose();
-        } else {
-          setRegistrationSuccess(true);
-          setTimeout(() => {
-            setIsLogin(true);
-            setRegistrationSuccess(false);
-          }, 3000);
-        }
-      } catch (err) {
-        setError('Simulated email authentication failed.');
-      } finally {
-        setIsLoading(false);
-      }
-      return;
-    }
 
     try {
       if (isLogin) {
@@ -252,9 +150,9 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
           uid: user.uid,
           email: user.email,
           displayName: fullName,
-          phoneNumber: phoneNumber ? `+91${phoneNumber}` : null,
+          phoneNumber: null,
           role: 'student',
-          createdAt: serverTimestamp()
+          createdAt: serverTimestamp(),
         });
 
         setRegistrationSuccess(true);
@@ -301,7 +199,6 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
                   onClick={onClose}
                   className="absolute top-4 right-4 p-2 rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-colors z-10"
                 >
-                  {/* Fix: Correct syntax for size prop */}
                   <X size={20} />
                 </button>
 
@@ -321,13 +218,13 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
 
                    {/* Login Method Tabs */}
                    <div className="flex p-1 bg-slate-100 dark:bg-white/5 rounded-xl mb-6 border border-slate-200 dark:border-white/5">
-                      <button 
+                      <button
                         className={`flex-1 py-2.5 text-sm font-bold rounded-lg transition-all flex items-center justify-center gap-2 ${loginMethod === 'phone' ? 'bg-white dark:bg-white/10 shadow-sm text-gameTeal dark:text-gameGold ring-1 ring-black/5 dark:ring-white/10' : 'text-slate-500 dark:text-gray-400 hover:text-slate-700 dark:hover:text-slate-200'}`}
                         onClick={() => setLoginMethod('phone')}
                       >
                         <Phone size={16} /> Mobile
                       </button>
-                      <button 
+                      <button
                         className={`flex-1 py-2.5 text-sm font-bold rounded-lg transition-all flex items-center justify-center gap-2 ${loginMethod === 'email' ? 'bg-white dark:bg-white/10 shadow-sm text-gameTeal dark:text-gameGold ring-1 ring-black/5 dark:ring-white/10' : 'text-slate-500 dark:text-gray-400 hover:text-slate-700 dark:hover:text-slate-200'}`}
                         onClick={() => setLoginMethod('email')}
                       >
@@ -344,7 +241,6 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
 
                    {/* Form */}
                    <div className="relative">
-                     <div ref={recaptchaRef}></div>
                       <AnimatePresence mode="wait">
                         {registrationSuccess ? (
                           <motion.div
@@ -373,13 +269,13 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
                             exit={{ opacity: 0 }}
                           >
                             <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                               
+
                                {!isLogin && (
                                   <div className="space-y-1.5">
                                      <label className="text-xs font-bold text-slate-700 dark:text-gray-300 uppercase tracking-wider ml-1">Full Name</label>
                                      <div className="relative group">
-                                        <input 
-                                          type="text" 
+                                        <input
+                                          type="text"
                                           value={fullName}
                                           onChange={(e) => setFullName(e.target.value)}
                                           placeholder="John Doe"
@@ -393,7 +289,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
                                )}
 
                                {loginMethod === 'phone' ? (
-                                 /* PHONE LOGIN */
+                                 /* PHONE LOGIN via MSG91 */
                                  <div className="space-y-4">
                                      <div className="space-y-1.5">
                                          <label className="text-xs font-bold text-slate-700 dark:text-gray-300 uppercase tracking-wider ml-1">Mobile Number</label>
@@ -401,12 +297,12 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
                                              <div className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 font-bold border-r border-slate-300 dark:border-white/10 pr-2 mr-2 text-sm flex items-center gap-1 pointer-events-none">
                                                  <span>IN</span> +91
                                              </div>
-                                             <input 
-                                                 type="tel" 
+                                             <input
+                                                 type="tel"
                                                  value={phoneNumber}
                                                  onChange={(e) => {
                                                      const val = e.target.value.replace(/\D/g, '');
-                                                     if(val.length <= 10) setPhoneNumber(val);
+                                                     if (val.length <= 10) setPhoneNumber(val);
                                                  }}
                                                  disabled={showOtp}
                                                  placeholder="Enter 10 digit number"
@@ -419,19 +315,19 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
                                      </div>
 
                                      {showOtp && (
-                                         <motion.div 
-                                             initial={{ opacity: 0, height: 0 }} 
-                                             animate={{ opacity: 1, height: 'auto' }} 
+                                         <motion.div
+                                             initial={{ opacity: 0, height: 0 }}
+                                             animate={{ opacity: 1, height: 'auto' }}
                                              className="space-y-1.5 overflow-hidden"
                                          >
                                              <label className="text-xs font-bold text-slate-700 dark:text-gray-300 uppercase tracking-wider ml-1">One Time Password</label>
                                              <div className="relative group">
-                                                 <input 
-                                                     type="text" 
+                                                 <input
+                                                     type="text"
                                                      value={otp}
                                                      onChange={(e) => {
                                                          const val = e.target.value.replace(/\D/g, '');
-                                                         if(val.length <= 6) setOtp(val);
+                                                         if (val.length <= 6) setOtp(val);
                                                      }}
                                                      placeholder="XXXXXX"
                                                      maxLength={6}
@@ -442,7 +338,10 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
                                                  </div>
                                              </div>
                                              <div className="flex justify-between items-center text-xs mt-1 px-1">
-                                                 <span className="text-slate-500 dark:text-gray-500">Sent to +91 {phoneNumber} <button onClick={() => setShowOtp(false)} className="text-gameTeal dark:text-gameGold ml-1 hover:underline font-bold">(Change)</button></span>
+                                                 <span className="text-slate-500 dark:text-gray-500">
+                                                   Sent to +91 {phoneNumber}{' '}
+                                                   <button onClick={() => { setShowOtp(false); setOtp(''); }} className="text-gameTeal dark:text-gameGold ml-1 hover:underline font-bold">(Change)</button>
+                                                 </span>
                                                  {timer > 0 ? (
                                                      <span className="text-slate-400 font-medium">Resend in {timer}s</span>
                                                  ) : (
@@ -452,11 +351,11 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
                                          </motion.div>
                                      )}
 
-                                     <button 
+                                     <button
                                          type="button"
                                          onClick={showOtp ? handleVerifyOtp : handleSendOtp}
-                                         disabled={phoneNumber.length < 10 || isLoading}
-                                         className={`w-full bg-gameTeal text-white font-bold py-3.5 rounded-xl shadow-lg shadow-gameTeal/25 hover:bg-gameTealDark hover:shadow-gameTeal/40 transition-all flex items-center justify-center gap-2 group mt-2 ${phoneNumber.length < 10 ? 'opacity-70 cursor-not-allowed' : ''}`}
+                                         disabled={phoneNumber.length !== 10 || isLoading || (showOtp && otp.length !== 6)}
+                                         className="w-full bg-gameTeal text-white font-bold py-3.5 rounded-xl shadow-lg shadow-gameTeal/25 hover:bg-gameTealDark hover:shadow-gameTeal/40 transition-all flex items-center justify-center gap-2 group mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
                                      >
                                          {isLoading ? (
                                            <Loader2 size={20} className="animate-spin" />
@@ -474,8 +373,8 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
                                      <div className="space-y-1.5">
                                          <label className="text-xs font-bold text-slate-700 dark:text-gray-300 uppercase tracking-wider ml-1">Email Address</label>
                                          <div className="relative group">
-                                         <input 
-                                         type="email" 
+                                         <input
+                                         type="email"
                                          value={email}
                                          onChange={(e) => setEmail(e.target.value)}
                                          placeholder="student@gameacademy.in"
@@ -493,8 +392,8 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
                                              {isLogin && <a href="#" className="text-xs text-gameTeal dark:text-gameGold font-bold hover:underline">Forgot?</a>}
                                          </div>
                                          <div className="relative group">
-                                         <input 
-                                         type={showPassword ? "text" : "password"} 
+                                         <input
+                                         type={showPassword ? "text" : "password"}
                                          value={password}
                                          onChange={(e) => setPassword(e.target.value)}
                                          placeholder="••••••••"
@@ -503,7 +402,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
                                              <div className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-gameTeal dark:group-focus-within:text-gameGold transition-colors">
                                              <Lock size={18} />
                                              </div>
-                                             <button 
+                                             <button
                                                  type="button"
                                                  onClick={() => setShowPassword(!showPassword)}
                                                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors"
@@ -513,11 +412,11 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
                                          </div>
                                      </div>
 
-                                     <button 
+                                     <button
                                         type="button"
                                         onClick={handleEmailAction}
                                         disabled={isLoading}
-                                        className="w-full bg-gameTeal text-white font-bold py-3.5 rounded-xl shadow-lg shadow-gameTeal/25 hover:bg-gameTealDark hover:shadow-gameTeal/40 transition-all flex items-center justify-center gap-2 group mt-2"
+                                        className="w-full bg-gameTeal text-white font-bold py-3.5 rounded-xl shadow-lg shadow-gameTeal/25 hover:bg-gameTealDark hover:shadow-gameTeal/40 transition-all flex items-center justify-center gap-2 group mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
                                      >
                                          {isLoading ? (
                                            <Loader2 size={20} className="animate-spin" />
@@ -540,7 +439,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
                    {/* Toggle Login/Signup */}
                    <div className="text-center mt-6 text-sm text-slate-500 dark:text-gray-400">
                       {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
-                      <button 
+                      <button
                         onClick={() => setIsLogin(!isLogin)}
                         className="text-gameTeal dark:text-gameGold font-bold hover:underline"
                       >
