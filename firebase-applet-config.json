@@ -1,10 +1,8 @@
 {
-  "projectId": "gen-lang-client-0833901814",
-  "appId": "1:881463408582:web:9adc6383c7faed31a364c7",
-  "apiKey": "AIzaSyBRQVDACNDxiJZe2TMm5YIQgNVXj5_VIQU",
-  "authDomain": "gen-lang-client-0833901814.firebaseapp.com",
-  "firestoreDatabaseId": "ai-studio-d5da473b-54ab-4db5-a2a4-cc143506316e",
-  "storageBucket": "gen-lang-client-0833901814.firebasestorage.app",
-  "messagingSenderId": "881463408582",
-  "measurementId": ""
+  "projectId": "game-academy-2799d",
+  "appId": "1:981796500036:web:75867efc29c32c67eb8211",
+  "apiKey": "AIzaSyDmc4k19hk2VPLZ44XOyOg3b41RUwzsNzY",
+  "authDomain": "game-academy-2799d.firebaseapp.com",
+  "storageBucket": "game-academy-2799d.firebasestorage.app",
+  "messagingSenderId": "981796500036"
 }
