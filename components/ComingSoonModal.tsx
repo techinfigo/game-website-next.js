@@ -9,15 +9,6 @@ export default function ComingSoonModal() {
   const [examName, setExamName] = useState('');
 
   useEffect(() => {
-    const handleShow = (name?: string) => {
-      setExamName(name || 'Examination Page');
-      setIsOpen(true);
-    };
-
-    // Register global function hook
-    (window as any).showComingSoonModal = handleShow;
-
-    // Register standard CustomEvent listener (fail-safe backup)
     const handleShowComingSoon = (e: Event) => {
       const customEvent = e as CustomEvent<{ examName: string }>;
       if (customEvent.detail && customEvent.detail.examName) {
@@ -31,7 +22,6 @@ export default function ComingSoonModal() {
     window.addEventListener('show-coming-soon', handleShowComingSoon);
     
     return () => {
-      (window as any).showComingSoonModal = undefined;
       window.removeEventListener('show-coming-soon', handleShowComingSoon);
     };
   }, []);
