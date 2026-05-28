@@ -33,6 +33,8 @@ export async function POST(req: NextRequest) {
   }
 
   // Step 2: Find or create Firebase user by phone number
+  // OTP is already verified above — any error from here is a Firebase Admin issue,
+  // not an OTP issue. We return otpVerified:true so the client can show the right message.
   const phoneNumber = `+91${phone}`;
   try {
     const adminAuth = getAdminAuth();
@@ -63,7 +65,16 @@ export async function POST(req: NextRequest) {
     const customToken = await adminAuth.createCustomToken(uid);
     return NextResponse.json({ token: customToken, isNewUser });
   } catch (err: any) {
-    console.error('Firebase Admin error:', err.message);
-    return NextResponse.json({ error: 'Failed to create session' }, { status: 500 });
+    const isKeyMissing = err.message?.includes('FIREBASE_SERVICE_ACCOUNT_KEY');
+    console.error('[verify-otp] Firebase Admin error:', err.message);
+    return NextResponse.json(
+      {
+        otpVerified: true,
+        error: isKeyMissing
+          ? 'Server is missing FIREBASE_SERVICE_ACCOUNT_KEY — add it to .env.local'
+          : `Firebase session error: ${err.message}`,
+      },
+      { status: 500 }
+    );
   }
 }

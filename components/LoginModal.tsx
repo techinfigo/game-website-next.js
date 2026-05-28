@@ -107,7 +107,13 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
         body: JSON.stringify({ phone: phoneNumber, otp }),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Invalid OTP');
+      if (!res.ok) {
+        // MSG91 passed but Firebase Admin couldn't issue a token
+        if (data.otpVerified) {
+          throw new Error('OTP verified but login failed. Please use email login instead.');
+        }
+        throw new Error(data.error || 'Invalid OTP. Please try again.');
+      }
 
       // Sign into Firebase with custom token issued by our API route
       const userCredential = await signInWithCustomToken(auth, data.token);
@@ -122,7 +128,12 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
       if (onSuccess) onSuccess();
       onClose();
     } catch (err: any) {
-      setError(err.message || 'Verification failed. Please try again.');
+      // err.message is already a friendly string from the throw above,
+      // or a raw Firebase error — fall back to a generic message for unknown codes
+      const msg = err.message?.startsWith('OTP verified') || err.message?.startsWith('Invalid OTP')
+        ? err.message
+        : 'Verification failed. Please try again.';
+      setError(msg);
     } finally {
       setIsLoading(false);
     }
