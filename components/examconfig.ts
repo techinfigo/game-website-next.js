@@ -1,8 +1,12 @@
-// 🔴 Currently disabled (shows the landing-soon popup):
+/**
+ * Configuration for exam pages status.
+ * 
+ * Set EXAM_PAGES_DISABLED to true to temporarily disable navigation to exam pages
+ * and show a polished "Under Maintenance / Upgrading" view.
+ * 
+ * 🟢 TO MAKE ALL PAGES LIVE AGAIN, JUST CHANGE 'true' TO 'false' BELOW:
+ */
 export const EXAM_PAGES_DISABLED = true;
-
-// 🟢 To make all pages live again, just change it to false:
-export const EXAM_PAGES_DISABLED = false;
 
 // List of routes/paths that correspond to the examination pages
 export const DISABLED_EXAMPAGES_IDS = [
