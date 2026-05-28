@@ -28,11 +28,16 @@ export async function POST(req: NextRequest) {
       body: JSON.stringify({ mobile: `91${phone}`, otp }),
     });
     const data = await res.json();
+    console.log('[verify-otp] MSG91 response:', JSON.stringify(data));
     if (data.type !== 'success') {
-      return NextResponse.json({ error: 'Invalid or expired OTP' }, { status: 400 });
+      const body = { error: 'Invalid or expired OTP' };
+      console.log('[verify-otp] returning 400:', JSON.stringify(body));
+      return NextResponse.json(body, { status: 400 });
     }
-  } catch {
-    return NextResponse.json({ error: 'OTP verification failed' }, { status: 500 });
+  } catch (err: any) {
+    const body = { error: 'OTP verification failed', detail: err.message };
+    console.log('[verify-otp] returning 500 (MSG91 fetch threw):', JSON.stringify(body));
+    return NextResponse.json(body, { status: 500 });
   }
 
   // Step 2: Find or create Firebase user by phone number
@@ -76,18 +81,18 @@ export async function POST(req: NextRequest) {
     }
 
     const customToken = await adminAuth.createCustomToken(uid);
-    return NextResponse.json({ token: customToken, isNewUser });
+    const body = { token: customToken, isNewUser };
+    console.log('[verify-otp] returning 200 — uid:', uid, 'isNewUser:', isNewUser, 'token length:', customToken.length);
+    return NextResponse.json(body);
   } catch (err: any) {
     const isKeyMissing = err.message?.includes('FIREBASE_SERVICE_ACCOUNT_KEY');
-    console.error('[verify-otp] Firebase Admin error:', err.message);
-    return NextResponse.json(
-      {
-        otpVerified: true,
-        error: isKeyMissing
-          ? 'Server is missing FIREBASE_SERVICE_ACCOUNT_KEY — add it to .env.local'
-          : `Firebase session error: ${err.message}`,
-      },
-      { status: 500 }
-    );
+    const body = {
+      otpVerified: true,
+      error: isKeyMissing
+        ? 'Server is missing FIREBASE_SERVICE_ACCOUNT_KEY — add it to .env.local'
+        : `Firebase session error: ${err.message}`,
+    };
+    console.error('[verify-otp] returning 500 (Firebase Admin):', JSON.stringify(body));
+    return NextResponse.json(body, { status: 500 });
   }
 }

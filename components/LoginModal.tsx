@@ -119,24 +119,27 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
 
       // Ensure session survives mobile browser restarts
       await setPersistence(auth, browserLocalPersistence);
+      console.log('[LoginModal] persistence set, calling signInWithCustomToken');
 
       // Sign into Firebase with custom token issued by our API route
       const userCredential = await signInWithCustomToken(auth, data.token);
       const user = userCredential.user;
+      console.log('[LoginModal] signInWithCustomToken succeeded — uid:', user.uid);
 
       // Update display name in Firebase Auth + Firestore if provided
       if (fullName) {
         await updateProfile(user, { displayName: fullName });
         await setDoc(doc(db, 'users', user.uid), { displayName: fullName }, { merge: true });
+        console.log('[LoginModal] displayName updated');
       }
 
       // Small wait for onAuthStateChanged to propagate on mobile before closing
       await new Promise<void>(resolve => setTimeout(resolve, 300));
+      console.log('[LoginModal] calling onSuccess and onClose');
       if (onSuccess) onSuccess();
       onClose();
     } catch (err: any) {
-      // err.message is already a friendly string from the throw above,
-      // or a raw Firebase error — fall back to a generic message for unknown codes
+      console.error('[LoginModal] handleVerifyOtp error — code:', err.code, '| message:', err.message);
       const msg = err.message?.startsWith('OTP verified') || err.message?.startsWith('Invalid OTP')
         ? err.message
         : 'Verification failed. Please try again.';
