@@ -141,7 +141,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       icon: MapPin,
       color: 'text-cyan-400',
       image: "/exams/state-ae-je-bg.png",
-      logo: "/exams/state-logo.jpg",
+      logo: "/exams/state-ae-je-logo.jpg",
       action: 'state'
     },
     {
@@ -151,7 +151,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       icon: BookOpen,
       color: 'text-indigo-400',
       image: "/exams/non-tech-bg.png",
-      logo: "/exams/nontech-logo.jpg",
+      logo: "/exams/non-tech-logo.jpg",
       action: 'nontech'
     }
   ];
