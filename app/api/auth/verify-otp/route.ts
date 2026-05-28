@@ -3,6 +3,9 @@ import { FieldValue } from 'firebase-admin/firestore';
 import { getAdminAuth, getAdminDb } from '@/lib/firebase-admin';
 
 export async function POST(req: NextRequest) {
+  const key = process.env.FIREBASE_SERVICE_ACCOUNT_KEY;
+  console.log('[verify-otp] FIREBASE_SERVICE_ACCOUNT_KEY first 20 chars:', key ? key.slice(0, 20) : 'NOT SET');
+
   const { phone, otp } = await req.json();
 
   if (!phone || !/^\d{10}$/.test(phone) || !otp) {
