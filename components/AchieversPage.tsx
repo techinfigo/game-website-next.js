@@ -998,9 +998,9 @@ export const ALL_STORIES = [
 ];
 
 const HERO_STATS = [
-  { val: "50+", label: "AIR 1 Ranks" },
-  { val: "5000+", label: "Selections" },
-  { val: "100Cr+", label: "Scholarships" },
+  { val: "1000+", label: "PSU selections" },
+  { val: "2,000+", label: "Rank Holders" },
+  { val: "10,000+", label: "Student Community" },
   { val: "4.9/5", label: "Student Rating" },
 ];
 
@@ -1442,10 +1442,10 @@ const AchieversPage: React.FC<AchieversPageProps> = ({ initialFilter = 'all' }) 
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-md mb-4">
-                  <Crown size={12} className="text-gameGold fill-gameGold" />
-                  <span className="text-[9px] font-bold uppercase tracking-widest text-gameGold">Hall of Fame</span>
-               </div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f2c537] border border-[#f2c537]/20 mb-4 shadow-lg shadow-[#f2c537]/10">
+                   <Crown size={12} className="text-black fill-black" />
+                   <span className="text-[9px] font-bold uppercase tracking-widest text-black">Hall of Fame</span>
+                </div>
 
                <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-3 tracking-tight leading-[0.9]">
                   Celebrating <br/>
@@ -1461,7 +1461,7 @@ const AchieversPage: React.FC<AchieversPageProps> = ({ initialFilter = 'all' }) 
                   {HERO_STATS.map((stat, i) => (
                      <div key={i} className="text-center">
                         <div className="text-2xl font-black text-white mb-0.5">{stat.val}</div>
-                        <div className="text-[9px] font-bold text-gameTeal uppercase tracking-wider">{stat.label}</div>
+                        <div className="text-[9px] font-bold text-[#f2c537] uppercase tracking-wider">{stat.label}</div>
                      </div>
                   ))}
                </div>
