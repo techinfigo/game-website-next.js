@@ -526,7 +526,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
     {
       title: "Vijeta Test Series (ME) 2027 (SSC-JE)",
       tagline: "Specialised Tests for Junior Engineer ME",
-      image: "/courses/vijeta_ts_me_sscje.jpg",
+      image: "/courses/vijeta_ts_me_ssc.jpg",
       duration: "12 months",
       eligibility: "SSC-JE & All State AE-JE Aspirants",
       features: [
