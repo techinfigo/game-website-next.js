@@ -83,7 +83,7 @@ const ReasonsSection: React.FC = () => {
             <span className="text-[10px] font-black text-gameGold bg-gameBlack px-4 py-1.5 rounded-full uppercase tracking-[0.3em] mb-2 shadow-lg whitespace-nowrap">
               <Sparkles size={12} className="inline mr-2" /> THE GAME ADVANTAGE
             </span>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 leading-tight whitespace-nowrap">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 leading-tight whitespace-normal lg:whitespace-nowrap">
               7 Reasons Why We Are <span className="text-transparent bg-clip-text bg-gradient-to-r from-gameTeal to-teal-500">India&apos;s Leading Choice</span>
             </h2>
             <div className="w-24 h-1.5 bg-gameGold mx-auto mt-4 rounded-full"></div>
