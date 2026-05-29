@@ -19,10 +19,11 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
   const router = useRouter();
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
+  const dragStartRef = useRef<{ x: number; scrollLeft: number }>({ x: 0, scrollLeft: 0 });
+  const hasDraggedRef = useRef(false);
 
   const handleNavigate = (page: string) => {
+    if (hasDraggedRef.current) return; // Prevent navigation if we recently dragged
     const cleanId = page.startsWith('/') ? page.substring(1) : page;
     if (EXAM_PAGES_DISABLED && DISABLED_EXAMPAGES_IDS.includes(cleanId)) {
       const categoriesMap: Record<string, string> = {
@@ -51,9 +52,11 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
   const handleMouseDown = (e: React.MouseEvent) => {
     if (!scrollRef.current) return;
     setIsDragging(true);
-    // Adjust startX to be relative to the container
-    setStartX(e.pageX - scrollRef.current.offsetLeft);
-    setScrollLeft(scrollRef.current.scrollLeft);
+    hasDraggedRef.current = false;
+    dragStartRef.current = {
+      x: e.pageX,
+      scrollLeft: scrollRef.current.scrollLeft
+    };
   };
 
   const handleMouseLeave = () => {
@@ -61,15 +64,23 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
   };
 
   const handleMouseUp = () => {
-    setIsDragging(false);
+    // Keep hasDraggedRef.current as true briefly if they dragged quite a bit to block click
+    setTimeout(() => {
+      setIsDragging(false);
+    }, 50);
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDragging || !scrollRef.current) return;
     e.preventDefault();
-    const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = (x - startX) * 2; // Scroll speed multiplier
-    scrollRef.current.scrollLeft = scrollLeft - walk;
+    const deltaX = e.pageX - dragStartRef.current.x;
+    
+    if (Math.abs(deltaX) > 8) {
+      hasDraggedRef.current = true;
+    }
+    
+    // Smooth custom drag scroll
+    scrollRef.current.scrollLeft = dragStartRef.current.scrollLeft - deltaX * 1.5;
   };
 
   const scroll = (direction: 'left' | 'right') => {
@@ -82,6 +93,40 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       });
     }
   };
+
+  const handleScroll = () => {
+    if (!scrollRef.current || isDragging) return;
+    const container = scrollRef.current;
+    const { scrollLeft, scrollWidth } = container;
+    const singleSetWidth = scrollWidth / 3;
+
+    if (singleSetWidth <= 0) return;
+
+    // Warp smoothly to middle zone if scrolled out of central limits
+    if (scrollLeft < singleSetWidth * 0.5) {
+      container.scrollLeft = scrollLeft + singleSetWidth;
+    } else if (scrollLeft > singleSetWidth * 1.5) {
+      container.scrollLeft = scrollLeft - singleSetWidth;
+    }
+  };
+
+  React.useEffect(() => {
+    const initScroll = () => {
+      if (scrollRef.current) {
+        const { scrollWidth } = scrollRef.current;
+        scrollRef.current.scrollLeft = scrollWidth / 3;
+      }
+    };
+    
+    // Set initial scroll offset in the center zone
+    const timer = setTimeout(initScroll, 100);
+    
+    window.addEventListener('resize', initScroll);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', initScroll);
+    };
+  }, []);
 
   const categories = [
     {
@@ -211,93 +256,98 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
                 </button>
              </div>
           </div>
+       </div>
 
-          {/* Sliding Cards Container */}
-          <div 
-            ref={scrollRef}
-            onMouseDown={handleMouseDown}
-            onMouseLeave={handleMouseLeave}
-            onMouseUp={handleMouseUp}
-            onMouseMove={handleMouseMove}
-            className={`flex gap-4 overflow-x-auto pb-4 pt-1 no-scrollbar scroll-smooth snap-x select-none ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-          >
-             {categories.map((item, index) => (
-                <motion.div
-                   key={item.id}
-                   initial={{ opacity: 0, x: 20 }}
-                   whileInView={{ opacity: 1, x: 0 }}
-                   viewport={{ once: true }}
-                   transition={{ delay: index * 0.05 }}
-                   className="min-w-[240px] md:min-w-[260px] snap-center group pointer-events-auto"
-                >
-                   {/* Container - Bit more rounded rounded-[3rem] */}
-                   <div className="relative h-[300px] md:h-[320px] rounded-[2.5rem] overflow-hidden bg-slate-900 border border-slate-200/10 transition-all duration-500 isolate">
-                      
-                      {/* Background Image */}
-                      <Image 
-                         src={item.image} 
-                         alt={item.title} 
-                         fill
-                         draggable="false"
-                         className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-all duration-1000"
-                         referrerPolicy="no-referrer"
-                      />
-                      
-                      {/* Gradient Overlays */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-[1]"></div>
-                      
-                      {/* Hover Pulse Gradient */}
-                      <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gameTeal/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-[2]"></div>
-                      
-                      <div className="absolute inset-0 border-[4px] border-white/5 rounded-[2.5rem] pointer-events-none group-hover:border-white/20 transition-colors z-[3]"></div>
-
-                      {/* Content */}
-                      <div className="absolute inset-0 p-4 pb-6 flex flex-col z-[10]">
-                         
-                         {/* Floating Logo Placeholder */}
-                         <div className="relative w-12 h-12 mb-3 overflow-hidden flex items-center justify-center p-2 rounded-2xl transition-all">
-                            <Image 
-                              src={item.logo} 
-                              alt={`${item.title} Logo`} 
-                              fill
-                              className="object-contain p-1.5"
-                              unoptimized
-                            />
-                         </div>
-
-                         <div className="mt-auto transform translate-y-[70px] group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]">
-                            <h3 className="text-xl md:text-2xl font-black text-white mb-1 tracking-tight drop-shadow-lg leading-tight transition-all">
-                               {item.title}
-                            </h3>
-                            <p className="text-white/60 text-[9px] font-black uppercase tracking-[0.2em] mb-5 line-clamp-1 transition-all group-hover:text-white/90">
-                               {item.subtitle}
-                            </p>
-                            
-                            {/* Buttons container */}
-                            <div className="space-y-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto">
-                                <button 
-                                  onClick={(e) => {
-                                    if (isDragging) {
-                                      e.preventDefault();
-                                      return;
-                                    }
-                                    handleNavigate(item.action);
-                                  }}
-                                  className="w-full bg-[#f2c537] text-black py-3 rounded-xl font-black text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-white transition-all shadow-xl active:scale-[0.98]"
-                                >
-                                   Explore More <ChevronRight size={14} />
-                                </button>
+        {/* Sliding Cards Container */}
+        <div 
+          ref={scrollRef}
+          onMouseDown={handleMouseDown}
+          onMouseLeave={handleMouseLeave}
+          onMouseUp={handleMouseUp}
+          onMouseMove={handleMouseMove}
+          onScroll={handleScroll}
+          className={`flex gap-4 overflow-x-auto pb-4 pt-1 no-scrollbar select-none ${isDragging ? 'cursor-grabbing' : 'cursor-grab snap-x'} w-full`}
+          style={{ 
+            scrollbarWidth: 'none', 
+            msOverflowStyle: 'none',
+            paddingLeft: 'max(2rem, calc((100vw - 1280px) / 2 + 3rem))',
+            paddingRight: 'max(2rem, calc((100vw - 1280px) / 2 + 3rem))'
+          }}
+        >
+              {[0, 1, 2].flatMap((setIndex) => 
+                 categories.map((item, index) => (
+                    <div
+                       key={`${item.id}-${setIndex}`}
+                       className="min-w-[240px] md:min-w-[260px] snap-center group pointer-events-auto"
+                    >
+                       {/* Container - Bit more rounded rounded-[3rem] */}
+                       <div className="relative h-[300px] md:h-[320px] rounded-[2.5rem] overflow-hidden bg-slate-900 border border-slate-200/10 transition-all duration-500 isolate">
+                          
+                          {/* Background Image */}
+                          <Image 
+                             src={item.image} 
+                             alt={item.title} 
+                             fill
+                             draggable="false"
+                             className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-all duration-1000"
+                             referrerPolicy="no-referrer"
+                          />
+                          
+                          {/* Gradient Overlays */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-[1]"></div>
+                          
+                          {/* Hover Pulse Gradient */}
+                          <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gameTeal/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-[2]"></div>
+                          
+                          <div className="absolute inset-0 border-[4px] border-white/5 rounded-[2.5rem] pointer-events-none group-hover:border-white/20 transition-colors z-[3]"></div>
+    
+                          {/* Content */}
+                          <div className="absolute inset-0 p-4 pb-6 flex flex-col z-[10]">
+                             
+                             {/* Floating Logo Placeholder */}
+                             <div className="relative w-12 h-12 mb-3 overflow-hidden flex items-center justify-center p-2 rounded-2xl transition-all">
+                                <Image 
+                                  src={item.logo} 
+                                  alt={`${item.title} Logo`} 
+                                  fill
+                                  className="object-contain p-1.5"
+                                  unoptimized
+                                  draggable="false"
+                                />
+                             </div>
+   
+                            <div className="mt-auto transform translate-y-[70px] group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]">
+                               <h3 className="text-xl md:text-2xl font-black text-white mb-1 tracking-tight drop-shadow-lg leading-tight transition-all">
+                                  {item.title}
+                               </h3>
+                               <p className="text-white/60 text-[9px] font-black uppercase tracking-[0.2em] mb-5 line-clamp-1 transition-all group-hover:text-white/90">
+                                  {item.subtitle}
+                               </p>
+                               
+                               {/* Buttons container */}
+                               <div className="space-y-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto">
+                                   <button 
+                                     onClick={(e) => {
+                                       if (isDragging) {
+                                         e.preventDefault();
+                                         return;
+                                       }
+                                       handleNavigate(item.action);
+                                     }}
+                                     className="w-full bg-[#f2c537] text-black py-3 rounded-xl font-black text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-white transition-all shadow-xl active:scale-[0.98]"
+                                   >
+                                      Explore More <ChevronRight size={14} />
+                                   </button>
+                               </div>
                             </div>
+   
                          </div>
-
                       </div>
                    </div>
-                </motion.div>
-             ))}
+                ))
+             )}
           </div>
 
-       </div>
     </section>
   );
 };
