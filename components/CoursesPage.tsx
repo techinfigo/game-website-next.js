@@ -6,7 +6,7 @@ import CourseHero from './CourseHero';
 import AcingExamsSection from './AcingExamsSection';
 import CourseGrid from './CourseGrid';
 import ReasonsSection from './ReasonsSection';
-import ResultsSlider from './ResultsSlider';
+import AchieversSection from './AchieversSection';
 import FacultyShowcase from './FacultyShowcase';
 import SpecialOffer from './SpecialOffer';
 import GBVideos from './GBVideos';
@@ -22,7 +22,7 @@ const CoursesPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   return (
-    <div className="min-h-screen bg-slate-400 font-sans text-slate-900">
+    <div className="min-h-screen bg-white font-sans text-slate-900">
       
       {/* 1. CourseMarketing (The main Hero/Banner section) */}
       <CourseMarketing />
@@ -47,8 +47,8 @@ const CoursesPage: React.FC = () => {
       {/* 5. CourseHero (Masterclass slider & Request Callback) */}
       <CourseHero />
 
-      {/* 6. ResultsSlider (Hall of Fame/Rankers marquee) */}
-      <ResultsSlider />
+      {/* 6. AchieversSection (Hall of Fame/Rankers) */}
+      <AchieversSection />
 
       {/* 7. SpecialOffer (Limited Time Offer banner) */}
       <SpecialOffer />
