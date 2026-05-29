@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
                   id: "linkedin",
                   url: "https://www.linkedin.com/company/gameacademyindia/",
                 },
-                { Icon: Facebook, url: "#" },
+                { Icon: Facebook, url: "https://www.facebook.com/gameacademyindia" },
               ].map((social, i) => {
                 const IconComponent = (social as any).Icon;
                 return (
