@@ -120,7 +120,12 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
     {
       id: 1,
       badge: "Premium Learning",
-      title: <>Upskill Continuously <br/> with <span className="text-gameGold">Masterclasses</span></>,
+      title: (
+        <>
+          <span className="lg:whitespace-nowrap">Upskill Continuously</span> <br/> 
+          <span className="lg:whitespace-nowrap">with <span className="text-gameGold">Masterclasses</span></span>
+        </>
+      ),
       description: "Stay ahead with Gaurav Babu Sir&apos;s expert-led courses. Learn practical skills, master core concepts, and grow with a thriving community.",
       bgGradient: "from-[#0b8a91] to-[#075d63]",
       type: "masterclass"
@@ -173,7 +178,7 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
       </AnimatePresence>
       
       {/* Request Call Back Sticky Button */}
-      <div className="absolute top-4 left-1/2 -translate-x-1/2 xs:top-5 md:top-6 z-40">
+      <div className="absolute top-4 left-1/2 -translate-x-1/2 xs:top-5 md:top-6 md:left-auto md:translate-x-0 md:right-8 lg:right-12 z-40">
          <motion.button 
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -209,7 +214,7 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
                       <span className="text-[10px] font-bold uppercase tracking-widest text-gameGold">{slides[currentSlide].badge}</span>
                    </div>
 
-                   <h1 className="text-3xl xs:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] mb-2">
+                   <h1 className="text-3xl xs:text-4xl md:text-5xl lg:text-[40px] xl:text-[54px] font-black text-white leading-[1.15] mb-2">
                       {slides[currentSlide].title}
                    </h1>
                    
