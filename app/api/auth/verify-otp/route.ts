@@ -3,9 +3,6 @@ import { FieldValue } from 'firebase-admin/firestore';
 import { getAdminAuth, getAdminDb } from '@/lib/firebase-admin';
 
 export async function POST(req: NextRequest) {
-  const key = process.env.FIREBASE_SERVICE_ACCOUNT_KEY;
-  console.log('[verify-otp] FIREBASE_SERVICE_ACCOUNT_KEY first 20 chars:', key ? key.slice(0, 20) : 'NOT SET');
-
   const { phone, otp } = await req.json();
 
   if (!phone || !/^\d{10}$/.test(phone) || !otp) {
@@ -28,16 +25,11 @@ export async function POST(req: NextRequest) {
       body: JSON.stringify({ mobile: `91${phone}`, otp }),
     });
     const data = await res.json();
-    console.log('[verify-otp] MSG91 response:', JSON.stringify(data));
     if (data.type !== 'success') {
-      const body = { error: 'Invalid or expired OTP' };
-      console.log('[verify-otp] returning 400:', JSON.stringify(body));
-      return NextResponse.json(body, { status: 400 });
+      return NextResponse.json({ error: 'Invalid or expired OTP' }, { status: 400 });
     }
   } catch (err: any) {
-    const body = { error: 'OTP verification failed', detail: err.message };
-    console.log('[verify-otp] returning 500 (MSG91 fetch threw):', JSON.stringify(body));
-    return NextResponse.json(body, { status: 500 });
+    return NextResponse.json({ error: 'OTP verification failed', detail: err.message }, { status: 500 });
   }
 
   // Step 2: Find or create Firebase user by phone number
@@ -82,18 +74,14 @@ export async function POST(req: NextRequest) {
 
     const customToken = await adminAuth.createCustomToken(uid);
     const displayName = userDoc.exists ? (userDoc.data()?.displayName || 'Student') : 'Student';
-    const body = { token: customToken, isNewUser, uid, phone: phoneNumber, name: displayName };
-    console.log('[verify-otp] returning 200 — uid:', uid, 'isNewUser:', isNewUser, 'token length:', customToken.length);
-    return NextResponse.json(body);
+    return NextResponse.json({ token: customToken, isNewUser, uid, phone: phoneNumber, name: displayName });
   } catch (err: any) {
     const isKeyMissing = err.message?.includes('FIREBASE_SERVICE_ACCOUNT_KEY');
-    const body = {
+    return NextResponse.json({
       otpVerified: true,
       error: isKeyMissing
         ? 'Server is missing FIREBASE_SERVICE_ACCOUNT_KEY — add it to .env.local'
         : `Firebase session error: ${err.message}`,
-    };
-    console.error('[verify-otp] returning 500 (Firebase Admin):', JSON.stringify(body));
-    return NextResponse.json(body, { status: 500 });
+    }, { status: 500 });
   }
 }
