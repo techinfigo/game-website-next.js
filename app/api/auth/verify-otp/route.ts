@@ -4,6 +4,7 @@ import { getAdminAuth, getAdminDb } from '@/lib/firebase-admin';
 
 export async function POST(req: NextRequest) {
   const { phone, otp } = await req.json();
+  const formattedPhone = phone.startsWith('+') ? phone : `+91${phone}`;
 
   if (!phone || !/^\d{10}$/.test(phone) || !otp) {
     return NextResponse.json({ error: 'Phone and OTP required' }, { status: 400 });
@@ -22,7 +23,7 @@ export async function POST(req: NextRequest) {
         authkey: authKey,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ mobile: `91${phone}`, otp }),
+      body: JSON.stringify({ mobile: formattedPhone.replace('+', ''), otp }),
     });
     const data = await res.json();
     if (data.type !== 'success') {
@@ -35,7 +36,6 @@ export async function POST(req: NextRequest) {
   // Step 2: Find or create Firebase user by phone number
   // OTP is already verified above — any error from here is a Firebase Admin issue,
   // not an OTP issue. We return otpVerified:true so the client can show the right message.
-  const phoneNumber = `+91${phone}`;
   try {
     const adminAuth = getAdminAuth();
     const adminDb = getAdminDb();
@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
     let isNewUser = false;
 
     try {
-      const existing = await adminAuth.getUserByPhoneNumber(phoneNumber);
+      const existing = await adminAuth.getUserByPhoneNumber(formattedPhone);
       uid = existing.uid;
     } catch (lookupErr: any) {
       if (lookupErr.code !== 'auth/user-not-found') {
@@ -52,7 +52,7 @@ export async function POST(req: NextRequest) {
         // catch can surface it properly instead of silently creating a duplicate
         throw lookupErr;
       }
-      const created = await adminAuth.createUser({ phoneNumber });
+      const created = await adminAuth.createUser({ phoneNumber: formattedPhone });
       uid = created.uid;
       isNewUser = true;
     }
@@ -64,7 +64,7 @@ export async function POST(req: NextRequest) {
     if (!userDoc.exists) {
       await userDocRef.set({
         uid,
-        phoneNumber,
+        phoneNumber: formattedPhone,
         displayName: 'Student',
         role: 'student',
         createdAt: FieldValue.serverTimestamp(),
@@ -74,7 +74,7 @@ export async function POST(req: NextRequest) {
 
     const customToken = await adminAuth.createCustomToken(uid);
     const displayName = userDoc.exists ? (userDoc.data()?.displayName || 'Student') : 'Student';
-    return NextResponse.json({ token: customToken, isNewUser, uid, phone: phoneNumber, name: displayName });
+    return NextResponse.json({ token: customToken, isNewUser, uid, phone: formattedPhone, name: displayName });
   } catch (err: any) {
     const isKeyMissing = err.message?.includes('FIREBASE_SERVICE_ACCOUNT_KEY');
     return NextResponse.json({
