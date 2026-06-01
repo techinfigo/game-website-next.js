@@ -55,12 +55,8 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
 
   // Reset state when modal opens — NOT on close, to avoid flashing during exit animation
   useEffect(() => {
+    if (loginSucceeded.current) return;
     if (isOpen) {
-      if (loginSucceeded.current) {
-        // Modal re-opened immediately after success (race: auth state slow to propagate).
-        // Don't reset — the closing animation is still running or the modal will close again.
-        return;
-      }
       setPhoneNumber('');
       setOtp('');
       setShowOtp(false);
