@@ -55,6 +55,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
 
   // Reset state when modal opens — NOT on close, to avoid flashing during exit animation
   useEffect(() => {
+    if (isOpen) setOtp('');
     if (loginSucceeded.current) return;
     if (isOpen) {
       setPhoneNumber('');
@@ -148,8 +149,9 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
         window.dispatchEvent(new CustomEvent('auth_user_set'));
       } catch (_) {}
 
-      // Mark success so no reset effect can fire during the closing animation.
+      // Mark success and clear OTP immediately so it cannot be reused.
       loginSucceeded.current = true;
+      setOtp('');
       if (onSuccess) onSuccess();
       onClose();
     } catch (err: any) {
@@ -347,6 +349,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
                                                      const val = e.target.value.replace(/\D/g, '');
                                                      if (val.length <= 10) setPhoneNumber(val);
                                                  }}
+                                                 onKeyDown={(e) => { if (e.key === 'Enter' && !showOtp) handleSendOtp(); }}
                                                  disabled={showOtp}
                                                  placeholder="Enter 10 digit number"
                                                  className="w-full bg-slate-50 dark:bg-black/20 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 pl-[4.5rem] text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-gameTeal dark:focus:border-gameGold transition-colors font-medium tracking-wide disabled:opacity-60"
@@ -372,6 +375,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
                                                          const val = e.target.value.replace(/\D/g, '');
                                                          if (val.length <= 6) setOtp(val);
                                                      }}
+                                                     onKeyDown={(e) => { if (e.key === 'Enter') handleVerifyOtp(); }}
                                                      placeholder="XXXXXX"
                                                      maxLength={6}
                                                      className="w-full bg-slate-50 dark:bg-black/20 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 pl-10 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-gameTeal dark:focus:border-gameGold transition-colors text-center text-lg font-bold tracking-[0.5em]"
