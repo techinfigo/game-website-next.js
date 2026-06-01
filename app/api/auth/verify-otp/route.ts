@@ -81,7 +81,8 @@ export async function POST(req: NextRequest) {
     }
 
     const customToken = await adminAuth.createCustomToken(uid);
-    const body = { token: customToken, isNewUser };
+    const displayName = userDoc.exists ? (userDoc.data()?.displayName || 'Student') : 'Student';
+    const body = { token: customToken, isNewUser, uid, phone: phoneNumber, name: displayName };
     console.log('[verify-otp] returning 200 — uid:', uid, 'isNewUser:', isNewUser, 'token length:', customToken.length);
     return NextResponse.json(body);
   } catch (err: any) {

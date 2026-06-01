@@ -18,7 +18,12 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    if (typeof window !== 'undefined') {
+      try { return !!localStorage.getItem('auth_user'); } catch (_) {}
+    }
+    return false;
+  });
   const [user, setUser] = useState<User | null>(null);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [initialView, setInitialView] = useState<'login' | 'register'>('login');
@@ -27,6 +32,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       setUser(firebaseUser);
       setIsLoggedIn(!!firebaseUser);
+      if (!firebaseUser) {
+        try { localStorage.removeItem('auth_user'); } catch (_) {}
+      }
     });
     return () => unsubscribe();
   }, []);
@@ -46,6 +54,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       await auth.signOut();
       setIsLoggedIn(false);
       setUser(null);
+      try { localStorage.removeItem('auth_user'); } catch (_) {}
     } catch (error) {
       console.error('Logout Error:', error);
     }

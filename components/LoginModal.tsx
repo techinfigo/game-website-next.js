@@ -133,9 +133,17 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
         console.log('[LoginModal] displayName updated');
       }
 
-      // Small wait for onAuthStateChanged to propagate on mobile before closing
-      await new Promise<void>(resolve => setTimeout(resolve, 300));
-      console.log('[LoginModal] calling onSuccess and onClose');
+      // Store user data in localStorage so UI shows logged-in immediately,
+      // independent of how fast onAuthStateChanged fires on mobile.
+      try {
+        localStorage.setItem('auth_user', JSON.stringify({
+          uid: user.uid,
+          phone: data.phone || `+91${phoneNumber}`,
+          name: fullName || data.name || user.displayName || 'Student',
+        }));
+      } catch (_) {}
+
+      console.log('[LoginModal] calling onSuccess and onClose immediately');
       if (onSuccess) onSuccess();
       onClose();
     } catch (err: any) {
