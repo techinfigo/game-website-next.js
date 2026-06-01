@@ -39,6 +39,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return () => unsubscribe();
   }, []);
 
+  // Update isLoggedIn immediately when LoginModal signals a successful sign-in,
+  // without waiting for onAuthStateChanged to fire (which can be slow on mobile).
+  useEffect(() => {
+    const handler = () => {
+      try {
+        if (localStorage.getItem('auth_user')) setIsLoggedIn(true);
+      } catch (_) {}
+    };
+    window.addEventListener('auth_user_set', handler);
+    return () => window.removeEventListener('auth_user_set', handler);
+  }, []);
+
   const openLogin = (view?: 'login' | 'register') => {
     if (view) {
       setInitialView(view);

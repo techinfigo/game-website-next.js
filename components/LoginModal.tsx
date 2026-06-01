@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Mail, Lock, ArrowRight, Eye, EyeOff, Phone, KeyRound, Loader2 } from 'lucide-react';
 import { auth, db } from '../firebase';
@@ -23,6 +23,11 @@ interface LoginModalProps {
 }
 
 const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, initialView = 'login' }) => {
+  // Set to true right after signInWithCustomToken succeeds so effects that
+  // call setShowOtp(false) cannot fire and reset the form during the modal's
+  // closing animation or if the modal briefly re-opens due to a late auth state.
+  const loginSucceeded = useRef(false);
+
   const [showPassword, setShowPassword] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
   const [loginMethod, setLoginMethod] = useState<'phone' | 'email'>('phone');
@@ -51,6 +56,11 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
   // Reset state when modal opens — NOT on close, to avoid flashing during exit animation
   useEffect(() => {
     if (isOpen) {
+      if (loginSucceeded.current) {
+        // Modal re-opened immediately after success (race: auth state slow to propagate).
+        // Don't reset — the closing animation is still running or the modal will close again.
+        return;
+      }
       setPhoneNumber('');
       setOtp('');
       setShowOtp(false);
@@ -67,6 +77,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
   }, [isOpen, initialView]);
 
   useEffect(() => {
+    if (loginSucceeded.current) return;
     setShowOtp(false);
     setOtp('');
     setRegistrationSuccess(false);
@@ -119,35 +130,33 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSuccess, ini
 
       // Ensure session survives mobile browser restarts
       await setPersistence(auth, browserLocalPersistence);
-      console.log('[LoginModal] persistence set, calling signInWithCustomToken');
 
       // Sign into Firebase with custom token issued by our API route
       const userCredential = await signInWithCustomToken(auth, data.token);
       const user = userCredential.user;
-      console.log('[LoginModal] signInWithCustomToken succeeded — uid:', user.uid);
 
       // Update display name in Firebase Auth + Firestore if provided
       if (fullName) {
         await updateProfile(user, { displayName: fullName });
         await setDoc(doc(db, 'users', user.uid), { displayName: fullName }, { merge: true });
-        console.log('[LoginModal] displayName updated');
       }
 
-      // Store user data in localStorage so UI shows logged-in immediately,
-      // independent of how fast onAuthStateChanged fires on mobile.
+      // Store user data in localStorage and signal AuthProvider immediately so
+      // isLoggedIn updates before any auth-guarded component can re-open the modal.
       try {
         localStorage.setItem('auth_user', JSON.stringify({
           uid: user.uid,
           phone: data.phone || `+91${phoneNumber}`,
           name: fullName || data.name || user.displayName || 'Student',
         }));
+        window.dispatchEvent(new CustomEvent('auth_user_set'));
       } catch (_) {}
 
-      console.log('[LoginModal] calling onSuccess and onClose immediately');
+      // Mark success so no reset effect can fire during the closing animation.
+      loginSucceeded.current = true;
       if (onSuccess) onSuccess();
       onClose();
     } catch (err: any) {
-      console.error('[LoginModal] handleVerifyOtp error — code:', err.code, '| message:', err.message);
       const msg = err.message?.startsWith('OTP verified') || err.message?.startsWith('Invalid OTP')
         ? err.message
         : 'Verification failed. Please try again.';
