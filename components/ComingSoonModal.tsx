@@ -5,7 +5,7 @@ import { X, Sparkles, Clock, Compass } from 'lucide-react';
 import { EXAM_PAGES_DISABLED_MESSAGE } from './examconfig';
 
 export default function ComingSoonModal() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [examName, setExamName] = useState('');
 
   useEffect(() => {
