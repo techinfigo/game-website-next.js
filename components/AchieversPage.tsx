@@ -3,6 +3,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Quote, Star, Trophy, Video, MessageSquare, Sparkles, Crown, CheckCircle2, ArrowRight, X, Search, ChevronLeft, ChevronRight, SlidersHorizontal } from 'lucide-react';
 
@@ -1248,10 +1249,10 @@ const AchieversCTA = React.memo(() => (
               Join thousands of students who have transformed their careers with GAME Academy. Your journey to AIR 1 starts here.
            </p>
            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="group bg-white text-gameTealDark px-8 py-3.5 rounded-2xl font-black text-base shadow-2xl hover:bg-gameGold hover:text-[#050505] hover:-translate-y-1 transition-all flex items-center justify-center gap-3">
+              <Link href="/courses" className="group bg-white text-gameTealDark px-8 py-3.5 rounded-2xl font-black text-base shadow-2xl hover:bg-gameGold hover:text-[#050505] hover:-translate-y-1 transition-all flex items-center justify-center gap-3">
                  EXPLORE COURSES 
                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </button>
+              </Link>
            </div>
         </motion.div>
      </div>
