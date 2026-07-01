@@ -202,7 +202,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
   ];
 
   return (
-    <section className="py-8 md:py-10 bg-white relative overflow-hidden">
+    <section id="exams" className="py-8 md:py-10 bg-white relative overflow-hidden scroll-mt-24">
        {/* Background Decoration */}
        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-[0.02]"></div>
        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-teal-50 rounded-full blur-[120px] -z-10"></div>
