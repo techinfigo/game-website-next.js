@@ -1,12 +1,43 @@
 
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { ArrowRight, Video, Lightbulb, Navigation } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const SpecialOffer: React.FC = () => {
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+
+  useEffect(() => {
+    // Set target date to July 31st, 2026
+    const targetDate = new Date('2026-07-31T23:59:59');
+
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate.getTime() - now;
+
+      if (distance < 0) {
+        clearInterval(timer);
+        return;
+      }
+
+      setTimeLeft({
+        days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+        seconds: Math.floor((distance % (1000 * 60)) / 1000)
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section id="offers" className="bg-[#18181b] text-white py-8 md:py-12 relative overflow-hidden">
        
@@ -64,25 +95,30 @@ const SpecialOffer: React.FC = () => {
                 </button>
 
                 {/* Timer Section */}
-                <div className="mt-6 flex flex-col sm:flex-row items-start sm:items-center gap-6">
-                   <div className="bg-transparent border border-slate-700 px-6 py-3 rounded-xl text-[#075d63] text-xs font-black uppercase tracking-widest shadow-inner">
-                      Offer Ends In:
+                <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-6">
+                   <div className="bg-transparent border border-slate-700 px-6 py-3 rounded-xl text-[#075d63] text-[10px] font-black uppercase tracking-widest shadow-inner flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span> Offer Ends In:
                    </div>
                    
                    <div className="flex items-center gap-6 md:gap-8">
-                      <div className="text-center">
-                         <div className="text-4xl font-black text-white leading-none">00</div>
+                      <div className="text-center group">
+                         <div className="text-4xl font-black text-white leading-none group-hover:text-[#f2c537] transition-colors">{timeLeft.days.toString().padStart(2, '0')}</div>
                          <div className="text-[10px] text-slate-500 uppercase font-bold tracking-widest mt-2">Days</div>
                       </div>
                       <div className="h-10 w-[1px] bg-slate-700/50"></div>
-                      <div className="text-center">
-                         <div className="text-4xl font-black text-white leading-none">00</div>
+                      <div className="text-center group">
+                         <div className="text-4xl font-black text-white leading-none group-hover:text-[#f2c537] transition-colors">{timeLeft.hours.toString().padStart(2, '0')}</div>
                          <div className="text-[10px] text-slate-500 uppercase font-bold tracking-widest mt-2">Hours</div>
                       </div>
                       <div className="h-10 w-[1px] bg-slate-700/50"></div>
-                      <div className="text-center">
-                         <div className="text-4xl font-black text-white leading-none">00</div>
-                         <div className="text-[10px] text-slate-500 uppercase font-bold tracking-widest mt-2">Minutes</div>
+                      <div className="text-center group">
+                         <div className="text-4xl font-black text-white leading-none group-hover:text-[#f2c537] transition-colors">{timeLeft.minutes.toString().padStart(2, '0')}</div>
+                         <div className="text-[10px] text-slate-500 uppercase font-bold tracking-widest mt-2">Mins</div>
+                      </div>
+                      <div className="h-10 w-[1px] bg-slate-700/50"></div>
+                      <div className="text-center group">
+                         <div className="text-4xl font-black text-gameGold leading-none">{timeLeft.seconds.toString().padStart(2, '0')}</div>
+                         <div className="text-[10px] text-slate-500 uppercase font-bold tracking-widest mt-2">Secs</div>
                       </div>
                    </div>
                 </div>
