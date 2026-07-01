@@ -428,13 +428,6 @@ const RankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
           referrerPolicy="no-referrer"
       />
       <div className="absolute inset-x-0 bottom-0 h-1/5 bg-gradient-to-t from-[#050505] to-transparent pointer-events-none"></div>
-      
-      {/* Category Badge */}
-      <div className="absolute top-2.5 left-2.5 z-10">
-          <span className="px-2 py-0.5 rounded bg-gameGold text-black text-[7px] font-black uppercase tracking-widest shadow-lg">
-            {ranker.category}
-          </span>
-      </div>
     </div>
 
     {/* Dedicated Bottom Info Block - Compact padding & aligned down at the bottom edge */}
@@ -475,13 +468,6 @@ const JobRankerCard = React.memo(({ ranker }: { ranker: Ranker }) => (
           referrerPolicy="no-referrer"
       />
       <div className="absolute inset-x-0 bottom-0 h-1/5 bg-gradient-to-t from-[#050505] to-transparent pointer-events-none"></div>
-      
-      {/* Category HUD - High Contrast */}
-      <div className="absolute top-2.5 left-2.5 z-10">
-          <div className="px-2 py-0.5 rounded bg-gameGold text-[#050505] text-[7px] font-black uppercase tracking-widest border border-white/10 shadow-lg">
-            {ranker.category}
-          </div>
-      </div>
     </div>
 
     {/* Identity & Stats Section - Perfectly Aligned bottom panel closer to bottom */}
