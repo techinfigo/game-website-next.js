@@ -88,28 +88,28 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
   const videos = [
     {
       id: 1,
-      title: "Complete Fluid Mechanics Revision",
+      title: "Complete Fluid Mechanics",
       views: "1.5M+",
       duration: "40+ Lectures",
-      thumbnail: "https://i.ytimg.com/vi/4KwSGcjrA6c/hqdefault.jpg",
-      videoId: "4KwSGcjrA6c",
+      thumbnail: "https://img.youtube.com/vi/bttDewEFDq4/maxresdefault.jpg",
+      videoId: "PLzpAOaJe3cEibAI-LLEUja3q34NaQdMgb",
       tag: "Playlist"
     },
     {
       id: 2,
-      title: "Strength of Materials (SOM) Revision",
+      title: "Strength of Materials",
       views: "1.2M+",
       duration: "50+ Lectures",
-      thumbnail: "https://i.ytimg.com/vi/hVensU0cwEs/hqdefault.jpg",
-      videoId: "hVensU0cwEs",
+      thumbnail: "https://img.youtube.com/vi/1QV1hZ7c68Y/maxresdefault.jpg",
+      videoId: "PL4z8h611VJ3CFbklGo60rhejqprcMHTSx",
       tag: "Playlist"
     },
     {
       id: 3,
-      title: "Strategy to Crack GATE in 1st Attempt",
+      title: "Crack GATE in First Attempt",
       views: "250k+",
       duration: "45:20",
-      thumbnail: "https://i.ytimg.com/vi/Vv9lARk4vcs/hqdefault.jpg",
+      thumbnail: "https://img.youtube.com/vi/Vv9lARk4vcs/maxresdefault.jpg",
       videoId: "Vv9lARk4vcs",
       tag: "Strategy"
     }
@@ -120,12 +120,7 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
     {
       id: 1,
       badge: "Premium Learning",
-      title: (
-        <>
-          <span className="lg:whitespace-nowrap">Upskill Continuously</span> <br/> 
-          <span className="lg:whitespace-nowrap">with <span className="text-gameGold">Masterclasses</span></span>
-        </>
-      ),
+      title: <>Upskill Continuously <br/> with <span className="text-gameGold">Masterclasses</span></>,
       description: "Stay ahead with Gaurav Babu Sir&apos;s expert-led courses. Learn practical skills, master core concepts, and grow with a thriving community.",
       bgGradient: "from-[#0b8a91] to-[#075d63]",
       type: "masterclass"
@@ -178,12 +173,12 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
       </AnimatePresence>
       
       {/* Request Call Back Sticky Button */}
-      <div className="absolute top-4 left-1/2 -translate-x-1/2 xs:top-5 md:top-6 md:left-auto md:translate-x-0 md:right-8 lg:right-12 z-40">
+      <div className="absolute top-6 right-8 z-40">
          <motion.button 
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
             onClick={() => setCallbackModal(true)}
-            className="group flex items-center gap-2 pl-3 pr-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold text-[10px] shadow-lg hover:bg-[#f2c537] hover:text-black hover:border-[#f2c537] transition-all whitespace-nowrap"
+            className="group flex items-center gap-2 pl-3 pr-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold text-[10px] shadow-lg hover:bg-[#f2c537] hover:text-black hover:border-[#f2c537] transition-all"
          >
             <div className="relative">
                <div className="absolute inset-0 rounded-full bg-green-400 animate-ping opacity-75"></div>
@@ -193,7 +188,7 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
          </motion.button>
       </div>
 
-      <div className="max-w-[1280px] mx-auto px-4 xs:px-6 md:px-10 lg:px-12 relative z-10 w-full">
+      <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10 w-full">
         
         {/* Slides Container */}
         <AnimatePresence mode="wait">
@@ -208,13 +203,13 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
                
                {/* Left Content */}
-               <div className="text-center lg:text-left pt-12 xs:pt-14 sm:pt-16 lg:pt-0">
+               <div className="text-center lg:text-left pt-0">
                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-md mb-2 mx-auto lg:mx-0">
                       <Sparkles size={12} className="text-gameGold" />
                       <span className="text-[10px] font-bold uppercase tracking-widest text-gameGold">{slides[currentSlide].badge}</span>
                    </div>
 
-                   <h1 className="text-3xl xs:text-4xl md:text-5xl lg:text-[40px] xl:text-[54px] font-black text-white leading-[1.15] mb-2">
+                   <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-[1.1] mb-2">
                       {slides[currentSlide].title}
                    </h1>
                    
@@ -233,7 +228,7 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
                         </div>
  
                         {/* Community Section - Now supports 4 icons */}
-                        <div className="flex flex-nowrap justify-start sm:justify-center lg:justify-start gap-2.5 sm:gap-3 overflow-x-auto no-scrollbar pt-3 -mt-3 pb-1.5 mb-4 relative w-full mx-auto max-w-max lg:mx-0">
+                        <div className="flex flex-wrap justify-center lg:justify-start gap-3 md:gap-4 mb-4 relative">
                            {communityLinks.map((link, i) => {
                               const isYoutube = link.id === 'youtube';
                               
@@ -244,14 +239,14 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.2 + (i * 0.1) }}
                                     onClick={() => isYoutube ? setYoutubeMenuOpen(!youtubeMenuOpen) : window.open(link.link, '_blank')}
-                                    className={`shrink-0 w-[72px] h-[72px] xs:w-20 xs:h-20 flex flex-col items-center justify-center text-center gap-1 bg-white border border-transparent rounded-2xl p-1.5 xs:p-2 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl cursor-pointer group shadow-lg ${link.hoverClass} ${isYoutube && youtubeMenuOpen ? 'ring-2 ring-[#FF0000]' : ''}`}
+                                    className={`w-20 h-20 flex flex-col items-center justify-center text-center gap-1.5 bg-white border border-transparent rounded-2xl p-2 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl cursor-pointer group shadow-lg ${link.hoverClass} ${isYoutube && youtubeMenuOpen ? 'ring-2 ring-[#FF0000]' : ''}`}
                                   >
-                                    <div className={`w-6 h-6 xs:w-7 xs:h-7 flex items-center justify-center rounded-lg transition-colors duration-300 ${link.bgColor} ${link.iconColor} group-hover:bg-white`}>
-                                        <link.icon className="w-3.5 h-3.5 xs:w-4 xs:h-4" />
+                                    <div className={`w-7 h-7 flex items-center justify-center rounded-lg transition-colors duration-300 ${link.bgColor} ${link.iconColor} group-hover:bg-white`}>
+                                        <link.icon className="w-4 h-4" />
                                     </div>
                                     <div>
-                                        <h4 className="font-bold text-slate-900 text-[9px] xs:text-[10px] leading-none mb-0.5 group-hover:text-white transition-colors">{link.name}</h4>
-                                        <p className="text-[7px] xs:text-[8px] font-bold text-slate-500 uppercase tracking-wide group-hover:text-white/90 transition-colors">{link.sub}</p>
+                                        <h4 className="font-bold text-slate-900 text-[10px] leading-none mb-0.5 group-hover:text-white transition-colors">{link.name}</h4>
+                                        <p className="text-[8px] font-bold text-slate-500 uppercase tracking-wide group-hover:text-white/90 transition-colors">{link.sub}</p>
                                     </div>
                                   </motion.div>
 
@@ -281,7 +276,7 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
                                                 <Youtube size={16} />
                                               </div>
                                               <div className="text-left">
-                                                <div className="text-xs font-black text-slate-800">GAME- GATE & ESE</div>
+                                                <div className="text-xs font-black text-slate-800">GATE Academy</div>
                                                 <div className="text-[9px] font-bold text-slate-400 uppercase tracking-tight">Full Lectures & Concepts</div>
                                               </div>
                                               <ExternalLink size={12} className="ml-auto text-slate-300" />
@@ -295,7 +290,7 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
                                                 <Sparkles size={16} />
                                               </div>
                                               <div className="text-left">
-                                                <div className="text-xs font-black text-slate-800">GAME- AE & JE</div>
+                                                <div className="text-xs font-black text-slate-800">SSC JE & AE</div>
                                                 <div className="text-[9px] font-bold text-slate-400 uppercase tracking-tight">Exam Updates & Tips</div>
                                               </div>
                                               <ExternalLink size={12} className="ml-auto text-slate-300" />
@@ -311,47 +306,47 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
                         </div>
 
                         {/* App Download Strip */}
-                        <div className="border-t border-white/10 pt-4 max-w-lg mx-auto lg:mx-0 w-full text-center lg:text-left">
-                            <div className="flex flex-row items-center justify-center lg:justify-start gap-2.5 sm:gap-3 w-full">
+                        <div className="border-t border-white/10 pt-4 max-w-lg mx-auto lg:mx-0">
+                            <div className="flex flex-col sm:flex-row items-center gap-3">
                                <a 
                                  href="https://clppenny.page.link/cTBm" 
                                  target="_blank" 
                                  rel="noopener noreferrer"
-                                 className="flex-1 max-w-[190px] flex items-center gap-2 sm:gap-3 group/app cursor-pointer hover:bg-white/5 p-2 sm:p-3 rounded-2xl transition-all border border-transparent hover:border-white/10"
+                                 className="flex-1 flex items-center gap-3 group/app cursor-pointer hover:bg-white/5 p-3 rounded-2xl transition-all border border-transparent hover:border-white/10"
                                >
-                                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gameGold rounded-xl flex items-center justify-center text-black shadow-lg group-hover/app:scale-110 transition-transform duration-300 shrink-0">
-                                     <svg viewBox="0 0 512 512" fill="currentColor" className="w-4 h-4 sm:w-5 sm:h-5">
+                                  <div className="w-10 h-10 bg-gameGold rounded-xl flex items-center justify-center text-black shadow-lg group-hover/app:scale-110 transition-transform duration-300">
+                                     <svg viewBox="0 0 512 512" fill="currentColor" className="w-5 h-5">
                                         <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l220.7-127.3 60.1-60.1L104.6 499z" />
                                      </svg>
                                   </div>
-                                  <div className="text-left min-w-0">
-                                     <div className="text-white font-bold text-xs sm:text-sm group-hover/app:text-gameGold transition-colors truncate">Android App</div>
-                                     <div className="text-[8px] sm:text-[10px] text-teal-200 truncate">Get on Play Store</div>
+                                  <div className="text-left">
+                                     <div className="text-white font-bold text-sm group-hover/app:text-gameGold transition-colors">Android App</div>
+                                     <div className="text-[10px] text-teal-200">Get it on Play Store</div>
                                   </div>
                                </a>
-                               <div className="h-6 w-px bg-white/10 shrink-0"></div>
+                               <div className="hidden sm:block h-6 w-px bg-white/10"></div>
                                <a 
                                  href="https://apps.apple.com/in/app/myinstitute/id1472483563" 
                                  target="_blank" 
                                  rel="noopener noreferrer"
-                                 className="flex-1 max-w-[190px] flex items-center gap-2 sm:gap-3 group/app cursor-pointer hover:bg-white/5 p-2 sm:p-3 rounded-2xl transition-all border border-transparent hover:border-white/10 relative"
+                                 className="flex-1 flex items-center gap-3 group/app cursor-pointer hover:bg-white/5 p-3 rounded-2xl transition-all border border-transparent hover:border-white/10 relative"
                                >
-                                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-xl flex items-center justify-center text-black shadow-lg group-hover/app:scale-110 transition-transform duration-300 shrink-0">
-                                     <svg viewBox="0 0 384 512" fill="currentColor" className="w-4 h-4 sm:w-5 sm:h-5">
+                                  <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-black shadow-lg group-hover/app:scale-110 transition-transform duration-300">
+                                     <svg viewBox="0 0 384 512" fill="currentColor" className="w-5 h-5">
                                         <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-31.4-73.7-114.8-31.7-131.8zM232.1 56.9c20.7-25.2 34.2-59.8 30.3-94.5-29.9 1.2-66.1 20.3-87.5 45.3-19.2 22.3-35.9 57.7-31.4 91.4 33.1 2.6 67.9-18.9 88.6-42.2z" />
                                      </svg>
                                   </div>
-                                  <div className="text-left min-w-0">
-                                     <div className="text-white font-bold text-xs sm:text-sm group-hover/app:text-gameGold transition-colors truncate">iOS App</div>
-                                     <div className="text-[8px] sm:text-[10px] text-teal-200 truncate">On App Store</div>
+                                  <div className="text-left">
+                                     <div className="text-white font-bold text-sm group-hover/app:text-gameGold transition-colors">iOS App</div>
+                                     <div className="text-[10px] text-teal-200">Download on App Store</div>
                                   </div>
                                </a>
                             </div>
-                            <div className="mt-3 flex flex-row items-center justify-center lg:justify-start gap-3 w-full">
-                               <div className="flex items-center gap-1 text-gameGold text-xs sm:text-sm font-bold bg-white/5 px-2.5 py-1.5 rounded-lg border border-white/5 shadow-sm shrink-0">
-                                  <Star size={12} fill="currentColor" className="sm:w-3.5 sm:h-3.5" /> 4.8 Rating
+                            <div className="mt-4 flex items-center justify-center lg:justify-start gap-4">
+                               <div className="flex items-center gap-1 text-gameGold text-sm font-bold bg-white/5 px-3 py-1.5 rounded-lg border border-white/5 shadow-sm">
+                                  <Star size={14} fill="currentColor" /> 4.8 Rating
                                </div>
-                               <div className="text-white/40 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest leading-none">Trusted by 50k+ Students</div>
+                               <div className="text-white/40 text-[10px] font-bold uppercase tracking-widest">Trusted by 50k+ Students</div>
                             </div>
                         </div>
                      </>
@@ -403,7 +398,7 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
                               }}
                               onClick={() => setSelectedVideo(video.videoId)}
                            >
-                              <div className="relative aspect-video rounded-2xl overflow-hidden mb-3 shadow-sm bg-slate-100">
+                               <div className="relative aspect-video rounded-2xl overflow-hidden mb-3 shadow-sm bg-slate-100">
                                  <Image 
                                    src={video.thumbnail} 
                                    alt={video.title} 
@@ -411,11 +406,6 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
                                    referrerPolicy="no-referrer"
                                  />
-                                 <div className="absolute inset-0 bg-black/20 flex items-center justify-center group-hover:bg-black/10 transition-colors">
-                                    <div className="w-14 h-14 bg-white/90 rounded-full flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition-all">
-                                       <Play size={24} className="fill-slate-900 text-slate-900 ml-0.5" />
-                                    </div>
-                                 </div>
                                  <div className="absolute bottom-2 right-2 bg-black/70 backdrop-blur-md text-white text-[10px] font-bold px-2 py-0.5 rounded">
                                     {video.duration}
                                  </div>
