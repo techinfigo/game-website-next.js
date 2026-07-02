@@ -236,7 +236,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       exam: "GATE, PSUs",
       language: "Hinglish",
       mentorship: "Yes",
-      enrollLink: "https://courses.gameacademy.in/wlp/lakshya-civil-course"
+      enrollLink: "https://courses.gameacademy.in/wlp/lakshya-exclusive-course-me"
     },
     {
       title: "Aadhaaram Course",
