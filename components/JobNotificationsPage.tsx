@@ -1142,8 +1142,11 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
                   Join India&apos;s most trusted Excellence Course with Gaurav Babu Sir and secure your position in the next recruitment cycle.
                </p>
                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <button className="bg-[#f2c537] text-black px-10 py-4 rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-white transition-all shadow-2xl hover:-translate-y-1 flex items-center justify-center gap-3">
-                     Enroll in Excellence Course <ChevronRight size={18} />
+                  <button 
+                    onClick={() => handleNavigate('courses')}
+                    className="bg-[#f2c537] text-black px-10 py-4 rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-white transition-all shadow-2xl hover:-translate-y-1 flex items-center justify-center gap-3"
+                  >
+                     Enroll in GAME Courses <ChevronRight size={18} />
                   </button>
                   <a
                      href="https://t.me/gamebygauravbabu"
