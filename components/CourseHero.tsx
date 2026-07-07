@@ -277,7 +277,7 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
                                               </div>
                                               <div className="text-left">
                                                 <div className="text-xs font-black text-slate-800">GAME- GATE & ESE</div>
-                                                <div className="text-[9px] font-bold text-slate-400 uppercase tracking-tight">GAME- AE & JE</div>
+                                                <div className="text-[9px] font-bold text-slate-400 uppercase tracking-tight">Conceptual Lectures</div>
                                               </div>
                                               <ExternalLink size={12} className="ml-auto text-slate-300" />
                                             </a>
@@ -290,8 +290,8 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
                                                 <Sparkles size={16} />
                                               </div>
                                               <div className="text-left">
-                                                <div className="text-xs font-black text-slate-800">SSC JE & AE</div>
-                                                <div className="text-[9px] font-bold text-slate-400 uppercase tracking-tight">Exam Updates & Tips</div>
+                                                <div className="text-xs font-black text-slate-800">GAME- AE & JE</div>
+                                                <div className="text-[9px] font-bold text-slate-400 uppercase tracking-tight">SSC JE & State AE/JE</div>
                                               </div>
                                               <ExternalLink size={12} className="ml-auto text-slate-300" />
                                             </a>
