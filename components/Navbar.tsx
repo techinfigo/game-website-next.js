@@ -47,13 +47,13 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout }) => {
       width: 'w-[520px]',
       dropdown: [
         { name: 'GATE', id: 'gate', icon: GraduationCap, desc: 'Graduate Aptitude Test' },
-        { name: 'ESE', id: 'ese', icon: Trophy, desc: 'Engineering Services' },
         { name: 'PSUs / R&D', id: 'psu', icon: Microscope, desc: 'Public Sector Jobs' },
-        { name: 'SSC JE', id: 'ssc', icon: Building2, desc: 'Junior Engineer' },
-        { name: 'RRB JE', id: 'rrb', icon: Train, desc: 'Railway Recruitment' },
+        { name: 'ESE', id: 'ese', icon: Trophy, desc: 'Engineering Services' },
+        { name: 'SSC-JE', id: 'ssc', icon: Building2, desc: 'Junior Engineer' },
+        { name: 'RRB-JE', id: 'rrb', icon: Train, desc: 'Railway Recruitment' },
         { name: 'State AE/JE', id: 'state', icon: MapPin, desc: 'State Services' },
+        { name: 'Non-Tech', id: 'nontech', icon: BookOpen, desc: 'General Studies' },
         { name: 'IIT-JEE / NEET', id: 'iit', icon: Atom, desc: 'Entrance Exams' },
-        { name: 'Non Tech', id: 'nontech', icon: BookOpen, desc: 'General Studies' },
         { name: '9th - 12th', id: 'school', icon: Backpack, desc: 'School Foundation' }
       ]
     },
@@ -158,7 +158,11 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout }) => {
                                   {/* Hover Bridge */}
                                   <div className="absolute -top-4 left-0 w-full h-4 bg-transparent"></div>
 
-                                  <div className={`grid ${item.layout === 'grid' ? 'grid-cols-2 gap-2' : 'grid-cols-1 gap-1'}`}>
+                                  <div className={`grid ${
+                                      item.layout === 'grid' 
+                                      ? (item.id === 'examination' ? 'grid-cols-2 grid-flow-col grid-rows-5 gap-x-4 gap-y-1' : 'grid-cols-2 gap-2') 
+                                      : 'grid-cols-1 gap-1'
+                                  }`}>
                                       {item.dropdown.map((subItem) => {
                                           const isPageDisabled = EXAM_PAGES_DISABLED && DISABLED_EXAMPAGES_IDS.includes(subItem.id);
                                           const commonClasses = "flex items-center gap-3 p-3 rounded-xl transition-all duration-200 group/item hover:bg-slate-50 border border-transparent hover:border-slate-100 text-left w-full";
