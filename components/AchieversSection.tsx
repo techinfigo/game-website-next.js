@@ -34,68 +34,58 @@ const AchieversSection: React.FC<AchieversSectionProps> = ({ onNavigate }) => {
   const achievers: Achiever[] = [
     {
       id: 1,
-      name: "Short 1",
-      videoId: "ZrmsiLyxumA"
+      name: "Harpreet",
+      videoId: "_XJJgF14hRw"
     },
     {
       id: 2,
-      name: "Short 2",
-      videoId: "8VgAYyFJ2pw"
+      name: "Mukunda Buragohain",
+      videoId: "bmYoxNuLm2Q"
     },
     {
       id: 3,
-      name: "Short 3",
-      videoId: "3rpUFtkOTWU"
+      name: "Parul Singh",
+      videoId: "nVQViykd4ww"
     },
     {
       id: 4,
-      name: "Short 4",
-      videoId: "Etba1HTOBUI"
+      name: "Anurag Tripathi",
+      videoId: "Zd4ba5fz01E"
     },
     {
       id: 5,
-      name: "Short 5",
-      videoId: "35F4plJjhFM"
+      name: "Khusro Sheikh",
+      videoId: "uhcVp9Io1ko"
     },
     {
       id: 6,
-      name: "Short 6",
-      videoId: "QZC0IzzoSS0"
+      name: "Anjali",
+      videoId: "z0LNphCRgIE"
     },
     {
       id: 7,
-      name: "Short 7",
-      videoId: "qzevZxEawpA"
+      name: "Sujoy Das",
+      videoId: "a-PRFgprxDs"
     },
     {
       id: 8,
-      name: "Short 8",
-      videoId: "nLDQgHBYTc0"
+      name: "Rajesh Kumar Sahu",
+      videoId: "8HXxfmBlyXc"
     },
     {
       id: 9,
-      name: "Short 9",
-      videoId: "7RoM5q7nte4"
+      name: "Prem Narwade",
+      videoId: "ICWWsWVg9tg"
     },
     {
       id: 10,
-      name: "Short 10",
-      videoId: "CjFRWUCyvSI"
+      name: "Kapil Sharma",
+      videoId: "4glyoj_qvc8"
     },
     {
       id: 11,
-      name: "Short 11",
-      videoId: "57n5RJ1qT08"
-    },
-    {
-      id: 12,
-      name: "Short 12",
-      videoId: "cHDgQ1_c9eg"
-    },
-    {
-      id: 13,
-      name: "Short 13",
-      videoId: "oICGmQUIivg"
+      name: "Akash Hazra",
+      videoId: "vIXFlicDn2w"
     }
   ].map(a => ({ ...a, image: `https://i.ytimg.com/vi/${a.videoId}/maxresdefault.jpg` }));
 
