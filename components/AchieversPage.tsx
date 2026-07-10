@@ -16,11 +16,11 @@ export const ALL_STORIES = [
   { 
     type: 'video',
     id: 1,
-    name: "Mukunda Buragohain", 
-    rank: "Junior Engineer (Civil)", 
-    exam: "Assam Govt. · 2025", 
-    img: "https://img.youtube.com/vi/UAK_6p0SQlo/hqdefault.jpg", 
-    video: "https://www.youtube.com/embed/UAK_6p0SQlo", // Standard video ID
+    name: "Harpreet", 
+    rank: "Asst. Environmental Engineer", 
+    exam: "Selection Year · 2025", 
+    img: "https://img.youtube.com/vi/_XJJgF14hRw/maxresdefault.jpg", 
+    video: "https://www.youtube.com/embed/_XJJgF14hRw",
     featured: true 
   },
   {
@@ -32,11 +32,11 @@ export const ALL_STORIES = [
   { 
     type: 'video',
     id: 3,
-    name: "Harpreet", 
-    rank: "Asst. Environmental Engineer", 
-    exam: "Haryana SPCB - Civil · 2025", 
-    img: "https://img.youtube.com/vi/IadaXYQRxjM/hqdefault.jpg", 
-    video: "https://www.youtube.com/embed/IadaXYQRxjM" 
+    name: "Mukunda Buragohain", 
+    rank: "Junior Engineer (Civil)", 
+    exam: "Assam Govt. · 2025", 
+    img: "https://img.youtube.com/vi/bmYoxNuLm2Q/maxresdefault.jpg", 
+    video: "https://www.youtube.com/embed/bmYoxNuLm2Q" 
   },
   {
     type: 'whatsapp',
@@ -50,8 +50,8 @@ export const ALL_STORIES = [
     name: "Parul Singh", 
     rank: "Junior Engineer (Civil)", 
     exam: "CPWD · 2023", 
-    img: "https://img.youtube.com/vi/gnJYMXouHJs/hqdefault.jpg", 
-    video: "https://www.youtube.com/embed/gnJYMXouHJs" 
+    img: "https://img.youtube.com/vi/nVQViykd4ww/maxresdefault.jpg", 
+    video: "https://www.youtube.com/embed/nVQViykd4ww" 
   },
   {
     type: 'whatsapp',
@@ -65,17 +65,71 @@ export const ALL_STORIES = [
     name: "Anurag Tripathi", 
     rank: "IIT Ropar", 
     exam: "Selection Year · 2024", 
-    img: "https://img.youtube.com/vi/3rpUFtkOTWU/hqdefault.jpg", 
-    video: "https://www.youtube.com/embed/3rpUFtkOTWU" 
+    img: "https://img.youtube.com/vi/Zd4ba5fz01E/maxresdefault.jpg", 
+    video: "https://www.youtube.com/embed/Zd4ba5fz01E" 
   },
   { 
     type: 'video',
     id: 8,
+    name: "Khusro Sheikh", 
+    rank: "Ranker", 
+    exam: "GATE · 2024", 
+    img: "https://img.youtube.com/vi/uhcVp9Io1ko/maxresdefault.jpg", 
+    video: "https://www.youtube.com/embed/uhcVp9Io1ko" 
+  },
+  { 
+    type: 'video',
+    id: 9,
     name: "Anjali", 
-    rank: "AIR 556 (ME) · Executive Trainee", 
+    rank: "NPCIL Executive Trainee", 
     exam: "NPCIL · 2024", 
-    img: "https://img.youtube.com/vi/Etba1HTOBUI/hqdefault.jpg", 
-    video: "https://www.youtube.com/embed/Etba1HTOBUI" 
+    img: "https://img.youtube.com/vi/z0LNphCRgIE/maxresdefault.jpg", 
+    video: "https://www.youtube.com/embed/z0LNphCRgIE" 
+  },
+  { 
+    type: 'video',
+    id: 25,
+    name: "Sujoy Das", 
+    rank: "IOCL Officer", 
+    exam: "GATE · 2024", 
+    img: "https://img.youtube.com/vi/a-PRFgprxDs/maxresdefault.jpg", 
+    video: "https://www.youtube.com/embed/a-PRFgprxDs" 
+  },
+  { 
+    type: 'video',
+    id: 26,
+    name: "Rajesh Kumar Sahu", 
+    rank: "Ranker", 
+    exam: "GATE · 2024", 
+    img: "https://img.youtube.com/vi/8HXxfmBlyXc/maxresdefault.jpg", 
+    video: "https://www.youtube.com/embed/8HXxfmBlyXc" 
+  },
+  { 
+    type: 'video',
+    id: 27,
+    name: "Prem Narwade", 
+    rank: "Ranker", 
+    exam: "GATE · 2024", 
+    img: "https://img.youtube.com/vi/ICWWsWVg9tg/maxresdefault.jpg", 
+    video: "https://www.youtube.com/embed/ICWWsWVg9tg" 
+  },
+  { 
+    type: 'video',
+    id: 28,
+    name: "Kapil Sharma", 
+    rank: "Ranker", 
+    exam: "GATE · 2024", 
+    img: "https://img.youtube.com/vi/4glyoj_qvc8/maxresdefault.jpg", 
+    video: "https://www.youtube.com/embed/4glyoj_qvc8" 
+  },
+  { 
+    type: 'video',
+    id: 29,
+    name: "Akash Hazra", 
+    rank: "Ranker", 
+    exam: "GATE · 2024", 
+    img: "https://img.youtube.com/vi/vIXFlicDn2w/maxresdefault.jpg", 
+    video: "https://www.youtube.com/embed/vIXFlicDn2w" 
   },
   {
     type: 'whatsapp',
