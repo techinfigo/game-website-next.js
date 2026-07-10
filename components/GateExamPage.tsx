@@ -71,6 +71,10 @@ const GateExamPage: React.FC = () => {
   useEffect(() => {
     const sections = [
       'overview',
+      'eligibility',
+      'gate-courses',
+      'gate-hall-of-fame',
+      'gate-excellence',
       'advantages',
       'updates',
       'important-dates',
@@ -982,9 +986,14 @@ const GateExamPage: React.FC = () => {
                         Start Preparation
                         <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                      </button>
-                     <button className="px-7 py-3.5 border border-white/20 text-white font-black rounded-full hover:bg-white hover:text-gameBlack transition-all active:scale-95 text-sm">
+                     <a 
+                        href="https://drive.google.com/drive/folders/1ye6UZKpRTwNnFndU8nEalq3UH4LnIg_B?usp=sharing" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="px-7 py-3.5 border border-white/20 text-white font-black rounded-full hover:bg-white hover:text-gameBlack transition-all active:scale-95 text-sm flex items-center justify-center"
+                     >
                         View Syllabus
-                     </button>
+                     </a>
                   </div>
 
                   {/* Latest Update Widget */}
