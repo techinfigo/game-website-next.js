@@ -14,6 +14,8 @@ import {
 
 import CourseGrid from './CourseGrid';
 import CourseHelpSection from './CourseHelpSection';
+import AchieversSection from './AchieversSection';
+import TestimonialsText from './TestimonialsText';
 
 const GateExamPage: React.FC = () => {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
@@ -1108,13 +1110,15 @@ const GateExamPage: React.FC = () => {
       </section>
 
       {/* FULL WIDTH STICKY SUB-NAVIGATION - CUSTOM PREMIUM SCROLLER */}
-      <div className="sticky top-[58px] z-40 w-full bg-[#001D1F]/95 backdrop-blur-md shadow-lg border-b border-white/5">
+      <div className="sticky top-[72px] md:top-[80px] z-40 w-full bg-[#001D1F]/95 backdrop-blur-md shadow-lg border-b border-white/5">
          <div className="max-w-[1400px] mx-auto px-4 md:px-8">
-            <div className="flex items-center justify-between h-14">
+            <div className="flex items-center justify-between h-16">
                {/* Links Scroller */}
                <div 
-                  className="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 pt-1.5 scroll-smooth teal-scrollbar"
-                  style={{ WebkitOverflowScrolling: 'touch' }}
+                  className="flex items-center gap-3 overflow-x-auto w-full md:w-auto py-2 scroll-smooth custom-scrollbar px-2"
+                  style={{ 
+                    WebkitOverflowScrolling: 'touch'
+                  }}
                >
                   {[
                      { label: "Overview", id: "overview", icon: Info },
@@ -1135,14 +1139,14 @@ const GateExamPage: React.FC = () => {
                         <button
                            key={item.id}
                            onClick={() => scrollToSection(item.id)}
-                           className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all duration-300 active:scale-95 border ${
+                           className={`flex items-center gap-2 px-5 py-2 rounded-xl text-[11px] font-bold whitespace-nowrap transition-all duration-300 active:scale-95 border relative group ${
                               isActive 
-                                 ? 'bg-gameTeal text-white shadow-lg shadow-gameTeal/30 border-white/10' 
-                                 : 'text-slate-300 hover:text-white hover:bg-white/5 border-transparent'
+                                 ? 'bg-gameTeal text-white shadow-md shadow-gameTeal/20 border-white/10' 
+                                 : 'text-slate-400 hover:text-white hover:bg-white/5 border-transparent'
                            }`}
                         >
-                           <Icon size={14} className={isActive ? 'text-gameGold font-black' : 'text-slate-400'} />
-                           <span>{item.label}</span>
+                           <Icon size={14} className={`transition-colors duration-300 ${isActive ? 'text-gameGold' : 'text-slate-500 group-hover:text-gameTeal'}`} />
+                           <span className="tracking-wide">{item.label}</span>
                         </button>
                      );
                   })}
@@ -1228,64 +1232,12 @@ const GateExamPage: React.FC = () => {
         />
       </section>
 
-      {/* HALL OF FAME / VIDEO TESTIMONIALS SECTION - UPDATED SPACING */}
-      <section id="gate-hall-of-fame" className="py-12 bg-gameBlack text-white relative scroll-mt-32 overflow-hidden border-t border-white/5">
-         <div className="absolute inset-0 bg-[radial-gradient(#ffffff10_1px,transparent_1px)] bg-[size:20px_20px] opacity-10"></div>
-         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gameTeal/10 rounded-full blur-[100px] pointer-events-none"></div>
+      <TestimonialsText />
 
-         <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10">
-            {/* Header with improved spacing */}
-            <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-8">
-               <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-                  <div className="flex items-center gap-3 mb-4">
-                     <Crown size={18} className="text-gameGold fill-gameGold" />
-                     <span className="text-[10px] font-black tracking-[0.4em] uppercase text-gameGold">Hall of Fame</span>
-                  </div>
-                  <h2 className="text-4xl md:text-6xl font-black tracking-tight leading-none">
-                     Spotlight on our <span className="text-gameTeal">Results</span>
-                  </h2>
-               </motion.div>
-               <motion.button 
-                  initial={{ opacity: 0, x: 20 }} 
-                  whileInView={{ opacity: 1, x: 0 }} 
-                  viewport={{ once: true }}
-                  className="bg-gameGold text-black px-10 py-3.5 rounded-full font-black text-xs uppercase tracking-widest flex items-center gap-3 shadow-xl shadow-gameGold/10 hover:bg-white transition-all group shrink-0"
-               >
-                  View All Rankers <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-               </motion.button>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-               {rankers.map((ranker, i) => (
-                  <motion.div 
-                     key={i}
-                     initial={{ opacity: 0, y: 20 }}
-                     whileInView={{ opacity: 1, y: 0 }}
-                     viewport={{ once: true }}
-                     transition={{ delay: i * 0.1 }}
-                     onClick={() => setSelectedVideo(ranker.videoId)}
-                     className="group relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-zinc-900 border border-white/5 cursor-pointer"
-                  >
-                     <img 
-                        src={ranker.image} 
-                        className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700" 
-                        alt={ranker.name} 
-                     />
-                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/30 to-transparent opacity-90 group-hover:opacity-60 transition-opacity duration-500"></div>
-                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white shadow-2xl scale-75 group-hover:scale-100 transition-transform duration-500">
-                           <Play size={28} className="fill-current ml-1" />
-                        </div>
-                     </div>
-                     <div className="absolute bottom-0 left-0 w-full p-8">
-                        <h3 className="text-xl font-black text-white mb-1 drop-shadow-md group-hover:text-gameGold transition-colors">{ranker.name}</h3>
-                        <p className="text-zinc-400 text-xs font-bold uppercase tracking-widest">{ranker.rank}</p>
-                      </div>
-                  </motion.div>
-               ))}
-            </div>
-         </div>
-      </section>
+      {/* ACHIEVERS SECTION */}
+      <div id="gate-hall-of-fame" className="scroll-mt-32">
+         <AchieversSection />
+      </div>
 
       {/* 2. CourseHelpSection (Features explaining "How do these courses help you?") */}
       <div id="gate-excellence" className="scroll-mt-32">
