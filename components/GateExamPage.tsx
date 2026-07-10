@@ -1115,13 +1115,14 @@ const GateExamPage: React.FC = () => {
             <div className="flex items-center justify-between h-16">
                {/* Links Scroller */}
                <div 
-                  className="flex items-center gap-3 overflow-x-auto w-full md:w-auto py-2 scroll-smooth custom-scrollbar px-2"
+                  className="flex items-center gap-3 overflow-x-auto w-full md:w-auto py-3 scroll-smooth custom-scrollbar px-2"
                   style={{ 
                     WebkitOverflowScrolling: 'touch'
                   }}
                >
                   {[
                      { label: "Overview", id: "overview", icon: Info },
+                     { label: "GATE Eligibility", id: "eligibility", icon: UserCheck },
                      { label: "Advantages", id: "advantages", icon: ShieldCheck },
                      { label: "Updates", id: "updates", icon: Sparkles },
                      { label: "Dates", id: "important-dates", icon: Calendar },
@@ -1243,6 +1244,116 @@ const GateExamPage: React.FC = () => {
       <div id="gate-excellence" className="scroll-mt-32">
          <CourseHelpSection />
       </div>
+
+      {/* GATE Eligibility Section */}
+      <section id="eligibility" className="py-16 px-8 md:px-10 lg:px-12 bg-slate-50 relative scroll-mt-32 overflow-hidden">
+         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gameTeal/20 to-transparent"></div>
+         <div className="max-w-[1200px] mx-auto relative z-10">
+            <motion.div 
+               initial={{ opacity: 0, y: 20 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               className="text-center mb-12"
+            >
+               <span className="text-gameTeal font-bold tracking-widest uppercase text-xs mb-2 block">CANDIDATE ELIGIBILITY</span>
+               <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-4 leading-tight">
+                  Who can apply for <span className="text-gameGoldDark">GATE?</span>
+               </h2>
+               <p className="text-slate-600 max-w-2xl mx-auto text-lg">
+                  Before applying, candidates must ensure they meet the minimum qualification and eligibility criteria set by the organising institute.
+               </p>
+            </motion.div>
+
+            <motion.div 
+               initial={{ opacity: 0, y: 30 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               className="bg-white rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden"
+            >
+               <div className="overflow-x-auto custom-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                     <thead>
+                        <tr className="bg-gameTeal text-white">
+                           <th className="py-5 px-8 font-bold uppercase tracking-wider text-xs">Criteria</th>
+                           <th className="py-5 px-8 font-bold uppercase tracking-wider text-xs">Details</th>
+                        </tr>
+                     </thead>
+                     <tbody className="divide-y divide-slate-100">
+                        <tr className="hover:bg-slate-50 transition-colors">
+                           <td className="py-6 px-8 font-bold text-slate-900 w-1/3">Nationality</td>
+                           <td className="py-6 px-8 text-slate-600 leading-relaxed">
+                              Candidates must be <strong className="text-slate-900">Indian nationals</strong>. Candidates from other countries (Nepal, Bangladesh, Sri Lanka, Singapore, Ethiopia, and United Arab Emirates) are also eligible if they meet the criteria.
+                           </td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                           <td className="py-6 px-8 font-bold text-slate-900">Age Limit</td>
+                           <td className="py-6 px-8 text-slate-600 leading-relaxed">
+                              There is <strong className="text-slate-900">no minimum or maximum age limit</strong> to appear for the GATE examination.
+                           </td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                           <td className="py-6 px-8 font-bold text-slate-900">Academic Qualification</td>
+                           <td className="py-6 px-8 text-slate-600 leading-relaxed">
+                              <ul className="space-y-3">
+                                 <li className="flex items-start gap-2">
+                                    <CheckCircle2 size={16} className="text-gameTeal mt-1 shrink-0" />
+                                    <span>Candidates who are in the <strong className="text-slate-900">3rd year or higher</strong> of any undergraduate degree program.</span>
+                                 </li>
+                                 <li className="flex items-start gap-2">
+                                    <CheckCircle2 size={16} className="text-gameTeal mt-1 shrink-0" />
+                                    <span>Candidates who have <strong className="text-slate-900">already completed</strong> their government-approved degree program in Engineering / Technology / Architecture / Science / Commerce / Arts.</span>
+                                 </li>
+                              </ul>
+                           </td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                           <td className="py-6 px-8 font-bold text-slate-900">Attempts</td>
+                           <td className="py-6 px-8 text-slate-600 leading-relaxed">
+                              Candidates can appear for the GATE examination <strong className="text-slate-900">any number of times</strong>. There is no restriction on the number of attempts.
+                           </td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                           <td className="py-6 px-8 font-bold text-slate-900">Documents Required</td>
+                           <td className="py-6 px-8 text-slate-600 leading-relaxed">
+                              Scanned copy of Degree Certificate or Provisional Certificate, Mark sheets, Category Certificate (if applicable), and valid Photo ID.
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </motion.div>
+
+            <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+               <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center text-amber-600 shrink-0">
+                     <AlertCircle size={20} />
+                  </div>
+                  <div>
+                     <h4 className="font-bold text-slate-900 mb-1">Important Note</h4>
+                     <p className="text-xs text-slate-500 leading-relaxed">Eligibility depends on the specific paper you choose. Some papers may have additional requirements.</p>
+                  </div>
+               </div>
+               <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
+                     <GraduationCap size={20} />
+                  </div>
+                  <div>
+                     <h4 className="font-bold text-slate-900 mb-1">Final Year Students</h4>
+                     <p className="text-xs text-slate-500 leading-relaxed">Candidates in their final year can apply and must upload their marksheets for the penultimate year.</p>
+                  </div>
+               </div>
+               <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-green-600 shrink-0">
+                     <ClipboardCheck size={20} />
+                  </div>
+                  <div>
+                     <h4 className="font-bold text-slate-900 mb-1">Certification</h4>
+                     <p className="text-xs text-slate-500 leading-relaxed">Professional certificates (e.g. AMIE) equivalent to B.E./B.Tech are also valid for eligibility.</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
 
       {/* 3. Advantages REDESIGNED - THE ENGINEERING ROADMAP - LIGHT GRAY THEME */}
       <section id="advantages" className="py-24 bg-slate-50 relative overflow-hidden scroll-mt-32 border-t border-slate-200">
