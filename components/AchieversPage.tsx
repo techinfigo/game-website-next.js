@@ -1070,7 +1070,7 @@ const FILTER_TABS = [
 const RankerCard = React.memo(({ item, onPlay }: { item: any, onPlay?: () => void }) => (
   <div 
     onClick={onPlay}
-    className="group relative bg-white rounded-2xl overflow-hidden shadow-lg shadow-slate-200/30 border border-slate-100 hover:shadow-xl hover:shadow-gameTeal/10 transition-all duration-300 cursor-pointer h-[260px] md:h-[300px]"
+    className="group relative bg-white rounded-2xl overflow-hidden shadow-lg shadow-slate-200/30 border border-slate-100 hover:shadow-xl hover:shadow-gameTeal/10 transition-all duration-300 cursor-pointer aspect-[9/16] w-full"
   >
     <div className="relative h-full overflow-hidden">
       <Image 
@@ -1583,7 +1583,7 @@ const AchieversPage: React.FC<AchieversPageProps> = ({ initialFilter = 'all' }) 
                         className="flex gap-4 overflow-x-auto pb-6 [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:bg-slate-300 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-slate-100 [&::-webkit-scrollbar-track]:rounded-full snap-x snap-mandatory cursor-grab active:cursor-grabbing select-none"
                      >
                         {loopedVideoStories.map((item, index) => (
-                           <div key={`${item.id}-${index}`} className="min-w-[200px] md:min-w-[260px] snap-start">
+                           <div key={`${item.id}-${index}`} className="min-w-[150px] md:min-w-[180px] snap-start">
                               <RankerCard 
                                 item={item} 
                                 onPlay={() => videoSlider.handleItemClick(() => handlePlayVideo(item.video))}
