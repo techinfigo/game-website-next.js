@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
@@ -71,10 +72,10 @@ const GateExamPage: React.FC = () => {
   useEffect(() => {
     const sections = [
       'overview',
-      'eligibility',
       'gate-courses',
       'gate-hall-of-fame',
       'gate-excellence',
+      'eligibility',
       'advantages',
       'updates',
       'important-dates',
@@ -982,7 +983,10 @@ const GateExamPage: React.FC = () => {
                   </p>
 
                   <div className="flex flex-wrap gap-4 mb-8 justify-start">
-                     <button className="px-7 py-3.5 bg-gameTeal text-white font-black rounded-full hover:bg-[#007a7e] transition-all active:scale-95 shadow-xl shadow-gameTeal/20 flex items-center gap-2 group text-sm">
+                     <button 
+                        onClick={() => scrollToSection('gate-courses')}
+                        className="px-7 py-3.5 bg-gameTeal text-white font-black rounded-full hover:bg-[#007a7e] transition-all active:scale-95 shadow-xl shadow-gameTeal/20 flex items-center gap-2 group text-sm"
+                     >
                         Start Preparation
                         <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                      </button>
@@ -1488,9 +1492,12 @@ const GateExamPage: React.FC = () => {
                      <h4 className="text-3xl md:text-5xl font-black text-white mb-4 tracking-tighter">Your technical future is waiting.</h4>
                      <p className="text-teal-50/70 font-bold text-lg">Initialize your preparation with India&apos;s most structured roadmap.</p>
                   </div>
-                  <button className="relative z-10 bg-[#f2c537] text-black px-12 py-5 rounded-[2rem] font-black uppercase tracking-widest text-sm shadow-2xl hover:bg-white hover:-translate-y-1 transition-all shrink-0">
-                     Initialize Prep Phase
-                  </button>
+                  <Link 
+                     href="/resources"
+                     className="relative z-10 bg-[#f2c537] text-black px-12 py-5 rounded-[2rem] font-black uppercase tracking-widest text-sm shadow-2xl hover:bg-white hover:-translate-y-1 transition-all shrink-0 flex items-center justify-center"
+                  >
+                     Initialize Pre Phase
+                  </Link>
                </div>
             </motion.div>
          </div>
