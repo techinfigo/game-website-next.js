@@ -22,8 +22,8 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
   const dragStartRef = useRef<{ x: number; scrollLeft: number }>({ x: 0, scrollLeft: 0 });
   const hasDraggedRef = useRef(false);
 
-  const handleNavigate = (page: string) => {
-    if (hasDraggedRef.current) return; // Prevent navigation if we recently dragged
+  const handleNavigate = (page: string, isFromButton: boolean = false) => {
+    if (!isFromButton && hasDraggedRef.current) return; // Prevent navigation if we recently dragged (only for card clicks if any)
     const cleanId = page.startsWith('/') ? page.substring(1) : page;
     if (EXAM_PAGES_DISABLED && DISABLED_EXAMPAGES_IDS.includes(cleanId)) {
       const categoriesMap: Record<string, string> = {
@@ -45,7 +45,8 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
     if (onNavigate) {
       onNavigate(page);
     } else {
-      router.push(page.startsWith('/') ? page : `/${page}`);
+      const path = page.startsWith('/') ? page : `/${page}`;
+      router.push(path);
     }
   };
 
@@ -87,6 +88,19 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
     if (scrollRef.current) {
       const { current } = scrollRef;
       const scrollAmount = 320; // card width + gap
+      const { scrollLeft, scrollWidth, clientWidth } = current;
+      const singleSetWidth = scrollWidth / 3;
+
+      if (singleSetWidth <= 0) return;
+
+      // Before smooth scrolling, ensure we're not too close to the physical edges.
+      // If we are, jump to the equivalent position in the middle set (Set 1) instantly.
+      if (direction === 'left' && scrollLeft < singleSetWidth * 0.5) {
+        current.scrollLeft = scrollLeft + singleSetWidth;
+      } else if (direction === 'right' && scrollLeft > singleSetWidth * 1.5) {
+        current.scrollLeft = scrollLeft - singleSetWidth;
+      }
+
       current.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
         behavior: 'smooth'
@@ -97,15 +111,16 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
   const handleScroll = () => {
     if (!scrollRef.current || isDragging) return;
     const container = scrollRef.current;
-    const { scrollLeft, scrollWidth } = container;
+    const { scrollLeft, scrollWidth, clientWidth } = container;
     const singleSetWidth = scrollWidth / 3;
 
     if (singleSetWidth <= 0) return;
 
     // Warp smoothly to middle zone if scrolled out of central limits
-    if (scrollLeft < singleSetWidth * 0.5) {
+    // This handles manual scrolling/dragging
+    if (scrollLeft < singleSetWidth * 0.2) {
       container.scrollLeft = scrollLeft + singleSetWidth;
-    } else if (scrollLeft > singleSetWidth * 1.5) {
+    } else if (scrollLeft > scrollWidth - clientWidth - 200) {
       container.scrollLeft = scrollLeft - singleSetWidth;
     }
   };
@@ -198,11 +213,31 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       image: "/exams/non-tech-bg.png",
       logo: "/exams/non-tech-logo.jpg",
       action: 'nontech'
+    },
+    {
+      id: 'iit',
+      title: 'IIT-JEE / NEET',
+      subtitle: 'Premium Entrance Preparation',
+      icon: Trophy,
+      color: 'text-rose-400',
+      image: "/exams/gate-bg.jpg",
+      logo: "/exams/gate-logo.jpg",
+      action: 'iit'
+    },
+    {
+      id: 'school',
+      title: 'Schooling (9-12)',
+      subtitle: 'Foundation & Boards Preparation',
+      icon: GraduationCap,
+      color: 'text-amber-400',
+      image: "/exams/ese-bg.png",
+      logo: "/exams/ese-logo.jpg",
+      action: 'school'
     }
   ];
 
   return (
-    <section className="py-8 md:py-10 bg-white relative overflow-hidden">
+    <section id="exams" className="py-8 md:py-10 bg-white relative overflow-hidden scroll-mt-24">
        {/* Background Decoration */}
        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-[0.02]"></div>
        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-teal-50 rounded-full blur-[120px] -z-10"></div>
@@ -305,12 +340,12 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
                           <div className="absolute inset-0 p-4 pb-6 flex flex-col z-[10]">
                              
                              {/* Floating Logo Placeholder */}
-                             <div className="relative w-12 h-12 mb-3 overflow-hidden flex items-center justify-center p-2 rounded-2xl transition-all">
+                             <div className="relative w-12 h-12 mb-3 overflow-hidden flex items-center justify-center p-2 rounded-xl transition-all">
                                 <Image 
                                   src={item.logo} 
                                   alt={`${item.title} Logo`} 
                                   fill
-                                  className="object-contain p-1.5"
+                                  className="object-contain p-1.5 rounded-xl"
                                   unoptimized
                                   draggable="false"
                                 />
@@ -328,12 +363,10 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
                                <div className="space-y-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto">
                                    <button 
                                      onClick={(e) => {
-                                       if (isDragging) {
-                                         e.preventDefault();
-                                         return;
-                                       }
-                                       handleNavigate(item.action);
+                                       e.stopPropagation();
+                                       handleNavigate(item.action, true);
                                      }}
+                                     onMouseDown={(e) => e.stopPropagation()}
                                      className="w-full bg-[#f2c537] text-black py-3 rounded-xl font-black text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-white transition-all shadow-xl active:scale-[0.98]"
                                    >
                                       Explore More <ChevronRight size={14} />

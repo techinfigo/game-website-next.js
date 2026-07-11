@@ -63,7 +63,7 @@ const GBVideos: React.FC = () => {
                    Eye Opening <span className="text-[#075d63]">Sessions</span>
                 </h2>
                 <p className="text-slate-500 text-base mt-3 max-w-xl font-bold">
-                   Unlock the secrets of toppers. Game-changing strategies, mindset hacks, and preparation roadmaps by Gaurav Babu Sir.
+                  Elevate Your Engineering Journey: Master the Topper’s Blueprint with Expert Strategies, Mindset Mastery, and Precision Roadmaps by Gaurav Babu Sir.
                 </p>
              </div>
              <button className="text-[#075d63] hover:text-[#043f42] font-black text-xs uppercase tracking-wider flex items-center gap-2 group transition-colors bg-slate-50 px-5 py-3 rounded-xl shadow-sm border border-slate-200 hover:border-[#075d63]/30 hover:shadow-md">

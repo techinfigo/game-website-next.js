@@ -7,7 +7,6 @@
  * 🟢 TO MAKE ALL PAGES LIVE AGAIN, JUST CHANGE 'true' TO 'false' BELOW:
  */
 export const EXAM_PAGES_DISABLED = false;
-
 // List of routes/paths that correspond to the examination pages
 export const DISABLED_EXAMPAGES_IDS = [
   'gate', 
@@ -20,9 +19,7 @@ export const DISABLED_EXAMPAGES_IDS = [
   'nontech', 
   'school'
 ];
-
 export const EXAM_PAGES_DISABLED_MESSAGE = "Our team is currently upgrading this exam section with fresh study materials, masterclasses, and visual cheat sheets. It will be back online shortly!";
-
 /**
  * Universal safe function to trigger the coming soon modular popup.
  * It is 100% reliable across all browsers, mobile/desktop, production builds,

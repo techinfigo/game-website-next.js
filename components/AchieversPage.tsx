@@ -3,6 +3,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Quote, Star, Trophy, Video, MessageSquare, Sparkles, Crown, CheckCircle2, ArrowRight, X, Search, ChevronLeft, ChevronRight, SlidersHorizontal } from 'lucide-react';
 
@@ -15,11 +16,11 @@ export const ALL_STORIES = [
   { 
     type: 'video',
     id: 1,
-    name: "Mukunda Buragohain", 
-    rank: "Junior Engineer (Civil)", 
-    exam: "Assam Govt. · 2025", 
-    img: "https://img.youtube.com/vi/UAK_6p0SQlo/hqdefault.jpg", 
-    video: "https://www.youtube.com/embed/UAK_6p0SQlo", // Standard video ID
+    name: "Harpreet", 
+    rank: "Asst. Environmental Engineer", 
+    exam: "Selection Year · 2025", 
+    img: "https://img.youtube.com/vi/_XJJgF14hRw/maxresdefault.jpg", 
+    video: "https://www.youtube.com/embed/_XJJgF14hRw",
     featured: true 
   },
   {
@@ -31,11 +32,11 @@ export const ALL_STORIES = [
   { 
     type: 'video',
     id: 3,
-    name: "Harpreet", 
-    rank: "Asst. Environmental Engineer", 
-    exam: "Haryana SPCB - Civil · 2025", 
-    img: "https://img.youtube.com/vi/IadaXYQRxjM/hqdefault.jpg", 
-    video: "https://www.youtube.com/embed/IadaXYQRxjM" 
+    name: "Mukunda Buragohain", 
+    rank: "Junior Engineer (Civil)", 
+    exam: "Assam Govt. · 2025", 
+    img: "https://img.youtube.com/vi/bmYoxNuLm2Q/maxresdefault.jpg", 
+    video: "https://www.youtube.com/embed/bmYoxNuLm2Q" 
   },
   {
     type: 'whatsapp',
@@ -49,8 +50,8 @@ export const ALL_STORIES = [
     name: "Parul Singh", 
     rank: "Junior Engineer (Civil)", 
     exam: "CPWD · 2023", 
-    img: "https://img.youtube.com/vi/gnJYMXouHJs/hqdefault.jpg", 
-    video: "https://www.youtube.com/embed/gnJYMXouHJs" 
+    img: "https://img.youtube.com/vi/nVQViykd4ww/maxresdefault.jpg", 
+    video: "https://www.youtube.com/embed/nVQViykd4ww" 
   },
   {
     type: 'whatsapp',
@@ -64,17 +65,71 @@ export const ALL_STORIES = [
     name: "Anurag Tripathi", 
     rank: "IIT Ropar", 
     exam: "Selection Year · 2024", 
-    img: "https://img.youtube.com/vi/3rpUFtkOTWU/hqdefault.jpg", 
-    video: "https://www.youtube.com/embed/3rpUFtkOTWU" 
+    img: "https://img.youtube.com/vi/Zd4ba5fz01E/maxresdefault.jpg", 
+    video: "https://www.youtube.com/embed/Zd4ba5fz01E" 
   },
   { 
     type: 'video',
     id: 8,
+    name: "Khusro Sheikh", 
+    rank: "Ranker", 
+    exam: "GATE · 2024", 
+    img: "https://img.youtube.com/vi/uhcVp9Io1ko/maxresdefault.jpg", 
+    video: "https://www.youtube.com/embed/uhcVp9Io1ko" 
+  },
+  { 
+    type: 'video',
+    id: 9,
     name: "Anjali", 
-    rank: "AIR 556 (ME) · Executive Trainee", 
+    rank: "NPCIL Executive Trainee", 
     exam: "NPCIL · 2024", 
-    img: "https://img.youtube.com/vi/Etba1HTOBUI/hqdefault.jpg", 
-    video: "https://www.youtube.com/embed/Etba1HTOBUI" 
+    img: "https://img.youtube.com/vi/z0LNphCRgIE/maxresdefault.jpg", 
+    video: "https://www.youtube.com/embed/z0LNphCRgIE" 
+  },
+  { 
+    type: 'video',
+    id: 25,
+    name: "Sujoy Das", 
+    rank: "IOCL Officer", 
+    exam: "GATE · 2024", 
+    img: "https://img.youtube.com/vi/a-PRFgprxDs/maxresdefault.jpg", 
+    video: "https://www.youtube.com/embed/a-PRFgprxDs" 
+  },
+  { 
+    type: 'video',
+    id: 26,
+    name: "Rajesh Kumar Sahu", 
+    rank: "Ranker", 
+    exam: "GATE · 2024", 
+    img: "https://img.youtube.com/vi/8HXxfmBlyXc/maxresdefault.jpg", 
+    video: "https://www.youtube.com/embed/8HXxfmBlyXc" 
+  },
+  { 
+    type: 'video',
+    id: 27,
+    name: "Prem Narwade", 
+    rank: "Ranker", 
+    exam: "GATE · 2024", 
+    img: "https://img.youtube.com/vi/ICWWsWVg9tg/maxresdefault.jpg", 
+    video: "https://www.youtube.com/embed/ICWWsWVg9tg" 
+  },
+  { 
+    type: 'video',
+    id: 28,
+    name: "Kapil Sharma", 
+    rank: "Ranker", 
+    exam: "GATE · 2024", 
+    img: "https://img.youtube.com/vi/4glyoj_qvc8/maxresdefault.jpg", 
+    video: "https://www.youtube.com/embed/4glyoj_qvc8" 
+  },
+  { 
+    type: 'video',
+    id: 29,
+    name: "Akash Hazra", 
+    rank: "Ranker", 
+    exam: "GATE · 2024", 
+    img: "https://img.youtube.com/vi/vIXFlicDn2w/maxresdefault.jpg", 
+    video: "https://www.youtube.com/embed/vIXFlicDn2w" 
   },
   {
     type: 'whatsapp',
@@ -1015,7 +1070,7 @@ const FILTER_TABS = [
 const RankerCard = React.memo(({ item, onPlay }: { item: any, onPlay?: () => void }) => (
   <div 
     onClick={onPlay}
-    className="group relative bg-white rounded-2xl overflow-hidden shadow-lg shadow-slate-200/30 border border-slate-100 hover:shadow-xl hover:shadow-gameTeal/10 transition-all duration-300 cursor-pointer h-[260px] md:h-[300px]"
+    className="group relative bg-white rounded-2xl overflow-hidden shadow-lg shadow-slate-200/30 border border-slate-100 hover:shadow-xl hover:shadow-gameTeal/10 transition-all duration-300 cursor-pointer aspect-[9/16] w-full"
   >
     <div className="relative h-full overflow-hidden">
       <Image 
@@ -1248,10 +1303,10 @@ const AchieversCTA = React.memo(() => (
               Join thousands of students who have transformed their careers with GAME Academy. Your journey to AIR 1 starts here.
            </p>
            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="group bg-white text-gameTealDark px-8 py-3.5 rounded-2xl font-black text-base shadow-2xl hover:bg-gameGold hover:text-[#050505] hover:-translate-y-1 transition-all flex items-center justify-center gap-3">
+              <Link href="/courses" className="group bg-white text-gameTealDark px-8 py-3.5 rounded-2xl font-black text-base shadow-2xl hover:bg-gameGold hover:text-[#050505] hover:-translate-y-1 transition-all flex items-center justify-center gap-3">
                  EXPLORE COURSES 
                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </button>
+              </Link>
            </div>
         </motion.div>
      </div>
@@ -1528,7 +1583,7 @@ const AchieversPage: React.FC<AchieversPageProps> = ({ initialFilter = 'all' }) 
                         className="flex gap-4 overflow-x-auto pb-6 [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:bg-slate-300 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-slate-100 [&::-webkit-scrollbar-track]:rounded-full snap-x snap-mandatory cursor-grab active:cursor-grabbing select-none"
                      >
                         {loopedVideoStories.map((item, index) => (
-                           <div key={`${item.id}-${index}`} className="min-w-[200px] md:min-w-[260px] snap-start">
+                           <div key={`${item.id}-${index}`} className="min-w-[150px] md:min-w-[180px] snap-start">
                               <RankerCard 
                                 item={item} 
                                 onPlay={() => videoSlider.handleItemClick(() => handlePlayVideo(item.video))}

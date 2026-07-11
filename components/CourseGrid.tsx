@@ -19,6 +19,33 @@ interface CourseGridProps {
 }
 
 const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, searchTerm, setSearchTerm }) => {
+  const [showLeftArrow, setShowLeftArrow] = React.useState(false);
+  const [showRightArrow, setShowRightArrow] = React.useState(true);
+  const tabsRef = React.useRef<HTMLDivElement>(null);
+
+  const checkScroll = () => {
+    if (tabsRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = tabsRef.current;
+      setShowLeftArrow(scrollLeft > 10);
+      setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 10);
+    }
+  };
+
+  React.useEffect(() => {
+    checkScroll();
+    window.addEventListener('resize', checkScroll);
+    return () => window.removeEventListener('resize', checkScroll);
+  }, []);
+
+  const scrollTabs = (direction: 'left' | 'right') => {
+    if (tabsRef.current) {
+      const scrollAmount = 300;
+      tabsRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
   
   // Helper to calculate discount percentage
   const calculateDiscount = (price: string, originalPrice: string) => {
@@ -34,10 +61,8 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
     { id: 'All', label: 'All Courses', icon: LayoutGrid },
     { id: 'GATE / ESE', label: 'GATE / ESE', icon: GraduationCap },
     { id: 'SSC JE', label: 'SSC JE', icon: Building2 }, 
-    { id: 'Govt R&D', label: 'Govt R&D', icon: Microscope },
-    { id: 'PSUs', label: 'PSUs', icon: Briefcase },
-    { id: 'RRB JE', label: 'RRB JE', icon: Train },
-    { id: 'State AE / JE', label: 'State AE / JE', icon: MapPin },
+    { id: 'Govt R&D / PSUs', label: 'Govt R&D / PSUs', icon: Microscope },
+    { id: 'RRB / State AE JE', label: 'RRB / State AE JE', icon: Train },
     { id: 'IIT-JEE / NEET', label: 'IIT-JEE / NEET', icon: Atom },
     { id: 'Non-Tech', label: 'Non-Tech', icon: BookOpen },
     { id: 'Class 9th - 12th', label: 'Class 9th - 12th', icon: Backpack },
@@ -211,7 +236,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       exam: "GATE, PSUs",
       language: "Hinglish",
       mentorship: "Yes",
-      enrollLink: "https://courses.gameacademy.in/wlp/lakshya-civil-course"
+      enrollLink: "https://courses.gameacademy.in/wlp/lakshya-exclusive-course-me"
     },
     {
       title: "Aadhaaram Course",
@@ -258,7 +283,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       price: "Rs. 4,999",
       originalPrice: "Rs. 11,999",
       discount: "58% OFF",
-      category: "PSUs", // Will display under PSUs filters nicely
+      category: "Govt R&D / PSUs", // Will display under Govt R&D / PSUs filters nicely
       btnColor: "bg-[#075d63] hover:bg-[#043f42]",
       enrolledCount: "3.5k",
       liveCount: "90",
@@ -286,7 +311,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       price: "Rs. 4,009",
       originalPrice: "Rs. 8,009",
       discount: "50% OFF",
-      category: "PSUs",
+      category: "Govt R&D / PSUs",
       btnColor: "bg-[#075d63] hover:bg-[#043f42]",
       enrolledCount: "2.9k",
       liveCount: "110",
@@ -314,7 +339,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       price: "Rs. 4,009",
       originalPrice: "Rs. 8,009",
       discount: "50% OFF",
-      category: "PSUs",
+      category: "Govt R&D / PSUs",
       btnColor: "bg-[#075d63] hover:bg-[#043f42]",
       enrolledCount: "1.8k",
       liveCount: "45",
@@ -342,7 +367,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       price: "Rs. 321",
       originalPrice: "Rs. 800",
       discount: "60% OFF",
-      category: "Govt R&D", // Placing under Govt R&D
+      category: "Govt R&D / PSUs", // Placing under Govt R&D / PSUs
       btnColor: "bg-[#075d63] hover:bg-[#043f42]",
       enrolledCount: "6.3k",
       liveCount: "320",
@@ -568,7 +593,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
       price: "Rs. 500",
       originalPrice: "Rs. 1,000",
       discount: "50% OFF",
-      category: "State AE / JE", // Placing in State AE / JE category tab
+      category: "RRB / State AE JE", // Placing in RRB / State AE JE category tab
       btnColor: "bg-[#f2c537] hover:bg-[#d8b32f] text-black",
       enrolledCount: "5.1k",
       liveCount: "220",
@@ -626,27 +651,8 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
     catId === 'All' ? allCourses.length : allCourses.filter(c => c.category === catId).length;
 
   return (
-    <section id="course-grid" className="pt-4 pb-8 relative min-h-[400px] bg-slate-400">
+    <section id="course-grid" className="pt-4 pb-12 relative min-h-[400px] bg-slate-50">
        
-       <style>{`
-          .thin-scrollbar::-webkit-scrollbar {
-            height: 6px;
-          }
-          .thin-scrollbar::-webkit-scrollbar-track {
-            background: transparent; 
-          }
-          .thin-scrollbar::-webkit-scrollbar-thumb {
-            background-color: #cbd5e1;
-            border-radius: 20px;
-            border: 2px solid transparent;
-            background-clip: content-box;
-          }
-          .thin-scrollbar::-webkit-scrollbar-thumb:hover {
-            background-color: #94a3b8;
-            border: 0px solid transparent;
-          }
-       `}</style>
-
        {/* Custom Institute Pattern Background (Graduation Caps) */}
        <div 
          className="absolute inset-0 opacity-[0.05] pointer-events-none"
@@ -659,56 +665,90 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
        <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-14 relative z-10">
           
           {/* CONTROL BAR */}
-          <div className="bg-white rounded-2xl border border-slate-100 p-2.5 mb-4 flex flex-col lg:flex-row items-center justify-between gap-6 relative z-20">
+          <div className="bg-white rounded-3xl border border-slate-100 p-2 lg:p-3 mb-6 flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-6 relative z-20 overflow-hidden shadow-sm">
              
-             {/* Tabs */}
-             <div className="flex overflow-x-auto thin-scrollbar w-full lg:w-auto gap-4 pb-6 lg:pb-0 items-center">
-                {categories.map((cat) => {
-                   const count = getCategoryCount(cat.id);
-                   const isActive = selectedExam === cat.id;
-                   const isDisabled = count === 0;
-
-                   return (
-                      <button
-                        key={cat.id}
-                        onClick={() => !isDisabled && setSelectedExam(cat.id)}
-                        disabled={isDisabled}
-                        className={`
-                           relative flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs md:text-sm font-bold whitespace-nowrap transition-colors duration-200 select-none border
-                           ${isActive 
-                              ? 'bg-[#075d63] text-white border-[#075d63]' 
-                              : isDisabled
-                                 ? 'bg-slate-50 text-slate-400 cursor-not-allowed border-slate-200 opacity-60'
-                                 : 'bg-white text-slate-600 hover:bg-slate-50 hover:text-[#075d63] border-slate-200'
-                           }
-                        `}
+             {/* Tabs Container with Scroll Indicators */}
+             <div className="relative flex-1 min-w-0 w-full lg:w-auto flex items-center group/tabs">
+                
+                {/* Left Arrow Indicator */}
+                <AnimatePresence>
+                   {showLeftArrow && (
+                      <motion.div 
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -10 }}
+                        className="absolute left-0 z-30 flex items-center"
                       >
-                         <cat.icon size={15} className={isActive ? 'text-[#f2c537]' : isDisabled ? 'opacity-50' : 'text-slate-400'} />
-                         {cat.label}
-                         
-                         {!isDisabled && (
-                            <span className={`ml-1 text-[10px] px-1.5 py-0.5 rounded-md font-extrabold ${isActive ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-500 border border-slate-200'}`}>
+                         <button
+                           onClick={() => scrollTabs('left')}
+                           className="w-10 h-10 rounded-full bg-[#075d63] shadow-lg border-2 border-white flex items-center justify-center text-white hover:bg-[#0a4d52] transition-all active:scale-90"
+                         >
+                            <ChevronRight size={20} className="rotate-180" strokeWidth={3} />
+                         </button>
+                      </motion.div>
+                   )}
+                </AnimatePresence>
+
+                {/* Tabs Wrapper with Mask */}
+                <div 
+                   ref={tabsRef}
+                   onScroll={checkScroll}
+                   className={`flex overflow-x-auto thin-scrollbar w-full gap-3 px-2 py-1 items-center scroll-smooth ${showRightArrow ? 'tab-mask-right' : ''} ${showLeftArrow ? 'tab-mask-left' : ''}`}
+                >
+                   {categories.map((cat) => {
+                      const count = getCategoryCount(cat.id);
+                      const isActive = selectedExam === cat.id;
+ 
+                      return (
+                         <button
+                           key={cat.id}
+                           onClick={() => setSelectedExam(cat.id)}
+                           className={`
+                              relative flex items-center gap-2 px-5 py-2.5 rounded-2xl text-xs md:text-sm font-bold whitespace-nowrap transition-all duration-300 select-none border shrink-0 group
+                              ${isActive 
+                                 ? 'bg-[#075d63] text-white border-[#075d63] shadow-lg shadow-[#075d63]/20 z-10' 
+                                 : 'bg-slate-200 text-slate-700 hover:bg-slate-300 hover:text-[#075d63] border-slate-300 shadow-sm transition-all'
+                              }
+                           `}
+                         >
+                            <cat.icon size={16} className={isActive ? 'text-[#f2c537]' : 'text-slate-400 transition-colors group-hover:text-[#075d63]'} />
+                            {cat.label}
+                            
+                            <span className={`ml-1 text-[10px] px-2 py-0.5 rounded-lg font-black ${isActive ? 'bg-white/20 text-white' : 'bg-white text-slate-500 border border-slate-200 shadow-sm transition-colors group-hover:border-[#075d63]/20'}`}>
                                {count}
                             </span>
-                         )}
+                         </button>
+                      );
+                   })}
+                </div>
 
-                         {isDisabled && (
-                            <span className="ml-1 text-[9px] uppercase tracking-wider bg-slate-200/50 text-slate-400 px-1.5 py-0.5 rounded border border-slate-200/50 font-bold">
-                               Soon
-                            </span>
-                         )}
-                      </button>
-                   );
-                })}
+                {/* Right Arrow Indicator */}
+                <AnimatePresence>
+                   {showRightArrow && (
+                      <motion.div 
+                        initial={{ opacity: 0, x: 10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 10 }}
+                        className="absolute right-0 z-30 flex items-center"
+                      >
+                         <button
+                           onClick={() => scrollTabs('right')}
+                           className="w-10 h-10 rounded-full bg-[#075d63] shadow-lg border-2 border-white flex items-center justify-center text-white hover:bg-[#0a4d52] transition-all active:scale-90"
+                         >
+                            <ChevronRight size={20} strokeWidth={3} />
+                         </button>
+                      </motion.div>
+                   )}
+                </AnimatePresence>
              </div>
 
              {/* Search */}
-             <div className="relative w-full lg:w-72 group shrink-0">
-                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-[#075d63] transition-colors" size={18} />
+             <div className="relative w-full lg:w-80 group shrink-0">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-[#075d63] transition-colors" size={18} />
                 <input 
                    type="text" 
                    placeholder="Search courses..." 
-                   className="w-full bg-slate-50/50 border border-slate-200 rounded-xl px-4 py-2.5 pl-10 text-sm font-medium text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#075d63] focus:ring-4 focus:ring-[#075d63]/5 transition-all"
+                   className="w-full bg-slate-100 border border-slate-200 rounded-xl px-4 py-2.5 pl-11 text-sm font-medium text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#075d63] focus:ring-4 focus:ring-[#075d63]/10 transition-all shadow-inner"
                    value={searchTerm}
                    onChange={(e) => setSearchTerm(e.target.value)}
                 />

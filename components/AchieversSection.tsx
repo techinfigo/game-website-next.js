@@ -34,97 +34,72 @@ const AchieversSection: React.FC<AchieversSectionProps> = ({ onNavigate }) => {
   const achievers: Achiever[] = [
     {
       id: 1,
-      name: "Short 1",
-      image: "https://img.youtube.com/vi/ZrmsiLyxumA/hqdefault.jpg",
-      videoId: "ZrmsiLyxumA"
+      name: "Harpreet",
+      videoId: "_XJJgF14hRw"
     },
     {
       id: 2,
-      name: "Short 2",
-      image: "https://img.youtube.com/vi/8VgAYyFJ2pw/hqdefault.jpg",
-      videoId: "8VgAYyFJ2pw"
+      name: "Mukunda Buragohain",
+      videoId: "bmYoxNuLm2Q"
     },
     {
       id: 3,
-      name: "Short 3",
-      image: "https://img.youtube.com/vi/3rpUFtkOTWU/hqdefault.jpg",
-      videoId: "3rpUFtkOTWU"
+      name: "Parul Singh",
+      videoId: "nVQViykd4ww"
     },
     {
       id: 4,
-      name: "Short 4",
-      image: "https://img.youtube.com/vi/Etba1HTOBUI/hqdefault.jpg",
-      videoId: "Etba1HTOBUI"
+      name: "Anurag Tripathi",
+      videoId: "Zd4ba5fz01E"
     },
     {
       id: 5,
-      name: "Short 5",
-      image: "https://img.youtube.com/vi/35F4plJjhFM/hqdefault.jpg",
-      videoId: "35F4plJjhFM"
+      name: "Khusro Sheikh",
+      videoId: "uhcVp9Io1ko"
     },
     {
       id: 6,
-      name: "Short 6",
-      image: "https://img.youtube.com/vi/QZC0IzzoSS0/hqdefault.jpg",
-      videoId: "QZC0IzzoSS0"
+      name: "Anjali",
+      videoId: "z0LNphCRgIE"
     },
     {
       id: 7,
-      name: "Short 7",
-      image: "https://img.youtube.com/vi/qzevZxEawpA/hqdefault.jpg",
-      videoId: "qzevZxEawpA"
+      name: "Sujoy Das",
+      videoId: "a-PRFgprxDs"
     },
     {
       id: 8,
-      name: "Short 8",
-      image: "https://img.youtube.com/vi/nLDQgHBYTc0/hqdefault.jpg",
-      videoId: "nLDQgHBYTc0"
+      name: "Rajesh Kumar Sahu",
+      videoId: "8HXxfmBlyXc"
     },
     {
       id: 9,
-      name: "Short 9",
-      image: "https://img.youtube.com/vi/7RoM5q7nte4/hqdefault.jpg",
-      videoId: "7RoM5q7nte4"
+      name: "Prem Narwade",
+      videoId: "ICWWsWVg9tg"
     },
     {
       id: 10,
-      name: "Short 10",
-      image: "https://img.youtube.com/vi/CjFRWUCyvSI/hqdefault.jpg",
-      videoId: "CjFRWUCyvSI"
+      name: "Kapil Sharma",
+      videoId: "4glyoj_qvc8"
     },
     {
       id: 11,
-      name: "Short 11",
-      image: "https://img.youtube.com/vi/57n5RJ1qT08/hqdefault.jpg",
-      videoId: "57n5RJ1qT08"
-    },
-    {
-      id: 12,
-      name: "Short 12",
-      image: "https://img.youtube.com/vi/cHDgQ1_c9eg/hqdefault.jpg",
-      videoId: "cHDgQ1_c9eg"
-    },
-    {
-      id: 13,
-      name: "Short 13",
-      image: "https://img.youtube.com/vi/oICGmQUIivg/hqdefault.jpg",
-      videoId: "oICGmQUIivg"
+      name: "Akash Hazra",
+      videoId: "vIXFlicDn2w"
     }
-  ];
+  ].map(a => ({ ...a, image: `https://i.ytimg.com/vi/${a.videoId}/maxresdefault.jpg` }));
 
   // Duplicate for seamless loop
   const extendedAchievers = [...achievers, ...achievers, ...achievers];
 
   return (
     <section className="py-10 lg:py-14 bg-[#09090b] relative overflow-hidden">
-        {/* Background Gradients */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#09090b] via-[#0f1115] to-[#09090b] pointer-events-none z-0"></div>
         <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-gameTeal/10 rounded-full blur-[120px] pointer-events-none"></div>
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#f2c537]/5 rounded-full blur-[100px] pointer-events-none"></div>
         
         <div className="max-w-[1400px] mx-auto px-8 md:px-10 lg:px-12 relative z-10">
             {/* Header */}
-            <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-6">
+            <div className="flex flex-col md:flex-row justify-between items-end mb-2 gap-6">
                 <div>
                     <div className="inline-flex items-center gap-2 mb-2">
                        <Crown size={14} className="text-[#f2c537] fill-[#f2c537]" />
@@ -146,12 +121,8 @@ const AchieversSection: React.FC<AchieversSectionProps> = ({ onNavigate }) => {
 
             {/* Marquee Container */}
             <div className="relative w-full -mx-6 md:mx-0">
-                {/* Fade Gradients for Carousel */}
-                <div className="absolute top-0 left-0 w-24 h-full bg-gradient-to-r from-[#09090b] to-transparent z-20 pointer-events-none"></div>
-                <div className="absolute top-0 right-0 w-24 h-full bg-gradient-to-l from-[#09090b] to-transparent z-20 pointer-events-none"></div>
-
                 <div 
-                  className="flex overflow-hidden"
+                  className="flex overflow-visible py-8"
                   onMouseEnter={() => setIsPaused(true)}
                   onMouseLeave={() => setIsPaused(false)}
                 >
@@ -176,8 +147,8 @@ const AchieversSection: React.FC<AchieversSectionProps> = ({ onNavigate }) => {
                             return (
                                 <div 
                                     key={cardKey}
-                                    className={`relative w-[210px] h-[310px] rounded-[1.5rem] overflow-hidden flex-shrink-0 border ${isPlaying ? 'border-[#f2c537] ring-1 ring-[#f2c537]/50' : 'border-white/5 cursor-pointer'}`}
-                                    onClick={() => !isPlaying && setPlayingCardKey(cardKey)}
+                                    className={`relative w-[180px] aspect-[9/16] rounded-[1.5rem] overflow-hidden flex-shrink-0 border transition-all duration-300 ${isPlaying ? 'border-[#f2c537] ring-2 ring-[#f2c537] scale-110 z-30 shadow-2xl shadow-[#f2c537]/30' : 'border-white/5 cursor-pointer hover:border-white/20 hover:scale-[1.02]'}`}
+                                    onClick={() => setPlayingCardKey(isPlaying ? null : cardKey)}
                                 >
                                     {isPlaying ? (
                                         <div className="w-full h-full relative bg-black overflow-hidden rounded-[1.5rem]">
@@ -187,28 +158,31 @@ const AchieversSection: React.FC<AchieversSectionProps> = ({ onNavigate }) => {
                                                 frameBorder="0" 
                                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                                 allowFullScreen
-                                                className="w-full h-full object-cover pointer-events-none"
+                                                className="w-full h-full pointer-events-auto"
                                             ></iframe>
-                                            <button 
-                                                onClick={(e) => {
-                                                    e.stopPropagation();
-                                                    setPlayingCardKey(null);
-                                                }}
-                                                className="absolute top-3 right-3 p-1.5 bg-black/60 hover:bg-red-600 text-white rounded-full transition-colors z-30 backdrop-blur-sm border border-white/10 pointer-events-auto"
-                                            >
-                                                <X size={16} />
-                                            </button>
+                                            {/* Stop indicator on hover when playing */}
+                                            <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity bg-black/40 z-10 pointer-events-none">
+                                                <div className="w-11 h-11 bg-[#f2c537] rounded-full flex items-center justify-center text-black shadow-xl">
+                                                    <div className="flex gap-1">
+                                                        <div className="w-1.5 h-4 bg-black rounded-full"></div>
+                                                        <div className="w-1.5 h-4 bg-black rounded-full"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     ) : (
                                         <>
-                                            {/* Clean and Raw Thumbnail Image - No hover grayscale/scale/transition */}
-                                            <Image 
-                                                src={student.image} 
-                                                alt={student.name} 
-                                                fill
-                                                className="w-full h-full object-cover" 
-                                                referrerPolicy="no-referrer"
-                                            />
+                                            {/* Clean and Raw Thumbnail Image - Perfect fit with object-cover on 9:16 aspect ratio */}
+                                            <div className="absolute inset-0 w-full h-full overflow-hidden">
+                                                <Image 
+                                                    src={student.image} 
+                                                    alt={student.name} 
+                                                    fill
+                                                    className="w-full h-full object-cover transition-transform duration-500" 
+                                                    referrerPolicy="no-referrer"
+                                                    unoptimized
+                                                />
+                                            </div>
                                             
                                             {/* Static Play Button Icon Overlay in the Center */}
                                             <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">

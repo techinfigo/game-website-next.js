@@ -186,7 +186,14 @@ const JobUpdatesSection: React.FC<JobUpdatesSectionProps> = ({ onNavigate }) => 
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.05 }}
-              className="min-w-[220px] md:min-w-[240px] snap-center group relative bg-white p-3 rounded-[1.5rem] border border-white/80 transition-all duration-500 shadow-xl hover:-translate-y-2 flex flex-col"
+              onClick={(e) => {
+                if (isDragging) {
+                  e.preventDefault();
+                  return;
+                }
+                handleNavigate('jobs#live-alerts');
+              }}
+              className="min-w-[220px] md:min-w-[240px] snap-center group relative bg-white p-3 rounded-[1.5rem] border border-white/80 transition-all duration-500 shadow-xl hover:-translate-y-2 flex flex-col cursor-pointer"
             >
               <div className="flex justify-between items-start mb-2">
                 <div className="w-8 h-8 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-center text-gameTeal group-hover:bg-gameTeal group-hover:text-white transition-all duration-500">
@@ -226,18 +233,9 @@ const JobUpdatesSection: React.FC<JobUpdatesSectionProps> = ({ onNavigate }) => 
               </div>
 
               <div className="pt-2 border-t border-slate-100 flex items-center justify-between">
-                <button 
-                  onClick={(e) => {
-                    if (isDragging) {
-                      e.preventDefault();
-                      return;
-                    }
-                    handleNavigate('jobs');
-                  }}
-                  className="flex items-center gap-1 text-[8px] font-black uppercase tracking-widest text-slate-400 group-hover:text-gameTeal transition-all group/btn"
-                >
+                <div className="flex items-center gap-1 text-[8px] font-black uppercase tracking-widest text-slate-400 group-hover:text-gameTeal transition-all group/btn">
                    Details <ChevronRight size={10} className="group-hover/btn:translate-x-0.5 transition-transform" />
-                </button>
+                </div>
                 <div className="px-1.5 py-0.5 rounded-md bg-gameBlack text-white text-[6px] font-black uppercase tracking-widest group-hover:bg-gameTeal transition-colors">
                    {job.type}
                 </div>
@@ -266,9 +264,14 @@ const JobUpdatesSection: React.FC<JobUpdatesSectionProps> = ({ onNavigate }) => 
             </div>
 
             <div className="flex items-center gap-4 relative z-10 w-full lg:w-auto">
-              <button className="bg-white text-gameBlack px-6 py-2 rounded-lg font-black text-[8px] uppercase tracking-widest hover:bg-gameGold hover:text-black transition-all shadow-xl flex items-center gap-2 group/tg whitespace-nowrap active:scale-95">
+              <a 
+                href="https://whatsapp.com/channel/0029VaWNuqVJpe8gdAkinR1T"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white text-gameBlack px-6 py-2 rounded-lg font-black text-[8px] uppercase tracking-widest hover:bg-gameGold hover:text-black transition-all shadow-xl flex items-center gap-2 group/tg whitespace-nowrap active:scale-95"
+              >
                 Join Channel <ChevronRight size={12} className="group-hover/tg:translate-x-0.5 transition-transform" />
-              </button>
+              </a>
             </div>
           </div>
         </motion.div>
