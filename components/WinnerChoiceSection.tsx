@@ -38,7 +38,7 @@ const WinnerChoiceSection: React.FC = () => {
       id: "03",
       label: "UNMATCHED RESULTS",
       title: "Unmatched Results",
-      desc: "Year after year, GAME students dominate GATE, ESE, and SSC-JE leaderboards. We don&apos;t just promise results; we deliver rankers.",
+      desc: "Consistently, GAME students lead the way on GATE, ESE, and SSC-JE leaderboards. Beyond promising success, we produce top-tier rankers.",
       stats: [
         { label: "SELECTIONS", value: "5000+" },
         { label: "TOP RANKS", value: "50+" }
