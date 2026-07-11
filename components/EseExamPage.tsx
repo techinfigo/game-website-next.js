@@ -9,6 +9,7 @@ import SpecialOffer from './SpecialOffer';
 import CourseHelpSection from './CourseHelpSection';
 import GBVideos from './GBVideos';
 import WinnerChoiceSection from './WinnerChoiceSection';
+import AchieversSection from './AchieversSection';
 import { 
   Trophy, Shield, Star, Briefcase, TrendingUp, 
   CheckCircle2, ArrowRight, Sparkles,
@@ -355,30 +356,6 @@ const EseExamPage: React.FC = () => {
       color: "text-gameTeal",
       bg: "bg-gameTeal/5",
       image: "/ese/reason-6.jpg"
-    }
-  ];
-
-  // "Why Choose GAME for ESE" highlight section content - freely editable by the content owner.
-  const whyGameFeatures = [
-    {
-      title: "Mentorship That Delivers Ranks",
-      desc: "Direct guidance from Gaurav Babu Sir, backed by a 13+ year track record of producing top IES ranks.",
-      icon: Trophy
-    },
-    {
-      title: "Structured, Exam-First Curriculum",
-      desc: "Every topic is mapped to the ESE syllabus with tests and assignments that mirror the real exam pattern.",
-      icon: ClipboardCheck
-    },
-    {
-      title: "Learn On Your Schedule",
-      desc: "24/7 access to recorded lectures alongside live sessions, built for both full-timers and working professionals.",
-      icon: MonitorPlay
-    },
-    {
-      title: "Personal Doubt Support",
-      desc: "A dedicated support group keeps you unblocked, with mentors tracking your progress through every stage.",
-      icon: UserCheck
     }
   ];
 
@@ -885,45 +862,8 @@ const EseExamPage: React.FC = () => {
       {/* Eye-opening Video Section */}
       <GBVideos />
 
-      {/* Why Choose GAME for ESE - content below is editable by the content owner */}
-      <section className="py-24 bg-[#0f1115] text-white relative overflow-hidden">
-         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gameTeal/10 rounded-full blur-[120px] pointer-events-none"></div>
-         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gameGold/5 rounded-full blur-[100px] pointer-events-none"></div>
-         <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10">
-            <div className="text-center mb-16">
-               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gameGold/10 border border-gameGold/20 text-gameGold text-xs font-black uppercase tracking-widest mb-6">
-                     <Sparkles size={14} /> Why GAME
-                  </div>
-                  <h2 className="text-3xl md:text-5xl font-black mb-6 tracking-tight">
-                     Why Choose <span className="text-gameGold">GAME for ESE?</span>
-                  </h2>
-                  <p className="text-white/70 text-lg md:text-xl font-medium max-w-3xl mx-auto leading-relaxed">
-                     Everything you need to crack the Engineering Services Examination, under one roof.
-                  </p>
-               </motion.div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-               {whyGameFeatures.map((item, i) => (
-                  <motion.div
-                     key={i}
-                     initial={{ opacity: 0, y: 20 }}
-                     whileInView={{ opacity: 1, y: 0 }}
-                     viewport={{ once: true }}
-                     transition={{ delay: i * 0.1 }}
-                     className="bg-white/5 backdrop-blur-md border border-white/10 rounded-[2rem] p-8 hover:bg-white/10 hover:border-gameGold/30 transition-all duration-300 group"
-                  >
-                     <div className="w-14 h-14 rounded-2xl bg-gameTeal/20 flex items-center justify-center text-gameGold mb-6 group-hover:scale-110 transition-transform duration-300">
-                        <item.icon size={28} strokeWidth={2} />
-                     </div>
-                     <h3 className="text-lg font-black mb-3 leading-tight">{item.title}</h3>
-                     <p className="text-white/60 text-sm font-medium leading-relaxed">{item.desc}</p>
-                  </motion.div>
-               ))}
-            </div>
-         </div>
-      </section>
+      {/* Achievers Section */}
+      <AchieversSection />
 
       {/* Winner's Choice Section */}
       <WinnerChoiceSection />
