@@ -725,7 +725,7 @@ const EseExamPage: React.FC = () => {
                            <GraduationCap size={20} className="text-gameTeal" />
                         </div>
                         <p className="text-white/70 font-medium leading-relaxed group-hover:text-white transition-colors">
-                           <strong className="text-white">GATE</strong> is ideal for those interested in postgraduate studies, research, or PSU jobs, offering flexibility across a wide range of disciplines.
+                           <strong className="text-white">GATE</strong> is ideal for those interested in postgraduate studies, research or PSU jobs, offering flexibility across a wide range of disciplines.
                         </p>
                      </div>
                      <div className="flex gap-4 group">
