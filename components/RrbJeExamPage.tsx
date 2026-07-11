@@ -1108,7 +1108,7 @@ const RrbJeExamPage: React.FC = () => {
                         </div>
                         <div className="mt-8 grid sm:grid-cols-2 gap-4 text-[11px] font-bold text-slate-400 uppercase tracking-widest">
                            <p>Link 1: <a href="https://www.rrbcdg.gov.in/" target="_blank" rel="noopener noreferrer" className="text-gameTeal hover:underline">https://www.rrbcdg.gov.in/</a></p>
-                           <p>Link 2: <span className="text-gameTeal">RRB-JE - ME & CE Syllabus</span></p>
+                           <p>Link 2: <a href="https://drive.google.com/drive/folders/1XdotguRhuEfFleV8rOCALA7aV7m3xyoa?usp=sharing" target="_blank" rel="noopener noreferrer" className="text-gameTeal hover:underline">RRB-JE - ME & CE Syllabus</a></p>
                         </div>
                      </div>
                   </div>
