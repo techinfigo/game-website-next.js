@@ -1378,7 +1378,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                      </div>
                      <div className="shrink-0 w-full md:w-auto">
                         <a 
-                          href="#" 
+                          href="https://ssc.gov.in/" 
                           target="_blank" 
                           rel="noopener noreferrer"
                           className="flex items-center justify-center gap-3 bg-gameTeal text-white px-10 py-5 rounded-2xl font-black text-base uppercase tracking-wider hover:bg-gameTealDark transition-all shadow-[0_10px_30px_rgba(7,93,99,0.3)] hover:-translate-y-1 group"
