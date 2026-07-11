@@ -109,47 +109,47 @@ const EseExamPage: React.FC = () => {
     { 
       label: "Nationality", 
       details: [
-        "• Indian Citizens are eligible.",
-        "• Other Candidates: Subjects of Nepal, Bhutan, Tibetan refugees, or a Person of Indian Origin (PIO) from specified countries."
+        "Indian Citizens are eligible.",
+        "Other Candidates: Subjects of Nepal, Bhutan, Tibetan refugees, or a Person of Indian Origin (PIO) from specified countries."
       ] 
     },
     { 
       label: "Educational Qualifications", 
       details: [
-        "• Bachelor's degree in Engineering (from a recognized university).",
-        "• Final-year students can also apply, but must complete their degree before the Mains exam."
+        "Bachelor's degree in Engineering (from a recognized university).",
+        "Final-year students can also apply, but must complete their degree before the Mains exam."
       ] 
     },
     { 
       label: "Age Limit", 
       details: [
-        "• Minimum: 21 years",
-        "• Maximum: 30 years",
-        "• Age Relaxation: OBC - 3 years, SC/ST - 5 years, PwD - 10 years, Ex-servicemen - 5 years."
+        "Minimum: 21 years",
+        "Maximum: 30 years",
+        "Age Relaxation: OBC - 3 years, SC/ST - 5 years, PwD - 10 years, Ex-servicemen - 5 years."
       ] 
     },
     { 
       label: "Number of Attempts", 
       details: [
-        "• General: Unlimited attempts from 21 years to 30 years.",
-        "• OBC: Unlimited attempts until the age limit is reached.",
-        "• SC/ST: Unlimited attempts until the age limit is reached.",
-        "• PwD: Same as SC/ST."
+        "General: Unlimited attempts from 21 years to 30 years.",
+        "OBC: Unlimited attempts until the age limit is reached.",
+        "SC/ST: Unlimited attempts until the age limit is reached.",
+        "PwD: Same as SC/ST."
       ] 
     },
     { 
       label: "Physical Standards", 
       details: [
-        "• Must meet the physical/medical standards prescribed by UPSC, especially for positions in Railways/Defense Services."
+        "Must meet the physical/medical standards prescribed by UPSC, especially for positions in Railways/Defense Services."
       ] 
     },
     { 
       label: "Engineering Disciplines", 
       details: [
-        "• Mechanical Engineering (ME)",
-        "• Civil Engineering (CE)",
-        "• Electrical Engineering (EE)",
-        "• Electronics & Telecommunication Engineering (ECE)"
+        "Mechanical Engineering (ME)",
+        "Civil Engineering (CE)",
+        "Electrical Engineering (EE)",
+        "Electronics & Telecommunication Engineering (ECE)"
       ] 
     }
   ];
