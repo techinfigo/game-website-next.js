@@ -15,7 +15,7 @@ const FAQSection: React.FC = () => {
     },
     { 
       q: "Who is the founder of Gaurav’s Academy ?", 
-      a: "Gaurav Babu Sir is the founder of Gaurav’s Academy who has been teaching for more than 11+ years." 
+      a: "Gaurav Babu Sir is the founder of Gaurav’s Academy who has been teaching for more than 14+ years." 
     },
     { 
       q: "How can I enroll in Gaurav’s Academy Courses?", 

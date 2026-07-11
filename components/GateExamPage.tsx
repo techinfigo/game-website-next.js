@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
@@ -14,6 +15,8 @@ import {
 
 import CourseGrid from './CourseGrid';
 import CourseHelpSection from './CourseHelpSection';
+import AchieversSection from './AchieversSection';
+import TestimonialsText from './TestimonialsText';
 
 const GateExamPage: React.FC = () => {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
@@ -69,6 +72,10 @@ const GateExamPage: React.FC = () => {
   useEffect(() => {
     const sections = [
       'overview',
+      'gate-courses',
+      'gate-hall-of-fame',
+      'gate-excellence',
+      'eligibility',
       'advantages',
       'updates',
       'important-dates',
@@ -976,13 +983,21 @@ const GateExamPage: React.FC = () => {
                   </p>
 
                   <div className="flex flex-wrap gap-4 mb-8 justify-start">
-                     <button className="px-7 py-3.5 bg-gameTeal text-white font-black rounded-full hover:bg-[#007a7e] transition-all active:scale-95 shadow-xl shadow-gameTeal/20 flex items-center gap-2 group text-sm">
+                     <button 
+                        onClick={() => scrollToSection('gate-courses')}
+                        className="px-7 py-3.5 bg-gameTeal text-white font-black rounded-full hover:bg-[#007a7e] transition-all active:scale-95 shadow-xl shadow-gameTeal/20 flex items-center gap-2 group text-sm"
+                     >
                         Start Preparation
                         <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                      </button>
-                     <button className="px-7 py-3.5 border border-white/20 text-white font-black rounded-full hover:bg-white hover:text-gameBlack transition-all active:scale-95 text-sm">
+                     <a 
+                        href="https://drive.google.com/drive/folders/1ye6UZKpRTwNnFndU8nEalq3UH4LnIg_B?usp=sharing" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="px-7 py-3.5 border border-white/20 text-white font-black rounded-full hover:bg-white hover:text-gameBlack transition-all active:scale-95 text-sm flex items-center justify-center"
+                     >
                         View Syllabus
-                     </button>
+                     </a>
                   </div>
 
                   {/* Latest Update Widget */}
@@ -1108,16 +1123,19 @@ const GateExamPage: React.FC = () => {
       </section>
 
       {/* FULL WIDTH STICKY SUB-NAVIGATION - CUSTOM PREMIUM SCROLLER */}
-      <div className="sticky top-[58px] z-40 w-full bg-[#001D1F]/95 backdrop-blur-md shadow-lg border-b border-white/5">
+      <div className="sticky top-[72px] md:top-[80px] z-40 w-full bg-[#001D1F]/95 backdrop-blur-md shadow-lg border-b border-white/5">
          <div className="max-w-[1400px] mx-auto px-4 md:px-8">
-            <div className="flex items-center justify-between h-14">
+            <div className="flex items-center justify-between h-16">
                {/* Links Scroller */}
                <div 
-                  className="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 pt-1.5 scroll-smooth teal-scrollbar"
-                  style={{ WebkitOverflowScrolling: 'touch' }}
+                  className="flex items-center gap-3 overflow-x-auto w-full md:w-auto py-3 scroll-smooth custom-scrollbar px-2"
+                  style={{ 
+                    WebkitOverflowScrolling: 'touch'
+                  }}
                >
                   {[
                      { label: "Overview", id: "overview", icon: Info },
+                     { label: "GATE Eligibility", id: "eligibility", icon: UserCheck },
                      { label: "Advantages", id: "advantages", icon: ShieldCheck },
                      { label: "Updates", id: "updates", icon: Sparkles },
                      { label: "Dates", id: "important-dates", icon: Calendar },
@@ -1135,14 +1153,14 @@ const GateExamPage: React.FC = () => {
                         <button
                            key={item.id}
                            onClick={() => scrollToSection(item.id)}
-                           className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all duration-300 active:scale-95 border ${
+                           className={`flex items-center gap-2 px-5 py-2 rounded-xl text-[11px] font-bold whitespace-nowrap transition-all duration-300 active:scale-95 border relative group ${
                               isActive 
-                                 ? 'bg-gameTeal text-white shadow-lg shadow-gameTeal/30 border-white/10' 
-                                 : 'text-slate-300 hover:text-white hover:bg-white/5 border-transparent'
+                                 ? 'bg-gameTeal text-white shadow-md shadow-gameTeal/20 border-white/10' 
+                                 : 'text-slate-400 hover:text-white hover:bg-white/5 border-transparent'
                            }`}
                         >
-                           <Icon size={14} className={isActive ? 'text-gameGold font-black' : 'text-slate-400'} />
-                           <span>{item.label}</span>
+                           <Icon size={14} className={`transition-colors duration-300 ${isActive ? 'text-gameGold' : 'text-slate-500 group-hover:text-gameTeal'}`} />
+                           <span className="tracking-wide">{item.label}</span>
                         </button>
                      );
                   })}
@@ -1228,69 +1246,127 @@ const GateExamPage: React.FC = () => {
         />
       </section>
 
-      {/* HALL OF FAME / VIDEO TESTIMONIALS SECTION - UPDATED SPACING */}
-      <section id="gate-hall-of-fame" className="py-12 bg-gameBlack text-white relative scroll-mt-32 overflow-hidden border-t border-white/5">
-         <div className="absolute inset-0 bg-[radial-gradient(#ffffff10_1px,transparent_1px)] bg-[size:20px_20px] opacity-10"></div>
-         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gameTeal/10 rounded-full blur-[100px] pointer-events-none"></div>
+      <TestimonialsText />
 
-         <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10">
-            {/* Header with improved spacing */}
-            <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-8">
-               <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-                  <div className="flex items-center gap-3 mb-4">
-                     <Crown size={18} className="text-gameGold fill-gameGold" />
-                     <span className="text-[10px] font-black tracking-[0.4em] uppercase text-gameGold">Hall of Fame</span>
-                  </div>
-                  <h2 className="text-4xl md:text-6xl font-black tracking-tight leading-none">
-                     Spotlight on our <span className="text-gameTeal">Results</span>
-                  </h2>
-               </motion.div>
-               <motion.button 
-                  initial={{ opacity: 0, x: 20 }} 
-                  whileInView={{ opacity: 1, x: 0 }} 
-                  viewport={{ once: true }}
-                  className="bg-gameGold text-black px-10 py-3.5 rounded-full font-black text-xs uppercase tracking-widest flex items-center gap-3 shadow-xl shadow-gameGold/10 hover:bg-white transition-all group shrink-0"
-               >
-                  View All Rankers <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-               </motion.button>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-               {rankers.map((ranker, i) => (
-                  <motion.div 
-                     key={i}
-                     initial={{ opacity: 0, y: 20 }}
-                     whileInView={{ opacity: 1, y: 0 }}
-                     viewport={{ once: true }}
-                     transition={{ delay: i * 0.1 }}
-                     onClick={() => setSelectedVideo(ranker.videoId)}
-                     className="group relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-zinc-900 border border-white/5 cursor-pointer"
-                  >
-                     <img 
-                        src={ranker.image} 
-                        className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700" 
-                        alt={ranker.name} 
-                     />
-                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/30 to-transparent opacity-90 group-hover:opacity-60 transition-opacity duration-500"></div>
-                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white shadow-2xl scale-75 group-hover:scale-100 transition-transform duration-500">
-                           <Play size={28} className="fill-current ml-1" />
-                        </div>
-                     </div>
-                     <div className="absolute bottom-0 left-0 w-full p-8">
-                        <h3 className="text-xl font-black text-white mb-1 drop-shadow-md group-hover:text-gameGold transition-colors">{ranker.name}</h3>
-                        <p className="text-zinc-400 text-xs font-bold uppercase tracking-widest">{ranker.rank}</p>
-                      </div>
-                  </motion.div>
-               ))}
-            </div>
-         </div>
-      </section>
+      {/* ACHIEVERS SECTION */}
+      <div id="gate-hall-of-fame" className="scroll-mt-32">
+         <AchieversSection />
+      </div>
 
       {/* 2. CourseHelpSection (Features explaining "How do these courses help you?") */}
       <div id="gate-excellence" className="scroll-mt-32">
          <CourseHelpSection />
       </div>
+
+      {/* GATE Eligibility Section */}
+      <section id="eligibility" className="py-16 px-8 md:px-10 lg:px-12 bg-slate-50 relative scroll-mt-32 overflow-hidden">
+         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gameTeal/20 to-transparent"></div>
+         <div className="max-w-[1200px] mx-auto relative z-10">
+            <motion.div 
+               initial={{ opacity: 0, y: 20 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               className="text-center mb-12"
+            >
+               <span className="text-gameTeal font-bold tracking-widest uppercase text-xs mb-2 block">CANDIDATE ELIGIBILITY</span>
+               <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-4 leading-tight">
+                  Who can apply for <span className="text-gameGoldDark">GATE?</span>
+               </h2>
+               <p className="text-slate-600 max-w-2xl mx-auto text-lg">
+                  Before applying, candidates must ensure they meet the minimum qualification and eligibility criteria set by the organising institute.
+               </p>
+            </motion.div>
+
+            <motion.div 
+               initial={{ opacity: 0, y: 30 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               className="bg-white rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden"
+            >
+               <div className="overflow-x-auto custom-scrollbar">
+                  <table className="w-full text-left border-collapse">
+                     <thead>
+                        <tr className="bg-gameTeal text-white">
+                           <th className="py-5 px-8 font-bold uppercase tracking-wider text-xs">Criteria</th>
+                           <th className="py-5 px-8 font-bold uppercase tracking-wider text-xs">Details</th>
+                        </tr>
+                     </thead>
+                     <tbody className="divide-y divide-slate-100">
+                        <tr className="hover:bg-slate-50 transition-colors">
+                           <td className="py-6 px-8 font-bold text-slate-900 w-1/3">Nationality</td>
+                           <td className="py-6 px-8 text-slate-600 leading-relaxed">
+                              Candidates must be <strong className="text-slate-900">Indian nationals</strong>. Candidates from other countries (Nepal, Bangladesh, Sri Lanka, Singapore, Ethiopia, and United Arab Emirates) are also eligible if they meet the criteria.
+                           </td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                           <td className="py-6 px-8 font-bold text-slate-900">Age Limit</td>
+                           <td className="py-6 px-8 text-slate-600 leading-relaxed">
+                              There is <strong className="text-slate-900">no minimum or maximum age limit</strong> to appear for the GATE examination.
+                           </td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                           <td className="py-6 px-8 font-bold text-slate-900">Academic Qualification</td>
+                           <td className="py-6 px-8 text-slate-600 leading-relaxed">
+                              <ul className="space-y-3">
+                                 <li className="flex items-start gap-2">
+                                    <CheckCircle2 size={16} className="text-gameTeal mt-1 shrink-0" />
+                                    <span>Candidates who are in the <strong className="text-slate-900">3rd year or higher</strong> of any undergraduate degree program.</span>
+                                 </li>
+                                 <li className="flex items-start gap-2">
+                                    <CheckCircle2 size={16} className="text-gameTeal mt-1 shrink-0" />
+                                    <span>Candidates who have <strong className="text-slate-900">already completed</strong> their government-approved degree program in Engineering / Technology / Architecture / Science / Commerce / Arts.</span>
+                                 </li>
+                              </ul>
+                           </td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                           <td className="py-6 px-8 font-bold text-slate-900">Attempts</td>
+                           <td className="py-6 px-8 text-slate-600 leading-relaxed">
+                              Candidates can appear for the GATE examination <strong className="text-slate-900">any number of times</strong>. There is no restriction on the number of attempts.
+                           </td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                           <td className="py-6 px-8 font-bold text-slate-900">Documents Required</td>
+                           <td className="py-6 px-8 text-slate-600 leading-relaxed">
+                              Scanned copy of Degree Certificate or Provisional Certificate, Mark sheets, Category Certificate (if applicable), and valid Photo ID.
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </motion.div>
+
+            <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+               <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center text-amber-600 shrink-0">
+                     <AlertCircle size={20} />
+                  </div>
+                  <div>
+                     <h4 className="font-bold text-slate-900 mb-1">Important Note</h4>
+                     <p className="text-xs text-slate-500 leading-relaxed">Eligibility depends on the specific paper you choose. Some papers may have additional requirements.</p>
+                  </div>
+               </div>
+               <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
+                     <GraduationCap size={20} />
+                  </div>
+                  <div>
+                     <h4 className="font-bold text-slate-900 mb-1">Final Year Students</h4>
+                     <p className="text-xs text-slate-500 leading-relaxed">Candidates in their final year can apply and must upload their marksheets for the penultimate year.</p>
+                  </div>
+               </div>
+               <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-green-600 shrink-0">
+                     <ClipboardCheck size={20} />
+                  </div>
+                  <div>
+                     <h4 className="font-bold text-slate-900 mb-1">Certification</h4>
+                     <p className="text-xs text-slate-500 leading-relaxed">Professional certificates (e.g. AMIE) equivalent to B.E./B.Tech are also valid for eligibility.</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
 
       {/* 3. Advantages REDESIGNED - THE ENGINEERING ROADMAP - LIGHT GRAY THEME */}
       <section id="advantages" className="py-24 bg-slate-50 relative overflow-hidden scroll-mt-32 border-t border-slate-200">
@@ -1416,9 +1492,12 @@ const GateExamPage: React.FC = () => {
                      <h4 className="text-3xl md:text-5xl font-black text-white mb-4 tracking-tighter">Your technical future is waiting.</h4>
                      <p className="text-teal-50/70 font-bold text-lg">Initialize your preparation with India&apos;s most structured roadmap.</p>
                   </div>
-                  <button className="relative z-10 bg-[#f2c537] text-black px-12 py-5 rounded-[2rem] font-black uppercase tracking-widest text-sm shadow-2xl hover:bg-white hover:-translate-y-1 transition-all shrink-0">
-                     Initialize Prep Phase
-                  </button>
+                  <Link 
+                     href="/resources"
+                     className="relative z-10 bg-[#f2c537] text-black px-12 py-5 rounded-[2rem] font-black uppercase tracking-widest text-sm shadow-2xl hover:bg-white hover:-translate-y-1 transition-all shrink-0 flex items-center justify-center"
+                  >
+                     Initialize Pre Phase
+                  </Link>
                </div>
             </motion.div>
          </div>

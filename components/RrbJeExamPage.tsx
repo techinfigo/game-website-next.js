@@ -637,7 +637,6 @@ const RrbJeExamPage: React.FC = () => {
                            </div>
                            <div>
                               <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Duration</p>
-                              <p className="text-lg font-bold">90 Minutes <span className="text-xs text-gameGold opacity-80">(120 Min for Scribe)</span></p>
                            </div>
                         </div>
                         <div className="bg-slate-900 text-white p-6 rounded-2xl flex items-center gap-4 border border-white/5 shadow-xl">
@@ -705,7 +704,7 @@ const RrbJeExamPage: React.FC = () => {
                      </h3>
                      <div className="bg-gameTeal/5 p-8 rounded-[2rem] border-l-4 border-gameTeal mb-8">
                         <p className="text-slate-700 text-lg leading-relaxed font-bold">
-                           Shortlisting of Candidates for the Second Stage CBT exam shall be based on the normalised marks obtained by them in the First Stage CBT Exam. The <span className="text-gameTeal underline decoration-2 underline-offset-4">total number of candidates to be shortlisted for the 2nd Stage shall be 15 times</span> the community-wise total vacancy of Posts notified against the RRB as per their merit in the 1st Stage CBT.
+                           Shortlisting of Candidates for the Second Stage CBT exam shall be based on the normalised marks obtained by them in the First Stage CBT Exam. The <span className="text-gameTeal underline decoration-2 underline-offset-4">total number of candidates to be shortlisted for the second Stage shall be 15 times</span> the community-wise total vacancy of Posts notified against the RRB as per their merit in the 1st Stage CBT.
                         </p>
                      </div>
                      <div className="grid md:grid-cols-2 gap-4">
@@ -715,7 +714,6 @@ const RrbJeExamPage: React.FC = () => {
                            </div>
                            <div>
                               <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Duration</p>
-                              <p className="text-lg font-bold">120 Minutes <span className="text-xs text-gameGold opacity-80">(160 Min for Scribe)</span></p>
                            </div>
                         </div>
                         <div className="bg-slate-900 text-white p-6 rounded-2xl flex items-center gap-4 border border-white/5 shadow-xl">
@@ -776,7 +774,7 @@ const RrbJeExamPage: React.FC = () => {
                            </li>
                            <li className="flex items-start gap-2 text-xs font-bold text-slate-600 leading-relaxed">
                               <div className="w-1.5 h-1.5 rounded-full bg-gameTeal mt-2 shrink-0"></div>
-                              <span>There shall be negative marking in CBT (Computer-Based Test/Examination), and marks shall be deducted for each wrong answer, @ 1/3 of the marks allotted for each question.</span>
+                              <span>There shall be negative marking in CBT (Computer-Based Test/Examination) and  (1/3)   marks shall be deducted for each wrong answer.</span>
                            </li>
                         </ul>
                      </div>
@@ -1063,7 +1061,7 @@ const RrbJeExamPage: React.FC = () => {
                               <span className="text-gameTeal">7.</span> Ex-servicemen:
                            </h4>
                            <p className="text-xs text-slate-500 font-bold leading-relaxed">
-                              Medical rules are different – check Para 534 of IRMM, Vol. I online <a href="https://www.indianrailways.gov.in" target="_blank" rel="noopener noreferrer" className="text-gameTeal underline font-black">(link 1)</a>.
+                              Medical rules are different – check Para 534 of IRMM, Vol. I online <a href="https://www.indianrailways.gov.in" target="_blank" rel="noopener noreferrer" className="text-gameTeal underline font-black">(Click Here)</a>.
                            </p>
                         </div>
                         <div className="bg-gameTeal/10 p-6 rounded-2xl border border-gameTeal/20">
@@ -1096,7 +1094,7 @@ const RrbJeExamPage: React.FC = () => {
                                  <Globe size={18} />
                               </div>
                               <p className="flex-1 text-sm font-bold text-slate-600">
-                                 i) For Tentative Vacancies, visit the official website of the Railway Recruitment Board <a href="https://www.rrbcdg.gov.in/" target="_blank" rel="noopener noreferrer" className="text-gameTeal underline font-black hover:text-gameTealDark ml-1">(link 1)</a>
+                                 i) For Tentative Vacancies, visit the official website of the Railway Recruitment Board <a href="https://www.rrbcdg.gov.in/" target="_blank" rel="noopener noreferrer" className="text-gameTeal underline font-black hover:text-gameTealDark ml-1">(Click Here)</a>
                               </p>
                            </div>
                            <div className="flex flex-col sm:flex-row sm:items-center gap-4 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm group">
@@ -1104,13 +1102,13 @@ const RrbJeExamPage: React.FC = () => {
                                  <FileText size={18} />
                               </div>
                               <p className="flex-1 text-sm font-bold text-slate-600">
-                                 ii) Access RRB JE MECHANICAL & CIVIL Syllabus <button className="text-gameTeal underline font-black hover:text-black ml-1">(link 2)</button>
+                                 ii) Access RRB JE MECHANICAL & CIVIL Syllabus <button className="text-gameTeal underline font-black hover:text-black ml-1">(Click Here)</button>
                               </p>
                            </div>
                         </div>
                         <div className="mt-8 grid sm:grid-cols-2 gap-4 text-[11px] font-bold text-slate-400 uppercase tracking-widest">
                            <p>Link 1: <a href="https://www.rrbcdg.gov.in/" target="_blank" rel="noopener noreferrer" className="text-gameTeal hover:underline">https://www.rrbcdg.gov.in/</a></p>
-                           <p>Link 2: <span className="text-gameTeal">RRB-JE - ME & CE Syllabus</span></p>
+                           <p>Link 2: <a href="https://drive.google.com/drive/folders/1XdotguRhuEfFleV8rOCALA7aV7m3xyoa?usp=sharing" target="_blank" rel="noopener noreferrer" className="text-gameTeal hover:underline">RRB-JE - ME & CE Syllabus</a></p>
                         </div>
                      </div>
                   </div>

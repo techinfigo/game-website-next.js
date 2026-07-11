@@ -81,7 +81,7 @@ const EseExamPage: React.FC = () => {
     },
     {
       feature: "Who Should Choose",
-      gate: "Aspirants aiming for higher studies, research, or PSU jobs.",
+      gate: "Aspirants aiming for higher studies, research or PSU jobs.",
       ese: "Candidates focused on securing prestigious central government engineering roles."
     },
     {
@@ -109,47 +109,47 @@ const EseExamPage: React.FC = () => {
     { 
       label: "Nationality", 
       details: [
-        "• Indian Citizens are eligible.",
-        "• Other Candidates: Subjects of Nepal, Bhutan, Tibetan refugees, or a Person of Indian Origin (PIO) from specified countries."
+        "Indian Citizens are eligible.",
+        "Other Candidates: Subjects of Nepal, Bhutan, Tibetan refugees, or a Person of Indian Origin (PIO) from specified countries."
       ] 
     },
     { 
       label: "Educational Qualifications", 
       details: [
-        "• Bachelor's degree in Engineering (from a recognized university).",
-        "• Final-year students can also apply, but must complete their degree before the Mains exam."
+        "Bachelor's degree in Engineering (from a recognized university).",
+        "Final-year students can also apply, but must complete their degree before the Mains exam."
       ] 
     },
     { 
       label: "Age Limit", 
       details: [
-        "• Minimum: 21 years",
-        "• Maximum: 30 years",
-        "• Age Relaxation: OBC - 3 years, SC/ST - 5 years, PwD - 10 years, Ex-servicemen - 5 years."
+        "Minimum: 21 years",
+        "Maximum: 30 years",
+        "Age Relaxation: OBC - 3 years, SC/ST - 5 years, PwD - 10 years, Ex-servicemen - 5 years."
       ] 
     },
     { 
       label: "Number of Attempts", 
       details: [
-        "• General: Unlimited attempts from 21 years to 30 years.",
-        "• OBC: Unlimited attempts until the age limit is reached.",
-        "• SC/ST: Unlimited attempts until the age limit is reached.",
-        "• PwD: Same as SC/ST."
+        "General: Unlimited attempts from 21 years to 30 years.",
+        "OBC: Unlimited attempts until the age limit is reached.",
+        "SC/ST: Unlimited attempts until the age limit is reached.",
+        "PwD: Same as SC/ST."
       ] 
     },
     { 
       label: "Physical Standards", 
       details: [
-        "• Must meet the physical/medical standards prescribed by UPSC, especially for positions in Railways/Defense Services."
+        "Must meet the physical/medical standards prescribed by UPSC, especially for positions in Railways/Defense Services."
       ] 
     },
     { 
       label: "Engineering Disciplines", 
       details: [
-        "• Mechanical Engineering (ME)",
-        "• Civil Engineering (CE)",
-        "• Electrical Engineering (EE)",
-        "• Electronics & Telecommunication Engineering (ECE)"
+        "Mechanical Engineering (ME)",
+        "Civil Engineering (CE)",
+        "Electrical Engineering (EE)",
+        "Electronics & Telecommunication Engineering (ECE)"
       ] 
     }
   ];
@@ -725,7 +725,7 @@ const EseExamPage: React.FC = () => {
                            <GraduationCap size={20} className="text-gameTeal" />
                         </div>
                         <p className="text-white/70 font-medium leading-relaxed group-hover:text-white transition-colors">
-                           <strong className="text-white">GATE</strong> is ideal for those interested in postgraduate studies, research, or PSU jobs, offering flexibility across a wide range of disciplines.
+                           <strong className="text-white">GATE</strong> is ideal for those interested in postgraduate studies, research or PSU jobs, offering flexibility across a wide range of disciplines.
                         </p>
                      </div>
                      <div className="flex gap-4 group">
@@ -1228,10 +1228,6 @@ const EseExamPage: React.FC = () => {
                      >
                         Official Notification <ExternalLinkIcon size={14} className="group-hover:translate-x-1 transition-transform" />
                      </a>
-                     <div className="bg-white/5 border border-white/10 p-4 rounded-xl">
-                        <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">Source URL</span>
-                        <p className="text-[9px] text-slate-400 break-all font-mono leading-tight">https://upsc.gov.in/examinations/Engineering%20Services%20%28Preliminary%29%20Examination%2C%202025</p>
-                     </div>
                   </div>
                </motion.div>
             </div>
