@@ -6,7 +6,7 @@
  * 
  * 🟢 TO MAKE ALL PAGES LIVE AGAIN, JUST CHANGE 'true' TO 'false' BELOW:
  */
-export const EXAM_PAGES_DISABLED = true;
+export const EXAM_PAGES_DISABLED = false;
 
 // List of routes/paths that correspond to the examination pages
 export const DISABLED_EXAMPAGES_IDS = [
