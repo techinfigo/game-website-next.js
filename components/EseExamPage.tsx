@@ -1228,10 +1228,6 @@ const EseExamPage: React.FC = () => {
                      >
                         Official Notification <ExternalLinkIcon size={14} className="group-hover:translate-x-1 transition-transform" />
                      </a>
-                     <div className="bg-white/5 border border-white/10 p-4 rounded-xl">
-                        <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">Source URL</span>
-                        <p className="text-[9px] text-slate-400 break-all font-mono leading-tight">https://upsc.gov.in/examinations/Engineering%20Services%20%28Preliminary%29%20Examination%2C%202025</p>
-                     </div>
                   </div>
                </motion.div>
             </div>
