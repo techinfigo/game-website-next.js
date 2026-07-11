@@ -81,7 +81,7 @@ const EseExamPage: React.FC = () => {
     },
     {
       feature: "Who Should Choose",
-      gate: "Aspirants aiming for higher studies, research, or PSU jobs.",
+      gate: "Aspirants aiming for higher studies, research or PSU jobs.",
       ese: "Candidates focused on securing prestigious central government engineering roles."
     },
     {
