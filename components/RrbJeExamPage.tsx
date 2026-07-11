@@ -715,7 +715,6 @@ const RrbJeExamPage: React.FC = () => {
                            </div>
                            <div>
                               <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Duration</p>
-                              <p className="text-lg font-bold">120 Minutes <span className="text-xs text-gameGold opacity-80">(160 Min for Scribe)</span></p>
                            </div>
                         </div>
                         <div className="bg-slate-900 text-white p-6 rounded-2xl flex items-center gap-4 border border-white/5 shadow-xl">
