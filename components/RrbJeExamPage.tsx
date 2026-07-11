@@ -1061,7 +1061,7 @@ const RrbJeExamPage: React.FC = () => {
                               <span className="text-gameTeal">7.</span> Ex-servicemen:
                            </h4>
                            <p className="text-xs text-slate-500 font-bold leading-relaxed">
-                              Medical rules are different – check Para 534 of IRMM, Vol. I online <a href="https://www.indianrailways.gov.in" target="_blank" rel="noopener noreferrer" className="text-gameTeal underline font-black">(link 1)</a>.
+                              Medical rules are different – check Para 534 of IRMM, Vol. I online <a href="https://www.indianrailways.gov.in" target="_blank" rel="noopener noreferrer" className="text-gameTeal underline font-black">(Click Here)</a>.
                            </p>
                         </div>
                         <div className="bg-gameTeal/10 p-6 rounded-2xl border border-gameTeal/20">
@@ -1094,7 +1094,7 @@ const RrbJeExamPage: React.FC = () => {
                                  <Globe size={18} />
                               </div>
                               <p className="flex-1 text-sm font-bold text-slate-600">
-                                 i) For Tentative Vacancies, visit the official website of the Railway Recruitment Board <a href="https://www.rrbcdg.gov.in/" target="_blank" rel="noopener noreferrer" className="text-gameTeal underline font-black hover:text-gameTealDark ml-1">(link 1)</a>
+                                 i) For Tentative Vacancies, visit the official website of the Railway Recruitment Board <a href="https://www.rrbcdg.gov.in/" target="_blank" rel="noopener noreferrer" className="text-gameTeal underline font-black hover:text-gameTealDark ml-1">(Click Here)</a>
                               </p>
                            </div>
                            <div className="flex flex-col sm:flex-row sm:items-center gap-4 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm group">
@@ -1102,7 +1102,7 @@ const RrbJeExamPage: React.FC = () => {
                                  <FileText size={18} />
                               </div>
                               <p className="flex-1 text-sm font-bold text-slate-600">
-                                 ii) Access RRB JE MECHANICAL & CIVIL Syllabus <button className="text-gameTeal underline font-black hover:text-black ml-1">(link 2)</button>
+                                 ii) Access RRB JE MECHANICAL & CIVIL Syllabus <button className="text-gameTeal underline font-black hover:text-black ml-1">(Click Here)</button>
                               </p>
                            </div>
                         </div>
