@@ -112,7 +112,7 @@ const WinnerChoiceSection: React.FC = () => {
               <div className="bg-white/10 backdrop-blur-xl border border-white/20 p-5 rounded-3xl mb-5 shadow-2xl relative overflow-hidden group">
                  <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
                  <p className="text-white text-base font-bold leading-snug relative z-10">
-                    1 online institute for engineering preparation in India for GATE / ESE / PSUs / SSC-JE / RRB-JE / State AE-JE Exams.
+                    Online institute for engineering preparation in India for GATE / ESE / PSUs / SSC-JE / RRB-JE / State AE-JE Exams.
                  </p>
               </div>
 
