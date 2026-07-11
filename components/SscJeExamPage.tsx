@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import JobUpdatesSection from './JobUpdatesSection';
 import CourseHero from './CourseHero';
+import CourseGrid from './CourseGrid';
 
 interface SscJeExamPageProps {
   onNavigate?: (page: string) => void;
@@ -26,6 +27,8 @@ interface SscJeExamPageProps {
 
 const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+  const [selectedExam, setSelectedExam] = useState('SSC JE');
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -92,39 +95,6 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       icon: Target,
       color: "text-gameGoldDark",
       bg: "bg-gameGold/5"
-    }
-  ];
-
-  const sscJeCourses = [
-    {
-      title: "Excellence Course - Civil Engineering",
-      branch: "Civil",
-      price: "₹14,999",
-      originalPrice: "₹24,999",
-      discount: "40% OFF",
-      features: ["Full Syllabus Coverage", "Live & Recorded Classes", "PYQ Analysis", "Test Series Included"],
-      image: "https://picsum.photos/seed/civil-eng/800/600",
-      tag: "Best Seller"
-    },
-    {
-      title: "Excellence Course - Mechanical Engineering",
-      branch: "Mechanical",
-      price: "₹14,999",
-      originalPrice: "₹24,999",
-      discount: "40% OFF",
-      features: ["Full Syllabus Coverage", "Live & Recorded Classes", "PYQ Analysis", "Test Series Included"],
-      image: "https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?fit=crop&w=800&q=80",
-      tag: "Popular"
-    },
-    {
-      title: "Excellence Course - Electrical Engineering",
-      branch: "Electrical",
-      price: "₹14,999",
-      originalPrice: "₹24,999",
-      discount: "40% OFF",
-      features: ["Full Syllabus Coverage", "Live & Recorded Classes", "PYQ Analysis", "Test Series Included"],
-      image: "https://images.unsplash.com/photo-1498084393753-b411b2d26b34?fit=crop&w=800&q=80",
-      tag: "Trending"
     }
   ];
 
@@ -666,11 +636,11 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-gameTeal selection:text-white -mt-20">
       
-      {/* 1. Hero Section */}
-      <section className="relative pt-16 pb-20 overflow-hidden bg-black text-white">
+      {/* 1. Hero Section - text/images below are editable by the content owner */}
+      <section className="relative pt-20 pb-24 overflow-hidden bg-[#0f1115] text-white">
          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gameTeal/10 rounded-full blur-[120px] pointer-events-none"></div>
          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gameGold/5 rounded-full blur-[100px] pointer-events-none"></div>
-         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:24px_24px] opacity-10"></div>
 
          <div className="max-w-[1200px] mx-auto px-8 md:px-10 lg:px-12 relative z-10 text-center">
             <motion.div
@@ -680,21 +650,21 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
             >
                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-md mb-8">
                   <Sparkles size={14} className="text-gameGold" />
-                  <span className="text-xs font-bold uppercase tracking-widest text-gameGold">The Winners' Choice</span>
+                  <span className="text-xs font-bold uppercase tracking-widest text-gameGold">SSC Junior Engineer</span>
                </div>
 
                <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-8 leading-tight tracking-tight">
                   Your Shortcut to a <br/>
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-gameTeal via-teal-400 to-gameGold">
-                     Stellar JE Career
+                     Stellar SSC-JE Career
                   </span>
                </h1>
 
-               <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed font-medium">
+               <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto mb-10 leading-relaxed font-medium">
                   Dominate SSC-JE with Gaurav Babu Sir. Better salaries, premium lifestyles, and prestigious government roles await.
                </p>
 
-               <div className="flex flex-col sm:flex-row gap-4 justify-center">
+               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
                   <button className="bg-gameTeal text-white px-10 py-4 rounded-xl font-bold text-lg shadow-xl shadow-gameTeal/20 hover:bg-gameTealDark hover:-translate-y-1 transition-all flex items-center justify-center gap-2">
                      Start Preparation <ArrowRight size={20} />
                   </button>
@@ -702,22 +672,36 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                      View Syllabus
                   </button>
                </div>
+
+               {/* Quick facts strip */}
+               <div className="flex flex-wrap items-center justify-center gap-3">
+                  {[
+                     { label: "Group B (Non-Gazetted)", icon: Shield },
+                     { label: "Level-6 Pay Matrix", icon: Wallet },
+                     { label: "Pan-India Postings", icon: Building2 }
+                  ].map((fact, i) => (
+                     <div key={i} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/80 text-xs font-bold uppercase tracking-wider">
+                        <fact.icon size={14} className="text-gameTeal" />
+                        {fact.label}
+                     </div>
+                  ))}
+               </div>
             </motion.div>
          </div>
-         
-         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-slate-500">
+
+         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-white/40">
             <ChevronDown size={24} />
          </div>
       </section>
 
       {/* FULL WIDTH STICKY SUB-NAVIGATION */}
-      <div className="sticky top-[58px] z-40 w-full bg-[#075d63] shadow-md border-b border-[#054a4f]">
+      <div className="sticky top-20 z-40 w-full bg-[#075d63] shadow-md border-b border-[#054a4f]">
          <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12">
             <div className="flex items-center justify-between h-14">
                <div className="flex items-center gap-1 md:gap-6 overflow-x-auto no-scrollbar mask-gradient-right w-full md:w-auto">
                   {[
                      { label: "Overview", id: "overview" },
-                     { label: "Post Details", id: "detailed-posts" },
+                     { label: "Eligibility", id: "detailed-posts" },
                      { label: "Age Relaxation", id: "age-relaxation" },
                      { label: "Exam Pattern", id: "detailed-pattern" },
                      { label: "SSC JE SYLLABUS", id: "ssc-syllabus" },
@@ -865,160 +849,70 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
          </div>
       </section>
   
-      {/* COURSE GRID SECTION */}
-      <section id="course-grid" className="py-16 bg-white border-t border-slate-200 scroll-mt-32 relative overflow-hidden">
-         <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-gameTeal/5 rounded-full blur-[120px] pointer-events-none"></div>
-         <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10">
-            <div className="text-center mb-10">
-               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-                  <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">
-                     Explore Our <span className="text-gameTeal">SSC-JE Online Courses</span>
-                  </h2>
-                  <p className="text-slate-600 max-w-3xl mx-auto text-xl font-bold">
-                     Select your engineering branch to explore courses tailored for your success.
-                  </p>
-               </motion.div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-               {sscJeCourses.map((course, i) => (
-                  <motion.div
-                     key={i}
-                     initial={{ opacity: 0, y: 30 }}
-                     whileInView={{ opacity: 1, y: 0 }}
-                     viewport={{ once: true }}
-                     transition={{ delay: i * 0.1 }}
-                     className="bg-white rounded-[2.5rem] border border-slate-200 shadow-xl overflow-hidden group hover:border-gameTeal/30 transition-all duration-500"
-                  >
-                     <div className="relative h-64 overflow-hidden rounded-t-[2.5rem]">
-                        <Image 
-                           src={course.image} 
-                           alt={course.title} 
-                           fill
-                           className="object-cover transition-transform duration-700 group-hover:scale-110"
-                           referrerPolicy="no-referrer"
-                        />
-                        <div className="absolute top-6 right-6 z-10">
-                           <span className="bg-gameGold text-black text-[10px] font-black px-4 py-2 rounded-full shadow-lg uppercase tracking-widest">
-                              {course.tag}
-                           </span>
-                        </div>
-                        <div className="absolute bottom-6 left-6">
-                           <span className="bg-white/90 backdrop-blur-md text-gameTeal text-[10px] font-black px-4 py-2 rounded-full shadow-lg uppercase tracking-widest">
-                              {course.branch}
-                           </span>
-                        </div>
-                     </div>
-
-                     <div className="p-8">
-                        <h3 className="text-xl font-black text-slate-900 mb-4 group-hover:text-gameTeal transition-colors">
-                           {course.title}
-                        </h3>
-                        
-                        <div className="space-y-3 mb-6">
-                           {course.features.map((feature, idx) => (
-                              <div key={idx} className="flex items-center gap-3 text-slate-600 font-bold text-sm">
-                                 <CheckCircle2 size={18} className="text-gameTeal shrink-0" />
-                                 {feature}
-                              </div>
-                           ))}
-                        </div>
-
-                        <div className="flex items-center justify-between pt-6 border-t border-slate-100">
-                           <div>
-                              <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Course Fee</p>
-                              <div className="flex items-baseline gap-2">
-                                 <span className="text-3xl font-black text-slate-900">{course.price}</span>
-                                 <span className="text-sm font-bold text-slate-400 line-through">{course.originalPrice}</span>
-                              </div>
-                           </div>
-                           <div className="bg-red-50 text-red-600 text-[10px] font-black px-3 py-1 rounded-lg">
-                              {course.discount}
-                           </div>
-                        </div>
-
-                        <button className="w-full mt-6 bg-slate-900 text-white py-4 rounded-2xl font-black uppercase tracking-widest hover:bg-gameTeal transition-all shadow-xl flex items-center justify-center gap-2 group">
-                           Enroll Now <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                        </button>
-                     </div>
-                  </motion.div>
-               ))}
-            </div>
-         </div>
+      {/* COURSE GRID SECTION - shared CourseGrid component, defaulted to SSC JE category */}
+      <section className="bg-slate-50">
+        <CourseGrid
+          selectedExam={selectedExam}
+          setSelectedExam={setSelectedExam}
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+        />
       </section>
 
-      {/* RESULTS SLIDER SECTION */}
-      <section id="ssc-results" className="py-16 bg-slate-900 relative overflow-hidden scroll-mt-32">
-         <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:32px_32px] opacity-20"></div>
+      {/* SSC-JE Success Stories - testimonials content below is editable */}
+      <section id="ssc-results" className="py-24 bg-slate-50 border-t border-slate-200 relative overflow-hidden scroll-mt-32">
          <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10">
-            <div className="text-center mb-10">
+            <div className="text-center mb-16">
                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gameTeal/20 border border-gameTeal/30 mb-6">
-                     <Trophy size={14} className="text-gameGold" />
-                     <span className="text-xs font-black uppercase tracking-widest text-gameGold">Success Stories</span>
+                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gameTeal/10 border border-gameTeal/20 mb-6">
+                     <Trophy size={14} className="text-gameTeal" />
+                     <span className="text-xs font-black uppercase tracking-widest text-gameTeal">Success Stories</span>
                   </div>
-                  <h2 className="text-3xl md:text-5xl font-black text-white mb-4 tracking-tight">
+                  <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">
                      Our <span className="text-gameTeal">SSC-JE Achievers</span>
                   </h2>
-                  <p className="text-slate-400 max-w-3xl mx-auto text-xl font-medium">
+                  <p className="text-slate-500 max-w-3xl mx-auto text-xl font-medium">
                      Join the ranks of thousands of students who have secured their dreams with GAME.
                   </p>
                </motion.div>
             </div>
 
-            <div className="relative">
-               <div className="flex overflow-x-auto no-scrollbar gap-6 pb-12 mask-gradient-right">
-                  {sscJeResults.map((result, i) => (
-                     <motion.div
-                        key={i}
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: i * 0.1 }}
-                        className="min-w-[320px] md:min-w-[400px] bg-slate-800/50 backdrop-blur-xl rounded-[2.5rem] p-8 border border-white/10 hover:border-gameTeal/50 transition-all duration-500 group"
-                     >
-                        <div className="flex items-center gap-6 mb-6">
-                           <div className="relative w-20 h-20">
-                              <div className="absolute inset-0 bg-gameTeal rounded-full blur-xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
-                              <Image 
-                                 src={result.image} 
-                                 alt={result.name} 
-                                 fill
-                                 className="rounded-full object-cover border-2 border-gameTeal relative z-10"
-                                 referrerPolicy="no-referrer"
-                              />
-                              <div className="absolute -bottom-2 -right-2 bg-gameGold text-black text-[10px] font-black px-2 py-1 rounded-lg shadow-lg z-20">
-                                 {result.rank}
-                              </div>
-                           </div>
-                           <div>
-                              <h3 className="text-xl font-black text-white group-hover:text-gameTeal transition-colors">{result.name}</h3>
-                              <p className="text-gameTeal text-sm font-bold uppercase tracking-widest">{result.branch} Engineering</p>
-                              <p className="text-slate-500 text-xs font-bold">{result.exam}</p>
-                           </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+               {sscJeResults.map((result, i) => (
+                  <motion.div
+                     key={i}
+                     initial={{ opacity: 0, y: 20 }}
+                     whileInView={{ opacity: 1, y: 0 }}
+                     viewport={{ once: true }}
+                     transition={{ delay: i * 0.1 }}
+                     className="bg-white rounded-[2rem] p-8 border border-slate-200 shadow-sm hover:shadow-xl hover:border-gameTeal/30 transition-all duration-300 flex flex-col"
+                  >
+                     <Quote size={28} className="text-gameTeal/20 mb-4" />
+                     <p className="text-slate-600 text-sm font-medium leading-relaxed flex-grow mb-6">
+                        "{result.quote}"
+                     </p>
+                     <div className="flex items-center gap-1 mb-4">
+                        {[...Array(5)].map((_, idx) => (
+                           <Star key={idx} size={12} className="text-gameGold fill-gameGold" />
+                        ))}
+                     </div>
+                     <div className="flex items-center gap-4 pt-6 border-t border-slate-100">
+                        <div className="relative w-12 h-12 shrink-0">
+                           <Image
+                              src={result.image}
+                              alt={result.name}
+                              fill
+                              className="rounded-full object-cover border-2 border-gameTeal"
+                              referrerPolicy="no-referrer"
+                           />
                         </div>
-                        
-                        <div className="relative">
-                           <Quote size={40} className="absolute -top-4 -left-4 text-gameTeal/10" />
-                           <p className="text-slate-300 text-lg italic leading-relaxed relative z-10">
-                              "{result.quote}"
-                           </p>
+                        <div>
+                           <p className="font-black text-slate-900 text-sm">{result.name}</p>
+                           <p className="text-gameTeal text-xs font-bold uppercase tracking-wide">{result.rank} &middot; {result.branch}</p>
                         </div>
-
-                        <div className="mt-6 flex items-center gap-1">
-                           {[...Array(5)].map((_, idx) => (
-                              <Star key={idx} size={14} className="text-gameGold fill-gameGold" />
-                           ))}
-                        </div>
-                     </motion.div>
-                  ))}
-               </div>
-               
-               <div className="flex justify-center gap-4 mt-4">
-                  <div className="w-12 h-1 bg-gameTeal rounded-full"></div>
-                  <div className="w-4 h-1 bg-slate-700 rounded-full"></div>
-                  <div className="w-4 h-1 bg-slate-700 rounded-full"></div>
-               </div>
+                     </div>
+                  </motion.div>
+               ))}
             </div>
          </div>
       </section>
@@ -1109,8 +1003,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
             <div className="mb-16">
                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
                   <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">
-                     Details of Posts, Essential <br className="hidden md:block" />
-                     <span className="text-gameTeal">Educational Qualifications</span>
+                     SSC-JE <span className="text-gameTeal">Eligibility Criteria</span>
                   </h2>
                   <p className="text-slate-600 text-lg md:text-xl font-medium max-w-4xl leading-relaxed">
                      The recruitment is conducted by the Staff Selection Commission (SSC) for the post of Junior Engineers (JE) Group ‘B’ Non-Gazetted posts. The various eligibility parameters are discussed below:

@@ -8,7 +8,6 @@ import TestimonialsText from './TestimonialsText';
 import SpecialOffer from './SpecialOffer';
 import CourseHelpSection from './CourseHelpSection';
 import GBVideos from './GBVideos';
-import ResultsSlider from './ResultsSlider';
 import WinnerChoiceSection from './WinnerChoiceSection';
 import { 
   Trophy, Shield, Star, Briefcase, TrendingUp, 
@@ -25,7 +24,7 @@ import {
 
 const EseExamPage: React.FC = () => {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
-  const [selectedExam, setSelectedExam] = useState('ESE');
+  const [selectedExam, setSelectedExam] = useState('GATE / ESE');
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
@@ -56,8 +55,8 @@ const EseExamPage: React.FC = () => {
     },
     {
       feature: "Objective",
-      gate: "1. Admission to postgraduate programs (IITs, NITs, etc.). 2. Recruitment to Public Sector Undertakings (PSUs).",
-      ese: "Recruitment to central government engineering roles in various ministries and departments."
+      gate: ["Admission to postgraduate programs (IITs, NITs, etc.)", "Recruitment to Public Sector Undertakings (PSUs)"],
+      ese: ["Recruitment to central government engineering roles in various ministries and departments"]
     },
     {
       feature: "Exam Pattern",
@@ -228,48 +227,79 @@ const EseExamPage: React.FC = () => {
     { title: "Final Selection", desc: "Final merit list is based on combined marks from Prelims, Mains, and Personality Tests.", icon: Award, color: "text-gameGold", bg: "bg-gameGold/10" }
   ];
 
+  // Placeholder images below (/ese/reason-1.jpg ... reason-6.jpg) - owner will replace with final photography.
   const choiceAdvantages = [
     {
       title: "Prestigious Government Roles",
       desc: "Secure leadership positions in Railways, Defense, Central Engineering Services, and other top government departments.",
       icon: Building2,
       color: "text-gameTeal",
-      bg: "bg-gameTeal/5"
+      bg: "bg-gameTeal/5",
+      image: "/ese/reason-1.jpg"
     },
     {
       title: "Higher Studies",
       desc: "Avail scholarships, fellowships, and study leave opportunities for advanced technical education in India and abroad.",
       icon: GraduationCap,
       color: "text-gameTeal",
-      bg: "bg-gameTeal/5"
+      bg: "bg-gameTeal/5",
+      image: "/ese/reason-2.jpg"
     },
     {
       title: "Railway and Defense Careers",
       desc: "Work in key engineering roles in Indian Railways, Military Engineering Services, and other critical sectors.",
       icon: Shield,
       color: "text-gameTeal",
-      bg: "bg-gameTeal/5"
+      bg: "bg-gameTeal/5",
+      image: "/ese/reason-3.jpg"
     },
     {
       title: "Nation-Building Projects",
       desc: "Contribute to large-scale infrastructure and technical advancements across the country.",
       icon: Landmark,
       color: "text-gameTeal",
-      bg: "bg-gameTeal/5"
+      bg: "bg-gameTeal/5",
+      image: "/ese/reason-4.jpg"
     },
     {
       title: "Recognition and Prestige",
       desc: "Establish yourself as a top-tier engineer with job stability, high salary prospects, and clear career growth opportunities.",
       icon: Award,
       color: "text-gameGold",
-      bg: "bg-gameGold/10"
+      bg: "bg-gameGold/10",
+      image: "/ese/reason-5.jpg"
     },
     {
       title: "An Edge for Other Exams",
       desc: "ESE prep builds a strong foundation, boosting success in GATE, PSUs, SSC-JE, and state-level AE/JE examinations.",
       icon: Zap,
       color: "text-gameTeal",
-      bg: "bg-gameTeal/5"
+      bg: "bg-gameTeal/5",
+      image: "/ese/reason-6.jpg"
+    }
+  ];
+
+  // "Why Choose GAME for ESE" highlight section content - freely editable by the content owner.
+  const whyGameFeatures = [
+    {
+      title: "Mentorship That Delivers Ranks",
+      desc: "Direct guidance from Gaurav Babu Sir, backed by a 13+ year track record of producing top IES ranks.",
+      icon: Trophy
+    },
+    {
+      title: "Structured, Exam-First Curriculum",
+      desc: "Every topic is mapped to the ESE syllabus with tests and assignments that mirror the real exam pattern.",
+      icon: ClipboardCheck
+    },
+    {
+      title: "Learn On Your Schedule",
+      desc: "24/7 access to recorded lectures alongside live sessions, built for both full-timers and working professionals.",
+      icon: MonitorPlay
+    },
+    {
+      title: "Personal Doubt Support",
+      desc: "A dedicated support group keeps you unblocked, with mentors tracking your progress through every stage.",
+      icon: UserCheck
     }
   ];
 
@@ -449,7 +479,7 @@ const EseExamPage: React.FC = () => {
       </section>
 
       {/* STICKY SUB-NAVIGATION */}
-      <div className="sticky top-[58px] z-40 w-full bg-[#075d63] shadow-md border-b border-[#054a4f]">
+      <div className="sticky top-20 z-40 w-full bg-[#075d63] shadow-md border-b border-[#054a4f]">
          <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12">
             <div className="flex items-center justify-between h-14">
                <div className="flex items-center gap-1 md:gap-6 overflow-x-auto no-scrollbar mask-gradient-right w-full md:w-auto">
@@ -578,7 +608,6 @@ const EseExamPage: React.FC = () => {
 
       {/* 3. Why is ESE the Right Choice? (Section 2) */}
       <section id="advantages" className="py-24 bg-white border-t border-gameTeal/10 scroll-mt-32 relative overflow-hidden">
-         <div className="absolute inset-0 bg-[radial-gradient(#075d63_1px,transparent_1px)] [background-size:24px_24px] opacity-70"></div>
          <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10">
             <div className="text-center mb-16">
                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
@@ -599,17 +628,22 @@ const EseExamPage: React.FC = () => {
                      whileInView={{ opacity: 1, y: 0 }}
                      viewport={{ once: true }}
                      transition={{ delay: i * 0.1 }}
-                     className="bg-white rounded-[2.5rem] p-8 border border-gameTeal/10 shadow-sm hover:shadow-xl hover:bg-white hover:border-gameTeal/20 transition-all duration-300 group flex flex-col h-full"
+                     className="relative rounded-[2.5rem] p-8 border border-gameTeal/10 shadow-sm hover:shadow-xl hover:border-gameTeal/20 transition-all duration-300 group flex flex-col h-full overflow-hidden bg-cover bg-center"
+                     style={{ backgroundImage: `url(${item.image})` }}
                   >
-                     <div className={`w-14 h-14 rounded-2xl ${item.bg} flex items-center justify-center ${item.color} mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300`}>
-                        <item.icon size={28} strokeWidth={2} />
+                     {/* Dark overlay keeps text readable over the background photo */}
+                     <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/70 to-black/40 group-hover:from-black/90 group-hover:via-black/75 transition-colors duration-300"></div>
+                     <div className="relative z-10 flex flex-col h-full">
+                        <div className={`w-14 h-14 rounded-2xl ${item.bg} flex items-center justify-center ${item.color} mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300`}>
+                           <item.icon size={28} strokeWidth={2} />
+                        </div>
+                        <h3 className="text-xl font-black text-white mb-4 leading-tight group-hover:text-gameGold transition-colors">
+                           {item.title}
+                        </h3>
+                        <p className="text-white/70 text-sm font-bold leading-relaxed flex-grow">
+                           {item.desc}
+                        </p>
                      </div>
-                     <h3 className="text-xl font-black text-black mb-4 leading-tight group-hover:text-gameTeal transition-colors">
-                        {item.title}
-                     </h3>
-                     <p className="text-black/60 text-sm font-bold leading-relaxed flex-grow">
-                        {item.desc}
-                     </p>
                   </motion.div>
                ))}
             </div>
@@ -652,8 +686,45 @@ const EseExamPage: React.FC = () => {
       {/* Eye-opening Video Section */}
       <GBVideos />
 
-      {/* Results Section */}
-      <ResultsSlider />
+      {/* Why Choose GAME for ESE - content below is editable by the content owner */}
+      <section className="py-24 bg-[#0f1115] text-white relative overflow-hidden">
+         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gameTeal/10 rounded-full blur-[120px] pointer-events-none"></div>
+         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gameGold/5 rounded-full blur-[100px] pointer-events-none"></div>
+         <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10">
+            <div className="text-center mb-16">
+               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gameGold/10 border border-gameGold/20 text-gameGold text-xs font-black uppercase tracking-widest mb-6">
+                     <Sparkles size={14} /> Why GAME
+                  </div>
+                  <h2 className="text-3xl md:text-5xl font-black mb-6 tracking-tight">
+                     Why Choose <span className="text-gameGold">GAME for ESE?</span>
+                  </h2>
+                  <p className="text-white/70 text-lg md:text-xl font-medium max-w-3xl mx-auto leading-relaxed">
+                     Everything you need to crack the Engineering Services Examination, under one roof.
+                  </p>
+               </motion.div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+               {whyGameFeatures.map((item, i) => (
+                  <motion.div
+                     key={i}
+                     initial={{ opacity: 0, y: 20 }}
+                     whileInView={{ opacity: 1, y: 0 }}
+                     viewport={{ once: true }}
+                     transition={{ delay: i * 0.1 }}
+                     className="bg-white/5 backdrop-blur-md border border-white/10 rounded-[2rem] p-8 hover:bg-white/10 hover:border-gameGold/30 transition-all duration-300 group"
+                  >
+                     <div className="w-14 h-14 rounded-2xl bg-gameTeal/20 flex items-center justify-center text-gameGold mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <item.icon size={28} strokeWidth={2} />
+                     </div>
+                     <h3 className="text-lg font-black mb-3 leading-tight">{item.title}</h3>
+                     <p className="text-white/60 text-sm font-medium leading-relaxed">{item.desc}</p>
+                  </motion.div>
+               ))}
+            </div>
+         </div>
+      </section>
 
       {/* Winner's Choice Section */}
       <WinnerChoiceSection />
@@ -693,10 +764,28 @@ const EseExamPage: React.FC = () => {
                                  {row.feature}
                               </td>
                               <td className="p-6 font-medium text-black/70 border-r border-gameTeal/10 leading-relaxed text-center">
-                                 {row.gate}
+                                 {Array.isArray(row.gate) ? (
+                                    <ul className="text-left inline-block space-y-2">
+                                       {row.gate.map((point, idx) => (
+                                          <li key={idx} className="flex items-start gap-2">
+                                             <span className="w-1.5 h-1.5 rounded-full bg-black/30 mt-2 shrink-0"></span>
+                                             <span>{point}</span>
+                                          </li>
+                                       ))}
+                                    </ul>
+                                 ) : row.gate}
                               </td>
                               <td className="p-6 font-bold text-gameTeal leading-relaxed text-center">
-                                 {row.ese}
+                                 {Array.isArray(row.ese) ? (
+                                    <ul className="text-left inline-block space-y-2">
+                                       {row.ese.map((point, idx) => (
+                                          <li key={idx} className="flex items-start gap-2">
+                                             <span className="w-1.5 h-1.5 rounded-full bg-gameTeal mt-2 shrink-0"></span>
+                                             <span>{point}</span>
+                                          </li>
+                                       ))}
+                                    </ul>
+                                 ) : row.ese}
                               </td>
                            </tr>
                         ))}

@@ -19,6 +19,22 @@ const RrbJeExamPage: React.FC = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 130;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   const keyHighlights = [
     {
       label: "Job Security",
@@ -173,7 +189,8 @@ const RrbJeExamPage: React.FC = () => {
     { subject: "Physics & Chemistry", qs: 15, marks: 15 },
     { subject: "Basics of Computers and Applications", qs: 10, marks: 10 },
     { subject: "Basics of Environment and Pollution Control", qs: 10, marks: 10 },
-    { subject: "Technical Abilities", qs: 100, marks: 100 }
+    { subject: "Technical Abilities", qs: 100, marks: 100 },
+    { subject: "Advanced Trade-Specific Module", qs: 150, marks: 150 }
   ];
 
   const medicalStandards = [
@@ -313,9 +330,14 @@ const RrbJeExamPage: React.FC = () => {
                </p>
 
                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <button className="bg-gameTeal text-white px-10 py-4 rounded-xl font-bold text-lg shadow-xl shadow-gameTeal/20 hover:bg-gameTealDark hover:-translate-y-1 transition-all flex items-center justify-center gap-2 group">
+                  <a
+                     href="https://courses.gameacademy.in/wlp/excellence-ae-je-mechanical"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="bg-gameTeal text-white px-10 py-4 rounded-xl font-bold text-lg shadow-xl shadow-gameTeal/20 hover:bg-gameTealDark hover:-translate-y-1 transition-all flex items-center justify-center gap-2 group"
+                  >
                      Enroll Now <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                  </button>
+                  </a>
                   <button className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all">
                      View Free Demo
                   </button>
@@ -323,6 +345,41 @@ const RrbJeExamPage: React.FC = () => {
             </motion.div>
          </div>
       </section>
+
+      {/* STICKY SUB-NAVIGATION */}
+      <div className="sticky top-20 z-40 w-full bg-[#075d63] shadow-md border-b border-[#054a4f]">
+         <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12">
+            <div className="flex items-center justify-between h-14">
+               <div className="flex items-center gap-1 md:gap-6 overflow-x-auto no-scrollbar mask-gradient-right w-full md:w-auto">
+                  {[
+                     { label: "Why RRB JE?", id: "highlights" },
+                     { label: "RRB Zones", id: "rrb-zones" },
+                     { label: "Departments", id: "mech-departments" },
+                     { label: "Exam Pattern", id: "selection-process" },
+                     { label: "FAQs", id: "rrb-faqs" }
+                  ].map((item) => (
+                     <button
+                        key={item.id}
+                        onClick={() => scrollToSection(item.id)}
+                        className="text-white/90 text-xs md:text-sm font-bold whitespace-nowrap hover:text-[#f2c537] hover:bg-white/10 px-3 py-1.5 rounded-lg transition-all"
+                     >
+                        {item.label}
+                     </button>
+                  ))}
+               </div>
+               <div className="hidden md:flex items-center gap-4 pl-4 border-l border-white/10 shrink-0">
+                  <a
+                     href="https://courses.gameacademy.in/wlp/excellence-ae-je-mechanical"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="bg-[#f2c537] text-black px-5 py-1.5 rounded-full text-xs font-black uppercase tracking-wider hover:bg-white transition-all shadow-[0_0_10px_rgba(242,197,55,0.3)] flex items-center gap-2"
+                  >
+                     <Sparkles size={12} className="fill-black" /> Enroll Now
+                  </a>
+               </div>
+            </div>
+         </div>
+      </div>
 
       {/* 2. Intro Section: "What is RRB JE?" */}
       <section className="py-20 px-8 md:px-10 lg:px-12 bg-white relative">
@@ -724,7 +781,7 @@ const RrbJeExamPage: React.FC = () => {
                            </div>
                            <div>
                               <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Total Questions</p>
-                              <p className="text-lg font-bold">150 Multiple Choice</p>
+                              <p className="text-lg font-bold">300 Multiple Choice</p>
                            </div>
                         </div>
                      </div>
@@ -755,8 +812,8 @@ const RrbJeExamPage: React.FC = () => {
                               ))}
                               <tr className="bg-slate-900 text-white">
                                  <td colSpan={2} className="p-6 font-black text-right border-r border-white/10 uppercase tracking-widest">Total</td>
-                                 <td className="p-6 text-center font-black text-2xl text-gameGold">150</td>
-                                
+                                 <td className="p-6 text-center font-black text-2xl text-gameGold">300</td>
+
                               </tr>
                            </tbody>
                         </table>
@@ -1158,7 +1215,14 @@ const RrbJeExamPage: React.FC = () => {
                Join thousands of students who have secured their dreams with Gaurav Babu Sir&apos;s mentorship. Enroll in our specialized RRB-JE course today.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-               <button className="bg-gameGold text-black px-12 py-5 rounded-2xl font-black uppercase tracking-widest hover:bg-white transition-all shadow-2xl hover:-translate-y-1">Enroll in Excellence Course</button>
+               <a
+                  href="https://courses.gameacademy.in/wlp/excellence-ae-je-mechanical"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-gameGold text-black px-12 py-5 rounded-2xl font-black uppercase tracking-widest hover:bg-white transition-all shadow-2xl hover:-translate-y-1"
+               >
+                  Enroll in Excellence Course
+               </a>
                <button className="bg-transparent border-2 border-white/20 text-white px-12 py-5 rounded-2xl font-black uppercase tracking-widest hover:bg-white/10 transition-all">Watch Free Demo</button>
             </div>
          </div>
