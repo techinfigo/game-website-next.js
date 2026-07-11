@@ -8,11 +8,11 @@ import TestimonialsText from './TestimonialsText';
 import SpecialOffer from './SpecialOffer';
 import CourseHelpSection from './CourseHelpSection';
 import GBVideos from './GBVideos';
-import ResultsSlider from './ResultsSlider';
 import WinnerChoiceSection from './WinnerChoiceSection';
+import AchieversSection from './AchieversSection';
 import { 
   Trophy, Shield, Star, Briefcase, TrendingUp, 
-  CheckCircle2, ArrowRight, ChevronDown, Sparkles,
+  CheckCircle2, ArrowRight, Sparkles,
   Building2, Landmark, Users, GraduationCap, Target,
   Zap, Clock, FileText, Download, Info, HelpCircle,
   Plus, Minus, Globe, HeartPulse, Scale, Newspaper,
@@ -25,11 +25,90 @@ import {
 
 const EseExamPage: React.FC = () => {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
-  const [selectedExam, setSelectedExam] = useState('ESE');
+  const [selectedExam, setSelectedExam] = useState('GATE / ESE');
   const [searchTerm, setSearchTerm] = useState('');
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [activeSection, setActiveSection] = useState('prestige');
+
+  // Hero carousel slides - placeholder picsum images, the owner will replace them with final creatives.
+  const eseSlides = [
+    {
+      badge: "NOTIFICATION",
+      title: "ESE 2026 Notification Released",
+      buttonText: "View Details",
+      imageUrl: "https://picsum.photos/seed/ese-notification/1200/800"
+    },
+    {
+      badge: "MOCK TEST",
+      title: "Free ESE Prelims Mock Test",
+      buttonText: "Start Test",
+      imageUrl: "https://picsum.photos/seed/ese-mock/1200/800"
+    },
+    {
+      badge: "PRELIMS 2026",
+      title: "ESE 2026 Prelims on Feb 8, 2026",
+      buttonText: "Know More",
+      imageUrl: "https://picsum.photos/seed/ese-prelims/1200/800"
+    },
+    {
+      badge: "IES OFFICERS",
+      title: "Join the Ranks of Elite IES Officers",
+      buttonText: "Explore Path",
+      imageUrl: "https://picsum.photos/seed/ese-officers/1200/800"
+    }
+  ];
+
+  const eseNavTabs = [
+    { label: "Why ESE?", id: "prestige", icon: Info },
+    { label: "Advantages", id: "advantages", icon: ShieldCheck },
+    { label: "GATE vs ESE", id: "comparison", icon: Compass },
+    { label: "Schedule", id: "schedule", icon: Calendar },
+    { label: "Cut-offs", id: "cut-offs", icon: BarChart3 },
+    { label: "Eligibility", id: "eligibility", icon: UserCheck },
+    { label: "Structure", id: "structure", icon: FileSpreadsheet },
+    { label: "Syllabus", id: "syllabus", icon: BookOpen },
+    { label: "Medical", id: "medical-standards", icon: Stethoscope },
+    { label: "Vacancy", id: "vacancy", icon: Briefcase },
+    { label: "Mech Services", id: "mech-services", icon: Wrench },
+    { label: "Online Prep", id: "online-coaching", icon: MonitorPlay },
+    { label: "Departments", id: "departments", icon: Building2 },
+    { label: "FAQs", id: "faqs", icon: HelpCircle }
+  ];
 
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % eseSlides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [eseSlides.length]);
+
+  useEffect(() => {
+    const sections = eseNavTabs.map((item) => item.id);
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-120px 0px -60% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   const scrollToSection = (id: string) => {
@@ -56,8 +135,8 @@ const EseExamPage: React.FC = () => {
     },
     {
       feature: "Objective",
-      gate: "1. Admission to postgraduate programs (IITs, NITs, etc.). 2. Recruitment to Public Sector Undertakings (PSUs).",
-      ese: "Recruitment to central government engineering roles in various ministries and departments."
+      gate: ["Admission to postgraduate programs (IITs, NITs, etc.)", "Recruitment to Public Sector Undertakings (PSUs)"],
+      ese: ["Recruitment to central government engineering roles in various ministries and departments"]
     },
     {
       feature: "Exam Pattern",
@@ -228,48 +307,55 @@ const EseExamPage: React.FC = () => {
     { title: "Final Selection", desc: "Final merit list is based on combined marks from Prelims, Mains, and Personality Tests.", icon: Award, color: "text-gameGold", bg: "bg-gameGold/10" }
   ];
 
+  // Placeholder images below (/ese/reason-1.jpg ... reason-6.jpg) - owner will replace with final photography.
   const choiceAdvantages = [
     {
       title: "Prestigious Government Roles",
       desc: "Secure leadership positions in Railways, Defense, Central Engineering Services, and other top government departments.",
       icon: Building2,
       color: "text-gameTeal",
-      bg: "bg-gameTeal/5"
+      bg: "bg-gameTeal/5",
+      image: "/ese/reason-1.jpg"
     },
     {
       title: "Higher Studies",
       desc: "Avail scholarships, fellowships, and study leave opportunities for advanced technical education in India and abroad.",
       icon: GraduationCap,
       color: "text-gameTeal",
-      bg: "bg-gameTeal/5"
+      bg: "bg-gameTeal/5",
+      image: "/ese/reason-2.jpg"
     },
     {
       title: "Railway and Defense Careers",
       desc: "Work in key engineering roles in Indian Railways, Military Engineering Services, and other critical sectors.",
       icon: Shield,
       color: "text-gameTeal",
-      bg: "bg-gameTeal/5"
+      bg: "bg-gameTeal/5",
+      image: "/ese/reason-3.jpg"
     },
     {
       title: "Nation-Building Projects",
       desc: "Contribute to large-scale infrastructure and technical advancements across the country.",
       icon: Landmark,
       color: "text-gameTeal",
-      bg: "bg-gameTeal/5"
+      bg: "bg-gameTeal/5",
+      image: "/ese/reason-4.jpg"
     },
     {
       title: "Recognition and Prestige",
       desc: "Establish yourself as a top-tier engineer with job stability, high salary prospects, and clear career growth opportunities.",
       icon: Award,
       color: "text-gameGold",
-      bg: "bg-gameGold/10"
+      bg: "bg-gameGold/10",
+      image: "/ese/reason-5.jpg"
     },
     {
       title: "An Edge for Other Exams",
       desc: "ESE prep builds a strong foundation, boosting success in GATE, PSUs, SSC-JE, and state-level AE/JE examinations.",
       icon: Zap,
       color: "text-gameTeal",
-      bg: "bg-gameTeal/5"
+      bg: "bg-gameTeal/5",
+      image: "/ese/reason-6.jpg"
     }
   ];
 
@@ -404,85 +490,205 @@ const EseExamPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-white font-sans text-black selection:bg-gameTeal selection:text-white -mt-20">
       
-      {/* 1. Hero Section */}
-      <section className="relative pt-32 pb-32 overflow-hidden bg-[#0f1115] text-white">
+      {/* 1. Hero Section - Design matched to GateExamPage. Carousel images are placeholders; the owner will replace them. */}
+      <section className="relative pt-44 md:pt-48 pb-16 overflow-hidden bg-[#001517] text-white">
          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gameTeal/10 rounded-full blur-[120px] pointer-events-none"></div>
-         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gameGold/5 rounded-full blur-[100px] pointer-events-none"></div>
-         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:24px_24px] opacity-10"></div>
+         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gameGold/5 rounded-full blur-[120px] pointer-events-none"></div>
 
-         <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10 text-center">
-            <motion.div
-               initial={{ opacity: 0, y: 20 }}
-               animate={{ opacity: 1, y: 0 }}
-               transition={{ duration: 0.8 }}
-            >
-               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-md mb-8">
-                  <Trophy size={14} className="text-gameGold" />
-                  <span className="text-xs font-bold uppercase tracking-widest text-gameGold">Class A Gazetted Officer</span>
-               </div>
+         <div className="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-12 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-stretch">
 
-               <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-8 leading-tight tracking-tight">
-                  Lead India's <br/>
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-gameTeal via-teal-400 to-gameGold">
-                     Engineering Excellence
-                  </span>
-               </h1>
+               {/* Left Column: Text Content */}
+               <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8 }}
+                  className="flex flex-col justify-center text-left"
+               >
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-4 self-start">
+                     <Target size={12} className="text-gameTeal" />
+                     <span className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-300">ESE Examination 2026</span>
+                  </div>
 
-               <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto mb-10 leading-relaxed font-medium">
-                  Master the Engineering Services Examination (ESE) with India's most trusted mentors. Join the ranks of elite IES officers and build the nation.
-               </p>
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-4 leading-[1.05] tracking-tighter text-left">
+                     Lead India's <br/>
+                     <span className="text-gameTeal">Engineering Excellence</span>
+                  </h1>
 
-               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <button onClick={() => scrollToSection('advantages')} className="bg-gameTeal text-white px-10 py-4 rounded-xl font-bold text-lg shadow-xl shadow-gameTeal/20 hover:bg-gameTealDark hover:-translate-y-1 transition-all flex items-center justify-center gap-2">
-                     Start Prep Today <ArrowRight size={20} />
-                  </button>
-                  <button className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all">
-                     Download Syllabus
-                  </button>
-               </div>
-            </motion.div>
-         </div>
-         
-         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-white/40">
-            <ChevronDown size={24} />
+                  <p className="text-base md:text-lg text-slate-400 max-w-xl mb-6 leading-relaxed font-bold text-left">
+                     Master the Engineering Services Examination (ESE) with India&apos;s most trusted mentors. Join the ranks of elite IES officers and build the nation.
+                  </p>
+
+                  <div className="flex flex-wrap gap-4 mb-8 justify-start">
+                     <button onClick={() => scrollToSection('advantages')} className="px-7 py-3.5 bg-gameTeal text-white font-black rounded-full hover:bg-[#007a7e] transition-all active:scale-95 shadow-xl shadow-gameTeal/20 flex items-center gap-2 group text-sm">
+                        Start Preparation
+                        <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                     </button>
+                     <button onClick={() => scrollToSection('syllabus')} className="px-7 py-3.5 border border-white/20 text-white font-black rounded-full hover:bg-white hover:text-gameBlack transition-all active:scale-95 text-sm">
+                        View Syllabus
+                     </button>
+                  </div>
+
+                  {/* Latest Update Widget */}
+                  <div className="bg-white/5 border border-white/10 rounded-2xl p-3 mb-8 max-w-sm flex items-start gap-4 text-left">
+                     <div className="w-9 h-9 rounded-xl bg-gameGold/10 text-gameGold flex items-center justify-center shrink-0">
+                        <Sparkles size={18} className="animate-pulse" />
+                     </div>
+                     <div>
+                        <span className="text-[7px] font-black text-gameGold uppercase tracking-widest block mb-0.5">LATEST UPDATE</span>
+                        <p className="text-xs font-bold text-slate-200">ESE 2026 Prelims Exam on February 8, 2026</p>
+                     </div>
+                  </div>
+
+                  {/* Stats Row */}
+                  <div className="flex flex-wrap gap-10 border-t border-white/5 pt-6 text-left">
+                     <div>
+                        <p className="text-2xl font-black text-white mb-0.5">5000+</p>
+                        <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Selections</p>
+                     </div>
+                     <div>
+                        <p className="text-2xl font-black text-white mb-0.5">50+</p>
+                        <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Top Ranks</p>
+                     </div>
+                     <div>
+                        <p className="text-2xl font-black text-white mb-0.5">13+ Yrs</p>
+                        <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Mentorship</p>
+                     </div>
+                  </div>
+               </motion.div>
+
+               {/* Right Column: Advertisement Scroller */}
+               <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8 }}
+                  className="relative h-full flex flex-col justify-between"
+               >
+                  {/* Main Display Area */}
+                  <div className="relative flex-grow bg-[#001c1e] rounded-[1.5rem] border border-white/10 overflow-hidden shadow-2xl min-h-[350px]">
+                     <AnimatePresence mode="wait">
+                        <motion.div
+                           key={activeSlide}
+                           initial={{ opacity: 0 }}
+                           animate={{ opacity: 1 }}
+                           exit={{ opacity: 0 }}
+                           transition={{ duration: 0.4 }}
+                           className="absolute inset-0 flex flex-col p-8 justify-between h-full w-full"
+                        >
+                           <Image
+                              src={eseSlides[activeSlide].imageUrl}
+                              alt={eseSlides[activeSlide].title}
+                              fill
+                              className="object-cover"
+                              referrerPolicy="no-referrer"
+                           />
+                           <div className="absolute inset-0 bg-gradient-to-t from-[#001c1e] via-transparent to-[#001c1e]/60"></div>
+
+                           {/* Small badge top left */}
+                           <div className="relative z-10 bg-gameGold text-gameBlack px-2 py-0.5 rounded text-[8px] font-black uppercase self-start mb-auto">
+                              {eseSlides[activeSlide].badge}
+                           </div>
+
+                           {/* Slide Title */}
+                           <div className="relative z-10 text-white font-black text-xl md:text-2xl tracking-tight max-w-sm mb-4 leading-tight text-left">
+                              {eseSlides[activeSlide].title}
+                           </div>
+
+                           {/* Button bottom right corner */}
+                           <div className="relative z-10 mt-auto self-end">
+                              <button className="group flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white font-black text-xs uppercase tracking-widest hover:bg-gameGold hover:text-gameBlack transition-all">
+                                 {eseSlides[activeSlide].buttonText}
+                                 <TrendingUp size={14} className="group-hover:translate-x-1 transition-transform" />
+                              </button>
+                           </div>
+
+                           {/* Decorative Elements */}
+                           <div className="absolute top-8 right-8 opacity-20 z-10 text-white">
+                              <Flame size={60} />
+                           </div>
+                        </motion.div>
+                     </AnimatePresence>
+
+                     {/* Slide Indicators */}
+                     <div className="absolute bottom-5 right-6 flex gap-1.5 z-20">
+                        {eseSlides.map((_, i) => (
+                           <button
+                              key={i}
+                              onClick={() => setActiveSlide(i)}
+                              className={`h-1 rounded-full transition-all duration-300 ${i === activeSlide ? 'w-6 bg-gameTeal' : 'w-1.5 bg-white/30'}`}
+                           />
+                        ))}
+                     </div>
+                  </div>
+
+                  {/* Thumbnail Row */}
+                  <div className="grid grid-cols-4 gap-3 mt-4">
+                     {eseSlides.map((slide, i) => (
+                        <button
+                           key={i}
+                           onClick={() => setActiveSlide(i)}
+                           className={`relative aspect-[16/9] rounded-lg border transition-all duration-300 overflow-hidden ${
+                              i === activeSlide ? 'border-gameTeal scale-105 shadow-lg shadow-gameTeal/20' : 'border-white/10 opacity-30 hover:opacity-100'
+                           }`}
+                        >
+                           <Image
+                              src={slide.imageUrl}
+                              alt={slide.title}
+                              fill
+                              className="object-cover"
+                              referrerPolicy="no-referrer"
+                           />
+                           <div className="absolute inset-0 bg-black/40"></div>
+                           <div className="absolute inset-0 flex flex-col items-center justify-center p-2">
+                              <div className="text-[5px] font-black text-white mb-1 leading-none drop-shadow-md text-center">{slide.badge}</div>
+                           </div>
+                        </button>
+                     ))}
+                  </div>
+               </motion.div>
+
+            </div>
          </div>
       </section>
 
-      {/* STICKY SUB-NAVIGATION */}
-      <div className="sticky top-[58px] z-40 w-full bg-[#075d63] shadow-md border-b border-[#054a4f]">
-         <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12">
+      {/* FULL WIDTH STICKY SUB-NAVIGATION - matches GateExamPage's premium scroller style */}
+      <div className="sticky top-20 z-40 w-full bg-[#001D1F]/95 backdrop-blur-md shadow-lg border-b border-white/5">
+         <div className="max-w-[1400px] mx-auto px-4 md:px-8">
             <div className="flex items-center justify-between h-14">
-               <div className="flex items-center gap-1 md:gap-6 overflow-x-auto no-scrollbar mask-gradient-right w-full md:w-auto">
-                  {[
-                     { label: "Why ESE?", id: "prestige" },
-                     { label: "Advantages", id: "advantages" },
-                     { label: "GATE vs ESE", id: "comparison" },
-                     { label: "Schedule", id: "schedule" },
-                     { label: "Cut-offs", id: "cut-offs" },
-                     { label: "Eligibility", id: "eligibility" },
-                     { label: "Structure", id: "structure" },
-                     { label: "Syllabus", id: "syllabus" },
-                     { label: "Medical", id: "medical-standards" },
-                     { label: "Vacancy", id: "vacancy" },
-                     { label: "Mech Services", id: "mech-services" },
-                     { label: "Online Prep", id: "online-coaching" },
-                     { label: "Departments", id: "departments" },
-                     { label: "FAQs", id: "faqs" }
-                  ].map((item) => (
-                     <button
-                        key={item.id}
-                        onClick={() => scrollToSection(item.id)}
-                        className="text-white/90 text-xs md:text-sm font-bold whitespace-nowrap hover:text-[#f2c537] hover:bg-white/10 px-3 py-1.5 rounded-lg transition-all"
-                     >
-                        {item.label}
-                     </button>
-                  ))}
+               {/* Links Scroller */}
+               <div
+                  className="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 pt-1.5 scroll-smooth teal-scrollbar"
+                  style={{ WebkitOverflowScrolling: 'touch' }}
+               >
+                  {eseNavTabs.map((item) => {
+                     const Icon = item.icon;
+                     const isActive = activeSection === item.id;
+                     return (
+                        <button
+                           key={item.id}
+                           onClick={() => scrollToSection(item.id)}
+                           className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all duration-300 active:scale-95 border ${
+                              isActive
+                                 ? 'bg-gameTeal text-white shadow-lg shadow-gameTeal/30 border-white/10'
+                                 : 'text-slate-300 hover:text-white hover:bg-white/5 border-transparent'
+                           }`}
+                        >
+                           <Icon size={14} className={isActive ? 'text-gameGold font-black' : 'text-slate-400'} />
+                           <span>{item.label}</span>
+                        </button>
+                     );
+                  })}
                </div>
-               <div className="hidden md:flex items-center gap-4 pl-4 border-l border-white/10 shrink-0">
-                  <button 
-                     className="bg-[#f2c537] text-black px-5 py-1.5 rounded-full text-xs font-black uppercase tracking-wider hover:bg-white transition-all shadow-[0_0_10px_rgba(242,197,55,0.3)] flex items-center gap-2"
+
+               {/* Enroll Button */}
+               <div className="hidden lg:flex items-center gap-4 pl-4 border-l border-white/10 shrink-0">
+                  <button
+                     onClick={() => scrollToSection('ese-courses')}
+                     className="bg-gameGold text-black px-5 py-2 rounded-full text-xs font-black uppercase tracking-wider hover:bg-white transition-all shadow-[0_4px_15px_rgba(242,197,55,0.4)] flex items-center gap-1.5 group active:scale-95"
                   >
-                     <Sparkles size={12} className="fill-black" /> Join Batch
+                     <Sparkles size={12} className="fill-black animate-pulse" />
+                     <span>Enroll Now</span>
+                     <ArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
                   </button>
                </div>
             </div>
@@ -578,7 +784,6 @@ const EseExamPage: React.FC = () => {
 
       {/* 3. Why is ESE the Right Choice? (Section 2) */}
       <section id="advantages" className="py-24 bg-white border-t border-gameTeal/10 scroll-mt-32 relative overflow-hidden">
-         <div className="absolute inset-0 bg-[radial-gradient(#075d63_1px,transparent_1px)] [background-size:24px_24px] opacity-70"></div>
          <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10">
             <div className="text-center mb-16">
                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
@@ -599,17 +804,22 @@ const EseExamPage: React.FC = () => {
                      whileInView={{ opacity: 1, y: 0 }}
                      viewport={{ once: true }}
                      transition={{ delay: i * 0.1 }}
-                     className="bg-white rounded-[2.5rem] p-8 border border-gameTeal/10 shadow-sm hover:shadow-xl hover:bg-white hover:border-gameTeal/20 transition-all duration-300 group flex flex-col h-full"
+                     className="relative rounded-[2.5rem] p-8 border border-gameTeal/10 shadow-sm hover:shadow-xl hover:border-gameTeal/20 transition-all duration-300 group flex flex-col h-full overflow-hidden bg-cover bg-center"
+                     style={{ backgroundImage: `url(${item.image})` }}
                   >
-                     <div className={`w-14 h-14 rounded-2xl ${item.bg} flex items-center justify-center ${item.color} mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300`}>
-                        <item.icon size={28} strokeWidth={2} />
+                     {/* Dark overlay keeps text readable over the background photo */}
+                     <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/70 to-black/40 group-hover:from-black/90 group-hover:via-black/75 transition-colors duration-300"></div>
+                     <div className="relative z-10 flex flex-col h-full">
+                        <div className={`w-14 h-14 rounded-2xl ${item.bg} flex items-center justify-center ${item.color} mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300`}>
+                           <item.icon size={28} strokeWidth={2} />
+                        </div>
+                        <h3 className="text-xl font-black text-white mb-4 leading-tight group-hover:text-gameGold transition-colors">
+                           {item.title}
+                        </h3>
+                        <p className="text-white/70 text-sm font-bold leading-relaxed flex-grow">
+                           {item.desc}
+                        </p>
                      </div>
-                     <h3 className="text-xl font-black text-black mb-4 leading-tight group-hover:text-gameTeal transition-colors">
-                        {item.title}
-                     </h3>
-                     <p className="text-black/60 text-sm font-bold leading-relaxed flex-grow">
-                        {item.desc}
-                     </p>
                   </motion.div>
                ))}
             </div>
@@ -631,8 +841,8 @@ const EseExamPage: React.FC = () => {
       </section>
 
       {/* Course Grid Section */}
-      <section className="bg-slate-50">
-        <CourseGrid 
+      <section id="ese-courses" className="bg-slate-50 scroll-mt-32">
+        <CourseGrid
           selectedExam={selectedExam} 
           setSelectedExam={setSelectedExam}
           searchTerm={searchTerm}
@@ -652,8 +862,8 @@ const EseExamPage: React.FC = () => {
       {/* Eye-opening Video Section */}
       <GBVideos />
 
-      {/* Results Section */}
-      <ResultsSlider />
+      {/* Achievers Section */}
+      <AchieversSection />
 
       {/* Winner's Choice Section */}
       <WinnerChoiceSection />
@@ -693,10 +903,28 @@ const EseExamPage: React.FC = () => {
                                  {row.feature}
                               </td>
                               <td className="p-6 font-medium text-black/70 border-r border-gameTeal/10 leading-relaxed text-center">
-                                 {row.gate}
+                                 {Array.isArray(row.gate) ? (
+                                    <ul className="text-left inline-block space-y-2">
+                                       {row.gate.map((point, idx) => (
+                                          <li key={idx} className="flex items-start gap-2">
+                                             <span className="w-1.5 h-1.5 rounded-full bg-black/30 mt-2 shrink-0"></span>
+                                             <span>{point}</span>
+                                          </li>
+                                       ))}
+                                    </ul>
+                                 ) : row.gate}
                               </td>
                               <td className="p-6 font-bold text-gameTeal leading-relaxed text-center">
-                                 {row.ese}
+                                 {Array.isArray(row.ese) ? (
+                                    <ul className="text-left inline-block space-y-2">
+                                       {row.ese.map((point, idx) => (
+                                          <li key={idx} className="flex items-start gap-2">
+                                             <span className="w-1.5 h-1.5 rounded-full bg-gameTeal mt-2 shrink-0"></span>
+                                             <span>{point}</span>
+                                          </li>
+                                       ))}
+                                    </ul>
+                                 ) : row.ese}
                               </td>
                            </tr>
                         ))}

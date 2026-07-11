@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { 
   Building2, HardHat, Trophy, Shield, Wallet, TrendingUp, Clock, 
-  ArrowRight, CheckCircle2, ChevronDown, Sparkles, GraduationCap,
+  ArrowRight, CheckCircle2, Sparkles, GraduationCap,
   AlertCircle, Download, Calculator, Table as TableIcon, 
   BookOpen, PenTool, Users, Plus, Minus, Landmark, Target,
   Star, Briefcase, Zap, MousePointer2, FileText, Activity,
@@ -15,10 +15,12 @@ import {
   Medal, Heart, GraduationCap as TrainingIcon, Construction,
   Info, ListChecks, CalendarRange, UserMinus, FileSearch,
   CheckCircle, HelpCircle, LayoutGrid, FileType, Anchor, Ticket, Train,
-  Laptop, ClipboardCheck, MessageCircle, Newspaper, Quote, ExternalLink as ExternalLinkIcon
+  Laptop, ClipboardCheck, MessageCircle, Newspaper, Quote, ExternalLink as ExternalLinkIcon,
+  UserCheck
 } from 'lucide-react';
 import JobUpdatesSection from './JobUpdatesSection';
 import CourseHero from './CourseHero';
+import CourseGrid from './CourseGrid';
 
 interface SscJeExamPageProps {
   onNavigate?: (page: string) => void;
@@ -26,9 +28,82 @@ interface SscJeExamPageProps {
 
 const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+  const [selectedExam, setSelectedExam] = useState('SSC JE');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [activeSection, setActiveSection] = useState('overview');
+
+  // Hero carousel slides - placeholder picsum images, the owner will replace them with final creatives.
+  const sscSlides = [
+    {
+      badge: "NOTIFICATION",
+      title: "SSC JE 2026 Notification Awaited",
+      buttonText: "Get Alerts",
+      imageUrl: "https://picsum.photos/seed/ssc-je-notification/1200/800"
+    },
+    {
+      badge: "MOCK TEST",
+      title: "Free SSC-JE Mock Test",
+      buttonText: "Start Test",
+      imageUrl: "https://picsum.photos/seed/ssc-je-mock/1200/800"
+    },
+    {
+      badge: "PAY SCALE",
+      title: "Level-6 Pay Matrix & Perks",
+      buttonText: "Know More",
+      imageUrl: "https://picsum.photos/seed/ssc-je-payscale/1200/800"
+    },
+    {
+      badge: "JE CAREER",
+      title: "Become a Junior Engineer in Railways & PWD",
+      buttonText: "Explore Roles",
+      imageUrl: "https://picsum.photos/seed/ssc-je-career/1200/800"
+    }
+  ];
+
+  const sscNavTabs = [
+    { label: "Overview", id: "overview", icon: Info },
+    { label: "Eligibility", id: "detailed-posts", icon: UserCheck },
+    { label: "Age Relaxation", id: "age-relaxation", icon: CalendarRange },
+    { label: "Exam Pattern", id: "detailed-pattern", icon: ClipboardCheck },
+    { label: "SSC JE Syllabus", id: "ssc-syllabus", icon: BookOpen },
+    { label: "FAQs", id: "ssc-faqs", icon: HelpCircle }
+  ];
 
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % sscSlides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [sscSlides.length]);
+
+  useEffect(() => {
+    const sections = sscNavTabs.map((item) => item.id);
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-120px 0px -60% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   const scrollToSection = (id: string) => {
@@ -92,39 +167,6 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       icon: Target,
       color: "text-gameGoldDark",
       bg: "bg-gameGold/5"
-    }
-  ];
-
-  const sscJeCourses = [
-    {
-      title: "Excellence Course - Civil Engineering",
-      branch: "Civil",
-      price: "₹14,999",
-      originalPrice: "₹24,999",
-      discount: "40% OFF",
-      features: ["Full Syllabus Coverage", "Live & Recorded Classes", "PYQ Analysis", "Test Series Included"],
-      image: "https://picsum.photos/seed/civil-eng/800/600",
-      tag: "Best Seller"
-    },
-    {
-      title: "Excellence Course - Mechanical Engineering",
-      branch: "Mechanical",
-      price: "₹14,999",
-      originalPrice: "₹24,999",
-      discount: "40% OFF",
-      features: ["Full Syllabus Coverage", "Live & Recorded Classes", "PYQ Analysis", "Test Series Included"],
-      image: "https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?fit=crop&w=800&q=80",
-      tag: "Popular"
-    },
-    {
-      title: "Excellence Course - Electrical Engineering",
-      branch: "Electrical",
-      price: "₹14,999",
-      originalPrice: "₹24,999",
-      discount: "40% OFF",
-      features: ["Full Syllabus Coverage", "Live & Recorded Classes", "PYQ Analysis", "Test Series Included"],
-      image: "https://images.unsplash.com/photo-1498084393753-b411b2d26b34?fit=crop&w=800&q=80",
-      tag: "Trending"
     }
   ];
 
@@ -666,78 +708,205 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-gameTeal selection:text-white -mt-20">
       
-      {/* 1. Hero Section */}
-      <section className="relative pt-16 pb-20 overflow-hidden bg-black text-white">
+      {/* 1. Hero Section - Design matched to GateExamPage. Carousel images are placeholders; the owner will replace them. */}
+      <section className="relative pt-44 md:pt-48 pb-16 overflow-hidden bg-[#001517] text-white">
          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gameTeal/10 rounded-full blur-[120px] pointer-events-none"></div>
-         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gameGold/5 rounded-full blur-[100px] pointer-events-none"></div>
-         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gameGold/5 rounded-full blur-[120px] pointer-events-none"></div>
 
-         <div className="max-w-[1200px] mx-auto px-8 md:px-10 lg:px-12 relative z-10 text-center">
-            <motion.div
-               initial={{ opacity: 0, y: 20 }}
-               animate={{ opacity: 1, y: 0 }}
-               transition={{ duration: 0.8 }}
-            >
-               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-md mb-8">
-                  <Sparkles size={14} className="text-gameGold" />
-                  <span className="text-xs font-bold uppercase tracking-widest text-gameGold">The Winners' Choice</span>
-               </div>
+         <div className="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-12 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-stretch">
 
-               <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-8 leading-tight tracking-tight">
-                  Your Shortcut to a <br/>
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-gameTeal via-teal-400 to-gameGold">
-                     Stellar JE Career
-                  </span>
-               </h1>
+               {/* Left Column: Text Content */}
+               <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8 }}
+                  className="flex flex-col justify-center text-left"
+               >
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-4 self-start">
+                     <Target size={12} className="text-gameTeal" />
+                     <span className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-300">SSC JE 2026</span>
+                  </div>
 
-               <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed font-medium">
-                  Dominate SSC-JE with Gaurav Babu Sir. Better salaries, premium lifestyles, and prestigious government roles await.
-               </p>
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-4 leading-[1.05] tracking-tighter text-left">
+                     Your Shortcut to a <br/>
+                     <span className="text-gameTeal">Stellar SSC-JE Career</span>
+                  </h1>
 
-               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <button className="bg-gameTeal text-white px-10 py-4 rounded-xl font-bold text-lg shadow-xl shadow-gameTeal/20 hover:bg-gameTealDark hover:-translate-y-1 transition-all flex items-center justify-center gap-2">
-                     Start Preparation <ArrowRight size={20} />
-                  </button>
-                  <button className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all">
-                     View Syllabus
-                  </button>
-               </div>
-            </motion.div>
-         </div>
-         
-         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-slate-500">
-            <ChevronDown size={24} />
+                  <p className="text-base md:text-lg text-slate-400 max-w-xl mb-6 leading-relaxed font-bold text-left">
+                     Dominate SSC-JE with Gaurav Babu Sir. Better salaries, premium lifestyles, and prestigious government roles await.
+                  </p>
+
+                  <div className="flex flex-wrap gap-4 mb-8 justify-start">
+                     <button onClick={() => scrollToSection('highlights')} className="px-7 py-3.5 bg-gameTeal text-white font-black rounded-full hover:bg-[#007a7e] transition-all active:scale-95 shadow-xl shadow-gameTeal/20 flex items-center gap-2 group text-sm">
+                        Start Preparation
+                        <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                     </button>
+                     <button onClick={() => scrollToSection('ssc-syllabus')} className="px-7 py-3.5 border border-white/20 text-white font-black rounded-full hover:bg-white hover:text-gameBlack transition-all active:scale-95 text-sm">
+                        View Syllabus
+                     </button>
+                  </div>
+
+                  {/* Latest Update Widget */}
+                  <div className="bg-white/5 border border-white/10 rounded-2xl p-3 mb-8 max-w-sm flex items-start gap-4 text-left">
+                     <div className="w-9 h-9 rounded-xl bg-gameGold/10 text-gameGold flex items-center justify-center shrink-0">
+                        <Sparkles size={18} className="animate-pulse" />
+                     </div>
+                     <div>
+                        <span className="text-[7px] font-black text-gameGold uppercase tracking-widest block mb-0.5">LATEST UPDATE</span>
+                        <p className="text-xs font-bold text-slate-200">SSC-JE 2026 notification awaited</p>
+                     </div>
+                  </div>
+
+                  {/* Stats Row */}
+                  <div className="flex flex-wrap gap-10 border-t border-white/5 pt-6 text-left">
+                     <div>
+                        <p className="text-2xl font-black text-white mb-0.5">20K+</p>
+                        <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">App Downloads</p>
+                     </div>
+                     <div>
+                        <p className="text-2xl font-black text-white mb-0.5">Level-6</p>
+                        <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Pay Matrix</p>
+                     </div>
+                     <div>
+                        <p className="text-2xl font-black text-white mb-0.5">13+ Yrs</p>
+                        <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Mentorship</p>
+                     </div>
+                  </div>
+               </motion.div>
+
+               {/* Right Column: Advertisement Scroller */}
+               <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8 }}
+                  className="relative h-full flex flex-col justify-between"
+               >
+                  {/* Main Display Area */}
+                  <div className="relative flex-grow bg-[#001c1e] rounded-[1.5rem] border border-white/10 overflow-hidden shadow-2xl min-h-[350px]">
+                     <AnimatePresence mode="wait">
+                        <motion.div
+                           key={activeSlide}
+                           initial={{ opacity: 0 }}
+                           animate={{ opacity: 1 }}
+                           exit={{ opacity: 0 }}
+                           transition={{ duration: 0.4 }}
+                           className="absolute inset-0 flex flex-col p-8 justify-between h-full w-full"
+                        >
+                           <Image
+                              src={sscSlides[activeSlide].imageUrl}
+                              alt={sscSlides[activeSlide].title}
+                              fill
+                              className="object-cover"
+                              referrerPolicy="no-referrer"
+                           />
+                           <div className="absolute inset-0 bg-gradient-to-t from-[#001c1e] via-transparent to-[#001c1e]/60"></div>
+
+                           {/* Small badge top left */}
+                           <div className="relative z-10 bg-gameGold text-gameBlack px-2 py-0.5 rounded text-[8px] font-black uppercase self-start mb-auto">
+                              {sscSlides[activeSlide].badge}
+                           </div>
+
+                           {/* Slide Title */}
+                           <div className="relative z-10 text-white font-black text-xl md:text-2xl tracking-tight max-w-sm mb-4 leading-tight text-left">
+                              {sscSlides[activeSlide].title}
+                           </div>
+
+                           {/* Button bottom right corner */}
+                           <div className="relative z-10 mt-auto self-end">
+                              <button className="group flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white font-black text-xs uppercase tracking-widest hover:bg-gameGold hover:text-gameBlack transition-all">
+                                 {sscSlides[activeSlide].buttonText}
+                                 <TrendingUp size={14} className="group-hover:translate-x-1 transition-transform" />
+                              </button>
+                           </div>
+
+                           {/* Decorative Elements */}
+                           <div className="absolute top-8 right-8 opacity-20 z-10 text-white">
+                              <HardHat size={60} />
+                           </div>
+                        </motion.div>
+                     </AnimatePresence>
+
+                     {/* Slide Indicators */}
+                     <div className="absolute bottom-5 right-6 flex gap-1.5 z-20">
+                        {sscSlides.map((_, i) => (
+                           <button
+                              key={i}
+                              onClick={() => setActiveSlide(i)}
+                              className={`h-1 rounded-full transition-all duration-300 ${i === activeSlide ? 'w-6 bg-gameTeal' : 'w-1.5 bg-white/30'}`}
+                           />
+                        ))}
+                     </div>
+                  </div>
+
+                  {/* Thumbnail Row */}
+                  <div className="grid grid-cols-4 gap-3 mt-4">
+                     {sscSlides.map((slide, i) => (
+                        <button
+                           key={i}
+                           onClick={() => setActiveSlide(i)}
+                           className={`relative aspect-[16/9] rounded-lg border transition-all duration-300 overflow-hidden ${
+                              i === activeSlide ? 'border-gameTeal scale-105 shadow-lg shadow-gameTeal/20' : 'border-white/10 opacity-30 hover:opacity-100'
+                           }`}
+                        >
+                           <Image
+                              src={slide.imageUrl}
+                              alt={slide.title}
+                              fill
+                              className="object-cover"
+                              referrerPolicy="no-referrer"
+                           />
+                           <div className="absolute inset-0 bg-black/40"></div>
+                           <div className="absolute inset-0 flex flex-col items-center justify-center p-2">
+                              <div className="text-[5px] font-black text-white mb-1 leading-none drop-shadow-md text-center">{slide.badge}</div>
+                           </div>
+                        </button>
+                     ))}
+                  </div>
+               </motion.div>
+
+            </div>
          </div>
       </section>
 
-      {/* FULL WIDTH STICKY SUB-NAVIGATION */}
-      <div className="sticky top-[58px] z-40 w-full bg-[#075d63] shadow-md border-b border-[#054a4f]">
-         <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12">
+      {/* FULL WIDTH STICKY SUB-NAVIGATION - matches GateExamPage's premium scroller style */}
+      <div className="sticky top-20 z-40 w-full bg-[#001D1F]/95 backdrop-blur-md shadow-lg border-b border-white/5">
+         <div className="max-w-[1400px] mx-auto px-4 md:px-8">
             <div className="flex items-center justify-between h-14">
-               <div className="flex items-center gap-1 md:gap-6 overflow-x-auto no-scrollbar mask-gradient-right w-full md:w-auto">
-                  {[
-                     { label: "Overview", id: "overview" },
-                     { label: "Post Details", id: "detailed-posts" },
-                     { label: "Age Relaxation", id: "age-relaxation" },
-                     { label: "Exam Pattern", id: "detailed-pattern" },
-                     { label: "SSC JE SYLLABUS", id: "ssc-syllabus" },
-                     { label: "FAQs", id: "ssc-faqs" }
-                  ].map((item) => (
-                     <button
-                        key={item.id}
-                        onClick={() => scrollToSection(item.id)}
-                        className="text-white/90 text-xs md:text-sm font-bold whitespace-nowrap hover:text-[#f2c537] hover:bg-white/10 px-3 py-1.5 rounded-lg transition-all"
-                     >
-                        {item.label}
-                     </button>
-                  ))}
+               {/* Links Scroller */}
+               <div
+                  className="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 pt-1.5 scroll-smooth teal-scrollbar"
+                  style={{ WebkitOverflowScrolling: 'touch' }}
+               >
+                  {sscNavTabs.map((item) => {
+                     const Icon = item.icon;
+                     const isActive = activeSection === item.id;
+                     return (
+                        <button
+                           key={item.id}
+                           onClick={() => scrollToSection(item.id)}
+                           className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all duration-300 active:scale-95 border ${
+                              isActive
+                                 ? 'bg-gameTeal text-white shadow-lg shadow-gameTeal/30 border-white/10'
+                                 : 'text-slate-300 hover:text-white hover:bg-white/5 border-transparent'
+                           }`}
+                        >
+                           <Icon size={14} className={isActive ? 'text-gameGold font-black' : 'text-slate-400'} />
+                           <span>{item.label}</span>
+                        </button>
+                     );
+                  })}
                </div>
-               <div className="hidden md:flex items-center gap-4 pl-4 border-l border-white/10 shrink-0">
-                  <button 
-                     onClick={() => scrollToSection('ssc-coaching-info')} 
-                     className="bg-[#f2c537] text-black px-5 py-1.5 rounded-full text-xs font-black uppercase tracking-wider hover:bg-white transition-all shadow-[0_0_10px_rgba(242,197,55,0.3)] flex items-center gap-2"
+
+               {/* Enroll Button */}
+               <div className="hidden lg:flex items-center gap-4 pl-4 border-l border-white/10 shrink-0">
+                  <button
+                     onClick={() => scrollToSection('ssc-coaching-info')}
+                     className="bg-gameGold text-black px-5 py-2 rounded-full text-xs font-black uppercase tracking-wider hover:bg-white transition-all shadow-[0_4px_15px_rgba(242,197,55,0.4)] flex items-center gap-1.5 group active:scale-95"
                   >
-                     <Sparkles size={12} className="fill-black" /> Enroll Now
+                     <Sparkles size={12} className="fill-black animate-pulse" />
+                     <span>Enroll Now</span>
+                     <ArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
                   </button>
                </div>
             </div>
@@ -865,160 +1034,70 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
          </div>
       </section>
   
-      {/* COURSE GRID SECTION */}
-      <section id="course-grid" className="py-16 bg-white border-t border-slate-200 scroll-mt-32 relative overflow-hidden">
-         <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-gameTeal/5 rounded-full blur-[120px] pointer-events-none"></div>
-         <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10">
-            <div className="text-center mb-10">
-               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-                  <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">
-                     Explore Our <span className="text-gameTeal">SSC-JE Online Courses</span>
-                  </h2>
-                  <p className="text-slate-600 max-w-3xl mx-auto text-xl font-bold">
-                     Select your engineering branch to explore courses tailored for your success.
-                  </p>
-               </motion.div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-               {sscJeCourses.map((course, i) => (
-                  <motion.div
-                     key={i}
-                     initial={{ opacity: 0, y: 30 }}
-                     whileInView={{ opacity: 1, y: 0 }}
-                     viewport={{ once: true }}
-                     transition={{ delay: i * 0.1 }}
-                     className="bg-white rounded-[2.5rem] border border-slate-200 shadow-xl overflow-hidden group hover:border-gameTeal/30 transition-all duration-500"
-                  >
-                     <div className="relative h-64 overflow-hidden rounded-t-[2.5rem]">
-                        <Image 
-                           src={course.image} 
-                           alt={course.title} 
-                           fill
-                           className="object-cover transition-transform duration-700 group-hover:scale-110"
-                           referrerPolicy="no-referrer"
-                        />
-                        <div className="absolute top-6 right-6 z-10">
-                           <span className="bg-gameGold text-black text-[10px] font-black px-4 py-2 rounded-full shadow-lg uppercase tracking-widest">
-                              {course.tag}
-                           </span>
-                        </div>
-                        <div className="absolute bottom-6 left-6">
-                           <span className="bg-white/90 backdrop-blur-md text-gameTeal text-[10px] font-black px-4 py-2 rounded-full shadow-lg uppercase tracking-widest">
-                              {course.branch}
-                           </span>
-                        </div>
-                     </div>
-
-                     <div className="p-8">
-                        <h3 className="text-xl font-black text-slate-900 mb-4 group-hover:text-gameTeal transition-colors">
-                           {course.title}
-                        </h3>
-                        
-                        <div className="space-y-3 mb-6">
-                           {course.features.map((feature, idx) => (
-                              <div key={idx} className="flex items-center gap-3 text-slate-600 font-bold text-sm">
-                                 <CheckCircle2 size={18} className="text-gameTeal shrink-0" />
-                                 {feature}
-                              </div>
-                           ))}
-                        </div>
-
-                        <div className="flex items-center justify-between pt-6 border-t border-slate-100">
-                           <div>
-                              <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Course Fee</p>
-                              <div className="flex items-baseline gap-2">
-                                 <span className="text-3xl font-black text-slate-900">{course.price}</span>
-                                 <span className="text-sm font-bold text-slate-400 line-through">{course.originalPrice}</span>
-                              </div>
-                           </div>
-                           <div className="bg-red-50 text-red-600 text-[10px] font-black px-3 py-1 rounded-lg">
-                              {course.discount}
-                           </div>
-                        </div>
-
-                        <button className="w-full mt-6 bg-slate-900 text-white py-4 rounded-2xl font-black uppercase tracking-widest hover:bg-gameTeal transition-all shadow-xl flex items-center justify-center gap-2 group">
-                           Enroll Now <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                        </button>
-                     </div>
-                  </motion.div>
-               ))}
-            </div>
-         </div>
+      {/* COURSE GRID SECTION - shared CourseGrid component, defaulted to SSC JE category */}
+      <section className="bg-slate-50">
+        <CourseGrid
+          selectedExam={selectedExam}
+          setSelectedExam={setSelectedExam}
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+        />
       </section>
 
-      {/* RESULTS SLIDER SECTION */}
-      <section id="ssc-results" className="py-16 bg-slate-900 relative overflow-hidden scroll-mt-32">
-         <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:32px_32px] opacity-20"></div>
+      {/* SSC-JE Success Stories - testimonials content below is editable */}
+      <section id="ssc-results" className="py-24 bg-slate-50 border-t border-slate-200 relative overflow-hidden scroll-mt-32">
          <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10">
-            <div className="text-center mb-10">
+            <div className="text-center mb-16">
                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gameTeal/20 border border-gameTeal/30 mb-6">
-                     <Trophy size={14} className="text-gameGold" />
-                     <span className="text-xs font-black uppercase tracking-widest text-gameGold">Success Stories</span>
+                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gameTeal/10 border border-gameTeal/20 mb-6">
+                     <Trophy size={14} className="text-gameTeal" />
+                     <span className="text-xs font-black uppercase tracking-widest text-gameTeal">Success Stories</span>
                   </div>
-                  <h2 className="text-3xl md:text-5xl font-black text-white mb-4 tracking-tight">
+                  <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">
                      Our <span className="text-gameTeal">SSC-JE Achievers</span>
                   </h2>
-                  <p className="text-slate-400 max-w-3xl mx-auto text-xl font-medium">
+                  <p className="text-slate-500 max-w-3xl mx-auto text-xl font-medium">
                      Join the ranks of thousands of students who have secured their dreams with GAME.
                   </p>
                </motion.div>
             </div>
 
-            <div className="relative">
-               <div className="flex overflow-x-auto no-scrollbar gap-6 pb-12 mask-gradient-right">
-                  {sscJeResults.map((result, i) => (
-                     <motion.div
-                        key={i}
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: i * 0.1 }}
-                        className="min-w-[320px] md:min-w-[400px] bg-slate-800/50 backdrop-blur-xl rounded-[2.5rem] p-8 border border-white/10 hover:border-gameTeal/50 transition-all duration-500 group"
-                     >
-                        <div className="flex items-center gap-6 mb-6">
-                           <div className="relative w-20 h-20">
-                              <div className="absolute inset-0 bg-gameTeal rounded-full blur-xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
-                              <Image 
-                                 src={result.image} 
-                                 alt={result.name} 
-                                 fill
-                                 className="rounded-full object-cover border-2 border-gameTeal relative z-10"
-                                 referrerPolicy="no-referrer"
-                              />
-                              <div className="absolute -bottom-2 -right-2 bg-gameGold text-black text-[10px] font-black px-2 py-1 rounded-lg shadow-lg z-20">
-                                 {result.rank}
-                              </div>
-                           </div>
-                           <div>
-                              <h3 className="text-xl font-black text-white group-hover:text-gameTeal transition-colors">{result.name}</h3>
-                              <p className="text-gameTeal text-sm font-bold uppercase tracking-widest">{result.branch} Engineering</p>
-                              <p className="text-slate-500 text-xs font-bold">{result.exam}</p>
-                           </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+               {sscJeResults.map((result, i) => (
+                  <motion.div
+                     key={i}
+                     initial={{ opacity: 0, y: 20 }}
+                     whileInView={{ opacity: 1, y: 0 }}
+                     viewport={{ once: true }}
+                     transition={{ delay: i * 0.1 }}
+                     className="bg-white rounded-[2rem] p-8 border border-slate-200 shadow-sm hover:shadow-xl hover:border-gameTeal/30 transition-all duration-300 flex flex-col"
+                  >
+                     <Quote size={28} className="text-gameTeal/20 mb-4" />
+                     <p className="text-slate-600 text-sm font-medium leading-relaxed flex-grow mb-6">
+                        "{result.quote}"
+                     </p>
+                     <div className="flex items-center gap-1 mb-4">
+                        {[...Array(5)].map((_, idx) => (
+                           <Star key={idx} size={12} className="text-gameGold fill-gameGold" />
+                        ))}
+                     </div>
+                     <div className="flex items-center gap-4 pt-6 border-t border-slate-100">
+                        <div className="relative w-12 h-12 shrink-0">
+                           <Image
+                              src={result.image}
+                              alt={result.name}
+                              fill
+                              className="rounded-full object-cover border-2 border-gameTeal"
+                              referrerPolicy="no-referrer"
+                           />
                         </div>
-                        
-                        <div className="relative">
-                           <Quote size={40} className="absolute -top-4 -left-4 text-gameTeal/10" />
-                           <p className="text-slate-300 text-lg italic leading-relaxed relative z-10">
-                              "{result.quote}"
-                           </p>
+                        <div>
+                           <p className="font-black text-slate-900 text-sm">{result.name}</p>
+                           <p className="text-gameTeal text-xs font-bold uppercase tracking-wide">{result.rank} &middot; {result.branch}</p>
                         </div>
-
-                        <div className="mt-6 flex items-center gap-1">
-                           {[...Array(5)].map((_, idx) => (
-                              <Star key={idx} size={14} className="text-gameGold fill-gameGold" />
-                           ))}
-                        </div>
-                     </motion.div>
-                  ))}
-               </div>
-               
-               <div className="flex justify-center gap-4 mt-4">
-                  <div className="w-12 h-1 bg-gameTeal rounded-full"></div>
-                  <div className="w-4 h-1 bg-slate-700 rounded-full"></div>
-                  <div className="w-4 h-1 bg-slate-700 rounded-full"></div>
-               </div>
+                     </div>
+                  </motion.div>
+               ))}
             </div>
          </div>
       </section>
@@ -1109,8 +1188,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
             <div className="mb-16">
                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
                   <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">
-                     Details of Posts, Essential <br className="hidden md:block" />
-                     <span className="text-gameTeal">Educational Qualifications</span>
+                     SSC-JE <span className="text-gameTeal">Eligibility Criteria</span>
                   </h2>
                   <p className="text-slate-600 text-lg md:text-xl font-medium max-w-4xl leading-relaxed">
                      The recruitment is conducted by the Staff Selection Commission (SSC) for the post of Junior Engineers (JE) Group ‘B’ Non-Gazetted posts. The various eligibility parameters are discussed below:
