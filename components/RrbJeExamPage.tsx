@@ -774,7 +774,7 @@ const RrbJeExamPage: React.FC = () => {
                            </li>
                            <li className="flex items-start gap-2 text-xs font-bold text-slate-600 leading-relaxed">
                               <div className="w-1.5 h-1.5 rounded-full bg-gameTeal mt-2 shrink-0"></div>
-                              <span>There shall be negative marking in CBT (Computer-Based Test/Examination), and marks shall be deducted for each wrong answer, @ 1/3 of the marks allotted for each question.</span>
+                              <span>There shall be negative marking in CBT (Computer-Based Test/Examination) and  (1/3)   marks shall be deducted for each wrong answer.</span>
                            </li>
                         </ul>
                      </div>
