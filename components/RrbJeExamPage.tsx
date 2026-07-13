@@ -959,7 +959,7 @@ const RrbJeExamPage: React.FC = () => {
                      </h3>
                      <div className="bg-gameTeal/5 p-8 rounded-[2rem] border-l-4 border-gameTeal mb-8">
                         <p className="text-slate-700 text-lg leading-relaxed font-bold">
-                           Shortlisting of Candidates for the Second Stage CBT exam shall be based on the normalised marks obtained by them in the First Stage CBT Exam. The <span className="text-gameTeal underline decoration-2 underline-offset-4">total number of candidates to be shortlisted for the second Stage shall be 15 times</span> the community-wise total vacancy of Posts notified against the RRB as per their merit in the 1st Stage CBT.
+                           Shortlisting of Candidates for the second stage CBT exam shall be based on the normalised marks obtained by them in the First Stage CBT Exam. The <span className="text-gameTeal underline decoration-2 underline-offset-4">total number of candidates to be shortlisted for the second Stage shall be 15 times</span> the community-wise total vacancy of Posts notified against the RRB as per their merit in the 1st Stage CBT.
                         </p>
                      </div>
                      <div className="grid md:grid-cols-2 gap-4">
