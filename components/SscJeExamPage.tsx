@@ -18,9 +18,11 @@ import {
   Laptop, ClipboardCheck, MessageCircle, Newspaper, Quote, ExternalLink as ExternalLinkIcon,
   UserCheck
 } from 'lucide-react';
+import Link from 'next/link';
 import JobUpdatesSection from './JobUpdatesSection';
 import CourseHero from './CourseHero';
 import CourseGrid from './CourseGrid';
+import AppStoreButtons from './AppStoreButtons';
 
 interface SscJeExamPageProps {
   onNavigate?: (page: string) => void;
@@ -738,7 +740,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                   </p>
 
                   <div className="flex flex-wrap gap-4 mb-8 justify-start">
-                     <button onClick={() => scrollToSection('highlights')} className="px-7 py-3.5 bg-gameTeal text-white font-black rounded-full hover:bg-[#007a7e] transition-all active:scale-95 shadow-xl shadow-gameTeal/20 flex items-center gap-2 group text-sm">
+                     <button onClick={() => scrollToSection('courses')} className="px-7 py-3.5 bg-gameTeal text-white font-black rounded-full hover:bg-[#007a7e] transition-all active:scale-95 shadow-xl shadow-gameTeal/20 flex items-center gap-2 group text-sm">
                         Start Preparation
                         <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                      </button>
@@ -1035,7 +1037,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       </section>
   
       {/* COURSE GRID SECTION - shared CourseGrid component, defaulted to SSC JE category */}
-      <section className="bg-slate-50">
+      <section id="courses" className="bg-slate-50 scroll-mt-32">
         <CourseGrid
           selectedExam={selectedExam}
           setSelectedExam={setSelectedExam}
@@ -1588,9 +1590,9 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                      "GAME's SSC-JE best online coaching creates a dynamic learning environment that encourages growth and mastery of the subjects necessary for SSC-JE success."
                   </p>
                </div>
-               <button className="bg-gameTeal text-white px-10 py-4 rounded-xl font-black uppercase tracking-wider hover:bg-gameTealDark transition-all shadow-xl shrink-0">
+               <Link href="/courses" className="bg-gameTeal text-white px-10 py-4 rounded-xl font-black uppercase tracking-wider hover:bg-gameTealDark transition-all shadow-xl shrink-0">
                   Explore Programs
-               </button>
+               </Link>
             </div>
          </div>
       </section>
@@ -1666,10 +1668,8 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                </p>
                
                <div className="flex flex-col items-center gap-10">
-                  <button className="bg-white text-gameTeal px-14 py-7 rounded-[2rem] font-black uppercase tracking-widest hover:bg-gameGold hover:text-black transition-all shadow-2xl shadow-black/20 flex items-center gap-4 group text-xl">
-                     Check out Courses <ArrowRight size={28} className="group-hover:translate-x-2 transition-transform" />
-                  </button>
-                  
+                  <AppStoreButtons />
+
                   <div className="flex items-center gap-6">
                      <div className="flex -space-x-5">
                         {[1, 2, 3, 4, 5].map((i) => (

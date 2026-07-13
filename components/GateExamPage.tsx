@@ -17,6 +17,7 @@ import CourseGrid from './CourseGrid';
 import CourseHelpSection from './CourseHelpSection';
 import AchieversSection from './AchieversSection';
 import TestimonialsText from './TestimonialsText';
+import AppStoreButtons from './AppStoreButtons';
 
 const GateExamPage: React.FC = () => {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
@@ -2365,13 +2366,7 @@ const GateExamPage: React.FC = () => {
                            </div>
                         </div>
                         
-                        <div className="flex gap-4">
-                           <img 
-                              src="/images/badges/google-play-badge.svg" 
-                              alt="Google Play" 
-                              className="h-14 cursor-pointer hover:scale-105 transition-transform" 
-                           />
-                        </div>
+                        <AppStoreButtons />
                      </div>
                   </motion.div>
                </div>

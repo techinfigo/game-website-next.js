@@ -4,10 +4,10 @@
 import React from 'react';
 import Image from 'next/image';
 import { 
-  ArrowRight, Clock, CheckCircle2, Star, Filter, Users, BookOpen, 
-  GraduationCap, Building2, Search, LayoutGrid, X, Globe, Sparkles, 
+  ArrowRight, Clock, CheckCircle2, Star, Filter, Users, BookOpen,
+  GraduationCap, Building2, Search, LayoutGrid, X, Globe, Sparkles,
   Zap, Crown, Microscope, Briefcase, Train, MapPin, Atom, Backpack, Lock, Calendar, ChevronRight, BarChart3,
-  MessageSquare, Trophy, PlayCircle
+  MessageSquare, Trophy, PlayCircle, Award
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -60,12 +60,13 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
   const categories = [
     { id: 'All', label: 'All Courses', icon: LayoutGrid },
     { id: 'GATE / ESE', label: 'GATE / ESE', icon: GraduationCap },
-    { id: 'SSC JE', label: 'SSC JE', icon: Building2 }, 
+    { id: 'SSC JE', label: 'SSC JE', icon: Building2 },
     { id: 'Govt R&D / PSUs', label: 'Govt R&D / PSUs', icon: Microscope },
     { id: 'RRB / State AE JE', label: 'RRB / State AE JE', icon: Train },
     { id: 'IIT-JEE / NEET', label: 'IIT-JEE / NEET', icon: Atom },
     { id: 'Non-Tech', label: 'Non-Tech', icon: BookOpen },
     { id: 'Class 9th - 12th', label: 'Class 9th - 12th', icon: Backpack },
+    { id: 'Excellence Courses', label: 'Excellence Courses', icon: Award },
   ];
 
   const allCourses = [
