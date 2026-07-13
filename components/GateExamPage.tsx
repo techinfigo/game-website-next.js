@@ -636,7 +636,7 @@ const GateExamPage: React.FC = () => {
           <div className="space-y-6">
             <div className="flex items-center gap-3">
               <div className="bg-gameGold text-black px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest shadow-sm">SPSC</div>
-              <p className="font-bold text-slate-800 text-lg">Ans. State Public Service Commissions (SPSC):</p>
+              <p className="font-bold text-slate-800 text-lg">A.State Public Service Commissions (SPSC):</p>
             </div>
             <p className="text-slate-600 text-base leading-relaxed pl-2 border-l-4 border-slate-100">
               Many state commissions offer lateral entry pathways for advanced roles based on diploma or degree qualifications.
