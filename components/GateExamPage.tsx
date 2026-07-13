@@ -709,7 +709,7 @@ const GateExamPage: React.FC = () => {
                 <div className="w-10 h-10 rounded-xl bg-gameTeal/10 text-gameTeal flex items-center justify-center shrink-0 shadow-sm border border-gameTeal/20">
                    <Building2 size={20} />
                 </div>
-                <h4 className="font-black text-slate-900 text-lg  tracking-tight">C. Public Sector Undertakings (PSUs):</h4>
+                <h4 className="font-black text-slate-900 text-lg tracking-tight">C.PUBLIC SECTOR UNDERTAKINS (PSUs):</h4>
              </div>
              <p className="text-slate-500 text-base leading-relaxed pl-2 border-l-4 border-slate-100 font-medium">
                Lateral entry candidates with diplomas or advanced degrees can secure positions in PSUs through direct recruitment exams or experience-based roles.
