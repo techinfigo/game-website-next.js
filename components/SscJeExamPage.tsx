@@ -6,16 +6,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 /* Added ExternalLink as ExternalLinkIcon to the import list to fix the missing reference on line 1427 */
 import Image from 'next/image';
 import { 
-  Building2, HardHat, Trophy, Shield, Wallet, TrendingUp, Clock, 
+  Building2, HardHat, Shield, Wallet, TrendingUp, Clock,
   ArrowRight, CheckCircle2, Sparkles, GraduationCap,
-  AlertCircle, Download, Calculator, Table as TableIcon, 
+  AlertCircle, Download, Calculator, Table as TableIcon,
   BookOpen, PenTool, Users, Plus, Minus, Landmark, Target,
-  Star, Briefcase, Zap, MousePointer2, FileText, Activity,
+  Briefcase, Zap, MousePointer2, FileText, Activity,
   Award, ShieldCheck, Banknote, Scale, Flag, Globe, Coins,
   Medal, Heart, GraduationCap as TrainingIcon, Construction,
   Info, ListChecks, CalendarRange, UserMinus, FileSearch,
   CheckCircle, HelpCircle, LayoutGrid, FileType, Anchor, Ticket, Train,
-  Laptop, ClipboardCheck, MessageCircle, Newspaper, Quote, ExternalLink as ExternalLinkIcon,
+  Laptop, ClipboardCheck, MessageCircle, Newspaper, ExternalLink as ExternalLinkIcon,
   UserCheck
 } from 'lucide-react';
 import Link from 'next/link';
@@ -23,6 +23,7 @@ import JobUpdatesSection from './JobUpdatesSection';
 import CourseHero from './CourseHero';
 import CourseGrid from './CourseGrid';
 import AppStoreButtons from './AppStoreButtons';
+import TestimonialsText from './TestimonialsText';
 
 interface SscJeExamPageProps {
   onNavigate?: (page: string) => void;
@@ -169,41 +170,6 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       icon: Target,
       color: "text-gameGoldDark",
       bg: "bg-gameGold/5"
-    }
-  ];
-
-  const sscJeResults = [
-    {
-      name: "Ananya Das",
-      exam: "SSC-JE 2023",
-      rank: "AIR 4",
-      branch: "Civil",
-      quote: "GAME Academy doesn't just teach you subjects; they teach you how to think like an engineer. Best decision of my life.",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?fit=crop&w=200&h=200&q=80"
-    },
-    {
-      name: "Amit Patel",
-      exam: "SSC-JE 2023",
-      rank: "AIR 12",
-      branch: "Electrical",
-      quote: "The conceptual clarity I got from Gaurav Sir is unmatched. Every complex topic was broken down into simple parts.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=200&h=200&q=80"
-    },
-    {
-      name: "Rajesh Kumar",
-      exam: "SSC-JE 2022",
-      rank: "AIR 25",
-      branch: "Mechanical",
-      quote: "The mentorship program kept me on track when I felt lost. It's not just a coaching center, it's a family.",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?fit=crop&w=200&h=200&q=80"
-    },
-    {
-      name: "Priya Sharma",
-      exam: "SSC-JE 2023",
-      rank: "AIR 8",
-      branch: "Civil",
-      quote: "The test series and PYQ analysis provided by GAME were instrumental in my success. Highly recommended!",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?fit=crop&w=200&h=200&q=80"
     }
   ];
 
@@ -1046,63 +1012,8 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
         />
       </section>
 
-      {/* SSC-JE Success Stories - testimonials content below is editable */}
-      <section id="ssc-results" className="py-24 bg-slate-50 border-t border-slate-200 relative overflow-hidden scroll-mt-32">
-         <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10">
-            <div className="text-center mb-16">
-               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gameTeal/10 border border-gameTeal/20 mb-6">
-                     <Trophy size={14} className="text-gameTeal" />
-                     <span className="text-xs font-black uppercase tracking-widest text-gameTeal">Success Stories</span>
-                  </div>
-                  <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">
-                     Our <span className="text-gameTeal">SSC-JE Achievers</span>
-                  </h2>
-                  <p className="text-slate-500 max-w-3xl mx-auto text-xl font-medium">
-                     Join the ranks of thousands of students who have secured their dreams with GAME.
-                  </p>
-               </motion.div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-               {sscJeResults.map((result, i) => (
-                  <motion.div
-                     key={i}
-                     initial={{ opacity: 0, y: 20 }}
-                     whileInView={{ opacity: 1, y: 0 }}
-                     viewport={{ once: true }}
-                     transition={{ delay: i * 0.1 }}
-                     className="bg-white rounded-[2rem] p-8 border border-slate-200 shadow-sm hover:shadow-xl hover:border-gameTeal/30 transition-all duration-300 flex flex-col"
-                  >
-                     <Quote size={28} className="text-gameTeal/20 mb-4" />
-                     <p className="text-slate-600 text-sm font-medium leading-relaxed flex-grow mb-6">
-                        "{result.quote}"
-                     </p>
-                     <div className="flex items-center gap-1 mb-4">
-                        {[...Array(5)].map((_, idx) => (
-                           <Star key={idx} size={12} className="text-gameGold fill-gameGold" />
-                        ))}
-                     </div>
-                     <div className="flex items-center gap-4 pt-6 border-t border-slate-100">
-                        <div className="relative w-12 h-12 shrink-0">
-                           <Image
-                              src={result.image}
-                              alt={result.name}
-                              fill
-                              className="rounded-full object-cover border-2 border-gameTeal"
-                              referrerPolicy="no-referrer"
-                           />
-                        </div>
-                        <div>
-                           <p className="font-black text-slate-900 text-sm">{result.name}</p>
-                           <p className="text-gameTeal text-xs font-bold uppercase tracking-wide">{result.rank} &middot; {result.branch}</p>
-                        </div>
-                     </div>
-                  </motion.div>
-               ))}
-            </div>
-         </div>
-      </section>
+      {/* SSC-JE Success Stories - shared TestimonialsText component */}
+      <TestimonialsText />
 
       {/* HOW THESE COURSE HELPS YOU? SECTION */}
       <section id="course-benefits" className="py-24 bg-white relative overflow-hidden scroll-mt-32">

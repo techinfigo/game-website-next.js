@@ -520,7 +520,7 @@ const EseExamPage: React.FC = () => {
                   </p>
 
                   <div className="flex flex-wrap gap-4 mb-8 justify-start">
-                     <button onClick={() => scrollToSection('advantages')} className="px-7 py-3.5 bg-gameTeal text-white font-black rounded-full hover:bg-[#007a7e] transition-all active:scale-95 shadow-xl shadow-gameTeal/20 flex items-center gap-2 group text-sm">
+                     <button onClick={() => scrollToSection('ese-courses')} className="px-7 py-3.5 bg-gameTeal text-white font-black rounded-full hover:bg-[#007a7e] transition-all active:scale-95 shadow-xl shadow-gameTeal/20 flex items-center gap-2 group text-sm">
                         Start Preparation
                         <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                      </button>
