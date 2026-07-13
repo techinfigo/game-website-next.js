@@ -2281,7 +2281,7 @@ const GateExamPage: React.FC = () => {
                      Career Opportunities <span className="text-gameGoldDark">After GATE</span>
                   </h2>
                   <p className="text-slate-600 max-w-3xl mx-auto text-lg font-medium leading-relaxed">
-                     Various Central and State Public Sector Enterprises (PSEs) use the GATE score to hire candidates. 
+                     Various Central and State Public Sector Enterprises (PSUs) use the GATE score to hire candidates. 
                      Leading research institutes like ISRO, DRDO, and BARC also recruit based on GATE scores.
                   </p>
                </motion.div>
