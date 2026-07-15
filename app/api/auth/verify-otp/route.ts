@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Phone and OTP required' }, { status: 400 });
   }
 
-  const authKey = process.env.NEXT_PUBLIC_MSG91_AUTH_KEY;
+  const authKey = process.env.MSG91_AUTH_KEY;
   if (!authKey) {
     return NextResponse.json({ error: 'MSG91 credentials not configured' }, { status: 500 });
   }
