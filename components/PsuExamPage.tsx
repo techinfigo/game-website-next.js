@@ -324,38 +324,35 @@ const PsuExamPage: React.FC = () => {
                <div
                   ref={rndScrollRef}
                   onScroll={handleRndScroll}
-                  className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar gap-5 lg:gap-6 pb-4 px-4 sm:px-10 md:px-14 lg:px-20"
+                  className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar gap-4 lg:gap-6 pb-4 -mx-6 px-6 md:-mx-8 md:px-8 lg:-mx-10 lg:px-10"
                >
                   {rndCards.map((item, index) => (
                      <motion.div
                         key={index}
-                        initial={{ opacity: 0, y: 40 }}
+                        initial={{ opacity: 0, y: 16 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: item.delay, duration: 0.6, ease: 'easeOut' }}
-                        whileHover={{ y: -10 }}
-                        className="group relative flex h-full w-[82%] sm:w-[340px] md:w-[360px] lg:w-[380px] flex-shrink-0 snap-center"
+                        transition={{ delay: item.delay, duration: 0.4, ease: 'easeOut' }}
+                        whileHover={{ y: -4 }}
+                        className="group flex h-full w-[260px] sm:w-[300px] md:w-[320px] lg:w-[340px] flex-shrink-0 snap-start"
                      >
-                        <div className="relative w-full rounded-3xl overflow-hidden flex flex-col bg-gradient-to-br from-[#0a3d3f] via-[#073032] to-[#012e2f] border border-white/10 shadow-xl shadow-black/30 transition-shadow duration-500 group-hover:shadow-2xl group-hover:shadow-gameGold/20">
-                           <div className="h-1 w-full bg-gradient-to-r from-gameGold via-gameGold/60 to-transparent"></div>
+                        <div className="relative w-full rounded-2xl overflow-hidden flex flex-col bg-white border border-slate-200 shadow-md transition-shadow duration-300 group-hover:shadow-lg">
+                           <div className="h-1 w-full bg-gameGold/80"></div>
 
-                           <div className="absolute -top-10 -right-10 w-32 h-32 bg-gameGold/10 rounded-full blur-3xl pointer-events-none"></div>
-                           <div className="absolute -bottom-14 -left-10 w-36 h-36 bg-gameTealLight/20 rounded-full blur-3xl pointer-events-none"></div>
-
-                           <div className="relative p-6 pb-4 flex-1">
-                              <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-gameGold mb-5 shadow-[0_0_20px_rgba(242,197,55,0.15)] transition-all duration-500 group-hover:bg-gameGold group-hover:text-[#012e2f] group-hover:shadow-[0_0_30px_rgba(242,197,55,0.4)]">
-                                 <item.icon size={24} />
+                           <div className="p-6 pb-4 flex-1">
+                              <div className="w-12 h-12 rounded-xl bg-teal-50 flex items-center justify-center text-gameTeal mb-5">
+                                 <item.icon size={22} />
                               </div>
-                              <h3 className="text-lg font-black text-white leading-tight mb-3">
+                              <h3 className="text-lg font-black text-gameBlack leading-tight mb-3">
                                  {item.title}
                               </h3>
-                              <p className="text-teal-100/70 text-sm font-bold leading-relaxed mb-4">
+                              <p className="text-slate-500 text-sm font-bold leading-relaxed mb-4">
                                  {item.imageIdea}
                               </p>
                            </div>
 
-                           <div className="relative mt-auto p-5 pt-4 border-t border-white/10 italic">
-                              <p className="text-gameGold font-black text-base">
+                           <div className="mt-auto p-5 pt-4 border-t border-slate-100 italic">
+                              <p className="text-gameTeal font-black text-base">
                                  &quot;{item.tagline}&quot;
                               </p>
                            </div>
@@ -364,20 +361,17 @@ const PsuExamPage: React.FC = () => {
                   ))}
 
                   <motion.div
-                     initial={{ opacity: 0, y: 40, scale: 0.95 }}
-                     whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                     initial={{ opacity: 0, y: 16 }}
+                     whileInView={{ opacity: 1, y: 0 }}
                      viewport={{ once: true }}
-                     transition={{ delay: 0.5, duration: 0.6, ease: 'easeOut' }}
-                     whileHover={{ y: -10 }}
-                     className="group relative flex h-full w-[82%] sm:w-[340px] md:w-[360px] lg:w-[380px] flex-shrink-0 snap-center"
+                     transition={{ delay: 0.4, duration: 0.4, ease: 'easeOut' }}
+                     whileHover={{ y: -4 }}
+                     className="group flex h-full w-[260px] sm:w-[300px] md:w-[320px] lg:w-[340px] flex-shrink-0 snap-start"
                   >
-                     <div className="relative w-full rounded-3xl overflow-hidden flex flex-col items-center justify-center text-center p-8 bg-gradient-to-br from-gameGold via-[#d9b132] to-[#a97f16] border border-white/20 shadow-xl shadow-black/30 transition-shadow duration-500 group-hover:shadow-2xl group-hover:shadow-gameGold/30">
-                        <div className="absolute -top-10 -right-10 w-32 h-32 bg-white/20 rounded-full blur-3xl pointer-events-none"></div>
-                        <div className="relative w-14 h-14 rounded-2xl bg-white/20 border border-white/30 flex items-center justify-center text-[#012e2f] mb-5">
-                           <Sparkles size={26} className="animate-pulse" />
-                        </div>
-                        <h3 className="relative text-xl font-black text-[#012e2f] mb-2">The Mission Awaits</h3>
-                        <p className="relative text-[#012e2f]/80 font-bold text-xs leading-relaxed">
+                     <div className="relative w-full rounded-2xl overflow-hidden flex flex-col items-center justify-center text-center p-6 bg-gameTeal border border-gameTeal shadow-md transition-shadow duration-300 group-hover:shadow-lg">
+                        <Sparkles size={28} className="text-gameGold mb-4" />
+                        <h3 className="text-xl font-black text-white mb-2">The Mission Awaits</h3>
+                        <p className="text-teal-100 font-bold text-xs leading-relaxed">
                            Connect with your destiny in Indian Infrastructure.
                         </p>
                      </div>
