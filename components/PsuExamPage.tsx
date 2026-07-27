@@ -1,12 +1,23 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { Rocket, Globe, Target, Shield, Users, Sparkles, Briefcase, TrendingUp, Award, Building2, Coffee, Atom, Droplets, Flame, Zap, Wind, Factory, Mountain, Cpu, Ship, Plane, ScrollText, ChevronDown } from 'lucide-react';
+import { Rocket, Globe, Target, Shield, Users, Sparkles, Briefcase, TrendingUp, Award, Building2, Coffee, Atom, Droplets, Flame, Zap, Wind, Factory, Mountain, Cpu, Ship, Plane, ScrollText, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const PsuExamPage: React.FC = () => {
   const [activeSlide, setActiveSlide] = useState(0);
+  const rndScrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollRnd = (direction: 'left' | 'right') => {
+    const container = rndScrollRef.current;
+    if (!container) return;
+    const card = container.firstElementChild as HTMLElement | null;
+    const cardWidth = card ? card.getBoundingClientRect().width : 320;
+    const scrollAmount = cardWidth + 24;
+    container.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
+  };
+
   const slides = [
     {
       badge: "REGISTRATION",
@@ -227,94 +238,117 @@ const PsuExamPage: React.FC = () => {
                </motion.div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-               {[
-                  {
-                     number: "",
-                     title: "Architect of National Legacy",
-                     imageIdea: "A split-screen visual: Minimalist office desk vs. powerful rocket on launch pad at dawn.",
-                     tagline: "Build for a Country.",
-                     icon: Rocket,
-                     delay: 0
-                  },
-                  {
-                     number: "",
-                     title: "Cutting-Edge Frontiers",
-                     imageIdea: "Dynamic infographic of satellite orbits, DNA strands, and cybersecurity shields.",
-                     tagline: "One Career, Infinite Frontiers.",
-                     icon: Globe,
-                     delay: 0.1
-                  },
-                  {
-                     number: "",
-                     title: "Sovereign Impact",
-                     imageIdea: "Scientist's focused eyes reflected in a console showing successful satellite deployment.",
-                     tagline: "Nation Needs Your Genius.",
-                     icon: Target,
-                     delay: 0.2
-                  },
-                  {
-                     number: "",
-                     title: "Stability with a Soul",
-                     imageIdea: "Researcher in a calm lab while a chaotic cityscape flashes behind them.",
-                     tagline: "Focus on the Mission.",
-                     icon: Shield,
-                     delay: 0.3
-                  },
-                  {
-                     number: "",
-                     title: "Brotherhood of Best Minds",
-                     imageIdea: "Diverse team of scientists in collaborative triumph within a mission control room.",
-                     tagline: "Stand on Shoulders of Giants.",
-                     icon: Users,
-                     delay: 0.4
-                  }
-               ].map((item, index) => (
-                  <motion.div 
-                     key={index}
-                     initial={{ opacity: 0, y: 20 }}
-                     whileInView={{ opacity: 1, y: 0 }}
-                     viewport={{ once: true }}
-                     transition={{ delay: item.delay, duration: 0.5 }}
-                     className="group flex h-full"
-                  >
-                     <div className="bg-white rounded-[2rem] border border-slate-200 hover:border-gameTeal/30 hover:shadow-xl hover:shadow-gameTeal/5 transition-all duration-500 overflow-hidden flex flex-col w-full relative">
-                        <span className="absolute top-4 right-6 text-2xl font-black text-slate-100 group-hover:text-gameTeal/10 transition-colors pointer-events-none">{item.number}</span>
-                        
-                        <div className="p-6 pb-4">
-                           <div className="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center text-gameTeal group-hover:bg-gameTeal group-hover:text-white transition-all duration-500 mb-5 shadow-inner">
-                              <item.icon size={24} />
-                           </div>
-                           <h3 className="text-lg font-black text-gameBlack leading-tight mb-3 group-hover:text-gameTeal transition-colors">
-                              {item.title}
-                           </h3>
-                           <p className="text-slate-500 text-sm font-bold leading-relaxed mb-4">
-                              {item.imageIdea}
-                           </p>
-                        </div>
-
-                        <div className="mt-auto p-5 pt-4 bg-slate-50/50 border-t border-slate-100 italic">
-                           <p className="text-gameBlack font-black text-base">
-                              &quot;{item.tagline}&quot;
-                           </p>
-                        </div>
-                     </div>
-                  </motion.div>
-               ))}
-               
-               <motion.div 
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.5 }}
-                  className="lg:flex flex-col items-center justify-center p-6 rounded-[2rem] bg-gameTeal text-white text-center shadow-lg shadow-gameTeal/20 border-2 border-white/10"
+            <div className="relative">
+               <button
+                  type="button"
+                  onClick={() => scrollRnd('left')}
+                  aria-label="Scroll left"
+                  className="hidden md:flex absolute -left-4 lg:-left-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white border border-slate-200 shadow-lg items-center justify-center text-gameTeal hover:bg-gameTeal hover:text-white hover:border-gameTeal transition-all duration-300"
                >
-                  <Sparkles size={32} className="text-gameGold mb-4 animate-pulse" />
-                  <h3 className="text-xl font-black mb-2">The Mission Awaits</h3>
-                  <p className="text-teal-100 font-bold text-xs leading-relaxed">
-                     Connect with your destiny in Indian Infrastructure.
-                  </p>
-               </motion.div>
+                  <ChevronLeft size={22} />
+               </button>
+
+               <div
+                  ref={rndScrollRef}
+                  className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar gap-4 lg:gap-6 pb-4 -mx-6 px-6 md:-mx-8 md:px-8 lg:-mx-10 lg:px-10"
+               >
+                  {[
+                     {
+                        number: "",
+                        title: "Architect of National Legacy",
+                        imageIdea: "A split-screen visual: Minimalist office desk vs. powerful rocket on launch pad at dawn.",
+                        tagline: "Build for a Country.",
+                        icon: Rocket,
+                        delay: 0
+                     },
+                     {
+                        number: "",
+                        title: "Cutting-Edge Frontiers",
+                        imageIdea: "Dynamic infographic of satellite orbits, DNA strands, and cybersecurity shields.",
+                        tagline: "One Career, Infinite Frontiers.",
+                        icon: Globe,
+                        delay: 0.1
+                     },
+                     {
+                        number: "",
+                        title: "Sovereign Impact",
+                        imageIdea: "Scientist's focused eyes reflected in a console showing successful satellite deployment.",
+                        tagline: "Nation Needs Your Genius.",
+                        icon: Target,
+                        delay: 0.2
+                     },
+                     {
+                        number: "",
+                        title: "Stability with a Soul",
+                        imageIdea: "Researcher in a calm lab while a chaotic cityscape flashes behind them.",
+                        tagline: "Focus on the Mission.",
+                        icon: Shield,
+                        delay: 0.3
+                     },
+                     {
+                        number: "",
+                        title: "Brotherhood of Best Minds",
+                        imageIdea: "Diverse team of scientists in collaborative triumph within a mission control room.",
+                        tagline: "Stand on Shoulders of Giants.",
+                        icon: Users,
+                        delay: 0.4
+                     }
+                  ].map((item, index) => (
+                     <motion.div
+                        key={index}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: item.delay, duration: 0.5 }}
+                        className="group flex h-full w-[280px] md:w-[320px] flex-shrink-0 snap-start"
+                     >
+                        <div className="bg-white rounded-[2rem] border border-slate-200 hover:border-gameTeal/30 hover:shadow-xl hover:shadow-gameTeal/5 transition-all duration-500 overflow-hidden flex flex-col w-full relative">
+                           <span className="absolute top-4 right-6 text-2xl font-black text-slate-100 group-hover:text-gameTeal/10 transition-colors pointer-events-none">{item.number}</span>
+
+                           <div className="p-6 pb-4">
+                              <div className="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center text-gameTeal group-hover:bg-gameTeal group-hover:text-white transition-all duration-500 mb-5 shadow-inner">
+                                 <item.icon size={24} />
+                              </div>
+                              <h3 className="text-lg font-black text-gameBlack leading-tight mb-3 group-hover:text-gameTeal transition-colors">
+                                 {item.title}
+                              </h3>
+                              <p className="text-slate-500 text-sm font-bold leading-relaxed mb-4">
+                                 {item.imageIdea}
+                              </p>
+                           </div>
+
+                           <div className="mt-auto p-5 pt-4 bg-slate-50/50 border-t border-slate-100 italic">
+                              <p className="text-gameBlack font-black text-base">
+                                 &quot;{item.tagline}&quot;
+                              </p>
+                           </div>
+                        </div>
+                     </motion.div>
+                  ))}
+
+                  <motion.div
+                     initial={{ opacity: 0, scale: 0.95 }}
+                     whileInView={{ opacity: 1, scale: 1 }}
+                     viewport={{ once: true }}
+                     transition={{ delay: 0.5 }}
+                     className="flex flex-col items-center justify-center p-6 rounded-[2rem] bg-gameTeal text-white text-center shadow-lg shadow-gameTeal/20 border-2 border-white/10 w-[280px] md:w-[320px] flex-shrink-0 snap-start"
+                  >
+                     <Sparkles size={32} className="text-gameGold mb-4 animate-pulse" />
+                     <h3 className="text-xl font-black mb-2">The Mission Awaits</h3>
+                     <p className="text-teal-100 font-bold text-xs leading-relaxed">
+                        Connect with your destiny in Indian Infrastructure.
+                     </p>
+                  </motion.div>
+               </div>
+
+               <button
+                  type="button"
+                  onClick={() => scrollRnd('right')}
+                  aria-label="Scroll right"
+                  className="hidden md:flex absolute -right-4 lg:-right-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white border border-slate-200 shadow-lg items-center justify-center text-gameTeal hover:bg-gameTeal hover:text-white hover:border-gameTeal transition-all duration-300"
+               >
+                  <ChevronRight size={22} />
+               </button>
             </div>
          </div>
       </section>
