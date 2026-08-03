@@ -545,8 +545,25 @@ const PsuExamPage: React.FC = () => {
                </motion.div>
             </div>
 
+            {/* NPCIL Section */}
+            <DetailedOrgCard
+               icon={Factory}
+               title="Nuclear Power Corporation of India Limited (NPCIL)"
+               description="Nuclear Power Corporation of India Limited (NPCIL) is a Public Sector Enterprise under the administrative control of the Department of Atomic Energy (DAE), Government of India."
+               examSnapshot={[
+                  { label: "Eligibility", value: "BE/B.Tech/M.Sc or equivalent (often with a valid GATE score)." },
+                  { label: "Selection", value: "Typically involves shortlisting via GATE score & Final selection based on Personal Interview only." },
+                  { label: "Pay Scale", value: "Basic Pay of ₹56,100 per month + other allowances." }
+               ]}
+               lifeAtOrgHeader="Life @ NPCIL"
+               lifeAtOrgItems={[
+                  { label: "Cutting-Edge Work", value: "Work on mission-critical national projects in nuclear energy, reactors, and advanced research." },
+                  { label: "Lifestyle", value: "Unmatched job security, a prestigious career, and structured growth." }
+               ]}
+            />
+
             {/* ONGC Section */}
-            <DetailedOrgCard 
+            <DetailedOrgCard
                icon={Droplets}
                title="Oil and Natural Gas Corporation Limited (ONGC)"
                description="ONGC (Oil and Natural Gas Corporation) is a 'Maharatna' Public Sector Enterprise and India's largest crude oil and natural gas company. It drives the nation's energy security by exploring and producing hydrocarbons."
@@ -569,7 +586,7 @@ const PsuExamPage: React.FC = () => {
             <DetailedOrgCard 
                icon={Flame}
                iconColorClass="text-gameGold"
-               title="Indian Oil Corporation of India Limited (IOCL)"
+               title="Indian Oil Corporation Limited (IOCL)"
                description="IOCL is India's largest integrated oil and gas corporation, a Maharatna PSU. It fuels the nation's energy needs across refining, marketing, pipelines, and petrochemicals."
                examSnapshot={[
                   { label: "Post", value: "Junior Engineer/Officer (Diploma), Engineer/Officer (Graduate via GATE), Assistant Officer" },
@@ -779,12 +796,6 @@ const PsuExamPage: React.FC = () => {
                   <h3 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight tracking-tighter">
                      List of PSUs that Recruit through <span className="text-gameTeal italic">GATE EXAMS</span>
                   </h3>
-                  <div className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
-                     <span className="w-2 h-2 rounded-full bg-gameGold animate-pulse shadow-[0_0_10px_rgba(240,189,45,0.5)]"></span>
-                     <p className="text-slate-300 font-extrabold text-xs md:text-sm uppercase tracking-[0.25em]">
-                        Take the content from GATE page, as shown below
-                     </p>
-                  </div>
                </div>
 
                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 relative z-10">
@@ -900,7 +911,7 @@ const PsuExamPage: React.FC = () => {
                         q: "How does the selection process generally work for these top PSUs?",
                         a: (
                            <div className="space-y-4">
-                              <p>There are two main pathways for selection:</p>
+                              <p>There are two main pathways:</p>
                               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                                  <div className="p-5 bg-white rounded-2xl border border-slate-100 shadow-sm">
                                     <h5 className="font-black text-gameTeal uppercase text-xs tracking-widest mb-3">(i) GATE Score Route</h5>
@@ -908,7 +919,7 @@ const PsuExamPage: React.FC = () => {
                                  </div>
                                  <div className="p-5 bg-white rounded-2xl border border-slate-100 shadow-sm">
                                     <h5 className="font-black text-gameTeal uppercase text-xs tracking-widest mb-3">(ii) PSU's Own Exam Route</h5>
-                                    <p className="text-sm font-bold text-slate-600">Candidates must clear a Computer-Based Test (CBT) conducted by the PSU, testing technical knowledge and general aptitude.</p>
+                                    <p className="text-sm font-bold text-slate-600">Candidates must clear a Computer-Based Test (CBT) conducted by the PSU, which tests both technical (domain) knowledge and general aptitude. This is followed by further stages like Interviews or Document Verification.</p>
                                  </div>
                               </div>
                            </div>
@@ -916,15 +927,23 @@ const PsuExamPage: React.FC = () => {
                      },
                      {
                         q: "What is the age limit to apply for these PSU recruitments?",
-                        a: "The upper age limit for general category candidates is usually 26 to 28 years for entry-level graduate engineer positions. Age relaxation is provided as per government norms for OBC, SC, ST, and PwD candidates. It's crucial to check the specific advertisement for the exact cut-off date."
+                        a: "The upper age limit for general category candidates is usually 26 to 28 years for entry-level graduate engineer positions. Age relaxation is provided as per government norms. It's crucial to check the specific advertisement for the exact cut-off date."
                      },
                      {
                         q: "What are the key career benefits of joining a Maharatna PSU like NTPC, IOCL, or BHEL?",
-                        a: "A career in these top-tier PSUs offers high job security, structured career progression, and an excellent compensation package. This includes a good basic pay, dearness allowance, housing benefits, medical facilities, provident fund, gratuity, and performance-linked incentives that often surpass private sector counterparts for core engineering roles."
+                        a: "A career in these top-tier PSUs offers high job security, structured career progression, and an excellent compensation package. This includes a good basic pay, dearness allowance, housing benefits, medical facilities, provident fund, gratuity, and performance-linked incentives."
                      },
                      {
                         q: "Where will I be posted if I get selected?",
-                        a: "Postings are at the company's discretion across their Manufacturing Units, Project Sites, or Regional Offices nationwide, often in industrial or remote areas. While you may be asked for preferences during the application, the final decision is based on vacancies and merit. Many PSUs provide excellent township facilities for employees."
+                        a: "Postings are at the company's discretion across their Manufacturing Units, Project Sites, or Regional Offices nationwide, often in industrial or remote areas. While you may be asked for preferences during the application, the final decision is based on vacancies and merit."
+                     },
+                     {
+                        q: "What happens after selection? Is there a training or bond period?",
+                        a: "Selected candidates join as Trainees (Engineer/Supervisor) and undergo a mandatory one-year training period. After successful completion, they are absorbed into regular roles. All selected candidates must sign a service agreement bond. Leaving before this period requires paying a significant penalty."
+                     },
+                     {
+                        q: "What are the key career benefits of joining a Maharatna PSU like NTPC, IOCL, or BHEL?",
+                        a: "A career in these top-tier PSUs offers high job security, structured career progression, and an excellent compensation package. This includes a good basic pay, dearness allowance, housing benefits, medical facilities, provident fund, gratuity, and performance-linked incentives."
                      }
                   ].map((faq, index) => <FAQItem key={index} faq={faq} index={index + 1} />)}
                </div>
