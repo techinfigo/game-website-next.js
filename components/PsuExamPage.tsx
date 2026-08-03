@@ -466,8 +466,9 @@ const PsuExamPage: React.FC = () => {
                </motion.div>
             </div>
 
-            <DetailedOrgCard 
+            <DetailedOrgCard
                icon={Rocket}
+               logoSlug="isro"
                title="Indian Space Research Organisation (ISRO)"
                description="India's premier space agency, known for Chandrayaan & Mangalyaan. Your work here powers national missions."
                examSnapshot={[
@@ -485,8 +486,9 @@ const PsuExamPage: React.FC = () => {
                ]}
             />
 
-            <DetailedOrgCard 
+            <DetailedOrgCard
                icon={Atom}
+               logoSlug="barc"
                iconColorClass="text-gameGold"
                title="Bhabha Atomic Research Centre (BARC)"
                description="Bhabha Atomic Research Centre (BARC) is India's premier nuclear research and development organisation under the Department of Atomic Energy (DAE). It is the heart of India's nuclear science, power, and technology programs."
@@ -507,8 +509,9 @@ const PsuExamPage: React.FC = () => {
                delay={0.2}
             />
 
-            <DetailedOrgCard 
+            <DetailedOrgCard
                icon={Shield}
+               logoSlug="drdo"
                title="Defence Research and Development Organisation (DRDO)"
                description="The Defence Research & Development Organisation (DRDO) is India's largest and most diverse defence research and development agency under the Ministry of Defence. Its mission is to design, develop, and produce state-of-the-art weapon systems, platforms, and allied technologies for the Indian Armed Forces."
                examSnapshot={[
@@ -548,6 +551,7 @@ const PsuExamPage: React.FC = () => {
             {/* NPCIL Section */}
             <DetailedOrgCard
                icon={Factory}
+               logoSlug="npcil"
                title="Nuclear Power Corporation of India Limited (NPCIL)"
                description="Nuclear Power Corporation of India Limited (NPCIL) is a Public Sector Enterprise under the administrative control of the Department of Atomic Energy (DAE), Government of India."
                examSnapshot={[
@@ -565,6 +569,7 @@ const PsuExamPage: React.FC = () => {
             {/* ONGC Section */}
             <DetailedOrgCard
                icon={Droplets}
+               logoSlug="ongc"
                title="Oil and Natural Gas Corporation Limited (ONGC)"
                description="ONGC (Oil and Natural Gas Corporation) is a 'Maharatna' Public Sector Enterprise and India's largest crude oil and natural gas company. It drives the nation's energy security by exploring and producing hydrocarbons."
                examSnapshot={[
@@ -583,8 +588,9 @@ const PsuExamPage: React.FC = () => {
             />
 
             {/* IOCL Section */}
-            <DetailedOrgCard 
+            <DetailedOrgCard
                icon={Flame}
+               logoSlug="iocl"
                iconColorClass="text-gameGold"
                title="Indian Oil Corporation Limited (IOCL)"
                description="IOCL is India's largest integrated oil and gas corporation, a Maharatna PSU. It fuels the nation's energy needs across refining, marketing, pipelines, and petrochemicals."
@@ -605,8 +611,9 @@ const PsuExamPage: React.FC = () => {
             />
 
             {/* BHEL Section */}
-            <DetailedOrgCard 
+            <DetailedOrgCard
                icon={Zap}
+               logoSlug="bhel"
                title="Bharat Heavy Electricals Limited (BHEL)"
                description="BHEL is India's premier engineering and manufacturing PSU, established in 1964. It powers the nation's core sectors like energy, defence, and transportation with world-class products and services."
                examSnapshot={[
@@ -625,8 +632,9 @@ const PsuExamPage: React.FC = () => {
             />
 
             {/* NTPC Section */}
-            <DetailedOrgCard 
+            <DetailedOrgCard
                icon={Zap}
+               logoSlug="ntpc"
                iconColorClass="text-gameGold"
                title="National Thermal Power Corporation (NTPC)"
                description="NTPC Limited is India's largest integrated power utility, established in 1975. It has evolved from a thermal power generator into a diversified energy major across conventional and renewable generation, mining, and green energy."
@@ -646,8 +654,9 @@ const PsuExamPage: React.FC = () => {
             />
 
             {/* GAIL Section */}
-            <DetailedOrgCard 
+            <DetailedOrgCard
                icon={Wind}
+               logoSlug="gail"
                title="Gas Authority of India Limited (GAIL)"
                description="GAIL (India) Limited is a Maharatna PSU and the country's flagship natural gas company, leading India's transition to clean fuel."
                examSnapshot={[
@@ -664,8 +673,9 @@ const PsuExamPage: React.FC = () => {
             />
 
             {/* SAIL Section */}
-            <DetailedOrgCard 
+            <DetailedOrgCard
                icon={TrendingUp}
+               logoSlug="sail"
                title="Steel Authority of India Limited (SAIL)"
                description="SAIL (Steel Authority of India Limited) is a Maharatna public sector enterprise and the nation's leading steel producer, driving India's industrial and infrastructural growth. It offers young engineers a prestigious career as Management Trainees with excellent growth opportunities, job security, and a chance to contribute to the core sector."
                examSnapshot={[
@@ -684,8 +694,9 @@ const PsuExamPage: React.FC = () => {
             />
 
             {/* HPCL Section */}
-            <DetailedOrgCard 
+            <DetailedOrgCard
                icon={Droplets}
+               logoSlug="hpcl"
                title="Hindustan Petroleum Corporation Limited (HPCL)"
                description="HPCL is a Maharatna oil & gas giant, driving India's energy security through refining, marketing, and sustainable fuel initiatives."
                examSnapshot={[
@@ -704,8 +715,9 @@ const PsuExamPage: React.FC = () => {
             />
 
             {/* Coal India Limited Section */}
-            <DetailedOrgCard 
+            <DetailedOrgCard
                icon={Mountain}
+               logoSlug="cil"
                title="Coal India Limited (CIL)"
                description="Coal India Management Trainee (CIL-MT) is a prestigious entry-level program for engineers in India's largest coal producer. It offers a stable, high-growth career in the nation's core energy sector with competitive benefits."
                examSnapshot={[
@@ -723,8 +735,9 @@ const PsuExamPage: React.FC = () => {
             />
 
             {/* BEL Section */}
-            <DetailedOrgCard 
+            <DetailedOrgCard
                icon={Cpu}
+               logoSlug="bel"
                title="Bharat Electronics Limited (BEL)"
                description="Bharat Electronics Limited (BEL) is a 'Navaratna' Public Sector Undertaking (PSU) under the Ministry of Defence, Government of India. It is a leader in professional electronics across defence and strategic sectors."
                examSnapshot={[
@@ -741,8 +754,9 @@ const PsuExamPage: React.FC = () => {
             />
 
             {/* MDL Section */}
-            <DetailedOrgCard 
+            <DetailedOrgCard
                icon={Ship}
+               logoSlug="mdl"
                title="Mazagon Dock Shipbuilders (MDL)"
                description="Mazagon Dock Shipbuilders Limited (MDL) is a premier shipbuilding and defense fabrication company in India, based in Mumbai. MDL was taken over by the Government of India in 1960."
                examSnapshot={[
@@ -759,8 +773,9 @@ const PsuExamPage: React.FC = () => {
             />
 
             {/* HAL Section */}
-            <DetailedOrgCard 
+            <DetailedOrgCard
                icon={Plane}
+               logoSlug="hal"
                title="Hindustan Aeronautical Limited (HAL)"
                description="Hindustan Aeronautics Limited (HAL) is a major Indian aerospace and defense company. It drives the 'Make in India' initiative by designing, manufacturing, and maintaining aircraft, helicopters, and their systems."
                examSnapshot={[
@@ -1012,6 +1027,7 @@ interface SectionItem {
 
 const DetailedOrgCard: React.FC<{
   icon: any;
+  logoSlug?: string;
   title: string;
   description: string;
   examSnapshot: SectionItem[];
@@ -1019,9 +1035,11 @@ const DetailedOrgCard: React.FC<{
   lifeAtOrgItems: (string | SectionItem)[];
   delay?: number;
   iconColorClass?: string;
-}> = ({ icon: Icon, title, description, examSnapshot, lifeAtOrgHeader, lifeAtOrgItems, delay = 0, iconColorClass = "text-gameTeal" }) => {
+}> = ({ icon: Icon, logoSlug, title, description, examSnapshot, lifeAtOrgHeader, lifeAtOrgItems, delay = 0, iconColorClass = "text-gameTeal" }) => {
+  const [logoFailed, setLogoFailed] = useState(false);
+
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       whileHover={{ y: -8 }}
@@ -1031,8 +1049,18 @@ const DetailedOrgCard: React.FC<{
     >
       {/* Header Area */}
       <div className="p-6 md:p-10 flex flex-col md:flex-row gap-6 md:gap-10 items-start md:items-center bg-white">
-        <div className="w-16 h-16 md:w-18 md:h-18 rounded-[1.25rem] bg-[#004d50] flex items-center justify-center text-white shrink-0 shadow-xl shadow-gameTeal/30">
-          <Icon size={32} />
+        <div className="w-16 h-16 rounded-xl bg-white border border-slate-200 shadow-sm flex items-center justify-center shrink-0 p-2 overflow-hidden">
+          {logoSlug && !logoFailed ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={`/logos/${logoSlug}.png`}
+              alt={`${title} logo`}
+              className="w-full h-full object-contain"
+              onError={() => setLogoFailed(true)}
+            />
+          ) : (
+            <Icon size={28} className={iconColorClass} />
+          )}
         </div>
         <div className="flex-grow">
           <h3 className="text-2xl md:text-3xl font-black text-[#002b2e] mb-1.5 leading-tight tracking-tight">
