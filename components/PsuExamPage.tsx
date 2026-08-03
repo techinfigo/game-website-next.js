@@ -1049,13 +1049,13 @@ const DetailedOrgCard: React.FC<{
     >
       {/* Header Area */}
       <div className="p-6 md:p-10 flex flex-col md:flex-row gap-6 md:gap-10 items-start md:items-center bg-white">
-        <div className="w-16 h-16 rounded-xl bg-white border border-slate-200 shadow-sm flex items-center justify-center shrink-0 p-2 overflow-hidden">
+        <div className="w-16 h-16 flex items-center justify-center shrink-0">
           {logoSlug && !logoFailed ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={`/logos/${logoSlug}.png`}
               alt={`${title} logo`}
-              className="w-full h-full object-contain"
+              className="w-full h-full object-contain rounded-lg"
               onError={() => setLogoFailed(true)}
             />
           ) : (
