@@ -10,6 +10,7 @@ import {
   MessageSquare, Trophy, PlayCircle, Award
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useCourses, Course } from '@/hooks/useCourses';
 
 interface CourseGridProps {
   selectedExam: string;
@@ -69,7 +70,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
     { id: 'Excellence Courses', label: 'Excellence Courses', icon: Award },
   ];
 
-  const allCourses = [
+  const DEFAULT_COURSES: Course[] = [
     // GATE / ESE Category
     {
       title: "Lakshya Basic (ME) 2027",
@@ -637,19 +638,21 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
     }
   ];
 
-  const filteredCourses = allCourses.filter(c => {
+  const { courses } = useCourses(DEFAULT_COURSES);
+
+  const filteredCourses = courses.filter(c => {
     const matchesCategory = selectedExam === 'All' || c.category === selectedExam;
-    
+
     const searchLower = searchTerm.toLowerCase();
-    const matchesSearch = searchTerm === "" || 
-                          c.title.toLowerCase().includes(searchLower) || 
+    const matchesSearch = searchTerm === "" ||
+                          c.title.toLowerCase().includes(searchLower) ||
                           c.tagline.toLowerCase().includes(searchLower);
 
     return matchesCategory && matchesSearch;
   });
 
-  const getCategoryCount = (catId: string) => 
-    catId === 'All' ? allCourses.length : allCourses.filter(c => c.category === catId).length;
+  const getCategoryCount = (catId: string) =>
+    catId === 'All' ? courses.length : courses.filter(c => c.category === catId).length;
 
   return (
     <section id="course-grid" className="pt-4 pb-12 relative min-h-[400px] bg-slate-50">
