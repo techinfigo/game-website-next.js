@@ -14,8 +14,11 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { EXAM_PAGES_DISABLED, DISABLED_EXAMPAGES_IDS } from "./examconfig";
+import { useSiteSettings } from "@/hooks/useSiteSettings";
 
 const Footer: React.FC = () => {
+  const settings = useSiteSettings();
+
   return (
     <footer className="bg-black text-slate-400 py-16 font-sans border-t border-white/5">
       <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12">
@@ -40,17 +43,17 @@ const Footer: React.FC = () => {
             </p>
             <div className="flex gap-3">
               {[
-                { Icon: Youtube, url: "https://www.youtube.com/@gblions" },
-                { id: "telegram", url: "https://t.me/gamebygauravbabu" },
+                { Icon: Youtube, url: settings.youtube },
+                { id: "telegram", url: settings.telegram },
                 {
                   id: "whatsapp",
-                  url: "https://whatsapp.com/channel/0029VaWNuqVJpe8gdAkinR1T",
+                  url: settings.whatsappChannel,
                 },
                 {
                   id: "linkedin",
-                  url: "https://www.linkedin.com/company/gameacademyindia/",
+                  url: settings.linkedin,
                 },
-                { Icon: Facebook, url: "https://www.facebook.com/gameacademyindia" },
+                { Icon: Facebook, url: settings.facebook },
               ].map((social, i) => {
                 const IconComponent = (social as any).Icon;
                 return (
@@ -208,8 +211,7 @@ const Footer: React.FC = () => {
                     className="text-gameTeal mt-0.5 shrink-0 group-hover:text-gameGold transition-colors"
                   />
                   <span className="text-sm text-slate-400 leading-relaxed group-hover:text-white transition-colors">
-                    131, 2, Jawahar Puram Phase -1, Shahganj, Agra, Uttar
-                    Pradesh 282010
+                    {settings.address}
                   </span>
                 </li>
                 <li className="flex items-center gap-3 group cursor-pointer">
@@ -218,10 +220,10 @@ const Footer: React.FC = () => {
                     className="text-gameTeal shrink-0 group-hover:text-gameGold transition-colors"
                   />
                   <a
-                    href="tel:+917668518602"
+                    href={`tel:${settings.phone}`}
                     className="text-sm text-white font-medium group-hover:text-gameGold transition-colors"
                   >
-                    +91 76685 18602
+                    {settings.phone}
                   </a>
                 </li>
                 <li className="flex items-center gap-3 group cursor-pointer">
@@ -230,10 +232,10 @@ const Footer: React.FC = () => {
                     className="text-gameTeal shrink-0 group-hover:text-gameGold transition-colors"
                   />
                   <a
-                    href="mailto:info@gameacademy.in"
+                    href={`mailto:${settings.email}`}
                     className="text-sm text-white font-medium group-hover:text-gameGold transition-colors"
                   >
-                    info@gameacademy.in
+                    {settings.email}
                   </a>
                 </li>
               </ul>
@@ -247,7 +249,7 @@ const Footer: React.FC = () => {
               </h5>
               <div className="grid grid-cols-2 gap-3">
                 <a
-                  href="https://clppenny.page.link/cTBm"
+                  href={settings.androidAppLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 bg-[#1a1a1a] hover:bg-[#252525] px-3 py-2.5 rounded-xl border border-white/10 transition-all group"
@@ -269,7 +271,7 @@ const Footer: React.FC = () => {
                   </div>
                 </a>
                 <a
-                  href="https://apps.apple.com/in/app/myinstitute/id1472483563"
+                  href={settings.iosAppLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 bg-[#1a1a1a] hover:bg-[#252525] px-3 py-2.5 rounded-xl border border-white/10 transition-all group relative"
