@@ -22,10 +22,10 @@ const CourseHelpSection: React.FC = () => {
       icon: BookOpen,
       bgGradient: "from-[#075d63] to-[#0a4d52]",
       images: [
-        "toolkit-1.png",
-        "toolkit-2.png",
-        "toolkit-3.png",
-        "toolkit-4.png"
+        "/toolkit-1.png",
+        "/toolkit-2.png",
+        "/toolkit-3.png",
+        "/toolkit-4.png"
       ]
     },
     {
