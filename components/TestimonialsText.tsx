@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, Quote, ChevronLeft, ChevronRight, BadgeCheck, MessageCircle, X } from 'lucide-react';
 import { ALL_STORIES } from './AchieversPage';
+import { useReviews } from '@/hooks/useReviews';
 
 const TestimonialAvatar: React.FC<{ src?: string; name: string }> = ({ src, name }) => {
   const [error, setError] = React.useState(false);
@@ -34,7 +35,9 @@ const TestimonialsText: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeStory, setActiveStory] = useState<any | null>(null);
 
-  const testimonials = ALL_STORIES.filter(s => s.type === 'story').map((item) => ({
+  const { reviews } = useReviews();
+
+  const fallbackTestimonials = ALL_STORIES.filter(s => s.type === 'story').map((item) => ({
     id: item.id,
     name: item.name || 'Student',
     role: `${item.course || "Lakshya | 1 Yr GATE Course"} ${item.branch ? `(${item.branch})` : ''}`,
@@ -42,6 +45,8 @@ const TestimonialsText: React.FC = () => {
     image: item.img,
     rating: item.rating || 5
   }));
+
+  const testimonials = reviews.length > 0 ? reviews : fallbackTestimonials;
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
