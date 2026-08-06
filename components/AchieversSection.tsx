@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { Trophy, Play, Crown, X, ArrowRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { useAchievers } from '@/hooks/useAchievers';
 
 interface Achiever {
   id: number;
@@ -22,6 +23,7 @@ const AchieversSection: React.FC<AchieversSectionProps> = ({ onNavigate }) => {
   const router = useRouter();
   const [isPaused, setIsPaused] = useState(false);
   const [playingCardKey, setPlayingCardKey] = useState<string | null>(null);
+  const { videoShorts } = useAchievers();
 
   const handleNavigate = (page: string) => {
     if (onNavigate) {
@@ -31,63 +33,10 @@ const AchieversSection: React.FC<AchieversSectionProps> = ({ onNavigate }) => {
     }
   };
 
-  const achievers: Achiever[] = [
-    {
-      id: 1,
-      name: "Harpreet",
-      videoId: "_XJJgF14hRw"
-    },
-    {
-      id: 2,
-      name: "Mukunda Buragohain",
-      videoId: "bmYoxNuLm2Q"
-    },
-    {
-      id: 3,
-      name: "Parul Singh",
-      videoId: "nVQViykd4ww"
-    },
-    {
-      id: 4,
-      name: "Anurag Tripathi",
-      videoId: "Zd4ba5fz01E"
-    },
-    {
-      id: 5,
-      name: "Khusro Sheikh",
-      videoId: "uhcVp9Io1ko"
-    },
-    {
-      id: 6,
-      name: "Anjali",
-      videoId: "z0LNphCRgIE"
-    },
-    {
-      id: 7,
-      name: "Sujoy Das",
-      videoId: "a-PRFgprxDs"
-    },
-    {
-      id: 8,
-      name: "Rajesh Kumar Sahu",
-      videoId: "8HXxfmBlyXc"
-    },
-    {
-      id: 9,
-      name: "Prem Narwade",
-      videoId: "ICWWsWVg9tg"
-    },
-    {
-      id: 10,
-      name: "Kapil Sharma",
-      videoId: "4glyoj_qvc8"
-    },
-    {
-      id: 11,
-      name: "Akash Hazra",
-      videoId: "vIXFlicDn2w"
-    }
-  ].map(a => ({ ...a, image: `https://i.ytimg.com/vi/${a.videoId}/maxresdefault.jpg` }));
+  const achievers: Achiever[] = videoShorts.map(a => ({
+    ...a,
+    image: `https://i.ytimg.com/vi/${a.videoId}/maxresdefault.jpg`
+  }));
 
   // Duplicate for seamless loop
   const extendedAchievers = [...achievers, ...achievers, ...achievers];

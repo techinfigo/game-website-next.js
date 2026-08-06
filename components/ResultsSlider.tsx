@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Trophy, Play, Pause, Crown } from 'lucide-react';
+import { useAchievers } from '@/hooks/useAchievers';
 
 interface Achiever {
   id: number;
@@ -17,51 +18,9 @@ interface Achiever {
 
 const ResultsSlider: React.FC = () => {
   const [isPaused, setIsPaused] = useState(false);
+  const { gateToppers } = useAchievers();
 
-  const achievers: Achiever[] = [
-    {
-      id: 1,
-      name: "Devansh Bajpai",
-      rank: "AIR 13",
-      exam: "GATE ME",
-      image: "https://img.youtube.com/vi/QZC0IzzoSS0/hqdefault.jpg",
-    },
-    {
-      id: 2,
-      name: "Rohan Kulkarni",
-      rank: "AIR 4",
-      exam: "GATE ME",
-      image: "https://img.youtube.com/vi/qzevZxEawpA/hqdefault.jpg",
-    },
-    {
-      id: 3,
-      name: "Siddhesh Gaikwad",
-      rank: "AIR 2",
-      exam: "GATE ME",
-      image: "https://img.youtube.com/vi/nLDQgHBYTc0/hqdefault.jpg",
-    },
-    {
-      id: 4,
-      name: "Harsh Vardhan",
-      rank: "AIR 26",
-      exam: "GATE ME",
-      image: "https://img.youtube.com/vi/7RoM5q7nte4/hqdefault.jpg",
-    },
-    {
-      id: 5,
-      name: "Praveen Kumar",
-      rank: "AIR 1",
-      exam: "GATE ME",
-      image: "https://img.youtube.com/vi/CjFRWUCyvSI/hqdefault.jpg",
-    },
-    {
-      id: 6,
-      name: "Vikram Rathore",
-      rank: "AIR 8",
-      exam: "GATE ME",
-      image: "https://img.youtube.com/vi/35F4plJjhFM/hqdefault.jpg",
-    }
-  ];
+  const achievers: Achiever[] = gateToppers;
 
   // Duplicate for seamless loop (3 sets)
   const extendedAchievers = [...achievers, ...achievers, ...achievers];
