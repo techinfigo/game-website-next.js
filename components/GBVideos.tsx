@@ -5,45 +5,18 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { Play, Clock, Eye, Zap, X, ChevronRight, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useVideos } from '@/hooks/useVideos';
+
+const TAG_COLORS: Record<string, string> = {
+  "GATE Strategy": "bg-red-50 text-red-600 border-red-100",
+  "Basic Mechanics": "bg-amber-50 text-amber-600 border-amber-100",
+  "Test Strategy": "bg-teal-50 text-teal-600 border-teal-100",
+};
+const DEFAULT_TAG_COLOR = "bg-slate-50 text-slate-600 border-slate-100";
 
 const GBVideos: React.FC = () => {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
-
-  const videos = [
-    {
-      id: 1,
-      title: "Crack GATE in First Attempt",
-      subtitle: "Proven Strategy by Gaurav Babu Sir",
-      thumbnail: "https://img.youtube.com/vi/Vv9lARk4vcs/maxresdefault.jpg",
-      duration: "14:15",
-      views: "245k",
-      tag: "GATE Strategy",
-      tagColor: "bg-red-50 text-red-600 border-red-100",
-      videoId: "Vv9lARk4vcs" 
-    },
-    {
-      id: 2,
-      title: "How to Convert Units?",
-      subtitle: "Visualized Units & Dimensions Guidance",
-      thumbnail: "https://img.youtube.com/vi/czIYgYQkRFU/maxresdefault.jpg",
-      duration: "1:08:42",
-      views: "195k",
-      tag: "Basic Mechanics",
-      tagColor: "bg-amber-50 text-amber-600 border-amber-100",
-      videoId: "czIYgYQkRFU"
-    },
-    {
-      id: 3,
-      title: "How to attempt GATE Test Series",
-      subtitle: "Analyzing Errors & Tracking Score Improvements",
-      thumbnail: "https://img.youtube.com/vi/ggnZchS4AZ4/maxresdefault.jpg",
-      duration: "19:35",
-      views: "135k",
-      tag: "Test Strategy",
-      tagColor: "bg-teal-50 text-teal-600 border-teal-100",
-      videoId: "ggnZchS4AZ4"
-    }
-  ];
+  const { videos } = useVideos();
 
   return (
     <section className="py-12 lg:py-16 bg-white relative overflow-hidden">
@@ -104,7 +77,7 @@ const GBVideos: React.FC = () => {
                       </div>
 
                       {/* Tag */}
-                      <div className={`absolute top-3 left-3 text-[9px] font-black px-2.5 py-1 rounded-lg uppercase tracking-wide border shadow-sm ${video.tagColor}`}>
+                      <div className={`absolute top-3 left-3 text-[9px] font-black px-2.5 py-1 rounded-lg uppercase tracking-wide border shadow-sm ${TAG_COLORS[video.tag] ?? DEFAULT_TAG_COLOR}`}>
                          {video.tag}
                       </div>
 
