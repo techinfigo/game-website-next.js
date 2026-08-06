@@ -3,14 +3,15 @@
 import Image from 'next/image';
 import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Briefcase, Building2, ArrowRight, Sparkles, ChevronRight, 
+import {
+  Briefcase, Building2, ArrowRight, Sparkles, ChevronRight,
   Radio, Zap, Clock, LayoutGrid, ChevronLeft, CalendarDays,
-  Target, Award, Wallet
+  Target, Award
 } from 'lucide-react';
 import Link from 'next/link';
 
 import { useRouter } from 'next/navigation';
+import { useJobs } from '@/hooks/useJobs';
 
 interface JobUpdatesSectionProps {
   onNavigate?: (page: string) => void;
@@ -23,68 +24,8 @@ const JobUpdatesSection: React.FC<JobUpdatesSectionProps> = ({ onNavigate }) => 
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
 
-  const recentJobs = [
-    {
-      id: 1,
-      title: "Assistant Engineer (Trainee)",
-      org: "UPRVUNL",
-      branch: ["Mechanical", "Electrical"],
-      lastDate: "Oct 25, 2025",
-      type: "Govt Job",
-      isNew: true,
-      salary: "Rs. 56,100 - 1.7L"
-    },
-    {
-      id: 2,
-      title: "Management Trainee (Tech)",
-      org: "Coal India Limited",
-      branch: ["Mechanical", "Civil"],
-      lastDate: "Nov 05, 2025",
-      type: "PSU",
-      isNew: true,
-      salary: "Rs. 50,000 - 1.6L"
-    },
-    {
-      id: 3,
-      title: "Junior Engineer (Civil)",
-      org: "CPWD",
-      branch: ["Civil"],
-      lastDate: "Oct 12, 2025",
-      type: "Govt Job",
-      isNew: false,
-      salary: "Rs. 35,400 - 1.1L"
-    },
-    {
-      id: 4,
-      title: "Scientific Assistant",
-      org: "BARC",
-      branch: ["Mechanical", "Electronics"],
-      lastDate: "Oct 30, 2025",
-      type: "R&D",
-      isNew: false,
-      salary: "Rs. 44,900"
-    },
-    {
-      id: 5,
-      title: "Graduate Apprentice",
-      org: "ISRO - ISTRAC",
-      branch: ["Mechanical"],
-      lastDate: "Nov 15, 2025",
-      type: "Govt Job",
-      isNew: true,
-      salary: "Rs. 9,000 (Stipend)"
-    },
-    {
-      id: 6,
-      title: "Assistant Manager (ME)",
-      org: "NHAI",
-      branch: ["Mechanical"],
-      lastDate: "Dec 05, 2025",
-      type: "PSU",
-      isNew: false,
-      salary: "Rs. 60,000 - 1.8L"
-    }
-  ];
+  const { jobs } = useJobs();
+  const recentJobs = jobs.slice(0, 6);
 
   const handleNavigate = (page: string) => {
     if (onNavigate) {
@@ -199,7 +140,7 @@ const JobUpdatesSection: React.FC<JobUpdatesSectionProps> = ({ onNavigate }) => 
                 <div className="w-8 h-8 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-center text-gameTeal group-hover:bg-gameTeal group-hover:text-white transition-all duration-500">
                   <Building2 size={16} />
                 </div>
-                {job.isNew && (
+                {job.status === 'Open' && (
                   <span className="flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-gameGold/10 text-gameTealDark text-[7px] font-black uppercase tracking-widest border border-gameGold/20">
                     <Zap size={6} className="fill-gameGold" /> New
                   </span>
@@ -208,27 +149,27 @@ const JobUpdatesSection: React.FC<JobUpdatesSectionProps> = ({ onNavigate }) => 
 
               <div className="mb-2 flex-grow">
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="text-[7px] font-black text-gameGoldDark uppercase tracking-wider">{job.org}</span>
+                  <span className="text-[7px] font-black text-gameGoldDark uppercase tracking-wider">{job.eligibility}</span>
                 </div>
                 <h3 className="text-sm font-black text-slate-900 leading-tight group-hover:text-gameTeal transition-colors line-clamp-2">
-                  {job.title}
+                  {job.notification}
                 </h3>
               </div>
 
               <div className="space-y-1 mb-2">
                 <div className="flex items-center gap-2 p-1.5 rounded-lg bg-slate-50 border border-slate-100">
                    <LayoutGrid size={12} className="text-gameTeal" />
-                   <span className="text-[9px] font-bold text-slate-800 truncate">{job.branch.join(', ')}</span>
+                   <span className="text-[9px] font-bold text-slate-800 truncate">{job.branches.join(', ')}</span>
                 </div>
-                
+
                 <div className="flex items-center gap-2 p-1.5 rounded-lg bg-slate-50 border border-slate-100">
                    <CalendarDays size={12} className="text-gameGoldDark" />
-                   <span className="text-[9px] font-black text-slate-900">{job.lastDate}</span>
+                   <span className="text-[9px] font-black text-slate-900">{job.endDate}</span>
                 </div>
 
                 <div className="flex items-center gap-2 p-1.5 rounded-lg bg-teal-50/40 border border-teal-100/50">
-                   <Wallet size={12} className="text-gameTeal" />
-                   <span className="text-[9px] font-black text-gameTealDark">{job.salary}</span>
+                   <Clock size={12} className="text-gameTeal" />
+                   <span className="text-[9px] font-black text-gameTealDark truncate">Starts: {job.startDate}</span>
                 </div>
               </div>
 
@@ -237,7 +178,7 @@ const JobUpdatesSection: React.FC<JobUpdatesSectionProps> = ({ onNavigate }) => 
                    Details <ChevronRight size={10} className="group-hover/btn:translate-x-0.5 transition-transform" />
                 </div>
                 <div className="px-1.5 py-0.5 rounded-md bg-gameBlack text-white text-[6px] font-black uppercase tracking-widest group-hover:bg-gameTeal transition-colors">
-                   {job.type}
+                   {job.status}
                 </div>
               </div>
             </motion.div>

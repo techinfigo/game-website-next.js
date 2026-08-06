@@ -13,7 +13,7 @@ import {
 import FeaturedExams from './FeaturedExams';
 
 import { useRouter } from 'next/navigation';
-import { jobs, Job } from '@/data/jobsData';
+import { useJobs } from '@/hooks/useJobs';
 
 interface JobNotificationsPageProps {
   isLoggedIn: boolean;
@@ -70,6 +70,7 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<'All' | 'Open' | 'Closed'>('All');
+  const { jobs } = useJobs();
 
   const handleNavigate = (page: string) => {
     if (onNavigate) {

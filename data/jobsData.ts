@@ -11,7 +11,7 @@ export interface Job {
   recommendedCourse?: string;
 }
 
-export const jobs: Job[] = [
+export const DEFAULT_JOBS: Job[] = [
   {
     id: 1,
     notification: "NTPC Limited",
@@ -445,3 +445,6 @@ export const jobs: Job[] = [
     recommendedCourse: "https://courses.gameacademy.in/wlp/lakshya-advance-gate-course"
   }
 ];
+
+// Backward-compatible alias for existing imports.
+export const jobs = DEFAULT_JOBS;
