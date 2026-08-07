@@ -90,7 +90,8 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
 
 
   // Client-side search and status filter engine for seamless lookups
-  const filteredJobs = jobs.filter(job => {
+  // Newest jobs are appended to the end of data/jobsData.ts, so reverse a copy to show latest first
+  const filteredJobs = [...jobs].reverse().filter(job => {
     const sQuery = searchQuery.trim().toLowerCase();
     const matchesSearch = !sQuery || 
       job.notification.toLowerCase().includes(sQuery) || 
