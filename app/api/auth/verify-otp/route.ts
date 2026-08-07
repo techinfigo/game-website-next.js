@@ -1,8 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { FieldValue } from 'firebase-admin/firestore';
 import { getAdminAuth, getAdminDb } from '@/lib/firebase-admin';
+import { getCorsHeaders } from '@/lib/cors';
+
+export async function OPTIONS() {
+  return new NextResponse(null, { status: 204, headers: getCorsHeaders() });
+}
 
 export async function POST(req: NextRequest) {
+  const res = await handlePOST(req);
+  const headers = getCorsHeaders();
+  Object.entries(headers).forEach(([key, value]) => res.headers.set(key, value));
+  return res;
+}
+
+async function handlePOST(req: NextRequest) {
   const { phone, otp } = await req.json();
   const formattedPhone = phone.startsWith('+') ? phone : `+91${phone}`;
 

@@ -1,6 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { getCorsHeaders } from '@/lib/cors';
+
+export async function OPTIONS() {
+  return new NextResponse(null, { status: 204, headers: getCorsHeaders() });
+}
 
 export async function POST(req: NextRequest) {
+  const res = await handlePOST(req);
+  const headers = getCorsHeaders();
+  Object.entries(headers).forEach(([key, value]) => res.headers.set(key, value));
+  return res;
+}
+
+async function handlePOST(req: NextRequest) {
   const { phone } = await req.json();
 
   if (!phone || !/^\d{10}$/.test(phone)) {
