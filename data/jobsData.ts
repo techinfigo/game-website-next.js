@@ -9,6 +9,7 @@ export interface Job {
   pdfLink?: string;
   usefulLinks?: string;
   recommendedCourse?: string;
+  createdAt?: number;
 }
 
 export const DEFAULT_JOBS: Job[] = [
