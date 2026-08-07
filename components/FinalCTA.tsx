@@ -2,8 +2,11 @@
 
 import React from 'react';
 import { Smartphone } from 'lucide-react';
+import { useSiteSettings } from '@/hooks/useSiteSettings';
 
 const FinalCTA: React.FC = () => {
+  const settings = useSiteSettings();
+
   return (
     <section className="py-24 bg-gameTeal text-white relative overflow-hidden">
        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:24px_24px] opacity-20"></div>
@@ -13,9 +16,9 @@ const FinalCTA: React.FC = () => {
              Choose the course best suited to your timeline and goals, and let GAME be your partner in achieving a top GATE score.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-             <a 
-               href="https://clppenny.page.link/cTBm" 
-               target="_blank" 
+             <a
+               href={settings.androidAppLink}
+               target="_blank"
                rel="noopener noreferrer"
                className="bg-white text-gameTeal px-8 py-4 rounded-xl font-bold hover:bg-slate-100 transition-all shadow-xl flex items-center justify-center gap-2"
              >
@@ -23,9 +26,9 @@ const FinalCTA: React.FC = () => {
                    <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l220.7-127.3 60.1-60.1L104.6 499z" />
                 </svg> Android App
              </a>
-             <a 
-               href="https://apps.apple.com/in/app/myinstitute/id1472483563" 
-               target="_blank" 
+             <a
+               href={settings.iosAppLink}
+               target="_blank"
                rel="noopener noreferrer"
                className="bg-gameBlack text-white px-8 py-4 rounded-xl font-bold hover:bg-slate-900 transition-all shadow-xl flex items-center justify-center gap-2"
              >

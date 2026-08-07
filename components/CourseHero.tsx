@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { Sparkles, X, PhoneCall, Loader2, Check, Star, Smartphone, Play, Eye, ChevronLeft, ChevronRight, Youtube, ExternalLink } from 'lucide-react';
+import { useSiteSettings } from '@/hooks/useSiteSettings';
 
 const TelegramIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className} xmlns="http://www.w3.org/2000/svg">
@@ -34,6 +35,7 @@ interface CourseHeroProps {
 }
 
 const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
+  const settings = useSiteSettings();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [callbackModal, setCallbackModal] = useState(false);
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
@@ -50,7 +52,7 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
       hoverClass: 'hover:bg-[#229ED9] hover:border-[#229ED9]',
       iconColor: 'text-[#229ED9]',
       bgColor: 'bg-[#229ED9]/10',
-      link: 'https://t.me/gamebygauravbabu'
+      link: settings.telegram
     },
     {
       id: 'whatsapp',
@@ -60,7 +62,7 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
       hoverClass: 'hover:bg-[#25D366] hover:border-[#25D366]',
       iconColor: 'text-[#25D366]',
       bgColor: 'bg-[#25D366]/10',
-      link: 'https://whatsapp.com/channel/0029VaWNuqVJpe8gdAkinR1T'
+      link: settings.whatsappChannel
     },
     {
       id: 'youtube',
@@ -80,7 +82,7 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
       hoverClass: 'hover:bg-[#0077b5] hover:border-[#0077b5]',
       iconColor: 'text-[#0077b5]',
       bgColor: 'bg-[#0077b5]/10',
-      link: 'https://www.linkedin.com/company/gameacademyindia/'
+      link: settings.linkedin
     }
   ];
 
@@ -267,9 +269,9 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
                                             </button>
                                           </div>
                                           <div className="flex flex-col gap-1 mt-1">
-                                            <a 
-                                              href="https://www.youtube.com/@gblions" 
-                                              target="_blank" 
+                                            <a
+                                              href={settings.youtube}
+                                              target="_blank"
                                               className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 group/chan transition-all border border-slate-100 hover:border-slate-100"
                                             >
                                               <div className="w-8 h-8 rounded-lg bg-red-100 flex items-center justify-center text-red-600 group-hover/chan:bg-red-600 group-hover/chan:text-white transition-colors">
@@ -281,9 +283,9 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
                                               </div>
                                               <ExternalLink size={12} className="ml-auto text-slate-300" />
                                             </a>
-                                            <a 
-                                              href="https://www.youtube.com/@gblionsaeje" 
-                                              target="_blank" 
+                                            <a
+                                              href={settings.youtubeAlt}
+                                              target="_blank"
                                               className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 group/chan transition-all border border-transparent hover:border-slate-100"
                                             >
                                               <div className="w-8 h-8 rounded-lg bg-orange-100 flex items-center justify-center text-orange-600 group-hover/chan:bg-orange-600 group-hover/chan:text-white transition-colors">
@@ -308,9 +310,9 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
                         {/* App Download Strip */}
                         <div className="border-t border-white/10 pt-4 max-w-lg mx-auto lg:mx-0">
                             <div className="flex flex-col sm:flex-row items-center gap-3">
-                               <a 
-                                 href="https://clppenny.page.link/cTBm" 
-                                 target="_blank" 
+                               <a
+                                 href={settings.androidAppLink}
+                                 target="_blank"
                                  rel="noopener noreferrer"
                                  className="flex-1 flex items-center gap-3 group/app cursor-pointer hover:bg-white/5 p-3 rounded-2xl transition-all border border-transparent hover:border-white/10"
                                >
@@ -325,9 +327,9 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
                                   </div>
                                </a>
                                <div className="hidden sm:block h-6 w-px bg-white/10"></div>
-                               <a 
-                                 href="https://apps.apple.com/in/app/myinstitute/id1472483563" 
-                                 target="_blank" 
+                               <a
+                                 href={settings.iosAppLink}
+                                 target="_blank"
                                  rel="noopener noreferrer"
                                  className="flex-1 flex items-center gap-3 group/app cursor-pointer hover:bg-white/5 p-3 rounded-2xl transition-all border border-transparent hover:border-white/10 relative"
                                >

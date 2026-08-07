@@ -13,6 +13,7 @@ import {
 
 import FacultyShowcase from './FacultyShowcase';
 import EducatorsSection from './EducatorsSection';
+import { useSiteSettings } from '@/hooks/useSiteSettings';
 
 const Counter = ({ value }: { value: string }) => {
   const [displayValue, setDisplayValue] = useState(0);
@@ -41,6 +42,7 @@ const Counter = ({ value }: { value: string }) => {
 };
 
 const AboutPage: React.FC = () => {
+  const settings = useSiteSettings();
   const [hoveredReasonIndex, setHoveredReasonIndex] = useState<number | null>(3);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMarqueePaused, setIsMarqueePaused] = useState(false);
@@ -1001,8 +1003,8 @@ const AboutPage: React.FC = () => {
                   <h2 className="text-[clamp(1.5rem,4vw,3.5rem)] md:text-[clamp(2rem,5vw,4.5rem)] lg:text-[clamp(2.5rem,6vw,5rem)] font-black text-white mb-[clamp(0.75rem,2vh,1.5rem)] leading-[1.1] tracking-tight whitespace-nowrap">Join <span className="text-gameGold">100,000+</span> Learners <br/> and Start Your Journey Today</h2>
                   <p className="text-teal-50 text-[clamp(0.875rem,1.25vw,1.125rem)] font-medium max-w-2xl mx-auto mb-[clamp(1.5rem,4vh,3rem)] opacity-90 leading-relaxed">Don&apos;t just track exams. Master them with Gaurav Babu Sir&apos;s mentorship. India&apos;s #1 Technical Prep Community is waiting for you.</p>
                   <div className="flex flex-col sm:flex-row gap-[clamp(0.75rem,1.5vw,1rem)] justify-center">
-                     <a href="https://wa.me/917668518602" target="_blank" rel="noopener noreferrer" className="bg-white text-[#075d63] px-[clamp(1.25rem,3vw,2rem)] py-[clamp(0.75rem,1.5vh,1rem)] rounded-2xl font-black uppercase tracking-widest text-[clamp(0.7rem,0.8vw,0.8rem)] hover:bg-gameGold hover:text-black transition-all shadow-xl hover:-translate-y-1 flex items-center justify-center gap-3 whitespace-nowrap"><MessageCircle size={20} className="w-[clamp(1.125rem,1.5vw,1.25rem)] h-[clamp(1.125rem,1.5vw,1.25rem)]" /> Chat on WhatsApp</a>
-                     <a href="tel:+917668518602" className="bg-gameBlack text-white border-2 border-white/20 px-[clamp(1.25rem,3vw,2rem)] py-[clamp(0.75rem,1.5vh,1rem)] rounded-2xl font-black uppercase tracking-widest text-[clamp(0.7rem,0.8vw,0.8rem)] hover:bg-white hover:text-black transition-all shadow-xl hover:-translate-y-1 flex items-center justify-center gap-3 whitespace-nowrap"><Phone size={20} className="w-[clamp(1.125rem,1.5vw,1.25rem)] h-[clamp(1.125rem,1.5vw,1.25rem)]" /> Request a Call</a>
+                     <a href={settings.whatsappChat} target="_blank" rel="noopener noreferrer" className="bg-white text-[#075d63] px-[clamp(1.25rem,3vw,2rem)] py-[clamp(0.75rem,1.5vh,1rem)] rounded-2xl font-black uppercase tracking-widest text-[clamp(0.7rem,0.8vw,0.8rem)] hover:bg-gameGold hover:text-black transition-all shadow-xl hover:-translate-y-1 flex items-center justify-center gap-3 whitespace-nowrap"><MessageCircle size={20} className="w-[clamp(1.125rem,1.5vw,1.25rem)] h-[clamp(1.125rem,1.5vw,1.25rem)]" /> Chat on WhatsApp</a>
+                     <a href={`tel:${settings.phone}`} className="bg-gameBlack text-white border-2 border-white/20 px-[clamp(1.25rem,3vw,2rem)] py-[clamp(0.75rem,1.5vh,1rem)] rounded-2xl font-black uppercase tracking-widest text-[clamp(0.7rem,0.8vw,0.8rem)] hover:bg-white hover:text-black transition-all shadow-xl hover:-translate-y-1 flex items-center justify-center gap-3 whitespace-nowrap"><Phone size={20} className="w-[clamp(1.125rem,1.5vw,1.25rem)] h-[clamp(1.125rem,1.5vw,1.25rem)]" /> Request a Call</a>
                   </div>
                </div>
             </motion.div>

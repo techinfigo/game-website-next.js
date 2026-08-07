@@ -12,12 +12,14 @@ import Link from 'next/link';
 
 import { useRouter } from 'next/navigation';
 import { useJobs } from '@/hooks/useJobs';
+import { useSiteSettings } from '@/hooks/useSiteSettings';
 
 interface JobUpdatesSectionProps {
   onNavigate?: (page: string) => void;
 }
 
 const JobUpdatesSection: React.FC<JobUpdatesSectionProps> = ({ onNavigate }) => {
+  const settings = useSiteSettings();
   const router = useRouter();
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -205,8 +207,8 @@ const JobUpdatesSection: React.FC<JobUpdatesSectionProps> = ({ onNavigate }) => 
             </div>
 
             <div className="flex items-center gap-4 relative z-10 w-full lg:w-auto">
-              <a 
-                href="https://whatsapp.com/channel/0029VaWNuqVJpe8gdAkinR1T"
+              <a
+                href={settings.whatsappChannel}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-white text-gameBlack px-6 py-2 rounded-lg font-black text-[8px] uppercase tracking-widest hover:bg-gameGold hover:text-black transition-all shadow-xl flex items-center gap-2 group/tg whitespace-nowrap active:scale-95"

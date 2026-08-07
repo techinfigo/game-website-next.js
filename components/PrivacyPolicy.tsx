@@ -3,8 +3,10 @@
 import React, { useEffect, useState } from 'react';
 import { Shield, Lock, Eye, FileText, UserCheck, Bell, ChevronRight, Calendar } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useSiteSettings } from '@/hooks/useSiteSettings';
 
 const PrivacyPolicy: React.FC = () => {
+  const settings = useSiteSettings();
   const [activeSection, setActiveSection] = useState('section-1');
 
   useEffect(() => {
@@ -247,8 +249,8 @@ const PrivacyPolicy: React.FC = () => {
               <p className="text-slate-600 mb-6">
                  You can opt out of receiving non-essential promotional communications from us by writing to us.
               </p>
-              <a href="mailto:info@gameacademy.in" className="inline-flex items-center gap-2 text-gameTeal font-bold hover:underline bg-gameTeal/5 px-6 py-3 rounded-xl border border-gameTeal/20 transition-all hover:bg-gameTeal/10">
-                 info@gameacademy.in
+              <a href={`mailto:${settings.email}`} className="inline-flex items-center gap-2 text-gameTeal font-bold hover:underline bg-gameTeal/5 px-6 py-3 rounded-xl border border-gameTeal/20 transition-all hover:bg-gameTeal/10">
+                 {settings.email}
               </a>
             </motion.div>
 

@@ -4,8 +4,10 @@
 import React, { useEffect, useState } from 'react';
 import { Flag, FileText, Mail, Clock, RotateCcw, AlertTriangle, Edit, Layers, ChevronRight, Calendar, Copyright } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useSiteSettings } from '@/hooks/useSiteSettings';
 
 const TakeDownPolicy: React.FC = () => {
+  const settings = useSiteSettings();
   const [activeSection, setActiveSection] = useState('section-1');
 
   useEffect(() => {
@@ -179,8 +181,8 @@ const TakeDownPolicy: React.FC = () => {
                   <p className="text-slate-600 text-sm mb-4">
                      Please submit your takedown request via email to:
                   </p>
-                  <a href="mailto:info@gameacademy.in" className="inline-flex items-center gap-2 text-gameTeal font-bold bg-gameTeal/10 px-4 py-2 rounded-lg hover:bg-gameTeal/20 transition-colors">
-                     info@gameacademy.in
+                  <a href={`mailto:${settings.email}`} className="inline-flex items-center gap-2 text-gameTeal font-bold bg-gameTeal/10 px-4 py-2 rounded-lg hover:bg-gameTeal/20 transition-colors">
+                     {settings.email}
                   </a>
                </motion.div>
 

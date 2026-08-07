@@ -3,8 +3,11 @@
 import React from 'react';
 import { Phone, Smartphone, MessageCircle, Apple, Play } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useSiteSettings } from '@/hooks/useSiteSettings';
 
 const FloatingActions: React.FC = () => {
+  const settings = useSiteSettings();
+
   const actions = [
     {
       id: 'whatsapp',
@@ -16,7 +19,7 @@ const FloatingActions: React.FC = () => {
       color: 'bg-[#25D366]',
       glow: 'shadow-[#25D366]/40',
       label: 'WhatsApp',
-      href: 'https://whatsapp.com/channel/0029VaWNuqVJpe8gdAkinR1T',
+      href: settings.whatsappChannel,
       pulse: true
     },
     {
@@ -25,7 +28,7 @@ const FloatingActions: React.FC = () => {
       color: 'bg-gameTeal',
       glow: 'shadow-gameTeal/40',
       label: 'Call Us',
-      href: 'tel:+917668518602',
+      href: `tel:${settings.phone}`,
     },
     {
       id: 'android',
@@ -37,7 +40,7 @@ const FloatingActions: React.FC = () => {
       color: 'bg-slate-800',
       glow: 'shadow-slate-800/40',
       label: 'Android App',
-      href: 'https://clppenny.page.link/cTBm',
+      href: settings.androidAppLink,
     },
     {
       id: 'ios',
@@ -49,7 +52,7 @@ const FloatingActions: React.FC = () => {
       color: 'bg-slate-900',
       glow: 'shadow-slate-900/40',
       label: 'iOS App',
-      href: 'https://apps.apple.com/in/app/myinstitute/id1472483563',
+      href: settings.iosAppLink,
     }
   ];
 

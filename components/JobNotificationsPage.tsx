@@ -14,6 +14,7 @@ import FeaturedExams from './FeaturedExams';
 
 import { useRouter } from 'next/navigation';
 import { useJobs } from '@/hooks/useJobs';
+import { useSiteSettings } from '@/hooks/useSiteSettings';
 
 interface JobNotificationsPageProps {
   isLoggedIn: boolean;
@@ -66,6 +67,7 @@ const HeaderAvatar = ({ index }: { index: number }) => {
 };
 
 const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn, openLogin, onNavigate }) => {
+  const settings = useSiteSettings();
   const router = useRouter();
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -1150,7 +1152,7 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
                      Enroll in GAME Courses <ChevronRight size={18} />
                   </button>
                   <a
-                     href="https://t.me/gamebygauravbabu"
+                     href={settings.telegram}
                      target="_blank"
                      rel="noopener noreferrer"
                      className="bg-transparent border-2 border-white/20 text-white px-10 py-4 rounded-2xl font-black uppercase tracking-widest hover:bg-white/10 transition-all flex items-center justify-center gap-2"

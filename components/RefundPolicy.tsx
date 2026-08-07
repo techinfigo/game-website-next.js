@@ -3,8 +3,10 @@
 import React, { useEffect, useState } from 'react';
 import { RefreshCw, Ban, FileText, Clock, AlertTriangle, Mail, ChevronRight, Calendar, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useSiteSettings } from '@/hooks/useSiteSettings';
 
 const RefundPolicy: React.FC = () => {
+  const settings = useSiteSettings();
   const [activeSection, setActiveSection] = useState('section-1');
 
   useEffect(() => {
@@ -183,7 +185,7 @@ const RefundPolicy: React.FC = () => {
               <div className="space-y-6">
                  <div className="relative pl-8 border-l-2 border-blue-100 space-y-8">
                     {[
-                       { step: "1", title: "Submit Request", desc: "Email info@gameacademy.in within 7 days. Include Name, Course, Order ID & Reason." },
+                       { step: "1", title: "Submit Request", desc: `Email ${settings.email} within 7 days. Include Name, Course, Order ID & Reason.` },
                        { step: "2", title: "Verification", desc: "Our team will verify your claim and course progress." },
                        { step: "3", title: "Approval/Denial", desc: "We will inform you via email within 7-10 business days." },
                        { step: "4", title: "Processing", desc: "If approved, refund is processed within 5-7 business days." }
@@ -270,9 +272,9 @@ const RefundPolicy: React.FC = () => {
                  For any refund, cancellation, or technical assistance inquiries, please contact us at:
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                 <a href="mailto:info@gameacademy.in" className="flex-1 bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex items-center gap-3 hover:border-gameTeal transition-colors group">
+                 <a href={`mailto:${settings.email}`} className="flex-1 bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex items-center gap-3 hover:border-gameTeal transition-colors group">
                     <Mail className="text-slate-400 group-hover:text-gameTeal transition-colors" />
-                    <span className="font-medium text-slate-900">info@gameacademy.in</span>
+                    <span className="font-medium text-slate-900">{settings.email}</span>
                  </a>
                  <div className="flex-1 bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-center">
                     <div className="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Support Hours</div>
