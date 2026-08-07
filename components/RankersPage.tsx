@@ -5,9 +5,10 @@ import React, { useEffect, useState, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { 
+import {
   ArrowRight
 } from 'lucide-react';
+import { useAchievers } from '@/hooks/useAchievers';
 
 // Single source of truth interface based on the Rankers sheet
 interface Ranker {
@@ -606,29 +607,11 @@ const MarqueeRow = ({ items, direction = 'left', cardType = 'ranker', speed = 60
 };
 
 const RankersPage: React.FC = () => {
-  const [rankers, setRankers] = useState<Ranker[]>([]);
-  const [jobRankers, setJobRankers] = useState<Ranker[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { rankers: firebaseRankers, jobSelections: firebaseJobSelections, loading: achieversLoading } = useAchievers();
   const [hasMounted, setHasMounted] = useState(false);
 
-  // DATA FETCH: Fetching directly from the simulated sheet source
   useEffect(() => {
     setHasMounted(true);
-    const fetchRankersFromSheet = async () => {
-      setLoading(true);
-      try {
-        // Simulating the fetch behavior with high-quality mock data representing the sheet
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        setRankers(MOCK_RANKERS);
-        setJobRankers(MOCK_JOB_RANKERS);
-      } catch (error) {
-        console.error("Error updating rankers:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchRankersFromSheet();
     window.scrollTo(0, 0);
   }, []);
 
@@ -637,10 +620,40 @@ const RankersPage: React.FC = () => {
     return <div className="min-h-screen bg-[#0f1115]" />;
   }
 
+  const loading = achieversLoading;
+
+  // Firebase "achievers" collection (type: Ranker / Job Selection) takes priority when populated,
+  // falling back to the bundled mock sheet data when the collection has none of that type.
+  const rankers: Ranker[] = firebaseRankers.length > 0
+    ? firebaseRankers.map((r) => ({
+        id: r.id,
+        name: r.name,
+        designation: 'GATE',
+        category: 'GATE',
+        image: r.image,
+        college: r.college || undefined,
+        organisation: r.organisation || undefined,
+        selectionYear: r.selectionYear,
+      }))
+    : MOCK_RANKERS;
+
+  const jobRankers: Ranker[] = firebaseJobSelections.length > 0
+    ? firebaseJobSelections.map((j) => ({
+        id: j.id,
+        name: j.name,
+        designation: j.designation,
+        category: 'JOB',
+        image: j.image,
+        organisation: j.organisation,
+        branch: j.branch,
+        selectionYear: j.selectionYear,
+      }))
+    : MOCK_JOB_RANKERS;
+
   // Updated slicing to match user specific counts (10 in row 1, 20 in row 2 for rankers; 10+10 for jobs)
   const row1 = rankers.slice(0, 10) || [];
   const row2 = rankers.slice(10, 30) || [];
-  
+
   const row3 = jobRankers.slice(0, 10) || [];
   const row4 = jobRankers.slice(10, 20) || [];
 

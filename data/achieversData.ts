@@ -16,6 +16,27 @@ export interface GateTopper {
   image: string;
 }
 
+export interface RankerAchiever {
+  id: string;
+  type: "Ranker";
+  name: string;
+  image: string;
+  college: string;
+  organisation: string;
+  selectionYear: string;
+}
+
+export interface JobSelectionAchiever {
+  id: string;
+  type: "Job Selection";
+  name: string;
+  image: string;
+  organisation: string;
+  designation: string;
+  branch: string;
+  selectionYear: string;
+}
+
 export const DEFAULT_VIDEO_SHORTS: VideoShort[] = [
   { id: 1, type: "Video Short", name: "Harpreet", videoId: "_XJJgF14hRw" },
   { id: 2, type: "Video Short", name: "Mukunda Buragohain", videoId: "bmYoxNuLm2Q" },
