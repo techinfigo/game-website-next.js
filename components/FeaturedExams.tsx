@@ -213,26 +213,6 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       image: "/exams/non-tech-bg.png",
       logo: "/exams/non-tech-logo.jpg",
       action: 'nontech'
-    },
-    {
-      id: 'iit',
-      title: 'IIT-JEE / NEET',
-      subtitle: 'Premium Entrance Preparation',
-      icon: Trophy,
-      color: 'text-rose-400',
-      image: "/exams/gate-bg.jpg",
-      logo: "/exams/gate-logo.jpg",
-      action: 'iit'
-    },
-    {
-      id: 'school',
-      title: 'Schooling (9-12)',
-      subtitle: 'Foundation & Boards Preparation',
-      icon: GraduationCap,
-      color: 'text-amber-400',
-      image: "/exams/ese-bg.png",
-      logo: "/exams/ese-logo.jpg",
-      action: 'school'
     }
   ];
 
