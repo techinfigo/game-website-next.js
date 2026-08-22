@@ -306,7 +306,89 @@ const PsuExamPage: React.FC = () => {
          </div>
       </section>
 
-      {/* 2. Public Sector Units (PSUs) Section */}
+      {/* 2. Govt. R&D Organisations: ISRO, BARC, DRDO */}
+      <section className="py-24 bg-slate-200 border-t border-slate-300 scroll-mt-32">
+         <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12">
+            <div className="text-center mb-16">
+               <motion.div 
+                  initial={{ opacity: 0, y: 20 }} 
+                  whileInView={{ opacity: 1, y: 0 }} 
+                  viewport={{ once: true }}
+               >
+                  <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-gameBlack leading-[1.1] mb-4">
+                     GOVERNMENT <span className="text-gameTeal">R&D</span> <br /> SECTOR
+                  </h2>
+                  <div className="w-24 h-1.5 bg-gameGold mx-auto rounded-full"></div>
+               </motion.div>
+            </div>
+
+            <DetailedOrgCard
+               icon={Rocket}
+               logoSlug="isro"
+               title="Indian Space Research Organisation (ISRO)"
+               description="India's premier space agency, known for Chandrayaan & Mangalyaan. Your work here powers national missions."
+               examSnapshot={[
+                  { label: "Post", value: "Scientist/Engineer 'SC' (Electronics/Mechanical/Computer Science)." },
+                  { label: "Eligibility", value: "BE/B.Tech (Minimum 65%)" },
+                  { label: "Pay Scale", value: "Basic Pay Rs. 56,000 per month + other allowances." },
+                  { label: "Selection", value: "Online Test (Technical + Aptitude) + Interview." }
+               ]}
+               lifeAtOrgHeader="Life @ ISRO"
+               lifeAtOrgItems={[
+                  "Work on India's biggest R&D projects — from satellites to rockets.",
+                  "Job is a Mission: Build technology with national impact.",
+                  "Stability & Growth: Prestigious Group A post, excellent work-life balance.",
+                  "Elite Ecosystem: Learn from top scientists, global collaborations."
+               ]}
+            />
+
+            <DetailedOrgCard
+               icon={Atom}
+               logoSlug="barc"
+               iconColorClass="text-gameGold"
+               title="Bhabha Atomic Research Centre (BARC)"
+               description="Bhabha Atomic Research Centre (BARC) is India's premier nuclear research and development organisation under the Department of Atomic Energy (DAE). It is the heart of India's nuclear science, power, and technology programs."
+               examSnapshot={[
+                  { label: "Program", value: "OCES (1-year training) / DGFS (M.Tech + training) for Scientist Officer 'C'." },
+                  { label: "Eligibility", value: "BE/B.Tech (60%+) in core engineering or M.Sc (60%+) in Physics, Chemistry, Biosciences, Geology." },
+                  { label: "Selection", value: "Screening via Online Exam or GATE Score, followed by an Interview." },
+                  { label: "Pay Scale", value: "₹74,000/- per month during training & Gross salary 1,35,000 approx. per month after training." },
+                  { label: "Post-Training", value: "Guaranteed placement as Scientific Officer 'C' (Group A Gazetted Officer) in prestigious DAE units like BARC, IGCAR, NPCIL." }
+               ]}
+               lifeAtOrgHeader="Life @ BARC"
+               lifeAtOrgItems={[
+                  "Work on mission-critical national projects in nuclear energy, reactors, and advanced research.",
+                  "Unmatched job security, a prestigious career, and structured growth.",
+                  "Pursue an M.Tech at IIT (via DGFS) while being a paid DAE employee.",
+                  "Contribute to India's energy security and technological sovereignty."
+               ]}
+               delay={0.2}
+            />
+
+            <DetailedOrgCard
+               icon={Shield}
+               logoSlug="drdo"
+               title="Defence Research and Development Organisation (DRDO)"
+               description="The Defence Research & Development Organisation (DRDO) is India's largest and most diverse defence research and development agency under the Ministry of Defence. Its mission is to design, develop, and produce state-of-the-art weapon systems, platforms, and allied technologies for the Indian Armed Forces."
+               examSnapshot={[
+                  { label: "Post", value: "Scientist 'B' (in various engineering & science streams)." },
+                  { label: "Eligibility", value: "BE/B.Tech/M.Sc or equivalent (often with a valid GATE score)." },
+                  { label: "Selection", value: "Typically involves shortlisting via GATE score, followed by a Written Exam (for some disciplines) and/or a Personal Interview." },
+                  { label: "Pay Scale", value: "Basic Pay of ₹56,000 per month + other allowances." }
+               ]}
+               lifeAtOrgHeader="Life @ DRDO"
+               lifeAtOrgItems={[
+                  "Work on cutting-edge defence tech for missiles, radars, and combat systems with direct national impact.",
+                  "Join as a respected Group 'A' officer with high job security and clear growth paths.",
+                  "Collaborate with top scientists, major institutes (IITs), and the armed forces on advanced R&D.",
+                  "Enjoy stability, great benefits, housing options, and the pride of securing the nation."
+               ]}
+               delay={0.3}
+            />
+         </div>
+      </section>
+
+      {/* 3. Public Sector Units (PSUs) Section */}
       <section className="py-24 bg-slate-200 border-t border-slate-300 scroll-mt-32">
          <div className="max-w-[1280px] mx-auto px-6 md:px-8 lg:px-10">
             <div className="text-center mb-16">
@@ -422,89 +504,7 @@ const PsuExamPage: React.FC = () => {
          </div>
       </section>
 
-      {/* 3. Detailed Organization Section: ISRO */}
-      <section className="py-24 bg-slate-200 border-t border-slate-300 scroll-mt-32">
-         <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12">
-            <div className="text-center mb-16">
-               <motion.div 
-                  initial={{ opacity: 0, y: 20 }} 
-                  whileInView={{ opacity: 1, y: 0 }} 
-                  viewport={{ once: true }}
-               >
-                  <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-gameBlack leading-[1.1] mb-4">
-                     GOVERNMENT <span className="text-gameTeal">R&D</span> <br /> SECTOR
-                  </h2>
-                  <div className="w-24 h-1.5 bg-gameGold mx-auto rounded-full"></div>
-               </motion.div>
-            </div>
-
-            <DetailedOrgCard
-               icon={Rocket}
-               logoSlug="isro"
-               title="Indian Space Research Organisation (ISRO)"
-               description="India's premier space agency, known for Chandrayaan & Mangalyaan. Your work here powers national missions."
-               examSnapshot={[
-                  { label: "Post", value: "Scientist/Engineer 'SC' (Electronics/Mechanical/Computer Science)." },
-                  { label: "Eligibility", value: "BE/B.Tech (Minimum 65%)" },
-                  { label: "Pay Scale", value: "Basic Pay Rs. 56,000 per month + other allowances." },
-                  { label: "Selection", value: "Online Test (Technical + Aptitude) + Interview." }
-               ]}
-               lifeAtOrgHeader="Life @ ISRO"
-               lifeAtOrgItems={[
-                  "Work on India's biggest R&D projects — from satellites to rockets.",
-                  "Job is a Mission: Build technology with national impact.",
-                  "Stability & Growth: Prestigious Group A post, excellent work-life balance.",
-                  "Elite Ecosystem: Learn from top scientists, global collaborations."
-               ]}
-            />
-
-            <DetailedOrgCard
-               icon={Atom}
-               logoSlug="barc"
-               iconColorClass="text-gameGold"
-               title="Bhabha Atomic Research Centre (BARC)"
-               description="Bhabha Atomic Research Centre (BARC) is India's premier nuclear research and development organisation under the Department of Atomic Energy (DAE). It is the heart of India's nuclear science, power, and technology programs."
-               examSnapshot={[
-                  { label: "Program", value: "OCES (1-year training) / DGFS (M.Tech + training) for Scientist Officer 'C'." },
-                  { label: "Eligibility", value: "BE/B.Tech (60%+) in core engineering or M.Sc (60%+) in Physics, Chemistry, Biosciences, Geology." },
-                  { label: "Selection", value: "Screening via Online Exam or GATE Score, followed by an Interview." },
-                  { label: "Pay Scale", value: "₹74,000/- per month during training & Gross salary 1,35,000 approx. per month after training." },
-                  { label: "Post-Training", value: "Guaranteed placement as Scientific Officer 'C' (Group A Gazetted Officer) in prestigious DAE units like BARC, IGCAR, NPCIL." }
-               ]}
-               lifeAtOrgHeader="Life @ BARC"
-               lifeAtOrgItems={[
-                  "Work on mission-critical national projects in nuclear energy, reactors, and advanced research.",
-                  "Unmatched job security, a prestigious career, and structured growth.",
-                  "Pursue an M.Tech at IIT (via DGFS) while being a paid DAE employee.",
-                  "Contribute to India's energy security and technological sovereignty."
-               ]}
-               delay={0.2}
-            />
-
-            <DetailedOrgCard
-               icon={Shield}
-               logoSlug="drdo"
-               title="Defence Research and Development Organisation (DRDO)"
-               description="The Defence Research & Development Organisation (DRDO) is India's largest and most diverse defence research and development agency under the Ministry of Defence. Its mission is to design, develop, and produce state-of-the-art weapon systems, platforms, and allied technologies for the Indian Armed Forces."
-               examSnapshot={[
-                  { label: "Post", value: "Scientist 'B' (in various engineering & science streams)." },
-                  { label: "Eligibility", value: "BE/B.Tech/M.Sc or equivalent (often with a valid GATE score)." },
-                  { label: "Selection", value: "Typically involves shortlisting via GATE score, followed by a Written Exam (for some disciplines) and/or a Personal Interview." },
-                  { label: "Pay Scale", value: "Basic Pay of ₹56,000 per month + other allowances." }
-               ]}
-               lifeAtOrgHeader="Life @ DRDO"
-               lifeAtOrgItems={[
-                  "Work on cutting-edge defence tech for missiles, radars, and combat systems with direct national impact.",
-                  "Join as a respected Group 'A' officer with high job security and clear growth paths.",
-                  "Collaborate with top scientists, major institutes (IITs), and the armed forces on advanced R&D.",
-                  "Enjoy stability, great benefits, housing options, and the pride of securing the nation."
-               ]}
-               delay={0.3}
-            />
-         </div>
-      </section>
-
-      {/* 4. Detailed PSU Exams Section: ONGC, IOCL */}
+      {/* 4. PSU Organisations: NPCIL, ONGC, IOCL, BHEL, NTPC, GAIL, SAIL, HPCL, CIL, BEL, MDL, HAL */}
       <section className="py-24 bg-slate-200 border-t border-slate-300 scroll-mt-32">
          <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12">
             <div className="text-center mb-16">
