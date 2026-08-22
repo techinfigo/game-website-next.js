@@ -375,7 +375,7 @@ const EseExamPage: React.FC = () => {
     },
     { 
       q: "Why should I choose GAME for ESE Online Coaching?", 
-      a: "Ans. GAME delivers high-quality education and top-notch content for Mechanical Engineering aspirants preparing for ESE and GATE exams. Under the leadership of Gaurav Babu Sir, a distinguished educator with 13+ years of experience, our teaching philosophy focuses on building a strong academic foundation by teaching subjects from scratch with conceptual clarity and practical problem-solving techniques. With GAME, students can confidently excel in competitive exams and achieve their career aspirations." 
+      a: "Ans. GAME delivers high-quality education and top-notch content for Mechanical Engineering aspirants preparing for ESE and GATE exams. Under the leadership of Gaurav Babu Sir, a distinguished educator with 14+ years of experience, our teaching philosophy focuses on building a strong academic foundation by teaching subjects from scratch with conceptual clarity and practical problem-solving techniques. With GAME, students can confidently excel in competitive exams and achieve their career aspirations." 
     },
     { 
       q: "Is the GAME ESE Course 2026 affordable?", 
@@ -556,7 +556,7 @@ const EseExamPage: React.FC = () => {
                         <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Top Ranks</p>
                      </div>
                      <div>
-                        <p className="text-2xl font-black text-white mb-0.5">13+ Yrs</p>
+                        <p className="text-2xl font-black text-white mb-0.5">14+ Yrs</p>
                         <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Mentorship</p>
                      </div>
                   </div>
@@ -810,8 +810,10 @@ const EseExamPage: React.FC = () => {
                      viewport={{ once: true }}
                      transition={{ delay: i * 0.1 }}
                      className="relative rounded-[2.5rem] p-8 border border-gameTeal/10 shadow-sm hover:shadow-xl hover:border-gameTeal/20 transition-all duration-300 group flex flex-col h-full overflow-hidden bg-cover bg-center"
-                     style={{ backgroundImage: `url(${item.image})` }}
+                     style={{ backgroundColor: 'var(--color-gameTealDark)', backgroundImage: `url(${item.image})` }}
                   >
+                     {/* Solid dark-teal base sits behind the photo, so the card still reads as
+                         intentional if the background image is missing or fails to load. */}
                      {/* Dark overlay keeps text readable over the background photo */}
                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/70 to-black/40 group-hover:from-black/90 group-hover:via-black/75 transition-colors duration-300"></div>
                      <div className="relative z-10 flex flex-col h-full">
