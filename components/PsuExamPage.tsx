@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Rocket, Globe, Target, Shield, Users, Sparkles, Briefcase, TrendingUp, Award, Building2, Coffee, Atom, Droplets, Flame, Zap, Wind, Factory, Mountain, Cpu, Ship, Plane, ScrollText, ChevronDown } from 'lucide-react';
 
 const PsuExamPage: React.FC = () => {
@@ -880,11 +881,12 @@ const PsuExamPage: React.FC = () => {
 
                {/* Action Buttons */}
                <div className="flex flex-wrap gap-8 items-center justify-center relative z-10">
-                  <button className="px-12 py-5 bg-gameTeal text-white font-black rounded-2xl hover:bg-[#007a7e] hover:shadow-2xl hover:shadow-gameTeal/30 transition-all active:scale-95 shadow-xl shadow-gameTeal/10 text-xl uppercase tracking-[0.2em]">
+                  <Link href="/courses" className="inline-flex items-center justify-center px-12 py-5 bg-gameTeal text-white font-black rounded-2xl hover:bg-[#007a7e] hover:shadow-2xl hover:shadow-gameTeal/30 transition-all active:scale-95 shadow-xl shadow-gameTeal/10 text-xl uppercase tracking-[0.2em]">
                      Course Button
-                  </button>
+                  </Link>
+                  {/* TODO: replace # with actual syllabus PDF link per organisation */}
                   <button className="px-12 py-5 border-2 border-white/20 text-white font-black rounded-2xl hover:bg-white hover:text-gameBlack transition-all active:scale-95 text-xl uppercase tracking-[0.2em]">
-                     View More
+                     View Syllabus
                   </button>
                </div>
             </motion.div>
@@ -1118,11 +1120,12 @@ const DetailedOrgCard: React.FC<{
 
       {/* Footer Buttons */}
       <div className="p-6 md:p-8 bg-white border-t border-slate-200 flex flex-wrap gap-4 items-center justify-center">
-        <button className="bg-[#005f63] text-white font-black px-10 py-3 rounded-lg text-[11px] uppercase tracking-widest hover:bg-[#004d50] hover:shadow-xl hover:shadow-gameTeal/40 transition-all active:scale-95 shadow-lg shadow-gameTeal/10">
+        <Link href="/courses" className="inline-flex items-center justify-center bg-[#005f63] text-white font-black px-10 py-3 rounded-lg text-[11px] uppercase tracking-widest hover:bg-[#004d50] hover:shadow-xl hover:shadow-gameTeal/40 transition-all active:scale-95 shadow-lg shadow-gameTeal/10">
           COURSE BUTTON
-        </button>
+        </Link>
+        {/* TODO: replace # with actual syllabus PDF link per organisation */}
         <button className="border-2 border-slate-200 text-slate-600 font-black px-10 py-3 rounded-lg text-[11px] uppercase tracking-widest hover:bg-slate-50 hover:border-slate-400 hover:text-gameBlack transition-all active:scale-95">
-          VIEW MORE
+          VIEW SYLLABUS
         </button>
       </div>
     </motion.div>
