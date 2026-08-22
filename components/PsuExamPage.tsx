@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Rocket, Globe, Target, Shield, Users, Sparkles, Briefcase, TrendingUp, Award, Building2, Coffee, Atom, Droplets, Flame, Zap, Wind, Factory, Mountain, Cpu, Ship, Plane, ScrollText, ChevronDown } from 'lucide-react';
 
 const PsuExamPage: React.FC = () => {
@@ -228,6 +229,7 @@ const PsuExamPage: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+               {/* TODO: client to upload real R&D benefit images at these paths */}
                {[
                   {
                      number: "",
@@ -235,6 +237,7 @@ const PsuExamPage: React.FC = () => {
                      imageIdea: "A split-screen visual: Minimalist office desk vs. powerful rocket on launch pad at dawn.",
                      tagline: "Build for a Country.",
                      icon: Rocket,
+                     image: "/psu/rnd-benefit-1.png",
                      delay: 0
                   },
                   {
@@ -243,6 +246,7 @@ const PsuExamPage: React.FC = () => {
                      imageIdea: "Dynamic infographic of satellite orbits, DNA strands, and cybersecurity shields.",
                      tagline: "One Career, Infinite Frontiers.",
                      icon: Globe,
+                     image: "/psu/rnd-benefit-2.png",
                      delay: 0.1
                   },
                   {
@@ -251,6 +255,7 @@ const PsuExamPage: React.FC = () => {
                      imageIdea: "Scientist's focused eyes reflected in a console showing successful satellite deployment.",
                      tagline: "Nation Needs Your Genius.",
                      icon: Target,
+                     image: "/psu/rnd-benefit-3.png",
                      delay: 0.2
                   },
                   {
@@ -259,6 +264,7 @@ const PsuExamPage: React.FC = () => {
                      imageIdea: "Researcher in a calm lab while a chaotic cityscape flashes behind them.",
                      tagline: "Focus on the Mission.",
                      icon: Shield,
+                     image: "/psu/rnd-benefit-4.png",
                      delay: 0.3
                   },
                   {
@@ -267,39 +273,20 @@ const PsuExamPage: React.FC = () => {
                      imageIdea: "Diverse team of scientists in collaborative triumph within a mission control room.",
                      tagline: "Stand on Shoulders of Giants.",
                      icon: Users,
+                     image: "/psu/rnd-benefit-5.png",
                      delay: 0.4
                   }
                ].map((item, index) => (
-                  <motion.div 
+                  <BenefitImageCard
                      key={index}
-                     initial={{ opacity: 0, y: 20 }}
-                     whileInView={{ opacity: 1, y: 0 }}
-                     viewport={{ once: true }}
-                     transition={{ delay: item.delay, duration: 0.5 }}
-                     className="group flex h-full"
-                  >
-                     <div className="bg-white rounded-[2rem] border border-slate-200 hover:border-gameTeal/30 hover:shadow-xl hover:shadow-gameTeal/5 transition-all duration-500 overflow-hidden flex flex-col w-full relative">
-                        <span className="absolute top-4 right-6 text-2xl font-black text-slate-100 group-hover:text-gameTeal/10 transition-colors pointer-events-none">{item.number}</span>
-                        
-                        <div className="p-6 pb-4">
-                           <div className="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center text-gameTeal group-hover:bg-gameTeal group-hover:text-white transition-all duration-500 mb-5 shadow-inner">
-                              <item.icon size={24} />
-                           </div>
-                           <h3 className="text-lg font-black text-gameBlack leading-tight mb-3 group-hover:text-gameTeal transition-colors">
-                              {item.title}
-                           </h3>
-                           <p className="text-slate-500 text-sm font-bold leading-relaxed mb-4">
-                              {item.imageIdea}
-                           </p>
-                        </div>
-
-                        <div className="mt-auto p-5 pt-4 bg-slate-50/50 border-t border-slate-100 italic">
-                           <p className="text-gameBlack font-black text-base">
-                              &quot;{item.tagline}&quot;
-                           </p>
-                        </div>
-                     </div>
-                  </motion.div>
+                     icon={item.icon}
+                     title={item.title}
+                     description={item.imageIdea}
+                     image={item.image}
+                     footer={{ value: item.tagline, quote: true }}
+                     accent="teal"
+                     delay={item.delay}
+                  />
                ))}
                
                <motion.div 
@@ -319,138 +306,7 @@ const PsuExamPage: React.FC = () => {
          </div>
       </section>
 
-      {/* 2. Public Sector Units (PSUs) Section */}
-      <section className="py-24 bg-slate-200 border-t border-slate-300 scroll-mt-32">
-         <div className="max-w-[1280px] mx-auto px-6 md:px-8 lg:px-10">
-            <div className="text-center mb-16">
-               <motion.div 
-                  initial={{ opacity: 0, y: 20 }} 
-                  whileInView={{ opacity: 1, y: 0 }} 
-                  viewport={{ once: true }}
-               >
-                  <div className="bg-gameGold text-slate-900 px-4 py-1 rounded-full font-black uppercase tracking-widest text-[9px] inline-block mb-3 shadow-sm">
-                    Corporate Growth
-                  </div>
-                  <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-gameBlack leading-tight mb-4">
-                     Public Sector <span className="text-gameTeal italic">Units</span> <span className="text-slate-400 font-light">(PSUs)</span>
-                  </h2>
-                  <div className="w-16 h-1 bg-gameTeal mx-auto rounded-full"></div>
-               </motion.div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-               {[
-                  {
-                     number: "",
-                     title: "Success & Fulfilment",
-                     imageIdea: "A sharp, formal blazer vs. modern tech gadgets and rewarding perks on a contemporary desk.",
-                     styleDesc: "Clean, dual-tone colour scheme (blue for trust, orange for energy).",
-                     icon: Briefcase,
-                     delay: 0
-                  },
-                  {
-                     number: "",
-                     title: "National Growth Forefront",
-                     imageIdea: "Confident engineers at a massive project site with rising national skylines.",
-                     styleDesc: "Cinematic and grand. Bold and hopeful atmosphere.",
-                     icon: TrendingUp,
-                     delay: 0.1
-                  },
-                  {
-                     number: "",
-                     title: "Premium Rewards",
-                     imageIdea: "A career ladder made of reward icons: promotions, salary, LTC, and housing security.",
-                     styleDesc: "Visually rich 3D infographics with metallic gold and blue accents.",
-                     icon: Award,
-                     delay: 0.2
-                  },
-                  {
-                     number: "",
-                     title: "Universe of Opportunities",
-                     imageIdea: "Isometric PSU building with windows showing oil rigs, wind turbines, and financial charts.",
-                     styleDesc: "Modern vibrant illustration showing diversity rooted in solidity.",
-                     icon: Building2,
-                     delay: 0.3
-                  },
-                  {
-                     number: "",
-                     title: "Work-Life Harmony",
-                     imageIdea: "Focused professional at work vs. relaxed person enjoying family time in daylight.",
-                     styleDesc: "Warm, authentic photography focused on genuine smiles.",
-                     icon: Coffee,
-                     delay: 0.4
-                  }
-               ].map((item, index) => (
-                  <motion.div 
-                     key={index}
-                     initial={{ opacity: 0, y: 20 }}
-                     whileInView={{ opacity: 1, y: 0 }}
-                     viewport={{ once: true }}
-                     transition={{ delay: item.delay, duration: 0.5 }}
-                     className="group flex h-full"
-                  >
-                     <div className="bg-white rounded-[2rem] border border-slate-200 hover:border-gameGold/30 hover:shadow-xl hover:shadow-gameGold/5 transition-all duration-500 overflow-hidden flex flex-col w-full relative">
-                        <span className="absolute top-4 right-6 text-2xl font-black text-slate-100 group-hover:text-gameGold/10 transition-colors pointer-events-none">{item.number}</span>
-
-                        <div className="p-6 pb-4">
-                           <div className="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center text-gameGold group-hover:bg-gameGold group-hover:text-white transition-all duration-500 mb-5 shadow-inner">
-                              <item.icon size={24} />
-                           </div>
-                           <h3 className="text-lg font-black text-gameBlack leading-tight mb-3 group-hover:text-gameGold transition-colors">
-                              {item.title}
-                           </h3>
-                           <p className="text-slate-500 text-sm font-bold leading-relaxed mb-4">
-                              {item.imageIdea}
-                           </p>
-                        </div>
-
-                        <div className="mt-auto p-5 pt-4 bg-slate-50/50 border-t border-slate-100 italic">
-                           <span className="text-[8px] font-black uppercase tracking-widest text-slate-400 mb-1 block">Style</span>
-                           <p className="text-gameBlack font-black text-xs leading-tight">
-                              {item.styleDesc}
-                           </p>
-                        </div>
-                     </div>
-                  </motion.div>
-               ))}
-
-               <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.5, duration: 0.5 }}
-                  className="group flex h-full"
-               >
-                  <div className="bg-[#0f172a] rounded-[2rem] border border-white/10 hover:border-gameGold transition-all duration-500 overflow-hidden flex flex-col w-full relative shadow-2xl">
-                     <div className="p-8 flex-grow">
-                        <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-gameGold group-hover:scale-110 group-hover:bg-gameGold group-hover:text-white transition-all duration-500 mb-6 shadow-glow-gold/10">
-                           <Building2 size={28} />
-                        </div>
-                        <h3 className="text-xl font-black text-white leading-tight mb-3 group-hover:text-gameGold transition-colors">
-                           India&apos;s Pillars
-                        </h3>
-                        <p className="text-slate-400 text-sm font-bold leading-relaxed">
-                           Public Sector Units (PSUs) form the core of India&apos;s industrial and socioeconomic progress.
-                        </p>
-                     </div>
-                     <div className="p-6 pt-4 bg-white/5 border-t border-white/5">
-                        <span className="text-[10px] font-black text-white/20 uppercase tracking-widest block mb-1">National Mission</span>
-                        <p className="text-gameGold font-black text-[11px] leading-tight italic">
-                           Powering the nation&apos;s future through excellence.
-                        </p>
-                     </div>
-                     
-                     {/* Decorative element */}
-                     <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
-                        <Building2 size={120} strokeWidth={1} className="text-white" />
-                     </div>
-                  </div>
-               </motion.div>
-            </div>
-         </div>
-      </section>
-
-      {/* 3. Detailed Organization Section: ISRO */}
+      {/* 2. Govt. R&D Organisations: ISRO, BARC, DRDO */}
       <section className="py-24 bg-slate-200 border-t border-slate-300 scroll-mt-32">
          <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12">
             <div className="text-center mb-16">
@@ -532,7 +388,123 @@ const PsuExamPage: React.FC = () => {
          </div>
       </section>
 
-      {/* 4. Detailed PSU Exams Section: ONGC, IOCL */}
+      {/* 3. Public Sector Units (PSUs) Section */}
+      <section className="py-24 bg-slate-200 border-t border-slate-300 scroll-mt-32">
+         <div className="max-w-[1280px] mx-auto px-6 md:px-8 lg:px-10">
+            <div className="text-center mb-16">
+               <motion.div 
+                  initial={{ opacity: 0, y: 20 }} 
+                  whileInView={{ opacity: 1, y: 0 }} 
+                  viewport={{ once: true }}
+               >
+                  <div className="bg-gameGold text-slate-900 px-4 py-1 rounded-full font-black uppercase tracking-widest text-[9px] inline-block mb-3 shadow-sm">
+                    Corporate Growth
+                  </div>
+                  <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-gameBlack leading-tight mb-4">
+                     Public Sector <span className="text-gameTeal italic">Units</span> <span className="text-slate-400 font-light">(PSUs)</span>
+                  </h2>
+                  <div className="w-16 h-1 bg-gameTeal mx-auto rounded-full"></div>
+               </motion.div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+               {/* TODO: client to upload real PSU benefit images at these paths */}
+               {[
+                  {
+                     number: "",
+                     title: "Success & Fulfilment",
+                     imageIdea: "A sharp, formal blazer vs. modern tech gadgets and rewarding perks on a contemporary desk.",
+                     styleDesc: "Clean, dual-tone colour scheme (blue for trust, orange for energy).",
+                     icon: Briefcase,
+                     image: "/psu/psu-benefit-1.png",
+                     delay: 0
+                  },
+                  {
+                     number: "",
+                     title: "National Growth Forefront",
+                     imageIdea: "Confident engineers at a massive project site with rising national skylines.",
+                     styleDesc: "Cinematic and grand. Bold and hopeful atmosphere.",
+                     icon: TrendingUp,
+                     image: "/psu/psu-benefit-2.png",
+                     delay: 0.1
+                  },
+                  {
+                     number: "",
+                     title: "Premium Rewards",
+                     imageIdea: "A career ladder made of reward icons: promotions, salary, LTC, and housing security.",
+                     styleDesc: "Visually rich 3D infographics with metallic gold and blue accents.",
+                     icon: Award,
+                     image: "/psu/psu-benefit-3.png",
+                     delay: 0.2
+                  },
+                  {
+                     number: "",
+                     title: "Universe of Opportunities",
+                     imageIdea: "Isometric PSU building with windows showing oil rigs, wind turbines, and financial charts.",
+                     styleDesc: "Modern vibrant illustration showing diversity rooted in solidity.",
+                     icon: Building2,
+                     image: "/psu/psu-benefit-4.png",
+                     delay: 0.3
+                  },
+                  {
+                     number: "",
+                     title: "Work-Life Harmony",
+                     imageIdea: "Focused professional at work vs. relaxed person enjoying family time in daylight.",
+                     styleDesc: "Warm, authentic photography focused on genuine smiles.",
+                     icon: Coffee,
+                     image: "/psu/psu-benefit-5.png",
+                     delay: 0.4
+                  }
+               ].map((item, index) => (
+                  <BenefitImageCard
+                     key={index}
+                     icon={item.icon}
+                     title={item.title}
+                     description={item.imageIdea}
+                     image={item.image}
+                     footer={{ label: "Style", value: item.styleDesc }}
+                     accent="gold"
+                     delay={item.delay}
+                  />
+               ))}
+
+               <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5, duration: 0.5 }}
+                  className="group flex h-full"
+               >
+                  <div className="bg-[#0f172a] rounded-[2rem] border border-white/10 hover:border-gameGold transition-all duration-500 overflow-hidden flex flex-col w-full relative shadow-2xl">
+                     <div className="p-8 flex-grow">
+                        <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-gameGold group-hover:scale-110 group-hover:bg-gameGold group-hover:text-white transition-all duration-500 mb-6 shadow-glow-gold/10">
+                           <Building2 size={28} />
+                        </div>
+                        <h3 className="text-xl font-black text-white leading-tight mb-3 group-hover:text-gameGold transition-colors">
+                           India&apos;s Pillars
+                        </h3>
+                        <p className="text-slate-400 text-sm font-bold leading-relaxed">
+                           Public Sector Units (PSUs) form the core of India&apos;s industrial and socioeconomic progress.
+                        </p>
+                     </div>
+                     <div className="p-6 pt-4 bg-white/5 border-t border-white/5">
+                        <span className="text-[10px] font-black text-white/20 uppercase tracking-widest block mb-1">National Mission</span>
+                        <p className="text-gameGold font-black text-[11px] leading-tight italic">
+                           Powering the nation&apos;s future through excellence.
+                        </p>
+                     </div>
+                     
+                     {/* Decorative element */}
+                     <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
+                        <Building2 size={120} strokeWidth={1} className="text-white" />
+                     </div>
+                  </div>
+               </motion.div>
+            </div>
+         </div>
+      </section>
+
+      {/* 4. PSU Organisations: NPCIL, ONGC, IOCL, BHEL, NTPC, GAIL, SAIL, HPCL, CIL, BEL, MDL, HAL */}
       <section className="py-24 bg-slate-200 border-t border-slate-300 scroll-mt-32">
          <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12">
             <div className="text-center mb-16">
@@ -880,11 +852,11 @@ const PsuExamPage: React.FC = () => {
 
                {/* Action Buttons */}
                <div className="flex flex-wrap gap-8 items-center justify-center relative z-10">
-                  <button className="px-12 py-5 bg-gameTeal text-white font-black rounded-2xl hover:bg-[#007a7e] hover:shadow-2xl hover:shadow-gameTeal/30 transition-all active:scale-95 shadow-xl shadow-gameTeal/10 text-xl uppercase tracking-[0.2em]">
+                  <Link href="/courses" className="inline-flex items-center justify-center px-12 py-5 bg-gameTeal text-white font-black rounded-2xl hover:bg-[#007a7e] hover:shadow-2xl hover:shadow-gameTeal/30 transition-all active:scale-95 shadow-xl shadow-gameTeal/10 text-xl uppercase tracking-[0.2em]">
                      Course Button
-                  </button>
+                  </Link>
                   <button className="px-12 py-5 border-2 border-white/20 text-white font-black rounded-2xl hover:bg-white hover:text-gameBlack transition-all active:scale-95 text-xl uppercase tracking-[0.2em]">
-                     View More
+                     View Syllabus
                   </button>
                </div>
             </motion.div>
@@ -1025,6 +997,90 @@ interface SectionItem {
   value: string;
 }
 
+// Benefit card styled like the GATE page's advantage cards: an image visual with a
+// dark overlay so the title/description stay readable. If the image file is missing,
+// it degrades gracefully to a solid teal background (no broken image).
+const BenefitImageCard: React.FC<{
+  icon: any;
+  title: string;
+  description: string;
+  image: string;
+  footer?: { label?: string; value: string; quote?: boolean };
+  accent?: 'teal' | 'gold';
+  delay?: number;
+}> = ({ icon: Icon, title, description, image, footer, accent = 'teal', delay = 0 }) => {
+  const [imgFailed, setImgFailed] = useState(false);
+  const accentText = accent === 'gold' ? 'text-gameGold' : 'text-gameTeal';
+  const hoverBorder = accent === 'gold' ? 'hover:border-gameGold/40' : 'hover:border-gameTeal/40';
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay, duration: 0.5 }}
+      className="group flex h-full"
+    >
+      <div className={`relative w-full min-h-[340px] rounded-[2rem] overflow-hidden border border-slate-200/60 ${hoverBorder} hover:shadow-xl transition-all duration-500 flex flex-col`}>
+        {/* Image background with graceful fallback to a solid teal fill */}
+        <div className="absolute inset-0 bg-gameTeal">
+          {!imgFailed && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={image}
+              alt={title}
+              onError={() => setImgFailed(true)}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+          )}
+        </div>
+
+        {/* Dark overlay keeps the title/text readable over any image (and over the teal fallback) */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/20" />
+
+        {/* Content anchored to the bottom */}
+        <div className="relative z-10 mt-auto p-6 flex flex-col">
+          <div className="w-12 h-12 rounded-xl bg-white/10 border border-white/20 backdrop-blur-sm flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform">
+            <Icon size={24} />
+          </div>
+          <h3 className="text-lg font-black text-white leading-tight mb-2">{title}</h3>
+          <p className="text-slate-200 text-sm font-bold leading-relaxed">{description}</p>
+          {footer && (
+            <div className="mt-4 pt-4 border-t border-white/15">
+              {footer.label && (
+                <span className={`text-[8px] font-black uppercase tracking-widest ${accentText} mb-1 block`}>{footer.label}</span>
+              )}
+              <p className={`text-white font-black ${footer.quote ? 'text-sm italic' : 'text-xs leading-tight'}`}>
+                {footer.quote ? `"${footer.value}"` : footer.value}
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+// Syllabus PDF (Google Drive) per organisation, keyed by logo slug.
+// Opened in a new tab from each org card's "View Syllabus" button.
+const SYLLABUS_LINKS: Record<string, string> = {
+  isro: "https://drive.google.com/file/d/1KKDmw6_PWj1WbLIm4JeYvPhEOzV3jDnS/view",
+  barc: "https://drive.google.com/file/d/1KKDmw6_PWj1WbLIm4JeYvPhEOzV3jDnS/view",
+  drdo: "https://drive.google.com/file/d/1KKDmw6_PWj1WbLIm4JeYvPhEOzV3jDnS/view",
+  npcil: "https://drive.google.com/file/d/1KKDmw6_PWj1WbLIm4JeYvPhEOzV3jDnS/view",
+  ongc: "https://drive.google.com/file/d/1-bX6C5S0Iv2ZSX7eHnQe-4buYYBomH8h/view",
+  iocl: "https://drive.google.com/file/d/1wIa0PDXyMd6I7ggd_eO9OK1DlgpTNfGO/view",
+  bhel: "https://drive.google.com/file/d/1tyUNZVSQtXPXbr1jrs7p2U4xWuBhhUWe/view",
+  ntpc: "https://drive.google.com/file/d/1KKDmw6_PWj1WbLIm4JeYvPhEOzV3jDnS/view",
+  gail: "https://drive.google.com/file/d/1KKDmw6_PWj1WbLIm4JeYvPhEOzV3jDnS/view",
+  sail: "https://drive.google.com/file/d/1xFbF8V8oZ5Yv_xnjIUhkDG6PpjrDMjSS/view",
+  hpcl: "https://drive.google.com/file/d/1iuSYN61FiF_W0C-Q58eqcSegiH8em9LG/view",
+  cil: "https://drive.google.com/file/d/1KKDmw6_PWj1WbLIm4JeYvPhEOzV3jDnS/view",
+  bel: "https://drive.google.com/file/d/1WBXKhxyeyLN8A7qmops09NOvweLnxmW1/view",
+  mdl: "https://drive.google.com/file/d/1KKDmw6_PWj1WbLIm4JeYvPhEOzV3jDnS/view",
+  hal: "https://drive.google.com/file/d/1KKDmw6_PWj1WbLIm4JeYvPhEOzV3jDnS/view",
+};
+
 const DetailedOrgCard: React.FC<{
   icon: any;
   logoSlug?: string;
@@ -1037,6 +1093,7 @@ const DetailedOrgCard: React.FC<{
   iconColorClass?: string;
 }> = ({ icon: Icon, logoSlug, title, description, examSnapshot, lifeAtOrgHeader, lifeAtOrgItems, delay = 0, iconColorClass = "text-gameTeal" }) => {
   const [logoFailed, setLogoFailed] = useState(false);
+  const syllabusUrl = logoSlug ? SYLLABUS_LINKS[logoSlug] : undefined;
 
   return (
     <motion.div
@@ -1118,12 +1175,23 @@ const DetailedOrgCard: React.FC<{
 
       {/* Footer Buttons */}
       <div className="p-6 md:p-8 bg-white border-t border-slate-200 flex flex-wrap gap-4 items-center justify-center">
-        <button className="bg-[#005f63] text-white font-black px-10 py-3 rounded-lg text-[11px] uppercase tracking-widest hover:bg-[#004d50] hover:shadow-xl hover:shadow-gameTeal/40 transition-all active:scale-95 shadow-lg shadow-gameTeal/10">
+        <Link href="/courses" className="inline-flex items-center justify-center bg-[#005f63] text-white font-black px-10 py-3 rounded-lg text-[11px] uppercase tracking-widest hover:bg-[#004d50] hover:shadow-xl hover:shadow-gameTeal/40 transition-all active:scale-95 shadow-lg shadow-gameTeal/10">
           COURSE BUTTON
-        </button>
-        <button className="border-2 border-slate-200 text-slate-600 font-black px-10 py-3 rounded-lg text-[11px] uppercase tracking-widest hover:bg-slate-50 hover:border-slate-400 hover:text-gameBlack transition-all active:scale-95">
-          VIEW MORE
-        </button>
+        </Link>
+        {syllabusUrl ? (
+          <a
+            href={syllabusUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center border-2 border-slate-200 text-slate-600 font-black px-10 py-3 rounded-lg text-[11px] uppercase tracking-widest hover:bg-slate-50 hover:border-slate-400 hover:text-gameBlack transition-all active:scale-95"
+          >
+            VIEW SYLLABUS
+          </a>
+        ) : (
+          <button className="border-2 border-slate-200 text-slate-600 font-black px-10 py-3 rounded-lg text-[11px] uppercase tracking-widest hover:bg-slate-50 hover:border-slate-400 hover:text-gameBlack transition-all active:scale-95">
+            VIEW SYLLABUS
+          </button>
+        )}
       </div>
     </motion.div>
   );
