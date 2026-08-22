@@ -395,7 +395,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
     { q: "Q.1 Can I prepare for the SSC-JE Exams with GAME Academy’s Online Coaching?", a: "Absolutely! GAME Academy’s SSC-JE coaching (Excellence Course) is specifically designed to help candidates prepare effectively for the SSC-JE exam." },
     { q: "Q.2 What are the branches GAME Academy deals with?", a: "As of now, GAME Academy provides coaching for Civil Engineering and Mechanical Engineering." },
     { q: "Q.3 Does GAME Academy cover non-technical parts as well?", a: "Yes, we are covering the entire syllabus of the non-technical part (Reasoning, General Awareness) as well." },
-    { q: "Q 4. Why should I choose GAME for Online Coaching?", a: "GAME delivers high-quality education and top-notch content for Mechanical & Civil Engineering aspirants preparing for the SSC-JE exam. Under the leadership of Gaurav Babu Sir, a distinguished educator with 13+ years of experience, our teaching philosophy focuses on building a strong academic foundation by teaching subjects from scratch with conceptual clarity and practical problem-solving techniques. With GAME, students can confidently excel in competitive exams and achieve their career aspirations." },
+    { q: "Q 4. Why should I choose GAME for Online Coaching?", a: "GAME delivers high-quality education and top-notch content for Mechanical & Civil Engineering aspirants preparing for the SSC-JE exam. Under the leadership of Gaurav Babu Sir, a distinguished educator with 14+ years of experience, our teaching philosophy focuses on building a strong academic foundation by teaching subjects from scratch with conceptual clarity and practical problem-solving techniques. With GAME, students can confidently excel in competitive exams and achieve their career aspirations." },
     { q: "Q 5. Does GAME provide a test series along with the course?", a: "Yes, GAME provides a test series along with the course" },
     { q: "Q 6. Can I Prepare for the SSC-JE Exam While Working a Full-Time Job?", a: "You can prepare for the SSC-JE exam while managing a full-time job with the right strategy and dedication. GAME offers flexible SSC-JE online coaching with recorded lectures, structured study plans, and expert mentorship. By utilising focused study hours during evenings and weekends, and accessing comprehensive SSC-JE resources, success is achievable even with a busy work schedule." },
     {
@@ -737,7 +737,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                         <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Pay Matrix</p>
                      </div>
                      <div>
-                        <p className="text-2xl font-black text-white mb-0.5">13+ Yrs</p>
+                        <p className="text-2xl font-black text-white mb-0.5">14+ Yrs</p>
                         <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Mentorship</p>
                      </div>
                   </div>
