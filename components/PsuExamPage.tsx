@@ -229,6 +229,7 @@ const PsuExamPage: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+               {/* TODO: client to upload real R&D benefit images at these paths */}
                {[
                   {
                      number: "",
@@ -236,6 +237,7 @@ const PsuExamPage: React.FC = () => {
                      imageIdea: "A split-screen visual: Minimalist office desk vs. powerful rocket on launch pad at dawn.",
                      tagline: "Build for a Country.",
                      icon: Rocket,
+                     image: "/psu/rnd-benefit-1.png",
                      delay: 0
                   },
                   {
@@ -244,6 +246,7 @@ const PsuExamPage: React.FC = () => {
                      imageIdea: "Dynamic infographic of satellite orbits, DNA strands, and cybersecurity shields.",
                      tagline: "One Career, Infinite Frontiers.",
                      icon: Globe,
+                     image: "/psu/rnd-benefit-2.png",
                      delay: 0.1
                   },
                   {
@@ -252,6 +255,7 @@ const PsuExamPage: React.FC = () => {
                      imageIdea: "Scientist's focused eyes reflected in a console showing successful satellite deployment.",
                      tagline: "Nation Needs Your Genius.",
                      icon: Target,
+                     image: "/psu/rnd-benefit-3.png",
                      delay: 0.2
                   },
                   {
@@ -260,6 +264,7 @@ const PsuExamPage: React.FC = () => {
                      imageIdea: "Researcher in a calm lab while a chaotic cityscape flashes behind them.",
                      tagline: "Focus on the Mission.",
                      icon: Shield,
+                     image: "/psu/rnd-benefit-4.png",
                      delay: 0.3
                   },
                   {
@@ -268,39 +273,20 @@ const PsuExamPage: React.FC = () => {
                      imageIdea: "Diverse team of scientists in collaborative triumph within a mission control room.",
                      tagline: "Stand on Shoulders of Giants.",
                      icon: Users,
+                     image: "/psu/rnd-benefit-5.png",
                      delay: 0.4
                   }
                ].map((item, index) => (
-                  <motion.div 
+                  <BenefitImageCard
                      key={index}
-                     initial={{ opacity: 0, y: 20 }}
-                     whileInView={{ opacity: 1, y: 0 }}
-                     viewport={{ once: true }}
-                     transition={{ delay: item.delay, duration: 0.5 }}
-                     className="group flex h-full"
-                  >
-                     <div className="bg-white rounded-[2rem] border border-slate-200 hover:border-gameTeal/30 hover:shadow-xl hover:shadow-gameTeal/5 transition-all duration-500 overflow-hidden flex flex-col w-full relative">
-                        <span className="absolute top-4 right-6 text-2xl font-black text-slate-100 group-hover:text-gameTeal/10 transition-colors pointer-events-none">{item.number}</span>
-                        
-                        <div className="p-6 pb-4">
-                           <div className="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center text-gameTeal group-hover:bg-gameTeal group-hover:text-white transition-all duration-500 mb-5 shadow-inner">
-                              <item.icon size={24} />
-                           </div>
-                           <h3 className="text-lg font-black text-gameBlack leading-tight mb-3 group-hover:text-gameTeal transition-colors">
-                              {item.title}
-                           </h3>
-                           <p className="text-slate-500 text-sm font-bold leading-relaxed mb-4">
-                              {item.imageIdea}
-                           </p>
-                        </div>
-
-                        <div className="mt-auto p-5 pt-4 bg-slate-50/50 border-t border-slate-100 italic">
-                           <p className="text-gameBlack font-black text-base">
-                              &quot;{item.tagline}&quot;
-                           </p>
-                        </div>
-                     </div>
-                  </motion.div>
+                     icon={item.icon}
+                     title={item.title}
+                     description={item.imageIdea}
+                     image={item.image}
+                     footer={{ value: item.tagline, quote: true }}
+                     accent="teal"
+                     delay={item.delay}
+                  />
                ))}
                
                <motion.div 
@@ -340,6 +326,7 @@ const PsuExamPage: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+               {/* TODO: client to upload real PSU benefit images at these paths */}
                {[
                   {
                      number: "",
@@ -347,6 +334,7 @@ const PsuExamPage: React.FC = () => {
                      imageIdea: "A sharp, formal blazer vs. modern tech gadgets and rewarding perks on a contemporary desk.",
                      styleDesc: "Clean, dual-tone colour scheme (blue for trust, orange for energy).",
                      icon: Briefcase,
+                     image: "/psu/psu-benefit-1.png",
                      delay: 0
                   },
                   {
@@ -355,6 +343,7 @@ const PsuExamPage: React.FC = () => {
                      imageIdea: "Confident engineers at a massive project site with rising national skylines.",
                      styleDesc: "Cinematic and grand. Bold and hopeful atmosphere.",
                      icon: TrendingUp,
+                     image: "/psu/psu-benefit-2.png",
                      delay: 0.1
                   },
                   {
@@ -363,6 +352,7 @@ const PsuExamPage: React.FC = () => {
                      imageIdea: "A career ladder made of reward icons: promotions, salary, LTC, and housing security.",
                      styleDesc: "Visually rich 3D infographics with metallic gold and blue accents.",
                      icon: Award,
+                     image: "/psu/psu-benefit-3.png",
                      delay: 0.2
                   },
                   {
@@ -371,6 +361,7 @@ const PsuExamPage: React.FC = () => {
                      imageIdea: "Isometric PSU building with windows showing oil rigs, wind turbines, and financial charts.",
                      styleDesc: "Modern vibrant illustration showing diversity rooted in solidity.",
                      icon: Building2,
+                     image: "/psu/psu-benefit-4.png",
                      delay: 0.3
                   },
                   {
@@ -379,40 +370,20 @@ const PsuExamPage: React.FC = () => {
                      imageIdea: "Focused professional at work vs. relaxed person enjoying family time in daylight.",
                      styleDesc: "Warm, authentic photography focused on genuine smiles.",
                      icon: Coffee,
+                     image: "/psu/psu-benefit-5.png",
                      delay: 0.4
                   }
                ].map((item, index) => (
-                  <motion.div 
+                  <BenefitImageCard
                      key={index}
-                     initial={{ opacity: 0, y: 20 }}
-                     whileInView={{ opacity: 1, y: 0 }}
-                     viewport={{ once: true }}
-                     transition={{ delay: item.delay, duration: 0.5 }}
-                     className="group flex h-full"
-                  >
-                     <div className="bg-white rounded-[2rem] border border-slate-200 hover:border-gameGold/30 hover:shadow-xl hover:shadow-gameGold/5 transition-all duration-500 overflow-hidden flex flex-col w-full relative">
-                        <span className="absolute top-4 right-6 text-2xl font-black text-slate-100 group-hover:text-gameGold/10 transition-colors pointer-events-none">{item.number}</span>
-
-                        <div className="p-6 pb-4">
-                           <div className="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center text-gameGold group-hover:bg-gameGold group-hover:text-white transition-all duration-500 mb-5 shadow-inner">
-                              <item.icon size={24} />
-                           </div>
-                           <h3 className="text-lg font-black text-gameBlack leading-tight mb-3 group-hover:text-gameGold transition-colors">
-                              {item.title}
-                           </h3>
-                           <p className="text-slate-500 text-sm font-bold leading-relaxed mb-4">
-                              {item.imageIdea}
-                           </p>
-                        </div>
-
-                        <div className="mt-auto p-5 pt-4 bg-slate-50/50 border-t border-slate-100 italic">
-                           <span className="text-[8px] font-black uppercase tracking-widest text-slate-400 mb-1 block">Style</span>
-                           <p className="text-gameBlack font-black text-xs leading-tight">
-                              {item.styleDesc}
-                           </p>
-                        </div>
-                     </div>
-                  </motion.div>
+                     icon={item.icon}
+                     title={item.title}
+                     description={item.imageIdea}
+                     image={item.image}
+                     footer={{ label: "Style", value: item.styleDesc }}
+                     accent="gold"
+                     delay={item.delay}
+                  />
                ))}
 
                <motion.div 
@@ -1026,6 +997,70 @@ interface SectionItem {
   label: string;
   value: string;
 }
+
+// Benefit card styled like the GATE page's advantage cards: an image visual with a
+// dark overlay so the title/description stay readable. If the image file is missing,
+// it degrades gracefully to a solid teal background (no broken image).
+const BenefitImageCard: React.FC<{
+  icon: any;
+  title: string;
+  description: string;
+  image: string;
+  footer?: { label?: string; value: string; quote?: boolean };
+  accent?: 'teal' | 'gold';
+  delay?: number;
+}> = ({ icon: Icon, title, description, image, footer, accent = 'teal', delay = 0 }) => {
+  const [imgFailed, setImgFailed] = useState(false);
+  const accentText = accent === 'gold' ? 'text-gameGold' : 'text-gameTeal';
+  const hoverBorder = accent === 'gold' ? 'hover:border-gameGold/40' : 'hover:border-gameTeal/40';
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay, duration: 0.5 }}
+      className="group flex h-full"
+    >
+      <div className={`relative w-full min-h-[340px] rounded-[2rem] overflow-hidden border border-slate-200/60 ${hoverBorder} hover:shadow-xl transition-all duration-500 flex flex-col`}>
+        {/* Image background with graceful fallback to a solid teal fill */}
+        <div className="absolute inset-0 bg-gameTeal">
+          {!imgFailed && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={image}
+              alt={title}
+              onError={() => setImgFailed(true)}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+          )}
+        </div>
+
+        {/* Dark overlay keeps the title/text readable over any image (and over the teal fallback) */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/20" />
+
+        {/* Content anchored to the bottom */}
+        <div className="relative z-10 mt-auto p-6 flex flex-col">
+          <div className="w-12 h-12 rounded-xl bg-white/10 border border-white/20 backdrop-blur-sm flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform">
+            <Icon size={24} />
+          </div>
+          <h3 className="text-lg font-black text-white leading-tight mb-2">{title}</h3>
+          <p className="text-slate-200 text-sm font-bold leading-relaxed">{description}</p>
+          {footer && (
+            <div className="mt-4 pt-4 border-t border-white/15">
+              {footer.label && (
+                <span className={`text-[8px] font-black uppercase tracking-widest ${accentText} mb-1 block`}>{footer.label}</span>
+              )}
+              <p className={`text-white font-black ${footer.quote ? 'text-sm italic' : 'text-xs leading-tight'}`}>
+                {footer.quote ? `"${footer.value}"` : footer.value}
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  );
+};
 
 const DetailedOrgCard: React.FC<{
   icon: any;
