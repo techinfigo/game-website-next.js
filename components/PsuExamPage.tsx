@@ -1062,6 +1062,26 @@ const BenefitImageCard: React.FC<{
   );
 };
 
+// Syllabus PDF (Google Drive) per organisation, keyed by logo slug.
+// Opened in a new tab from each org card's "View Syllabus" button.
+const SYLLABUS_LINKS: Record<string, string> = {
+  isro: "https://drive.google.com/file/d/1KKDmw6_PWj1WbLIm4JeYvPhEOzV3jDnS/view",
+  barc: "https://drive.google.com/file/d/1KKDmw6_PWj1WbLIm4JeYvPhEOzV3jDnS/view",
+  drdo: "https://drive.google.com/file/d/1KKDmw6_PWj1WbLIm4JeYvPhEOzV3jDnS/view",
+  npcil: "https://drive.google.com/file/d/1KKDmw6_PWj1WbLIm4JeYvPhEOzV3jDnS/view",
+  ongc: "https://drive.google.com/file/d/1-bX6C5S0Iv2ZSX7eHnQe-4buYYBomH8h/view",
+  iocl: "https://drive.google.com/file/d/1wIa0PDXyMd6I7ggd_eO9OK1DlgpTNfGO/view",
+  bhel: "https://drive.google.com/file/d/1tyUNZVSQtXPXbr1jrs7p2U4xWuBhhUWe/view",
+  ntpc: "https://drive.google.com/file/d/1KKDmw6_PWj1WbLIm4JeYvPhEOzV3jDnS/view",
+  gail: "https://drive.google.com/file/d/1KKDmw6_PWj1WbLIm4JeYvPhEOzV3jDnS/view",
+  sail: "https://drive.google.com/file/d/1xFbF8V8oZ5Yv_xnjIUhkDG6PpjrDMjSS/view",
+  hpcl: "https://drive.google.com/file/d/1iuSYN61FiF_W0C-Q58eqcSegiH8em9LG/view",
+  cil: "https://drive.google.com/file/d/1KKDmw6_PWj1WbLIm4JeYvPhEOzV3jDnS/view",
+  bel: "https://drive.google.com/file/d/1WBXKhxyeyLN8A7qmops09NOvweLnxmW1/view",
+  mdl: "https://drive.google.com/file/d/1KKDmw6_PWj1WbLIm4JeYvPhEOzV3jDnS/view",
+  hal: "https://drive.google.com/file/d/1KKDmw6_PWj1WbLIm4JeYvPhEOzV3jDnS/view",
+};
+
 const DetailedOrgCard: React.FC<{
   icon: any;
   logoSlug?: string;
@@ -1074,6 +1094,7 @@ const DetailedOrgCard: React.FC<{
   iconColorClass?: string;
 }> = ({ icon: Icon, logoSlug, title, description, examSnapshot, lifeAtOrgHeader, lifeAtOrgItems, delay = 0, iconColorClass = "text-gameTeal" }) => {
   const [logoFailed, setLogoFailed] = useState(false);
+  const syllabusUrl = logoSlug ? SYLLABUS_LINKS[logoSlug] : undefined;
 
   return (
     <motion.div
@@ -1158,10 +1179,20 @@ const DetailedOrgCard: React.FC<{
         <Link href="/courses" className="inline-flex items-center justify-center bg-[#005f63] text-white font-black px-10 py-3 rounded-lg text-[11px] uppercase tracking-widest hover:bg-[#004d50] hover:shadow-xl hover:shadow-gameTeal/40 transition-all active:scale-95 shadow-lg shadow-gameTeal/10">
           COURSE BUTTON
         </Link>
-        {/* TODO: replace # with actual syllabus PDF link per organisation */}
-        <button className="border-2 border-slate-200 text-slate-600 font-black px-10 py-3 rounded-lg text-[11px] uppercase tracking-widest hover:bg-slate-50 hover:border-slate-400 hover:text-gameBlack transition-all active:scale-95">
-          VIEW SYLLABUS
-        </button>
+        {syllabusUrl ? (
+          <a
+            href={syllabusUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center border-2 border-slate-200 text-slate-600 font-black px-10 py-3 rounded-lg text-[11px] uppercase tracking-widest hover:bg-slate-50 hover:border-slate-400 hover:text-gameBlack transition-all active:scale-95"
+          >
+            VIEW SYLLABUS
+          </a>
+        ) : (
+          <button className="border-2 border-slate-200 text-slate-600 font-black px-10 py-3 rounded-lg text-[11px] uppercase tracking-widest hover:bg-slate-50 hover:border-slate-400 hover:text-gameBlack transition-all active:scale-95">
+            VIEW SYLLABUS
+          </button>
+        )}
       </div>
     </motion.div>
   );
