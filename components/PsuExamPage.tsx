@@ -855,7 +855,6 @@ const PsuExamPage: React.FC = () => {
                   <Link href="/courses" className="inline-flex items-center justify-center px-12 py-5 bg-gameTeal text-white font-black rounded-2xl hover:bg-[#007a7e] hover:shadow-2xl hover:shadow-gameTeal/30 transition-all active:scale-95 shadow-xl shadow-gameTeal/10 text-xl uppercase tracking-[0.2em]">
                      Course Button
                   </Link>
-                  {/* TODO: replace # with actual syllabus PDF link per organisation */}
                   <button className="px-12 py-5 border-2 border-white/20 text-white font-black rounded-2xl hover:bg-white hover:text-gameBlack transition-all active:scale-95 text-xl uppercase tracking-[0.2em]">
                      View Syllabus
                   </button>
