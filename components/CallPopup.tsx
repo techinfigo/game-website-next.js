@@ -15,12 +15,48 @@ interface CallPopupProps {
   availability?: string | null;
 }
 
-const DEFAULT_PHONE = '+917668518602';
+export const DEFAULT_PHONE = '+917668518602';
 
 /** Strips everything except digits and a leading + — safe for a tel: href. */
-const toDialable = (phone: string) => {
+export const toDialable = (phone: string) => {
   const digits = phone.replace(/[^\d]/g, '');
   return phone.trim().startsWith('+') ? `+${digits}` : digits;
+};
+
+/**
+ * True for touch phones/tablets, where tel: actually opens a dialer.
+ * Must only be called from an event handler — it touches window/navigator,
+ * so calling it during render would break SSR and hydration.
+ */
+export const isMobileDevice = () => {
+  if (typeof window === 'undefined') return false;
+
+  try {
+    if (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) return true;
+  } catch {
+    /* matchMedia unsupported — fall through to the checks below */
+  }
+
+  if (typeof navigator !== 'undefined' && /Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+    return true;
+  }
+
+  return window.innerWidth < 768;
+};
+
+/**
+ * Mobile taps go straight to the dialer; desktop clicks open the popup,
+ * because a bare tel: link does nothing in most desktop browsers.
+ */
+export const triggerCall = (phone: string | undefined, openPopup: () => void) => {
+  const number = phone && phone.trim() !== '' ? phone : DEFAULT_PHONE;
+
+  if (isMobileDevice()) {
+    window.location.href = `tel:${toDialable(number)}`;
+    return;
+  }
+
+  openPopup();
 };
 
 /** Renders +917668518602 as "+91 76685 18602"; leaves other formats alone. */

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Phone, Smartphone, MessageCircle, Apple, Play } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useSiteSettings } from '@/hooks/useSiteSettings';
-import CallPopup from './CallPopup';
+import CallPopup, { triggerCall } from './CallPopup';
 
 interface FloatingAction {
   id: string;
@@ -43,7 +43,7 @@ const FloatingActions: React.FC = () => {
       color: 'bg-gameTeal',
       glow: 'shadow-gameTeal/40',
       label: 'Call Us',
-      onClick: () => setCallOpen(true),
+      onClick: () => triggerCall(settings.phone, () => setCallOpen(true)),
     },
     {
       id: 'android',

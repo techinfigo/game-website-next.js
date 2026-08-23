@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { Plus, Minus, MessageCircle, Phone, ArrowRight, HelpCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSiteSettings } from '@/hooks/useSiteSettings';
-import CallPopup from './CallPopup';
+import CallPopup, { triggerCall } from './CallPopup';
 
 const FAQSection: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -77,7 +77,7 @@ const FAQSection: React.FC = () => {
                           </a>
                           <button
                              type="button"
-                             onClick={() => setCallOpen(true)}
+                             onClick={() => triggerCall(settings.phone, () => setCallOpen(true))}
                              className="flex-1 bg-slate-50 text-slate-900 border border-slate-200 py-3 rounded-xl font-bold text-sm hover:bg-slate-100 transition-all flex items-center justify-center gap-2 cursor-pointer"
                           >
                              <Phone size={18} /> Call Us
