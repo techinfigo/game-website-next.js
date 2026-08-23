@@ -11,11 +11,16 @@ import {
   Monitor, ClipboardCheck, Info, Percent, AlertCircle, Clock, Target, FileSearch, UserPlus, Heart, Calculator, Users, Eye, Stethoscope, FileText,
   X, HelpCircle
 } from 'lucide-react';
+import CourseGrid from './CourseGrid';
+import TestimonialsText from './TestimonialsText';
 
 const RrbJeExamPage: React.FC = () => {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [activeSlide, setActiveSlide] = useState(0);
   const [activeSection, setActiveSection] = useState('highlights');
+  // CourseGrid opens on the RRB category by default.
+  const [selectedExam, setSelectedExam] = useState('RRB / State AE JE');
+  const [searchTerm, setSearchTerm] = useState('');
 
   // Hero carousel slides - placeholder picsum images, the owner will replace them with final creatives.
   const rrbSlides = [
@@ -1372,6 +1377,19 @@ const RrbJeExamPage: React.FC = () => {
             </div>
          </div>
       </section>
+
+      {/* COURSE GRID SECTION - shared CourseGrid component, defaulted to the RRB / State AE JE category */}
+      <section id="rrb-courses" className="bg-slate-50 scroll-mt-32">
+        <CourseGrid
+          selectedExam={selectedExam}
+          setSelectedExam={setSelectedExam}
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+        />
+      </section>
+
+      {/* RRB-JE Success Stories - shared TestimonialsText component */}
+      <TestimonialsText />
 
       {/* 8. FAQs */}
       <section className="py-24 bg-slate-50 border-t border-slate-200 scroll-mt-32" id="rrb-faqs">
