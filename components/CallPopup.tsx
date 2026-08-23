@@ -34,14 +34,12 @@ export const isMobileDevice = () => {
   try {
     if (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) return true;
   } catch {
-    /* matchMedia unsupported — fall through to the checks below */
+    /* matchMedia unsupported — fall back to the UA check below */
   }
 
-  if (typeof navigator !== 'undefined' && /Mobi|Android|iPhone/i.test(navigator.userAgent)) {
-    return true;
-  }
-
-  return window.innerWidth < 768;
+  // Deliberately no viewport-width check: a desktop user with a narrow or
+  // half-screen window would be read as mobile and get a tel: that does nothing.
+  return typeof navigator !== 'undefined' && /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 };
 
 /**
