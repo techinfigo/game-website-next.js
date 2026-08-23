@@ -1494,14 +1494,16 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
             </div>
 
             <div className="mt-16 bg-slate-900 text-white p-10 rounded-[3rem] shadow-2xl relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-10">
-               <div className="absolute top-0 right-0 w-64 h-64 bg-gameTeal/20 rounded-full blur-3xl"></div>
+               {/* Decorative only: absolute positioning paints this above the static
+                   button below, so it must not swallow clicks on it. */}
+               <div className="absolute top-0 right-0 w-64 h-64 bg-gameTeal/20 rounded-full blur-3xl pointer-events-none"></div>
                <div className="flex-1">
                   <h4 className="text-2xl font-black mb-4 flex items-center gap-3"><Sparkles className="text-gameGold" /> Dynamic Learning</h4>
                   <p className="text-slate-300 font-medium text-lg leading-relaxed">
                      "GAME's SSC-JE best online coaching creates a dynamic learning environment that encourages growth and mastery of the subjects necessary for SSC-JE success."
                   </p>
                </div>
-               <Link href="/courses" className="bg-gameTeal text-white px-10 py-4 rounded-xl font-black uppercase tracking-wider hover:bg-gameTealDark transition-all shadow-xl shrink-0">
+               <Link href="/courses" className="relative z-10 bg-gameTeal text-white px-10 py-4 rounded-xl font-black uppercase tracking-wider hover:bg-gameTealDark transition-all shadow-xl shrink-0">
                   Explore Programs
                </Link>
             </div>
@@ -1563,8 +1565,10 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                viewport={{ once: true }}
                className="bg-white/10 backdrop-blur-md border border-white/20 rounded-[3.5rem] p-12 md:p-24 text-center shadow-2xl relative overflow-hidden"
             >
-               <div className="absolute -top-10 -right-10 w-40 h-40 bg-gameGold/20 rounded-full blur-3xl"></div>
-               <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-white/20 rounded-full blur-3xl"></div>
+               {/* Decorative only: these paint above the static card content below,
+                   including the app store links, so they must not swallow clicks. */}
+               <div className="absolute -top-10 -right-10 w-40 h-40 bg-gameGold/20 rounded-full blur-3xl pointer-events-none"></div>
+               <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-white/20 rounded-full blur-3xl pointer-events-none"></div>
                
                <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/20 border border-white/30 text-white text-xs font-black uppercase tracking-[0.2em] mb-10">
                   <Ticket size={14} className="text-gameGold" /> Exclusive App Offers
