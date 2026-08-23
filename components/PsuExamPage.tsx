@@ -1081,6 +1081,24 @@ const SYLLABUS_LINKS: Record<string, string> = {
   hal: "https://drive.google.com/file/d/1KKDmw6_PWj1WbLIm4JeYvPhEOzV3jDnS/view",
 };
 
+// Real org logos in public/. Slugs with no real file (mdl, hal) are left out
+// on purpose so the card falls back to its Icon.
+const LOGO_FILES: Record<string, string> = {
+  isro: "/logo-isro.png",
+  barc: "/logo-barc.png",
+  drdo: "/logo-drdo.png",
+  npcil: "/logo-npcil.png",
+  ongc: "/logo-ongc.png",
+  iocl: "/logo-iocl.png",
+  bhel: "/logo-bhel.png",
+  ntpc: "/logo-ntpc.png",
+  gail: "/logo-gail.png",
+  sail: "/logo-sail.png",
+  hpcl: "/logo-hpcl.png",
+  cil: "/logo-cil.png",
+  bel: "/logo-bel.png",
+};
+
 const DetailedOrgCard: React.FC<{
   icon: any;
   logoSlug?: string;
@@ -1094,6 +1112,7 @@ const DetailedOrgCard: React.FC<{
 }> = ({ icon: Icon, logoSlug, title, description, examSnapshot, lifeAtOrgHeader, lifeAtOrgItems, delay = 0, iconColorClass = "text-gameTeal" }) => {
   const [logoFailed, setLogoFailed] = useState(false);
   const syllabusUrl = logoSlug ? SYLLABUS_LINKS[logoSlug] : undefined;
+  const logoFile = logoSlug ? LOGO_FILES[logoSlug] : undefined;
 
   return (
     <motion.div
@@ -1107,10 +1126,10 @@ const DetailedOrgCard: React.FC<{
       {/* Header Area */}
       <div className="p-6 md:p-10 flex flex-col md:flex-row gap-6 md:gap-10 items-start md:items-center bg-white">
         <div className="w-16 h-16 flex items-center justify-center shrink-0">
-          {logoSlug && !logoFailed ? (
+          {logoFile && !logoFailed ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
-              src={`/logos/${logoSlug}.png`}
+              src={logoFile}
               alt={`${title} logo`}
               className="w-full h-full object-contain rounded-lg"
               onError={() => setLogoFailed(true)}
