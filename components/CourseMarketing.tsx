@@ -4,23 +4,22 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-
-// Placeholder banner images - replace with actual offer banners
-const banners = [
-  "/offer-1.png",
-  "/offer-2.png",
-  "/offer-3.png",
-];
+import { useCourseBanners, DEFAULT_COURSE_BANNERS } from '@/hooks/useCourseBanners';
 
 const CourseMarketing: React.FC = () => {
+  const { banners: fetchedBanners } = useCourseBanners();
+  const banners = fetchedBanners.length > 0 ? fetchedBanners : DEFAULT_COURSE_BANNERS;
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  // The banner count can change when Firestore resolves, so keep the index in range.
+  const safeIndex = currentIndex % banners.length;
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % banners.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [banners.length]);
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % banners.length);
@@ -33,11 +32,11 @@ const CourseMarketing: React.FC = () => {
   return (
     <section className="relative w-full bg-slate-900 overflow-hidden">
       <div className="relative w-full aspect-[1.8/1] md:aspect-[2.5/1] lg:aspect-[3.5/1] max-h-[460px]">
-        <AnimatePresence initial={false} custom={currentIndex}>
+        <AnimatePresence initial={false} custom={safeIndex}>
           <motion.img
-            key={currentIndex}
-            src={banners[currentIndex]}
-            alt={`Offer Banner ${currentIndex + 1}`}
+            key={safeIndex}
+            src={banners[safeIndex]}
+            alt={`Offer Banner ${safeIndex + 1}`}
             className="absolute inset-0 w-full h-full object-cover"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -73,7 +72,7 @@ const CourseMarketing: React.FC = () => {
               key={index}
               onClick={() => setCurrentIndex(index)}
               className={`h-2 rounded-full transition-all duration-300 ${
-                index === currentIndex ? 'bg-white w-8' : 'bg-white/50 w-2 hover:bg-white/80'
+                index === safeIndex ? 'bg-white w-8' : 'bg-white/50 w-2 hover:bg-white/80'
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />
