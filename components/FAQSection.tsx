@@ -4,9 +4,13 @@
 import React, { useState } from 'react';
 import { Plus, Minus, MessageCircle, Phone, ArrowRight, HelpCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useSiteSettings } from '@/hooks/useSiteSettings';
+import CallPopup from './CallPopup';
 
 const FAQSection: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [callOpen, setCallOpen] = useState(false);
+  const settings = useSiteSettings();
 
   const faqs = [
     { 
@@ -71,9 +75,13 @@ const FAQSection: React.FC = () => {
                           <a href="https://wa.me/919027615394" target="_blank" rel="noopener noreferrer" className="flex-1 bg-[#075d63] text-white py-3 rounded-xl font-bold text-sm hover:bg-[#054a4f] transition-all flex items-center justify-center gap-2 shadow-lg hover:-translate-y-1">
                              <MessageCircle size={18} /> Chat Now
                           </a>
-                          <a href="tel:+917668518602" className="flex-1 bg-slate-50 text-slate-900 border border-slate-200 py-3 rounded-xl font-bold text-sm hover:bg-slate-100 transition-all flex items-center justify-center gap-2">
+                          <button
+                             type="button"
+                             onClick={() => setCallOpen(true)}
+                             className="flex-1 bg-slate-50 text-slate-900 border border-slate-200 py-3 rounded-xl font-bold text-sm hover:bg-slate-100 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                          >
                              <Phone size={18} /> Call Us
-                          </a>
+                          </button>
                        </div>
                     </div>
                  </div>
@@ -133,6 +141,12 @@ const FAQSection: React.FC = () => {
 
         </div>
       </div>
+
+      <CallPopup
+        isOpen={callOpen}
+        onClose={() => setCallOpen(false)}
+        phone={settings.phone}
+      />
     </section>
   );
 };

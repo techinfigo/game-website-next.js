@@ -1,14 +1,29 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Phone, Smartphone, MessageCircle, Apple, Play } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useSiteSettings } from '@/hooks/useSiteSettings';
+import CallPopup from './CallPopup';
+
+interface FloatingAction {
+  id: string;
+  icon: React.ReactNode;
+  color: string;
+  glow: string;
+  label: string;
+  /** External link target. Omitted for actions that open a popup instead. */
+  href?: string;
+  /** Opens a popup rather than navigating. Mutually exclusive with href. */
+  onClick?: () => void;
+  pulse?: boolean;
+}
 
 const FloatingActions: React.FC = () => {
   const settings = useSiteSettings();
+  const [callOpen, setCallOpen] = useState(false);
 
-  const actions = [
+  const actions: FloatingAction[] = [
     {
       id: 'whatsapp',
       icon: (
@@ -28,7 +43,7 @@ const FloatingActions: React.FC = () => {
       color: 'bg-gameTeal',
       glow: 'shadow-gameTeal/40',
       label: 'Call Us',
-      href: `tel:${settings.phone}`,
+      onClick: () => setCallOpen(true),
     },
     {
       id: 'android',
@@ -57,45 +72,79 @@ const FloatingActions: React.FC = () => {
   ];
 
   return (
-    <div className="fixed bottom-6 right-6 z-[100] flex flex-col gap-2.5 items-end">
-      {actions.map((action, index) => (
-        <motion.a
-          key={action.id}
-          href={action.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          initial={{ x: 20, opacity: 0, scale: 0.6 }}
-          animate={{ x: 0, opacity: 1, scale: 0.8 }}
-          transition={{ delay: index * 0.1, type: "spring", stiffness: 260, damping: 20 }}
-          whileHover={{ 
-            scale: 1.1, 
-            opacity: 1,
-            transition: { duration: 0.2 }
-          }}
-          className={`
-            ${action.color} text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center 
+    <>
+      <div className="fixed bottom-6 right-6 z-[100] flex flex-col gap-2.5 items-end">
+        {actions.map((action, index) => {
+          const sharedProps = {
+            initial: { x: 20, opacity: 0, scale: 0.6 },
+            animate: { x: 0, opacity: 1, scale: 0.8 },
+            transition: { delay: index * 0.1, type: "spring" as const, stiffness: 260, damping: 20 },
+            whileHover: {
+              scale: 1.1,
+              opacity: 1,
+              transition: { duration: 0.2 }
+            },
+            className: `
+            ${action.color} text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center
             group relative transition-all duration-300 border border-white/20 backdrop-blur-sm
             hover:${action.glow} hover:shadow-2xl
-          `}
-          title={action.label}
-        >
-          {/* Pulse Effect for WhatsApp */}
-          {action.pulse && (
-            <span className="absolute inset-0 rounded-full bg-inherit animate-ping opacity-20 group-hover:opacity-40"></span>
-          )}
-          
-          <div className="relative z-10">
-            {action.icon}
-          </div>
-          
-          {/* Label on hover */}
-          <span className="absolute right-full mr-4 px-3 py-1.5 bg-slate-900/90 backdrop-blur-md text-white text-[11px] font-bold rounded-lg shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap transition-all duration-300 translate-x-4 group-hover:translate-x-0 border border-white/10">
-            {action.label}
-            <div className="absolute top-1/2 -right-1 -translate-y-1/2 w-2 h-2 bg-slate-900/90 rotate-45"></div>
-          </span>
-        </motion.a>
-      ))}
-    </div>
+          `,
+            title: action.label,
+          };
+
+          const content = (
+            <>
+              {/* Pulse Effect for WhatsApp */}
+              {action.pulse && (
+                <span className="absolute inset-0 rounded-full bg-inherit animate-ping opacity-20 group-hover:opacity-40"></span>
+              )}
+
+              <div className="relative z-10">
+                {action.icon}
+              </div>
+
+              {/* Label on hover */}
+              <span className="absolute right-full mr-4 px-3 py-1.5 bg-slate-900/90 backdrop-blur-md text-white text-[11px] font-bold rounded-lg shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap transition-all duration-300 translate-x-4 group-hover:translate-x-0 border border-white/10">
+                {action.label}
+                <div className="absolute top-1/2 -right-1 -translate-y-1/2 w-2 h-2 bg-slate-900/90 rotate-45"></div>
+              </span>
+            </>
+          );
+
+          // Actions that open a popup render as a button; the rest stay links.
+          return action.onClick ? (
+            <motion.button
+              key={action.id}
+              type="button"
+              onClick={action.onClick}
+              aria-label={action.label}
+              {...sharedProps}
+              // Buttons default to cursor:default under Tailwind preflight;
+              // restore the pointer so it feels identical to the link actions.
+              className={`${sharedProps.className} cursor-pointer`}
+            >
+              {content}
+            </motion.button>
+          ) : (
+            <motion.a
+              key={action.id}
+              href={action.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              {...sharedProps}
+            >
+              {content}
+            </motion.a>
+          );
+        })}
+      </div>
+
+      <CallPopup
+        isOpen={callOpen}
+        onClose={() => setCallOpen(false)}
+        phone={settings.phone}
+      />
+    </>
   );
 };
 
