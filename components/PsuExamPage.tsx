@@ -1081,8 +1081,8 @@ const SYLLABUS_LINKS: Record<string, string> = {
   hal: "https://drive.google.com/file/d/1KKDmw6_PWj1WbLIm4JeYvPhEOzV3jDnS/view",
 };
 
-// Real org logos in public/. Slugs with no real file (mdl, hal) are left out
-// on purpose so the card falls back to its Icon.
+// Real org logos in public/, keyed by logoSlug. A slug missing from this map
+// falls back to the card's Icon.
 const LOGO_FILES: Record<string, string> = {
   isro: "/logo-isro.png",
   barc: "/logo-barc.png",
@@ -1097,6 +1097,8 @@ const LOGO_FILES: Record<string, string> = {
   hpcl: "/logo-hpcl.png",
   cil: "/logo-cil.png",
   bel: "/logo-bel.png",
+  mdl: "/logo-mdl.png",
+  hal: "/logo-hal.png",
 };
 
 const DetailedOrgCard: React.FC<{
