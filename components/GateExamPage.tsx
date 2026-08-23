@@ -189,6 +189,7 @@ const GateExamPage: React.FC = () => {
     }
   ];
 
+  // TODO: client to upload opportunity images
   const gateAdvantages = [
     {
       title: "Higher Education Opportunities",
@@ -197,6 +198,7 @@ const GateExamPage: React.FC = () => {
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
       image: "/advantage-1.png",
+      bgImage: "/gate/opportunity-1.jpg",
     },
     {
       title: "PSU Recruitment",
@@ -205,6 +207,7 @@ const GateExamPage: React.FC = () => {
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
       image: "/advantage-2.png",
+      bgImage: "/gate/opportunity-2.jpg",
     },
     {
       title: "Opportunities Abroad",
@@ -213,6 +216,7 @@ const GateExamPage: React.FC = () => {
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
       image: "/advantage-3.png",
+      bgImage: "/gate/opportunity-3.jpg",
     },
     {
       title: "Research Opportunities",
@@ -221,6 +225,7 @@ const GateExamPage: React.FC = () => {
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
       image: "/advantage-4.png",
+      bgImage: "/gate/opportunity-4.jpg",
     },
     {
       title: "Scholarships and Fellowships",
@@ -229,6 +234,7 @@ const GateExamPage: React.FC = () => {
       color: "text-gameGold",
       bg: "bg-gameGold/10",
       image: "/advantage-5.png",
+      bgImage: "/gate/opportunity-5.jpg",
     },
     {
       title: "Teaching Careers",
@@ -237,6 +243,7 @@ const GateExamPage: React.FC = () => {
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
       image: "/advantage-6.png",
+      bgImage: "/gate/opportunity-6.jpg",
     },
     {
       title: "Career Growth in Industry",
@@ -245,6 +252,7 @@ const GateExamPage: React.FC = () => {
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
       image: "/advantage-7.png",
+      bgImage: "/gate/opportunity-7.jpg",
     },
     {
       title: "Flexibility in Career",
@@ -253,6 +261,7 @@ const GateExamPage: React.FC = () => {
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
       image: "/advantage-8.png",
+      bgImage: "/gate/opportunity-8.jpg",
     },
     {
       title: "Prestige and Recognition",
@@ -261,6 +270,7 @@ const GateExamPage: React.FC = () => {
       color: "text-gameGold",
       bg: "bg-gameGold/10",
       image: "/advantage-9.png",
+      bgImage: "/gate/opportunity-9.jpg",
     }
   ];
 
@@ -1433,16 +1443,25 @@ const GateExamPage: React.FC = () => {
                                        {i + 1 < 10 ? `0${i + 1}` : i + 1}
                                     </div>
                                     
-                                    <div className="bg-white p-8 md:p-10 rounded-[3rem] shadow-2xl shadow-slate-200/50 border border-slate-100 hover:border-gameTeal/20 transition-all duration-500 hover:shadow-gameTeal/10 group">
-                                       <h3 className="text-3xl font-black text-slate-900 mb-6 tracking-tight leading-none group-hover:text-gameTeal transition-colors">
-                                          {item.title}
-                                       </h3>
-                                       <p className="text-slate-500 text-base md:text-lg font-bold leading-relaxed mb-8">
-                                          {item.desc}
-                                       </p>
-                                       
-                                       <div className={`flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-gameTeal ${isEven ? 'lg:justify-end' : ''}`}>
-                                          Unlock Path <ArrowRight size={16} />
+                                    <div
+                                       className="relative overflow-hidden bg-cover bg-center p-8 md:p-10 rounded-[3rem] shadow-2xl shadow-slate-200/50 border border-slate-100 hover:border-gameTeal/20 transition-all duration-500 hover:shadow-gameTeal/10 group"
+                                       style={{ backgroundColor: 'var(--color-gameTealDark)', backgroundImage: `url(${item.bgImage})` }}
+                                    >
+                                       {/* Solid dark-teal base sits behind the photo, so the card still reads as
+                                           intentional if the background image is missing or fails to load. */}
+                                       {/* Dark overlay keeps text readable over the background photo */}
+                                       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/70 to-black/40 group-hover:from-black/90 group-hover:via-black/75 transition-colors duration-300"></div>
+                                       <div className="relative z-10">
+                                          <h3 className="text-3xl font-black text-white mb-6 tracking-tight leading-none group-hover:text-[#f2c537] transition-colors">
+                                             {item.title}
+                                          </h3>
+                                          <p className="text-slate-200 text-base md:text-lg font-bold leading-relaxed mb-8">
+                                             {item.desc}
+                                          </p>
+
+                                          <div className={`flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-[#f2c537] ${isEven ? 'lg:justify-end' : ''}`}>
+                                             Unlock Path <ArrowRight size={16} />
+                                          </div>
                                        </div>
                                     </div>
                                  </div>
@@ -2398,8 +2417,19 @@ const GateExamPage: React.FC = () => {
       {/* FAQs */}
       <section className="py-12 bg-white border-t border-slate-100" id="gate-faqs">
          <div className="max-w-[1000px] mx-auto px-8 md:px-10 lg:px-12">
-            <div className="text-center mb-8">
-               <h2 className="text-3xl font-extrabold text-slate-900">Frequently Asked Questions</h2>
+            <div className="mb-8 flex flex-col md:flex-row items-center justify-center gap-5 text-center md:text-left">
+               <div className="relative shrink-0">
+                  <div className="absolute inset-0 rounded-full bg-gameTeal/10 blur-xl"></div>
+                  <img
+                     src="/gaurav-sir.png"
+                     alt="Gaurav Babu Sir"
+                     className="relative w-20 h-20 md:w-24 md:h-24 rounded-full object-cover object-top border-4 border-white shadow-xl ring-1 ring-gameTeal/20"
+                  />
+               </div>
+               <div>
+                  <h2 className="text-3xl font-extrabold text-slate-900">Frequently Asked Questions</h2>
+                  <p className="text-slate-500 text-sm font-bold mt-1">Answered by Gaurav Babu Sir</p>
+               </div>
             </div>
             <div className="space-y-4">
                {faqs.map((faq, i) => (
