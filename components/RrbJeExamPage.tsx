@@ -11,6 +11,7 @@ import {
   Monitor, ClipboardCheck, Info, Percent, AlertCircle, Clock, Target, FileSearch, UserPlus, Heart, Calculator, Users, Eye, Stethoscope, FileText,
   X, HelpCircle
 } from 'lucide-react';
+import AchieversSection from './AchieversSection';
 import CourseGrid from './CourseGrid';
 import TestimonialsText from './TestimonialsText';
 
@@ -1377,6 +1378,9 @@ const RrbJeExamPage: React.FC = () => {
             </div>
          </div>
       </section>
+
+      {/* Video testimonials ("Spotlight on our Results") - shared AchieversSection component */}
+      <AchieversSection />
 
       {/* COURSE GRID SECTION - shared CourseGrid component, defaulted to the RRB / State AE JE category */}
       <section id="rrb-courses" className="bg-slate-50 scroll-mt-32">
