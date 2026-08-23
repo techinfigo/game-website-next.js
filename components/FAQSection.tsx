@@ -68,12 +68,12 @@ const FAQSection: React.FC = () => {
                        <p className="text-slate-500 text-sm mb-6">Chat with our academic counselors for personalized guidance.</p>
                        
                        <div className="flex gap-3">
-                          <button className="flex-1 bg-[#075d63] text-white py-3 rounded-xl font-bold text-sm hover:bg-[#054a4f] transition-all flex items-center justify-center gap-2 shadow-lg hover:-translate-y-1">
+                          <a href="https://wa.me/919027615394" target="_blank" rel="noopener noreferrer" className="flex-1 bg-[#075d63] text-white py-3 rounded-xl font-bold text-sm hover:bg-[#054a4f] transition-all flex items-center justify-center gap-2 shadow-lg hover:-translate-y-1">
                              <MessageCircle size={18} /> Chat Now
-                          </button>
-                          <button className="flex-1 bg-slate-50 text-slate-900 border border-slate-200 py-3 rounded-xl font-bold text-sm hover:bg-slate-100 transition-all flex items-center justify-center gap-2">
+                          </a>
+                          <a href="tel:+917668518602" className="flex-1 bg-slate-50 text-slate-900 border border-slate-200 py-3 rounded-xl font-bold text-sm hover:bg-slate-100 transition-all flex items-center justify-center gap-2">
                              <Phone size={18} /> Call Us
-                          </button>
+                          </a>
                        </div>
                     </div>
                  </div>
