@@ -19,7 +19,7 @@ const FloatingActions: React.FC = () => {
       color: 'bg-[#25D366]',
       glow: 'shadow-[#25D366]/40',
       label: 'WhatsApp',
-      href: settings.whatsappChannel,
+      href: 'https://wa.me/919027615394',
       pulse: true
     },
     {
