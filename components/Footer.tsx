@@ -48,7 +48,7 @@ const Footer: React.FC = () => {
               {[
                 { Icon: Youtube, url: settings.youtube },
                 { Icon: Send, url: settings.telegram },
-                { Icon: MessageCircle, url: settings.whatsappChannel },
+                { Icon: MessageCircle, url: "https://wa.me/919027615394" },
                 { Icon: Linkedin, url: settings.linkedin },
                 { Icon: Facebook, url: settings.facebook },
               ].map((social, i) => (
