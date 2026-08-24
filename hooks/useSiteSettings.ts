@@ -17,6 +17,8 @@ export interface SiteSettings {
   androidAppLink: string;
   iosAppLink: string;
   address: string;
+  faviconUrl: string;
+  logoUrl: string;
 }
 
 const DEFAULT_SITE_SETTINGS: SiteSettings = {
@@ -32,6 +34,8 @@ const DEFAULT_SITE_SETTINGS: SiteSettings = {
   androidAppLink: "https://clppenny.page.link/cTBm",
   iosAppLink: "https://apps.apple.com/in/app/myinstitute/id1472483563",
   address: "131, 2, Jawahar Puram Phase -1, Shahganj, Agra, Uttar Pradesh 282010",
+  faviconUrl: "",
+  logoUrl: "",
 };
 
 export function useSiteSettings(): SiteSettings {
