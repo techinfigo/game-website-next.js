@@ -11,15 +11,29 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { EXAM_PAGES_DISABLED, DISABLED_EXAMPAGES_IDS } from './examconfig';
+import type { StudentProfile } from '@/providers/AuthProvider';
+
+// Student portal lives on its own deployment, so "My Dashboard" leaves the site.
+const STUDENT_PORTAL_URL = 'https://game-student-portal.vercel.app';
+
+const getInitials = (name: string): string =>
+  name
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0].toUpperCase())
+    .join('');
 
 // Added isLoggedIn and onLogout to the NavbarProps interface
 interface NavbarProps {
   openLogin: () => void;
   isLoggedIn: boolean;
   onLogout: () => void;
+  profile?: StudentProfile;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout }) => {
+const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout, profile }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -32,6 +46,12 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout }) => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const studentName = profile?.name?.trim() || '';
+  const studentPhone = profile?.phone?.trim() || '';
+  const studentPhoto = profile?.photoURL?.trim() || '';
+  const displayName = studentName || (studentPhone ? studentPhone : 'Student');
+  const initials = getInitials(studentName) || 'S';
 
   const handleLinkClick = () => {
     setIsOpen(false);
@@ -244,24 +264,39 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout }) => {
             {isLoggedIn ? (
               <div className="relative group/user">
                 <button 
-                  className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 hover:bg-slate-200 transition-all border border-slate-200"
+                  aria-label={`Logged in as ${displayName}`}
+                  className="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center transition-all border border-slate-200 bg-gameTeal text-white hover:opacity-90"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  {studentPhoto ? (
+                    <img
+                      src={studentPhoto}
+                      alt={displayName}
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  ) : (
+                    <span className="text-sm font-bold tracking-wide">{initials}</span>
+                  )}
                 </button>
                 
                 {/* User Dropdown */}
                 <div className="absolute top-full right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-slate-100 py-2 opacity-0 invisible group-hover/user:opacity-100 group-hover/user:visible transition-all translate-y-2 group-hover/user:translate-y-0 z-50">
                   <div className="px-4 py-2 border-b border-slate-50 mb-1">
                     <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Student Account</p>
+                    <p className="text-sm font-bold text-slate-800 truncate mt-0.5">{displayName}</p>
+                    {studentPhone && studentName && (
+                      <p className="text-xs text-slate-500 truncate">{studentPhone}</p>
+                    )}
                   </div>
-                  <Link 
-                    href="/dashboard"
-                    prefetch={false}
+                  <a 
+                    href={STUDENT_PORTAL_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={handleLinkClick}
                     className="w-full text-left px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-gameTeal transition-colors flex items-center gap-2"
                   >
                     <MonitorPlay size={16} /> My Dashboard
-                  </Link>
+                  </a>
                   <button 
                     onClick={onLogout}
                     className="w-full text-left px-4 py-2 text-sm font-medium text-red-600 hover:bg-red-50 transition-colors flex items-center gap-2"
@@ -397,14 +432,35 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout }) => {
 
                 {isLoggedIn ? (
                   <div className="space-y-2">
-                    <Link 
-                        href="/dashboard"
-                        prefetch={false}
+                    <div className="flex items-center gap-3 px-1 py-2">
+                      <span className="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center bg-gameTeal text-white border border-slate-200 shrink-0">
+                        {studentPhoto ? (
+                          <img
+                            src={studentPhoto}
+                            alt={displayName}
+                            className="w-full h-full object-cover"
+                            referrerPolicy="no-referrer"
+                          />
+                        ) : (
+                          <span className="text-sm font-bold tracking-wide">{initials}</span>
+                        )}
+                      </span>
+                      <span className="min-w-0">
+                        <span className="block text-sm font-bold text-slate-800 truncate">{displayName}</span>
+                        {studentPhone && studentName && (
+                          <span className="block text-xs text-slate-500 truncate">{studentPhone}</span>
+                        )}
+                      </span>
+                    </div>
+                    <a 
+                        href={STUDENT_PORTAL_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         onClick={handleLinkClick}
                         className="w-full bg-slate-50 text-slate-700 py-3.5 rounded-xl font-bold shadow-sm flex items-center justify-center gap-2 border border-slate-100"
                     >
                         <MonitorPlay size={18} /> My Dashboard
-                    </Link>
+                    </a>
                     <button 
                         onClick={() => {
                           onLogout();

@@ -4,9 +4,16 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { auth } from '@/firebase';
 
+export interface StudentProfile {
+  name: string;
+  phone: string;
+  photoURL: string;
+}
+
 interface AuthContextType {
   isLoggedIn: boolean;
   user: User | null;
+  profile: StudentProfile;
   isLoginOpen: boolean;
   setIsLoginOpen: (open: boolean) => void;
   openLogin: (view?: 'login' | 'register') => void;
@@ -25,8 +32,30 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return false;
   });
   const [user, setUser] = useState<User | null>(null);
+  const [storedProfile, setStoredProfile] = useState<Partial<StudentProfile>>({});
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [initialView, setInitialView] = useState<'login' | 'register'>('login');
+
+  // The cached profile ({ uid, phone, name }) written by LoginModal is the only
+  // identity available until onAuthStateChanged resolves, so keep it in state.
+  const readStoredProfile = (): Partial<StudentProfile> => {
+    try {
+      const raw = localStorage.getItem('auth_user');
+      if (!raw) return {};
+      const parsed = JSON.parse(raw);
+      return {
+        name: parsed?.name || '',
+        phone: parsed?.phone || '',
+        photoURL: parsed?.photoURL || '',
+      };
+    } catch (_) {
+      return {};
+    }
+  };
+
+  useEffect(() => {
+    setStoredProfile(readStoredProfile());
+  }, []);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
@@ -34,6 +63,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setIsLoggedIn(!!firebaseUser);
       if (!firebaseUser) {
         try { localStorage.removeItem('auth_user'); } catch (_) {}
+        setStoredProfile({});
       }
     });
     return () => unsubscribe();
@@ -45,6 +75,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const handler = () => {
       try {
         if (localStorage.getItem('auth_user')) setIsLoggedIn(true);
+        setStoredProfile(readStoredProfile());
       } catch (_) {}
     };
     window.addEventListener('auth_user_set', handler);
@@ -66,16 +97,24 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       await auth.signOut();
       setIsLoggedIn(false);
       setUser(null);
+      setStoredProfile({});
       try { localStorage.removeItem('auth_user'); } catch (_) {}
     } catch (error) {
       console.error('Logout Error:', error);
     }
   };
 
+  const profile: StudentProfile = {
+    name: user?.displayName || storedProfile.name || '',
+    phone: user?.phoneNumber || storedProfile.phone || '',
+    photoURL: user?.photoURL || storedProfile.photoURL || '',
+  };
+
   return (
     <AuthContext.Provider value={{ 
       isLoggedIn, 
       user, 
+      profile, 
       isLoginOpen, 
       setIsLoginOpen, 
       openLogin, 
