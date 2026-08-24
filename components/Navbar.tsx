@@ -12,6 +12,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { EXAM_PAGES_DISABLED, DISABLED_EXAMPAGES_IDS } from './examconfig';
 import type { StudentProfile } from '@/providers/AuthProvider';
+import { auth } from '@/firebase';
 
 // Student portal lives on its own deployment, so "My Dashboard" leaves the site.
 const STUDENT_PORTAL_URL = 'https://game-student-portal.vercel.app';
@@ -56,6 +57,35 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout, profil
   const handleLinkClick = () => {
     setIsOpen(false);
     setMobileExpanded(null);
+  };
+
+  // "My Dashboard" hands the student's session to the portal instead of making
+  // them log in again: swap the website ID token for a custom token, then pass
+  // it to the portal as ?sso=. Any failure opens the portal plainly so they can
+  // still log in by hand.
+  const goToDashboard = async (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    handleLinkClick();
+
+    try {
+      const currentUser = auth.currentUser;
+      if (!currentUser) throw new Error('No signed-in user');
+
+      const idToken = await currentUser.getIdToken();
+      const res = await fetch('/api/auth/handoff', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ idToken }),
+      });
+      if (!res.ok) throw new Error('Handoff rejected');
+
+      const { token } = await res.json();
+      if (!token) throw new Error('Handoff returned no token');
+
+      window.location.href = `${STUDENT_PORTAL_URL}/?sso=${encodeURIComponent(token)}`;
+    } catch (_) {
+      window.location.href = STUDENT_PORTAL_URL;
+    }
   };
 
   const navItems = [
@@ -290,9 +320,7 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout, profil
                   </div>
                   <a 
                     href={STUDENT_PORTAL_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={handleLinkClick}
+                    onClick={goToDashboard}
                     className="w-full text-left px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-gameTeal transition-colors flex items-center gap-2"
                   >
                     <MonitorPlay size={16} /> My Dashboard
@@ -454,9 +482,7 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout, profil
                     </div>
                     <a 
                         href={STUDENT_PORTAL_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={handleLinkClick}
+                        onClick={goToDashboard}
                         className="w-full bg-slate-50 text-slate-700 py-3.5 rounded-xl font-bold shadow-sm flex items-center justify-center gap-2 border border-slate-100"
                     >
                         <MonitorPlay size={18} /> My Dashboard
