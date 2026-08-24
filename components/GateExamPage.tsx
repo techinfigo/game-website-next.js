@@ -1513,7 +1513,7 @@ const GateExamPage: React.FC = () => {
                      <p className="text-teal-50/70 font-bold text-lg">Initialize your preparation with India&apos;s most structured roadmap.</p>
                   </div>
                   <Link 
-                     href="/resources"
+                     href="/courses"
                      className="relative z-10 bg-[#f2c537] text-black px-12 py-5 rounded-[2rem] font-black uppercase tracking-widest text-sm shadow-2xl hover:bg-white hover:-translate-y-1 transition-all shrink-0 flex items-center justify-center"
                   >
                      Initialize Pre Phase
