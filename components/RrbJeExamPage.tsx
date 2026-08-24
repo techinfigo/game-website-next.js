@@ -539,12 +539,12 @@ const RrbJeExamPage: React.FC = () => {
       </section>
 
       {/* FULL WIDTH STICKY SUB-NAVIGATION - matches GateExamPage's premium scroller style */}
-      <div className="sticky top-20 z-40 w-full bg-[#001D1F]/95 backdrop-blur-md shadow-lg border-b border-white/5">
+      <div className="sticky top-[72px] md:top-[80px] z-40 w-full bg-[#001D1F]/95 backdrop-blur-md shadow-lg border-b border-white/5">
          <div className="max-w-[1400px] mx-auto px-4 md:px-8">
-            <div className="flex items-center justify-between h-14">
+            <div className="flex items-center justify-between h-16">
                {/* Links Scroller */}
                <div
-                  className="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 pt-1.5 scroll-smooth teal-scrollbar"
+                  className="flex items-center gap-3 overflow-x-auto w-full md:w-auto py-3 scroll-smooth custom-scrollbar px-2"
                   style={{ WebkitOverflowScrolling: 'touch' }}
                >
                   {rrbNavTabs.map((item) => {
@@ -554,14 +554,14 @@ const RrbJeExamPage: React.FC = () => {
                         <button
                            key={item.id}
                            onClick={() => scrollToSection(item.id)}
-                           className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all duration-300 active:scale-95 border ${
+                           className={`flex items-center gap-2 px-5 py-2 rounded-xl text-[11px] font-bold whitespace-nowrap transition-all duration-300 active:scale-95 border relative group ${
                               isActive
-                                 ? 'bg-gameTeal text-white shadow-lg shadow-gameTeal/30 border-white/10'
-                                 : 'text-slate-300 hover:text-white hover:bg-white/5 border-transparent'
+                                 ? 'bg-gameTeal text-white shadow-md shadow-gameTeal/20 border-white/10'
+                                 : 'text-slate-400 hover:text-white hover:bg-white/5 border-transparent'
                            }`}
                         >
-                           <Icon size={14} className={isActive ? 'text-gameGold font-black' : 'text-slate-400'} />
-                           <span>{item.label}</span>
+                           <Icon size={14} className={`transition-colors duration-300 ${isActive ? 'text-gameGold' : 'text-slate-500 group-hover:text-gameTeal'}`} />
+                           <span className="tracking-wide">{item.label}</span>
                         </button>
                      );
                   })}
