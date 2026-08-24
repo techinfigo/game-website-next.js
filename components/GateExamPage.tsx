@@ -1439,7 +1439,7 @@ const GateExamPage: React.FC = () => {
                               >
                                  <div className={`relative group ${isEven ? 'text-left lg:text-right' : 'text-left'}`}>
                                     {/* Numbering */}
-                                    <div className={`absolute -top-10 ${isEven ? 'left-0 lg:left-auto lg:-right-4' : 'left-0 lg:-left-4'} text-8xl font-black text-gameTeal/5 pointer-events-none -z-10`}>
+                                    <div className={`absolute -top-10 ${isEven ? 'left-0 lg:left-auto lg:-right-4' : 'left-0 lg:-left-4'} text-8xl font-black text-gameTeal/20 pointer-events-none -z-10`}>
                                        {i + 1 < 10 ? `0${i + 1}` : i + 1}
                                     </div>
                                     
@@ -1458,10 +1458,6 @@ const GateExamPage: React.FC = () => {
                                           <p className="text-slate-200 text-base md:text-lg font-bold leading-relaxed mb-8">
                                              {item.desc}
                                           </p>
-
-                                          <div className={`flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-[#f2c537] ${isEven ? 'lg:justify-end' : ''}`}>
-                                             Unlock Path <ArrowRight size={16} />
-                                          </div>
                                        </div>
                                     </div>
                                  </div>
