@@ -1439,7 +1439,7 @@ const GateExamPage: React.FC = () => {
                               >
                                  <div className={`relative group ${isEven ? 'text-left lg:text-right' : 'text-left'}`}>
                                     {/* Numbering */}
-                                    <div className={`absolute -top-10 ${isEven ? 'left-0 lg:left-auto lg:-right-4' : 'left-0 lg:-left-4'} text-8xl font-black text-gameTeal/20 pointer-events-none -z-10`}>
+                                    <div className={`absolute -top-20 ${isEven ? 'left-0 lg:left-auto lg:-right-4' : 'left-0 lg:-left-4'} text-7xl font-black text-gameTeal/70 pointer-events-none z-10`}>
                                        {i + 1 < 10 ? `0${i + 1}` : i + 1}
                                     </div>
                                     
