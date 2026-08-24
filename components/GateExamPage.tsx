@@ -1139,7 +1139,7 @@ const GateExamPage: React.FC = () => {
             <div className="flex items-center justify-between h-16">
                {/* Links Scroller */}
                <div 
-                  className="flex items-center gap-3 overflow-x-auto w-full md:w-auto py-3 scroll-smooth custom-scrollbar px-2"
+                  className="flex items-center gap-3 overflow-x-auto w-full md:w-auto py-3 scroll-smooth no-scrollbar px-2"
                   style={{ 
                     WebkitOverflowScrolling: 'touch'
                   }}
