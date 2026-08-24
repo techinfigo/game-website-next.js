@@ -14,8 +14,11 @@ import { EXAM_PAGES_DISABLED, DISABLED_EXAMPAGES_IDS } from './examconfig';
 import type { StudentProfile } from '@/providers/AuthProvider';
 import { auth } from '@/firebase';
 
-// Student portal lives on its own deployment, so "My Dashboard" leaves the site.
-const STUDENT_PORTAL_URL = 'https://game-student-portal.vercel.app';
+// Student portal is a separate deployment on its own subdomain, so "My Dashboard"
+// leaves the site. Env-overridable so local and preview builds can point elsewhere
+// without a code change; PORTAL_ORIGIN on the server must match this origin.
+const STUDENT_PORTAL_URL =
+  process.env.NEXT_PUBLIC_STUDENT_PORTAL_URL || 'https://students.gameacademy.in';
 
 const getInitials = (name: string): string =>
   name
