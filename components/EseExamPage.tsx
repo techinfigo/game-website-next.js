@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import CourseGrid from './CourseGrid';
 import TestimonialsText from './TestimonialsText';
@@ -10,6 +11,7 @@ import CourseHelpSection from './CourseHelpSection';
 import GBVideos from './GBVideos';
 import WinnerChoiceSection from './WinnerChoiceSection';
 import AchieversSection from './AchieversSection';
+import { useSiteSettings } from '@/hooks/useSiteSettings';
 import { 
   Trophy, Shield, Star, Briefcase, TrendingUp, 
   CheckCircle2, ArrowRight, Sparkles,
@@ -24,6 +26,7 @@ import {
 } from 'lucide-react';
 
 const EseExamPage: React.FC = () => {
+  const settings = useSiteSettings();
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [selectedExam, setSelectedExam] = useState('GATE / ESE');
   const [searchTerm, setSearchTerm] = useState('');
@@ -1712,8 +1715,13 @@ const EseExamPage: React.FC = () => {
                Join thousands of students who have secured their dreams with Gaurav Babu Sir&apos;s mentorship. Enroll in our specialized ESE course today.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-               <button className="bg-gameGold text-black px-12 py-5 rounded-2xl font-black uppercase tracking-widest hover:bg-white transition-all shadow-2xl hover:-translate-y-1">Enroll in Excellence Course</button>
-               <button className="bg-transparent border-2 border-white/20 text-white px-12 py-5 rounded-2xl font-black uppercase tracking-widest hover:bg-white/10 transition-all">Watch Free Demo</button>
+               <Link href="/courses" className="bg-gameGold text-black px-12 py-5 rounded-2xl font-black uppercase tracking-widest hover:bg-white transition-all shadow-2xl hover:-translate-y-1">Enroll in Excellence Course</Link>
+               <a
+                  href={settings.youtube || 'https://www.youtube.com/@gblions'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-transparent border-2 border-white/20 text-white px-12 py-5 rounded-2xl font-black uppercase tracking-widest hover:bg-white/10 transition-all"
+               >Watch Free Demo</a>
             </div>
          </div>
       </section>
