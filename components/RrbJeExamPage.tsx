@@ -1401,6 +1401,25 @@ const RrbJeExamPage: React.FC = () => {
             <div className="text-center mb-12">
                <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900">Frequently Asked Questions</h2>
             </div>
+            <div className="flex flex-col lg:flex-row gap-10 lg:gap-12 lg:items-start">
+               {/* LEFT: Gaurav Babu Sir - author of the answers */}
+               <div className="w-full lg:w-1/3 shrink-0 lg:sticky lg:top-28">
+                  <div className="flex flex-col items-center text-center">
+                     <div className="relative">
+                        <div className="absolute inset-0 rounded-2xl bg-gameTeal/10 blur-xl"></div>
+                        <img
+                           src="/gaurav-sir.png"
+                           alt="Gaurav Babu Sir"
+                           className="relative w-44 sm:w-52 lg:w-full lg:max-w-[280px] rounded-2xl object-cover object-top border-4 border-white shadow-xl ring-1 ring-gameTeal/20"
+                        />
+                     </div>
+                     <p className="mt-4 text-sm font-bold text-slate-500">
+                        Answered by <span className="text-gameTeal">Gaurav Babu Sir</span>
+                     </p>
+                  </div>
+               </div>
+               {/* RIGHT: existing FAQ accordion - unchanged */}
+               <div className="w-full lg:flex-1 min-w-0">
             <div className="space-y-4">
                {faqs.map((faq, i) => (
                   <div key={i} className={`bg-white border rounded-2xl overflow-hidden transition-all duration-300 ${openFaqIndex === i ? 'border-gameTeal shadow-md' : 'border-slate-200 shadow-sm hover:border-gameTeal/30'}`}>
@@ -1421,6 +1440,8 @@ const RrbJeExamPage: React.FC = () => {
                      </AnimatePresence>
                   </div>
                ))}
+            </div>
+               </div>
             </div>
          </div>
       </section>
