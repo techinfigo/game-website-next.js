@@ -18,7 +18,7 @@ import { auth } from '@/firebase';
 // leaves the site. Env-overridable so local and preview builds can point elsewhere
 // without a code change; PORTAL_ORIGIN on the server must match this origin.
 const STUDENT_PORTAL_URL =
-  process.env.NEXT_PUBLIC_STUDENT_PORTAL_URL || 'https://students.gameacademy.in';
+  process.env.NEXT_PUBLIC_STUDENT_PORTAL_URL || 'https://student.gameacademy.in';
 
 const getInitials = (name: string): string =>
   name
