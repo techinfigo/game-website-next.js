@@ -965,7 +965,7 @@ const GateExamPage: React.FC = () => {
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-gameTeal selection:text-white -mt-20">
       
       {/* 1. Hero Section - Design Match to PsuExamPage */}
-      <section className="relative pt-28 md:pt-32 pb-12 overflow-hidden bg-[#001517] text-white">
+      <section className="relative pt-44 md:pt-48 pb-12 overflow-hidden bg-[#001517] text-white">
          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gameTeal/10 rounded-full blur-[120px] pointer-events-none"></div>
          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gameGold/5 rounded-full blur-[120px] pointer-events-none"></div>
          
