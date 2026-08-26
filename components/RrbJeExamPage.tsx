@@ -471,16 +471,6 @@ const RrbJeExamPage: React.FC = () => {
                            />
                            <div className="absolute inset-0 bg-gradient-to-t from-[#001c1e] via-transparent to-[#001c1e]/60"></div>
 
-                           {/* Small badge top left */}
-                           <div className="relative z-10 bg-gameGold text-gameBlack px-2 py-0.5 rounded text-[8px] font-black uppercase self-start mb-auto">
-                              {rrbSlides[activeSlide].badge}
-                           </div>
-
-                           {/* Slide Title */}
-                           <div className="relative z-10 text-white font-black text-xl md:text-2xl tracking-tight max-w-sm mb-4 leading-tight text-left">
-                              {rrbSlides[activeSlide].title}
-                           </div>
-
                            {/* Button bottom right corner */}
                            <div className="relative z-10 mt-auto self-end">
                               <button className="group flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white font-black text-xs uppercase tracking-widest hover:bg-gameGold hover:text-gameBlack transition-all">
@@ -526,9 +516,6 @@ const RrbJeExamPage: React.FC = () => {
                               referrerPolicy="no-referrer"
                            />
                            <div className="absolute inset-0 bg-black/40"></div>
-                           <div className="absolute inset-0 flex flex-col items-center justify-center p-2">
-                              <div className="text-[5px] font-black text-white mb-1 leading-none drop-shadow-md text-center">{slide.badge}</div>
-                           </div>
                         </button>
                      ))}
                   </div>
