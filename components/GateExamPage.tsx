@@ -965,12 +965,12 @@ const GateExamPage: React.FC = () => {
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-gameTeal selection:text-white -mt-20">
       
       {/* 1. Hero Section - Design Match to PsuExamPage */}
-      <section className="relative pt-44 md:pt-48 pb-16 overflow-hidden bg-[#001517] text-white">
+      <section className="relative pt-28 md:pt-32 pb-12 overflow-hidden bg-[#001517] text-white">
          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gameTeal/10 rounded-full blur-[120px] pointer-events-none"></div>
          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gameGold/5 rounded-full blur-[120px] pointer-events-none"></div>
          
          <div className="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-12 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-stretch">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
                
                {/* Left Column: Text Content */}
                <motion.div
@@ -993,7 +993,7 @@ const GateExamPage: React.FC = () => {
                      Unlock premium careers and prestigious lifestyles. Whether it&apos;s a PSU or an IIT — GATE is your gateway to excellence.
                   </p>
 
-                  <div className="flex flex-wrap gap-4 mb-8 justify-start">
+                  <div className="flex flex-wrap gap-4 mb-6 justify-start">
                      <button 
                         onClick={() => scrollToSection('gate-courses')}
                         className="px-7 py-3.5 bg-gameTeal text-white font-black rounded-full hover:bg-[#007a7e] transition-all active:scale-95 shadow-xl shadow-gameTeal/20 flex items-center gap-2 group text-sm"
@@ -1012,7 +1012,7 @@ const GateExamPage: React.FC = () => {
                   </div>
 
                   {/* Latest Update Widget */}
-                  <div className="bg-white/5 border border-white/10 rounded-2xl p-3 mb-8 max-w-sm flex items-start gap-4 text-left">
+                  <div className="bg-white/5 border border-white/10 rounded-2xl p-3 mb-6 max-w-sm flex items-start gap-4 text-left">
                      <div className="w-9 h-9 rounded-xl bg-gameGold/10 text-gameGold flex items-center justify-center shrink-0">
                         <Atom size={18} className="animate-spin-slow" />
                      </div>
