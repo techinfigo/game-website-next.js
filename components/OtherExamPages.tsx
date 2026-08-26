@@ -1,9 +1,12 @@
 
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
 import ExamPageLayout from './ExamPageLayout';
-import { Microscope, MapPin, Atom, BookOpen, Backpack, Briefcase, Building2, Globe, Rocket, Star, Zap, Calendar, Trophy } from 'lucide-react';
+import { Microscope, MapPin, Atom, BookOpen, Backpack, Briefcase, Building2, Globe, Rocket, Star, Zap, Calendar, Trophy, ArrowRight, TrendingUp } from 'lucide-react';
 
 export const PsuExamPage: React.FC = () => {
   return (
@@ -46,8 +49,216 @@ export const PsuExamPage: React.FC = () => {
 };
 
 export const StateAeJeExamPage: React.FC = () => {
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
+
+  // TODO: client to upload /state/hero-*.jpg images
+  // Until they exist the <Image> fails and we fall back to the dark panel below.
+  const stateSlides = [
+    {
+      badge: "NOTIFICATION",
+      title: "State AE/JE 2026 Notifications",
+      buttonText: "Explore Courses",
+      imageUrl: "/state/hero-1.jpg"
+    },
+    {
+      badge: "MOCK TEST",
+      title: "Free State AE/JE Mock Test Series",
+      buttonText: "Explore Courses",
+      imageUrl: "/state/hero-2.jpg"
+    },
+    {
+      badge: "DEPARTMENTS",
+      title: "PWD, Irrigation & Rural Development Posts",
+      buttonText: "Explore Courses",
+      imageUrl: "/state/hero-3.jpg"
+    },
+    {
+      badge: "HOME STATE",
+      title: "Build Your Career Close To Home",
+      buttonText: "Explore Courses",
+      imageUrl: "/state/hero-4.jpg"
+    }
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % stateSlides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [stateSlides.length]);
+
+  const markImageFailed = (src: string) => setFailedImages((prev) => ({ ...prev, [src]: true }));
+
   return (
+    <>
+      {/* Rich hero - structure and classes mirror the GATE/ESE/SSC/RRB exam pages */}
+      <section className="relative -mt-20 pt-44 md:pt-48 pb-12 overflow-hidden bg-[#001517] text-white">
+         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gameTeal/10 rounded-full blur-[120px] pointer-events-none"></div>
+         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gameGold/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+         <div className="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-12 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+
+               {/* Left Column: Text Content */}
+               <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8 }}
+                  className="flex flex-col justify-center text-left"
+               >
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-4 self-start">
+                     <MapPin size={12} className="text-gameTeal" />
+                     <span className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-300">State AE/JE 2026</span>
+                  </div>
+
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-4 leading-[1.05] tracking-tighter text-left">
+                     Serve Your State <br/>
+                     <span className="text-gameTeal">as an Engineer</span>
+                  </h1>
+
+                  <p className="text-base md:text-lg text-slate-400 max-w-xl mb-6 leading-relaxed font-bold text-left">
+                     Secure a prestigious Assistant Engineer / Junior Engineer post in your home state. Lower competition, regular recruitment, and a stable government career close to home.
+                  </p>
+
+                  <div className="flex flex-wrap gap-4 mb-6 justify-start">
+                     <Link
+                        href="/courses"
+                        className="px-7 py-3.5 bg-gameTeal text-white font-black rounded-full hover:bg-[#007a7e] transition-all active:scale-95 shadow-xl shadow-gameTeal/20 flex items-center gap-2 group text-sm"
+                     >
+                        Start Preparation
+                        <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                     </Link>
+                     <Link
+                        href="/courses"
+                        className="px-7 py-3.5 border border-white/20 text-white font-black rounded-full hover:bg-white hover:text-gameBlack transition-all active:scale-95 text-sm flex items-center justify-center"
+                     >
+                        View Syllabus
+                     </Link>
+                  </div>
+
+                  {/* Latest Update Widget */}
+                  <div className="bg-white/5 border border-white/10 rounded-2xl p-3 mb-6 max-w-sm flex items-start gap-4 text-left">
+                     <div className="w-9 h-9 rounded-xl bg-gameGold/10 text-gameGold flex items-center justify-center shrink-0">
+                        <Calendar size={18} />
+                     </div>
+                     <div>
+                        <span className="text-[7px] font-black text-gameGold uppercase tracking-widest block mb-0.5">LATEST UPDATE</span>
+                        <p className="text-xs font-bold text-slate-200">State AE/JE 2026 notifications releasing soon</p>
+                     </div>
+                  </div>
+
+                  {/* Stats Row */}
+                  <div className="flex flex-wrap gap-10 border-t border-white/5 pt-6 text-left">
+                     <div>
+                        <p className="text-2xl font-black text-white mb-0.5">28+</p>
+                        <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">States</p>
+                     </div>
+                     <div>
+                        <p className="text-2xl font-black text-white mb-0.5">1000+</p>
+                        <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Vacancies</p>
+                     </div>
+                     <div>
+                        <p className="text-2xl font-black text-white mb-0.5">14+</p>
+                        <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Yrs Mentorship</p>
+                     </div>
+                  </div>
+               </motion.div>
+
+               {/* Right Column: Image Slider */}
+               <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8 }}
+                  className="relative h-full flex flex-col justify-between"
+               >
+                  {/* Main Display Area */}
+                  <div className="relative flex-grow bg-[#001c1e] rounded-[1.5rem] border border-white/10 overflow-hidden shadow-2xl min-h-[350px]">
+                     <AnimatePresence mode="wait">
+                        <motion.div
+                           key={activeSlide}
+                           initial={{ opacity: 0 }}
+                           animate={{ opacity: 1 }}
+                           exit={{ opacity: 0 }}
+                           transition={{ duration: 0.4 }}
+                           className="absolute inset-0 flex flex-col p-8 justify-between h-full w-full"
+                        >
+                           {!failedImages[stateSlides[activeSlide].imageUrl] && (
+                              <Image
+                                 src={stateSlides[activeSlide].imageUrl}
+                                 alt={stateSlides[activeSlide].title}
+                                 fill
+                                 className="object-cover"
+                                 referrerPolicy="no-referrer"
+                                 onError={() => markImageFailed(stateSlides[activeSlide].imageUrl)}
+                              />
+                           )}
+                           <div className="absolute inset-0 bg-gradient-to-t from-[#001c1e] via-transparent to-[#001c1e]/60"></div>
+
+                           {/* Button bottom right corner */}
+                           <div className="relative z-10 mt-auto self-end">
+                              <Link
+                                 href="/courses"
+                                 className="group flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white font-black text-xs uppercase tracking-widest hover:bg-gameGold hover:text-gameBlack transition-all"
+                              >
+                                 {stateSlides[activeSlide].buttonText}
+                                 <TrendingUp size={14} className="group-hover:translate-x-1 transition-transform" />
+                              </Link>
+                           </div>
+
+                           {/* Decorative Elements */}
+                           <div className="absolute top-8 right-8 opacity-20 z-10 text-white">
+                              <MapPin size={60} />
+                           </div>
+                        </motion.div>
+                     </AnimatePresence>
+
+                     {/* Slide Indicators */}
+                     <div className="absolute bottom-5 right-6 flex gap-1.5 z-20">
+                        {stateSlides.map((_, i) => (
+                           <button
+                              key={i}
+                              onClick={() => setActiveSlide(i)}
+                              aria-label={`Go to slide ${i + 1}`}
+                              className={`h-1 rounded-full transition-all duration-300 ${i === activeSlide ? 'w-6 bg-gameTeal' : 'w-1.5 bg-white/30'}`}
+                           />
+                        ))}
+                     </div>
+                  </div>
+
+                  {/* Thumbnail Row */}
+                  <div className="grid grid-cols-4 gap-3 mt-4">
+                     {stateSlides.map((slide, i) => (
+                        <button
+                           key={i}
+                           onClick={() => setActiveSlide(i)}
+                           aria-label={`Show slide ${i + 1}`}
+                           className={`relative aspect-[16/9] rounded-lg border bg-[#001c1e] transition-all duration-300 overflow-hidden ${
+                              i === activeSlide ? 'border-gameTeal scale-105 shadow-lg shadow-gameTeal/20' : 'border-white/10 opacity-30 hover:opacity-100'
+                           }`}
+                        >
+                           {!failedImages[slide.imageUrl] && (
+                              <Image
+                                 src={slide.imageUrl}
+                                 alt={slide.title}
+                                 fill
+                                 className="object-cover"
+                                 referrerPolicy="no-referrer"
+                                 onError={() => markImageFailed(slide.imageUrl)}
+                              />
+                           )}
+                           <div className="absolute inset-0 bg-black/40"></div>
+                        </button>
+                     ))}
+                  </div>
+               </motion.div>
+
+            </div>
+         </div>
+      </section>
+
     <ExamPageLayout
+      hideHero
       hero={{
         title: "Serve Your State as an Engineer",
         subtitle: "State AE / JE Services",
@@ -82,6 +293,7 @@ export const StateAeJeExamPage: React.FC = () => {
         { q: "Is local language knowledge mandatory?", a: "For many state exams, knowledge of the state's official language is required or tested." }
       ]}
     />
+    </>
   );
 };
 

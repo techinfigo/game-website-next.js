@@ -40,15 +40,18 @@ export interface ExamPageProps {
     }[];
   };
   faqs: { q: string; a: string }[];
+  /** When true, the template's own plain hero is skipped so the page can supply its own. */
+  hideHero?: boolean;
 }
 
-const ExamPageLayout: React.FC<ExamPageProps> = ({ hero, overview, features, pattern, faqs }) => {
+const ExamPageLayout: React.FC<ExamPageProps> = ({ hero, overview, features, pattern, faqs, hideHero }) => {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
       
-      {/* 1. Hero Section */}
+      {/* 1. Hero Section (skipped when the page supplies its own richer hero) */}
+      {!hideHero && (
       <section className={`relative pt-10 pb-12 overflow-hidden text-white ${hero.bgGradient}`}>
          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:32px_32px] opacity-10"></div>
          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-white/10 rounded-full blur-[120px] pointer-events-none"></div>
@@ -84,6 +87,7 @@ const ExamPageLayout: React.FC<ExamPageProps> = ({ hero, overview, features, pat
             </motion.div>
          </div>
       </section>
+      )}
 
       {/* 2. Overview Section */}
       <section className="py-12 px-8 md:px-10 lg:px-12 bg-white relative">
