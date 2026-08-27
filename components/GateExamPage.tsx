@@ -2380,16 +2380,14 @@ const GateExamPage: React.FC = () => {
                      viewport={{ once: true }}
                      className="relative"
                   >
-                     <div className="absolute inset-0 bg-white/10 rounded-[2.5rem] blur-3xl animate-pulse"></div>
+                     {/* Gold glow backdrop, refined from the old white pulse to match the section's gold accents */}
+                     <div className="absolute -inset-3 bg-gameGold/25 rounded-full blur-3xl animate-pulse pointer-events-none"></div>
                      <button 
                         onClick={() => scrollToSection('gate-courses')}
-                        className="relative group bg-white text-slate-900 px-12 py-10 rounded-[2.5rem] font-black text-2xl uppercase tracking-widest shadow-2xl hover:bg-slate-50 transition-all duration-300 flex items-center justify-center gap-6 min-w-[320px]"
+                        className="relative group bg-gradient-to-br from-[#f7d75f] via-gameGold to-gameGoldDark text-gameTealDark px-10 py-5 md:px-12 md:py-6 rounded-full font-black text-base md:text-lg uppercase tracking-[0.15em] whitespace-nowrap ring-1 ring-white/40 shadow-2xl shadow-gameGold/30 hover:-translate-y-1 hover:scale-[1.03] hover:shadow-gameGold/50 hover:ring-white/60 active:translate-y-0 active:scale-100 transition-all duration-300 flex items-center justify-center gap-4"
                      >
-                        <div className="flex flex-col items-center">
-                           <span>Check out</span>
-                           <span>Courses</span>
-                        </div>
-                        <ArrowRight className="group-hover:translate-x-3 transition-transform" size={32} />
+                        Check Out Courses
+                        <ArrowRight className="group-hover:translate-x-1.5 transition-transform duration-300" size={22} />
                      </button>
                   </motion.div>
                </div>
