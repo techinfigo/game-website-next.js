@@ -2346,43 +2346,32 @@ const GateExamPage: React.FC = () => {
          </div>
          
          <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 relative z-10">
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-               <div className="lg:w-2/3 text-center lg:text-left">
-                  <motion.div
-                     initial={{ opacity: 0, x: -30 }}
-                     whileInView={{ opacity: 1, x: 0 }}
-                     viewport={{ once: true }}
-                  >
-                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-10 leading-[1.15] tracking-tight">
-                        {/* Each line is a complete phrase on its own block, so nothing breaks
-                            mid-phrase and the wrapping is identical on mobile and desktop.
-                            Gold carries the hierarchy: what (GATE 2027/2028) then who (Gaurav Babu Sir). */}
-                        <span className="block text-lg md:text-xl lg:text-2xl font-bold text-white/70 tracking-normal mb-2">Start your</span>
-                        <span className="block text-gameGold whitespace-nowrap">GATE 2027/2028</span>
-                        <span className="block text-2xl md:text-3xl lg:text-4xl text-white/90">Online Preparation with</span>
-                        <span className="block text-gameGold">Gaurav Babu Sir</span>
-                     </h2>
-                     
-                     <div className="flex flex-col md:flex-row items-center gap-4 justify-center lg:justify-start">
-                        <div className="flex items-center gap-4 bg-white/5 backdrop-blur-sm px-6 py-4 rounded-2xl border border-white/10">
-                           <Smartphone className="text-gameGold" size={28} />
-                           <div>
-                              <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 mb-0.5">Available on Play Store</p>
-                              <p className="text-base md:text-lg font-black">Download the <span className="text-gameGold">GAME Live</span> app now</p>
-                           </div>
-                        </div>
-                        
-                        <AppStoreButtons />
-                     </div>
-                  </motion.div>
-               </div>
-               
-               <div className="lg:w-1/3 flex justify-center lg:justify-end">
+            {/* Two-column CTA: heading + course button on the left, app download on the
+                right, so neither side floats with a gap between them. Stacks on mobile. */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+               {/* LEFT: heading with the gold course CTA directly beneath it */}
+               <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  className="text-center lg:text-left"
+               >
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-10 leading-[1.15] tracking-tight">
+                     {/* Each line is a complete phrase on its own block, so nothing breaks
+                         mid-phrase and the wrapping is identical on mobile and desktop.
+                         Gold carries the hierarchy: what (GATE 2027/2028) then who (Gaurav Babu Sir). */}
+                     <span className="block text-lg md:text-xl lg:text-2xl font-bold text-white/70 tracking-normal mb-2">Start your</span>
+                     <span className="block text-gameGold whitespace-nowrap">GATE 2027/2028</span>
+                     <span className="block text-2xl md:text-3xl lg:text-4xl text-white/90">Online Preparation with</span>
+                     <span className="block text-gameGold">Gaurav Babu Sir</span>
+                  </h2>
+
                   <motion.div
                      initial={{ opacity: 0, scale: 0.9 }}
                      whileInView={{ opacity: 1, scale: 1 }}
                      viewport={{ once: true }}
-                     className="relative"
+                     className="relative inline-block"
                   >
                      {/* Gold glow backdrop, refined from the old white pulse to match the section's gold accents */}
                      <div className="absolute -inset-3 bg-gameGold/25 rounded-full blur-3xl animate-pulse pointer-events-none"></div>
@@ -2399,7 +2388,26 @@ const GateExamPage: React.FC = () => {
                         <ArrowRight className="shrink-0 group-hover:translate-x-1.5 transition-transform duration-300" size={26} />
                      </button>
                   </motion.div>
-               </div>
+               </motion.div>
+
+               {/* RIGHT: app download card stacked over the store buttons, pushed to the edge */}
+               <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  className="flex flex-col items-center lg:items-end gap-5"
+               >
+                  <div className="flex items-center gap-4 bg-white/5 backdrop-blur-sm px-6 py-4 rounded-2xl border border-white/10">
+                     <Smartphone className="text-gameGold" size={28} />
+                     <div>
+                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 mb-0.5">Available on Play Store</p>
+                        <p className="text-base md:text-lg font-black">Download the <span className="text-gameGold">GAME Live</span> app now</p>
+                     </div>
+                  </div>
+
+                  <AppStoreButtons />
+               </motion.div>
+
             </div>
          </div>
       </section>
