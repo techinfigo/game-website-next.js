@@ -2353,10 +2353,14 @@ const GateExamPage: React.FC = () => {
                      whileInView={{ opacity: 1, x: 0 }}
                      viewport={{ once: true }}
                   >
-                     <h2 className="text-4xl md:text-6xl lg:text-7xl font-black mb-10 leading-[1.1] tracking-tight">
-                        Start your <span className="text-gameGold">GATE <br className="md:hidden" /> 2027/2028</span> <br className="hidden md:block"/>
-                        Online Preparation with <br className="hidden md:block"/>
-                        <span className="text-gameGold">Gaurav Babu Sir</span>
+                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-10 leading-[1.15] tracking-tight">
+                        {/* Each line is a complete phrase on its own block, so nothing breaks
+                            mid-phrase and the wrapping is identical on mobile and desktop.
+                            Gold carries the hierarchy: what (GATE 2027/2028) then who (Gaurav Babu Sir). */}
+                        <span className="block text-lg md:text-xl lg:text-2xl font-bold text-white/70 tracking-normal mb-2">Start your</span>
+                        <span className="block text-gameGold whitespace-nowrap">GATE 2027/2028</span>
+                        <span className="block text-2xl md:text-3xl lg:text-4xl text-white/90">Online Preparation with</span>
+                        <span className="block text-gameGold">Gaurav Babu Sir</span>
                      </h2>
                      
                      <div className="flex flex-col md:flex-row items-center gap-4 justify-center lg:justify-start">
