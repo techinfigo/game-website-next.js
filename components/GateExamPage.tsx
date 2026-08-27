@@ -2384,10 +2384,15 @@ const GateExamPage: React.FC = () => {
                      <div className="absolute -inset-3 bg-gameGold/25 rounded-full blur-3xl animate-pulse pointer-events-none"></div>
                      <button 
                         onClick={() => scrollToSection('gate-courses')}
-                        className="relative group bg-gradient-to-br from-[#f7d75f] via-gameGold to-gameGoldDark text-gameTealDark px-10 py-5 md:px-12 md:py-6 rounded-full font-black text-base md:text-lg uppercase tracking-[0.15em] whitespace-nowrap ring-1 ring-white/40 shadow-2xl shadow-gameGold/30 hover:-translate-y-1 hover:scale-[1.03] hover:shadow-gameGold/50 hover:ring-white/60 active:translate-y-0 active:scale-100 transition-all duration-300 flex items-center justify-center gap-4"
+                        className="relative group bg-gradient-to-br from-[#f7d75f] via-gameGold to-gameGoldDark text-gameTealDark pl-10 pr-8 py-5 md:pl-12 md:pr-10 md:py-6 rounded-full whitespace-nowrap ring-1 ring-white/40 shadow-2xl shadow-gameGold/30 hover:-translate-y-1 hover:scale-[1.03] hover:shadow-gameGold/50 hover:ring-white/60 active:translate-y-0 active:scale-100 transition-all duration-300 flex items-center gap-5"
                      >
-                        Check Out Courses
-                        <ArrowRight className="group-hover:translate-x-1.5 transition-transform duration-300" size={22} />
+                        {/* Two-part label: muted kicker over the bold main line, so the CTA reads
+                            as a hierarchy rather than one long tracked-out string. */}
+                        <span className="flex flex-col text-left leading-tight">
+                           <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.25em] text-gameTealDark/70 mb-0.5">Explore</span>
+                           <span className="text-xl md:text-2xl font-black tracking-tight">GATE Courses</span>
+                        </span>
+                        <ArrowRight className="shrink-0 group-hover:translate-x-1.5 transition-transform duration-300" size={26} />
                      </button>
                   </motion.div>
                </div>
