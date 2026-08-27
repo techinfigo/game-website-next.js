@@ -37,28 +37,28 @@ const GateExamPage: React.FC = () => {
       badge: "REGISTRATION",
       title: "GATE 2026 Registration Open",
       buttonText: "Register Now",
-      imageUrl: "/gate/hero-registration.jpg",
+      imageUrl: "/gate/hero-registration.png",
       bgColor: "bg-[#004d50]"
     },
     {
       badge: "MOCK TEST",
       title: "Free GATE Mock Test",
       buttonText: "Start Test",
-      imageUrl: "/gate/hero-mocktest.jpg",
+      imageUrl: "/gate/hero-mocktest.png",
       bgColor: "bg-[#002b2e]"
     },
     {
       badge: "PSU JOBS",
       title: "Top PSU Recruitment Through GATE",
       buttonText: "Explore Jobs",
-      imageUrl: "/gate/hero-psujobs.jpg",
+      imageUrl: "/gate/hero-psujobs.png",
       bgColor: "bg-[#004d50]"
     },
     {
       badge: "IIT M.TECH",
       title: "IIT Admission Through GATE",
       buttonText: "Check Cutoffs",
-      imageUrl: "/gate/hero-iitmtech.jpg",
+      imageUrl: "/gate/hero-iitmtech.png",
       bgColor: "bg-[#002b2e]"
     }
   ];
