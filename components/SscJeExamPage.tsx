@@ -35,6 +35,13 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeSlide, setActiveSlide] = useState(0);
   const [activeSection, setActiveSection] = useState('overview');
+  // The /ssc/* artwork is uploaded separately. Until a file lands (or if one fails to
+  // load) these flags swap that photo for the solid dark-teal panel behind it, so the
+  // section degrades to an intentional brand block instead of a broken-image icon.
+  const [whatIsImgFailed, setWhatIsImgFailed] = useState(false);
+  const [failedHighlightImages, setFailedHighlightImages] = useState<number[]>([]);
+  const markHighlightImageFailed = (index: number) =>
+    setFailedHighlightImages((prev) => (prev.includes(index) ? prev : [...prev, index]));
 
   // Hero carousel slides - placeholder picsum images, the owner will replace them with final creatives.
   const sscSlides = [
@@ -130,7 +137,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       label: "Prestige & Security",
       title: "A Golden Ticket to a Respected & Secure Government Career.",
       desc: "Secure a Group B (Non-Gazetted) position that commands respect in society and provides lifelong stability.",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?fit=crop&w=800&q=80", 
+      image: "/ssc/reason-1.png", 
       icon: Shield,
       color: "text-gameTeal",
       bg: "bg-gameTeal/5"
@@ -139,7 +146,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       label: "Salary & Perks",
       title: "Attractive & Progressive Salary with Fantastic Perks",
       desc: "Enjoy Level-6 pay scale with HRA, DA, medical benefits, and a lifestyle that ensures prosperity for you and your family.",
-      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?fit=crop&w=800&q=80", 
+      image: "/ssc/reason-2.png", 
       icon: Wallet,
       color: "text-gameTeal",
       bg: "bg-gameTeal/5"
@@ -148,7 +155,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       label: "Core Sectors",
       title: "Direct Entry into India's Core Infrastructure Sectors",
       desc: "Work on massive national projects like bridges, dams, and modern railways. See your engineering impact in real-time.",
-      image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800&q=80", 
+      image: "/ssc/reason-3.png", 
       icon: HardHat,
       color: "text-gameGoldDark",
       bg: "bg-gameGold/5"
@@ -157,7 +164,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       label: "Career Growth",
       title: "Clear & Time-Bound Career Progression to Executive Ranks",
       desc: "Climb the ladder from Junior Engineer to Assistant Engineer, Executive Engineer, and up to Engineer-in-Chief.",
-      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80", 
+      image: "/ssc/reason-4.png", 
       icon: TrendingUp,
       color: "text-gameTeal",
       bg: "bg-gameTeal/5"
@@ -166,7 +173,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       label: "Achievable Goal",
       title: "Achievable Goal with a Well-Defined Exam Pattern",
       desc: "With a structured syllabus and clarity in pattern, SSC-JE is an achievable dream for dedicated Diploma and Degree holders.",
-      image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?fit=crop&w=800&q=80", 
+      image: "/ssc/reason-5.png", 
       icon: Target,
       color: "text-gameGoldDark",
       bg: "bg-gameGold/5"
@@ -903,13 +910,18 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                >
                   <div className="absolute inset-0 bg-gameTeal/5 rounded-full blur-3xl transform rotate-12"></div>
                   <div className="relative bg-white rounded-[2.5rem] p-4 border border-slate-100 shadow-2xl aspect-video md:aspect-auto h-[400px]">
-                     <Image 
-                        src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?fit=crop&w=800&q=80" 
-                        alt="SSC JE Engineer" 
-                        fill
-                        className="rounded-[2rem] object-cover"
-                        referrerPolicy="no-referrer"
-                     />
+                     {/* Dark-teal base sits behind the photo as the graceful fallback. */}
+                     <div className="absolute inset-0 rounded-[2rem] bg-gameTealDark"></div>
+                     {!whatIsImgFailed && (
+                        <Image 
+                           src="/ssc/what-is-ssc.png" 
+                           alt="SSC JE Engineer" 
+                           fill
+                           onError={() => setWhatIsImgFailed(true)}
+                           className="rounded-[2rem] object-cover"
+                           referrerPolicy="no-referrer"
+                        />
+                     )}
                      <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl border border-slate-100 max-w-xs z-20">
                         <div className="flex items-center gap-3 mb-2">
                            <div className="w-10 h-10 rounded-full bg-gameTeal/10 flex items-center justify-center text-gameTeal">
@@ -955,13 +967,18 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                      <div className="lg:w-5/12 relative">
                         <div className="absolute inset-0 bg-gameTeal/5 rounded-full blur-3xl transform rotate-12"></div>
                         <div className="relative rounded-[2.5rem] p-2 border border-white bg-white shadow-2xl overflow-hidden group aspect-[4/3]">
-                           <Image 
-                              src={item.image} 
-                              alt={item.label} 
-                              fill
-                              className="object-cover rounded-[2rem] transition-transform duration-700 group-hover:scale-105"
-                              referrerPolicy="no-referrer"
-                           />
+                           {/* Dark-teal base sits behind the photo as the graceful fallback. */}
+                           <div className="absolute inset-0 rounded-[2rem] bg-gameTealDark"></div>
+                           {!failedHighlightImages.includes(i) && (
+                              <Image 
+                                 src={item.image} 
+                                 alt={item.label} 
+                                 fill
+                                 onError={() => markHighlightImageFailed(i)}
+                                 className="object-cover rounded-[2rem] transition-transform duration-700 group-hover:scale-105"
+                                 referrerPolicy="no-referrer"
+                              />
+                           )}
                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10"></div>
                            <div className="absolute bottom-8 left-8 text-white opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all z-20">
                               <p className="text-lg font-black italic">Building India's Future</p>
