@@ -25,34 +25,40 @@ const GateExamPage: React.FC = () => {
   const [selectedExam, setSelectedExam] = useState('GATE / ESE');
   const [searchTerm, setSearchTerm] = useState('');
   const [activeSlide, setActiveSlide] = useState(0);
+  // Hero slide art lives in public/gate/. Until those files are uploaded a request
+  // 404s, so track the failures and fall back to the dark teal panel behind the
+  // image rather than rendering a broken-image icon.
+  const [failedImages, setFailedImages] = useState<string[]>([]);
+  const markImageFailed = (src: string) =>
+    setFailedImages((prev) => (prev.includes(src) ? prev : [...prev, src]));
 
   const slides = [
     {
       badge: "REGISTRATION",
       title: "GATE 2026 Registration Open",
       buttonText: "Register Now",
-      imageUrl: "https://picsum.photos/seed/gate-reg/1200/800",
+      imageUrl: "/gate/hero-registration.jpg",
       bgColor: "bg-[#004d50]"
     },
     {
       badge: "MOCK TEST",
       title: "Free GATE Mock Test",
       buttonText: "Start Test",
-      imageUrl: "https://picsum.photos/seed/gate-mock/1200/800",
+      imageUrl: "/gate/hero-mocktest.jpg",
       bgColor: "bg-[#002b2e]"
     },
     {
       badge: "PSU JOBS",
       title: "Top PSU Recruitment Through GATE",
       buttonText: "Explore Jobs",
-      imageUrl: "https://picsum.photos/seed/psu-jobs/1200/800",
+      imageUrl: "/gate/hero-psujobs.jpg",
       bgColor: "bg-[#004d50]"
     },
     {
       badge: "IIT M.TECH",
       title: "IIT Admission Through GATE",
       buttonText: "Check Cutoffs",
-      imageUrl: "https://picsum.photos/seed/iit-mtech/1200/800",
+      imageUrl: "/gate/hero-iitmtech.jpg",
       bgColor: "bg-[#002b2e]"
     }
   ];
@@ -1057,13 +1063,16 @@ const GateExamPage: React.FC = () => {
                            transition={{ duration: 0.4 }}
                            className="absolute inset-0 flex flex-col p-8 justify-between h-full w-full"
                         >
-                           <Image 
-                              src={slides[activeSlide].imageUrl} 
-                              alt={slides[activeSlide].title}
-                              fill
-                              className="object-cover"
-                              referrerPolicy="no-referrer"
-                           />
+                           {!failedImages.includes(slides[activeSlide].imageUrl) && (
+                              <Image 
+                                 src={slides[activeSlide].imageUrl} 
+                                 alt={slides[activeSlide].title}
+                                 fill
+                                 className="object-cover"
+                                 referrerPolicy="no-referrer"
+                                 onError={() => markImageFailed(slides[activeSlide].imageUrl)}
+                              />
+                           )}
                            <div className="absolute inset-0 bg-gradient-to-t from-[#001c1e] via-transparent to-[#001c1e]/60"></div>
                            
                            {/* Button bottom right corner */}
@@ -1099,17 +1108,20 @@ const GateExamPage: React.FC = () => {
                         <button
                            key={i}
                            onClick={() => setActiveSlide(i)}
-                           className={`relative aspect-[16/9] rounded-lg border transition-all duration-300 overflow-hidden ${
+                           className={`relative aspect-[16/9] rounded-lg border transition-all duration-300 overflow-hidden bg-gameTealDark ${
                               i === activeSlide ? 'border-gameTeal scale-105 shadow-lg shadow-gameTeal/20' : 'border-white/10 opacity-30 hover:opacity-100'
                            }`}
                         >
-                           <Image 
-                              src={slide.imageUrl} 
-                              alt={slide.title}
-                              fill
-                              className="object-cover"
-                              referrerPolicy="no-referrer"
-                           />
+                           {!failedImages.includes(slide.imageUrl) && (
+                              <Image 
+                                 src={slide.imageUrl} 
+                                 alt={slide.title}
+                                 fill
+                                 className="object-cover"
+                                 referrerPolicy="no-referrer"
+                                 onError={() => markImageFailed(slide.imageUrl)}
+                              />
+                           )}
                            <div className="absolute inset-0 bg-black/40"></div>
                         </button>
                      ))}
