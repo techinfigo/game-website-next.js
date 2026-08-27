@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Train, MapPin, ArrowRight, CheckCircle2,
@@ -669,9 +670,9 @@ const RrbJeExamPage: React.FC = () => {
                         <p className="text-slate-600 text-lg md:text-xl font-medium leading-relaxed mb-8">
                            {item.desc}
                         </p>
-                        <button className="bg-gameTeal text-white px-8 py-3 rounded-xl font-bold hover:bg-gameTealDark transition-all shadow-lg flex items-center gap-2 group">
+                        <Link href="/courses" className="bg-gameTeal text-white px-8 py-3 rounded-xl font-bold hover:bg-gameTealDark transition-all shadow-lg inline-flex items-center gap-2 group">
                            Join Excellence Course <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                        </button>
+                        </Link>
                      </div>
                   </motion.div>
                ))}
