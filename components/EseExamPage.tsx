@@ -1779,13 +1779,9 @@ const ChoiceAdvantageRow: React.FC<{
                 <h3 className="text-2xl md:text-3xl font-black text-white mb-6 tracking-tight leading-none group-hover:text-gameGold transition-colors">
                   {title}
                 </h3>
-                <p className="text-slate-200 text-base md:text-lg font-bold leading-relaxed mb-8">
+                <p className="text-slate-200 text-base md:text-lg font-bold leading-relaxed mb-0">
                   {description}
                 </p>
-
-                <div className={`flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-gameGold ${isEven ? 'lg:justify-end' : ''}`}>
-                  Unlock Path <ArrowRight size={16} />
-                </div>
               </div>
             </div>
           </div>
