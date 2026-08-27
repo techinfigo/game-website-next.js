@@ -123,7 +123,7 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
       id: 1,
       badge: "Premium Learning",
       title: <>Upskill Continuously <br/> with <span className="text-gameGold">Masterclasses</span></>,
-      description: "Stay ahead with Gaurav Babu Sir&apos;s expert-led courses. Learn practical skills, master core concepts, and grow with a thriving community.",
+      description: "Stay ahead with Gaurav Babu Sir, expert-led courses. Learn practical skills, master core concepts, and grow with a thriving community.",
       bgGradient: "from-[#0b8a91] to-[#075d63]",
       type: "masterclass"
     }
