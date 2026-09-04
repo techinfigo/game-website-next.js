@@ -63,7 +63,7 @@ const ReasonsSection: React.FC = () => {
     },
     {
       id: "07",
-      title: "India&apos;s Leading e-Learning Provider",
+      title: "India's Leading e-Learning Provider",
       desc: "A premier platform with proven success rates for GATE, ESE, PSUs, SSC JE & All-State AE Exams.",
       icon: ShieldCheck,
       color: "bg-[#0da6b1]", // Lightest
@@ -84,7 +84,7 @@ const ReasonsSection: React.FC = () => {
               <Sparkles size={12} className="inline mr-2" /> THE GAME ADVANTAGE
             </span>
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 leading-tight whitespace-normal lg:whitespace-nowrap">
-              7 Reasons Why We Are <span className="text-transparent bg-clip-text bg-gradient-to-r from-gameTeal to-teal-500">India&apos;s Leading Choice</span>
+              7 Reasons Why We Are <span className="text-transparent bg-clip-text bg-gradient-to-r from-gameTeal to-teal-500">India's Leading Choice</span>
             </h2>
             <div className="w-24 h-1.5 bg-gameGold mx-auto mt-4 rounded-full"></div>
           </motion.div>
