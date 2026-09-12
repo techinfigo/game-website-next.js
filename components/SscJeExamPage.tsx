@@ -1811,14 +1811,14 @@ const SscChoiceAdvantageRow: React.FC<{
             <div className="absolute inset-0 bg-gameGold/10 rounded-[3rem] -rotate-3 group-hover:rotate-0 transition-transform"></div>
             {/* Dark-teal fallback: if the photo is missing the panel stays a solid
                 brand fill instead of a broken-image icon. */}
-            <div className="relative rounded-[3rem] overflow-hidden border-4 border-white shadow-2xl h-[300px] lg:h-[400px] bg-gameTealDark">
+            <div className="relative rounded-[3rem] overflow-hidden border-4 border-white shadow-2xl h-[360px] lg:h-[460px] bg-gameTealDark">
               {!imgFailed && (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
                   src={image}
                   alt={title}
                   onError={() => setImgFailed(true)}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110"
                 />
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
