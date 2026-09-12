@@ -771,7 +771,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                   className="relative h-full flex flex-col justify-between"
                >
                   {/* Main Display Area */}
-                  <div className="relative flex-grow bg-[#001c1e] rounded-[1.5rem] border border-white/10 overflow-hidden shadow-2xl min-h-[350px]">
+                  <div className="relative flex-grow bg-[#001c1e] rounded-[1.5rem] border border-white/10 overflow-hidden shadow-2xl min-h-[400px] md:min-h-[480px] lg:min-h-[520px]">
                      <AnimatePresence mode="wait">
                         <motion.div
                            key={activeSlide}
@@ -796,7 +796,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                                     alt={sscSlides[activeSlide].title}
                                     fill
                                     onError={() => markHeroImgFailed(activeSlide)}
-                                    className="object-cover"
+                                    className="object-contain"
                                     referrerPolicy="no-referrer"
                                  />
                               )}
