@@ -39,9 +39,6 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
   // load) these flags swap that photo for the solid dark-teal panel behind it, so the
   // section degrades to an intentional brand block instead of a broken-image icon.
   const [whatIsImgFailed, setWhatIsImgFailed] = useState(false);
-  const [failedHighlightImages, setFailedHighlightImages] = useState<number[]>([]);
-  const markHighlightImageFailed = (index: number) =>
-    setFailedHighlightImages((prev) => (prev.includes(index) ? prev : [...prev, index]));
 
   // Hero carousel slides - placeholder picsum images, the owner will replace them with final creatives.
   const sscSlides = [
@@ -954,54 +951,32 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                </motion.div>
             </div>
 
-            <div className="space-y-12">
-               {keyHighlights.map((item, i) => (
-                  <motion.div 
-                     key={i} 
-                     initial={{ opacity: 0, y: 50 }} 
-                     whileInView={{ opacity: 1, y: 0 }} 
-                     viewport={{ once: true }} 
-                     transition={{ duration: 0.6 }}
-                     className={`flex flex-col lg:flex-row items-center gap-16 ${i % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
-                  >
-                     <div className="lg:w-5/12 relative">
-                        <div className="absolute inset-0 bg-gameTeal/5 rounded-full blur-3xl transform rotate-12"></div>
-                        <div className="relative rounded-[2.5rem] p-2 border border-white bg-white shadow-2xl overflow-hidden group aspect-[4/3]">
-                           {/* Dark-teal base sits behind the photo as the graceful fallback. */}
-                           <div className="absolute inset-0 rounded-[2rem] bg-gameTealDark"></div>
-                           {!failedHighlightImages.includes(i) && (
-                              <Image 
-                                 src={item.image} 
-                                 alt={item.label} 
-                                 fill
-                                 onError={() => markHighlightImageFailed(i)}
-                                 className="object-cover rounded-[2rem] transition-transform duration-700 group-hover:scale-105"
-                                 referrerPolicy="no-referrer"
-                              />
-                           )}
-                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10"></div>
-                           <div className="absolute bottom-8 left-8 text-white opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all z-20">
-                              <p className="text-lg font-black italic">Building India's Future</p>
-                           </div>
-                        </div>
-                     </div>
+            {/* ROADMAP PATHWAY UI - alternating photo/text rows, matching the ESE, PSU R&D and GATE Advantage roadmaps */}
+            <div className="relative mb-16">
 
-                     <div className="lg:w-7/12">
-                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-xl bg-white border border-slate-200 text-gameTeal font-black text-xs uppercase tracking-widest mb-4 shadow-sm">
-                           {item.label}
-                        </div>
-                        <h3 className="text-2xl md:text-4xl font-black text-slate-900 mb-6 leading-tight group-hover:text-gameTeal transition-colors">
-                           {item.title}
-                        </h3>
-                        <p className="text-slate-600 text-lg md:text-xl font-medium leading-relaxed mb-8">
-                           {item.desc}
-                        </p>
-                        <button className="bg-gameTeal text-white px-8 py-3 rounded-xl font-bold hover:bg-gameTealDark transition-all shadow-lg flex items-center gap-2 group">
-                           Learn More <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                        </button>
-                     </div>
-                  </motion.div>
-               ))}
+               {/* THE VERTICAL PATHWAY LINE (Center line) */}
+               <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-slate-200 -translate-x-1/2 hidden lg:block overflow-hidden">
+                  <motion.div
+                     initial={{ height: 0 }}
+                     whileInView={{ height: '100%' }}
+                     transition={{ duration: 2, ease: "easeInOut" }}
+                     className="w-full bg-gradient-to-b from-gameTeal via-gameGold to-gameTeal"
+                  />
+               </div>
+
+               <div className="space-y-24 lg:space-y-32">
+                  {keyHighlights.map((item, i) => (
+                     <SscChoiceAdvantageRow
+                        key={i}
+                        index={i}
+                        icon={item.icon}
+                        title={item.title}
+                        description={item.desc}
+                        image={item.image}
+                        iconColor={item.color}
+                     />
+                  ))}
+               </div>
             </div>
          </div>
       </section>
@@ -1745,6 +1720,101 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
          </div>
       </section>
 
+    </div>
+  );
+};
+
+const SscChoiceAdvantageRow: React.FC<{
+  index: number;
+  icon: any;
+  title: string;
+  description: string;
+  image: string;
+  iconColor?: string;
+}> = ({ index, icon: Icon, title, description, image, iconColor = 'text-gameTeal' }) => {
+  const [imgFailed, setImgFailed] = useState(false);
+  const isEven = index % 2 === 0;
+
+  return (
+    <div className="relative">
+
+      {/* BRANCHING NODE - DESKTOP CENTER */}
+      <div className="absolute left-1/2 top-10 -translate-x-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center z-20">
+        <div className="w-10 h-10 rounded-full bg-white border-4 border-gameTeal flex items-center justify-center shadow-xl">
+          <Icon size={20} className={iconColor} />
+        </div>
+      </div>
+
+      <div className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12 lg:gap-20`}>
+
+        {/* Content Side */}
+        <motion.div
+          initial={{ opacity: 0, x: isEven ? -50 : 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="w-full lg:w-1/2"
+        >
+          <div className={`relative group ${isEven ? 'text-left lg:text-right' : 'text-left'}`}>
+            {/* Numbering */}
+            <div className={`absolute -top-20 ${isEven ? 'left-0 lg:left-auto lg:-right-4' : 'left-0 lg:-left-4'} text-7xl font-black text-gameTeal/70 pointer-events-none z-10`}>
+              {index + 1 < 10 ? `0${index + 1}` : index + 1}
+            </div>
+
+            <div
+              className="relative overflow-hidden bg-cover bg-center p-8 md:p-10 rounded-[3rem] shadow-2xl shadow-slate-200/50 border border-slate-100 hover:border-gameTeal/20 transition-all duration-500 hover:shadow-gameTeal/10"
+              style={{
+                backgroundColor: 'var(--color-gameTealDark)',
+                backgroundImage: imgFailed ? undefined : `url(${image})`,
+              }}
+            >
+              {/* Solid dark-teal base sits behind the photo, so the card still reads as
+                  intentional if the background image is missing or fails to load. */}
+              {/* Dark overlay keeps text readable over the background photo */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/70 to-black/40 group-hover:from-black/90 group-hover:via-black/75 transition-colors duration-300"></div>
+              <div className="relative z-10">
+                <h3 className="text-2xl md:text-3xl font-black text-white mb-6 tracking-tight leading-none group-hover:text-gameGold transition-colors">
+                  {title}
+                </h3>
+                <p className="text-slate-200 text-base md:text-lg font-bold leading-relaxed mb-0">
+                  {description}
+                </p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Image Side */}
+        <motion.div
+          initial={{ opacity: 0, x: isEven ? 50 : -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="w-full lg:w-1/2"
+        >
+          <div className="relative group">
+            <div className="absolute inset-0 bg-gameTeal/10 rounded-[3rem] rotate-3 group-hover:rotate-0 transition-transform"></div>
+            <div className="absolute inset-0 bg-gameGold/10 rounded-[3rem] -rotate-3 group-hover:rotate-0 transition-transform"></div>
+            {/* Same dark-teal fallback as the text card: if the photo is missing the
+                panel stays a solid brand fill instead of a broken-image icon. */}
+            <div className="relative rounded-[3rem] overflow-hidden border-4 border-white shadow-2xl h-[300px] lg:h-[400px] bg-gameTealDark">
+              {!imgFailed && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={image}
+                  alt={title}
+                  onError={() => setImgFailed(true)}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+              )}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute bottom-8 left-8 right-8 text-white opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all">
+                <p className="text-sm font-black uppercase tracking-widest text-gameGold mb-2">SSC-JE Advantage</p>
+                <h4 className="text-xl font-bold">{title}</h4>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+      </div>
     </div>
   );
 };
