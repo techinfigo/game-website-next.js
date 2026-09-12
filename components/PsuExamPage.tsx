@@ -995,8 +995,15 @@ const FAQItem: React.FC<{ faq: { q: string; a: React.ReactNode }; index: number 
                   transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                >
                   <div className="px-6 md:px-8 pb-8 md:pb-10 ml-0 md:ml-12 border-t border-slate-50 pt-6">
-                     <div className="text-slate-600 font-bold text-lg leading-relaxed max-w-3xl">
-                        {faq.a}
+                     <div className="flex items-start gap-3">
+                        <img
+                           src="/gaurav-sir.png"
+                           alt="Gaurav Babu Sir"
+                           className="w-12 h-12 rounded-full object-cover object-top border-2 border-white shadow-md ring-1 ring-gameTeal/20 shrink-0"
+                        />
+                        <div className="text-slate-600 font-bold text-lg leading-relaxed max-w-3xl">
+                           {faq.a}
+                        </div>
                      </div>
                   </div>
                </motion.div>
