@@ -39,32 +39,44 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
   // load) these flags swap that photo for the solid dark-teal panel behind it, so the
   // section degrades to an intentional brand block instead of a broken-image icon.
   const [whatIsImgFailed, setWhatIsImgFailed] = useState(false);
+  // The /ssc/hero-*.png artwork is uploaded separately. Until a file lands (or if one
+  // fails to load) this per-slide flag swaps that photo for the dark-teal panel behind
+  // it, same graceful-degradation pattern as the What-Is section above.
+  const [heroImgFailed, setHeroImgFailed] = useState<boolean[]>([false, false, false, false]);
+  const markHeroImgFailed = (index: number) => {
+    setHeroImgFailed((prev) => {
+      if (prev[index]) return prev;
+      const next = [...prev];
+      next[index] = true;
+      return next;
+    });
+  };
 
-  // Hero carousel slides - placeholder picsum images, the owner will replace them with final creatives.
+  // Hero carousel slides - local /ssc/ artwork with a graceful fallback if a file is missing.
   const sscSlides = [
     {
       badge: "NOTIFICATION",
       title: "SSC JE 2026 Notification Awaited",
       buttonText: "Get Alerts",
-      imageUrl: "https://picsum.photos/seed/ssc-je-notification/1200/800"
+      imageUrl: "/ssc/hero-notification.png"
     },
     {
       badge: "MOCK TEST",
       title: "Free SSC-JE Mock Test",
       buttonText: "Start Test",
-      imageUrl: "https://picsum.photos/seed/ssc-je-mock/1200/800"
+      imageUrl: "/ssc/hero-mocktest.png"
     },
     {
       badge: "PAY SCALE",
       title: "Level-6 Pay Matrix & Perks",
       buttonText: "Know More",
-      imageUrl: "https://picsum.photos/seed/ssc-je-payscale/1200/800"
+      imageUrl: "/ssc/hero-payscale.png"
     },
     {
       badge: "JE CAREER",
       title: "Become a Junior Engineer in Railways & PWD",
       buttonText: "Explore Roles",
-      imageUrl: "https://picsum.photos/seed/ssc-je-career/1200/800"
+      imageUrl: "/ssc/hero-career.png"
     }
   ];
 
@@ -765,13 +777,18 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                            transition={{ duration: 0.4 }}
                            className="absolute inset-0 flex flex-col p-8 justify-between h-full w-full"
                         >
-                           <Image
-                              src={sscSlides[activeSlide].imageUrl}
-                              alt={sscSlides[activeSlide].title}
-                              fill
-                              className="object-cover"
-                              referrerPolicy="no-referrer"
-                           />
+                           {/* Dark-teal base sits behind the photo as the graceful fallback. */}
+                           <div className="absolute inset-0 bg-gameTealDark"></div>
+                           {!heroImgFailed[activeSlide] && (
+                              <Image
+                                 src={sscSlides[activeSlide].imageUrl}
+                                 alt={sscSlides[activeSlide].title}
+                                 fill
+                                 onError={() => markHeroImgFailed(activeSlide)}
+                                 className="object-cover"
+                                 referrerPolicy="no-referrer"
+                              />
+                           )}
                            <div className="absolute inset-0 bg-gradient-to-t from-[#001c1e] via-transparent to-[#001c1e]/60"></div>
 
                            {/* Button bottom right corner */}
@@ -811,13 +828,17 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                               i === activeSlide ? 'border-gameTeal scale-105 shadow-lg shadow-gameTeal/20' : 'border-white/10 opacity-30 hover:opacity-100'
                            }`}
                         >
-                           <Image
-                              src={slide.imageUrl}
-                              alt={slide.title}
-                              fill
-                              className="object-cover"
-                              referrerPolicy="no-referrer"
-                           />
+                           <div className="absolute inset-0 bg-gameTealDark"></div>
+                           {!heroImgFailed[i] && (
+                              <Image
+                                 src={slide.imageUrl}
+                                 alt={slide.title}
+                                 fill
+                                 onError={() => markHeroImgFailed(i)}
+                                 className="object-cover"
+                                 referrerPolicy="no-referrer"
+                              />
+                           )}
                            <div className="absolute inset-0 bg-black/40"></div>
                         </button>
                      ))}
