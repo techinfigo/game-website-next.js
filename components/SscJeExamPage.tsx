@@ -1761,16 +1761,8 @@ const SscChoiceAdvantageRow: React.FC<{
             </div>
 
             <div
-              className="relative overflow-hidden bg-cover bg-center p-8 md:p-10 rounded-[3rem] shadow-2xl shadow-slate-200/50 border border-slate-100 hover:border-gameTeal/20 transition-all duration-500 hover:shadow-gameTeal/10"
-              style={{
-                backgroundColor: 'var(--color-gameTealDark)',
-                backgroundImage: imgFailed ? undefined : `url(${image})`,
-              }}
+              className="relative overflow-hidden p-8 md:p-10 rounded-[3rem] shadow-2xl shadow-slate-200/50 border border-slate-100 hover:border-gameTeal/20 transition-all duration-500 hover:shadow-gameTeal/10 bg-gameTealDark"
             >
-              {/* Solid dark-teal base sits behind the photo, so the card still reads as
-                  intentional if the background image is missing or fails to load. */}
-              {/* Dark overlay keeps text readable over the background photo */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/70 to-black/40 group-hover:from-black/90 group-hover:via-black/75 transition-colors duration-300"></div>
               <div className="relative z-10">
                 <h3 className="text-2xl md:text-3xl font-black text-white mb-6 tracking-tight leading-none group-hover:text-gameGold transition-colors">
                   {title}
@@ -1793,8 +1785,8 @@ const SscChoiceAdvantageRow: React.FC<{
           <div className="relative group">
             <div className="absolute inset-0 bg-gameTeal/10 rounded-[3rem] rotate-3 group-hover:rotate-0 transition-transform"></div>
             <div className="absolute inset-0 bg-gameGold/10 rounded-[3rem] -rotate-3 group-hover:rotate-0 transition-transform"></div>
-            {/* Same dark-teal fallback as the text card: if the photo is missing the
-                panel stays a solid brand fill instead of a broken-image icon. */}
+            {/* Dark-teal fallback: if the photo is missing the panel stays a solid
+                brand fill instead of a broken-image icon. */}
             <div className="relative rounded-[3rem] overflow-hidden border-4 border-white shadow-2xl h-[300px] lg:h-[400px] bg-gameTealDark">
               {!imgFailed && (
                 // eslint-disable-next-line @next/next/no-img-element
