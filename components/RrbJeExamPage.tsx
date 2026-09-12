@@ -1002,9 +1002,9 @@ const RrbJeExamPage: React.FC = () => {
                                  </tr>
                               ))}
                               <tr className="bg-slate-900 text-white">
-                                 <td colSpan={2} className="p-6 font-black text-right border-r border-white/10 uppercase tracking-widest">Total</td>
-                                 <td className="p-6 text-center font-black text-2xl text-gameGold">300</td>
-
+                                 <td className="p-6 font-black text-right border-r border-white/10 uppercase tracking-widest">Total</td>
+                                 <td className="p-6 text-center font-black text-2xl text-gameGold border-r border-white/10">{cbt2Pattern.reduce((sum, row) => sum + row.qs, 0)}</td>
+                                 <td className="p-6 text-center font-black text-2xl text-gameGold">{cbt2Pattern.reduce((sum, row) => sum + row.marks, 0)}</td>
                               </tr>
                            </tbody>
                         </table>
