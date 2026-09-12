@@ -789,15 +789,6 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                                  referrerPolicy="no-referrer"
                               />
                            )}
-                           <div className="absolute inset-0 bg-gradient-to-t from-[#001c1e] via-transparent to-[#001c1e]/60"></div>
-
-                           {/* Button bottom right corner */}
-                           <div className="relative z-10 mt-auto self-end">
-                              <button className="group flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white font-black text-xs uppercase tracking-widest hover:bg-gameGold hover:text-gameBlack transition-all">
-                                 {sscSlides[activeSlide].buttonText}
-                                 <TrendingUp size={14} className="group-hover:translate-x-1 transition-transform" />
-                              </button>
-                           </div>
 
                            {/* Decorative Elements */}
                            <div className="absolute top-8 right-8 opacity-20 z-10 text-white">
