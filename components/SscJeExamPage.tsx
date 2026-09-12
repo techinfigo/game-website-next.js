@@ -58,25 +58,29 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       badge: "NOTIFICATION",
       title: "SSC JE 2026 Notification Awaited",
       buttonText: "Get Alerts",
-      imageUrl: "/ssc/hero-notification.png"
+      imageUrl: "/ssc/hero-notification.png",
+      link: "https://whatsapp.com/channel/0029VaWNuqVJpe8gdAkinR1T"
     },
     {
       badge: "MOCK TEST",
       title: "Free SSC-JE Mock Test",
       buttonText: "Start Test",
-      imageUrl: "/ssc/hero-mocktest.png"
+      imageUrl: "/ssc/hero-mocktest.png",
+      link: "https://wpsvp.courses.store/courses/706159?filterId=33&sortId=7"
     },
     {
       badge: "PAY SCALE",
       title: "Level-6 Pay Matrix & Perks",
       buttonText: "Know More",
-      imageUrl: "/ssc/hero-payscale.png"
+      imageUrl: "/ssc/hero-payscale.png",
+      link: "/jobs"
     },
     {
       badge: "JE CAREER",
       title: "Become a Junior Engineer in Railways & PWD",
       buttonText: "Explore Roles",
-      imageUrl: "/ssc/hero-career.png"
+      imageUrl: "/ssc/hero-career.png",
+      link: "https://courses.gameacademy.in/wlp/excellence-ae-je-mechanical"
     }
   ];
 
@@ -777,18 +781,26 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                            transition={{ duration: 0.4 }}
                            className="absolute inset-0 flex flex-col p-8 justify-between h-full w-full"
                         >
-                           {/* Dark-teal base sits behind the photo as the graceful fallback. */}
-                           <div className="absolute inset-0 bg-gameTealDark"></div>
-                           {!heroImgFailed[activeSlide] && (
-                              <Image
-                                 src={sscSlides[activeSlide].imageUrl}
-                                 alt={sscSlides[activeSlide].title}
-                                 fill
-                                 onError={() => markHeroImgFailed(activeSlide)}
-                                 className="object-cover"
-                                 referrerPolicy="no-referrer"
-                              />
-                           )}
+                           <a
+                              href={sscSlides[activeSlide].link}
+                              target={sscSlides[activeSlide].link.startsWith('http') ? '_blank' : '_self'}
+                              rel={sscSlides[activeSlide].link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                              className="absolute inset-0 cursor-pointer"
+                              aria-label={sscSlides[activeSlide].title}
+                           >
+                              {/* Dark-teal base sits behind the photo as the graceful fallback. */}
+                              <div className="absolute inset-0 bg-gameTealDark"></div>
+                              {!heroImgFailed[activeSlide] && (
+                                 <Image
+                                    src={sscSlides[activeSlide].imageUrl}
+                                    alt={sscSlides[activeSlide].title}
+                                    fill
+                                    onError={() => markHeroImgFailed(activeSlide)}
+                                    className="object-cover"
+                                    referrerPolicy="no-referrer"
+                                 />
+                              )}
+                           </a>
 
                            {/* Decorative Elements */}
                            <div className="absolute top-8 right-8 opacity-20 z-10 text-white">
