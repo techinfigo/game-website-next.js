@@ -367,7 +367,7 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
                         return (
                            <motion.div
                               key={video.id}
-                              className="absolute w-80 bg-white rounded-3xl p-3 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] cursor-pointer border border-white/10 transition-shadow"
+                              className="group absolute w-80 bg-white rounded-3xl p-3 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] cursor-pointer border border-white/10 transition-shadow"
                               style={{
                                   left: 'calc(50% - 10rem)',
                                   top: 'calc(50% - 7.5rem)',
@@ -401,11 +401,12 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
                               onClick={() => setSelectedVideo(video.videoId)}
                            >
                                <div className="relative aspect-video rounded-2xl overflow-hidden mb-3 shadow-sm bg-slate-100">
-                                 <Image 
-                                   src={video.thumbnail} 
-                                   alt={video.title} 
+                                 <Image
+                                   src={video.thumbnail}
+                                   alt={video.title}
                                    fill
-                                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                                   sizes="320px"
+                                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                                    referrerPolicy="no-referrer"
                                  />
                                  <div className="absolute bottom-2 right-2 bg-black/70 backdrop-blur-md text-white text-[10px] font-bold px-2 py-0.5 rounded">
