@@ -865,9 +865,6 @@ const PsuExamPage: React.FC = () => {
          </div>
       </section>
 
-      {/* Video testimonials - shared AchieversSection component */}
-      <AchieversSection />
-
       {/* COURSE GRID SECTION - shared CourseGrid component, defaulted to the Govt R&D / PSUs category */}
       <section id="psu-courses" className="bg-slate-50 scroll-mt-32">
         <CourseGrid
@@ -880,6 +877,9 @@ const PsuExamPage: React.FC = () => {
 
       {/* PSU Success Stories - shared TestimonialsText component */}
       <TestimonialsText />
+
+      {/* Video testimonials - shared AchieversSection component */}
+      <AchieversSection />
 
       {/* FAQs Section */}
       <section className="py-32 bg-slate-200 border-t border-slate-300 scroll-mt-32">
