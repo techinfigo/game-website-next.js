@@ -310,7 +310,7 @@ const EseExamPage: React.FC = () => {
     { title: "Final Selection", desc: "Final merit list is based on combined marks from Prelims, Mains, and Personality Tests.", icon: Award, color: "text-gameGold", bg: "bg-gameGold/10" }
   ];
 
-  // Placeholder images below (/ese/reason-1.jpg ... reason-6.jpg) - owner will replace with final photography.
+  // Placeholder images below (/ese/reason-1.png ... reason-6.png) - owner will replace with final photography.
   const choiceAdvantages = [
     {
       title: "Prestigious Government Roles",
@@ -318,7 +318,7 @@ const EseExamPage: React.FC = () => {
       icon: Building2,
       color: "text-gameTeal",
       bg: "bg-gameTeal/5",
-      image: "/ese/reason-1.jpg"
+      image: "/ese/reason-1.png"
     },
     {
       title: "Higher Studies",
@@ -326,7 +326,7 @@ const EseExamPage: React.FC = () => {
       icon: GraduationCap,
       color: "text-gameTeal",
       bg: "bg-gameTeal/5",
-      image: "/ese/reason-2.jpg"
+      image: "/ese/reason-2.png"
     },
     {
       title: "Railway and Defense Careers",
@@ -334,7 +334,7 @@ const EseExamPage: React.FC = () => {
       icon: Shield,
       color: "text-gameTeal",
       bg: "bg-gameTeal/5",
-      image: "/ese/reason-3.jpg"
+      image: "/ese/reason-3.png"
     },
     {
       title: "Nation-Building Projects",
@@ -342,7 +342,7 @@ const EseExamPage: React.FC = () => {
       icon: Landmark,
       color: "text-gameTeal",
       bg: "bg-gameTeal/5",
-      image: "/ese/reason-4.jpg"
+      image: "/ese/reason-4.png"
     },
     {
       title: "Recognition and Prestige",
@@ -350,7 +350,7 @@ const EseExamPage: React.FC = () => {
       icon: Award,
       color: "text-gameGold",
       bg: "bg-gameGold/10",
-      image: "/ese/reason-5.jpg"
+      image: "/ese/reason-5.png"
     },
     {
       title: "An Edge for Other Exams",
@@ -358,7 +358,7 @@ const EseExamPage: React.FC = () => {
       icon: Zap,
       color: "text-gameTeal",
       bg: "bg-gameTeal/5",
-      image: "/ese/reason-6.jpg"
+      image: "/ese/reason-6.png"
     }
   ];
 
