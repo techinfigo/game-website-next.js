@@ -247,35 +247,35 @@ const PsuExamPage: React.FC = () => {
                         imageIdea: "A split-screen visual: Minimalist office desk vs. powerful rocket on launch pad at dawn.",
                         tagline: "Build for a Country.",
                         icon: Rocket,
-                        image: "/psu/rnd-advantage-1.jpg"
+                        image: "/psu/rnd-advantage-1.png"
                      },
                      {
                         title: "Cutting-Edge Frontiers",
                         imageIdea: "Dynamic infographic of satellite orbits, DNA strands, and cybersecurity shields.",
                         tagline: "One Career, Infinite Frontiers.",
                         icon: Globe,
-                        image: "/psu/rnd-advantage-2.jpg"
+                        image: "/psu/rnd-advantage-2.png"
                      },
                      {
                         title: "Sovereign Impact",
                         imageIdea: "Scientist's focused eyes reflected in a console showing successful satellite deployment.",
                         tagline: "Nation Needs Your Genius.",
                         icon: Target,
-                        image: "/psu/rnd-advantage-3.jpg"
+                        image: "/psu/rnd-advantage-3.png"
                      },
                      {
                         title: "Stability with a Soul",
                         imageIdea: "Researcher in a calm lab while a chaotic cityscape flashes behind them.",
                         tagline: "Focus on the Mission.",
                         icon: Shield,
-                        image: "/psu/rnd-advantage-4.jpg"
+                        image: "/psu/rnd-advantage-4.png"
                      },
                      {
                         title: "Brotherhood of Best Minds",
                         imageIdea: "Diverse team of scientists in collaborative triumph within a mission control room.",
                         tagline: "Stand on Shoulders of Giants.",
                         icon: Users,
-                        image: "/psu/rnd-advantage-5.jpg"
+                        image: "/psu/rnd-advantage-5.png"
                      }
                   ].map((item, index) => (
                      <RndAdvantageRow
