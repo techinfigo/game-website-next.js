@@ -18,6 +18,22 @@ function sortNewestFirst<T extends { createdAt?: number }>(list: T[]): T[] {
   return [...list].reverse();
 }
 
+function toMillis(value: unknown): number | undefined {
+  if (value == null) return undefined;
+  if (typeof value === "number") return value;
+  if (typeof value === "string") {
+    const t = Date.parse(value);
+    return Number.isNaN(t) ? undefined : t;
+  }
+  if (typeof (value as { toMillis?: () => number }).toMillis === "function") {
+    return (value as { toMillis: () => number }).toMillis();
+  }
+  if (typeof (value as { seconds?: number }).seconds === "number") {
+    return (value as { seconds: number }).seconds * 1000;
+  }
+  return undefined;
+}
+
 const SORTED_DEFAULT_JOBS = sortNewestFirst(DEFAULT_JOBS);
 
 export function useJobs(): { jobs: Job[]; loading: boolean } {
@@ -33,7 +49,6 @@ export function useJobs(): { jobs: Job[]; loading: boolean } {
 
         const fetched = snapshot.docs.map((doc) => {
           const data = doc.data() as Record<string, unknown>;
-          const createdAtField = data.createdAt as { toMillis?: () => number } | undefined;
           return {
             notification: data.notification,
             eligibility: data.eligibility,
@@ -44,7 +59,7 @@ export function useJobs(): { jobs: Job[]; loading: boolean } {
             pdfLink: data.pdfLink,
             usefulLinks: data.usefulLinks,
             recommendedCourse: data.recommendedCourse,
-            createdAt: createdAtField?.toMillis ? createdAtField.toMillis() : undefined,
+            createdAt: toMillis(data.createdAt),
           } as Omit<Job, "id">;
         });
 
