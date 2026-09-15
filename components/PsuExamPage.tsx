@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { Rocket, Globe, Target, Shield, Users, Sparkles, Briefcase, TrendingUp, Award, Building2, Coffee, Atom, Droplets, Flame, Zap, Wind, Factory, Mountain, Cpu, Ship, Plane, ScrollText, ChevronDown, ArrowRight } from 'lucide-react';
 import CourseGrid from './CourseGrid';
 import TestimonialsText from './TestimonialsText';
+import AchieversSection from './AchieversSection';
 
 const PsuExamPage: React.FC = () => {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -863,6 +864,9 @@ const PsuExamPage: React.FC = () => {
             </motion.div>
          </div>
       </section>
+
+      {/* Video testimonials - shared AchieversSection component */}
+      <AchieversSection />
 
       {/* COURSE GRID SECTION - shared CourseGrid component, defaulted to the Govt R&D / PSUs category */}
       <section id="psu-courses" className="bg-slate-50 scroll-mt-32">
