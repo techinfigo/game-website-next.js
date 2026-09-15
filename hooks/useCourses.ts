@@ -11,6 +11,7 @@ export interface Course {
   tag: string;
   tagColor?: string;
   category: string;
+  categories?: string[];
   btnColor?: string;
   enrolledCount: string;
   liveCount: string;

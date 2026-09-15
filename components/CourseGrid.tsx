@@ -10,8 +10,11 @@ import {
   MessageSquare, Trophy, PlayCircle, Award
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useCourses } from '@/hooks/useCourses';
+import { useCourses, Course } from '@/hooks/useCourses';
 import { DEFAULT_COURSES } from '@/data/defaultCourses';
+
+const courseInCategory = (course: Course, catId: string) =>
+  course.categories?.includes(catId) || course.category === catId;
 
 interface CourseGridProps {
   selectedExam: string;
@@ -74,7 +77,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
   const { courses } = useCourses(DEFAULT_COURSES);
 
   const filteredCourses = courses.filter(c => {
-    const matchesCategory = selectedExam === 'All' || c.category === selectedExam;
+    const matchesCategory = selectedExam === 'All' || courseInCategory(c, selectedExam);
 
     const searchLower = searchTerm.toLowerCase();
     const matchesSearch = searchTerm === "" ||
@@ -85,7 +88,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
   });
 
   const getCategoryCount = (catId: string) =>
-    catId === 'All' ? courses.length : courses.filter(c => c.category === catId).length;
+    catId === 'All' ? courses.length : courses.filter(c => courseInCategory(c, catId)).length;
 
   return (
     <section id="course-grid" className="pt-4 pb-12 relative min-h-[400px] bg-slate-50">
