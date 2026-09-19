@@ -30,8 +30,8 @@ const CourseMarketing: React.FC = () => {
   };
 
   return (
-    <section className="relative w-full bg-slate-900 overflow-hidden pt-20 md:pt-24">
-      <div className="relative w-full h-[300px]">
+    <section className="relative w-full bg-white overflow-hidden pt-20 md:pt-24">
+      <div className="relative w-full aspect-[1400/300]">
         <AnimatePresence initial={false}>
           <motion.img
             key={safeIndex}
