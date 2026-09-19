@@ -30,14 +30,14 @@ const CourseMarketing: React.FC = () => {
   };
 
   return (
-    <section className="relative w-full bg-slate-900 overflow-hidden">
-      <div className="relative w-full aspect-[1.8/1] md:aspect-[2.5/1] lg:aspect-[3.5/1] max-h-[460px]">
-        <AnimatePresence initial={false} custom={safeIndex}>
+    <section className="relative w-full bg-slate-900 overflow-hidden pt-20 md:pt-24">
+      <div className="relative w-full">
+        <AnimatePresence mode="wait" initial={false}>
           <motion.img
             key={safeIndex}
             src={banners[safeIndex]}
             alt={`Offer Banner ${safeIndex + 1}`}
-            className="absolute inset-0 w-full h-full object-cover"
+            className="relative w-full h-auto block"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
