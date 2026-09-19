@@ -246,7 +246,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
                                          alt={course.title} 
                                          fill
                                          unoptimized
-                                         className="object-cover transition-transform duration-1000 group-hover:scale-105" 
+                                         className="object-contain transition-transform duration-1000 group-hover:scale-105"
                                          referrerPolicy="no-referrer"
                                       />
                                       
