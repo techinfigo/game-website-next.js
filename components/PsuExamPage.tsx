@@ -19,28 +19,28 @@ const PsuExamPage: React.FC = () => {
       badge: "REGISTRATION",
       title: "GATE 2026 Registration Open",
       buttonText: "Register Now",
-      imageUrl: "/psu/hero-registration.png",
+      imageUrl: "/psu/hero-1.png",
       bgColor: "bg-[#004d50]"
     },
     {
       badge: "MOCK TEST",
       title: "Free GATE Mock Test",
       buttonText: "Start Test",
-      imageUrl: "/psu/hero-mocktest.png",
+      imageUrl: "/psu/hero-2.png",
       bgColor: "bg-[#002b2e]"
     },
     {
       badge: "PSU JOBS",
       title: "Top PSU Recruitment Through GATE",
       buttonText: "Explore Jobs",
-      imageUrl: "/psu/hero-psujobs.png",
+      imageUrl: "/psu/hero-3.png",
       bgColor: "bg-[#004d50]"
     },
     {
       badge: "IIT M.TECH",
       title: "IIT Admission Through GATE",
       buttonText: "Check Cutoffs",
-      imageUrl: "/psu/hero-iitmtech.png",
+      imageUrl: "/psu/hero-4.png",
       bgColor: "bg-[#002b2e]"
     }
   ];
