@@ -1121,21 +1121,14 @@ const RndAdvantageRow: React.FC<{
         >
           <div className={`relative group ${isEven ? 'text-left lg:text-right' : 'text-left'}`}>
             {/* Numbering */}
-            <div className={`absolute -top-10 ${isEven ? 'left-0 lg:left-auto lg:-right-4' : 'left-0 lg:-left-4'} text-8xl font-black text-gameTeal/5 pointer-events-none -z-10`}>
+            <div className={`absolute -top-20 ${isEven ? 'left-0 lg:left-auto lg:-right-4' : 'left-0 lg:-left-4'} text-7xl font-black text-gameTeal/70 pointer-events-none z-10`}>
               {index + 1 < 10 ? `0${index + 1}` : index + 1}
             </div>
 
             <div
-              className="relative overflow-hidden bg-cover bg-center p-8 md:p-10 rounded-[3rem] shadow-2xl shadow-slate-300/50 border border-slate-100 hover:border-gameTeal/20 transition-all duration-500 hover:shadow-gameTeal/10"
-              style={{
-                backgroundColor: 'var(--color-gameTealDark)',
-                backgroundImage: imgFailed ? undefined : `url(${image})`,
-              }}
+              className="relative overflow-hidden p-8 md:p-10 rounded-[3rem] shadow-2xl shadow-slate-300/50 border border-slate-100 hover:border-gameTeal/20 transition-all duration-500 hover:shadow-gameTeal/10"
+              style={{ backgroundColor: 'var(--color-gameTealDark)' }}
             >
-              {/* Solid dark-teal base sits behind the photo, so the card still reads as
-                  intentional if the background image is missing or fails to load. */}
-              {/* Dark overlay keeps text readable over the background photo */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/70 to-black/40 group-hover:from-black/90 group-hover:via-black/75 transition-colors duration-300"></div>
               <div className="relative z-10">
                 <h3 className="text-2xl md:text-3xl font-black text-white mb-6 tracking-tight leading-none group-hover:text-gameGold transition-colors">
                   {title}
