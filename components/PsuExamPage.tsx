@@ -19,28 +19,28 @@ const PsuExamPage: React.FC = () => {
       badge: "REGISTRATION",
       title: "GATE 2026 Registration Open",
       buttonText: "Register Now",
-      imageUrl: "https://picsum.photos/seed/gate-reg/1200/800",
+      imageUrl: "/psu/hero-1.png",
       bgColor: "bg-[#004d50]"
     },
     {
       badge: "MOCK TEST",
       title: "Free GATE Mock Test",
       buttonText: "Start Test",
-      imageUrl: "https://picsum.photos/seed/gate-mock/1200/800",
+      imageUrl: "/psu/hero-2.png",
       bgColor: "bg-[#002b2e]"
     },
     {
       badge: "PSU JOBS",
       title: "Top PSU Recruitment Through GATE",
       buttonText: "Explore Jobs",
-      imageUrl: "https://picsum.photos/seed/psu-jobs/1200/800",
+      imageUrl: "/psu/hero-3.png",
       bgColor: "bg-[#004d50]"
     },
     {
       badge: "IIT M.TECH",
       title: "IIT Admission Through GATE",
       buttonText: "Check Cutoffs",
-      imageUrl: "https://picsum.photos/seed/iit-mtech/1200/800",
+      imageUrl: "/psu/hero-4.png",
       bgColor: "bg-[#002b2e]"
     }
   ];
@@ -150,16 +150,6 @@ const PsuExamPage: React.FC = () => {
                               className="object-cover"
                               referrerPolicy="no-referrer"
                            />
-                           <div className="absolute inset-0 bg-gradient-to-t from-[#001c1e] via-transparent to-[#001c1e]/60"></div>
-                           
-                           {/* Button bottom right corner */}
-                           <div className="relative z-10 mt-auto self-end">
-                              <button className="group flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white font-black text-xs uppercase tracking-widest hover:bg-gameGold hover:text-gameBlack transition-all">
-                                 {slides[activeSlide].buttonText}
-                                 <TrendingUp size={14} className="group-hover:translate-x-1 transition-transform" />
-                              </button>
-                           </div>
-                           
                            {/* Decorative Elements */}
                            <div className="absolute top-8 right-8 opacity-20 z-10 text-white">
                               <Atom size={60} />
