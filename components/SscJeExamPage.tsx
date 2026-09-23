@@ -58,29 +58,25 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       badge: "NOTIFICATION",
       title: "SSC JE 2026 Notification Awaited",
       buttonText: "Get Alerts",
-      imageUrl: "/ssc/hero-notification.png",
-      link: "https://whatsapp.com/channel/0029VaWNuqVJpe8gdAkinR1T"
+      imageUrl: "/ssc/hero-notification.png"
     },
     {
       badge: "MOCK TEST",
       title: "Free SSC-JE Mock Test",
       buttonText: "Start Test",
-      imageUrl: "/ssc/hero-mocktest.png",
-      link: "https://wpsvp.courses.store/courses/706159?filterId=33&sortId=7"
+      imageUrl: "/ssc/hero-mocktest.png"
     },
     {
       badge: "PAY SCALE",
       title: "Level-6 Pay Matrix & Perks",
       buttonText: "Know More",
-      imageUrl: "/ssc/hero-payscale.png",
-      link: "/jobs"
+      imageUrl: "/ssc/hero-payscale.png"
     },
     {
       badge: "JE CAREER",
       title: "Become a Junior Engineer in Railways & PWD",
       buttonText: "Explore Roles",
-      imageUrl: "/ssc/hero-career.png",
-      link: "https://courses.gameacademy.in/wlp/excellence-ae-je-mechanical"
+      imageUrl: "/ssc/hero-career.png"
     }
   ];
 
@@ -771,7 +767,19 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                   className="relative h-full flex flex-col justify-between"
                >
                   {/* Main Display Area */}
-                  <div className="relative flex-grow bg-[#001c1e] rounded-[1.5rem] border border-white/10 overflow-hidden shadow-2xl min-h-[350px]">
+                  <div
+                     role="button"
+                     tabIndex={0}
+                     aria-label="Jump to SSC course grid"
+                     onClick={() => scrollToSection('courses')}
+                     onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                           e.preventDefault();
+                           scrollToSection('courses');
+                        }
+                     }}
+                     className="relative flex-grow bg-[#001c1e] rounded-[1.5rem] border border-white/10 overflow-hidden shadow-2xl min-h-[350px] cursor-pointer"
+                  >
                      <AnimatePresence mode="wait">
                         <motion.div
                            key={activeSlide}
@@ -781,13 +789,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                            transition={{ duration: 0.4 }}
                            className="absolute inset-0 flex flex-col p-8 justify-between h-full w-full"
                         >
-                           <a
-                              href={sscSlides[activeSlide].link}
-                              target={sscSlides[activeSlide].link.startsWith('http') ? '_blank' : '_self'}
-                              rel={sscSlides[activeSlide].link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                              className="absolute inset-0 cursor-pointer"
-                              aria-label={sscSlides[activeSlide].title}
-                           >
+                           <div className="absolute inset-0">
                               {/* Dark-teal base sits behind the photo as the graceful fallback. */}
                               <div className="absolute inset-0 bg-gameTealDark"></div>
                               {!heroImgFailed[activeSlide] && (
@@ -800,7 +802,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                                     referrerPolicy="no-referrer"
                                  />
                               )}
-                           </a>
+                           </div>
 
                            {/* Decorative Elements */}
                            <div className="absolute top-8 right-8 opacity-20 z-10 text-white">
@@ -814,7 +816,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                         {sscSlides.map((_, i) => (
                            <button
                               key={i}
-                              onClick={() => setActiveSlide(i)}
+                              onClick={(e) => { e.stopPropagation(); setActiveSlide(i); }}
                               className={`h-1 rounded-full transition-all duration-300 ${i === activeSlide ? 'w-6 bg-gameTeal' : 'w-1.5 bg-white/30'}`}
                            />
                         ))}
