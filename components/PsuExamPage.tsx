@@ -20,7 +20,7 @@ const PsuExamPage: React.FC = () => {
       title: "GATE 2026 Registration Open",
       buttonText: "Register Now",
       imageUrl: "/psu/hero-1.png",
-      link: "#psu-courses",
+      link: "/jobs",
       bgColor: "bg-[#004d50]"
     },
     {
@@ -28,7 +28,7 @@ const PsuExamPage: React.FC = () => {
       title: "Free GATE Mock Test",
       buttonText: "Start Test",
       imageUrl: "/psu/hero-2.png",
-      link: "#psu-courses",
+      link: "https://courses.gameacademy.in/wlp/vijeta-test-series-gate-me-new",
       bgColor: "bg-[#002b2e]"
     },
     {
@@ -36,7 +36,7 @@ const PsuExamPage: React.FC = () => {
       title: "Top PSU Recruitment Through GATE",
       buttonText: "Explore Jobs",
       imageUrl: "/psu/hero-3.png",
-      link: "/jobs",
+      link: "/rankers",
       bgColor: "bg-[#004d50]"
     },
     {
@@ -44,7 +44,7 @@ const PsuExamPage: React.FC = () => {
       title: "IIT Admission Through GATE",
       buttonText: "Check Cutoffs",
       imageUrl: "/psu/hero-4.png",
-      link: "/rankers",
+      link: "https://wpsvp.courses.store/courses/848557?filterId=1&sortId=7",
       bgColor: "bg-[#002b2e]"
     }
   ];
