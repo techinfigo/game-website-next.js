@@ -5,6 +5,8 @@ import React, { useRef } from 'react';
 import Image from 'next/image';
 import { ArrowRight, ChevronRight, ChevronLeft, BookOpen } from 'lucide-react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { useLatestBlogPosts } from '@/hooks/useLatestBlogPosts';
 
 const YouMustRead: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -19,38 +21,7 @@ const YouMustRead: React.FC = () => {
     }
   };
 
-  const blogs = [
-    {
-      id: 5,
-      title: "Preparation Hacks (Strategy) #5",
-      img: "/blog-5.png",
-      desc: "Master the art of time management during exam pressure."
-    },
-    {
-      id: 4,
-      title: "Preparation Hacks (Strategy) #4",
-      img: "/blog-6.png",
-      desc: "How to create short notes that actually help in revision."
-    },
-    {
-      id: 3,
-      title: "Preparation Hacks (Strategy) #3",
-      img: "/blog-2.png",
-      desc: "Understanding the psychology of competitive exams."
-    },
-    {
-      id: 2,
-      title: "Preparation Hacks (Strategy) #2",
-      img: "/blog-3.png",
-      desc: "Best resources to follow for General Studies."
-    },
-    {
-      id: 1,
-      title: "Preparation Hacks (Strategy) #1",
-      img: "/blog-4.png",
-      desc: "Why consistency beats intensity in the long run."
-    }
-  ];
+  const { posts: blogs } = useLatestBlogPosts(6);
 
   return (
     <section className="py-16 lg:py-20 bg-[#202020] text-white relative overflow-hidden">
@@ -80,12 +51,12 @@ const YouMustRead: React.FC = () => {
                  A treasure trove of knowledge filled with expert insights, proven hacks and powerful strategies to simplify concepts, boost efficiency and excel in competitive exams with confidence.
               </p>
               
-              <button className="bg-[#075d63] hover:bg-[#054a4f] text-white px-8 py-4 rounded-xl font-bold text-sm uppercase tracking-wider flex items-center gap-3 transition-all shadow-[0_0_20px_rgba(7,93,99,0.4)] hover:-translate-y-1 group">
+              <Link href="/blog" className="w-fit bg-[#075d63] hover:bg-[#054a4f] text-white px-8 py-4 rounded-xl font-bold text-sm uppercase tracking-wider flex items-center gap-3 transition-all shadow-[0_0_20px_rgba(7,93,99,0.4)] hover:-translate-y-1 group">
                  VIEW ALL 
                  <div className="bg-[#f2c537] rounded-full p-1 group-hover:translate-x-1 transition-transform">
                     <ArrowRight size={14} className="text-black" />
                  </div>
-              </button>
+              </Link>
            </motion.div>
 
            {/* Cards Slider Area */}
@@ -112,7 +83,7 @@ const YouMustRead: React.FC = () => {
               >
                  {blogs.map((blog, idx) => (
                     <motion.div 
-                       key={blog.id} 
+                       key={`${blog.id}-${blog.title}`}
                        className="min-w-[300px] md:min-w-[340px] bg-[#e0f2f1] rounded-[2rem] overflow-hidden text-slate-900 snap-center group hover:shadow-2xl hover:shadow-[#075d63]/20 transition-all duration-500 relative"
                        initial={{ opacity: 0, y: 20 }}
                        whileInView={{ opacity: 1, y: 0 }}
@@ -121,7 +92,7 @@ const YouMustRead: React.FC = () => {
                     >
                        <div className="h-52 overflow-hidden relative">
                           <Image 
-                             src={blog.img} 
+                             src={blog.image || '/blog-5.png'} 
                              alt={blog.title} 
                              fill
                              className="object-cover group-hover:scale-110 transition-transform duration-700"
@@ -132,7 +103,7 @@ const YouMustRead: React.FC = () => {
                           
                           {/* Floating Tag */}
                           <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider text-[#075d63] shadow-lg">
-                             Strategy
+                             {blog.category || 'Strategy'}
                           </div>
                        </div>
                        
@@ -146,13 +117,13 @@ const YouMustRead: React.FC = () => {
                              {blog.title}
                           </h3>
                           <p className="text-slate-600 text-sm mb-6 line-clamp-2 font-medium">
-                             {blog.desc}
+                             {blog.excerpt}
                           </p>
                           
-                          <a href="#" className="inline-flex items-center gap-2 text-sm font-black text-slate-400 hover:text-[#075d63] uppercase tracking-wide group/link transition-colors">
+                          <Link href="/blog" className="inline-flex items-center gap-2 text-sm font-black text-slate-400 hover:text-[#075d63] uppercase tracking-wide group/link transition-colors">
                              Read more 
                              <ArrowRight size={14} className="group-hover/link:translate-x-1 transition-transform" />
-                          </a>
+                          </Link>
                        </div>
                     </motion.div>
                  ))}
