@@ -1,14 +1,21 @@
 #!/usr/bin/env node
 /**
- * Scans public/ recursively for .png/.jpg/.jpeg files over SIZE_THRESHOLD_BYTES.
- * For each, writes:
- *   - a sibling .webp (quality ~80)
- *   - an overwritten original (same name/ext) re-encoded as optimized JPEG/PNG,
- *     resized so the longest side is at most MAX_DIMENSION (no upscaling)
+ * Walks public/ recursively and optimizes images in place (same filename/path,
+ * no code changes needed elsewhere):
  *
- * Usage:
- *   node scripts/optimize-images.mjs           # dry run (default, no writes)
- *   node scripts/optimize-images.mjs --apply   # actually write files
+ *  - public/rankers/**  (small grayscale thumbnails displayed ~152x215):
+ *      resized down to max 400px width (2x retina headroom for a 152px display)
+ *      and recompressed. These are the biggest offenders.
+ *
+ *  - other images over ~400KB (hero banners, about images, etc.):
+ *      recompressed at high quality (~80) and capped at 1600px width if wider.
+ *      Content images that are already <=1600px wide are only recompressed,
+ *      never resized.
+ *
+ * Files under 100KB, and files whose recompression doesn't actually shrink
+ * them (and don't need resizing), are left untouched.
+ *
+ * Usage: node scripts/optimize-images.mjs
  */
 
 import fs from "node:fs/promises";
@@ -16,12 +23,15 @@ import path from "node:path";
 import sharp from "sharp";
 
 const PUBLIC_DIR = path.resolve(process.cwd(), "public");
-const SIZE_THRESHOLD_BYTES = 400 * 1024; // 400KB
-const MAX_DIMENSION = 1920;
-const WEBP_QUALITY = 80;
-const JPEG_QUALITY = 82;
+const RANKERS_DIR = path.join(PUBLIC_DIR, "rankers");
 
-const APPLY = process.argv.includes("--apply");
+const MIN_SIZE_BYTES = 100 * 1024; // skip anything smaller than this
+const CONTENT_THRESHOLD_BYTES = 400 * 1024; // only touch "other" images above this
+const RANKERS_MAX_WIDTH = 400;
+const CONTENT_MAX_WIDTH = 1600;
+const QUALITY = 80;
+
+const IMAGE_EXTS = new Set([".png", ".jpg", ".jpeg", ".webp"]);
 
 async function walk(dir) {
   const entries = await fs.readdir(dir, { withFileTypes: true });
@@ -31,8 +41,7 @@ async function walk(dir) {
     if (entry.isDirectory()) {
       files.push(...(await walk(full)));
     } else if (entry.isFile()) {
-      const ext = path.extname(entry.name).toLowerCase();
-      if (ext === ".png" || ext === ".jpg" || ext === ".jpeg") {
+      if (IMAGE_EXTS.has(path.extname(entry.name).toLowerCase())) {
         files.push(full);
       }
     }
@@ -44,84 +53,56 @@ function formatBytes(bytes) {
   return `${(bytes / 1024).toFixed(1)}KB`;
 }
 
-async function processFile(filePath) {
-  const stat = await fs.stat(filePath);
-  if (stat.size <= SIZE_THRESHOLD_BYTES) return null;
-
-  const ext = path.extname(filePath).toLowerCase();
-  const isPng = ext === ".png";
-  const webpPath = filePath.slice(0, -ext.length) + ".webp";
-
-  // Read fully into memory first so libvips never holds a handle on the
-  // source path — on Windows, overwriting a file sharp is still reading
-  // from (even after toBuffer() resolves) can intermittently fail.
-  const inputBuffer = await fs.readFile(filePath);
-
-  const metadata = await sharp(inputBuffer, { failOn: "none" }).metadata();
-  const longestSide = Math.max(metadata.width ?? 0, metadata.height ?? 0);
-  const shouldResize = longestSide > MAX_DIMENSION;
-
-  const resizeOpts = shouldResize
-    ? { width: MAX_DIMENSION, height: MAX_DIMENSION, fit: "inside", withoutEnlargement: true }
-    : null;
-
-  // Build the optimized WebP buffer
-  let webpPipeline = sharp(inputBuffer, { failOn: "none" });
-  if (resizeOpts) webpPipeline = webpPipeline.resize(resizeOpts);
-  webpPipeline = webpPipeline.webp({ quality: WEBP_QUALITY });
-
-  // Build the optimized original-format buffer (overwrite in place)
-  let originalPipeline = sharp(inputBuffer, { failOn: "none" });
-  if (resizeOpts) originalPipeline = originalPipeline.resize(resizeOpts);
-  originalPipeline = isPng
-    ? originalPipeline.png({ quality: JPEG_QUALITY, compressionLevel: 9 })
-    : originalPipeline.jpeg({ quality: JPEG_QUALITY, mozjpeg: true });
-
-  const [webpBuffer, originalBuffer] = await Promise.all([
-    webpPipeline.toBuffer(),
-    originalPipeline.toBuffer(),
-  ]);
-
-  const result = {
-    filePath,
-    webpPath,
-    oldSize: stat.size,
-    newOriginalSize: originalBuffer.length,
-    newWebpSize: webpBuffer.length,
-    resized: shouldResize,
-    dimensions: `${metadata.width}x${metadata.height}`,
-  };
-
-  if (APPLY) {
-    await writeFileWithRetry(webpPath, webpBuffer);
-    // Only overwrite original if it's actually smaller — never make it bigger.
-    if (originalBuffer.length < stat.size) {
-      await writeFileWithRetry(filePath, originalBuffer);
-    } else {
-      result.originalSkipped = true;
-    }
+async function encode(pipeline, ext) {
+  if (ext === ".png") {
+    return pipeline.png({ palette: true, quality: QUALITY, compressionLevel: 9, effort: 10 }).toBuffer();
   }
-
-  return result;
+  if (ext === ".webp") {
+    return pipeline.webp({ quality: QUALITY, effort: 6 }).toBuffer();
+  }
+  return pipeline.jpeg({ quality: QUALITY, mozjpeg: true }).toBuffer();
 }
 
-async function writeFileWithRetry(filePath, buffer, retries = 10, delayMs = 1000) {
-  for (let attempt = 1; attempt <= retries; attempt++) {
-    try {
-      await fs.writeFile(filePath, buffer);
-      return;
-    } catch (err) {
-      if (attempt === retries) throw err;
-      await new Promise((resolve) => setTimeout(resolve, delayMs));
-    }
+async function processFile(filePath) {
+  const stat = await fs.stat(filePath);
+  if (stat.size < MIN_SIZE_BYTES) return null;
+
+  const isRanker = filePath.startsWith(RANKERS_DIR + path.sep);
+  if (!isRanker && stat.size < CONTENT_THRESHOLD_BYTES) return null;
+
+  const ext = path.extname(filePath).toLowerCase();
+  const maxWidth = isRanker ? RANKERS_MAX_WIDTH : CONTENT_MAX_WIDTH;
+
+  const inputBuffer = await fs.readFile(filePath);
+  const metadata = await sharp(inputBuffer, { failOn: "none" }).metadata();
+  const width = metadata.width ?? 0;
+  const shouldResize = width > maxWidth;
+
+  let pipeline = sharp(inputBuffer, { failOn: "none" });
+  if (shouldResize) {
+    pipeline = pipeline.resize({ width: maxWidth, withoutEnlargement: true });
   }
+
+  const outBuffer = await encode(pipeline, ext);
+
+  const worthWriting = shouldResize || outBuffer.length < stat.size;
+  if (worthWriting) {
+    await fs.writeFile(filePath, outBuffer);
+  }
+
+  return {
+    filePath,
+    category: isRanker ? "ranker" : "content",
+    oldSize: stat.size,
+    newSize: worthWriting ? outBuffer.length : stat.size,
+    resized: shouldResize,
+    dims: metadata.width && metadata.height ? `${metadata.width}x${metadata.height}` : "?",
+    written: worthWriting,
+  };
 }
 
 async function main() {
-  const targetArgs = process.argv.slice(2).filter((a) => !a.startsWith("--"));
-  const allFiles = targetArgs.length
-    ? targetArgs.map((a) => path.resolve(PUBLIC_DIR, a))
-    : await walk(PUBLIC_DIR);
+  const allFiles = await walk(PUBLIC_DIR);
   const results = [];
   const errors = [];
 
@@ -138,43 +119,32 @@ async function main() {
   results.sort((a, b) => b.oldSize - a.oldSize);
 
   let totalOld = 0;
-  let totalNewOriginal = 0;
-  let totalNewWebp = 0;
+  let totalNew = 0;
 
-  console.log(`${APPLY ? "APPLYING" : "DRY RUN"} — ${results.length} file(s) over ${formatBytes(SIZE_THRESHOLD_BYTES)}\n`);
+  console.log(`Processed ${results.length} candidate file(s)\n`);
 
   for (const r of results) {
     totalOld += r.oldSize;
-    totalNewOriginal += r.newOriginalSize;
-    totalNewWebp += r.newWebpSize;
+    totalNew += r.newSize;
 
     const rel = path.relative(PUBLIC_DIR, r.filePath);
-    const relWebp = path.relative(PUBLIC_DIR, r.webpPath);
-    const resizeNote = r.resized ? ` [resized from ${r.dimensions}]` : "";
-    const skipNote = r.originalSkipped ? " (original NOT overwritten — new size was not smaller)" : "";
+    const resizeNote = r.resized ? ` [resized from ${r.dims} to max ${r.category === "ranker" ? RANKERS_MAX_WIDTH : CONTENT_MAX_WIDTH}px wide]` : "";
+    const skipNote = !r.written ? " (unchanged — already optimized)" : "";
 
-    console.log(
-      `${rel}: ${formatBytes(r.oldSize)} -> ${formatBytes(r.newOriginalSize)} (original)${resizeNote}${skipNote}`
-    );
-    console.log(`  + ${relWebp}: ${formatBytes(r.newWebpSize)} (new webp)`);
+    console.log(`[${r.category}] ${rel}: ${formatBytes(r.oldSize)} -> ${formatBytes(r.newSize)}${resizeNote}${skipNote}`);
   }
 
-  const savedOriginal = totalOld - totalNewOriginal;
-  const pctOriginal = totalOld ? ((savedOriginal / totalOld) * 100).toFixed(1) : "0.0";
+  const saved = totalOld - totalNew;
+  const pct = totalOld ? ((saved / totalOld) * 100).toFixed(1) : "0.0";
 
   console.log("\n--- Summary ---");
-  console.log(`Files processed: ${results.length}`);
-  console.log(`Total old size:            ${formatBytes(totalOld)}`);
-  console.log(`Total new original size:   ${formatBytes(totalNewOriginal)} (${pctOriginal}% reduction)`);
-  console.log(`Total new webp size (add): ${formatBytes(totalNewWebp)}`);
-  console.log(`Net disk delta if applied: ${formatBytes(totalNewOriginal + totalNewWebp - totalOld)} (originals replaced + webp added alongside)`);
-
-  if (!APPLY) {
-    console.log("\nThis was a DRY RUN. No files were written. Re-run with --apply to write changes.");
-  }
+  console.log(`Files touched: ${results.length}`);
+  console.log(`Total before: ${formatBytes(totalOld)}`);
+  console.log(`Total after:  ${formatBytes(totalNew)}`);
+  console.log(`Saved:        ${formatBytes(saved)} (${pct}%)`);
 
   if (errors.length) {
-    console.log(`\n${errors.length} file(s) FAILED — re-run the script to retry them:`);
+    console.log(`\n${errors.length} file(s) FAILED:`);
     for (const { file, err } of errors) {
       console.log(`  ${path.relative(PUBLIC_DIR, file)}: ${err.message}`);
     }
