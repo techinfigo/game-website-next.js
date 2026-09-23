@@ -56,6 +56,22 @@ const PsuExamPage: React.FC = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 130;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-gameBlack selection:bg-gameTeal selection:text-white">
       
@@ -133,7 +149,19 @@ const PsuExamPage: React.FC = () => {
                   className="relative h-full flex flex-col"
                >
                   {/* Main Display Area */}
-                  <div className="relative flex-grow bg-[#001c1e] rounded-[1.5rem] border border-white/10 overflow-hidden shadow-2xl min-h-[350px]">
+                  <div
+                     role="button"
+                     tabIndex={0}
+                     aria-label="Jump to PSU course grid"
+                     onClick={() => scrollToSection('psu-courses')}
+                     onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                           e.preventDefault();
+                           scrollToSection('psu-courses');
+                        }
+                     }}
+                     className="relative flex-grow bg-[#001c1e] rounded-[1.5rem] border border-white/10 overflow-hidden shadow-2xl min-h-[350px] cursor-pointer"
+                  >
                      <AnimatePresence mode="wait">
                         <motion.div
                            key={activeSlide}
@@ -160,9 +188,9 @@ const PsuExamPage: React.FC = () => {
                      {/* Slide Indicators */}
                      <div className="absolute bottom-5 right-6 flex gap-1.5">
                         {slides.map((_, i) => (
-                           <button 
+                           <button
                               key={i}
-                              onClick={() => setActiveSlide(i)}
+                              onClick={(e) => { e.stopPropagation(); setActiveSlide(i); }}
                               className={`h-1 rounded-full transition-all duration-300 ${i === activeSlide ? 'w-6 bg-gameTeal' : 'w-1.5 bg-white/30'}`}
                            />
                         ))}
