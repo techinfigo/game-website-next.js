@@ -20,6 +20,7 @@ const PsuExamPage: React.FC = () => {
       title: "GATE 2026 Registration Open",
       buttonText: "Register Now",
       imageUrl: "/psu/hero-1.png",
+      link: "#psu-courses",
       bgColor: "bg-[#004d50]"
     },
     {
@@ -27,6 +28,7 @@ const PsuExamPage: React.FC = () => {
       title: "Free GATE Mock Test",
       buttonText: "Start Test",
       imageUrl: "/psu/hero-2.png",
+      link: "#psu-courses",
       bgColor: "bg-[#002b2e]"
     },
     {
@@ -34,6 +36,7 @@ const PsuExamPage: React.FC = () => {
       title: "Top PSU Recruitment Through GATE",
       buttonText: "Explore Jobs",
       imageUrl: "/psu/hero-3.png",
+      link: "/jobs",
       bgColor: "bg-[#004d50]"
     },
     {
@@ -41,9 +44,23 @@ const PsuExamPage: React.FC = () => {
       title: "IIT Admission Through GATE",
       buttonText: "Check Cutoffs",
       imageUrl: "/psu/hero-4.png",
+      link: "/rankers",
       bgColor: "bg-[#002b2e]"
     }
   ];
+
+  // "#..." scrolls to that section on this page; http links open in a new tab;
+  // internal paths navigate in the same tab.
+  const handleHeroClick = () => {
+    const link = slides[activeSlide].link;
+    if (link.startsWith('#')) {
+      document.getElementById(link.slice(1))?.scrollIntoView({ behavior: 'smooth' });
+    } else if (link.startsWith('http')) {
+      window.open(link, '_blank', 'noopener');
+    } else {
+      window.location.href = link;
+    }
+  };
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -143,13 +160,27 @@ const PsuExamPage: React.FC = () => {
                            transition={{ duration: 0.4 }}
                            className="absolute inset-0 flex flex-col p-8"
                         >
-                           <Image 
-                              src={slides[activeSlide].imageUrl} 
-                              alt={slides[activeSlide].title}
-                              fill
-                              className="object-cover"
-                              referrerPolicy="no-referrer"
-                           />
+                           <div
+                              role="button"
+                              tabIndex={0}
+                              onClick={handleHeroClick}
+                              onKeyDown={(e) => {
+                                 if (e.key === 'Enter' || e.key === ' ') {
+                                    e.preventDefault();
+                                    handleHeroClick();
+                                 }
+                              }}
+                              className="absolute inset-0 cursor-pointer"
+                              aria-label={slides[activeSlide].title}
+                           >
+                              <Image
+                                 src={slides[activeSlide].imageUrl}
+                                 alt={slides[activeSlide].title}
+                                 fill
+                                 className="object-cover"
+                                 referrerPolicy="no-referrer"
+                              />
+                           </div>
                            {/* Decorative Elements */}
                            <div className="absolute top-8 right-8 opacity-20 z-10 text-white">
                               <Atom size={60} />
@@ -162,7 +193,7 @@ const PsuExamPage: React.FC = () => {
                         {slides.map((_, i) => (
                            <button 
                               key={i}
-                              onClick={() => setActiveSlide(i)}
+                              onClick={(e) => { e.stopPropagation(); setActiveSlide(i); }}
                               className={`h-1 rounded-full transition-all duration-300 ${i === activeSlide ? 'w-6 bg-gameTeal' : 'w-1.5 bg-white/30'}`}
                            />
                         ))}
@@ -174,7 +205,7 @@ const PsuExamPage: React.FC = () => {
                      {slides.map((slide, i) => (
                         <button
                            key={i}
-                           onClick={() => setActiveSlide(i)}
+                           onClick={(e) => { e.stopPropagation(); setActiveSlide(i); }}
                            className={`relative aspect-[16/9] rounded-lg border transition-all duration-300 overflow-hidden ${
                               i === activeSlide ? 'border-gameTeal scale-105 shadow-lg shadow-gameTeal/20' : 'border-white/10 opacity-30 hover:opacity-100'
                            }`}
