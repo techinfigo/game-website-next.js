@@ -202,8 +202,8 @@ const Hero: React.FC = () => {
 
              <motion.div 
                 className="relative z-30 w-full flex items-end justify-center h-full"
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ y: 50 }}
+                animate={{ y: 0 }}
                 transition={{ duration: 1, ease: "easeOut" }}
              >
                 <div className="relative flex items-end justify-center w-full h-full max-h-[500px] lg:max-h-[600px]">
@@ -213,7 +213,7 @@ const Hero: React.FC = () => {
                           alt="Gaurav Babu Sir" 
                           fill
                           priority
-                          unoptimized
+                          sizes="(min-width: 1024px) 700px, 100vw"
                           className="object-contain object-bottom drop-shadow-[0_-5px_30px_rgba(0,0,0,0.1)] z-30"
                           referrerPolicy="no-referrer"
                         />
