@@ -318,7 +318,7 @@ const EseExamPage: React.FC = () => {
       icon: Building2,
       color: "text-gameTeal",
       bg: "bg-gameTeal/5",
-      image: "/ese/reason-1.png"
+      image: "/ese/reason-1.webp"
     },
     {
       title: "Higher Studies",
@@ -326,7 +326,7 @@ const EseExamPage: React.FC = () => {
       icon: GraduationCap,
       color: "text-gameTeal",
       bg: "bg-gameTeal/5",
-      image: "/ese/reason-2.png"
+      image: "/ese/reason-2.webp"
     },
     {
       title: "Railway and Defense Careers",
@@ -334,7 +334,7 @@ const EseExamPage: React.FC = () => {
       icon: Shield,
       color: "text-gameTeal",
       bg: "bg-gameTeal/5",
-      image: "/ese/reason-3.png"
+      image: "/ese/reason-3.webp"
     },
     {
       title: "Nation-Building Projects",
@@ -342,7 +342,7 @@ const EseExamPage: React.FC = () => {
       icon: Landmark,
       color: "text-gameTeal",
       bg: "bg-gameTeal/5",
-      image: "/ese/reason-4.png"
+      image: "/ese/reason-4.webp"
     },
     {
       title: "Recognition and Prestige",
@@ -350,7 +350,7 @@ const EseExamPage: React.FC = () => {
       icon: Award,
       color: "text-gameGold",
       bg: "bg-gameGold/10",
-      image: "/ese/reason-5.png"
+      image: "/ese/reason-5.webp"
     },
     {
       title: "An Edge for Other Exams",
@@ -358,7 +358,7 @@ const EseExamPage: React.FC = () => {
       icon: Zap,
       color: "text-gameTeal",
       bg: "bg-gameTeal/5",
-      image: "/ese/reason-6.png"
+      image: "/ese/reason-6.webp"
     }
   ];
 
@@ -741,7 +741,7 @@ const EseExamPage: React.FC = () => {
                >
                   <div className="relative bg-white rounded-[2.5rem] p-4 border border-gameTeal/10 shadow-2xl overflow-hidden group aspect-video">
                      <Image 
-                        src="/exam-ese-hero.png" 
+                        src="/exam-ese-hero.webp" 
                         alt="Infrastructure Project" 
                         fill
                         className="rounded-[2rem] object-cover transform group-hover:scale-105 transition-transform duration-700"
@@ -1684,7 +1684,7 @@ const EseExamPage: React.FC = () => {
                               <div className="px-5 pb-5 pt-0 border-t border-dashed border-gameTeal/10 mt-2">
                                  <div className="pt-4 flex items-start gap-3">
                                     <img
-                                       src="/gaurav-sir.png"
+                                       src="/gaurav-sir.webp"
                                        alt="Gaurav Babu Sir"
                                        className="w-10 h-10 rounded-full object-cover object-top border-2 border-white shadow-md ring-1 ring-gameTeal/20 shrink-0"
                                     />

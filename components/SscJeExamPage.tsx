@@ -58,28 +58,28 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       badge: "NOTIFICATION",
       title: "SSC JE 2026 Notification Awaited",
       buttonText: "Get Alerts",
-      imageUrl: "/ssc/hero-notification.png",
+      imageUrl: "/ssc/hero-notification.webp",
       link: "https://whatsapp.com/channel/0029VaWNuqVJpe8gdAkinR1T"
     },
     {
       badge: "MOCK TEST",
       title: "Free SSC-JE Mock Test",
       buttonText: "Start Test",
-      imageUrl: "/ssc/hero-mocktest.png",
+      imageUrl: "/ssc/hero-mocktest.webp",
       link: "https://wpsvp.courses.store/courses/706159?filterId=33&sortId=7"
     },
     {
       badge: "PAY SCALE",
       title: "Level-6 Pay Matrix & Perks",
       buttonText: "Know More",
-      imageUrl: "/ssc/hero-payscale.png",
+      imageUrl: "/ssc/hero-payscale.webp",
       link: "/jobs"
     },
     {
       badge: "JE CAREER",
       title: "Become a Junior Engineer in Railways & PWD",
       buttonText: "Explore Roles",
-      imageUrl: "/ssc/hero-career.png",
+      imageUrl: "/ssc/hero-career.webp",
       link: "#courses"
     }
   ];
@@ -163,7 +163,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       label: "Prestige & Security",
       title: "A Golden Ticket to a Respected & Secure Government Career.",
       desc: "Secure a Group B (Non-Gazetted) position that commands respect in society and provides lifelong stability.",
-      image: "/ssc/reason-1.png", 
+      image: "/ssc/reason-1.webp", 
       icon: Shield,
       color: "text-gameTeal",
       bg: "bg-gameTeal/5"
@@ -172,7 +172,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       label: "Salary & Perks",
       title: "Attractive & Progressive Salary with Fantastic Perks",
       desc: "Enjoy Level-6 pay scale with HRA, DA, medical benefits, and a lifestyle that ensures prosperity for you and your family.",
-      image: "/ssc/reason-2.png", 
+      image: "/ssc/reason-2.webp", 
       icon: Wallet,
       color: "text-gameTeal",
       bg: "bg-gameTeal/5"
@@ -181,7 +181,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       label: "Core Sectors",
       title: "Direct Entry into India's Core Infrastructure Sectors",
       desc: "Work on massive national projects like bridges, dams, and modern railways. See your engineering impact in real-time.",
-      image: "/ssc/reason-3.png", 
+      image: "/ssc/reason-3.webp", 
       icon: HardHat,
       color: "text-gameGoldDark",
       bg: "bg-gameGold/5"
@@ -190,7 +190,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       label: "Career Growth",
       title: "Clear & Time-Bound Career Progression to Executive Ranks",
       desc: "Climb the ladder from Junior Engineer to Assistant Engineer, Executive Engineer, and up to Engineer-in-Chief.",
-      image: "/ssc/reason-4.png", 
+      image: "/ssc/reason-4.webp", 
       icon: TrendingUp,
       color: "text-gameTeal",
       bg: "bg-gameTeal/5"
@@ -199,7 +199,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
       label: "Achievable Goal",
       title: "Achievable Goal with a Well-Defined Exam Pattern",
       desc: "With a structured syllabus and clarity in pattern, SSC-JE is an achievable dream for dedicated Diploma and Degree holders.",
-      image: "/ssc/reason-5.png", 
+      image: "/ssc/reason-5.webp", 
       icon: Target,
       color: "text-gameGoldDark",
       bg: "bg-gameGold/5"
@@ -954,7 +954,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                      <div className="absolute inset-0 rounded-[2rem] bg-gameTealDark"></div>
                      {!whatIsImgFailed && (
                         <Image 
-                           src="/ssc/what-is-ssc.png" 
+                           src="/ssc/what-is-ssc.webp" 
                            alt="SSC JE Engineer" 
                            fill
                            onError={() => setWhatIsImgFailed(true)}
@@ -1690,7 +1690,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                               <div className="px-5 pb-5 pt-0 border-t border-dashed border-slate-100 mt-2">
                                  <div className="pt-4 flex items-start gap-3">
                                     <img
-                                       src="/gaurav-sir.png"
+                                       src="/gaurav-sir.webp"
                                        alt="Gaurav Babu Sir"
                                        className="w-10 h-10 rounded-full object-cover object-top border-2 border-white shadow-md ring-1 ring-gameTeal/20 shrink-0"
                                     />

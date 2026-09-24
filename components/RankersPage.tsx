@@ -80,7 +80,7 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "GATE",
     category: "GATE",
     selectionYear: "2024",
-    image: "/rankers/student6.png"
+    image: "/rankers/student6.webp"
   },
   {
     id: "7",
@@ -188,7 +188,7 @@ const MOCK_RANKERS: Ranker[] = [
     designation: "GATE",
     category: "GATE",
     selectionYear: "2025",
-    image: "/rankers/student18.png"
+    image: "/rankers/student18.webp"
   },
   {
     id: "19",
@@ -230,7 +230,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Mechanical Engineering",
     selectionYear: "2022",
     category: "MOD",
-    image: "/rankers/job-2.png"
+    image: "/rankers/job-2.webp"
   },
   {
     id: "j3",
@@ -330,7 +330,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Mechanical Engineering",
     selectionYear: "2022",
     category: "PSU",
-    image: "/rankers/job-12.png"
+    image: "/rankers/job-12.webp"
   },
   {
     id: "j13",
@@ -360,7 +360,7 @@ const MOCK_JOB_RANKERS: Ranker[] = [
     branch: "Civil Engineering",
     selectionYear: "2022",
     category: "ESE",
-    image: "/rankers/job-15.png"
+    image: "/rankers/job-15.webp"
   },
   {
     id: "j16",

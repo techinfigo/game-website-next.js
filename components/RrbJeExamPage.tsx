@@ -117,7 +117,7 @@ const RrbJeExamPage: React.FC = () => {
       label: "Job Security",
       title: "Permanent government position with assured career progression.",
       desc: "Enjoy the ultimate stability that comes with a central government job, ensuring a secure future for you and your family with permanent tenure.",
-      image: "/exam-rrb-1.png", 
+      image: "/exam-rrb-1.webp", 
       icon: ShieldCheck,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10"
@@ -126,7 +126,7 @@ const RrbJeExamPage: React.FC = () => {
       label: "Attractive Salary & Perks",
       title: "Pay Level 6 with regular increments, DA, HRA, medical benefits, travel allowances, and pension under NPS.",
       desc: "Financial prosperity paired with unmatched railway-specific benefits like premium medical care and national travel passes.",
-      image: "/exam-rrb-2.png", 
+      image: "/exam-rrb-2.webp", 
       icon: Wallet,
       color: "text-gameGold",
       bg: "bg-gameGold/10"
@@ -135,7 +135,7 @@ const RrbJeExamPage: React.FC = () => {
       label: "Nationwide Opportunities",
       title: "Postings across India in various railway zones and production units.",
       desc: "Serve the nation across diverse geographies, from metropolitan hubs to production units, experiencing India's rich engineering heritage.",
-      image: "/exam-rrb-3.png", 
+      image: "/exam-rrb-3.webp", 
       icon: MapPin,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10"
@@ -144,7 +144,7 @@ const RrbJeExamPage: React.FC = () => {
       label: "Professional Growth",
       title: "Opportunities for promotions, departmental exams, and skill development.",
       desc: "A well-defined career ladder with merit-based fast-track promotions through regular departmental examinations.",
-      image: "/exam-rrb-4.png", 
+      image: "/exam-rrb-4.webp", 
       icon: TrendingUp,
       color: "text-gameGold",
       bg: "bg-gameGold/10"
@@ -153,7 +153,7 @@ const RrbJeExamPage: React.FC = () => {
       label: "Work with India’s Largest Employer",
       title: "Be part of the world’s 4th largest railway network.",
       desc: "Take pride in working for the Indian Railways, a global leader in transport and the backbone of the nation's logistical infrastructure.",
-      image: "/exam-rrb-5.png", 
+      image: "/exam-rrb-5.webp", 
       icon: Train,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10"
@@ -1395,7 +1395,7 @@ const RrbJeExamPage: React.FC = () => {
                               <div className="px-5 pb-5 pt-0 border-t border-dashed border-slate-100 mt-2">
                                  <div className="pt-4 flex items-start gap-3">
                                     <img
-                                       src="/gaurav-sir.png"
+                                       src="/gaurav-sir.webp"
                                        alt="Gaurav Babu Sir"
                                        className="w-10 h-10 rounded-full object-cover object-top border-2 border-white shadow-md ring-1 ring-gameTeal/20 shrink-0"
                                     />

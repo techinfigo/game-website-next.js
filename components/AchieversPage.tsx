@@ -188,19 +188,19 @@ export const ALL_STORIES = [
   {
     type: 'whatsapp',
     id: 22,
-    img: "/whatsapp-result-13.png",
+    img: "/whatsapp-result-13.webp",
     caption: "Conceptual clarity has reached another level. Formulas are on my fingertips!"
   },
   {
     type: 'whatsapp',
     id: 23,
-    img: "/whatsapp-result-14.png",
+    img: "/whatsapp-result-14.webp",
     caption: "Late night doubt clearing session screenshots. Gaurav Sir's dedication is unparalleled!"
   },
   {
     type: 'whatsapp',
     id: 24,
-    img: "/whatsapp-result-15.png",
+    img: "/whatsapp-result-15.webp",
     caption: "Selected in Ministry of Defence! Life-changing guidance from GAME expert team!"
   },
   {

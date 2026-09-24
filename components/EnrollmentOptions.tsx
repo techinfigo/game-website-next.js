@@ -36,7 +36,7 @@ const EnrollmentOptions: React.FC = () => {
                 className="relative z-10 rounded-[2rem] overflow-hidden shadow-2xl border-2 border-slate-50 group max-w-[340px] mx-auto lg:mx-0"
               >
                  <Image 
-                    src="/enrollment-image.png" 
+                    src="/enrollment-image.webp" 
                     alt="Ready to Excel" 
                     width={600}
                     height={800}

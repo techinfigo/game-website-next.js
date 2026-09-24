@@ -150,7 +150,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Engineering Services Examination',
       icon: Trophy,
       color: 'text-purple-400',
-      image: "/exams/ese-bg.png",
+      image: "/exams/ese-bg.webp",
       logo: "/exams/ese-logo.jpg",
       action: 'ese'
     },
@@ -170,7 +170,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Public Sector Undertakings / Research & Development',
       icon: Briefcase,
       color: 'text-emerald-400',
-      image: "/exams/psu-bg.jpg",
+      image: "/exams/psu-bg.webp",
       logo: "/exams/PSUs _ R&D Logo.jpeg",
       action: 'psu'
     },
@@ -181,7 +181,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       icon: Building2,
       color: 'text-orange-400',
       image: "/exams/ssc-bg.jpg",
-      logo: "/exams/ssc-logo.jpg",
+      logo: "/exams/ssc-logo.webp",
       action: 'ssc'
     },
     {
@@ -190,7 +190,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Railway Recruitment Board Junior Engineer',
       icon: Train,
       color: 'text-red-400',
-      image: "/exams/rrb-bg.jpg",
+      image: "/exams/rrb-bg.webp",
       logo: "/exams/rrb-logo.jpg",
       action: 'rrb'
     },
@@ -200,8 +200,8 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'State Assistant Engineer / Junior Engineer',
       icon: MapPin,
       color: 'text-cyan-400',
-      image: "/exams/state-ae-je-bg.png",
-      logo: "/exams/state-ae-je-logo.jpg",
+      image: "/exams/state-ae-je-bg.webp",
+      logo: "/exams/state-ae-je-logo.webp",
       action: 'state'
     },
     {
@@ -210,7 +210,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
       subtitle: 'Non Technical Exam',
       icon: BookOpen,
       color: 'text-indigo-400',
-      image: "/exams/non-tech-bg.png",
+      image: "/exams/non-tech-bg.webp",
       logo: "/exams/non-tech-logo.jpg",
       action: 'nontech'
     }

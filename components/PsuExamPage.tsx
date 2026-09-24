@@ -19,7 +19,7 @@ const PsuExamPage: React.FC = () => {
       badge: "REGISTRATION",
       title: "GATE 2026 Registration Open",
       buttonText: "Register Now",
-      imageUrl: "/psu/hero-1.png",
+      imageUrl: "/psu/hero-1.webp",
       link: "/jobs",
       bgColor: "bg-[#004d50]"
     },
@@ -27,7 +27,7 @@ const PsuExamPage: React.FC = () => {
       badge: "MOCK TEST",
       title: "Free GATE Mock Test",
       buttonText: "Start Test",
-      imageUrl: "/psu/hero-2.png",
+      imageUrl: "/psu/hero-2.webp",
       link: "https://courses.gameacademy.in/wlp/vijeta-test-series-gate-me-new",
       bgColor: "bg-[#002b2e]"
     },
@@ -35,7 +35,7 @@ const PsuExamPage: React.FC = () => {
       badge: "PSU JOBS",
       title: "Top PSU Recruitment Through GATE",
       buttonText: "Explore Jobs",
-      imageUrl: "/psu/hero-3.png",
+      imageUrl: "/psu/hero-3.webp",
       link: "/rankers",
       bgColor: "bg-[#004d50]"
     },
@@ -43,7 +43,7 @@ const PsuExamPage: React.FC = () => {
       badge: "IIT M.TECH",
       title: "IIT Admission Through GATE",
       buttonText: "Check Cutoffs",
-      imageUrl: "/psu/hero-4.png",
+      imageUrl: "/psu/hero-4.webp",
       link: "https://wpsvp.courses.store/courses/848557?filterId=1&sortId=7",
       bgColor: "bg-[#002b2e]"
     }
@@ -268,35 +268,35 @@ const PsuExamPage: React.FC = () => {
                         imageIdea: "A split-screen visual: Minimalist office desk vs. powerful rocket on launch pad at dawn.",
                         tagline: "Build for a Country.",
                         icon: Rocket,
-                        image: "/psu/rnd-advantage-1.png"
+                        image: "/psu/rnd-advantage-1.webp"
                      },
                      {
                         title: "Cutting-Edge Frontiers",
                         imageIdea: "Dynamic infographic of satellite orbits, DNA strands, and cybersecurity shields.",
                         tagline: "One Career, Infinite Frontiers.",
                         icon: Globe,
-                        image: "/psu/rnd-advantage-2.png"
+                        image: "/psu/rnd-advantage-2.webp"
                      },
                      {
                         title: "Sovereign Impact",
                         imageIdea: "Scientist's focused eyes reflected in a console showing successful satellite deployment.",
                         tagline: "Nation Needs Your Genius.",
                         icon: Target,
-                        image: "/psu/rnd-advantage-3.png"
+                        image: "/psu/rnd-advantage-3.webp"
                      },
                      {
                         title: "Stability with a Soul",
                         imageIdea: "Researcher in a calm lab while a chaotic cityscape flashes behind them.",
                         tagline: "Focus on the Mission.",
                         icon: Shield,
-                        image: "/psu/rnd-advantage-4.png"
+                        image: "/psu/rnd-advantage-4.webp"
                      },
                      {
                         title: "Brotherhood of Best Minds",
                         imageIdea: "Diverse team of scientists in collaborative triumph within a mission control room.",
                         tagline: "Stand on Shoulders of Giants.",
                         icon: Users,
-                        image: "/psu/rnd-advantage-5.png"
+                        image: "/psu/rnd-advantage-5.webp"
                      }
                   ].map((item, index) => (
                      <RndAdvantageRow
@@ -1022,7 +1022,7 @@ const FAQItem: React.FC<{ faq: { q: string; a: React.ReactNode }; index: number 
                   <div className="px-6 md:px-8 pb-8 md:pb-10 ml-0 border-t border-slate-50 pt-6">
                      <div className="flex items-start gap-3">
                         <img
-                           src="/gaurav-sir.png"
+                           src="/gaurav-sir.webp"
                            alt="Gaurav Babu Sir"
                            className="w-[53px] h-[53px] rounded-full object-cover object-top border-2 border-white shadow-md ring-1 ring-gameTeal/20 shrink-0"
                         />
@@ -1226,18 +1226,18 @@ const SYLLABUS_LINKS: Record<string, string> = {
 // falls back to the card's Icon.
 const LOGO_FILES: Record<string, string> = {
   isro: "/logo-isro.png",
-  barc: "/logo-barc.png",
-  drdo: "/logo-drdo.png",
-  npcil: "/logo-npcil.png",
+  barc: "/logo-barc.webp",
+  drdo: "/logo-drdo.webp",
+  npcil: "/logo-npcil.webp",
   ongc: "/logo-ongc.png",
-  iocl: "/logo-iocl.png",
-  bhel: "/logo-bhel.png",
-  ntpc: "/logo-ntpc.png",
+  iocl: "/logo-iocl.webp",
+  bhel: "/logo-bhel.webp",
+  ntpc: "/logo-ntpc.webp",
   gail: "/logo-gail.png",
   sail: "/logo-sail.png",
-  hpcl: "/logo-hpcl.png",
+  hpcl: "/logo-hpcl.webp",
   cil: "/logo-cil.png",
-  bel: "/logo-bel.png",
+  bel: "/logo-bel.webp",
   mdl: "/logo-mdl.png",
   hal: "/logo-hal.png",
 };

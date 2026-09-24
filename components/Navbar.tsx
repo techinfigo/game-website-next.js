@@ -146,7 +146,7 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout, profil
           >
             <div className="relative w-32 h-14 md:w-40 md:h-16 transition-transform group-hover:scale-105">
               <Image 
-                src="/game-logo.png" 
+                src="/game-logo.webp" 
                 alt="GAME Academy Logo"
                 fill
                 className="object-contain"

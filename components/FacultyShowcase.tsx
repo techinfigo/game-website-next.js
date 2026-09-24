@@ -9,7 +9,7 @@ import { useRouter, usePathname } from 'next/navigation';
 // Place your custom images in the "public" folder of your project (e.g. public/about-faculty-front.jpg)
 // and update the paths below. When you push to GitHub, these files will load seamlessly.
 export const FACULTY_SHOWCASE_IMAGES = {
-  front: '/about-faculty-front.jpg', // Main image (front)
+  front: '/about-faculty-front.webp', // Main image (front)
   back: '/about-faculty-back.jpeg',   // Secondary image (back / collage element)
   // Customize your student avatar small images here:
   avatars: [

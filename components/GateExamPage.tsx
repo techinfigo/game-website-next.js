@@ -37,28 +37,28 @@ const GateExamPage: React.FC = () => {
       badge: "REGISTRATION",
       title: "GATE 2026 Registration Open",
       buttonText: "Register Now",
-      imageUrl: "/gate/hero-registration.png",
+      imageUrl: "/gate/hero-registration.webp",
       bgColor: "bg-[#004d50]"
     },
     {
       badge: "MOCK TEST",
       title: "Free GATE Mock Test",
       buttonText: "Start Test",
-      imageUrl: "/gate/hero-mocktest.png",
+      imageUrl: "/gate/hero-mocktest.webp",
       bgColor: "bg-[#002b2e]"
     },
     {
       badge: "PSU JOBS",
       title: "Top PSU Recruitment Through GATE",
       buttonText: "Explore Jobs",
-      imageUrl: "/gate/hero-psujobs.png",
+      imageUrl: "/gate/hero-psujobs.webp",
       bgColor: "bg-[#004d50]"
     },
     {
       badge: "IIT M.TECH",
       title: "IIT Admission Through GATE",
       buttonText: "Check Cutoffs",
-      imageUrl: "/gate/hero-iitmtech.png",
+      imageUrl: "/gate/hero-iitmtech.webp",
       bgColor: "bg-[#002b2e]"
     }
   ];
@@ -203,7 +203,7 @@ const GateExamPage: React.FC = () => {
       icon: GraduationCap,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
-      image: "/advantage-1.png",
+      image: "/advantage-1.webp",
       bgImage: "/gate/opportunity-1.jpg",
     },
     {
@@ -212,7 +212,7 @@ const GateExamPage: React.FC = () => {
       icon: Briefcase,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
-      image: "/advantage-2.png",
+      image: "/advantage-2.webp",
       bgImage: "/gate/opportunity-2.jpg",
     },
     {
@@ -221,7 +221,7 @@ const GateExamPage: React.FC = () => {
       icon: Globe,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
-      image: "/advantage-3.png",
+      image: "/advantage-3.webp",
       bgImage: "/gate/opportunity-3.jpg",
     },
     {
@@ -230,7 +230,7 @@ const GateExamPage: React.FC = () => {
       icon: Microscope,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
-      image: "/advantage-4.png",
+      image: "/advantage-4.webp",
       bgImage: "/gate/opportunity-4.jpg",
     },
     {
@@ -239,7 +239,7 @@ const GateExamPage: React.FC = () => {
       icon: Award,
       color: "text-gameGold",
       bg: "bg-gameGold/10",
-      image: "/advantage-5.png",
+      image: "/advantage-5.webp",
       bgImage: "/gate/opportunity-5.jpg",
     },
     {
@@ -248,7 +248,7 @@ const GateExamPage: React.FC = () => {
       icon: BookOpen,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
-      image: "/advantage-6.png",
+      image: "/advantage-6.webp",
       bgImage: "/gate/opportunity-6.jpg",
     },
     {
@@ -257,7 +257,7 @@ const GateExamPage: React.FC = () => {
       icon: TrendingUp,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
-      image: "/advantage-7.png",
+      image: "/advantage-7.webp",
       bgImage: "/gate/opportunity-7.jpg",
     },
     {
@@ -266,7 +266,7 @@ const GateExamPage: React.FC = () => {
       icon: Layers,
       color: "text-gameTeal",
       bg: "bg-gameTeal/10",
-      image: "/advantage-8.png",
+      image: "/advantage-8.webp",
       bgImage: "/gate/opportunity-8.jpg",
     },
     {
@@ -275,7 +275,7 @@ const GateExamPage: React.FC = () => {
       icon: Star,
       color: "text-gameGold",
       bg: "bg-gameGold/10",
-      image: "/advantage-9.png",
+      image: "/advantage-9.webp",
       bgImage: "/gate/opportunity-9.jpg",
     }
   ];
@@ -1229,7 +1229,7 @@ const GateExamPage: React.FC = () => {
                   <div className="absolute inset-0 bg-gameTeal/5 rounded-full blur-3xl transform rotate-12"></div>
                   <div className="relative bg-white rounded-[2.5rem] p-3 border border-slate-100 shadow-2xl">
                      <img 
-                        src="/prep-main.png" 
+                        src="/prep-main.webp" 
                         alt="GATE Aspirant" 
                         className="rounded-[2rem] w-full h-auto object-cover"
                      />
@@ -2447,7 +2447,7 @@ const GateExamPage: React.FC = () => {
                               <div className="px-5 pb-5 pt-0 border-t border-dashed border-slate-100 mt-2">
                                  <div className="pt-4 flex items-start gap-3">
                                     <img
-                                       src="/gaurav-sir.png"
+                                       src="/gaurav-sir.webp"
                                        alt="Gaurav Babu Sir"
                                        className="w-10 h-10 rounded-full object-cover object-top border-2 border-white shadow-md ring-1 ring-gameTeal/20 shrink-0"
                                     />

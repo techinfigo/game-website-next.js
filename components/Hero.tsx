@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 const students = [
   { name: "Akshay Pillay", org: "Govt. of India", designation: "Sub Collector & SDM", img: "/rankers/job-1.png" },
-  { name: "Dr. Sahil Garg", org: "Ministry of Defence", designation: "Group A Gazetted / Asst. Prof", img: "/rankers/job-2.png" },
+  { name: "Dr. Sahil Garg", org: "Ministry of Defence", designation: "Group A Gazetted / Asst. Prof", img: "/rankers/job-2.webp" },
   { name: "Akash Jaiswal", org: "ISRO, Bengaluru", designation: "Scientist - SC", img: "/rankers/job-3.png" },
   { name: "Deepbhai Haresh Kumar Dave", org: "ISRO, NLC", designation: "Scientist/Engineer 'SC'", img: "/rankers/job-4.png" },
   { name: "Dileep Kumar Chaudhary", org: "BARC", designation: "Scientific Officer OCES", img: "/rankers/job-5.png" },
@@ -18,10 +18,10 @@ const students = [
   { name: "Swati Mishra", org: "Hindustan Zinc Ltd", designation: "Assistant Manager", img: "/rankers/job-9.png" },
   { name: "Prashant Mishra", org: "GAIL (India) Ltd", designation: "Senior Engineer", img: "/rankers/job-10.png" },
   { name: "Suarabh Chaubey", org: "NALCO", designation: "Patent Examiner", img: "/rankers/job-11.png" },
-  { name: "Rahul Singh Yadav", org: "NTPC", designation: "Engineer", img: "/rankers/job-12.png" },
+  { name: "Rahul Singh Yadav", org: "NTPC", designation: "Engineer", img: "/rankers/job-12.webp" },
   { name: "Kamna Pandey", org: "NTPC Limited", designation: "Engineer", img: "/rankers/job-13.png" },
   { name: "Aasif Procha", org: "PSPCL", designation: "Assistant Engineer", img: "/rankers/job-14.png" },
-  { name: "Pooja H", org: "WRD", designation: "Assistant Engineer", img: "/rankers/job-15.png" },
+  { name: "Pooja H", org: "WRD", designation: "Assistant Engineer", img: "/rankers/job-15.webp" },
   { name: "Bhavya Malviya", org: "NTPC Kahalgaon", designation: "Asst. Exec Operations", img: "/rankers/job-16.png" },
   { name: "Rajat Rai", org: "ONGC", designation: "Asst. Exe. Engineer", img: "/rankers/job-17.png" },
   { name: "Garima", org: "Bharat Dynamics Ltd", designation: "Executive Trainee", img: "/rankers/job-18.png" },
@@ -209,7 +209,7 @@ const Hero: React.FC = () => {
                 <div className="relative flex items-end justify-center w-full h-full max-h-[500px] lg:max-h-[600px]">
                     <div className="relative h-[55vh] lg:h-[65vh] w-full">
                         <Image 
-                          src="/gaurav-sir.png" 
+                          src="/gaurav-sir.webp" 
                           alt="Gaurav Babu Sir" 
                           fill
                           priority

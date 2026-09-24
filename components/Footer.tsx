@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
             <Link href="/" prefetch={false} className="flex items-center group">
               <div className="relative w-32 h-12">
                 <Image
-                  src="/game-logo.png"
+                  src="/game-logo.webp"
                   unoptimized
                   alt="GAME Academy Logo"
                   fill
