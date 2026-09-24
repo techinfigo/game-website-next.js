@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "@/firebase";
+import { loadFirebase } from "@/lib/loadFirebase";
 
 /**
  * Banners shown when Firestore has no active banners, is unreachable,
@@ -21,7 +20,8 @@ export function useCourseBanners(): { banners: string[]; loading: boolean } {
   useEffect(() => {
     let cancelled = false;
 
-    getDocs(collection(db, "courseBanners"))
+    loadFirebase()
+      .then(({ db, firestore: { collection, getDocs } }) => getDocs(collection(db, "courseBanners")))
       .then((snapshot) => {
         if (cancelled || snapshot.empty) return;
 

@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "@/firebase";
+import { loadFirebase } from "@/lib/loadFirebase";
 
 export interface SiteSettings {
   phone: string;
@@ -44,7 +43,8 @@ export function useSiteSettings(): SiteSettings {
   useEffect(() => {
     let cancelled = false;
 
-    getDoc(doc(db, "settings", "site"))
+    loadFirebase()
+      .then(({ db, firestore: { doc, getDoc } }) => getDoc(doc(db, "settings", "site")))
       .then((snapshot) => {
         if (cancelled || !snapshot.exists()) return;
 

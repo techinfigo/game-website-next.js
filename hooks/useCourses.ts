@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "@/firebase";
+import { loadFirebase } from "@/lib/loadFirebase";
 
 export interface Course {
   title: string;
@@ -36,7 +35,8 @@ export function useCourses(defaultCourses: Course[]): { courses: Course[]; loadi
   useEffect(() => {
     let cancelled = false;
 
-    getDocs(collection(db, "courses"))
+    loadFirebase()
+      .then(({ db, firestore: { collection, getDocs } }) => getDocs(collection(db, "courses")))
       .then((snapshot) => {
         if (cancelled || snapshot.empty) return;
 

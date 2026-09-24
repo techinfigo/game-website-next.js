@@ -12,7 +12,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { EXAM_PAGES_DISABLED, DISABLED_EXAMPAGES_IDS } from './examconfig';
 import type { StudentProfile } from '@/providers/AuthProvider';
-import { auth } from '@/firebase';
+import { loadFirebase } from '@/lib/loadFirebase';
 
 // Student portal is a separate deployment on its own subdomain, so "My Dashboard"
 // leaves the site. Env-overridable so local and preview builds can point elsewhere
@@ -71,6 +71,7 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout, profil
     handleLinkClick();
 
     try {
+      const { auth } = await loadFirebase();
       const currentUser = auth.currentUser;
       if (!currentUser) throw new Error('No signed-in user');
 

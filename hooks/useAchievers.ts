@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "@/firebase";
+import { loadFirebase } from "@/lib/loadFirebase";
 import {
   DEFAULT_VIDEO_SHORTS,
   DEFAULT_GATE_TOPPERS,
@@ -38,7 +37,8 @@ export function useAchievers(): {
   useEffect(() => {
     let cancelled = false;
 
-    getDocs(collection(db, "achievers"))
+    loadFirebase()
+      .then(({ db, firestore: { collection, getDocs } }) => getDocs(collection(db, "achievers")))
       .then((snapshot) => {
         if (cancelled || snapshot.empty) return;
 

@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "@/firebase";
+import { loadFirebase } from "@/lib/loadFirebase";
 import { DEFAULT_JOBS, type Job } from "@/data/jobsData";
 
 export type { Job };
@@ -43,7 +42,8 @@ export function useJobs(): { jobs: Job[]; loading: boolean } {
   useEffect(() => {
     let cancelled = false;
 
-    getDocs(collection(db, "jobUpdates"))
+    loadFirebase()
+      .then(({ db, firestore: { collection, getDocs } }) => getDocs(collection(db, "jobUpdates")))
       .then((snapshot) => {
         if (cancelled || snapshot.empty) return;
 

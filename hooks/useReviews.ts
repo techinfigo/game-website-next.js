@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "@/firebase";
+import { loadFirebase } from "@/lib/loadFirebase";
 
 export interface Review {
   id: string;
@@ -20,7 +19,8 @@ export function useReviews(): { reviews: Review[]; loading: boolean } {
   useEffect(() => {
     let cancelled = false;
 
-    getDocs(collection(db, "reviews"))
+    loadFirebase()
+      .then(({ db, firestore: { collection, getDocs } }) => getDocs(collection(db, "reviews")))
       .then((snapshot) => {
         if (cancelled || snapshot.empty) return;
 

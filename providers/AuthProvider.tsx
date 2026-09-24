@@ -1,8 +1,8 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { onAuthStateChanged, User } from 'firebase/auth';
-import { auth } from '@/firebase';
+import type { User } from 'firebase/auth';
+import { loadFirebase } from '@/lib/loadFirebase';
 
 export interface StudentProfile {
   name: string;
@@ -58,15 +58,24 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-      setUser(firebaseUser);
-      setIsLoggedIn(!!firebaseUser);
-      if (!firebaseUser) {
-        try { localStorage.removeItem('auth_user'); } catch (_) {}
-        setStoredProfile({});
-      }
-    });
-    return () => unsubscribe();
+    let cancelled = false;
+    let unsubscribe: (() => void) | undefined;
+
+    loadFirebase().then(({ auth, firebaseAuth: { onAuthStateChanged } }) => {
+      if (cancelled) return;
+      unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+        setUser(firebaseUser);
+        setIsLoggedIn(!!firebaseUser);
+        if (!firebaseUser) {
+          try { localStorage.removeItem('auth_user'); } catch (_) {}
+          setStoredProfile({});
+        }
+      });
+    }).catch(console.error);
+    return () => {
+      cancelled = true;
+      unsubscribe?.();
+    };
   }, []);
 
   // Update isLoggedIn immediately when LoginModal signals a successful sign-in,
@@ -94,6 +103,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   
   const logout = async () => {
     try {
+      const { auth } = await loadFirebase();
       await auth.signOut();
       setIsLoggedIn(false);
       setUser(null);

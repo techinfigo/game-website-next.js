@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
 import { Sparkles } from "lucide-react";
-import { db } from "@/firebase";
+import { loadFirebase } from "@/lib/loadFirebase";
 import { DEFAULT_CHIEF_MENTOR, DEFAULT_FACULTY, type FacultyMember } from "@/data/facultyData";
 
 export type { FacultyMember };
@@ -20,7 +19,8 @@ export function useFaculty(): {
   useEffect(() => {
     let cancelled = false;
 
-    getDocs(collection(db, "faculty"))
+    loadFirebase()
+      .then(({ db, firestore: { collection, getDocs } }) => getDocs(collection(db, "faculty")))
       .then((snapshot) => {
         if (cancelled || snapshot.empty) return;
 

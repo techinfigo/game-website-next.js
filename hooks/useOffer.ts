@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "@/firebase";
+import { loadFirebase } from "@/lib/loadFirebase";
 import { DEFAULT_OFFER, type Offer } from "@/data/offerData";
 
 export type { Offer };
@@ -15,7 +14,8 @@ export function useOffer(): { offer: Offer; loading: boolean } {
   useEffect(() => {
     let cancelled = false;
 
-    getDocs(collection(db, "offers"))
+    loadFirebase()
+      .then(({ db, firestore: { collection, getDocs } }) => getDocs(collection(db, "offers")))
       .then((snapshot) => {
         if (cancelled || snapshot.empty) return;
 

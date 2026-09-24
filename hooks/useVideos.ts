@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "@/firebase";
+import { loadFirebase } from "@/lib/loadFirebase";
 import { DEFAULT_VIDEOS, type Video } from "@/data/videosData";
 
 export type { Video };
@@ -22,7 +21,8 @@ export function useVideos(): { videos: Video[]; loading: boolean } {
   useEffect(() => {
     let cancelled = false;
 
-    getDocs(collection(db, "videoLectures"))
+    loadFirebase()
+      .then(({ db, firestore: { collection, getDocs } }) => getDocs(collection(db, "videoLectures")))
       .then((snapshot) => {
         if (cancelled || snapshot.empty) return;
 

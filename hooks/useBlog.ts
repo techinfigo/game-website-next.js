@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "@/firebase";
+import { loadFirebase } from "@/lib/loadFirebase";
 import { DEFAULT_POSTS, type BlogPost } from "@/data/blogData";
 
 export type { BlogPost };
@@ -14,7 +13,8 @@ export function useBlog(): { posts: BlogPost[]; loading: boolean } {
   useEffect(() => {
     let cancelled = false;
 
-    getDocs(collection(db, "blog"))
+    loadFirebase()
+      .then(({ db, firestore: { collection, getDocs } }) => getDocs(collection(db, "blog")))
       .then((snapshot) => {
         if (cancelled || snapshot.empty) return;
 
