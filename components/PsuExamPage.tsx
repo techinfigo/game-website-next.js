@@ -430,100 +430,83 @@ const PsuExamPage: React.FC = () => {
                </motion.div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-               {/* TODO: client to upload real PSU benefit images at these paths */}
-               {[
-                  {
-                     number: "",
-                     title: "Success & Fulfilment",
-                     imageIdea: "A sharp, formal blazer vs. modern tech gadgets and rewarding perks on a contemporary desk.",
-                     styleDesc: "Clean, dual-tone colour scheme (blue for trust, orange for energy).",
-                     icon: Briefcase,
-                     image: "/psu/psu-benefit-1.png",
-                     delay: 0
-                  },
-                  {
-                     number: "",
-                     title: "National Growth Forefront",
-                     imageIdea: "Confident engineers at a massive project site with rising national skylines.",
-                     styleDesc: "Cinematic and grand. Bold and hopeful atmosphere.",
-                     icon: TrendingUp,
-                     image: "/psu/psu-benefit-2.png",
-                     delay: 0.1
-                  },
-                  {
-                     number: "",
-                     title: "Premium Rewards",
-                     imageIdea: "A career ladder made of reward icons: promotions, salary, LTC, and housing security.",
-                     styleDesc: "Visually rich 3D infographics with metallic gold and blue accents.",
-                     icon: Award,
-                     image: "/psu/psu-benefit-3.png",
-                     delay: 0.2
-                  },
-                  {
-                     number: "",
-                     title: "Universe of Opportunities",
-                     imageIdea: "Isometric PSU building with windows showing oil rigs, wind turbines, and financial charts.",
-                     styleDesc: "Modern vibrant illustration showing diversity rooted in solidity.",
-                     icon: Building2,
-                     image: "/psu/psu-benefit-4.png",
-                     delay: 0.3
-                  },
-                  {
-                     number: "",
-                     title: "Work-Life Harmony",
-                     imageIdea: "Focused professional at work vs. relaxed person enjoying family time in daylight.",
-                     styleDesc: "Warm, authentic photography focused on genuine smiles.",
-                     icon: Coffee,
-                     image: "/psu/psu-benefit-5.png",
-                     delay: 0.4
-                  }
-               ].map((item, index) => (
-                  <BenefitImageCard
-                     key={index}
-                     icon={item.icon}
-                     title={item.title}
-                     description={item.imageIdea}
-                     image={item.image}
-                     footer={{ label: "Style", value: item.styleDesc }}
-                     accent="gold"
-                     delay={item.delay}
-                  />
-               ))}
+            {/* ROADMAP PATHWAY UI - alternating photo/text rows, matching the Govt. R&D roadmap above */}
+            <div className="relative">
 
-               <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.5, duration: 0.5 }}
-                  className="group flex h-full"
-               >
-                  <div className="bg-[#0f172a] rounded-[2rem] border border-white/10 hover:border-gameGold transition-all duration-500 overflow-hidden flex flex-col w-full relative shadow-2xl">
-                     <div className="p-8 flex-grow">
-                        <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-gameGold group-hover:scale-110 group-hover:bg-gameGold group-hover:text-white transition-all duration-500 mb-6 shadow-glow-gold/10">
-                           <Building2 size={28} />
-                        </div>
-                        <h3 className="text-xl font-black text-white leading-tight mb-3 group-hover:text-gameGold transition-colors">
-                           India&apos;s Pillars
-                        </h3>
-                        <p className="text-slate-400 text-sm font-bold leading-relaxed">
-                           Public Sector Units (PSUs) form the core of India&apos;s industrial and socioeconomic progress.
-                        </p>
-                     </div>
-                     <div className="p-6 pt-4 bg-white/5 border-t border-white/5">
-                        <span className="text-[10px] font-black text-white/20 uppercase tracking-widest block mb-1">National Mission</span>
-                        <p className="text-gameGold font-black text-[11px] leading-tight italic">
-                           Powering the nation&apos;s future through excellence.
-                        </p>
-                     </div>
-                     
-                     {/* Decorative element */}
-                     <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
-                        <Building2 size={120} strokeWidth={1} className="text-white" />
-                     </div>
-                  </div>
-               </motion.div>
+               {/* THE VERTICAL PATHWAY LINE (Center line) */}
+               <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-slate-300 -translate-x-1/2 hidden lg:block overflow-hidden">
+                  <motion.div
+                     initial={{ height: 0 }}
+                     whileInView={{ height: '100%' }}
+                     transition={{ duration: 2, ease: "easeInOut" }}
+                     className="w-full bg-gradient-to-b from-gameTeal via-gameGold to-gameTeal"
+                  />
+               </div>
+
+               <div className="space-y-24 lg:space-y-32">
+                  {/* TODO: client to upload real PSU benefit images at these paths */}
+                  {[
+                     {
+                        title: "Success & Fulfilment",
+                        imageIdea: "A sharp, formal blazer vs. modern tech gadgets and rewarding perks on a contemporary desk.",
+                        icon: Briefcase,
+                        image: "/psu/psu-benefit-1.png"
+                     },
+                     {
+                        title: "National Growth Forefront",
+                        imageIdea: "Confident engineers at a massive project site with rising national skylines.",
+                        icon: TrendingUp,
+                        image: "/psu/psu-benefit-2.png"
+                     },
+                     {
+                        title: "Premium Rewards",
+                        imageIdea: "A career ladder made of reward icons: promotions, salary, LTC, and housing security.",
+                        icon: Award,
+                        image: "/psu/psu-benefit-3.png"
+                     },
+                     {
+                        title: "Universe of Opportunities",
+                        imageIdea: "Isometric PSU building with windows showing oil rigs, wind turbines, and financial charts.",
+                        icon: Building2,
+                        image: "/psu/psu-benefit-4.png"
+                     },
+                     {
+                        title: "Work-Life Harmony",
+                        imageIdea: "Focused professional at work vs. relaxed person enjoying family time in daylight.",
+                        icon: Coffee,
+                        image: "/psu/psu-benefit-5.png"
+                     }
+                  ].map((item, index) => (
+                     <RndAdvantageRow
+                        key={index}
+                        index={index}
+                        icon={item.icon}
+                        title={item.title}
+                        description={item.imageIdea}
+                        image={item.image}
+                        caption="PSU Advantage"
+                     />
+                  ))}
+               </div>
             </div>
+
+            {/* "India's Pillars" card, kept from the original grid and now closing the roadmap */}
+            <motion.div
+               initial={{ opacity: 0, scale: 0.95 }}
+               whileInView={{ opacity: 1, scale: 1 }}
+               viewport={{ once: true }}
+               transition={{ delay: 0.5 }}
+               className="mt-24 max-w-2xl mx-auto flex flex-col items-center justify-center p-10 rounded-[2rem] bg-[#0f172a] text-white text-center shadow-2xl border-2 border-white/10"
+            >
+               <Building2 size={32} className="text-gameGold mb-4" />
+               <h3 className="text-xl font-black mb-2">India&apos;s Pillars</h3>
+               <p className="text-slate-400 font-bold text-xs leading-relaxed mb-3">
+                  Public Sector Units (PSUs) form the core of India&apos;s industrial and socioeconomic progress.
+               </p>
+               <p className="text-gameGold font-black text-[11px] leading-tight italic">
+                  Powering the nation&apos;s future through excellence.
+               </p>
+            </motion.div>
          </div>
       </section>
 
@@ -1043,70 +1026,6 @@ interface SectionItem {
   value: string;
 }
 
-// Benefit card styled like the GATE page's advantage cards: an image visual with a
-// dark overlay so the title/description stay readable. If the image file is missing,
-// it degrades gracefully to a solid teal background (no broken image).
-const BenefitImageCard: React.FC<{
-  icon: any;
-  title: string;
-  description: string;
-  image: string;
-  footer?: { label?: string; value: string; quote?: boolean };
-  accent?: 'teal' | 'gold';
-  delay?: number;
-}> = ({ icon: Icon, title, description, image, footer, accent = 'teal', delay = 0 }) => {
-  const [imgFailed, setImgFailed] = useState(false);
-  const accentText = accent === 'gold' ? 'text-gameGold' : 'text-gameTeal';
-  const hoverBorder = accent === 'gold' ? 'hover:border-gameGold/40' : 'hover:border-gameTeal/40';
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay, duration: 0.5 }}
-      className="group flex h-full"
-    >
-      <div className={`relative w-full min-h-[340px] rounded-[2rem] overflow-hidden border border-slate-200/60 ${hoverBorder} hover:shadow-xl transition-all duration-500 flex flex-col`}>
-        {/* Image background with graceful fallback to a solid teal fill */}
-        <div className="absolute inset-0 bg-gameTeal">
-          {!imgFailed && (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={image}
-              alt={title}
-              onError={() => setImgFailed(true)}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-            />
-          )}
-        </div>
-
-        {/* Dark overlay keeps the title/text readable over any image (and over the teal fallback) */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/20" />
-
-        {/* Content anchored to the bottom */}
-        <div className="relative z-10 mt-auto p-6 flex flex-col">
-          <div className="w-12 h-12 rounded-xl bg-white/10 border border-white/20 backdrop-blur-sm flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform">
-            <Icon size={24} />
-          </div>
-          <h3 className="text-lg font-black text-white leading-tight mb-2">{title}</h3>
-          <p className="text-slate-200 text-sm font-bold leading-relaxed">{description}</p>
-          {footer && (
-            <div className="mt-4 pt-4 border-t border-white/15">
-              {footer.label && (
-                <span className={`text-[8px] font-black uppercase tracking-widest ${accentText} mb-1 block`}>{footer.label}</span>
-              )}
-              <p className={`text-white font-black ${footer.quote ? 'text-sm italic' : 'text-xs leading-tight'}`}>
-                {footer.quote ? `"${footer.value}"` : footer.value}
-              </p>
-            </div>
-          )}
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
 // One row of the Govt. R&D advantage roadmap: a photo on one side and the text
 // card on the other, alternating sides as you move down the section.
 // Mirrors the GATE Advantage roadmap in GateExamPage.
@@ -1115,9 +1034,10 @@ const RndAdvantageRow: React.FC<{
   icon: any;
   title: string;
   description: string;
-  tagline: string;
+  tagline?: string;
   image: string;
-}> = ({ index, icon: Icon, title, description, tagline, image }) => {
+  caption?: string;
+}> = ({ index, icon: Icon, title, description, tagline, image, caption = 'Govt. R&D Advantage' }) => {
   const [imgFailed, setImgFailed] = useState(false);
   const isEven = index % 2 === 0;
 
@@ -1154,13 +1074,15 @@ const RndAdvantageRow: React.FC<{
                 <h3 className="text-2xl md:text-3xl font-black text-white mb-6 tracking-tight leading-none group-hover:text-gameGold transition-colors">
                   {title}
                 </h3>
-                <p className="text-slate-200 text-base md:text-lg font-bold leading-relaxed mb-8">
+                <p className={`text-slate-200 text-base md:text-lg font-bold leading-relaxed ${tagline ? 'mb-8' : 'mb-0'}`}>
                   {description}
                 </p>
 
-                <div className={`flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-gameGold ${isEven ? 'lg:justify-end' : ''}`}>
-                  {tagline} <ArrowRight size={16} />
-                </div>
+                {tagline && (
+                  <div className={`flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-gameGold ${isEven ? 'lg:justify-end' : ''}`}>
+                    {tagline} <ArrowRight size={16} />
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -1190,7 +1112,7 @@ const RndAdvantageRow: React.FC<{
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
               <div className="absolute bottom-8 left-8 right-8 text-white opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all">
-                <p className="text-sm font-black uppercase tracking-widest text-gameGold mb-2">Govt. R&amp;D Advantage</p>
+                <p className="text-sm font-black uppercase tracking-widest text-gameGold mb-2">{caption}</p>
                 <h4 className="text-xl font-bold">{title}</h4>
               </div>
             </div>
