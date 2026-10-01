@@ -18,8 +18,9 @@ import CourseHelpSection from './CourseHelpSection';
 import AchieversSection from './AchieversSection';
 import TestimonialsText from './TestimonialsText';
 import AppStoreButtons from './AppStoreButtons';
+import type { ExamPageContent } from '@/lib/examContentTypes';
 
-const GateExamPage: React.FC = () => {
+const GateExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content }) => {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
   const [selectedExam, setSelectedExam] = useState('GATE / ESE');
@@ -32,7 +33,7 @@ const GateExamPage: React.FC = () => {
   const markImageFailed = (src: string) =>
     setFailedImages((prev) => (prev.includes(src) ? prev : [...prev, src]));
 
-  const slides = [
+  const slides: any[] = content?.hero?.length ? content.hero : [
     {
       badge: "REGISTRATION",
       title: "GATE 2026 Registration Open",
@@ -133,7 +134,7 @@ const GateExamPage: React.FC = () => {
     }
   };
 
-  const rankers = [
+  const rankers: any[] = content?.rankers?.length ? content.rankers : [
     {
       name: "Abhishek Singh",
       rank: "AIR 1 - GATE ME",
@@ -160,7 +161,7 @@ const GateExamPage: React.FC = () => {
     }
   ];
 
-  const courseBenefits = [
+  const defaultCourseBenefits: any[] = [
     {
       title: "Quality Content & Visualisation",
       desc: "Master complex theories through visualized learning. We simplify high-level engineering concepts into intuitive stories and hacks.",
@@ -195,8 +196,15 @@ const GateExamPage: React.FC = () => {
     }
   ];
 
+  // Editable text/points come from the admin panel; icon/colour/bg stay in code
+  // and are matched by position onto the defaults below.
+  const courseBenefits: any[] = (content?.courseBenefits?.length ? content.courseBenefits : defaultCourseBenefits).map((item: any, i: number) => ({
+    ...defaultCourseBenefits[i % defaultCourseBenefits.length],
+    ...item,
+  }));
+
   // TODO: client to upload opportunity images
-  const gateAdvantages = [
+  const defaultGateAdvantages: any[] = [
     {
       title: "Higher Education Opportunities",
       desc: "Admission to IITs, NITs, IIITs, and other top institutes for M.Tech/M.E. programs. Receive a monthly stipend of Rs. 12,400 during postgraduate studies.",
@@ -279,6 +287,13 @@ const GateExamPage: React.FC = () => {
       bgImage: "/gate/opportunity-9.jpg",
     }
   ];
+
+  // Editable title/desc/image come from the admin panel; icon/colour/bg stay in
+  // code and are matched by position onto the defaults above.
+  const gateAdvantages: any[] = (content?.advantages?.length ? content.advantages : defaultGateAdvantages).map((item: any, i: number) => ({
+    ...defaultGateAdvantages[i % defaultGateAdvantages.length],
+    ...item,
+  }));
 
   const distributionOfMarks = [
     {
@@ -471,7 +486,7 @@ const GateExamPage: React.FC = () => {
     }
   ];
 
-  const importantDates = [
+  const importantDates: any[] = content?.importantDates?.length ? content.importantDates : [
     {
       event: "GATE Online Application Processing System (GOAPS) opens",
       date: (
@@ -571,9 +586,9 @@ const GateExamPage: React.FC = () => {
     }
   ];
 
-  const faqs = [
-    { 
-      q: "Q.1 Is GAME's online coaching enough to crack GATE?", 
+  const defaultFaqs: any[] = [
+    {
+      q: "Q.1 Is GAME's online coaching enough to crack GATE?",
       a: "Ans. Yes, with expert faculty, live classes, comprehensive study materials, and practice tests, GAME Academy provides all the tools to succeed." 
     },
     { 
@@ -590,10 +605,14 @@ const GateExamPage: React.FC = () => {
     },
     { 
       q: "Q.5 Can I access free GATE coaching from GAME?", 
-      a: "Ans. Yes, GAME offers free online coaching through its YouTube channel to support students who may not afford paid programs." 
-    },
-    { 
-      q: "Q.6 Various PSUs, AE-JE Exams that are exclusively for Diploma holders only / What other exams can I give after completing my Diploma?", 
+      a: "Ans. Yes, GAME offers free online coaching through its YouTube channel to support students who may not afford paid programs."
+    }
+  ];
+
+  // Detailed table-based FAQs are kept in code (not admin-editable for now).
+  const richFaqs: any[] = [
+    {
+      q: "Q.6 Various PSUs, AE-JE Exams that are exclusively for Diploma holders only / What other exams can I give after completing my Diploma?",
       a: (
         <div className="space-y-6">
           <div className="bg-gameGold/5 rounded-xl border-2 border-slate-900 shadow-xl overflow-hidden relative">
@@ -965,6 +984,12 @@ const GateExamPage: React.FC = () => {
       q: "Q.11 What are the exams covered under the Lakshya Course?",
       a: "Ans. Lakshya Course is suitable for GATE/ESE/ISRO/BARC & PSUs, where in-depth technical knowledge is required."
     }
+  ];
+
+  // The first group (plain Q&A) is admin-editable; the detailed table FAQs follow.
+  const faqs: any[] = [
+    ...(content?.faqs?.length ? content.faqs : defaultFaqs),
+    ...richFaqs,
   ];
 
   return (
