@@ -9,6 +9,7 @@ import LoginModalWrapper from '@/components/LoginModalWrapper';
 import FaviconManager from '@/components/FaviconManager';
 
 import { AuthProvider } from '@/providers/AuthProvider';
+import MotionProvider from '@/components/MotionProvider';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -73,13 +74,15 @@ export default function RootLayout({
       <body className={`${inter.variable} font-sans min-h-screen bg-white text-slate-900 selection:bg-gameTeal selection:text-white`}>
         <FaviconManager />
         <AuthProvider>
-          <NavbarWrapper />
-          <main className="flex flex-col min-h-screen">
-            {children}
-          </main>
-          <Footer />
-          <LoginModalWrapper />
-          <FloatingActions />
+          <MotionProvider>
+            <NavbarWrapper />
+            <main className="flex flex-col min-h-screen">
+              {children}
+            </main>
+            <Footer />
+            <LoginModalWrapper />
+            <FloatingActions />
+          </MotionProvider>
         </AuthProvider>
       </body>
     </html>
