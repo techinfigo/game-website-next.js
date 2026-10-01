@@ -134,6 +134,18 @@ const GateExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content 
     }
   };
 
+  // Each hero banner can carry its own destination (set in the admin panel).
+  // Supports: a "#section-id" (smooth scroll on this page), an external
+  // "https://..." link (opens in a new tab), or an internal path like "/courses".
+  // When no link is set, it falls back to scrolling to the course grid.
+  const handleHeroClick = (slide: any) => {
+    const link: string = slide?.link?.trim?.() || '';
+    if (!link) { scrollToSection('gate-courses'); return; }
+    if (link.startsWith('#')) { scrollToSection(link.slice(1)); return; }
+    if (/^https?:\/\//i.test(link)) { window.open(link, '_blank', 'noopener,noreferrer'); return; }
+    window.location.href = link;
+  };
+
   const rankers: any[] = content?.rankers?.length ? content.rankers : [
     {
       name: "Abhishek Singh",
@@ -1081,12 +1093,12 @@ const GateExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content 
                   <div
                      role="button"
                      tabIndex={0}
-                     aria-label="Jump to GATE course grid"
-                     onClick={() => scrollToSection('gate-courses')}
+                     aria-label={slides[activeSlide]?.title || 'GATE banner'}
+                     onClick={() => handleHeroClick(slides[activeSlide])}
                      onKeyDown={(e) => {
                         if (e.key === 'Enter' || e.key === ' ') {
                            e.preventDefault();
-                           scrollToSection('gate-courses');
+                           handleHeroClick(slides[activeSlide]);
                         }
                      }}
                      className="relative flex-grow bg-[#001c1e] rounded-[1.5rem] border border-white/10 overflow-hidden shadow-2xl min-h-[350px] cursor-pointer"

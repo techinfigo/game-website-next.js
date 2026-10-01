@@ -8,6 +8,7 @@ export interface HeroSlideContent {
   buttonText?: string;
   imageUrl?: string;
   bgColor?: string;
+  link?: string;
 }
 
 export interface DateRowContent {
