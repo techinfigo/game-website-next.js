@@ -450,31 +450,31 @@ const PsuExamPage: React.FC = () => {
                         title: "Success & Fulfilment",
                         imageIdea: "A sharp, formal blazer vs. modern tech gadgets and rewarding perks on a contemporary desk.",
                         icon: Briefcase,
-                        image: "/psu/psu-benefit-1.png"
+                        image: "/psu/psu-benefit-1.webp"
                      },
                      {
                         title: "National Growth Forefront",
                         imageIdea: "Confident engineers at a massive project site with rising national skylines.",
                         icon: TrendingUp,
-                        image: "/psu/psu-benefit-2.png"
+                        image: "/psu/psu-benefit-2.webp"
                      },
                      {
                         title: "Premium Rewards",
                         imageIdea: "A career ladder made of reward icons: promotions, salary, LTC, and housing security.",
                         icon: Award,
-                        image: "/psu/psu-benefit-3.png"
+                        image: "/psu/psu-benefit-3.webp"
                      },
                      {
                         title: "Universe of Opportunities",
                         imageIdea: "Isometric PSU building with windows showing oil rigs, wind turbines, and financial charts.",
                         icon: Building2,
-                        image: "/psu/psu-benefit-4.png"
+                        image: "/psu/psu-benefit-4.webp"
                      },
                      {
                         title: "Work-Life Harmony",
                         imageIdea: "Focused professional at work vs. relaxed person enjoying family time in daylight.",
                         icon: Coffee,
-                        image: "/psu/psu-benefit-5.png"
+                        image: "/psu/psu-benefit-5.webp"
                      }
                   ].map((item, index) => (
                      <RndAdvantageRow
