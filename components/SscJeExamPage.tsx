@@ -949,7 +949,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                   viewport={{ once: true }}
                >
                   <div className="absolute inset-0 bg-gameTeal/5 rounded-full blur-3xl transform rotate-12"></div>
-                  <div className="relative bg-white rounded-[2.5rem] p-4 border border-slate-100 shadow-2xl aspect-video md:aspect-auto h-[400px]">
+                  <div className="relative bg-white rounded-[2.5rem] p-4 border border-slate-100 shadow-2xl aspect-[5/4]">
                      {/* Dark-teal base sits behind the photo as the graceful fallback. */}
                      <div className="absolute inset-0 rounded-[2rem] bg-gameTealDark"></div>
                      {!whatIsImgFailed && (
