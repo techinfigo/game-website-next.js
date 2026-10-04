@@ -276,12 +276,29 @@ const StateAeJeExamPage: React.FC = () => {
             <h2 className="text-3xl md:text-5xl font-black text-slate-900">A Career That Keeps You <span className="text-gameTeal">Close to Home</span></h2>
           </div>
 
-          <div className="space-y-20 lg:space-y-28">
+          <div className="relative">
+            {/* Vertical pathway line (animated) — matches the other exam pages */}
+            <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-slate-200 -translate-x-1/2 hidden lg:block overflow-hidden">
+              <motion.div
+                initial={{ height: 0 }}
+                whileInView={{ height: '100%' }}
+                transition={{ duration: 2, ease: 'easeInOut' }}
+                className="w-full bg-gradient-to-b from-gameTeal via-gameGold to-gameTeal"
+              />
+            </div>
+
+            <div className="space-y-20 lg:space-y-28">
             {advantages.map((item, i) => {
               const isEven = i % 2 === 0;
               const Icon = item.icon;
               return (
-                <div key={i} className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-10 lg:gap-20`}>
+                <div key={i} className={`relative flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-10 lg:gap-20`}>
+                  {/* Branching node on the center line */}
+                  <div className="absolute left-1/2 top-10 -translate-x-1/2 -translate-y-1/2 hidden lg:flex z-20">
+                    <div className="w-12 h-12 rounded-full bg-white border-4 border-gameTeal flex items-center justify-center shadow-xl">
+                      <Icon size={22} className="text-gameTeal" />
+                    </div>
+                  </div>
                   {/* Text */}
                   <motion.div initial={{ opacity: 0, x: isEven ? -40 : 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="w-full lg:w-1/2">
                     <div className={`relative ${isEven ? 'lg:text-right' : 'lg:text-left'} text-left`}>
@@ -291,9 +308,6 @@ const StateAeJeExamPage: React.FC = () => {
                       <div className="relative overflow-hidden p-8 md:p-10 rounded-[3rem] shadow-2xl shadow-slate-200/50 border border-slate-100" style={{ backgroundColor: 'var(--color-gameTealDark)' }}>
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                         <div className="relative z-10">
-                          <div className={`inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-white/10 text-gameGold mb-5 ${isEven ? 'lg:ml-auto' : ''}`}>
-                            <Icon size={22} />
-                          </div>
                           <h3 className="text-2xl md:text-3xl font-black text-white mb-4 tracking-tight leading-tight">{item.title}</h3>
                           <p className="text-slate-200 text-base md:text-lg font-bold leading-relaxed">{item.desc}</p>
                         </div>
@@ -315,6 +329,7 @@ const StateAeJeExamPage: React.FC = () => {
                 </div>
               );
             })}
+            </div>
           </div>
         </div>
       </section>
