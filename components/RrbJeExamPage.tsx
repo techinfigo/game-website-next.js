@@ -465,7 +465,7 @@ const RrbJeExamPage: React.FC = () => {
                   initial={{ opacity: 0, x: 30 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8 }}
-                  className="relative h-full flex flex-col justify-between"
+                  className="relative h-full flex flex-col justify-center gap-4"
                >
                   {/* Main Display Area */}
                   <div
@@ -474,7 +474,7 @@ const RrbJeExamPage: React.FC = () => {
                      aria-label={rrbSlides[activeSlide]?.title || 'RRB JE banner'}
                      onClick={() => handleHeroClick(rrbSlides[activeSlide])}
                      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleHeroClick(rrbSlides[activeSlide]); } }}
-                     className="relative flex-grow bg-[#001c1e] rounded-[1.5rem] border border-white/10 overflow-hidden shadow-2xl min-h-[350px] cursor-pointer"
+                     className="relative w-full aspect-[3/2] bg-[#001c1e] rounded-[1.5rem] border border-white/10 overflow-hidden shadow-2xl cursor-pointer"
                   >
                      <AnimatePresence mode="wait">
                         <motion.div
