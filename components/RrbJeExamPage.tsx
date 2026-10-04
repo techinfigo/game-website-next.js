@@ -27,28 +27,32 @@ const RrbJeExamPage: React.FC = () => {
   // Hero carousel slides - placeholder picsum images, the owner will replace them with final creatives.
   const rrbSlides = [
     {
-      badge: "NOTIFICATION",
-      title: "RRB JE 2026 CEN Notification Awaited",
-      buttonText: "Get Alerts",
-      imageUrl: "https://picsum.photos/seed/rrb-je-notification/1200/800"
+      badge: "RRB JE COURSE",
+      title: "RRB JE — Engineer Se Railway JE Tak",
+      buttonText: "Start Preparation",
+      imageUrl: "/rrb/hero-1.webp",
+      link: "#rrb-courses"
     },
     {
-      badge: "MOCK TEST",
-      title: "Free RRB-JE Mock Test",
+      badge: "TEST SERIES",
+      title: "Free CBT-1 Mock Test — RRB JE Pattern",
       buttonText: "Start Test",
-      imageUrl: "https://picsum.photos/seed/rrb-je-mock/1200/800"
+      imageUrl: "/rrb/hero-2.webp",
+      link: "#rrb-courses"
     },
     {
-      badge: "PAY SCALE",
-      title: "Level-6 Pay Matrix - Rs. 35,400",
-      buttonText: "Know More",
-      imageUrl: "https://picsum.photos/seed/rrb-je-payscale/1200/800"
+      badge: "JOB NOTIFICATION",
+      title: "Railway JE — Pay Level & Zone-wise Vacancies",
+      buttonText: "View Vacancies",
+      imageUrl: "/rrb/hero-3.webp",
+      link: "/jobs"
     },
     {
-      badge: "RAILWAY CAREER",
-      title: "Join India's 4th Largest Railway Network",
-      buttonText: "Explore Zones",
-      imageUrl: "https://picsum.photos/seed/rrb-je-career/1200/800"
+      badge: "EXCELLENCE COURSE",
+      title: "RRB JE Excellence Course — 4 Weeks to CBT-1",
+      buttonText: "Join Excellence Course",
+      imageUrl: "/rrb/hero-4.webp",
+      link: "https://courses.gameacademy.in/wlp/excellence-ae-je-mechanical"
     }
   ];
 
@@ -110,6 +114,17 @@ const RrbJeExamPage: React.FC = () => {
         behavior: 'smooth'
       });
     }
+  };
+
+  // Each hero banner links to its own destination (set per slide above):
+  // "#id" scrolls to a section, "/path" opens an internal page, "http(s)://"
+  // opens an external link in a new tab.
+  const handleHeroClick = (slide: any) => {
+    const link: string = (slide?.link || '').trim();
+    if (!link) { scrollToSection('rrb-courses'); return; }
+    if (link.startsWith('#')) { scrollToSection(link.slice(1)); return; }
+    if (/^https?:\/\//i.test(link)) { window.open(link, '_blank', 'noopener,noreferrer'); return; }
+    window.location.href = link;
   };
 
   const keyHighlights = [
@@ -453,7 +468,14 @@ const RrbJeExamPage: React.FC = () => {
                   className="relative h-full flex flex-col justify-between"
                >
                   {/* Main Display Area */}
-                  <div className="relative flex-grow bg-[#001c1e] rounded-[1.5rem] border border-white/10 overflow-hidden shadow-2xl min-h-[350px]">
+                  <div
+                     role="button"
+                     tabIndex={0}
+                     aria-label={rrbSlides[activeSlide]?.title || 'RRB JE banner'}
+                     onClick={() => handleHeroClick(rrbSlides[activeSlide])}
+                     onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleHeroClick(rrbSlides[activeSlide]); } }}
+                     className="relative flex-grow bg-[#001c1e] rounded-[1.5rem] border border-white/10 overflow-hidden shadow-2xl min-h-[350px] cursor-pointer"
+                  >
                      <AnimatePresence mode="wait">
                         <motion.div
                            key={activeSlide}
@@ -483,7 +505,8 @@ const RrbJeExamPage: React.FC = () => {
                         {rrbSlides.map((_, i) => (
                            <button
                               key={i}
-                              onClick={() => setActiveSlide(i)}
+                              onClick={(e) => { e.stopPropagation(); setActiveSlide(i); }}
+                              aria-label={`Go to slide ${i + 1}`}
                               className={`h-1 rounded-full transition-all duration-300 ${i === activeSlide ? 'w-6 bg-gameTeal' : 'w-1.5 bg-white/30'}`}
                            />
                         ))}
