@@ -5,9 +5,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  MapPin, ArrowRight, TrendingUp, Calendar, CheckCircle2, ShieldCheck,
+  MapPin, ArrowRight, Calendar, CheckCircle2, ShieldCheck,
   Wallet, Scale, Home, Users, Building2, GraduationCap, Landmark,
-  FileText, ArrowUpRight, ChevronDown, Layers, Award, Briefcase, BookOpen, HelpCircle
+  FileText, ArrowUpRight, ChevronDown, BookOpen, HelpCircle
 } from 'lucide-react';
 import CourseGrid from './CourseGrid';
 import TestimonialsText from './TestimonialsText';
@@ -219,25 +219,24 @@ const StateAeJeExamPage: React.FC = () => {
 
             {/* Right: Slider */}
             <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="relative h-full flex flex-col justify-between">
-              <div className="relative flex-grow bg-[#001c1e] rounded-[1.5rem] border border-white/10 overflow-hidden shadow-2xl min-h-[350px]">
+              <div
+                role="button"
+                tabIndex={0}
+                aria-label="Jump to State AE/JE courses"
+                onClick={scrollToCourses}
+                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); scrollToCourses(); } }}
+                className="relative flex-grow bg-[#001c1e] rounded-[1.5rem] border border-white/10 overflow-hidden shadow-2xl min-h-[350px] cursor-pointer"
+              >
                 <AnimatePresence mode="wait">
-                  <motion.div key={activeSlide} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }} className="absolute inset-0 flex flex-col p-8 justify-between h-full w-full">
+                  <motion.div key={activeSlide} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }} className="absolute inset-0 h-full w-full">
                     {!failedImages[stateSlides[activeSlide].imageUrl] && (
                       <Image src={stateSlides[activeSlide].imageUrl} alt={stateSlides[activeSlide].title} fill className="object-cover" referrerPolicy="no-referrer" onError={() => markImageFailed(stateSlides[activeSlide].imageUrl)} />
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#001c1e] via-transparent to-[#001c1e]/60"></div>
-                    <div className="relative z-10 mt-auto self-end">
-                      <button onClick={scrollToCourses} className="group flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white font-black text-xs uppercase tracking-widest hover:bg-gameGold hover:text-gameBlack transition-all">
-                        {stateSlides[activeSlide].buttonText}
-                        <TrendingUp size={14} className="group-hover:translate-x-1 transition-transform" />
-                      </button>
-                    </div>
-                    <div className="absolute top-8 right-8 opacity-20 z-10 text-white"><MapPin size={60} /></div>
                   </motion.div>
                 </AnimatePresence>
                 <div className="absolute bottom-5 right-6 flex gap-1.5 z-20">
                   {stateSlides.map((_, i) => (
-                    <button key={i} onClick={() => setActiveSlide(i)} aria-label={`Go to slide ${i + 1}`} className={`h-1 rounded-full transition-all duration-300 ${i === activeSlide ? 'w-6 bg-gameTeal' : 'w-1.5 bg-white/30'}`} />
+                    <button key={i} onClick={(e) => { e.stopPropagation(); setActiveSlide(i); }} aria-label={`Go to slide ${i + 1}`} className={`h-1 rounded-full transition-all duration-300 ${i === activeSlide ? 'w-6 bg-gameTeal' : 'w-1.5 bg-white/30'}`} />
                   ))}
                 </div>
               </div>
