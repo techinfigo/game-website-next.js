@@ -289,13 +289,14 @@ const StateAeJeExamPage: React.FC = () => {
                   </motion.div>
                   {/* Photo */}
                   <motion.div initial={{ opacity: 0, x: isEven ? 40 : -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="w-full lg:w-1/2">
-                    <div className="relative rounded-[3rem] overflow-hidden border-4 border-white shadow-2xl aspect-[5/4] bg-gameTealDark">
-                      {!failedImages[item.image] && (
+                    <div className="relative rounded-[3rem] overflow-hidden border-4 border-white shadow-2xl aspect-[3/2] bg-gameTealDark">
+                      {!failedImages[item.image] ? (
                         <Image src={item.image} alt={item.title} fill className="object-cover" referrerPolicy="no-referrer" onError={() => markImageFailed(item.image)} />
+                      ) : (
+                        <div className="absolute inset-0 flex items-center justify-center text-white/15">
+                          <Icon size={90} />
+                        </div>
                       )}
-                      <div className="absolute inset-0 flex items-center justify-center text-white/15">
-                        <Icon size={90} />
-                      </div>
                     </div>
                   </motion.div>
                 </div>
