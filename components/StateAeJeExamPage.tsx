@@ -164,6 +164,19 @@ const StateAeJeExamPage: React.FC = () => {
     },
   ];
 
+  // Syllabus links from the source document (Google Drive). An empty string
+  // means no syllabus link was provided for that exam in the document.
+  const syllabusLinks: string[] = [
+    'https://drive.google.com/file/d/1VjYs3LU9aNLFYlu9pHY50VjgcK5QyAdk/view?usp=sharing', // 1 UPPSC-AE
+    '',                                                                                    // 2 UPPSC Polytechnic Lecturer — none in doc
+    'https://drive.google.com/file/d/1L8G6KWKmGxd6Inc4-NQVKENJ_ig7B0Z4/view?usp=sharing', // 3 MPPSC-AE
+    '',                                                                                    // 4 MPSC — none in doc
+    'https://drive.google.com/file/d/1Bm7M3-DYzHRkwYOrV1_rypAFglYxte0R/view?usp=sharing', // 5 RPSC-AE
+    'https://drive.google.com/file/d/1dHyBVFIMr2ti1HxnRNrU-pz1S2ZNqQW5/view?usp=sharing', // 6 RSMSSB-JE
+    'https://drive.google.com/file/d/142RqAmChOP7vUe0SSlz1NQ_zdHxlyrPY/view?usp=sharing', // 7 BPSC
+    'https://drive.google.com/file/d/1wycDAt9zmYOZPo2sfmzN7V1XEQwq7Mhu/view?usp=sharing', // 8 GPSC
+  ];
+
   const faqs = [
     { q: 'What is the difference between AE and JE?', a: 'AE (Assistant Engineer) is a Group-A/B Gazetted post requiring B.Tech. JE (Junior Engineer) is a Group-C post requiring Diploma/B.Tech.' },
     { q: 'Is local language knowledge mandatory?', a: "For many state exams (like MPSC and GPSC), knowledge of the state's official language is required or tested." },
@@ -382,9 +395,13 @@ const StateAeJeExamPage: React.FC = () => {
                     <button onClick={scrollToCourses} className="flex-1 min-w-[140px] px-5 py-3 bg-gameTeal text-white font-black rounded-full text-sm hover:bg-[#007a7e] transition-all active:scale-95 flex items-center justify-center gap-2">
                       <BookOpen size={15} /> View Course
                     </button>
-                    {/* TODO: replace "#" with each exam's syllabus link */}
-                    <a href="#" className="flex-1 min-w-[140px] px-5 py-3 border border-slate-300 text-slate-800 font-black rounded-full text-sm hover:border-gameTeal hover:text-gameTeal transition-all flex items-center justify-center gap-2">
-                      View More <ArrowUpRight size={15} />
+                    <a
+                      href={syllabusLinks[i] || '#'}
+                      target={syllabusLinks[i] ? '_blank' : undefined}
+                      rel={syllabusLinks[i] ? 'noopener noreferrer' : undefined}
+                      className="flex-1 min-w-[140px] px-5 py-3 border border-slate-300 text-slate-800 font-black rounded-full text-sm hover:border-gameTeal hover:text-gameTeal transition-all flex items-center justify-center gap-2"
+                    >
+                      View Syllabus <ArrowUpRight size={15} />
                     </a>
                   </div>
                 </div>
