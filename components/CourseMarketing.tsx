@@ -4,17 +4,14 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { useCourseBanners, DEFAULT_COURSE_BANNERS } from '@/hooks/useCourseBanners';
+import { useCourseBanners } from '@/hooks/useCourseBanners';
 
 const CourseMarketing: React.FC = () => {
-  const { banners: fetchedBanners } = useCourseBanners();
-  const banners = fetchedBanners.length > 0 ? fetchedBanners : DEFAULT_COURSE_BANNERS;
+  const { banners } = useCourseBanners();
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // The banner count can change when Firestore resolves, so keep the index in range.
-  const safeIndex = currentIndex % banners.length;
-
   useEffect(() => {
+    if (banners.length <= 1) return;
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % banners.length);
     }, 5000);
@@ -28,6 +25,14 @@ const CourseMarketing: React.FC = () => {
   const prevSlide = () => {
     setCurrentIndex((prev) => (prev - 1 + banners.length) % banners.length);
   };
+
+  // No banners configured in the admin panel → show nothing, just keep the
+  // spacing that clears the fixed navbar so the next section isn't hidden.
+  if (banners.length === 0) {
+    return <div className="pt-20 md:pt-24" aria-hidden />;
+  }
+
+  const safeIndex = currentIndex % banners.length;
 
   return (
     <section className="relative w-full bg-white overflow-hidden pt-20 md:pt-24">
@@ -82,7 +87,7 @@ const CourseMarketing: React.FC = () => {
             </div>
           </>
         )}
-        
+
         {/* Gradient Overlay for better integration with page (optional) */}
         <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_50px_rgba(0,0,0,0.2)]"></div>
       </div>
