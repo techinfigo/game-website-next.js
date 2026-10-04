@@ -17,15 +17,15 @@ import CourseHelpSection from './CourseHelpSection';
 import FinalCTA from './FinalCTA';
 import CourseMarketing from './CourseMarketing';
 
-const CoursesPage: React.FC = () => {
+const CoursesPage: React.FC<{ banners?: string[] }> = ({ banners = [] }) => {
   const [selectedExam, setSelectedExam] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
 
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900">
-      
+
       {/* 1. CourseMarketing (The main Hero/Banner section) */}
-      <CourseMarketing />
+      <CourseMarketing banners={banners} />
       
       {/* 1.5 Acing Exams Section (Mentor Introduction) */}
       <AcingExamsSection />

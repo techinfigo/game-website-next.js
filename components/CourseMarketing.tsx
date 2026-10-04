@@ -4,10 +4,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { useCourseBanners } from '@/hooks/useCourseBanners';
 
-const CourseMarketing: React.FC = () => {
-  const { banners } = useCourseBanners();
+// Banners are fetched on the server (app/courses/page.tsx) and passed in, so
+// they are present on first paint — no late load, no layout shift. Only banners
+// configured in the admin panel are shown; there are no built-in fallbacks.
+const CourseMarketing: React.FC<{ banners?: string[] }> = ({ banners = [] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
