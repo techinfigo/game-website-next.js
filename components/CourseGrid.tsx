@@ -214,24 +214,22 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
           
           {/* Courses Slidable Row */}
           <div className="space-y-6">
-             <AnimatePresence mode="wait">
-               {filteredCourses.length > 0 ? (
-                 <motion.div 
+             {filteredCourses.length > 0 ? (
+                 <motion.div
                    key={selectedExam + searchTerm}
                    initial={{ opacity: 0 }}
                    animate={{ opacity: 1 }}
-                   exit={{ opacity: 0 }}
+                   transition={{ duration: 0.25 }}
                    className="space-y-6"
                  >
                    <div className="relative group/row">
-                     <div 
+                     <div
                         id="course-row-0"
                         className="flex items-stretch overflow-x-auto scroll-smooth snap-x snap-mandatory gap-6 pb-4 px-2 -mx-2 thin-scrollbar"
                      >
                         {filteredCourses.map((course) => (
                           <motion.div
                             key={course.title}
-                            layout
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             className="snap-start h-full shrink-0 w-[calc(100%-1rem)] md:w-[calc(50%-12px)] flex"
@@ -388,11 +386,11 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
                  </motion.div>
 
                ) : (
-                 <motion.div 
+                 <motion.div
                    key="empty"
                    initial={{ opacity: 0 }}
                    animate={{ opacity: 1 }}
-                   exit={{ opacity: 0 }}
+                   transition={{ duration: 0.25 }}
                    className="col-span-full py-32 text-center bg-white rounded-[2.5rem] border-2 border-dashed border-slate-200 relative overflow-hidden"
                  >
                     <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:16px_16px] opacity-20"></div>
@@ -416,7 +414,6 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
                     </div>
                  </motion.div>
                )}
-             </AnimatePresence>
           </div>
        </div>
 
