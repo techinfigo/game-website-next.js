@@ -90,6 +90,9 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
   const getCategoryCount = (catId: string) =>
     catId === 'All' ? courses.length : courses.filter(c => courseInCategory(c, catId)).length;
 
+  // Only show tabs that actually have courses (always keep "All").
+  const visibleCategories = categories.filter(cat => cat.id === 'All' || getCategoryCount(cat.id) > 0);
+
   return (
     <section id="course-grid" className="pt-4 pb-12 relative min-h-[400px] bg-slate-50">
        
@@ -135,7 +138,7 @@ const CourseGrid: React.FC<CourseGridProps> = ({ selectedExam, setSelectedExam, 
                    onScroll={checkScroll}
                    className={`flex overflow-x-auto thin-scrollbar w-full gap-3 px-2 py-1 items-center scroll-smooth ${showRightArrow ? 'tab-mask-right' : ''} ${showLeftArrow ? 'tab-mask-left' : ''}`}
                 >
-                   {categories.map((cat) => {
+                   {visibleCategories.map((cat) => {
                       const count = getCategoryCount(cat.id);
                       const isActive = selectedExam === cat.id;
  
