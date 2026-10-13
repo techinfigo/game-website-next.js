@@ -10,6 +10,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { EXAM_PAGES_DISABLED, DISABLED_EXAMPAGES_IDS } from './examconfig';
 import type { StudentProfile } from '@/providers/AuthProvider';
 import { loadFirebase } from '@/lib/loadFirebase';
@@ -42,6 +43,14 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout, profil
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  const pathname = usePathname();
+
+  // A nav item is "active" when the current page is its own route, or — for the
+  // dropdown menus (Examination, More) — any of the pages listed under it.
+  const isItemActive = (item: { id: string; dropdown?: { id: string }[] }) => {
+    if (item.dropdown) return item.dropdown.some((sub) => pathname === `/${sub.id}`);
+    return pathname === `/${item.id === 'home' ? '' : item.id}`;
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -159,42 +168,40 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout, profil
           <nav className="hidden lg:flex items-center gap-6">
             {navItems.map((item) => {
               const isHighlight = (item as any).highlight;
+              const active = isItemActive(item);
               return (
-                <div 
-                  key={item.name} 
+                <div
+                  key={item.name}
                   className="relative group"
                   onMouseEnter={() => item.dropdown && setActiveDropdown(item.name)}
                   onMouseLeave={() => item.dropdown && setActiveDropdown(null)}
                 >
                   {item.dropdown ? (
-                    <button 
+                    <button
                       className={`
                         text-sm font-bold transition-all relative flex items-center gap-1.5 py-2
-                        ${isHighlight 
-                          ? 'px-5 rounded-full border-2 border-[#f2c537] bg-transparent text-slate-900 hover:bg-[#f2c537] hover:text-black hover:-translate-y-0.5' 
-                          : `${scrolled ? 'text-slate-600 hover:text-gameTeal' : 'text-slate-700 hover:text-gameTeal'}`
+                        ${isHighlight
+                          ? `px-5 rounded-full border-2 border-[#f2c537] hover:bg-[#f2c537] hover:text-black hover:-translate-y-0.5 ${active ? 'bg-[#f2c537] text-black' : 'bg-transparent text-slate-900'}`
+                          : `${active ? 'text-gameTeal' : (scrolled ? 'text-slate-600 hover:text-gameTeal' : 'text-slate-700 hover:text-gameTeal')}`
                         }
                       `}
                     >
-                      {isHighlight && <Sparkles size={16} className="text-[#d8b32f] group-hover:text-black transition-colors" />}
+                      {isHighlight && <Sparkles size={16} className={`transition-colors ${active ? 'text-black' : 'text-[#d8b32f] group-hover:text-black'}`} />}
                       {item.name}
                       <ChevronDown size={14} className={`transition-transform duration-200 ${activeDropdown === item.name ? 'rotate-180' : ''}`} />
                     </button>
                   ) : (
-                    <Link 
+                    <Link
                       href={`/${item.id === 'home' ? '' : item.id}`}
                       prefetch={false}
                       onClick={handleLinkClick}
                       className={`
                         text-sm font-bold transition-all relative flex items-center gap-1.5 py-2
-                        ${isHighlight 
-                          ? 'px-5 rounded-full border-2 border-[#f2c537] bg-transparent text-slate-900 hover:bg-[#f2c537] hover:text-black hover:-translate-y-0.5' 
-                          : `${scrolled ? 'text-slate-600 hover:text-gameTeal' : 'text-slate-700 hover:text-gameTeal'}`
-                        }
+                        ${active ? 'text-gameTeal' : (scrolled ? 'text-slate-600 hover:text-gameTeal' : 'text-slate-700 hover:text-gameTeal')}
                       `}
                     >
                       {item.name}
-                      <span className={`absolute bottom-0 left-0 h-0.5 bg-gameTeal transition-all w-0 group-hover:w-full`}></span>
+                      <span className={`absolute bottom-0 left-0 h-0.5 bg-gameTeal transition-all ${active ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
                     </Link>
                   )}
 
@@ -219,7 +226,8 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout, profil
                                   }`}>
                                       {item.dropdown.map((subItem) => {
                                           const isPageDisabled = EXAM_PAGES_DISABLED && DISABLED_EXAMPAGES_IDS.includes(subItem.id);
-                                          const commonClasses = "flex items-center gap-3 p-3 rounded-xl transition-all duration-200 group/item hover:bg-slate-50 border border-transparent hover:border-slate-100 text-left w-full";
+                                          const subActive = !isPageDisabled && pathname === `/${subItem.id}`;
+                                          const commonClasses = `flex items-center gap-3 p-3 rounded-xl transition-all duration-200 group/item text-left w-full border ${subActive ? 'bg-gameTeal/5 border-gameTeal/20' : 'border-transparent hover:bg-slate-50 hover:border-slate-100'}`;
                                           
                                           const innerContent = (
                                               <>
@@ -369,13 +377,14 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout, profil
             <div className="flex flex-col p-6 space-y-2">
               {navItems.map((item) => {
                 const isHighlight = (item as any).highlight;
+                const active = isItemActive(item);
                 return (
                   <div key={item.name}>
                       {item.dropdown ? (
                           <div className="border-b border-slate-50 pb-2">
-                              <button 
+                              <button
                                   onClick={() => setMobileExpanded(mobileExpanded === item.name ? null : item.name)}
-                                  className={`w-full flex items-center justify-between text-lg font-bold py-3 ${isHighlight ? 'text-[#d8b32f]' : 'text-slate-700'}`}
+                                  className={`w-full flex items-center justify-between text-lg font-bold py-3 ${isHighlight ? 'text-[#d8b32f]' : (active ? 'text-gameTeal' : 'text-slate-700')}`}
                               >
                                   <span className="flex items-center gap-2">
                                     {isHighlight && <Sparkles size={18} />}
@@ -393,7 +402,8 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout, profil
                                       >
                                           {item.dropdown.map((subItem) => {
                                               const isPageDisabled = EXAM_PAGES_DISABLED && DISABLED_EXAMPAGES_IDS.includes(subItem.id);
-                                              const commonClasses = "flex items-center gap-3 p-3 rounded-xl bg-slate-50 active:bg-slate-100 transition-colors text-left w-full";
+                                              const subActive = !isPageDisabled && pathname === `/${subItem.id}`;
+                                              const commonClasses = `flex items-center gap-3 p-3 rounded-xl transition-colors text-left w-full ${subActive ? 'bg-gameTeal/10 ring-1 ring-gameTeal/20' : 'bg-slate-50 active:bg-slate-100'}`;
                                               
                                               const innerContent = (
                                                   <>
@@ -435,10 +445,10 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout, profil
                               </AnimatePresence>
                           </div>
                       ) : (
-                          <Link 
+                          <Link
                               href={`/${item.id === 'home' ? '' : item.id}`}
                               prefetch={false}
-                              className="block text-lg font-bold py-3 border-b border-slate-50 text-slate-700 hover:text-gameTeal"
+                              className={`block text-lg font-bold py-3 border-b border-slate-50 hover:text-gameTeal ${active ? 'text-gameTeal' : 'text-slate-700'}`}
                               onClick={handleLinkClick}
                           >
                               {item.name}
