@@ -34,6 +34,7 @@ export function useBlog(): { posts: BlogPost[]; loading: boolean } {
             image: (data.coverImageUrl as string) ?? "",
             featured: (data.featured as boolean) ?? false,
             tags: Array.isArray(data.tags) ? (data.tags as string[]) : [],
+            content: (data.content as string) ?? "",
           } as BlogPost;
         });
 

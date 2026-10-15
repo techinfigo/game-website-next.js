@@ -145,66 +145,11 @@ const BlogPage: React.FC = () => {
 
                <div className="w-32 h-1.5 bg-[#f2c537] mb-12 rounded-full"></div>
 
-               <p>
-                  Preparing for competitive exams like GATE and ESE is a marathon, not a sprint. Many students start with high enthusiasm but lose momentum midway. The difference between a ranker and an average aspirant often boils down to strategy, discipline, and the ability to bounce back from setbacks.
-               </p>
-
-               <h3>1. The Power of Consistency</h3>
-               <p>
-                  It's a cliché for a reason. Studying for 12 hours one day and skipping the next three is less effective than studying 4 hours every single day. 
-               </p>
-               <p>
-                  <strong className="text-[#075d63] bg-[#075d63]/10 px-2 py-0.5 rounded">Consistency builds momentum.</strong> Create a schedule that is realistic and stick to it. Use tools like the Pomodoro technique to maintain focus without burnout. Small daily improvements compound into massive results over time.
-               </p>
-
-               <blockquote className="my-12">
-                  <div className="flex items-start gap-4">
-                     <Sparkles className="text-[#f2c537] shrink-0 mt-1" size={32} />
-                     <div>
-                        <p className="text-2xl font-bold text-slate-900 mb-4">
-                           "Discipline is doing what needs to be done, even if you don&apos;t want to do it."
-                        </p>
-                        <cite className="text-sm font-bold text-slate-500 uppercase tracking-widest not-italic">— Anonymous</cite>
-                     </div>
-                  </div>
-               </blockquote>
-
-               <h3>2. Concept over Rote Learning</h3>
-               <p>
-                  In engineering exams, questions are rarely direct repeats. They test your application of concepts. 
-                  Instead of memorizing formulas, try to derive them. Understand the physical significance of terms in an equation.
-               </p>
-               <p>
-                  For example, in Thermodynamics, don&apos;t just memorize <em>dQ = dU + dW</em>. Understand what internal energy really represents and how work transfer occurs in different processes.
-               </p>
-
-               <figure className="my-12">
-                  <div className="relative aspect-video w-full rounded-[2rem] overflow-hidden shadow-xl">
-                     <Image 
-                        src="/images/blog/main-hero.png" 
-                        alt="Study Setup" 
-                        fill
-                        className="object-cover"
-                        referrerPolicy="no-referrer"
-                     />
-                  </div>
-                  <figcaption className="text-center text-base text-slate-500 mt-4 font-medium italic">A conducive study environment helps maintain focus.</figcaption>
-               </figure>
-
-               <h3>3. The Art of Revision</h3>
-               <p>
-                  The human brain is designed to forget. This is where <strong>Spaced Repetition</strong> comes in. 
-                  Review a topic 24 hours after learning it, then 3 days later, then a week later. 
-               </p>
-               <p>
-                  Short notes are your best friend here. Condense a 50-page chapter into a 2-page summary sheet containing only keywords, formulas, and tricky concepts.
-               </p>
-
-               <h3>Conclusion</h3>
-               <p>
-                  Your journey to AIR 1 is paved with small, daily victories. Believe in the process, trust your mentors, and keep pushing forward.
-                  The view from the top is worth the climb.
-               </p>
+               {selectedPost.content ? (
+                  <div dangerouslySetInnerHTML={{ __html: selectedPost.content }} />
+               ) : (
+                  <p>{selectedPost.excerpt}</p>
+               )}
             </article>
 
             {/* Tags */}

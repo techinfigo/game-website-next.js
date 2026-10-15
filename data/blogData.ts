@@ -10,6 +10,7 @@ export interface BlogPost {
   image: string;
   featured?: boolean;
   tags: string[];
+  content?: string;
 }
 
 export const DEFAULT_POSTS: BlogPost[] = [
