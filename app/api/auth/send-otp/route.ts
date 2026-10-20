@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getCorsHeaders } from '@/lib/cors';
 
-export async function OPTIONS() {
-  return new NextResponse(null, { status: 204, headers: getCorsHeaders() });
+export async function OPTIONS(req: NextRequest) {
+  return new NextResponse(null, { status: 204, headers: getCorsHeaders(req.headers.get('origin')) });
 }
 
 export async function POST(req: NextRequest) {
   const res = await handlePOST(req);
-  const headers = getCorsHeaders();
+  const headers = getCorsHeaders(req.headers.get('origin'));
   Object.entries(headers).forEach(([key, value]) => res.headers.set(key, value));
   return res;
 }

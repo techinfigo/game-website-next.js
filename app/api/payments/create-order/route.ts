@@ -3,13 +3,13 @@ import { getAdminAuth, getAdminDb } from '@/lib/firebase-admin';
 import { getCorsHeaders } from '@/lib/cors';
 import { getRazorpayCreds } from '@/lib/razorpay';
 
-export async function OPTIONS() {
-  return new NextResponse(null, { status: 204, headers: getCorsHeaders() });
+export async function OPTIONS(req: NextRequest) {
+  return new NextResponse(null, { status: 204, headers: getCorsHeaders(req.headers.get('origin')) });
 }
 
 export async function POST(req: NextRequest) {
   const res = await handlePOST(req);
-  const headers = getCorsHeaders();
+  const headers = getCorsHeaders(req.headers.get('origin'));
   Object.entries(headers).forEach(([k, v]) => res.headers.set(k, v));
   return res;
 }

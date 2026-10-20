@@ -1,11 +1,26 @@
-// The handoff endpoint mints Firebase custom tokens, so it should not be
-// callable from any origin. Defaults to the student portal's subdomain; set
-// PORTAL_ORIGIN when the portal runs elsewhere (local dev, preview builds).
-export function getCorsHeaders() {
-  const origin = process.env.PORTAL_ORIGIN || 'https://student.gameacademy.in';
+// CORS for the endpoints the student portal calls cross-origin (auth handoff,
+// OTP, payments). The portal can be served from its custom domain or its Vercel
+// URL, so we reflect the request's Origin when it is one we trust, instead of
+// hardcoding a single value. PORTAL_ORIGIN can add one more allowed origin.
+const ALLOWED_ORIGINS = new Set([
+  'https://student.gameacademy.in',
+  'https://game-student-portal.vercel.app',
+  'http://localhost:5173',
+  'http://localhost:3000',
+]);
+
+export function getCorsHeaders(origin?: string | null) {
+  const envOrigin = process.env.PORTAL_ORIGIN;
+  let allow = 'https://student.gameacademy.in';
+  if (origin && (ALLOWED_ORIGINS.has(origin) || origin === envOrigin)) {
+    allow = origin;
+  } else if (envOrigin) {
+    allow = envOrigin;
+  }
   return {
-    'Access-Control-Allow-Origin': origin,
+    'Access-Control-Allow-Origin': allow,
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type',
+    Vary: 'Origin',
   };
 }
