@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import crypto from 'crypto';
+import { FieldValue } from 'firebase-admin/firestore';
 import { getAdminAuth, getAdminDb } from '@/lib/firebase-admin';
 import { getCorsHeaders } from '@/lib/cors';
 import { getRazorpayCreds } from '@/lib/razorpay';
@@ -60,19 +61,45 @@ async function handlePOST(req: NextRequest) {
 
   const snap = await db.collection('pdfs').doc(pdfId).get();
   const pdf = snap.exists ? (snap.data() as any) : {};
-  const amount = Number(pdf.price) || 0;
+
+  // Use the actual amount paid (after any coupon) and the coupon code from the
+  // order's notes — both come from Razorpay, so they are trustworthy.
+  let amount = Number(pdf.price) || 0;
+  let couponCode = '';
+  try {
+    const basic = Buffer.from(`${creds.keyId}:${creds.keySecret}`).toString('base64');
+    const orderRes = await fetch(`https://api.razorpay.com/v1/orders/${razorpay_order_id}`, {
+      headers: { Authorization: `Basic ${basic}` },
+    });
+    const order = await orderRes.json().catch(() => ({} as any));
+    if (orderRes.ok && order?.amount != null) amount = Number(order.amount) / 100;
+    couponCode = (order?.notes?.couponCode || '').toString();
+  } catch {
+    /* fall back to pdf price */
+  }
 
   await db.collection('purchases').add({
     uid,
     pdfId,
     pdfTitle: pdf.title || 'PDF',
     amount,
+    couponCode,
     paymentId: razorpay_payment_id,
     orderId: razorpay_order_id,
     status: 'Success',
     date: new Date().toISOString(),
     createdAt: new Date().toISOString(),
   });
+
+  // Count the coupon use (best-effort; never fails the purchase).
+  if (couponCode) {
+    try {
+      const cSnap = await db.collection('coupons').where('code', '==', couponCode.toUpperCase()).limit(1).get();
+      if (!cSnap.empty) await cSnap.docs[0].ref.update({ usedCount: FieldValue.increment(1) });
+    } catch (e) {
+      console.error('Failed to increment coupon use:', e);
+    }
+  }
 
   return NextResponse.json({ success: true });
 }

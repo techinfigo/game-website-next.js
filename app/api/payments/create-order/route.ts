@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getAdminAuth, getAdminDb } from '@/lib/firebase-admin';
 import { getCorsHeaders } from '@/lib/cors';
 import { getRazorpayCreds } from '@/lib/razorpay';
+import { applyCoupon } from '@/lib/coupons';
 
 export async function OPTIONS(req: NextRequest) {
   return new NextResponse(null, { status: 204, headers: getCorsHeaders(req.headers.get('origin')) });
@@ -30,7 +31,7 @@ async function handlePOST(req: NextRequest) {
   } catch {
     return NextResponse.json({ error: 'Invalid request.' }, { status: 400 });
   }
-  const { idToken, pdfId } = body || {};
+  const { idToken, pdfId, couponCode } = body || {};
   if (!idToken || typeof idToken !== 'string' || !pdfId || typeof pdfId !== 'string') {
     return NextResponse.json({ error: 'idToken and pdfId are required.' }, { status: 400 });
   }
@@ -59,7 +60,16 @@ async function handlePOST(req: NextRequest) {
     return NextResponse.json({ alreadyOwned: true });
   }
 
-  const amount = Math.round(price * 100); // paise
+  // Apply a coupon if one was entered. The discount is computed on the server,
+  // so the client can never choose its own price. An invalid coupon is rejected
+  // (the portal only sends codes it already previewed as valid).
+  const coupon = await applyCoupon(couponCode, price);
+  if (couponCode && !coupon.valid) {
+    return NextResponse.json({ error: coupon.reason || 'Invalid coupon.' }, { status: 400 });
+  }
+  const payable = coupon.valid ? coupon.finalAmount : price;
+  const amount = Math.round(payable * 100); // paise
+
   const basic = Buffer.from(`${creds.keyId}:${creds.keySecret}`).toString('base64');
   let order: any = {};
   try {
@@ -70,7 +80,7 @@ async function handlePOST(req: NextRequest) {
         amount,
         currency: 'INR',
         receipt: `pdf_${pdfId}_${Date.now()}`.slice(0, 40),
-        notes: { uid, pdfId },
+        notes: { uid, pdfId, couponCode: coupon.valid ? coupon.code : '' },
       }),
     });
     order = await rzpRes.json().catch(() => ({}));
@@ -87,5 +97,8 @@ async function handlePOST(req: NextRequest) {
     currency: 'INR',
     keyId: creds.keyId,
     pdfTitle: pdf.title || 'PDF',
+    originalAmount: price,
+    discount: coupon.valid ? coupon.discount : 0,
+    couponCode: coupon.valid ? coupon.code : '',
   });
 }
