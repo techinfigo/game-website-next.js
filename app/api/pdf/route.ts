@@ -91,7 +91,9 @@ export async function GET(req: NextRequest) {
     if (v) headers.set(h, v);
   });
   if (!headers.has('accept-ranges')) headers.set('Accept-Ranges', 'bytes');
-  headers.set('Cache-Control', 'private, max-age=0, no-store');
+  // Let the student's browser cache the file so re-opening and paging are fast
+  // (private = never cached by shared/CDN caches, only this user's browser).
+  headers.set('Cache-Control', 'private, max-age=3600');
 
   return new NextResponse(upstream.body, { status: upstream.status, headers });
 }
