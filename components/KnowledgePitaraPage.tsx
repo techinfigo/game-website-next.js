@@ -58,7 +58,7 @@ const KnowledgePitaraPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
       {/* Hero */}
-      <section className="relative pt-6 pb-36 overflow-hidden bg-gradient-to-br from-slate-900 via-[#0f172a] to-slate-900 text-white">
+      <section className="relative pt-28 md:pt-36 pb-36 overflow-hidden bg-gradient-to-br from-slate-900 via-[#0f172a] to-slate-900 text-white">
         <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-[#075d63]/15 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#f2c537]/10 rounded-full blur-[120px] pointer-events-none" />
 
