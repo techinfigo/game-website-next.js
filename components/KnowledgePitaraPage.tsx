@@ -2,11 +2,10 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { useAuth } from '@/providers/AuthProvider';
 import { useResources, Resource } from '@/hooks/useResources';
 import {
   Play, BookOpen, FileText, Video, PenTool, Crown, Sparkles, Layout,
-  Filter, ArrowRight, Lock, GraduationCap, Download, Loader2
+  Filter, ArrowRight, GraduationCap, Download, Loader2
 } from 'lucide-react';
 
 const TEAL = '#075d63';
@@ -24,7 +23,6 @@ function iconFor(type: string, category: string) {
 }
 
 const KnowledgePitaraPage: React.FC = () => {
-  const { isLoggedIn, openLogin } = useAuth();
   const { resources, loading } = useResources();
   const [activeTab, setActiveTab] = useState<'all' | 'free' | 'paid'>('all');
 
@@ -48,10 +46,6 @@ const KnowledgePitaraPage: React.FC = () => {
   ];
 
   const openResource = (r: Resource) => {
-    if (r.resourceKind === 'paid' && !isLoggedIn) {
-      openLogin();
-      return;
-    }
     if (r.fileOrLink) window.open(r.fileOrLink, '_blank', 'noopener,noreferrer');
   };
 
@@ -269,7 +263,7 @@ const KnowledgePitaraPage: React.FC = () => {
                         >
                           {isPaid ? (
                             <>
-                              {isLoggedIn ? 'Unlock' : 'Login'} <Lock size={14} />
+                              {item.action || 'Unlock'} <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
                             </>
                           ) : (
                             <>
