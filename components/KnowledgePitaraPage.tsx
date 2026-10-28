@@ -22,6 +22,16 @@ function iconFor(type: string, category: string) {
   return BookOpen;
 }
 
+// Show the price in rupees. If the admin typed just a number, prefix ₹;
+// if they already wrote "Rs." / "₹" / a currency, leave it as-is.
+function formatPrice(p?: string): string {
+  if (!p) return '';
+  const s = p.trim();
+  if (!s) return '';
+  if (/^\d/.test(s)) return `₹${s}`;
+  return s;
+}
+
 const KnowledgePitaraPage: React.FC = () => {
   const { resources, loading } = useResources();
   const [activeTab, setActiveTab] = useState<'all' | 'free' | 'paid'>('all');
@@ -211,11 +221,14 @@ const KnowledgePitaraPage: React.FC = () => {
                       )}
 
                       {/* Badges */}
-                      <div className="absolute top-3 left-3">
+                      <div className="absolute top-3 left-3 flex items-center gap-2">
                         {isPaid ? (
                           <span className="bg-[#f2c537] text-black text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider shadow">Premium</span>
                         ) : (
                           <span className="bg-white/95 text-[#075d63] text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider shadow">Free</span>
+                        )}
+                        {isPaid && item.price && (
+                          <span className="bg-slate-900 text-white text-[11px] font-black px-2.5 py-1 rounded-full shadow">{formatPrice(item.price)}</span>
                         )}
                       </div>
                       <div className="absolute top-3 right-3">
@@ -246,7 +259,8 @@ const KnowledgePitaraPage: React.FC = () => {
                       <div className="mt-auto pt-4 border-t border-dashed border-slate-200 flex items-center justify-between gap-3">
                         {isPaid ? (
                           <div className="flex flex-col">
-                            {item.price && <span className="text-lg font-black text-slate-900">{item.price}</span>}
+                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Fee</span>
+                            <span className="text-lg font-black text-slate-900">{formatPrice(item.price) || 'Paid'}</span>
                           </div>
                         ) : (
                           <span className="text-xs font-bold text-[#075d63] flex items-center gap-1">
