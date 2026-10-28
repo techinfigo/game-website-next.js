@@ -52,7 +52,10 @@ const KnowledgePitaraPage: React.FC = () => {
   const tabs: { id: 'all' | 'free' | 'paid'; label: string; icon: any; count: number }[] = [
     { id: 'all', label: 'All', icon: Layout, count: resources.length },
     { id: 'free', label: 'Free Zone', icon: Sparkles, count: freeResources.length },
-    { id: 'paid', label: 'Premium', icon: Crown, count: paidResources.length },
+    // Premium tab only appears if there are paid (link-out) resources.
+    ...(paidResources.length > 0
+      ? [{ id: 'paid' as const, label: 'Premium', icon: Crown, count: paidResources.length }]
+      : []),
   ];
 
   const openResource = (r: Resource) => {
