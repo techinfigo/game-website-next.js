@@ -277,7 +277,7 @@ const KnowledgePitaraPage: React.FC = () => {
                         >
                           {isPaid ? (
                             <>
-                              {item.action || 'Unlock'} <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                              Enroll Now <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
                             </>
                           ) : (
                             <>
