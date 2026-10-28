@@ -3,10 +3,15 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useResources, Resource } from '@/hooks/useResources';
+import { usePaidPdfs } from '@/hooks/usePaidPdfs';
 import {
   Play, BookOpen, FileText, Video, PenTool, Crown, Sparkles, Layout,
   Filter, ArrowRight, GraduationCap, Download, Loader2
 } from 'lucide-react';
+
+// Where buyers go to purchase a paid PDF (the student portal PDF library).
+const PORTAL_URL =
+  process.env.NEXT_PUBLIC_STUDENT_PORTAL_URL || 'https://student.gameacademy.in';
 
 const TEAL = '#075d63';
 const GOLD = '#f2c537';
@@ -33,26 +38,46 @@ function formatPrice(p?: string): string {
 }
 
 const KnowledgePitaraPage: React.FC = () => {
-  const { resources, loading } = useResources();
+  const { resources, loading: freeLoading } = useResources();
+  const { pdfs: paidPdfs, loading: paidLoading } = usePaidPdfs();
   const [activeTab, setActiveTab] = useState<'all' | 'free' | 'paid'>('all');
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const freeResources = resources.filter((r) => r.resourceKind !== 'paid');
-  const paidResources = resources.filter((r) => r.resourceKind === 'paid');
+  const loading = freeLoading || paidLoading;
+
+  // Free items come from the Resources collection; Premium items are the paid
+  // PDFs from the PDF Store, promoted here with a link to buy them in the portal.
+  const freeResources: Resource[] = resources.filter((r) => r.resourceKind !== 'paid');
+  const paidResources: Resource[] = paidPdfs.map((p) => ({
+    id: `pdf-${p.id}`,
+    resourceKind: 'paid',
+    category: p.category || 'Premium PDF',
+    title: p.title,
+    description: p.description,
+    type: 'pdf',
+    fileOrLink: `${PORTAL_URL}/library`,
+    image: p.thumbnailUrl,
+    action: 'Get Access',
+    price: p.price ? String(p.price) : '',
+    tag: '',
+    examTag: p.examTag,
+  }));
+
+  const allResources = [...freeResources, ...paidResources];
 
   const displayed: Resource[] =
-    activeTab === 'all' ? resources : activeTab === 'free' ? freeResources : paidResources;
+    activeTab === 'all' ? allResources : activeTab === 'free' ? freeResources : paidResources;
 
-  const videoCount = resources.filter((r) => iconFor(r.type, r.category) === Video).length;
-  const pdfCount = resources.filter((r) => `${r.type} ${r.category}`.toLowerCase().includes('pdf')).length;
+  const videoCount = freeResources.filter((r) => iconFor(r.type, r.category) === Video).length;
+  const pdfCount = paidResources.length + freeResources.filter((r) => `${r.type} ${r.category}`.toLowerCase().includes('pdf')).length;
 
   const tabs: { id: 'all' | 'free' | 'paid'; label: string; icon: any; count: number }[] = [
-    { id: 'all', label: 'All', icon: Layout, count: resources.length },
+    { id: 'all', label: 'All', icon: Layout, count: allResources.length },
     { id: 'free', label: 'Free Zone', icon: Sparkles, count: freeResources.length },
-    // Premium tab only appears if there are paid (link-out) resources.
+    // Premium tab only appears when there are paid PDFs to promote.
     ...(paidResources.length > 0
       ? [{ id: 'paid' as const, label: 'Premium', icon: Crown, count: paidResources.length }]
       : []),
@@ -280,7 +305,7 @@ const KnowledgePitaraPage: React.FC = () => {
                         >
                           {isPaid ? (
                             <>
-                              Enroll Now <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                              {item.action || 'Get Access'} <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
                             </>
                           ) : (
                             <>
