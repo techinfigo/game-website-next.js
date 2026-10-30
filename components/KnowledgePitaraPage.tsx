@@ -58,7 +58,7 @@ const KnowledgePitaraPage: React.FC = () => {
     title: p.title,
     description: p.description,
     type: 'pdf',
-    fileOrLink: `${PORTAL_URL}/library`,
+    fileOrLink: `${PORTAL_URL}/library?buy=${p.id}`,
     image: p.thumbnailUrl,
     action: 'Get Access',
     price: p.price ? String(p.price) : '',
