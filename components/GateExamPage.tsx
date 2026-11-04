@@ -1194,6 +1194,7 @@ const GateExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content 
                      { label: "Cutoffs", id: "cutoffs", icon: Trophy },
                      { label: "Organisers", id: "organisers", icon: Building2 },
                      { label: "PSU Jobs", id: "psus", icon: JobIcon },
+                     { label: "GATE PYQs", id: "gate-pyqs", icon: FileText },
                      { label: "FAQs", id: "gate-faqs", icon: HelpCircle },
                   ].map((item) => {
                      const Icon = item.icon;
@@ -2449,6 +2450,47 @@ const GateExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content 
                   <AppStoreButtons />
                </motion.div>
 
+            </div>
+         </div>
+      </section>
+
+      {/* GATE PYQs */}
+      <section id="gate-pyqs" className="py-16 px-8 md:px-10 lg:px-12 bg-slate-50 border-t border-slate-100 scroll-mt-32">
+         <div className="max-w-[1200px] mx-auto">
+            <div className="text-center mb-12">
+               <span className="text-gameTeal font-bold tracking-widest uppercase text-xs mb-2 block">Practice & Revise</span>
+               <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-4 leading-tight">
+                  GATE <span className="text-gameGoldDark">Previous Year Questions</span>
+               </h2>
+               <p className="text-slate-600 max-w-2xl mx-auto text-lg">
+                  Practice with authentic GATE previous year papers, fully solved, to master the exam pattern and sharpen your speed and accuracy.
+               </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+               {[
+                  { icon: FileText, title: "Full-Length Papers", desc: "Year-wise GATE question papers with the real exam pattern and marking scheme." },
+                  { icon: CheckCircle2, title: "Detailed Solutions", desc: "Step-by-step solutions and explanations for every question, by expert faculty." },
+                  { icon: Book, title: "Topic-wise DPPs", desc: "Previous-year questions arranged topic-wise for focused, concept-driven practice." },
+               ].map((item, i) => {
+                  const Icon = item.icon;
+                  return (
+                     <div key={i} className="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-gameTeal/5 hover:-translate-y-1 transition-all">
+                        <div className="w-12 h-12 rounded-2xl bg-gameTeal/10 flex items-center justify-center text-gameTeal mb-5">
+                           <Icon size={24} />
+                        </div>
+                        <h3 className="text-xl font-black text-slate-900 mb-2">{item.title}</h3>
+                        <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
+                     </div>
+                  );
+               })}
+            </div>
+
+            <div className="text-center">
+               <Link href="/resources" className="inline-flex items-center justify-center gap-2 bg-gameTeal text-white px-10 py-4 rounded-2xl font-black uppercase tracking-widest text-sm shadow-xl hover:bg-gameTealDark hover:-translate-y-0.5 transition-all">
+                  <Download size={18} /> Access GATE PYQs
+               </Link>
+               <p className="text-xs text-slate-400 mt-3 font-medium">Find the full GATE PYQ repository inside Knowledge Ka Pitara.</p>
             </div>
          </div>
       </section>
