@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle2, PlayCircle, Star, Briefcase, GraduationCap } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useHeroSlides } from '@/hooks/useHeroSlides';
 
 const students = [
   { name: "Akshay Pillay", org: "Govt. of India", designation: "Sub Collector & SDM", img: "/rankers/job-1.png" },
@@ -103,10 +104,42 @@ const VerticalSlider = ({ items, speed, reverse = false }: { items: typeof stude
   );
 };
 
+// A hero call-to-action that works for internal paths (/jobs, #exams) and
+// external links (https://...) set from the admin panel.
+const HeroCta: React.FC<{ text: string; link: string; primary?: boolean }> = ({ text, link, primary }) => {
+  const cls = primary
+    ? "bg-gameTeal text-white px-8 py-4 rounded-xl font-black text-[11px] uppercase tracking-[0.2em] shadow-xl hover:bg-gameTealDark hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 group whitespace-nowrap"
+    : "bg-white text-slate-900 border border-slate-100 px-8 py-4 rounded-xl font-black text-[11px] uppercase tracking-[0.2em] hover:bg-slate-50 transition-all flex items-center justify-center gap-2 shadow-lg whitespace-nowrap";
+  const inner = (
+    <>
+      {!primary && <Briefcase size={16} className="text-gameTeal" />}
+      {text}
+      {primary && <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />}
+    </>
+  );
+  const isExternal = /^https?:\/\//i.test(link);
+  if (isExternal) {
+    return <a href={link} target="_blank" rel="noopener noreferrer" className={cls}>{inner}</a>;
+  }
+  return <Link href={link || '#'} className={cls}>{inner}</Link>;
+};
+
 const Hero: React.FC = () => {
   const col1 = students.filter((_, i) => i % 3 === 0);
   const col2 = students.filter((_, i) => i % 3 === 1);
   const col3 = students.filter((_, i) => i % 3 === 2);
+
+  // Admin-managed hero content (homepage hero carousel). When none is
+  // configured, the built-in default content below is shown unchanged.
+  const { slides } = useHeroSlides();
+  const [slideIdx, setSlideIdx] = React.useState(0);
+  React.useEffect(() => {
+    if (slides.length <= 1) return;
+    const t = setInterval(() => setSlideIdx((i) => (i + 1) % slides.length), 6000);
+    return () => clearInterval(t);
+  }, [slides.length]);
+  const slide = slides.length > 0 ? slides[slideIdx % slides.length] : null;
+  const stats = slide && slide.stats && slide.stats.length > 0 ? slide.stats : null;
 
   return (
     <section className="relative bg-white overflow-hidden min-h-[550px] lg:min-h-[650px] flex flex-col pt-20 lg:pt-28 pb-0">
@@ -132,53 +165,65 @@ const Hero: React.FC = () => {
                        <span className="relative inline-flex rounded-full h-2 w-2 bg-gameGold"></span>
                    </span>
                    <span className="text-[10px] font-black text-slate-500 tracking-widest uppercase">
-                      #1 GATE & ESE INSTITUTE
+                      {slide?.badge || '#1 GATE & ESE INSTITUTE'}
                    </span>
                 </div>
- 
+
                 <h1 className="text-3xl lg:text-5xl font-black text-slate-900 leading-[1] mb-2 tracking-tighter">
-                   Crack <span className="text-gameTeal">Competitive</span> <br/>
-                   Exams Like a <span className="text-gameGold">Pro Player</span>
+                   {slide?.headline ? (
+                      slide.headline
+                   ) : (
+                      <>Crack <span className="text-gameTeal">Competitive</span> <br/>
+                      Exams Like a <span className="text-gameGold">Pro Player</span></>
+                   )}
                 </h1>
-                
+
                 <p className="text-sm text-slate-500 mb-4 leading-relaxed font-bold max-w-md mx-auto lg:mx-0">
-                   Join India's trusted mentorship platform. Visualized learning with <br />
-                   <span className="text-gameTeal font-black">Gaurav Babu Sir</span> <span className="text-slate-900 font-black px-1">(14+ yrs Exp).</span>
+                   {slide?.subheadline ? (
+                      slide.subheadline
+                   ) : (
+                      <>Join India&apos;s trusted mentorship platform. Visualized learning with <br />
+                      <span className="text-gameTeal font-black">Gaurav Babu Sir</span> <span className="text-slate-900 font-black px-1">(14+ yrs Exp).</span></>
+                   )}
                 </p>
- 
+
                 <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-3 mb-6">
-                    <Link 
-                      href="#exams"
-                      className="bg-gameTeal text-white px-8 py-4 rounded-xl font-black text-[11px] uppercase tracking-[0.2em] shadow-xl hover:bg-gameTealDark hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 group whitespace-nowrap"
-                    >
-                       SELECT GOAL <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                    <Link 
-                      href="/jobs"
-                      className="bg-white text-slate-900 border border-slate-100 px-8 py-4 rounded-xl font-black text-[11px] uppercase tracking-[0.2em] hover:bg-slate-50 transition-all flex items-center justify-center gap-2 shadow-lg whitespace-nowrap"
-                    >
-                       <Briefcase size={16} className="text-gameTeal" /> JOB UPDATES
-                    </Link>
+                    <HeroCta primary text={slide?.ctaText || 'SELECT GOAL'} link={slide?.ctaLink || '#exams'} />
+                    <HeroCta text={slide?.ctaText2 || 'JOB UPDATES'} link={slide?.ctaLink2 || '/jobs'} />
                 </div>
- 
+
                 <div className="flex items-center justify-center lg:justify-start gap-6 pt-6 border-t border-slate-100">
-                   <div className="group">
-                      <div className="text-2xl font-black text-slate-900 leading-none mb-1 group-hover:text-gameTeal transition-colors line-clamp-1">100k+</div>
-                      <div className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em]">Aspirants</div>
-                   </div>
-                   <div className="w-px h-8 bg-slate-100"></div>
-                   <div className="group">
-                      <div className="text-2xl font-black text-slate-900 leading-none mb-1 group-hover:text-gameTeal transition-colors line-clamp-1">5000+</div>
-                      <div className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em]">Selections</div>
-                   </div>
-                   <div className="w-px h-8 bg-slate-100"></div>
-                   <div className="group">
-                      <div className="flex items-center gap-1 text-gameGold">
-                         <span className="text-2xl font-black text-slate-900 leading-none mb-1 group-hover:text-gameTeal transition-colors line-clamp-1">4.9</span>
-                         <Star size={18} fill="currentColor" />
-                      </div>
-                      <div className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em]">Rating</div>
-                   </div>
+                   {stats ? (
+                      stats.slice(0, 3).map((s, i) => (
+                         <React.Fragment key={i}>
+                            {i > 0 && <div className="w-px h-8 bg-slate-100"></div>}
+                            <div className="group">
+                               <div className="text-2xl font-black text-slate-900 leading-none mb-1 group-hover:text-gameTeal transition-colors line-clamp-1">{s.value}</div>
+                               <div className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em]">{s.label}</div>
+                            </div>
+                         </React.Fragment>
+                      ))
+                   ) : (
+                      <>
+                         <div className="group">
+                            <div className="text-2xl font-black text-slate-900 leading-none mb-1 group-hover:text-gameTeal transition-colors line-clamp-1">100k+</div>
+                            <div className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em]">Aspirants</div>
+                         </div>
+                         <div className="w-px h-8 bg-slate-100"></div>
+                         <div className="group">
+                            <div className="text-2xl font-black text-slate-900 leading-none mb-1 group-hover:text-gameTeal transition-colors line-clamp-1">5000+</div>
+                            <div className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em]">Selections</div>
+                         </div>
+                         <div className="w-px h-8 bg-slate-100"></div>
+                         <div className="group">
+                            <div className="flex items-center gap-1 text-gameGold">
+                               <span className="text-2xl font-black text-slate-900 leading-none mb-1 group-hover:text-gameTeal transition-colors line-clamp-1">4.9</span>
+                               <Star size={18} fill="currentColor" />
+                            </div>
+                            <div className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em]">Rating</div>
+                         </div>
+                      </>
+                   )}
                 </div>
              </motion.div>
           </div>
