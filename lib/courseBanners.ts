@@ -8,15 +8,23 @@
 
 import { getAdminDb } from './firebase-admin';
 
-export async function getCourseBanners(): Promise<string[]> {
+export interface CourseBanner {
+  imageUrl: string;
+  linkUrl?: string; // optional click-through target set in the admin panel
+}
+
+export async function getCourseBanners(): Promise<CourseBanner[]> {
   try {
     const snap = await getAdminDb().collection('courseBanners').get();
     return snap.docs
       .map((doc) => doc.data() as Record<string, unknown>)
       .filter((data) => data.active === true)
       .sort((a, b) => (Number(a.order) || 0) - (Number(b.order) || 0))
-      .map((data) => data.imageUrl as string)
-      .filter((imageUrl) => typeof imageUrl === 'string' && imageUrl.length > 0);
+      .map((data) => ({
+        imageUrl: data.imageUrl as string,
+        linkUrl: typeof data.linkUrl === 'string' && data.linkUrl.trim().length > 0 ? (data.linkUrl as string).trim() : undefined,
+      }))
+      .filter((b) => typeof b.imageUrl === 'string' && b.imageUrl.length > 0);
   } catch (err) {
     console.warn('[courseBanners] failed to load; showing none:', err);
     return [];

@@ -4,11 +4,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import type { CourseBanner } from '@/lib/courseBanners';
 
 // Banners are fetched on the server (app/courses/page.tsx) and passed in, so
 // they are present on first paint — no late load, no layout shift. Only banners
 // configured in the admin panel are shown; there are no built-in fallbacks.
-const CourseMarketing: React.FC<{ banners?: string[] }> = ({ banners = [] }) => {
+const CourseMarketing: React.FC<{ banners?: CourseBanner[] }> = ({ banners = [] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -41,7 +42,7 @@ const CourseMarketing: React.FC<{ banners?: string[] }> = ({ banners = [] }) => 
         <AnimatePresence initial={false}>
           <motion.img
             key={safeIndex}
-            src={banners[safeIndex]}
+            src={banners[safeIndex].imageUrl}
             alt={`Offer Banner ${safeIndex + 1}`}
             className="absolute inset-0 w-full h-full object-cover"
             initial={{ opacity: 0 }}
@@ -50,6 +51,18 @@ const CourseMarketing: React.FC<{ banners?: string[] }> = ({ banners = [] }) => 
             transition={{ duration: 0.5 }}
           />
         </AnimatePresence>
+
+        {/* Click-through: if this banner has a link set in the admin panel, the
+            whole banner becomes clickable. Sits below the arrows/dots (z-10). */}
+        {banners[safeIndex].linkUrl && (
+          <a
+            href={banners[safeIndex].linkUrl}
+            target={banners[safeIndex].linkUrl!.startsWith('http') ? '_blank' : undefined}
+            rel={banners[safeIndex].linkUrl!.startsWith('http') ? 'noopener noreferrer' : undefined}
+            className="absolute inset-0 z-[5]"
+            aria-label="Open offer"
+          />
+        )}
 
         {/* Navigation Arrows — only shown when there is more than one banner */}
         {banners.length > 1 && (

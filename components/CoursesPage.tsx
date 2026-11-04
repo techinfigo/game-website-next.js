@@ -16,8 +16,9 @@ import TestimonialsText from './TestimonialsText';
 import CourseHelpSection from './CourseHelpSection';
 import FinalCTA from './FinalCTA';
 import CourseMarketing from './CourseMarketing';
+import type { CourseBanner } from '@/lib/courseBanners';
 
-const CoursesPage: React.FC<{ banners?: string[] }> = ({ banners = [] }) => {
+const CoursesPage: React.FC<{ banners?: CourseBanner[] }> = ({ banners = [] }) => {
   const [selectedExam, setSelectedExam] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
 
