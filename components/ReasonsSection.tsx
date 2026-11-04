@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Lightbulb, Trophy, Target, Users, Award, Smartphone, 
@@ -22,7 +23,7 @@ const ReasonsSection: React.FC = () => {
     {
       id: "01",
       title: "The Innovator - Gaurav Babu Sir",
-      desc: "A GATE & ESE expert with over 14 years of experience in the Mechanical and Civil domains, he has mentored 1 lakh+ students to successfully crack top engineering exams nationwide.",
+      desc: "A GATE & ESE expert with 14+ years of experience in the Mechanical and Civil domains, he has mentored 1 lakh+ students to successfully crack top engineering exams nationwide.",
       icon: Lightbulb,
       color: "bg-[#021f21]", // Darkest
     },
@@ -147,9 +148,9 @@ const ReasonsSection: React.FC = () => {
                            {reason.desc}
                         </p>
                         <div className="pt-3 border-t border-white/10 w-full flex justify-center">
-                              <button className="bg-gameGold text-black px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest flex items-center gap-2 hover:bg-white transition-all shadow-2xl group whitespace-nowrap">
+                              <Link href="/courses" className="bg-gameGold text-black px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest flex items-center gap-2 hover:bg-white transition-all shadow-2xl group whitespace-nowrap">
                                  Explore <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                              </button>
+                              </Link>
                         </div>
                     </motion.div>
                   )}

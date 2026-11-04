@@ -23,7 +23,7 @@ export interface SiteSettings {
 const DEFAULT_SITE_SETTINGS: SiteSettings = {
   phone: "+917668518602",
   whatsappChannel: "https://whatsapp.com/channel/0029VaWNuqVJpe8gdAkinR1T",
-  whatsappChat: "https://wa.me/917668518602",
+  whatsappChat: "https://wa.me/919027615394",
   email: "info@gameacademy.in",
   youtube: "https://www.youtube.com/@gblions",
   youtubeAlt: "https://www.youtube.com/@gblionsaeje",

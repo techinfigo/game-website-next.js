@@ -98,7 +98,13 @@ const JobUpdatesSection: React.FC<JobUpdatesSectionProps> = ({ onNavigate }) => 
           </motion.div>
 
           <div className="flex items-center gap-2 mb-1">
-            <button 
+            <Link
+              href="/jobs"
+              className="h-9 px-4 rounded-xl bg-gameGold text-black text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-1.5 hover:bg-white transition-all shadow-xl"
+            >
+              See All <ChevronRight size={14} />
+            </Link>
+            <button
               onClick={() => scroll('left')}
               className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-gameGold hover:text-black transition-all shadow-xl backdrop-blur-sm group"
             >
