@@ -12,6 +12,7 @@ import Link from 'next/link';
 
 import { useRouter } from 'next/navigation';
 import { useJobs } from '@/hooks/useJobs';
+import { formatJobDate, isJobExpired } from '@/lib/jobDisplay';
 import { useSiteSettings } from '@/hooks/useSiteSettings';
 
 interface JobUpdatesSectionProps {
@@ -27,7 +28,9 @@ const JobUpdatesSection: React.FC<JobUpdatesSectionProps> = ({ onNavigate }) => 
   const [scrollLeft, setScrollLeft] = useState(0);
 
   const { jobs } = useJobs();
-  const recentJobs = jobs.slice(0, 6);
+  const recentJobs = jobs
+    .map((job) => (isJobExpired(job.endDate as string | undefined) ? { ...job, status: 'Closed' } : job))
+    .slice(0, 6);
 
   const handleNavigate = (page: string) => {
     if (onNavigate) {
@@ -172,12 +175,12 @@ const JobUpdatesSection: React.FC<JobUpdatesSectionProps> = ({ onNavigate }) => 
 
                 <div className="flex items-center gap-2 p-1.5 rounded-lg bg-slate-50 border border-slate-100">
                    <CalendarDays size={12} className="text-gameGoldDark" />
-                   <span className="text-[9px] font-black text-slate-900">{job.endDate}</span>
+                   <span className="text-[9px] font-black text-slate-900">{formatJobDate(job.endDate as string)}</span>
                 </div>
 
                 <div className="flex items-center gap-2 p-1.5 rounded-lg bg-teal-50/40 border border-teal-100/50">
                    <Clock size={12} className="text-gameTeal" />
-                   <span className="text-[9px] font-black text-gameTealDark truncate">Starts: {job.startDate}</span>
+                   <span className="text-[9px] font-black text-gameTealDark truncate">Starts: {formatJobDate(job.startDate as string)}</span>
                 </div>
               </div>
 

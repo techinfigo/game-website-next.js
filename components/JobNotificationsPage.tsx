@@ -15,6 +15,7 @@ import FeaturedExams from './FeaturedExams';
 import { useRouter } from 'next/navigation';
 import { useJobs } from '@/hooks/useJobs';
 import { useSiteSettings } from '@/hooks/useSiteSettings';
+import { formatJobDate, isJobExpired } from '@/lib/jobDisplay';
 
 interface JobNotificationsPageProps {
   isLoggedIn: boolean;
@@ -92,8 +93,13 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
 
 
 
+  // Auto-close expired notifications before filtering/displaying.
+  const processedJobs = jobs.map((job) =>
+    isJobExpired(job.endDate as string | undefined) ? { ...job, status: 'Closed' } : job
+  );
+
   // Client-side search and status filter engine for seamless lookups
-  const filteredJobs = jobs.filter(job => {
+  const filteredJobs = processedJobs.filter(job => {
     const sQuery = searchQuery.trim().toLowerCase();
     const matchesSearch = !sQuery || 
       job.notification.toLowerCase().includes(sQuery) || 
@@ -876,11 +882,11 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
                                  <div className="flex flex-col gap-1 text-[12px] font-medium text-slate-600">
                                     <div className="flex items-start gap-1">
                                        <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider shrink-0 mt-0.5">Start:</span>
-                                       <span className="font-bold text-slate-700 whitespace-pre-line leading-tight">{job.startDate}</span>
+                                       <span className="font-bold text-slate-700 whitespace-pre-line leading-tight">{formatJobDate(job.startDate as string)}</span>
                                      </div>
                                      <div className="flex items-center gap-1 border-t border-dashed border-slate-100 pt-1">
                                         <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider shrink-0">End:</span>
-                                        <span className="font-black text-rose-600 whitespace-nowrap">{job.endDate}</span>
+                                        <span className="font-black text-rose-600 whitespace-nowrap">{formatJobDate(job.endDate as string)}</span>
                                      </div>
                                   </div>
                                </td>
@@ -987,11 +993,11 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
                          <div className="bg-slate-50 rounded-xl p-3 grid grid-cols-2 gap-3 text-xs border border-slate-100 mt-1">
                             <div className="flex flex-col">
                                <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider">Start Date</span>
-                               <span className="font-bold text-slate-700 mt-0.5 whitespace-pre-line leading-tight">{job.startDate}</span>
+                               <span className="font-bold text-slate-700 mt-0.5 whitespace-pre-line leading-tight">{formatJobDate(job.startDate as string)}</span>
                             </div>
                             <div className="flex flex-col border-l border-slate-200 pl-3">
                                <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider">End Date</span>
-                               <span className="font-extrabold text-rose-600 mt-0.5 whitespace-nowrap">{job.endDate}</span>
+                               <span className="font-extrabold text-rose-600 mt-0.5 whitespace-nowrap">{formatJobDate(job.endDate as string)}</span>
                             </div>
                          </div>
 
