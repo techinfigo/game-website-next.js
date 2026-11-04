@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence, useInView, animate } from 'framer-motion';
 import Image from 'next/image';
 import { 
@@ -223,9 +224,9 @@ const AboutPage: React.FC = () => {
                   </div>
                 </div>
 
-                <button className="bg-[#075d63] text-white px-[clamp(1.25rem,2.5vw,2rem)] py-[clamp(0.5rem,1.5vh,0.875rem)] rounded-xl font-black text-[clamp(0.7rem,0.8vw,0.8rem)] uppercase tracking-widest hover:bg-[#05494f] transition-all flex items-center justify-center w-fit gap-3 shadow-xl hover:shadow-2xl hover:-translate-y-1">
+                <Link href="/courses" className="bg-[#075d63] text-white px-[clamp(1.25rem,2.5vw,2rem)] py-[clamp(0.5rem,1.5vh,0.875rem)] rounded-xl font-black text-[clamp(0.7rem,0.8vw,0.8rem)] uppercase tracking-widest hover:bg-[#05494f] transition-all inline-flex items-center justify-center w-fit gap-3 shadow-xl hover:shadow-2xl hover:-translate-y-1">
                   ENROLL NOW <ArrowRight size={18} />
-                </button>
+                </Link>
               </motion.div>
             </div>
           </div>
@@ -845,13 +846,14 @@ const AboutPage: React.FC = () => {
 
             {/* Bottom Button */}
             <div className="mt-[clamp(1.5rem,4vh,4rem)] text-center">
-               <motion.button 
+               <motion.a
+                  href="/courses"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-white text-gameBlack px-[clamp(1.5rem,3vw,2.5rem)] py-[clamp(0.75rem,1.5vh,1rem)] rounded-xl font-black text-[clamp(0.5rem,0.7vw,0.625rem)] uppercase tracking-[0.3em] flex items-center gap-3 mx-auto shadow-2xl hover:bg-gameGold transition-all whitespace-nowrap"
+                  className="bg-white text-gameBlack px-[clamp(1.5rem,3vw,2.5rem)] py-[clamp(0.75rem,1.5vh,1rem)] rounded-xl font-black text-[clamp(0.5rem,0.7vw,0.625rem)] uppercase tracking-[0.3em] inline-flex items-center gap-3 mx-auto shadow-2xl hover:bg-gameGold transition-all whitespace-nowrap"
                >
-                  Full Career Chronicle <ChevronRight size={16} />
-               </motion.button>
+                  1:1 Mentorship <ChevronRight size={16} />
+               </motion.a>
             </div>
          </div>
       </section>

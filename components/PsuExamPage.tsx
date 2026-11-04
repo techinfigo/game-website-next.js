@@ -105,13 +105,13 @@ const PsuExamPage: React.FC = () => {
                   </p>
 
                   <div className="flex flex-wrap gap-4 mb-8">
-                     <button className="px-7 py-3.5 bg-gameTeal text-white font-black rounded-full hover:bg-[#007a7e] transition-all active:scale-95 shadow-xl shadow-gameTeal/20 flex items-center gap-2 group text-sm">
+                     <Link href="/courses" className="px-7 py-3.5 bg-gameTeal text-white font-black rounded-full hover:bg-[#007a7e] transition-all active:scale-95 shadow-xl shadow-gameTeal/20 inline-flex items-center gap-2 group text-sm">
                         Start Preparation
                         <Rocket size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                     </button>
-                     <button className="px-7 py-3.5 border border-white/20 text-white font-black rounded-full hover:bg-white hover:text-gameBlack transition-all active:scale-95 text-sm">
+                     </Link>
+                     <a href="#psu-courses" className="px-7 py-3.5 border border-white/20 text-white font-black rounded-full hover:bg-white hover:text-gameBlack transition-all active:scale-95 text-sm inline-flex items-center">
                         View Syllabus
-                     </button>
+                     </a>
                   </div>
 
                   {/* Latest Update Widget */}
@@ -859,11 +859,11 @@ const PsuExamPage: React.FC = () => {
                {/* Action Buttons */}
                <div className="flex flex-wrap gap-8 items-center justify-center relative z-10">
                   <Link href="/courses" className="inline-flex items-center justify-center px-12 py-5 bg-gameTeal text-white font-black rounded-2xl hover:bg-[#007a7e] hover:shadow-2xl hover:shadow-gameTeal/30 transition-all active:scale-95 shadow-xl shadow-gameTeal/10 text-xl uppercase tracking-[0.2em]">
-                     Course Button
+                     Explore Course
                   </Link>
-                  <button className="px-12 py-5 border-2 border-white/20 text-white font-black rounded-2xl hover:bg-white hover:text-gameBlack transition-all active:scale-95 text-xl uppercase tracking-[0.2em]">
+                  <a href="#psu-courses" className="inline-flex items-center justify-center px-12 py-5 border-2 border-white/20 text-white font-black rounded-2xl hover:bg-white hover:text-gameBlack transition-all active:scale-95 text-xl uppercase tracking-[0.2em]">
                      View Syllabus
-                  </button>
+                  </a>
                </div>
             </motion.div>
          </div>
