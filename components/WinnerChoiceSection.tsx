@@ -141,7 +141,7 @@ const WinnerChoiceSection: React.FC = () => {
                           </div>
                           <div className="flex flex-col">
                              <div className="text-white font-black text-[11px] leading-none uppercase">14 Years</div>
-                             <div className="text-[9px] font-bold text-teal-400 uppercase tracking-widest opacity-80">100k+ Alumni</div>
+                             <div className="text-[9px] font-bold text-teal-400 uppercase tracking-widest opacity-80">100k+ Students</div>
                           </div>
                        </div>
 

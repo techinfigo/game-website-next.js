@@ -1526,7 +1526,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
                   </p>
                </div>
                <Link href="/courses" className="relative z-10 bg-gameTeal text-white px-10 py-4 rounded-xl font-black uppercase tracking-wider hover:bg-gameTealDark transition-all shadow-xl shrink-0">
-                  Explore Programs
+                  Explore Courses
                </Link>
             </div>
          </div>
