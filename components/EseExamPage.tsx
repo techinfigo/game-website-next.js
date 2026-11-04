@@ -794,16 +794,6 @@ const EseExamPage: React.FC = () => {
             {/* ROADMAP PATHWAY UI - alternating photo/text rows, matching the PSU R&D and GATE Advantage roadmaps */}
             <div className="relative mb-16">
 
-               {/* THE VERTICAL PATHWAY LINE (Center line) */}
-               <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-slate-200 -translate-x-1/2 hidden lg:block overflow-hidden">
-                  <motion.div
-                     initial={{ height: 0 }}
-                     whileInView={{ height: '100%' }}
-                     transition={{ duration: 2, ease: "easeInOut" }}
-                     className="w-full bg-gradient-to-b from-gameTeal via-gameGold to-gameTeal"
-                  />
-               </div>
-
                <div className="space-y-24 lg:space-y-32">
                   {choiceAdvantages.map((item, i) => (
                      <ChoiceAdvantageRow
@@ -1760,7 +1750,7 @@ const ChoiceAdvantageRow: React.FC<{
         >
           <div className={`relative group ${isEven ? 'text-left lg:text-right' : 'text-left'}`}>
             {/* Numbering */}
-            <div className={`absolute -top-20 ${isEven ? 'left-0 lg:left-auto lg:-right-4' : 'left-0 lg:-left-4'} text-7xl font-black text-gameTeal/70 pointer-events-none z-10`}>
+            <div className={`absolute -top-14 ${isEven ? 'left-0 lg:left-auto lg:-right-4' : 'left-0 lg:-left-4'} text-5xl font-black text-gameTeal/70 pointer-events-none z-10`}>
               {index + 1 < 10 ? `0${index + 1}` : index + 1}
             </div>
 

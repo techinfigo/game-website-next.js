@@ -1443,16 +1443,6 @@ const GateExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content 
             {/* ROADMAP PATHWAY UI */}
             <div className="relative">
                
-               {/* THE VERTICAL PATHWAY LINE (Center line) */}
-               <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-slate-200 -translate-x-1/2 hidden lg:block overflow-hidden">
-                  <motion.div 
-                     initial={{ height: 0 }}
-                     whileInView={{ height: '100%' }}
-                     transition={{ duration: 2, ease: "easeInOut" }}
-                     className="w-full bg-gradient-to-b from-gameTeal via-gameGold to-gameTeal"
-                  />
-               </div>
-
                <div className="space-y-24 lg:space-y-32">
                   {gateAdvantages.map((item, i) => {
                      const isEven = i % 2 === 0;
