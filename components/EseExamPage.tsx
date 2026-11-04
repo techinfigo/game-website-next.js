@@ -594,7 +594,7 @@ const EseExamPage: React.FC = () => {
 
                            {/* Button bottom right corner */}
                            <div className="relative z-10 mt-auto self-end">
-                              <button className="group flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white font-black text-xs uppercase tracking-widest hover:bg-gameGold hover:text-gameBlack transition-all">
+                              <button onClick={() => scrollToSection('ese-courses')} className="group flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white font-black text-xs uppercase tracking-widest hover:bg-gameGold hover:text-gameBlack transition-all">
                                  {eseSlides[activeSlide].buttonText}
                                  <TrendingUp size={14} className="group-hover:translate-x-1 transition-transform" />
                               </button>
@@ -1149,9 +1149,9 @@ const EseExamPage: React.FC = () => {
                   <p className="text-black/60 text-sm md:text-base font-bold leading-relaxed mb-8">
                      "This data can serve as a useful reference for candidates preparing for the exam. However, it is essential to keep updated with the official announcements as cut-offs are ultimately determined based on the exam year's performance and vacancies."
                   </p>
-                  <button className="w-full bg-[#0f1115] text-white py-4 rounded-xl font-black uppercase tracking-widest text-xs hover:bg-gameTeal transition-all shadow-xl">
+                  <a href="https://upsc.gov.in/" target="_blank" rel="noopener noreferrer" className="block text-center w-full bg-[#0f1115] text-white py-4 rounded-xl font-black uppercase tracking-widest text-xs hover:bg-gameTeal transition-all shadow-xl">
                      Get Official Notifications
-                  </button>
+                  </a>
                </motion.div>
             </div>
          </div>

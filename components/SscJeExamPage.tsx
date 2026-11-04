@@ -525,7 +525,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
               <Info size={18} className="text-gameTeal" /> Note :
             </h4>
             <ol className="list-decimal pl-6 space-y-3 text-sm text-slate-600 font-bold leading-relaxed">
-              <li>The above-mentioned opportunities are the general ones; to get real-time updates, students can check the <button className="text-gameTeal font-black underline hover:text-gameTealDark decoration-2 underline-offset-4 transition-all">"link of the Job Notification page"</button> so that students can save time without missing important job opportunities.</li>
+              <li>The above-mentioned opportunities are the general ones; to get real-time updates, students can check the <Link href="/jobs" className="text-gameTeal font-black underline hover:text-gameTealDark decoration-2 underline-offset-4 transition-all">Job Notification page</Link> so that students can save time without missing important job opportunities.</li>
               <li>The detailed syllabus of these exams is timely updated so that all the information is available in a single place.</li>
             </ol>
           </div>
@@ -697,7 +697,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
               <Info size={18} className="text-gameTeal" /> Note :
             </h4>
             <ol className="list-decimal pl-6 space-y-3 text-sm text-slate-600 font-bold leading-relaxed">
-              <li>The above-mentioned opportunities are the general ones; to get real-time updates, students can check the <button className="text-gameTeal font-black underline hover:text-gameTealDark decoration-2 underline-offset-4 transition-all">"link of the Job Notification page"</button> so that students can save time without missing important job opportunities.</li>
+              <li>The above-mentioned opportunities are the general ones; to get real-time updates, students can check the <Link href="/jobs" className="text-gameTeal font-black underline hover:text-gameTealDark decoration-2 underline-offset-4 transition-all">Job Notification page</Link> so that students can save time without missing important job opportunities.</li>
               <li>The detailed syllabus of these exams is timely updated so that all the information is available in a single place.</li>
             </ol>
           </div>

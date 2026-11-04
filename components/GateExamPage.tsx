@@ -669,7 +669,7 @@ const GateExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content 
               <Info size={18} className="text-gameTeal" /> Note :
             </h4>
             <ol className="list-[lower-alpha] pl-6 space-y-2 text-sm text-slate-600 font-bold leading-relaxed">
-              <li>The above-mentioned opportunities are the general ones; to get real-time updates, students can check the <button className="text-gameTeal font-black underline hover:text-gameTealDark decoration-2 underline-offset-4 transition-all">"Job Notification page"</button> so that students can save time without missing important job opportunities.</li>
+              <li>The above-mentioned opportunities are the general ones; to get real-time updates, students can check the <Link href="/jobs" className="text-gameTeal font-black underline hover:text-gameTealDark decoration-2 underline-offset-4 transition-all">Job Notification page</Link> so that students can save time without missing important job opportunities.</li>
               <li>The detailed syllabus of these exams is timely updated so that all the information is available in a single place.</li>
             </ol>
           </div>
@@ -865,7 +865,7 @@ const GateExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content 
               <Info size={18} className="text-gameTeal" /> Note :
             </h4>
             <ol className="list-decimal pl-6 space-y-2 text-sm text-slate-600 font-bold leading-relaxed">
-              <li>The above-mentioned opportunities are the general ones; to get real-time updates, students can check the <button className="text-gameTeal font-black underline hover:text-gameTealDark decoration-2 underline-offset-4 transition-all">"Job Notification page"</button> so that students can save time without missing important job opportunities.</li>
+              <li>The above-mentioned opportunities are the general ones; to get real-time updates, students can check the <Link href="/jobs" className="text-gameTeal font-black underline hover:text-gameTealDark decoration-2 underline-offset-4 transition-all">Job Notification page</Link> so that students can save time without missing important job opportunities.</li>
               <li>The detailed syllabus of these exams is timely updated so that all the information is available in a single place.</li>
             </ol>
           </div>
@@ -925,7 +925,7 @@ const GateExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content 
               <Info size={18} className="text-gameTeal" /> Note :
             </h4>
             <ol className="list-decimal pl-6 space-y-2 text-sm text-slate-600 font-bold leading-relaxed">
-              <li>The above-mentioned opportunities are the general ones; to get real-time updates, students can check the <button className="text-gameTeal font-black underline hover:text-gameTealDark decoration-2 underline-offset-4 transition-all">"Job Notification page"</button> so that students can save time without missing important job opportunities.</li>
+              <li>The above-mentioned opportunities are the general ones; to get real-time updates, students can check the <Link href="/jobs" className="text-gameTeal font-black underline hover:text-gameTealDark decoration-2 underline-offset-4 transition-all">Job Notification page</Link> so that students can save time without missing important job opportunities.</li>
               <li>The detailed syllabus of these exams is timely updated so that all the information is available in a single place.</li>
             </ol>
           </div>
@@ -981,7 +981,7 @@ const GateExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content 
               <li>The B.Tech/B.E. degree must be AICTE/UGC-recognised, irrespective of whether obtained through regular or lateral entry.</li>
               <li>Ensure you meet the percentage/CGPA requirements for the specific exam.</li>
               <li>Always check the detailed eligibility criteria for the year you are applying, as they may have minor updates.</li>
-              <li>The above-mentioned opportunities are the general ones; to get real-time updates, students can check the <button className="text-gameTeal font-black underline hover:text-gameTealDark decoration-2 underline-offset-4 transition-all">"Job Notification page"</button> so that students can save time without missing important job opportunities.</li>
+              <li>The above-mentioned opportunities are the general ones; to get real-time updates, students can check the <Link href="/jobs" className="text-gameTeal font-black underline hover:text-gameTealDark decoration-2 underline-offset-4 transition-all">Job Notification page</Link> so that students can save time without missing important job opportunities.</li>
               <li>The detailed syllabus of these exams is timely updated so that all the information is available in a single place.</li>
             </ol>
           </div>
@@ -1076,8 +1076,8 @@ const GateExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content 
                         <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Success Rate</p>
                      </div>
                      <div>
-                        <p className="text-2xl font-black text-white mb-0.5">200+</p>
-                        <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Mentors</p>
+                        <p className="text-2xl font-black text-white mb-0.5">1:1</p>
+                        <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Mentorship</p>
                      </div>
                   </div>
                </motion.div>
@@ -1477,7 +1477,7 @@ const GateExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content 
                               >
                                  <div className={`relative group ${isEven ? 'text-left lg:text-right' : 'text-left'}`}>
                                     {/* Numbering */}
-                                    <div className={`absolute -top-20 ${isEven ? 'left-0 lg:left-auto lg:-right-4' : 'left-0 lg:-left-4'} text-7xl font-black text-gameTeal/70 pointer-events-none z-10`}>
+                                    <div className={`absolute -top-14 ${isEven ? 'left-0 lg:left-auto lg:-right-4' : 'left-0 lg:-left-4'} text-5xl font-black text-gameTeal/70 pointer-events-none z-10`}>
                                        {i + 1 < 10 ? `0${i + 1}` : i + 1}
                                     </div>
                                     
@@ -1546,8 +1546,8 @@ const GateExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content 
                      <h4 className="text-3xl md:text-5xl font-black text-white mb-4 tracking-tighter">Your technical future is waiting.</h4>
                      <p className="text-teal-50/70 font-bold text-lg">Initialize your preparation with India&apos;s most structured roadmap.</p>
                   </div>
-                  <Link 
-                     href="/courses"
+                  <Link
+                     href="/resources"
                      className="relative z-10 bg-[#f2c537] text-black px-12 py-5 rounded-[2rem] font-black uppercase tracking-widest text-sm shadow-2xl hover:bg-white hover:-translate-y-1 transition-all shrink-0 flex items-center justify-center"
                   >
                      Initialize Pre Phase
