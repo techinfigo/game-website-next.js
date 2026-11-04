@@ -2,6 +2,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { Plus, Minus, MessageCircle, Phone, ArrowRight, HelpCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSiteSettings } from '@/hooks/useSiteSettings';
@@ -26,8 +27,8 @@ const FAQSection: React.FC = () => {
       a: "Students can visit the Enroll Now option where they can find the different Courses which are available and can choose according to their preferences." 
     },
     { 
-      q: "Does Gaurav’s Academy  provide live lectures?", 
-      a: "Yes, we provide live Scheduled Lectures by our best faculties with 24/7 recorded lecture access." 
+      q: "Does Gaurav’s Academy  provide live lectures?",
+      a: "Yes, we provide live Scheduled Lectures led by Gaurav Babu Sir and our expert faculties — with 14+ years of experience — along with 24/7 recorded lecture access."
     },
     { 
       q: "Does Gaurav’s Academy  provide notes for all classes?", 
@@ -68,6 +69,15 @@ const FAQSection: React.FC = () => {
                     <div className="absolute top-0 right-0 w-24 h-24 bg-[#f2c537]/10 rounded-full blur-2xl group-hover:bg-[#f2c537]/20 transition-colors"></div>
                     
                     <div className="relative z-10">
+                       <div className="flex items-center gap-3 mb-4">
+                          <div className="relative w-14 h-14 rounded-2xl overflow-hidden border-2 border-[#f2c537] shadow-md shrink-0">
+                             <Image src="/gaurav-sir.webp" alt="Gaurav Babu Sir" fill className="object-cover" unoptimized />
+                          </div>
+                          <div>
+                             <p className="text-sm font-black text-slate-900 leading-tight">Gaurav Babu Sir</p>
+                             <p className="text-[11px] font-bold text-[#075d63]">Founder & Mentor · 14+ yrs</p>
+                          </div>
+                       </div>
                        <h4 className="text-xl font-bold text-slate-900 mb-2">Still in doubt?</h4>
                        <p className="text-slate-500 text-sm mb-6">Chat with our academic counselors for personalized guidance.</p>
                        

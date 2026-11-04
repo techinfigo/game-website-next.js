@@ -304,12 +304,12 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
                              alt={item.title} 
                              fill
                              draggable="false"
-                             className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-all duration-1000"
+                             className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-85 transition-all duration-1000"
                              referrerPolicy="no-referrer"
                           />
-                          
-                          {/* Gradient Overlays */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-[1]"></div>
+
+                          {/* Gradient Overlays — keep bottom dark for text legibility, lighter up top so the image shows through */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent z-[1]"></div>
                           
                           {/* Hover Pulse Gradient */}
                           <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gameTeal/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-[2]"></div>
@@ -320,12 +320,12 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
                           <div className="absolute inset-0 p-4 pb-6 flex flex-col z-[10]">
                              
                              {/* Floating Logo Placeholder */}
-                             <div className="relative w-12 h-12 mb-3 overflow-hidden flex items-center justify-center p-2 rounded-xl transition-all">
-                                <Image 
-                                  src={item.logo} 
-                                  alt={`${item.title} Logo`} 
+                             <div className="relative w-14 h-14 mb-3 overflow-hidden flex items-center justify-center p-1.5 rounded-2xl bg-white shadow-md transition-all">
+                                <Image
+                                  src={item.logo}
+                                  alt={`${item.title} Logo`}
                                   fill
-                                  className="object-contain p-1.5 rounded-xl"
+                                  className="object-contain p-1.5 rounded-2xl"
                                   unoptimized
                                   draggable="false"
                                 />

@@ -88,9 +88,9 @@ const SpecialOffer: React.FC = () => {
                    {offer.description}
                 </p>
 
-                <a href={offer.ctaLink} className="bg-[#075d63] hover:bg-[#054a4f] text-white pl-8 pr-2 py-2 rounded-full font-bold text-sm uppercase tracking-wider flex items-center gap-4 transition-all shadow-[0_0_30px_rgba(7,93,99,0.4)] hover:shadow-[0_0_40px_rgba(7,93,99,0.6)] hover:-translate-y-1 group">
+                <a href={offer.ctaLink} className="bg-[#f2c537] hover:bg-white text-black pl-8 pr-2 py-2 rounded-full font-black text-sm uppercase tracking-wider inline-flex items-center gap-4 transition-all shadow-[0_8px_30px_rgba(242,197,55,0.35)] hover:shadow-[0_10px_40px_rgba(242,197,55,0.55)] hover:-translate-y-1 group w-fit">
                    {offer.ctaText}
-                   <div className="bg-white/10 w-10 h-10 rounded-full flex items-center justify-center group-hover:bg-[#f2c537] group-hover:text-black transition-colors">
+                   <div className="bg-black/10 w-10 h-10 rounded-full flex items-center justify-center group-hover:bg-[#075d63] group-hover:text-white transition-colors">
                       <ArrowRight size={18} />
                    </div>
                 </a>
