@@ -5,6 +5,7 @@ import './globals.css';
 import NavbarWrapper from '@/components/NavbarWrapper';
 import Footer from '@/components/Footer';
 import FloatingActions from '@/components/FloatingActions';
+import AnnouncementPopup from '@/components/AnnouncementPopup';
 import LoginModalWrapper from '@/components/LoginModalWrapper';
 import FaviconManager from '@/components/FaviconManager';
 
@@ -82,6 +83,7 @@ export default function RootLayout({
             <Footer />
             <LoginModalWrapper />
             <FloatingActions />
+            <AnnouncementPopup />
           </MotionProvider>
         </AuthProvider>
       </body>
