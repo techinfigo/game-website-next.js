@@ -187,22 +187,6 @@ const HacksAndStrategiesPage: React.FC = () => {
                      Success isn’t just about hard work, it’s about the right strategy. Explore proven hacks, time management tips, and revision techniques.
                   </p>
 
-                  {/* Search Bar */}
-                  <div className="relative max-w-md group">
-                     <div className="relative bg-white border border-slate-200 rounded-2xl flex items-center p-2 shadow-xl shadow-[#075d63]/5 focus-within:border-[#075d63]/50 transition-all">
-                        <Search className="text-slate-400 ml-3 shrink-0" size={20} />
-                        <input 
-                           type="text" 
-                           placeholder="Search strategies..." 
-                           className="w-full bg-transparent border-none outline-none text-slate-900 placeholder-slate-400 px-4 py-2.5 font-medium"
-                           value={searchQuery}
-                           onChange={(e) => setSearchQuery(e.target.value)}
-                        />
-                        <button className="bg-[#075d63] text-white p-2.5 rounded-xl hover:bg-[#043f42] transition-colors">
-                           <ArrowRight size={20} />
-                        </button>
-                     </div>
-                  </div>
                </motion.div>
 
                {/* Right: Vertical Accordion UI */}
@@ -375,9 +359,9 @@ const HacksAndStrategiesPage: React.FC = () => {
                <p className="text-slate-500 text-lg mb-10 leading-relaxed">
                   Ready to put these strategies into action? Our resources are designed to help you master these techniques and achieve your engineering goals.
                </p>
-               <button className="bg-[#075d63] text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-[#043f42] transition-all shadow-xl hover:shadow-[#075d63]/30 flex items-center justify-center gap-2 mx-auto group">
+               <a href="/courses" className="bg-[#075d63] text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-[#043f42] transition-all shadow-xl hover:shadow-[#075d63]/30 inline-flex items-center justify-center gap-2 mx-auto group">
                   Start Your Journey Today <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-               </button>
+               </a>
             </div>
          </motion.div>
 
