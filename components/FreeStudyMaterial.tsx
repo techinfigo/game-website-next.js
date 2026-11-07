@@ -5,10 +5,12 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { ArrowRight, BookOpen, Lightbulb, PlayCircle, FileText, Zap, Sparkles, Check, Crown } from 'lucide-react';
 import { useAuth } from '@/providers/AuthProvider';
+import { useSiteSettings } from '@/hooks/useSiteSettings';
 
 const FreeStudyMaterial: React.FC = () => {
   const { isLoggedIn, openLogin, user, logout } = useAuth();
-  
+  const { pitaraImage } = useSiteSettings();
+
   const handleAccess = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (!isLoggedIn) {
       e.preventDefault();
@@ -60,7 +62,7 @@ const FreeStudyMaterial: React.FC = () => {
               <div className="relative bg-white p-3 rounded-[2rem] shadow-[0_20px_50px_-15px_rgba(7,93,99,0.1)] border border-slate-100 group transition-all duration-500">
                  <div className="relative w-[240px] md:w-[280px] aspect-[2/3] rounded-[1.5rem] overflow-hidden bg-slate-900 border-2 border-white shadow-inner">
                     <Image
-                       src="/knowledge-pitara.webp"
+                       src={pitaraImage || "/knowledge-pitara.webp"}
                        alt="Knowledge Pitara"
                        fill
                        unoptimized

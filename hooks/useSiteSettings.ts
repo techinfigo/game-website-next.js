@@ -18,6 +18,7 @@ export interface SiteSettings {
   address: string;
   faviconUrl: string;
   logoUrl: string;
+  pitaraImage: string;
 }
 
 const DEFAULT_SITE_SETTINGS: SiteSettings = {
@@ -35,6 +36,7 @@ const DEFAULT_SITE_SETTINGS: SiteSettings = {
   address: "131, 2, Jawahar Puram Phase -1, Shahganj, Agra, Uttar Pradesh 282010",
   faviconUrl: "",
   logoUrl: "",
+  pitaraImage: "",
 };
 
 export function useSiteSettings(): SiteSettings {
