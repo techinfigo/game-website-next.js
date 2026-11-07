@@ -71,7 +71,7 @@ const FAQSection: React.FC = () => {
                     <div className="relative z-10">
                        <div className="flex items-center gap-3 mb-4">
                           <div className="relative w-14 h-14 rounded-2xl overflow-hidden border-2 border-[#f2c537] shadow-md shrink-0">
-                             <Image src="/gaurav-sir.webp" alt="Gaurav Babu Sir" fill className="object-cover" unoptimized />
+                             <Image src="/gaurav-sir.webp" alt="Gaurav Babu Sir" fill className="object-cover object-top" unoptimized />
                           </div>
                           <div>
                              <p className="text-sm font-black text-slate-900 leading-tight">Gaurav Babu Sir</p>
