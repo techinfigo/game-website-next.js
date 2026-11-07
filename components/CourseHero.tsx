@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { Sparkles, X, PhoneCall, Loader2, Check, Star, Smartphone, Play, Eye, ChevronLeft, ChevronRight, Youtube, ExternalLink } from 'lucide-react';
 import { useSiteSettings } from '@/hooks/useSiteSettings';
+import { useVideos } from '@/hooks/useVideos';
 
 const TelegramIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className} xmlns="http://www.w3.org/2000/svg">
@@ -86,36 +87,11 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
     }
   ];
 
-  // Video Stack Data
-  const videos = [
-    {
-      id: 1,
-      title: "Complete Fluid Mechanics",
-      views: "1.5M+",
-      duration: "40+ Lectures",
-      thumbnail: "https://img.youtube.com/vi/bttDewEFDq4/maxresdefault.jpg",
-      videoId: "PLzpAOaJe3cEibAI-LLEUja3q34NaQdMgb",
-      tag: "Playlist"
-    },
-    {
-      id: 2,
-      title: "Strength of Materials",
-      views: "1.2M+",
-      duration: "50+ Lectures",
-      thumbnail: "https://img.youtube.com/vi/1QV1hZ7c68Y/maxresdefault.jpg",
-      videoId: "PL4z8h611VJ3CFbklGo60rhejqprcMHTSx",
-      tag: "Playlist"
-    },
-    {
-      id: 3,
-      title: "Crack GATE in First Attempt",
-      views: "250k+",
-      duration: "45:20",
-      thumbnail: "https://img.youtube.com/vi/Vv9lARk4vcs/maxresdefault.jpg",
-      videoId: "Vv9lARk4vcs",
-      tag: "Strategy"
-    }
-  ];
+  // Masterclass video cards come from the admin "Video Lectures" section
+  // (first 3). Thumbnails auto-derive from each video, so the client can fix
+  // them from admin. Falls back to the hook's defaults when none are set.
+  const { videos: lectureVideos } = useVideos();
+  const videos = lectureVideos.slice(0, 3);
 
   // Slide Data Configuration
   const slides = [
