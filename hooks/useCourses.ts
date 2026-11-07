@@ -26,6 +26,7 @@ export interface Course {
   discount: string;
   features: string[];
   enrollLink: string;
+  order?: number;
 }
 
 export function useCourses(defaultCourses: Course[]): { courses: Course[]; loading: boolean } {
@@ -47,6 +48,9 @@ export function useCourses(defaultCourses: Course[]): { courses: Course[]; loadi
             image: imageUrl,
           } as Course;
         });
+
+        // Respect the admin-set display order (lower first); unset goes last.
+        fetched.sort((a, b) => (a.order ?? 9999) - (b.order ?? 9999));
 
         setCourses(fetched);
       })

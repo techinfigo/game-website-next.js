@@ -712,7 +712,7 @@ const RankersPage: React.FC = () => {
       </section>
 
       {/* SECTION 2: Results Carousel / Slider - Wide Array of Success */}
-      <section className="py-8 lg:py-10 bg-slate-200 relative overflow-hidden border-b border-slate-300">
+      <section id="spotlight-rankers" className="py-8 lg:py-10 bg-slate-200 relative overflow-hidden border-b border-slate-300 scroll-mt-28">
          <div className="max-w-[1280px] mx-auto px-8 mb-6 text-center">
             <h2 className="text-3xl md:text-5xl font-black text-gameTeal mb-2 tracking-tight">
                Spotlight on our Rankers

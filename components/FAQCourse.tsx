@@ -2,6 +2,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { Plus, Minus, MessageCircle, Phone, HelpCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -67,6 +68,15 @@ const FAQCourse: React.FC = () => {
                  <div className="bg-slate-50 p-6 rounded-3xl border border-slate-200 relative overflow-hidden group hover:shadow-xl transition-all duration-500">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-[#075d63]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
                     <div className="relative z-10">
+                       <div className="flex items-center gap-3 mb-4">
+                          <div className="relative w-14 h-14 rounded-2xl overflow-hidden border-2 border-[#f2c537] shadow-md shrink-0">
+                             <Image src="/gaurav-sir.webp" alt="Gaurav Babu Sir" fill className="object-cover" unoptimized />
+                          </div>
+                          <div>
+                             <p className="text-sm font-black text-slate-900 leading-tight">Gaurav Babu Sir</p>
+                             <p className="text-[11px] font-bold text-[#075d63]">Founder &amp; Mentor · 14+ yrs</p>
+                          </div>
+                       </div>
                        <h4 className="text-lg font-black text-slate-900 mb-1">Need Exam Guidance?</h4>
                        <p className="text-slate-500 text-xs mb-5 font-bold">Talk to our mentors for a personalized study plan.</p>
                        
