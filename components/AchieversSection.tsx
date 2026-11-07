@@ -40,15 +40,20 @@ const AchieversSection: React.FC<AchieversSectionProps> = ({ onNavigate }) => {
   // Tripled for a seamless loop; we keep the scroll position in the middle set.
   const extendedAchievers = [...achievers, ...achievers, ...achievers];
 
-  // Auto-scroll with a seamless wrap, plus manual arrow buttons / swipe.
+  // Set the starting position to the middle set ONCE (so the user can scroll
+  // both ways). Kept out of the animation effect so it never resets mid-scroll.
   useEffect(() => {
     const el = scrollRef.current;
     if (!el || achievers.length === 0) return;
+    const t = el.scrollWidth / 3;
+    if (t > 0) el.scrollLeft = t;
+  }, [achievers.length]);
 
-    const third = () => el.scrollWidth / 3;
-    // start in the middle set so the user can scroll both ways
-    const t0 = third();
-    if (t0 > 0) el.scrollLeft = t0;
+  // Auto-scroll with a seamless wrap. Does NOT reset the scroll position, so
+  // the manual arrow buttons and swipe work without getting snapped back.
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el || achievers.length === 0) return;
 
     let raf = 0;
     const loop = () => {
@@ -57,10 +62,11 @@ const AchieversSection: React.FC<AchieversSectionProps> = ({ onNavigate }) => {
         const t = node.scrollWidth / 3;
         if (!isPaused && playingCardKey === null) {
           node.scrollLeft += 0.6;
-          if (t > 0) {
-            if (node.scrollLeft >= t * 2) node.scrollLeft -= t;
-            else if (node.scrollLeft <= 0) node.scrollLeft += t;
-          }
+        }
+        // Seamless wrap — runs always so manual scrolling past the ends loops too.
+        if (t > 0) {
+          if (node.scrollLeft >= t * 2) node.scrollLeft -= t;
+          else if (node.scrollLeft <= 0) node.scrollLeft += t;
         }
       }
       raf = requestAnimationFrame(loop);
