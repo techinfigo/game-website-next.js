@@ -138,11 +138,8 @@ const FAQSection: React.FC = () => {
                                 <div className="px-5 pb-5 pt-0">
                                    <div className="h-px w-full bg-slate-100 mb-4"></div>
                                    <div className="flex flex-col sm:flex-row items-start gap-4">
-                                      <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border-2 border-[#f2c537] shadow-md shrink-0">
-                                         <Image src="/gaurav-sir.webp" alt="Gaurav Babu Sir" fill className="object-cover" unoptimized />
-                                         <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/70 to-transparent px-2 py-1">
-                                            <p className="text-white text-[9px] font-black leading-tight text-center">Gaurav Babu Sir</p>
-                                         </div>
+                                      <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-[#f2c537] shadow-md shrink-0">
+                                         <Image src="/gaurav-sir.webp" alt="Gaurav Babu Sir" fill className="object-cover object-top" unoptimized />
                                       </div>
                                       <p className="text-slate-600 leading-relaxed font-medium">
                                          {faq.a}
