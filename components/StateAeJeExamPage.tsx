@@ -12,8 +12,9 @@ import {
 import CourseGrid from './CourseGrid';
 import TestimonialsText from './TestimonialsText';
 import AchieversSection from './AchieversSection';
+import type { ExamPageContent } from '@/lib/examContentTypes';
 
-const StateAeJeExamPage: React.FC = () => {
+const StateAeJeExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content }) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
@@ -32,7 +33,7 @@ const StateAeJeExamPage: React.FC = () => {
 
   // TODO: client to upload /state/hero-*.jpg images. Until they exist the <Image>
   // fails and we fall back to the dark panel behind it.
-  const stateSlides = [
+  const stateSlides: any[] = content?.hero?.length ? content.hero : [
     { badge: 'NOTIFICATION', title: 'State AE/JE 2026 Notifications', buttonText: 'Explore Courses', imageUrl: '/state/hero-1.jpg' },
     { badge: 'MOCK TEST', title: 'Free State AE/JE Mock Test Series', buttonText: 'Explore Courses', imageUrl: '/state/hero-2.jpg' },
     { badge: 'DEPARTMENTS', title: 'PWD, Irrigation & Rural Development Posts', buttonText: 'Explore Courses', imageUrl: '/state/hero-3.jpg' },

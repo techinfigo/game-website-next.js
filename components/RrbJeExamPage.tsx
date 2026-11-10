@@ -15,8 +15,9 @@ import {
 import AchieversSection from './AchieversSection';
 import CourseGrid from './CourseGrid';
 import TestimonialsText from './TestimonialsText';
+import type { ExamPageContent } from '@/lib/examContentTypes';
 
-const RrbJeExamPage: React.FC = () => {
+const RrbJeExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content }) => {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [activeSlide, setActiveSlide] = useState(0);
   const [activeSection, setActiveSection] = useState('highlights');
@@ -25,7 +26,7 @@ const RrbJeExamPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   // Hero carousel slides - placeholder picsum images, the owner will replace them with final creatives.
-  const rrbSlides = [
+  const rrbSlides: any[] = content?.hero?.length ? content.hero : [
     {
       badge: "RRB JE COURSE",
       title: "RRB JE — Engineer Se Railway JE Tak",

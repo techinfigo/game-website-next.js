@@ -24,12 +24,14 @@ import CourseHero from './CourseHero';
 import CourseGrid from './CourseGrid';
 import AppStoreButtons from './AppStoreButtons';
 import TestimonialsText from './TestimonialsText';
+import type { ExamPageContent } from '@/lib/examContentTypes';
 
 interface SscJeExamPageProps {
   onNavigate?: (page: string) => void;
+  content?: ExamPageContent | null;
 }
 
-const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
+const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate, content }) => {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [selectedExam, setSelectedExam] = useState('SSC JE');
   const [searchTerm, setSearchTerm] = useState('');
@@ -53,7 +55,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate }) => {
   };
 
   // Hero carousel slides - local /ssc/ artwork with a graceful fallback if a file is missing.
-  const sscSlides = [
+  const sscSlides: any[] = content?.hero?.length ? content.hero : [
     {
       badge: "NOTIFICATION",
       title: "SSC JE 2026 Notification Awaited",

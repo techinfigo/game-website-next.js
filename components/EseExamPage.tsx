@@ -24,8 +24,9 @@ import {
   BookOpen, FolderOpen, ExternalLink as ExternalLinkIcon, Stethoscope, Eye, LayoutList, Train, Wrench,
   MonitorPlay, MessageSquare, ClipboardCheck, Wallet, Sparkle
 } from 'lucide-react';
+import type { ExamPageContent } from '@/lib/examContentTypes';
 
-const EseExamPage: React.FC = () => {
+const EseExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content }) => {
   const settings = useSiteSettings();
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [selectedExam, setSelectedExam] = useState('GATE / ESE');
@@ -34,7 +35,7 @@ const EseExamPage: React.FC = () => {
   const [activeSection, setActiveSection] = useState('prestige');
 
   // Hero carousel slides - placeholder picsum images, the owner will replace them with final creatives.
-  const eseSlides = [
+  const eseSlides: any[] = content?.hero?.length ? content.hero : [
     {
       badge: "NOTIFICATION",
       title: "ESE 2026 Notification Released",
@@ -595,7 +596,7 @@ const EseExamPage: React.FC = () => {
                            {/* Button bottom right corner */}
                            <div className="relative z-10 mt-auto self-end">
                               <button onClick={() => scrollToSection('ese-courses')} className="group flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white font-black text-xs uppercase tracking-widest hover:bg-gameGold hover:text-gameBlack transition-all">
-                                 {eseSlides[activeSlide].buttonText}
+                                 {eseSlides[activeSlide].buttonText || 'Explore Courses'}
                                  <TrendingUp size={14} className="group-hover:translate-x-1 transition-transform" />
                               </button>
                            </div>

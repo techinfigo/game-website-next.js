@@ -8,13 +8,14 @@ import { Rocket, Globe, Target, Shield, Users, Sparkles, Briefcase, TrendingUp, 
 import CourseGrid from './CourseGrid';
 import TestimonialsText from './TestimonialsText';
 import AchieversSection from './AchieversSection';
+import type { ExamPageContent } from '@/lib/examContentTypes';
 
-const PsuExamPage: React.FC = () => {
+const PsuExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content }) => {
   const [activeSlide, setActiveSlide] = useState(0);
   // CourseGrid opens on the PSU category by default.
   const [selectedExam, setSelectedExam] = useState('Govt R&D / PSUs');
   const [searchTerm, setSearchTerm] = useState('');
-  const slides = [
+  const slides: any[] = content?.hero?.length ? content.hero : [
     {
       badge: "REGISTRATION",
       title: "GATE 2026 Registration Open",
