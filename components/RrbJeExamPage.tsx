@@ -329,7 +329,7 @@ const RrbJeExamPage: React.FC = () => {
     },
     { 
       q: "Q 4. Why should I choose GAME for Online Coaching?", 
-      a: "Ans. GAME delivers high-quality education and top-notch content for Mechanical & Civil Engineering aspirants preparing for the RRB-JE exam. Under the leadership of Gaurav Babu Sir, a distinguished educator with 13+ years of experience, our teaching philosophy focuses on building a strong academic foundation by teaching subjects from scratch with conceptual clarity and practical problem-solving techniques. With GAME, students can confidently excel in competitive exams and achieve their career aspirations." 
+      a: "Ans. GAME delivers high-quality education and top-notch content for Mechanical & Civil Engineering aspirants preparing for the RRB-JE exam. Under the leadership of Gaurav Babu Sir, a distinguished educator with 14+ years of experience, our teaching philosophy focuses on building a strong academic foundation by teaching subjects from scratch with conceptual clarity and practical problem-solving techniques. With GAME, students can confidently excel in competitive exams and achieve their career aspirations." 
     },
     { 
       q: "Q 5. Does GAME provide a test series along with the course?", 
@@ -423,13 +423,13 @@ const RrbJeExamPage: React.FC = () => {
                   </p>
 
                   <div className="flex flex-wrap gap-4 mb-8 justify-start">
-                     <button onClick={() => scrollToSection('highlights')} className="px-7 py-3.5 bg-gameTeal text-white font-black rounded-full hover:bg-[#007a7e] transition-all active:scale-95 shadow-xl shadow-gameTeal/20 flex items-center gap-2 group text-sm">
+                     <button onClick={() => scrollToSection('rrb-courses')} className="px-7 py-3.5 bg-gameTeal text-white font-black rounded-full hover:bg-[#007a7e] transition-all active:scale-95 shadow-xl shadow-gameTeal/20 flex items-center gap-2 group text-sm">
                         Start Preparation
                         <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                      </button>
-                     <button onClick={() => scrollToSection('selection-process')} className="px-7 py-3.5 border border-white/20 text-white font-black rounded-full hover:bg-white hover:text-gameBlack transition-all active:scale-95 text-sm">
+                     <a href="https://drive.google.com/drive/folders/1XdotguRhuEfFleV8rOCALA7aV7m3xyoa?usp=sharing" target="_blank" rel="noopener noreferrer" className="px-7 py-3.5 border border-white/20 text-white font-black rounded-full hover:bg-white hover:text-gameBlack transition-all active:scale-95 text-sm">
                         View Syllabus
-                     </button>
+                     </a>
                   </div>
 
                   {/* Latest Update Widget */}
@@ -1348,33 +1348,6 @@ const RrbJeExamPage: React.FC = () => {
                         </div>
                      </div>
 
-                     <div className="mt-12 pt-10 border-t border-slate-200">
-                        <h4 className="font-black text-slate-900 text-sm uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
-                           <Info size={16} className="text-gameGold" /> Note:
-                        </h4>
-                        <div className="space-y-4">
-                           <div className="flex flex-col sm:flex-row sm:items-center gap-4 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm group">
-                              <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-gameTeal group-hover:text-white transition-colors">
-                                 <Globe size={18} />
-                              </div>
-                              <p className="flex-1 text-sm font-bold text-slate-600">
-                                 i) For Tentative Vacancies, visit the official website of the Railway Recruitment Board <a href="https://www.rrbcdg.gov.in/" target="_blank" rel="noopener noreferrer" className="text-gameTeal underline font-black hover:text-gameTealDark ml-1">(Click Here)</a>
-                              </p>
-                           </div>
-                           <div className="flex flex-col sm:flex-row sm:items-center gap-4 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm group">
-                              <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-gameGold group-hover:text-black transition-colors">
-                                 <FileText size={18} />
-                              </div>
-                              <p className="flex-1 text-sm font-bold text-slate-600">
-                                 ii) Access RRB JE MECHANICAL & CIVIL Syllabus <button className="text-gameTeal underline font-black hover:text-black ml-1">(Click Here)</button>
-                              </p>
-                           </div>
-                        </div>
-                        <div className="mt-8 grid sm:grid-cols-2 gap-4 text-[11px] font-bold text-slate-400 uppercase tracking-widest">
-                           <p>Link 1: <a href="https://www.rrbcdg.gov.in/" target="_blank" rel="noopener noreferrer" className="text-gameTeal hover:underline">https://www.rrbcdg.gov.in/</a></p>
-                           <p>Link 2: <a href="https://drive.google.com/drive/folders/1XdotguRhuEfFleV8rOCALA7aV7m3xyoa?usp=sharing" target="_blank" rel="noopener noreferrer" className="text-gameTeal hover:underline">RRB-JE - ME & CE Syllabus</a></p>
-                        </div>
-                     </div>
                   </div>
                </motion.div>
             </div>
