@@ -211,9 +211,9 @@ const StateAeJeExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ con
                   Start Preparation
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </button>
-                <Link href="/courses" className="px-7 py-3.5 border border-white/20 text-white font-black rounded-full hover:bg-white hover:text-gameBlack transition-all active:scale-95 text-sm flex items-center justify-center">
+                <a href="https://drive.google.com/drive/folders/1vCXYdDubBD3XX-iw6hcY6zbCyUnHt3Oo?usp=sharing" target="_blank" rel="noopener noreferrer" className="px-7 py-3.5 border border-white/20 text-white font-black rounded-full hover:bg-white hover:text-gameBlack transition-all active:scale-95 text-sm flex items-center justify-center">
                   View Syllabus
-                </Link>
+                </a>
               </div>
               <div className="bg-white/5 border border-white/10 rounded-2xl p-3 mb-6 max-w-sm flex items-start gap-4 text-left">
                 <div className="w-9 h-9 rounded-xl bg-gameGold/10 text-gameGold flex items-center justify-center shrink-0">
@@ -458,7 +458,12 @@ const StateAeJeExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ con
                 <AnimatePresence>
                   {openFaqIndex === i && (
                     <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
-                      <p className="px-5 pb-5 text-slate-600 leading-relaxed font-medium">{faq.a}</p>
+                      <div className="px-5 pb-5 flex flex-col sm:flex-row items-start gap-4">
+                        <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-xl overflow-hidden border-2 border-[#f2c537] shadow-md shrink-0">
+                          <Image src="/gaurav-sir.webp" alt="Gaurav Babu Sir" fill className="object-cover object-top" unoptimized />
+                        </div>
+                        <p className="text-slate-600 leading-relaxed font-medium">{faq.a}</p>
+                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
