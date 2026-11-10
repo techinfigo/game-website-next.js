@@ -675,25 +675,44 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
                  <div className="w-12 h-1 bg-gameGold rounded-full mb-6"></div>
                  
                  <div className="w-full space-y-3">
-                    {[
-                      { title: "ONGC Recruitment 2025", status: "Live", color: "bg-green-400" },
-                      { title: "SSC-JE 2026 Calendar", status: "Expected", color: "bg-amber-400" },
-                      { title: "ISRO Scientist 'B'", status: "Closing Soon", color: "bg-red-400" }
-                    ].map((item, idx) => (
-                      <motion.div 
-                        key={idx}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.5 + (idx * 0.1) }}
-                        className="bg-white/5 border border-white/10 p-4 rounded-2xl flex items-center justify-between group hover:bg-white/10 transition-colors cursor-default"
-                      >
-                        <div className="flex items-center gap-3">
-                           <div className={`w-2.5 h-2.5 rounded-full ${item.color} ${item.status === 'Live' ? 'animate-pulse' : ''}`}></div>
-                           <span className="text-[11px] font-black uppercase tracking-widest text-teal-50">{item.title}</span>
-                        </div>
-                        <ChevronRight size={14} className="text-white/30 group-hover:text-gameGold transition-colors" />
-                      </motion.div>
-                    ))}
+                    {(processedJobs.length > 0
+                      ? processedJobs.slice(0, 3).map((job) => {
+                          const isClosed = job.status === 'Closed';
+                          const isUpcoming = job.status === 'Yet to start';
+                          return {
+                            title: job.notification,
+                            label: isClosed ? 'Closed' : isUpcoming ? 'Expected' : 'Live',
+                            color: isClosed ? 'bg-red-400' : isUpcoming ? 'bg-amber-400' : 'bg-green-400',
+                            href: ((job.pdfLink as string) || '').trim(),
+                          };
+                        })
+                      : [{ title: 'View all notifications', label: 'Live', color: 'bg-green-400', href: '' }]
+                    ).map((item, idx) => {
+                      const handleClick = () => {
+                        if (item.href) {
+                          window.open(item.href, '_blank', 'noopener,noreferrer');
+                        } else {
+                          document.getElementById('live-alerts')?.scrollIntoView({ behavior: 'smooth' });
+                        }
+                      };
+                      return (
+                        <motion.button
+                          key={idx}
+                          type="button"
+                          onClick={handleClick}
+                          initial={{ opacity: 0, x: 20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.5 + (idx * 0.1) }}
+                          className="w-full text-left bg-white/5 border border-white/10 p-4 rounded-2xl flex items-center justify-between gap-3 group hover:bg-white/10 transition-colors cursor-pointer active:scale-[0.98]"
+                        >
+                          <div className="flex items-center gap-3 min-w-0">
+                             <div className={`w-2.5 h-2.5 rounded-full shrink-0 ${item.color} ${item.label === 'Live' ? 'animate-pulse' : ''}`}></div>
+                             <span className="text-[11px] font-black uppercase tracking-widest text-teal-50 truncate">{item.title}</span>
+                          </div>
+                          <ChevronRight size={14} className="text-white/30 group-hover:text-gameGold transition-colors shrink-0" />
+                        </motion.button>
+                      );
+                    })}
                  </div>
                  
                  <div className="mt-auto pt-4 w-full">
