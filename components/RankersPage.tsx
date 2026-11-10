@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -575,33 +575,78 @@ const RankerSkeleton = () => (
   </div>
 );
 
-const MarqueeRow = ({ items, direction = 'left', cardType = 'ranker', speed = 60 }: { items: Ranker[], direction?: 'left' | 'right', cardType?: 'ranker' | 'job', speed?: number }) => {
+const MarqueeRow = ({ items, direction = 'left', cardType = 'ranker' }: { items: Ranker[], direction?: 'left' | 'right', cardType?: 'ranker' | 'job', speed?: number }) => {
+  const scrollRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
-  
+  const dragRef = useRef<{ down: boolean; startX: number; startLeft: number }>({ down: false, startX: 0, startLeft: 0 });
+  const count = items ? items.length : 0;
+
+  // Set the starting position to the middle set ONCE so the user can scroll
+  // both directions and the loop stays seamless.
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el || count === 0) return;
+    const setW = el.scrollWidth / 8;
+    if (setW > 0) el.scrollLeft = setW * 3;
+  }, [count]);
+
+  // Gentle auto-scroll that the user can override by dragging/swiping. Never
+  // resets position, so manual scrolling works.
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el || count === 0) return;
+    const dir = direction === 'left' ? 1 : -1;
+    let raf = 0;
+    const loop = () => {
+      const node = scrollRef.current;
+      if (node) {
+        const setW = node.scrollWidth / 8;
+        if (!isPaused && !dragRef.current.down) node.scrollLeft += dir * 0.5;
+        if (setW > 0) {
+          if (node.scrollLeft >= setW * 6) node.scrollLeft -= setW * 3;
+          else if (node.scrollLeft <= setW) node.scrollLeft += setW * 3;
+        }
+      }
+      raf = requestAnimationFrame(loop);
+    };
+    raf = requestAnimationFrame(loop);
+    return () => cancelAnimationFrame(raf);
+  }, [isPaused, direction, count]);
+
+  const onDown = (e: React.MouseEvent) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    dragRef.current = { down: true, startX: e.pageX, startLeft: el.scrollLeft };
+  };
+  const onMove = (e: React.MouseEvent) => {
+    const el = scrollRef.current;
+    if (!el || !dragRef.current.down) return;
+    el.scrollLeft = dragRef.current.startLeft - (e.pageX - dragRef.current.startX);
+  };
+  const endDrag = () => { dragRef.current.down = false; };
+
   if (!items || items.length === 0) return null;
-  
+
   // Multiply items to ensure a seamless loop - 8x to handle any screen width
   const duplicatedItems = [...items, ...items, ...items, ...items, ...items, ...items, ...items, ...items];
-  
+
   return (
-    <div 
-      className="relative flex overflow-hidden py-3"
+    <div
+      ref={scrollRef}
+      className="relative flex gap-4 overflow-x-auto no-scrollbar py-3 cursor-grab active:cursor-grabbing select-none"
       onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
+      onMouseLeave={() => { setIsPaused(false); endDrag(); }}
+      onMouseDown={onDown}
+      onMouseMove={onMove}
+      onMouseUp={endDrag}
+      onTouchStart={() => setIsPaused(true)}
+      onTouchEnd={() => setIsPaused(false)}
     >
-      <div
-        className={`flex gap-4 w-max ${direction === 'left' ? 'animate-marquee-left' : 'animate-marquee-right'}`}
-        style={{
-          animationDuration: `${speed}s`,
-          animationPlayState: isPaused ? 'paused' : 'running'
-        }}
-      >
-        {duplicatedItems.map((item, idx) => (
-          <div key={`${item.id}-${idx}`} className="w-[190px] md:w-[200px] shrink-0">
-            {cardType === 'ranker' ? <RankerCard ranker={item} /> : <JobRankerCard ranker={item} />}
-          </div>
-        ))}
-      </div>
+      {duplicatedItems.map((item, idx) => (
+        <div key={`${item.id}-${idx}`} className="w-[190px] md:w-[200px] shrink-0 pointer-events-none">
+          {cardType === 'ranker' ? <RankerCard ranker={item} /> : <JobRankerCard ranker={item} />}
+        </div>
+      ))}
     </div>
   );
 };
