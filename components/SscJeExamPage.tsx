@@ -1758,7 +1758,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate, content }) =>
                <div>
                   <h2 className="text-2xl font-bold text-slate-900 mb-4">SSC-JE Exam Vacancy & Exam Dates</h2>
                   <p className="leading-relaxed">
-                     The vacancy details & exam dates are officially announced through the SSC JE Notification released on the SSC website (<a href="https://ssc.nic.in" target="_blank" rel="noopener noreferrer" className="text-gameTeal hover:underline">ssc.nic.in</a>).
+                     The vacancy details & exam dates are officially announced through the SSC JE Notification released on the SSC website (<a href="https://ssc.gov.in/" target="_blank" rel="noopener noreferrer" className="text-gameTeal hover:underline">ssc.gov.in</a>).
                   </p>
                </div>
             </div>
