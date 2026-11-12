@@ -224,14 +224,16 @@ const KnowledgePitaraPage: React.FC = () => {
                     transition={{ duration: 0.3, delay: Math.min(i * 0.04, 0.3) }}
                     className="group bg-white rounded-[1.75rem] border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col overflow-hidden"
                   >
-                    {/* Thumbnail */}
-                    <div className="relative aspect-video overflow-hidden bg-slate-100">
+                    {/* Thumbnail — videos are 16:9 (cover), while PDF/doc covers are
+                        usually square/portrait, so they are shown in full (contain)
+                        in a slightly taller box instead of being cropped. */}
+                    <div className="relative aspect-[4/3] overflow-hidden bg-slate-100">
                       {item.image ? (
                         <img
                           src={item.image}
                           alt={item.title}
                           referrerPolicy="no-referrer"
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          className={`w-full h-full group-hover:scale-105 transition-transform duration-500 ${isVideo ? 'object-cover' : 'object-contain'}`}
                         />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#075d63] to-teal-700 text-white/90">
