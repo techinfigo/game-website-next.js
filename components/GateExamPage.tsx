@@ -876,6 +876,9 @@ const GateExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content 
       q: "Q.8 What are the exams/Job opportunities for B.Tech Core Branches?",
       a: (
         <div className="space-y-8">
+          <p className="sm:hidden text-[11px] font-black uppercase tracking-widest text-gameTeal flex items-center gap-2">
+            <ArrowUpRight size={14} className="rotate-45" /> Swipe the table sideways to see all columns
+          </p>
           <div className="bg-gameGold/5 rounded-xl border-2 border-slate-900 shadow-xl overflow-hidden relative">
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse min-w-[900px]">
@@ -2171,13 +2174,16 @@ const GateExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content 
                      </h3>
                      <div className="space-y-6">
                         <p className="text-slate-600 font-medium leading-relaxed">
-                           Results are announced on the official GATE website.
+                           Results are announced on the <a href="https://gate2027.iitm.ac.in/" target="_blank" rel="noopener noreferrer" className="text-gameTeal font-black underline decoration-2 underline-offset-4 hover:text-gameTealDark transition-all">official GATE website</a>.
                         </p>
                         <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
                            <p className="text-slate-900 font-bold leading-relaxed">
                               The GATE score remains valid for <span className="text-gameTeal font-black">three years</span> from the date of announcement.
                            </p>
                         </div>
+                        <a href="https://gate2027.iitm.ac.in/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-gameTeal text-white px-6 py-3 rounded-2xl font-black text-sm uppercase tracking-wider hover:bg-gameTealDark transition-all shadow-lg hover:-translate-y-0.5">
+                           <ExternalLink size={18} /> Visit Official GATE Website
+                        </a>
                      </div>
                   </div>
                </div>

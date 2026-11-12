@@ -1142,7 +1142,7 @@ const SYLLABUS_LINKS: Record<string, string> = {
   cil: "https://drive.google.com/file/d/1KKDmw6_PWj1WbLIm4JeYvPhEOzV3jDnS/view",
   bel: "https://drive.google.com/file/d/1WBXKhxyeyLN8A7qmops09NOvweLnxmW1/view",
   mdl: "https://drive.google.com/file/d/1KKDmw6_PWj1WbLIm4JeYvPhEOzV3jDnS/view",
-  hal: "https://drive.google.com/file/d/1KKDmw6_PWj1WbLIm4JeYvPhEOzV3jDnS/view",
+  hal: "https://drive.google.com/file/d/1YrSOcwQYkEJMO9ONfGb568FOaz32U3EL/view?usp=sharing",
 };
 
 // Real org logos in public/, keyed by logoSlug. A slug missing from this map

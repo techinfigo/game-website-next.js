@@ -1645,8 +1645,8 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate, content }) =>
                      </p>
                      <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <a 
-                           href="https://ssc.nic.in" 
-                           target="_blank" 
+                           href="https://ssc.gov.in/"
+                           target="_blank"
                            rel="noopener noreferrer"
                            className="inline-flex items-center gap-3 bg-slate-900 text-white px-10 py-4 rounded-xl font-black text-lg hover:bg-gameTeal transition-all shadow-xl hover:-translate-y-1 w-full sm:w-auto justify-center"
                         >
@@ -1661,7 +1661,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate, content }) =>
                            </button>
                         )}
                      </div>
-                     <p className="mt-8 text-sm font-bold text-slate-400 uppercase tracking-widest">(ssc.nic.in)</p>
+                     <p className="mt-8 text-sm font-bold text-slate-400 uppercase tracking-widest">(ssc.gov.in)</p>
                   </div>
                </div>
             </motion.div>
