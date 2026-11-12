@@ -27,6 +27,26 @@ function iconFor(type: string, category: string) {
   return BookOpen;
 }
 
+// Chevron for the filter dropdowns.
+function ChevronDownIcon() {
+  return (
+    <svg className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M6 9l6 6 6-6" />
+    </svg>
+  );
+}
+
+// A short content-type label used by the "Type" filter and the card badge.
+function typeLabel(type: string, category: string): string {
+  const t = `${type} ${category}`.toLowerCase();
+  if (t.includes('video')) return 'Video';
+  if (t.includes('pyq') || t.includes('paper')) return 'PYQ';
+  if (t.includes('test') || t.includes('mock')) return 'Test Series';
+  if (t.includes('note') || t.includes('strategy') || t.includes('roadmap')) return 'Notes';
+  if (t.includes('link')) return 'Link';
+  return 'PDF';
+}
+
 // Show the price in rupees. If the admin typed just a number, prefix ₹;
 // if they already wrote "Rs." / "₹" / a currency, leave it as-is.
 function formatPrice(p?: string): string {
@@ -41,6 +61,8 @@ const KnowledgePitaraPage: React.FC = () => {
   const { resources, loading: freeLoading } = useResources();
   const { pdfs: paidPdfs, loading: paidLoading } = usePaidPdfs();
   const [activeTab, setActiveTab] = useState<'all' | 'free' | 'paid'>('all');
+  const [examFilter, setExamFilter] = useState('all');
+  const [typeFilter, setTypeFilter] = useState('all');
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -68,8 +90,28 @@ const KnowledgePitaraPage: React.FC = () => {
 
   const allResources = [...freeResources, ...paidResources];
 
-  const displayed: Resource[] =
+  // Filter options, derived from whatever content actually exists.
+  const examOptions = Array.from(
+    new Set(
+      allResources.flatMap((r) =>
+        (r.examTag || '')
+          .split(/[,/|]/)
+          .map((s) => s.trim())
+          .filter(Boolean)
+      )
+    )
+  ).sort();
+  const typeOptions = Array.from(new Set(allResources.map((r) => typeLabel(r.type, r.category)))).sort();
+
+  const base: Resource[] =
     activeTab === 'all' ? allResources : activeTab === 'free' ? freeResources : paidResources;
+
+  const displayed: Resource[] = base.filter((r) => {
+    const examOk =
+      examFilter === 'all' || (r.examTag || '').toLowerCase().includes(examFilter.toLowerCase());
+    const typeOk = typeFilter === 'all' || typeLabel(r.type, r.category) === typeFilter;
+    return examOk && typeOk;
+  });
 
   const videoCount = freeResources.filter((r) => iconFor(r.type, r.category) === Video).length;
   const pdfCount = paidResources.length + freeResources.filter((r) => `${r.type} ${r.category}`.toLowerCase().includes('pdf')).length;
@@ -181,14 +223,60 @@ const KnowledgePitaraPage: React.FC = () => {
       {/* Grid */}
       <section className="px-6 md:px-10 lg:px-12 py-16 md:py-20 bg-slate-50 relative z-20 -mt-20 rounded-t-[3rem]">
         <div className="max-w-[1200px] mx-auto">
-          <div className="flex items-center justify-between mb-8">
-            <h3 className="text-xl md:text-2xl font-black text-slate-900 flex items-center gap-2">
-              <Filter size={20} className="text-[#075d63]" />
-              {activeTab === 'all' ? 'All Resources' : activeTab === 'free' ? 'Free Materials' : 'Premium Resources'}
-            </h3>
-            <span className="text-sm font-bold text-slate-500 bg-white px-3 py-1 rounded-full border border-slate-200 shadow-sm">
-              {displayed.length} {displayed.length === 1 ? 'Item' : 'Items'}
-            </span>
+          <div className="flex flex-col gap-5 mb-8">
+            <div className="flex items-center justify-between gap-3">
+              <h3 className="text-xl md:text-2xl font-black text-slate-900 flex items-center gap-2">
+                <Filter size={20} className="text-[#075d63]" />
+                {activeTab === 'all' ? 'All Resources' : activeTab === 'free' ? 'Free Materials' : 'Premium Resources'}
+              </h3>
+              <span className="text-sm font-bold text-slate-500 bg-white px-3 py-1 rounded-full border border-slate-200 shadow-sm whitespace-nowrap">
+                {displayed.length} {displayed.length === 1 ? 'Item' : 'Items'}
+              </span>
+            </div>
+
+            {/* Filter by Examination + Type */}
+            <div className="flex flex-col sm:flex-row gap-3">
+              <div className="relative flex-1 sm:max-w-xs">
+                <GraduationCap size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#075d63] pointer-events-none" />
+                <select
+                  value={examFilter}
+                  onChange={(e) => setExamFilter(e.target.value)}
+                  aria-label="Filter by examination"
+                  className="w-full appearance-none bg-white border border-slate-200 rounded-xl pl-10 pr-9 py-3 text-sm font-bold text-slate-700 shadow-sm cursor-pointer hover:border-[#075d63]/50 focus:outline-none focus:border-[#075d63] focus:ring-2 focus:ring-[#075d63]/10 transition-all"
+                >
+                  <option value="all">All Examinations</option>
+                  {examOptions.map((ex) => (
+                    <option key={ex} value={ex}>{ex}</option>
+                  ))}
+                </select>
+                <ChevronDownIcon />
+              </div>
+
+              <div className="relative flex-1 sm:max-w-xs">
+                <Layout size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#075d63] pointer-events-none" />
+                <select
+                  value={typeFilter}
+                  onChange={(e) => setTypeFilter(e.target.value)}
+                  aria-label="Filter by content type"
+                  className="w-full appearance-none bg-white border border-slate-200 rounded-xl pl-10 pr-9 py-3 text-sm font-bold text-slate-700 shadow-sm cursor-pointer hover:border-[#075d63]/50 focus:outline-none focus:border-[#075d63] focus:ring-2 focus:ring-[#075d63]/10 transition-all"
+                >
+                  <option value="all">All Types</option>
+                  {typeOptions.map((tp) => (
+                    <option key={tp} value={tp}>{tp}</option>
+                  ))}
+                </select>
+                <ChevronDownIcon />
+              </div>
+
+              {(examFilter !== 'all' || typeFilter !== 'all') && (
+                <button
+                  onClick={() => { setExamFilter('all'); setTypeFilter('all'); }}
+                  className="text-sm font-bold text-slate-500 hover:text-[#075d63] px-3 py-3 transition-colors self-start"
+                >
+                  Clear filters
+                </button>
+              )}
+            </div>
           </div>
 
           {loading ? (
@@ -233,7 +321,7 @@ const KnowledgePitaraPage: React.FC = () => {
                           src={item.image}
                           alt={item.title}
                           referrerPolicy="no-referrer"
-                          className={`w-full h-full group-hover:scale-105 transition-transform duration-500 ${isVideo ? 'object-cover' : 'object-contain'}`}
+                          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                         />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#075d63] to-teal-700 text-white/90">
