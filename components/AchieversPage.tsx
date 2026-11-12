@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Quote, Star, Trophy, Video, MessageSquare, Sparkles, Crown, CheckCircle2, ArrowRight, X, Search, ChevronLeft, ChevronRight, SlidersHorizontal } from 'lucide-react';
+import { useFeedbackScreenshots } from '@/hooks/useFeedbackScreenshots';
 
 interface AchieversPageProps {
   initialFilter?: 'all' | 'video' | 'story';
@@ -1421,21 +1422,9 @@ const AchieversPage: React.FC<AchieversPageProps> = ({ initialFilter = 'all' }) 
 
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
-  // Generate exactly 12 WhatsApp stories to only display the 12 screenshots with actual images.
-  // We map the image names sequence to /whatsapp-result-1.png through /whatsapp-result-12.png.
-  const whatsappStories = Array.from({ length: 12 }, (_, index) => {
-    const originalWhatsAppItems = ALL_STORIES.filter(s => s.type === 'whatsapp');
-    const originalIndex = index % Math.max(1, originalWhatsAppItems.length);
-    const originalItem = originalWhatsAppItems[originalIndex] || {
-      caption: `Outstanding score in the exams masterclass with Gaurav Sir! Screenshot #${index + 1}`
-    };
-    return {
-      type: 'whatsapp',
-      id: 10 + index,
-      img: `/whatsapp-result-${index + 1}.png`,
-      caption: originalItem.caption || `Outstanding score in the exams masterclass with Gaurav Sir! Student feedback #${index + 1}`
-    };
-  });
+  // WhatsApp feedback screenshots for the phone slider are managed from the admin
+  // "Feedback Screenshots" section; the hook falls back to the built-in ones.
+  const { screenshots: whatsappStories } = useFeedbackScreenshots();
   const videoStories = ALL_STORIES.filter(s => s.type === 'video');
   const textStories = ALL_STORIES.filter(s => s.type === 'story');
 
