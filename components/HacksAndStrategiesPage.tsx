@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Play, X, ChevronRight, ChevronLeft, Lightbulb, Clock, Brain, Users, FileText, Globe, Heart, ArrowRight, Star, Target } from 'lucide-react';
+import { useStrategyVideos } from '@/hooks/useStrategyVideos';
 
 interface Video {
   id: string;
@@ -51,50 +52,9 @@ const HacksAndStrategiesPage: React.FC = () => {
     }
   ];
 
-  const videos: Video[] = [
-    {
-      id: '1',
-      title: "How to do Parallel Revision?",
-      category: "Revision",
-      videoId: "D6HOo41x2Ls",
-      thumbnail: "https://img.youtube.com/vi/D6HOo41x2Ls/maxresdefault.jpg"
-    },
-    {
-      id: '2',
-      title: "Subject Wise Weightage in GATE Exam",
-      category: "Exam Strategy",
-      videoId: "1QV1hZ7c68Y",
-      thumbnail: "https://img.youtube.com/vi/1QV1hZ7c68Y/maxresdefault.jpg"
-    },
-    {
-      id: '3',
-      title: "Crack GATE in 1st Attempt (Main Strategy)",
-      category: "Motivation",
-      videoId: "Vv9lARk4vcs",
-      thumbnail: "https://img.youtube.com/vi/Vv9lARk4vcs/maxresdefault.jpg"
-    },
-    {
-      id: '4',
-      title: "How to Attempt GATE Exam?",
-      category: "Exam Strategy",
-      videoId: "bttDewEFDq4",
-      thumbnail: "https://img.youtube.com/vi/bttDewEFDq4/maxresdefault.jpg"
-    },
-    {
-      id: '5',
-      title: "How to Avoid Silly Mistakes?",
-      category: "Tips & Tricks",
-      videoId: "Ta7gKIxxya0",
-      thumbnail: "https://img.youtube.com/vi/Ta7gKIxxya0/maxresdefault.jpg"
-    },
-    {
-      id: '6',
-      title: "Prepare for Exams with a JOB",
-      category: "Time Management",
-      videoId: "gvK9V0trlaw",
-      thumbnail: "https://img.youtube.com/vi/gvK9V0trlaw/maxresdefault.jpg"
-    }
-  ];
+  // Videos are managed from the admin "Strategy Videos" section; until the
+  // client adds any, the built-in defaults (in the hook) are shown.
+  const { videos } = useStrategyVideos();
 
   const categories = ['All', ...Array.from(new Set(videos.map(v => v.category)))];
 
