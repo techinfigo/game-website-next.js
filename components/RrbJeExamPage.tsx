@@ -455,7 +455,7 @@ const RrbJeExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content
                         <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">RRB Zones</p>
                      </div>
                      <div>
-                        <p className="text-2xl font-black text-white mb-0.5">13+ Yrs</p>
+                        <p className="text-2xl font-black text-white mb-0.5">14+ Yrs</p>
                         <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Mentorship</p>
                      </div>
                   </div>
