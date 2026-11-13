@@ -1142,8 +1142,15 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
                            >
                               <div className="px-6 pb-6 pt-0">
                                  <div className="h-px w-full bg-white/10 mb-4"></div>
-                                 <div className="text-teal-50/80 leading-relaxed font-medium">
-                                    {faq.a}
+                                 <div className="flex items-start gap-3">
+                                    <img
+                                       src="/gaurav-sir.webp"
+                                       alt="Gaurav Babu Sir"
+                                       className="w-12 h-12 rounded-full object-cover object-top border-2 border-gameGold shadow-md shrink-0"
+                                    />
+                                    <div className="text-teal-50/80 leading-relaxed font-medium">
+                                       {faq.a}
+                                    </div>
                                  </div>
                               </div>
                            </motion.div>
