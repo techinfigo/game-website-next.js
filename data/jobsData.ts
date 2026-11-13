@@ -9,6 +9,8 @@ export interface Job {
   pdfLink?: string;
   usefulLinks?: string;
   recommendedCourse?: string;
+  vacancies?: string;
+  ageLimit?: string;
   createdAt?: number;
 }
 

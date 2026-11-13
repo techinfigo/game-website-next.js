@@ -892,6 +892,16 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
                                              {branch}
                                           </span>
                                        ))}
+                                       {job.vacancies && (
+                                          <span className="text-[10px] font-bold bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-md border border-emerald-200">
+                                             {job.vacancies}
+                                          </span>
+                                       )}
+                                       {job.ageLimit && (
+                                          <span className="text-[10px] font-bold bg-sky-50 text-sky-700 px-2 py-0.5 rounded-md border border-sky-200">
+                                             Age: {job.ageLimit}
+                                          </span>
+                                       )}
                                     </div>
                                  </div>
                               </td>
