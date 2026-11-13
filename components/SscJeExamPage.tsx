@@ -1694,7 +1694,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate, content }) =>
                                     <img
                                        src="/gaurav-sir.webp"
                                        alt="Gaurav Babu Sir"
-                                       className="w-10 h-10 rounded-full object-cover object-top border-2 border-white shadow-md ring-1 ring-gameTeal/20 shrink-0"
+                                       className="w-12 h-12 rounded-full object-cover object-top border-2 border-white shadow-md ring-1 ring-gameTeal/20 shrink-0"
                                     />
                                     <div className="text-slate-600 leading-relaxed font-medium">{faq.a}</div>
                                  </div>

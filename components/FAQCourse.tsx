@@ -133,9 +133,16 @@ const FAQCourse: React.FC = () => {
                              >
                                 <div className="px-5 pb-5 pt-0">
                                    <div className="h-px w-full bg-slate-100 mb-4"></div>
-                                   <p className="text-slate-600 text-sm leading-relaxed font-bold">
-                                      {faq.a}
-                                   </p>
+                                   <div className="flex items-start gap-3">
+                                      <img
+                                         src="/gaurav-sir.webp"
+                                         alt="Gaurav Babu Sir"
+                                         className="w-12 h-12 rounded-full object-cover object-top border-2 border-white shadow-md ring-1 ring-[#075d63]/20 shrink-0"
+                                      />
+                                      <p className="text-slate-600 text-sm leading-relaxed font-bold">
+                                         {faq.a}
+                                      </p>
+                                   </div>
                                 </div>
                              </motion.div>
                           )}

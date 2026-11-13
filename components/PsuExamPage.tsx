@@ -1008,7 +1008,7 @@ const FAQItem: React.FC<{ faq: { q: string; a: React.ReactNode }; index: number 
                         <img
                            src="/gaurav-sir.webp"
                            alt="Gaurav Babu Sir"
-                           className="w-[53px] h-[53px] rounded-full object-cover object-top border-2 border-white shadow-md ring-1 ring-gameTeal/20 shrink-0"
+                           className="w-12 h-12 rounded-full object-cover object-top border-2 border-white shadow-md ring-1 ring-gameTeal/20 shrink-0"
                         />
                         <div className="text-slate-600 font-bold text-lg leading-relaxed max-w-3xl">
                            {faq.a}

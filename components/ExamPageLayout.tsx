@@ -209,8 +209,15 @@ const ExamPageLayout: React.FC<ExamPageProps> = ({ hero, overview, features, pat
                               transition={{ duration: 0.3 }}
                            >
                               <div className="px-5 pb-5 pt-0 border-t border-dashed border-slate-100 mt-2">
-                                 <div className="pt-4 text-slate-600 leading-relaxed font-medium">
-                                    {faq.a}
+                                 <div className="pt-4 flex items-start gap-3">
+                                    <img
+                                       src="/gaurav-sir.webp"
+                                       alt="Gaurav Babu Sir"
+                                       className="w-12 h-12 rounded-full object-cover object-top border-2 border-white shadow-md ring-1 ring-gameTeal/20 shrink-0"
+                                    />
+                                    <div className="text-slate-600 leading-relaxed font-medium">
+                                       {faq.a}
+                                    </div>
                                  </div>
                               </div>
                            </motion.div>
