@@ -1611,11 +1611,14 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate, content }) =>
 
                   <div className="flex items-center gap-6">
                      <div className="flex -space-x-5">
-                        {[1, 2, 3, 4, 5].map((i) => (
-                           <div key={i} className="w-14 h-14 rounded-full border-4 border-gameTeal bg-white/10 backdrop-blur-sm flex items-center justify-center text-xs font-black text-white">
-                              {i === 5 ? "20k+" : <Users size={20} />}
+                        {['/avatar-1.png', '/avatar-2.png', '/avatar-3.png', '/avatar-4.png'].map((src, i) => (
+                           <div key={i} className="w-14 h-14 rounded-full border-4 border-gameTeal overflow-hidden bg-white shadow-lg">
+                              <img src={src} alt="GAME student" className="w-full h-full object-cover" />
                            </div>
                         ))}
+                        <div className="w-14 h-14 rounded-full border-4 border-gameTeal bg-gameGold flex items-center justify-center text-xs font-black text-gameTeal shadow-lg">
+                           20k+
+                        </div>
                      </div>
                      <div className="text-left">
                         <p className="text-white text-2xl font-black leading-none">20,000+</p>
