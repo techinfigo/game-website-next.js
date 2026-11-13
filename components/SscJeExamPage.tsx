@@ -905,7 +905,7 @@ const SscJeExamPage: React.FC<SscJeExamPageProps> = ({ onNavigate, content }) =>
                {/* Enroll Button */}
                <div className="hidden lg:flex items-center gap-4 pl-4 border-l border-white/10 shrink-0">
                   <button
-                     onClick={() => scrollToSection('ssc-coaching-info')}
+                     onClick={() => scrollToSection('courses')}
                      className="bg-gameGold text-black px-5 py-2 rounded-full text-xs font-black uppercase tracking-wider hover:bg-white transition-all shadow-[0_4px_15px_rgba(242,197,55,0.4)] flex items-center gap-1.5 group active:scale-95"
                   >
                      <Sparkles size={12} className="fill-black animate-pulse" />
