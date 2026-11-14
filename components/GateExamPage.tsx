@@ -1071,7 +1071,7 @@ const GateExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content 
                   {/* Stats Row */}
                   <div className="flex flex-wrap gap-10 border-t border-white/5 pt-6 text-left">
                      <div>
-                        <p className="text-2xl font-black text-white mb-0.5">50K+</p>
+                        <p className="text-2xl font-black text-white mb-0.5">100K+</p>
                         <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Aspirants</p>
                      </div>
                      <div>
@@ -1079,8 +1079,8 @@ const GateExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content 
                         <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Success Rate</p>
                      </div>
                      <div>
-                        <p className="text-2xl font-black text-white mb-0.5">1:1</p>
-                        <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Mentorship</p>
+                        <p className="text-2xl font-black text-white mb-0.5">14+</p>
+                        <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Years of Expertise</p>
                      </div>
                   </div>
                </motion.div>
@@ -2039,6 +2039,21 @@ const GateExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content 
                      </div>
                   </div>
                </motion.div>
+
+               {/* Official cut-off source — IIT Madras (GATE organising institute) */}
+               <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 text-center">
+                  <p className="text-sm font-bold text-slate-600">
+                     For the official category-wise cut-off marks, visit the IIT Madras GATE portal:
+                  </p>
+                  <a
+                     href="https://gate2027.iitm.ac.in/"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="inline-flex items-center gap-2 bg-gameTeal text-white font-black text-sm px-6 py-3 rounded-xl shadow-lg shadow-gameTeal/25 hover:bg-gameTealDark hover:-translate-y-0.5 transition-all"
+                  >
+                     <Download size={16} /> Download Here
+                  </a>
+               </div>
             </div>
 
             {/* GATE SCORE */}
@@ -2526,7 +2541,7 @@ const GateExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content 
                                        alt="Gaurav Babu Sir"
                                        className="w-12 h-12 rounded-full object-cover object-top border-2 border-white shadow-md ring-1 ring-gameTeal/20 shrink-0"
                                     />
-                                    <div className="text-slate-600 leading-relaxed font-medium">{faq.a}</div>
+                                    <div className="text-slate-600 leading-relaxed font-medium min-w-0 flex-1">{faq.a}</div>
                                  </div>
                               </div>
                            </motion.div>
