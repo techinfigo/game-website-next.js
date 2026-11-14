@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
-  ArrowRight
+  ArrowRight, ChevronLeft, ChevronRight
 } from 'lucide-react';
 import { useAchievers } from '@/hooks/useAchievers';
 
@@ -625,6 +625,15 @@ const MarqueeRow = ({ items, direction = 'left', cardType = 'ranker' }: { items:
   };
   const endDrag = () => { dragRef.current.down = false; };
 
+  // Prev/next arrow controls — scroll one "page" of cards. The 8x duplicated
+  // track + the auto-scroll loop's wrap-around keep it seamless at both ends.
+  const nudge = (dir: 'left' | 'right') => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const amount = el.clientWidth * 0.8 || 420;
+    el.scrollBy({ left: dir === 'left' ? -amount : amount, behavior: 'smooth' });
+  };
+
   if (!items || items.length === 0) return null;
 
   // Multiply items to ensure a seamless loop - 8x to handle any screen width
@@ -632,21 +641,43 @@ const MarqueeRow = ({ items, direction = 'left', cardType = 'ranker' }: { items:
 
   return (
     <div
-      ref={scrollRef}
-      className="relative flex gap-4 overflow-x-auto no-scrollbar py-3 cursor-grab active:cursor-grabbing select-none"
+      className="relative group/row"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => { setIsPaused(false); endDrag(); }}
-      onMouseDown={onDown}
-      onMouseMove={onMove}
-      onMouseUp={endDrag}
-      onTouchStart={() => setIsPaused(true)}
-      onTouchEnd={() => setIsPaused(false)}
     >
-      {duplicatedItems.map((item, idx) => (
-        <div key={`${item.id}-${idx}`} className="w-[190px] md:w-[200px] shrink-0 pointer-events-none">
-          {cardType === 'ranker' ? <RankerCard ranker={item} /> : <JobRankerCard ranker={item} />}
-        </div>
-      ))}
+      <div
+        ref={scrollRef}
+        className="relative flex gap-4 overflow-x-auto no-scrollbar py-3 cursor-grab active:cursor-grabbing select-none"
+        onMouseDown={onDown}
+        onMouseMove={onMove}
+        onMouseUp={endDrag}
+        onTouchStart={() => setIsPaused(true)}
+        onTouchEnd={() => setIsPaused(false)}
+      >
+        {duplicatedItems.map((item, idx) => (
+          <div key={`${item.id}-${idx}`} className="w-[190px] md:w-[200px] shrink-0 pointer-events-none">
+            {cardType === 'ranker' ? <RankerCard ranker={item} /> : <JobRankerCard ranker={item} />}
+          </div>
+        ))}
+      </div>
+
+      {/* Prev / Next navigation buttons — fade in on hover (always tappable on touch) */}
+      <button
+        type="button"
+        aria-label="Scroll left"
+        onClick={() => nudge('left')}
+        className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/90 backdrop-blur border border-slate-200 shadow-lg flex items-center justify-center text-slate-700 hover:bg-gameTeal hover:text-white hover:border-gameTeal transition-all opacity-100 md:opacity-0 md:group-hover/row:opacity-100"
+      >
+        <ChevronLeft size={20} />
+      </button>
+      <button
+        type="button"
+        aria-label="Scroll right"
+        onClick={() => nudge('right')}
+        className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/90 backdrop-blur border border-slate-200 shadow-lg flex items-center justify-center text-slate-700 hover:bg-gameTeal hover:text-white hover:border-gameTeal transition-all opacity-100 md:opacity-0 md:group-hover/row:opacity-100"
+      >
+        <ChevronRight size={20} />
+      </button>
     </div>
   );
 };
