@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { Sparkles, X, PhoneCall, Loader2, Check, Star, Smartphone, Play, Eye, ChevronLeft, ChevronRight, Youtube, ExternalLink } from 'lucide-react';
 import { useSiteSettings } from '@/hooks/useSiteSettings';
-import { useVideos } from '@/hooks/useVideos';
+import type { Video } from '@/data/videosData';
 
 const TelegramIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className} xmlns="http://www.w3.org/2000/svg">
@@ -90,8 +90,14 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
   // Masterclass video cards come from the admin "Video Lectures" section
   // (first 3). Thumbnails auto-derive from each video, so the client can fix
   // them from admin. Falls back to the hook's defaults when none are set.
-  const { videos: lectureVideos } = useVideos();
-  const videos = lectureVideos.slice(0, 3);
+  // Fixed Masterclass hero videos — intentionally hard-set so they do NOT
+  // change when the admin Video Lectures list is edited/reordered. To change
+  // these three cards, edit this array (developer change, by client request).
+  const videos: Video[] = [
+    { id: 1, title: 'How to Convert Units?', subtitle: '', thumbnail: 'https://img.youtube.com/vi/czIYgYQkRFU/maxresdefault.jpg', duration: '1:08:42', views: '195k', tag: 'Basic Mechanics', videoId: 'czIYgYQkRFU' },
+    { id: 2, title: 'Crack GATE in First Attempt', subtitle: '', thumbnail: 'https://img.youtube.com/vi/Vv9lARk4vcs/maxresdefault.jpg', duration: '14:15', views: '245k', tag: 'GATE Strategy', videoId: 'Vv9lARk4vcs' },
+    { id: 3, title: 'How to attempt GATE Test Series', subtitle: '', thumbnail: 'https://img.youtube.com/vi/ggnZchS4AZ4/maxresdefault.jpg', duration: '19:35', views: '135k', tag: 'Test Strategy', videoId: 'ggnZchS4AZ4' },
+  ];
 
   // Slide Data Configuration
   const slides = [
