@@ -625,13 +625,19 @@ const MarqueeRow = ({ items, direction = 'left', cardType = 'ranker' }: { items:
   };
   const endDrag = () => { dragRef.current.down = false; };
 
-  // Prev/next arrow controls — scroll one "page" of cards. The 8x duplicated
-  // track + the auto-scroll loop's wrap-around keep it seamless at both ends.
+  // Prev/next arrow controls — scroll a clear "page" of cards. Pause the
+  // auto-scroll briefly on click so it doesn't fight the manual scroll
+  // (important on touch, where there's no hover to pause it). The 8x track +
+  // loop wrap-around keep it seamless at both ends.
+  const resumeRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const nudge = (dir: 'left' | 'right') => {
     const el = scrollRef.current;
     if (!el) return;
-    const amount = el.clientWidth * 0.8 || 420;
+    setIsPaused(true);
+    const amount = el.clientWidth * 0.9 || 440;
     el.scrollBy({ left: dir === 'left' ? -amount : amount, behavior: 'smooth' });
+    if (resumeRef.current) clearTimeout(resumeRef.current);
+    resumeRef.current = setTimeout(() => setIsPaused(false), 1400);
   };
 
   if (!items || items.length === 0) return null;
@@ -661,12 +667,12 @@ const MarqueeRow = ({ items, direction = 'left', cardType = 'ranker' }: { items:
         ))}
       </div>
 
-      {/* Prev / Next navigation buttons — fade in on hover (always tappable on touch) */}
+      {/* Prev / Next navigation buttons — always visible, tappable on touch */}
       <button
         type="button"
         aria-label="Scroll left"
         onClick={() => nudge('left')}
-        className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/90 backdrop-blur border border-slate-200 shadow-lg flex items-center justify-center text-slate-700 hover:bg-gameTeal hover:text-white hover:border-gameTeal transition-all opacity-100 md:opacity-0 md:group-hover/row:opacity-100"
+        className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/90 backdrop-blur border border-slate-200 shadow-lg flex items-center justify-center text-slate-700 hover:bg-gameTeal hover:text-white hover:border-gameTeal transition-all"
       >
         <ChevronLeft size={20} />
       </button>
@@ -674,7 +680,7 @@ const MarqueeRow = ({ items, direction = 'left', cardType = 'ranker' }: { items:
         type="button"
         aria-label="Scroll right"
         onClick={() => nudge('right')}
-        className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/90 backdrop-blur border border-slate-200 shadow-lg flex items-center justify-center text-slate-700 hover:bg-gameTeal hover:text-white hover:border-gameTeal transition-all opacity-100 md:opacity-0 md:group-hover/row:opacity-100"
+        className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/90 backdrop-blur border border-slate-200 shadow-lg flex items-center justify-center text-slate-700 hover:bg-gameTeal hover:text-white hover:border-gameTeal transition-all"
       >
         <ChevronRight size={20} />
       </button>
