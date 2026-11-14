@@ -116,7 +116,7 @@ const AboutPage: React.FC = () => {
     {
       id: "01",
       title: "The Innovator - Gaurav Babu Sir",
-      desc: "A GATE & ESE expert with over 14 years of experience in the Mechanical and Civil domains, he has mentored 1 lakh+ students to successfully crack top engineering exams nationwide.",
+      desc: "A GATE & ESE expert with 14+ years of experience in the Mechanical and Civil domains, he has mentored 1 lakh+ students to successfully crack top engineering exams nationwide.",
       icon: Lightbulb,
       color: "bg-[#021f21]",
     },
@@ -940,9 +940,9 @@ const AboutPage: React.FC = () => {
                                     {reason.desc}
                                  </p>
                                  <div className="pt-[clamp(0.75rem,1.5vh,1.25rem)] border-t border-white/10 w-full flex justify-center">
-                                       <button className="bg-gameGold text-black px-[clamp(1rem,2vw,1.5rem)] py-[clamp(0.4rem,1vh,0.6rem)] rounded-xl text-[clamp(0.5rem,0.7vw,0.6rem)] font-black uppercase tracking-widest flex items-center gap-2 hover:bg-white transition-all shadow-2xl group whitespace-nowrap">
+                                       <Link href="/courses" className="bg-gameGold text-black px-[clamp(1rem,2vw,1.5rem)] py-[clamp(0.4rem,1vh,0.6rem)] rounded-xl text-[clamp(0.5rem,0.7vw,0.6rem)] font-black uppercase tracking-widest flex items-center gap-2 hover:bg-white transition-all shadow-2xl group whitespace-nowrap">
                                           Explore <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                                       </button>
+                                       </Link>
                                  </div>
                               </motion.div>
                            )}
