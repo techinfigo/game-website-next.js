@@ -93,3 +93,21 @@
 .tab-mask-left {
   mask-image: linear-gradient(to left, black 85%, transparent 100%);
 }
+
+/* GATE FAQ detail tables (Q.6–Q.10): on phones, let the wide tables fit the
+   screen and wrap instead of overflowing/cutting off. Desktop unchanged. */
+@media (max-width: 640px) {
+  .gate-faq-answer table {
+    min-width: 0 !important;
+    width: 100% !important;
+    font-size: 11px !important;
+  }
+  .gate-faq-answer th,
+  .gate-faq-answer td {
+    padding: 8px 6px !important;
+    width: auto !important;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+  }
+}

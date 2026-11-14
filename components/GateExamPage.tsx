@@ -876,9 +876,6 @@ const GateExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content 
       q: "Q.8 What are the exams/Job opportunities for B.Tech Core Branches?",
       a: (
         <div className="space-y-8">
-          <p className="sm:hidden text-[11px] font-black uppercase tracking-widest text-gameTeal flex items-center gap-2">
-            <ArrowUpRight size={14} className="rotate-45" /> Swipe the table sideways to see all columns
-          </p>
           <div className="bg-gameGold/5 rounded-xl border-2 border-slate-900 shadow-xl overflow-hidden relative">
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse min-w-[900px]">
@@ -2541,7 +2538,7 @@ const GateExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content 
                                        alt="Gaurav Babu Sir"
                                        className="w-12 h-12 rounded-full object-cover object-top border-2 border-white shadow-md ring-1 ring-gameTeal/20 shrink-0"
                                     />
-                                    <div className="text-slate-600 leading-relaxed font-medium min-w-0 flex-1">{faq.a}</div>
+                                    <div className="gate-faq-answer text-slate-600 leading-relaxed font-medium min-w-0 flex-1">{faq.a}</div>
                                  </div>
                               </div>
                            </motion.div>
