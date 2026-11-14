@@ -59,8 +59,8 @@ export function useJobs(): { jobs: Job[]; loading: boolean } {
             pdfLink: data.pdfLink,
             usefulLinks: data.usefulLinks,
             recommendedCourse: data.recommendedCourse,
-            vacancies: data.vacancies,
-            ageLimit: data.ageLimit,
+            selectionProcedure: data.selectionProcedure,
+            payScale: data.payScale,
             createdAt: toMillis(data.createdAt),
           } as Omit<Job, "id">;
         });

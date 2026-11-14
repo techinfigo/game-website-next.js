@@ -8,7 +8,8 @@ import {
   Clock, ClipboardList, BellRing, Settings2, Headphones,
   Info, Search, Filter, Lock, ExternalLink as ExternalLinkIcon, Calendar,
   Building2, ChevronRight, GraduationCap, Trophy,
-  Zap, CheckCircle2, Plus, Minus, HelpCircle, FileText
+  Zap, CheckCircle2, Plus, Minus, HelpCircle, FileText,
+  ChevronDown, Wallet, ListChecks
 } from 'lucide-react';
 import FeaturedExams from './FeaturedExams';
 
@@ -73,6 +74,7 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<'All' | 'Open' | 'Closed'>('All');
+  const [expandedJob, setExpandedJob] = useState<number | null>(null);
   const { jobs } = useJobs();
 
   const handleNavigate = (page: string) => {
@@ -856,8 +858,8 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
                      </thead>
                      <tbody className="text-[14px] text-slate-700 divide-y divide-slate-100 relative bg-white">
                         {filteredJobs.map((job, idx) => (
-                           <tr 
-                             key={job.id} 
+                           <React.Fragment key={job.id}>
+                           <tr
                              className={`transition-all duration-300 border-b border-slate-100 ${!isLoggedIn && idx > 2 ? 'blur-[4px] opacity-30 select-none pointer-events-none' : 'hover:bg-slate-50/80'}`}
                            >
                               {/* Sr No & Status Badge */}
@@ -892,17 +894,16 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
                                              {branch}
                                           </span>
                                        ))}
-                                       {job.vacancies && (
-                                          <span className="text-[10px] font-bold bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-md border border-emerald-200">
-                                             {job.vacancies}
-                                          </span>
-                                       )}
-                                       {job.ageLimit && (
-                                          <span className="text-[10px] font-bold bg-sky-50 text-sky-700 px-2 py-0.5 rounded-md border border-sky-200">
-                                             Age: {job.ageLimit}
-                                          </span>
-                                       )}
                                     </div>
+                                    {(job.selectionProcedure || job.payScale) && (
+                                       <button
+                                          onClick={() => setExpandedJob(expandedJob === job.id ? null : job.id)}
+                                          className="mt-1 inline-flex items-center gap-1 text-[10px] font-black text-[#075d63] hover:underline w-fit cursor-pointer"
+                                       >
+                                          {expandedJob === job.id ? 'Hide details' : 'View details'}
+                                          <ChevronDown size={12} className={`transition-transform ${expandedJob === job.id ? 'rotate-180' : ''}`} />
+                                       </button>
+                                    )}
                                  </div>
                               </td>
 
@@ -970,6 +971,33 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
                                   )}
                                </td>
                             </tr>
+                            {expandedJob === job.id && (job.selectionProcedure || job.payScale) && (
+                               <tr className="bg-slate-50/70 border-b border-slate-100">
+                                  <td colSpan={5} className="px-6 py-4">
+                                     <div className="grid sm:grid-cols-2 gap-4">
+                                        {job.payScale && (
+                                           <div className="flex items-start gap-2">
+                                              <Wallet size={16} className="text-[#075d63] mt-0.5 shrink-0" />
+                                              <div className="min-w-0">
+                                                 <div className="text-[10px] font-black uppercase tracking-wider text-slate-400">Pay Scale / Salary</div>
+                                                 <div className="text-[13px] font-bold text-slate-700 whitespace-pre-line break-words">{job.payScale}</div>
+                                              </div>
+                                           </div>
+                                        )}
+                                        {job.selectionProcedure && (
+                                           <div className="flex items-start gap-2">
+                                              <ListChecks size={16} className="text-[#075d63] mt-0.5 shrink-0" />
+                                              <div className="min-w-0">
+                                                 <div className="text-[10px] font-black uppercase tracking-wider text-slate-400">Selection Procedure</div>
+                                                 <div className="text-[13px] font-bold text-slate-700 whitespace-pre-line break-words">{job.selectionProcedure}</div>
+                                              </div>
+                                           </div>
+                                        )}
+                                     </div>
+                                  </td>
+                               </tr>
+                            )}
+                            </React.Fragment>
                          ))}
                       </tbody>
                    </table>
@@ -1070,6 +1098,40 @@ const JobNotificationsPage: React.FC<JobNotificationsPageProps> = ({ isLoggedIn,
                                </a>
                             )}
                          </div>
+
+                         {(job.selectionProcedure || job.payScale) && (
+                            <div className="pt-2 border-t border-slate-100">
+                               <button
+                                  onClick={() => setExpandedJob(expandedJob === job.id ? null : job.id)}
+                                  className="inline-flex items-center gap-1 text-[11px] font-black text-[#075d63] cursor-pointer"
+                               >
+                                  {expandedJob === job.id ? 'Hide details' : 'View details'}
+                                  <ChevronDown size={13} className={`transition-transform ${expandedJob === job.id ? 'rotate-180' : ''}`} />
+                               </button>
+                               {expandedJob === job.id && (
+                                  <div className="mt-3 space-y-3">
+                                     {job.payScale && (
+                                        <div className="flex items-start gap-2">
+                                           <Wallet size={15} className="text-[#075d63] mt-0.5 shrink-0" />
+                                           <div className="min-w-0">
+                                              <div className="text-[9px] font-black uppercase tracking-wider text-slate-400">Pay Scale / Salary</div>
+                                              <div className="text-xs font-bold text-slate-700 whitespace-pre-line break-words">{job.payScale}</div>
+                                           </div>
+                                        </div>
+                                     )}
+                                     {job.selectionProcedure && (
+                                        <div className="flex items-start gap-2">
+                                           <ListChecks size={15} className="text-[#075d63] mt-0.5 shrink-0" />
+                                           <div className="min-w-0">
+                                              <div className="text-[9px] font-black uppercase tracking-wider text-slate-400">Selection Procedure</div>
+                                              <div className="text-xs font-bold text-slate-700 whitespace-pre-line break-words">{job.selectionProcedure}</div>
+                                           </div>
+                                        </div>
+                                     )}
+                                  </div>
+                               )}
+                            </div>
+                         )}
                       </div>
                    ))}
                 </div>
