@@ -630,14 +630,40 @@ const MarqueeRow = ({ items, direction = 'left', cardType = 'ranker' }: { items:
   // (important on touch, where there's no hover to pause it). The 8x track +
   // loop wrap-around keep it seamless at both ends.
   const resumeRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const holdDelayRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const holdIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  // One decisive jump (tap): most of the visible width.
   const nudge = (dir: 'left' | 'right') => {
     const el = scrollRef.current;
     if (!el) return;
     setIsPaused(true);
-    const amount = el.clientWidth * 0.9 || 440;
+    const amount = (el.clientWidth || 440) * 1.5; // bigger jump = faster browsing
     el.scrollBy({ left: dir === 'left' ? -amount : amount, behavior: 'smooth' });
     if (resumeRef.current) clearTimeout(resumeRef.current);
-    resumeRef.current = setTimeout(() => setIsPaused(false), 1400);
+    resumeRef.current = setTimeout(() => setIsPaused(false), 1600);
+  };
+
+  // Press-and-hold: after a short delay, fly through the cards continuously.
+  const startHold = (dir: 'left' | 'right') => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setIsPaused(true);
+    nudge(dir); // immediate jump on press
+    if (holdDelayRef.current) clearTimeout(holdDelayRef.current);
+    holdDelayRef.current = setTimeout(() => {
+      if (holdIntervalRef.current) clearInterval(holdIntervalRef.current);
+      holdIntervalRef.current = setInterval(() => {
+        const node = scrollRef.current;
+        if (node) node.scrollLeft += dir === 'left' ? -28 : 28; // fast continuous glide
+      }, 16);
+    }, 300);
+  };
+  const stopHold = () => {
+    if (holdDelayRef.current) { clearTimeout(holdDelayRef.current); holdDelayRef.current = null; }
+    if (holdIntervalRef.current) { clearInterval(holdIntervalRef.current); holdIntervalRef.current = null; }
+    if (resumeRef.current) clearTimeout(resumeRef.current);
+    resumeRef.current = setTimeout(() => setIsPaused(false), 1600);
   };
 
   if (!items || items.length === 0) return null;
@@ -671,16 +697,22 @@ const MarqueeRow = ({ items, direction = 'left', cardType = 'ranker' }: { items:
       <button
         type="button"
         aria-label="Scroll left"
-        onClick={() => nudge('left')}
-        className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/90 backdrop-blur border border-slate-200 shadow-lg flex items-center justify-center text-slate-700 hover:bg-gameTeal hover:text-white hover:border-gameTeal transition-all"
+        onPointerDown={(e) => { e.preventDefault(); startHold('left'); }}
+        onPointerUp={stopHold}
+        onPointerLeave={stopHold}
+        onPointerCancel={stopHold}
+        className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/90 backdrop-blur border border-slate-200 shadow-lg flex items-center justify-center text-slate-700 hover:bg-gameTeal hover:text-white hover:border-gameTeal transition-all select-none touch-none"
       >
         <ChevronLeft size={20} />
       </button>
       <button
         type="button"
         aria-label="Scroll right"
-        onClick={() => nudge('right')}
-        className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/90 backdrop-blur border border-slate-200 shadow-lg flex items-center justify-center text-slate-700 hover:bg-gameTeal hover:text-white hover:border-gameTeal transition-all"
+        onPointerDown={(e) => { e.preventDefault(); startHold('right'); }}
+        onPointerUp={stopHold}
+        onPointerLeave={stopHold}
+        onPointerCancel={stopHold}
+        className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/90 backdrop-blur border border-slate-200 shadow-lg flex items-center justify-center text-slate-700 hover:bg-gameTeal hover:text-white hover:border-gameTeal transition-all select-none touch-none"
       >
         <ChevronRight size={20} />
       </button>
