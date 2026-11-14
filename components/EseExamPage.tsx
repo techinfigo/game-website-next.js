@@ -552,12 +552,12 @@ const EseExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content }
                   {/* Stats Row */}
                   <div className="flex flex-wrap gap-10 border-t border-white/5 pt-6 text-left">
                      <div>
-                        <p className="text-2xl font-black text-white mb-0.5">5000+</p>
-                        <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Selections</p>
+                        <p className="text-2xl font-black text-white mb-0.5">20K+</p>
+                        <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">App Downloads</p>
                      </div>
                      <div>
-                        <p className="text-2xl font-black text-white mb-0.5">50+</p>
-                        <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Top Ranks</p>
+                        <p className="text-2xl font-black text-white mb-0.5">Level-10</p>
+                        <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Pay Matrix</p>
                      </div>
                      <div>
                         <p className="text-2xl font-black text-white mb-0.5">14+ Yrs</p>

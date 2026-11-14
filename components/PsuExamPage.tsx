@@ -129,16 +129,16 @@ const PsuExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content }
                   {/* Stats Row */}
                   <div className="flex flex-wrap gap-10 border-t border-white/5 pt-6">
                      <div>
-                        <p className="text-2xl font-black text-white mb-0.5">50K+</p>
-                        <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Aspirants</p>
+                        <p className="text-2xl font-black text-white mb-0.5">20K+</p>
+                        <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">App Downloads</p>
                      </div>
                      <div>
-                        <p className="text-2xl font-black text-white mb-0.5">95%</p>
-                        <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Success Rate</p>
+                        <p className="text-2xl font-black text-white mb-0.5">Level-10</p>
+                        <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Pay Matrix</p>
                      </div>
                      <div>
-                        <p className="text-2xl font-black text-white mb-0.5">200+</p>
-                        <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Mentors</p>
+                        <p className="text-2xl font-black text-white mb-0.5">14+ Yrs</p>
+                        <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Mentorship</p>
                      </div>
                   </div>
                </motion.div>

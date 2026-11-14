@@ -447,12 +447,12 @@ const RrbJeExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content
                   {/* Stats Row */}
                   <div className="flex flex-wrap gap-10 border-t border-white/5 pt-6 text-left">
                      <div>
-                        <p className="text-2xl font-black text-white mb-0.5">₹35,400</p>
-                        <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Starting Pay</p>
+                        <p className="text-2xl font-black text-white mb-0.5">20K+</p>
+                        <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">App Downloads</p>
                      </div>
                      <div>
-                        <p className="text-2xl font-black text-white mb-0.5">21</p>
-                        <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">RRB Zones</p>
+                        <p className="text-2xl font-black text-white mb-0.5">Level-6</p>
+                        <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Pay Matrix</p>
                      </div>
                      <div>
                         <p className="text-2xl font-black text-white mb-0.5">14+ Yrs</p>
