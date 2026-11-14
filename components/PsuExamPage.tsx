@@ -521,7 +521,7 @@ const PsuExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content }
                   viewport={{ once: true }}
                >
                   <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-gameBlack leading-[1.1] mb-4 uppercase">
-                     PSUs <span className="text-gameTeal">Exams</span>
+                     PSU<span className="lowercase">s</span> <span className="text-gameTeal">Exams</span>
                   </h2>
                   <div className="w-24 h-1.5 bg-gameGold mx-auto rounded-full"></div>
                </motion.div>
@@ -1261,7 +1261,7 @@ const DetailedOrgCard: React.FC<{
       {/* Footer Buttons */}
       <div className="p-6 md:p-8 bg-white border-t border-slate-200 flex flex-wrap gap-4 items-center justify-center">
         <Link href="/courses" className="inline-flex items-center justify-center bg-[#005f63] text-white font-black px-10 py-3 rounded-lg text-[11px] uppercase tracking-widest hover:bg-[#004d50] hover:shadow-xl hover:shadow-gameTeal/40 transition-all active:scale-95 shadow-lg shadow-gameTeal/10">
-          COURSE BUTTON
+          Explore Course
         </Link>
         {syllabusUrl ? (
           <a
