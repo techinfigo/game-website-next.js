@@ -86,62 +86,13 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
-      const { current } = scrollRef;
       const scrollAmount = 320; // card width + gap
-      const { scrollLeft, scrollWidth, clientWidth } = current;
-      const singleSetWidth = scrollWidth / 3;
-
-      if (singleSetWidth <= 0) return;
-
-      // Before smooth scrolling, ensure we're not too close to the physical edges.
-      // If we are, jump to the equivalent position in the middle set (Set 1) instantly.
-      if (direction === 'left' && scrollLeft < singleSetWidth * 0.5) {
-        current.scrollLeft = scrollLeft + singleSetWidth;
-      } else if (direction === 'right' && scrollLeft > singleSetWidth * 1.5) {
-        current.scrollLeft = scrollLeft - singleSetWidth;
-      }
-
-      current.scrollBy({
+      scrollRef.current.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
         behavior: 'smooth'
       });
     }
   };
-
-  const handleScroll = () => {
-    if (!scrollRef.current || isDragging) return;
-    const container = scrollRef.current;
-    const { scrollLeft, scrollWidth, clientWidth } = container;
-    const singleSetWidth = scrollWidth / 3;
-
-    if (singleSetWidth <= 0) return;
-
-    // Warp smoothly to middle zone if scrolled out of central limits
-    // This handles manual scrolling/dragging
-    if (scrollLeft < singleSetWidth * 0.2) {
-      container.scrollLeft = scrollLeft + singleSetWidth;
-    } else if (scrollLeft > scrollWidth - clientWidth - 200) {
-      container.scrollLeft = scrollLeft - singleSetWidth;
-    }
-  };
-
-  React.useEffect(() => {
-    const initScroll = () => {
-      if (scrollRef.current) {
-        const { scrollWidth } = scrollRef.current;
-        scrollRef.current.scrollLeft = scrollWidth / 3;
-      }
-    };
-    
-    // Set initial scroll offset in the center zone
-    const timer = setTimeout(initScroll, 100);
-    
-    window.addEventListener('resize', initScroll);
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener('resize', initScroll);
-    };
-  }, []);
 
   const categories = [
     {
@@ -280,7 +231,6 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
           onMouseLeave={handleMouseLeave}
           onMouseUp={handleMouseUp}
           onMouseMove={handleMouseMove}
-          onScroll={handleScroll}
           className={`flex gap-4 overflow-x-auto pb-4 pt-1 no-scrollbar select-none ${isDragging ? 'cursor-grabbing' : 'cursor-grab snap-x'} w-full`}
           style={{ 
             scrollbarWidth: 'none', 
@@ -289,10 +239,9 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
             paddingRight: 'max(2rem, calc((100vw - 1280px) / 2 + 3rem))'
           }}
         >
-              {[0, 1, 2].flatMap((setIndex) => 
-                 categories.map((item, index) => (
+              {categories.map((item) => (
                     <div
-                       key={`${item.id}-${setIndex}`}
+                       key={item.id}
                        className="min-w-[240px] md:min-w-[260px] snap-center group pointer-events-auto"
                     >
                        {/* Container - Bit more rounded rounded-[3rem] */}
@@ -357,8 +306,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
                          </div>
                       </div>
                    </div>
-                ))
-             )}
+                ))}
           </div>
 
     </section>
