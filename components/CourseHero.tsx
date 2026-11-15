@@ -93,10 +93,14 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
   // Fixed Masterclass hero videos — intentionally hard-set so they do NOT
   // change when the admin Video Lectures list is edited/reordered. To change
   // these three cards, edit this array (developer change, by client request).
+  // Fixed Masterclass hero cards. videoId starting with "PL" plays as a
+  // YouTube playlist; otherwise a single video. (Thumbnails for the two
+  // playlists are branded placeholders — YouTube doesn't expose a playlist
+  // thumbnail URL; swap them for exact course images when available.)
   const videos: Video[] = [
-    { id: 1, title: 'How to Convert Units?', subtitle: '', thumbnail: 'https://img.youtube.com/vi/czIYgYQkRFU/maxresdefault.jpg', duration: '1:08:42', views: '195k', tag: 'Basic Mechanics', videoId: 'czIYgYQkRFU' },
-    { id: 2, title: 'Crack GATE in First Attempt', subtitle: '', thumbnail: 'https://img.youtube.com/vi/Vv9lARk4vcs/maxresdefault.jpg', duration: '14:15', views: '245k', tag: 'GATE Strategy', videoId: 'Vv9lARk4vcs' },
-    { id: 3, title: 'How to attempt GATE Test Series', subtitle: '', thumbnail: 'https://img.youtube.com/vi/ggnZchS4AZ4/maxresdefault.jpg', duration: '19:35', views: '135k', tag: 'Test Strategy', videoId: 'ggnZchS4AZ4' },
+    { id: 1, title: 'Fluid Mechanics — Full Course', subtitle: '', thumbnail: '/course-mentor-spotlight.webp', duration: 'Playlist', views: '56 Videos', tag: 'Full Course', videoId: 'PLzpAOaJe3cEibAI-LLEUja3q34NaQdMgb' },
+    { id: 2, title: 'Strength of Materials — Full Course', subtitle: '', thumbnail: '/coursetest.webp', duration: 'Playlist', views: '41 Videos', tag: 'Full Course', videoId: 'PL4z8h611VJ3CFbklGo60rhejqprcMHTSx' },
+    { id: 3, title: 'Crack GATE in First Attempt', subtitle: '', thumbnail: 'https://img.youtube.com/vi/Vv9lARk4vcs/maxresdefault.jpg', duration: '14:15', views: '245k', tag: 'GATE Strategy', videoId: 'Vv9lARk4vcs' },
   ];
 
   // Slide Data Configuration
