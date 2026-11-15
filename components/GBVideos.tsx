@@ -33,7 +33,7 @@ const GBVideos: React.FC = () => {
                    <Sparkles size={12} fill="currentColor" /> Premium Insights
                 </div>
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 leading-tight">
-                   Eye Opening <span className="text-[#075d63]">Sessions</span>
+                   Must-Watch Master <span className="text-[#075d63]">Sessions</span>
                 </h2>
                 <p className="text-slate-500 text-base mt-3 max-w-xl font-bold">
                   Elevate Your Engineering Journey: Master the Topper’s Blueprint with Expert Strategies, Mindset Mastery, and Precision Roadmaps by Gaurav Babu Sir.
