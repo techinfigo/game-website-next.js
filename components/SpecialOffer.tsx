@@ -101,24 +101,24 @@ const SpecialOffer: React.FC = () => {
                       <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span> Offer Ends In:
                    </div>
                    
-                   <div className="flex items-center gap-6 md:gap-8">
+                   <div className="flex items-center gap-3 sm:gap-6 md:gap-8">
                       <div className="text-center group">
-                         <div className="text-4xl font-black text-white leading-none group-hover:text-[#f2c537] transition-colors">{timeLeft.days.toString().padStart(2, '0')}</div>
+                         <div className="text-3xl sm:text-4xl font-black text-white leading-none group-hover:text-[#f2c537] transition-colors">{timeLeft.days.toString().padStart(2, '0')}</div>
                          <div className="text-[10px] text-slate-500 uppercase font-bold tracking-widest mt-2">Days</div>
                       </div>
                       <div className="h-10 w-[1px] bg-slate-700/50"></div>
                       <div className="text-center group">
-                         <div className="text-4xl font-black text-white leading-none group-hover:text-[#f2c537] transition-colors">{timeLeft.hours.toString().padStart(2, '0')}</div>
+                         <div className="text-3xl sm:text-4xl font-black text-white leading-none group-hover:text-[#f2c537] transition-colors">{timeLeft.hours.toString().padStart(2, '0')}</div>
                          <div className="text-[10px] text-slate-500 uppercase font-bold tracking-widest mt-2">Hours</div>
                       </div>
                       <div className="h-10 w-[1px] bg-slate-700/50"></div>
                       <div className="text-center group">
-                         <div className="text-4xl font-black text-white leading-none group-hover:text-[#f2c537] transition-colors">{timeLeft.minutes.toString().padStart(2, '0')}</div>
+                         <div className="text-3xl sm:text-4xl font-black text-white leading-none group-hover:text-[#f2c537] transition-colors">{timeLeft.minutes.toString().padStart(2, '0')}</div>
                          <div className="text-[10px] text-slate-500 uppercase font-bold tracking-widest mt-2">Mins</div>
                       </div>
                       <div className="h-10 w-[1px] bg-slate-700/50"></div>
                       <div className="text-center group">
-                         <div className="text-4xl font-black text-gameGold leading-none">{timeLeft.seconds.toString().padStart(2, '0')}</div>
+                         <div className="text-3xl sm:text-4xl font-black text-gameGold leading-none">{timeLeft.seconds.toString().padStart(2, '0')}</div>
                          <div className="text-[10px] text-slate-500 uppercase font-bold tracking-widest mt-2">Secs</div>
                       </div>
                    </div>
