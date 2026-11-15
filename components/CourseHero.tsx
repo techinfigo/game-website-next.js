@@ -130,16 +130,28 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
     }
   }, [slides.length]);
 
-  const handleCallbackSubmit = (e: React.FormEvent) => {
+  const handleCallbackSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const formEl = e.target as HTMLFormElement;
+    const fd = new FormData(formEl);
+    const name = String(fd.get('name') || '').trim();
+    const phone = String(fd.get('phone') || '').trim();
     setFormStatus('submitting');
+    try {
+      await fetch('/api/callback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, phone, source: 'coursehero-callback' }),
+      });
+    } catch {
+      /* best-effort; still show success so the user isn't blocked */
+    }
+    setFormStatus('success');
     setTimeout(() => {
-        setFormStatus('success');
-        setTimeout(() => {
-            setCallbackModal(false);
-            setFormStatus('idle');
-        }, 2000);
-    }, 1500);
+      setCallbackModal(false);
+      setFormStatus('idle');
+      formEl.reset();
+    }, 2000);
   };
 
   return (
@@ -504,10 +516,11 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
                     <form onSubmit={handleCallbackSubmit} className="p-8 space-y-5">
                        <div className="space-y-1.5">
                           <label className="text-xs font-bold text-slate-500 uppercase tracking-wider ml-1">Full Name</label>
-                          <input 
-                             type="text" 
-                             required 
-                             placeholder="Enter your name" 
+                          <input
+                             type="text"
+                             name="name"
+                             required
+                             placeholder="Enter your name"
                              className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-[#075d63] focus:ring-1 focus:ring-[#075d63] transition-all font-medium"
                           />
                        </div>
@@ -515,10 +528,11 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
                           <label className="text-xs font-bold text-slate-500 uppercase tracking-wider ml-1">Phone Number</label>
                           <div className="relative">
                              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-sm">+91</span>
-                             <input 
-                                type="tel" 
-                                required 
-                                placeholder="98765 43210" 
+                             <input
+                                type="tel"
+                                name="phone"
+                                required
+                                placeholder="98765 43210"
                                 pattern="[0-9]{10}"
                                 className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 pl-12 text-slate-900 focus:outline-none focus:border-[#075d63] focus:ring-1 focus:ring-[#075d63] transition-all font-medium"
                              />

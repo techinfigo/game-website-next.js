@@ -3,6 +3,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import MentorshipModal from './MentorshipModal';
+import CallbackRequestModal from './CallbackRequestModal';
 import { motion, AnimatePresence, useInView, animate } from 'framer-motion';
 import Image from 'next/image';
 import { 
@@ -47,6 +48,7 @@ const AboutPage: React.FC = () => {
   const settings = useSiteSettings();
   const [hoveredReasonIndex, setHoveredReasonIndex] = useState<number | null>(3);
   const [mentorshipOpen, setMentorshipOpen] = useState(false);
+  const [callbackOpen, setCallbackOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   // "Our Achievers Are Placed In" logo strip: auto-scrolls, pauses in place on
@@ -1044,7 +1046,7 @@ const AboutPage: React.FC = () => {
                   <p className="text-teal-50 text-[clamp(0.875rem,1.25vw,1.125rem)] font-medium max-w-2xl mx-auto mb-[clamp(1.5rem,4vh,3rem)] opacity-90 leading-relaxed">Don&apos;t just track exams. Master them with Gaurav Babu Sir&apos;s mentorship. India&apos;s #1 Technical Prep Community is waiting for you.</p>
                   <div className="flex flex-col sm:flex-row gap-[clamp(0.75rem,1.5vw,1rem)] justify-center">
                      <a href={settings.whatsappChat} target="_blank" rel="noopener noreferrer" className="bg-white text-[#075d63] px-[clamp(1.25rem,3vw,2rem)] py-[clamp(0.75rem,1.5vh,1rem)] rounded-2xl font-black uppercase tracking-widest text-[clamp(0.7rem,0.8vw,0.8rem)] hover:bg-gameGold hover:text-black transition-all shadow-xl hover:-translate-y-1 flex items-center justify-center gap-3 whitespace-nowrap"><MessageCircle size={20} className="w-[clamp(1.125rem,1.5vw,1.25rem)] h-[clamp(1.125rem,1.5vw,1.25rem)]" /> Chat on WhatsApp</a>
-                     <a href={`tel:${settings.phone}`} className="bg-gameBlack text-white border-2 border-white/20 px-[clamp(1.25rem,3vw,2rem)] py-[clamp(0.75rem,1.5vh,1rem)] rounded-2xl font-black uppercase tracking-widest text-[clamp(0.7rem,0.8vw,0.8rem)] hover:bg-white hover:text-black transition-all shadow-xl hover:-translate-y-1 flex items-center justify-center gap-3 whitespace-nowrap"><Phone size={20} className="w-[clamp(1.125rem,1.5vw,1.25rem)] h-[clamp(1.125rem,1.5vw,1.25rem)]" /> Request a Call</a>
+                     <button type="button" onClick={() => setCallbackOpen(true)} className="bg-gameBlack text-white border-2 border-white/20 px-[clamp(1.25rem,3vw,2rem)] py-[clamp(0.75rem,1.5vh,1rem)] rounded-2xl font-black uppercase tracking-widest text-[clamp(0.7rem,0.8vw,0.8rem)] hover:bg-white hover:text-black transition-all shadow-xl hover:-translate-y-1 flex items-center justify-center gap-3 whitespace-nowrap cursor-pointer"><Phone size={20} className="w-[clamp(1.125rem,1.5vw,1.25rem)] h-[clamp(1.125rem,1.5vw,1.25rem)]" /> Request a Call</button>
                   </div>
                </div>
             </motion.div>
@@ -1052,6 +1054,7 @@ const AboutPage: React.FC = () => {
       </section>
 
       <MentorshipModal isOpen={mentorshipOpen} onClose={() => setMentorshipOpen(false)} />
+      <CallbackRequestModal isOpen={callbackOpen} onClose={() => setCallbackOpen(false)} source="about-join-learners" />
     </div>
   );
 };
