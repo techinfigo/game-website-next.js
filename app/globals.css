@@ -114,3 +114,13 @@
   .gate-faq-answer th,
   .gate-faq-answer td { padding: 8px 6px !important; }
 }
+
+/* About-page "Our Achievers Are Placed In" logo marquee. Pure CSS so that
+   hovering pauses it IN PLACE and leaving resumes from the same spot
+   (framer-motion restarted it from the beginning on un-hover). */
+@keyframes marquee-x {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track { animation: marquee-x 50s linear infinite; will-change: transform; }
+.group:hover > .marquee-track { animation-play-state: paused; }

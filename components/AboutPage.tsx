@@ -48,7 +48,6 @@ const AboutPage: React.FC = () => {
   const [hoveredReasonIndex, setHoveredReasonIndex] = useState<number | null>(3);
   const [mentorshipOpen, setMentorshipOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isMarqueePaused, setIsMarqueePaused] = useState(false);
 
   useEffect(() => {
     if (window.location.hash) {
@@ -562,7 +561,7 @@ const AboutPage: React.FC = () => {
       </section>
 
       {/* PLACEMENT LOGO SLIDER - SMALL SECTION WITH THE SPECIFIED DARK TEAL COLOR */}
-      <div className="py-12 bg-gameTeal border-y border-white/5 relative overflow-hidden" onMouseEnter={() => setIsMarqueePaused(true)} onMouseLeave={() => setIsMarqueePaused(false)}>
+      <div className="py-12 bg-gameTeal border-y border-white/5 relative overflow-hidden">
         <div className="max-w-[1280px] mx-auto px-8 md:px-10 lg:px-12 mb-8">
            <div className="flex items-center gap-4">
               <div className="h-px bg-white/10 flex-grow"></div>
@@ -571,17 +570,7 @@ const AboutPage: React.FC = () => {
            </div>
         </div>
         <div className="flex overflow-hidden group">
-          <motion.div 
-            className="flex items-center gap-12 md:gap-20 whitespace-nowrap px-8"
-            animate={{ x: isMarqueePaused ? undefined : ["0%", "-50%"] }}
-            transition={{ 
-              x: {
-                duration: 50, 
-                repeat: Infinity, 
-                ease: "linear",
-              }
-            }}
-          >
+          <div className="marquee-track flex items-center gap-12 md:gap-20 whitespace-nowrap px-8">
             {[...Array(2)].map((_, i) => (
               <React.Fragment key={i}>
                 {[
@@ -613,7 +602,7 @@ const AboutPage: React.FC = () => {
                 ))}
               </React.Fragment>
             ))}
-          </motion.div>
+          </div>
         </div>
         {/* Subtle Blur Edge Overlays matching the Teal background */}
         <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-gameTeal to-transparent z-10 pointer-events-none"></div>
