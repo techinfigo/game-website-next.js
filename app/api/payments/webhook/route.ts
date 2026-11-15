@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import crypto from 'crypto';
 import { getAdminDb } from '@/lib/firebase-admin';
+import { sendMentorshipConfirmation } from '@/lib/mailer';
 
 // Razorpay webhook (reliability backup). If a student pays but their browser
 // drops before the verify call, Razorpay still notifies this endpoint, so the
@@ -25,9 +26,42 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Invalid payload' }, { status: 400 });
   }
 
+  const payment = event?.payload?.payment?.entity || {};
+  const notes = payment.notes || {};
+
+  // --- 1:1 Mentorship payments (backstop for the verify/failed calls) ---
+  if (notes.type === 'mentorship' && notes.leadId) {
+    const db = getAdminDb();
+    const leadRef = db.collection('mentorshipLeads').doc(String(notes.leadId));
+    const snap = await leadRef.get();
+    if (snap.exists) {
+      const lead = snap.data() as any;
+      if (event?.event === 'payment.captured' && lead.status !== 'paid') {
+        await leadRef.update({
+          status: 'paid',
+          paymentId: payment.id || '',
+          orderId: payment.order_id || '',
+          paidAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+        });
+        if (!lead.emailSent) {
+          const emailed = await sendMentorshipConfirmation({
+            name: lead.name, email: lead.email, phone: lead.phone, branch: lead.branch, amount: lead.amount,
+          });
+          if (emailed) await leadRef.update({ emailSent: true }).catch(() => {});
+        }
+      } else if (event?.event === 'payment.failed' && lead.status !== 'paid') {
+        await leadRef.update({
+          status: 'failed',
+          failReason: (payment?.error_description || 'Payment failed').toString().slice(0, 200),
+          updatedAt: new Date().toISOString(),
+        });
+      }
+    }
+    return NextResponse.json({ ok: true });
+  }
+
   if (event?.event === 'payment.captured') {
-    const payment = event?.payload?.payment?.entity || {};
-    const notes = payment.notes || {};
     const uid = notes.uid;
     const pdfId = notes.pdfId;
     const paymentId = payment.id;

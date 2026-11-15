@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
+import MentorshipModal from './MentorshipModal';
 import { motion, AnimatePresence, useInView, animate } from 'framer-motion';
 import Image from 'next/image';
 import { 
@@ -45,6 +46,7 @@ const Counter = ({ value }: { value: string }) => {
 const AboutPage: React.FC = () => {
   const settings = useSiteSettings();
   const [hoveredReasonIndex, setHoveredReasonIndex] = useState<number | null>(3);
+  const [mentorshipOpen, setMentorshipOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMarqueePaused, setIsMarqueePaused] = useState(false);
 
@@ -846,14 +848,15 @@ const AboutPage: React.FC = () => {
 
             {/* Bottom Button */}
             <div className="mt-[clamp(1.5rem,4vh,4rem)] text-center">
-               <motion.a
-                  href="/courses"
+               <motion.button
+                  type="button"
+                  onClick={() => setMentorshipOpen(true)}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-white text-gameBlack px-[clamp(1.5rem,3vw,2.5rem)] py-[clamp(0.75rem,1.5vh,1rem)] rounded-xl font-black text-[clamp(0.5rem,0.7vw,0.625rem)] uppercase tracking-[0.3em] inline-flex items-center gap-3 mx-auto shadow-2xl hover:bg-gameGold transition-all whitespace-nowrap"
+                  className="bg-white text-gameBlack px-[clamp(1.5rem,3vw,2.5rem)] py-[clamp(0.75rem,1.5vh,1rem)] rounded-xl font-black text-[clamp(0.5rem,0.7vw,0.625rem)] uppercase tracking-[0.3em] inline-flex items-center gap-3 mx-auto shadow-2xl hover:bg-gameGold transition-all whitespace-nowrap cursor-pointer"
                >
                   1:1 Mentorship <ChevronRight size={16} />
-               </motion.a>
+               </motion.button>
             </div>
          </div>
       </section>
@@ -1013,6 +1016,7 @@ const AboutPage: React.FC = () => {
          </div>
       </section>
 
+      <MentorshipModal isOpen={mentorshipOpen} onClose={() => setMentorshipOpen(false)} />
     </div>
   );
 };
