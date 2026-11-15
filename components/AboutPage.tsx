@@ -588,7 +588,7 @@ const AboutPage: React.FC = () => {
                   { name: "CIL", logo: "/logo-cil.png" },
                   { name: "BEL", logo: "/logo-bel.webp" },
                   { name: "NHAI", logo: "/logo-nhai.png" },
-                  { name: "RVNL", logo: "/logo-rvnl.png" }
+                  { name: "RVNL", logo: "/logo-rvnl.webp" }
                 ].map((company, idx) => (
                   <div key={`${company.name}-${idx}`} className="relative w-16 md:w-24 h-16 md:h-24 flex items-center justify-center transition-all duration-500 cursor-default px-2">
                     <Image
