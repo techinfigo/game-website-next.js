@@ -49,6 +49,39 @@ const AboutPage: React.FC = () => {
   const [mentorshipOpen, setMentorshipOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  // "Our Achievers Are Placed In" logo strip: auto-scrolls, pauses in place on
+  // hover, and can be stepped left/right with the heading nav buttons.
+  const logoRef = useRef<HTMLDivElement>(null);
+  const logoPaused = useRef(false);
+  const logoResume = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => {
+    const el = logoRef.current;
+    if (!el) return;
+    let raf = 0;
+    const step = () => {
+      if (el && !logoPaused.current) {
+        el.scrollLeft += 0.5;
+        const half = el.scrollWidth / 2;
+        if (half > 0 && el.scrollLeft >= half) el.scrollLeft -= half;
+      }
+      raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+  const scrollLogos = (dir: 'left' | 'right') => {
+    const el = logoRef.current;
+    if (!el) return;
+    logoPaused.current = true;
+    const half = el.scrollWidth / 2;
+    const amount = 300;
+    // keep room on both ends so the loop never hits a hard edge mid-swipe
+    if (dir === 'left' && el.scrollLeft < amount && half > 0) el.scrollLeft += half;
+    el.scrollBy({ left: dir === 'left' ? -amount : amount, behavior: 'smooth' });
+    if (logoResume.current) clearTimeout(logoResume.current);
+    logoResume.current = setTimeout(() => { logoPaused.current = false; }, 1600);
+  };
+
   useEffect(() => {
     if (window.location.hash) {
       setTimeout(() => {
@@ -566,11 +599,24 @@ const AboutPage: React.FC = () => {
            <div className="flex items-center gap-4">
               <div className="h-px bg-white/10 flex-grow"></div>
               <span className="text-[10px] font-black text-gameGold uppercase tracking-[0.6em] whitespace-nowrap drop-shadow-[0_0_10px_rgba(242,197,55,0.3)]">Our Achievers Are Placed In</span>
+              <div className="flex items-center gap-2 shrink-0">
+                 <button type="button" aria-label="Scroll logos left" onClick={() => scrollLogos('left')} className="w-8 h-8 rounded-full border border-white/20 bg-white/5 text-white flex items-center justify-center hover:bg-gameGold hover:text-black hover:border-gameGold transition-all cursor-pointer">
+                    <ChevronLeft size={16} />
+                 </button>
+                 <button type="button" aria-label="Scroll logos right" onClick={() => scrollLogos('right')} className="w-8 h-8 rounded-full border border-white/20 bg-white/5 text-white flex items-center justify-center hover:bg-gameGold hover:text-black hover:border-gameGold transition-all cursor-pointer">
+                    <ChevronRight size={16} />
+                 </button>
+              </div>
               <div className="h-px bg-white/10 flex-grow"></div>
            </div>
         </div>
-        <div className="flex overflow-hidden group">
-          <div className="marquee-track flex items-center gap-12 md:gap-20 whitespace-nowrap px-8">
+        <div
+          ref={logoRef}
+          className="flex overflow-x-auto no-scrollbar group"
+          onMouseEnter={() => { logoPaused.current = true; }}
+          onMouseLeave={() => { logoPaused.current = false; }}
+        >
+          <div className="flex items-center gap-12 md:gap-20 whitespace-nowrap px-8">
             {[...Array(2)].map((_, i) => (
               <React.Fragment key={i}>
                 {[
