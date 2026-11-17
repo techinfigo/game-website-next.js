@@ -343,7 +343,7 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
                             </div>
                             <div className="mt-4 flex items-center justify-center lg:justify-start gap-4">
                                <div className="flex items-center gap-1 text-gameGold text-sm font-bold bg-white/5 px-3 py-1.5 rounded-lg border border-white/5 shadow-sm">
-                                  <Star size={14} fill="currentColor" /> 4.8 Rating
+                                  <Star size={14} fill="currentColor" /> 4.9 Rating
                                </div>
                                <div className="text-white/40 text-[10px] font-bold uppercase tracking-widest">Trusted by 50k+ Students</div>
                             </div>
