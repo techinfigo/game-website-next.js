@@ -94,12 +94,11 @@ const CourseHero: React.FC<CourseHeroProps> = ({ isSection = false }) => {
   // change when the admin Video Lectures list is edited/reordered. To change
   // these three cards, edit this array (developer change, by client request).
   // Fixed Masterclass hero cards. videoId starting with "PL" plays as a
-  // YouTube playlist; otherwise a single video. (Thumbnails for the two
-  // playlists are branded placeholders — YouTube doesn't expose a playlist
-  // thumbnail URL; swap them for exact course images when available.)
+  // YouTube playlist; otherwise a single video. Playlist thumbnails use the
+  // cover (first video) of each playlist so the card shows the real course art.
   const videos: Video[] = [
-    { id: 1, title: 'Fluid Mechanics — Full Course', subtitle: '', thumbnail: '/course-mentor-spotlight.webp', duration: 'Playlist', views: '56 Videos', tag: 'Full Course', videoId: 'PLzpAOaJe3cEibAI-LLEUja3q34NaQdMgb' },
-    { id: 2, title: 'Strength of Materials — Full Course', subtitle: '', thumbnail: '/coursetest.webp', duration: 'Playlist', views: '41 Videos', tag: 'Full Course', videoId: 'PL4z8h611VJ3CFbklGo60rhejqprcMHTSx' },
+    { id: 1, title: 'Fluid Mechanics — Full Course', subtitle: '', thumbnail: 'https://img.youtube.com/vi/CUUEl9KyIvQ/hqdefault.jpg', duration: 'Playlist', views: 'Full Course', tag: 'Full Course', videoId: 'PLzpAOaJe3cEibAI-LLEUja3q34NaQdMgb' },
+    { id: 2, title: 'Strength of Materials — Full Course', subtitle: '', thumbnail: 'https://img.youtube.com/vi/hVensU0cwEs/hqdefault.jpg', duration: 'Playlist', views: 'Full Course', tag: 'Full Course', videoId: 'PL4z8h611VJ3CFbklGo60rhejqprcMHTSx' },
     { id: 3, title: 'Crack GATE in First Attempt', subtitle: '', thumbnail: 'https://img.youtube.com/vi/Vv9lARk4vcs/maxresdefault.jpg', duration: '14:15', views: '245k', tag: 'GATE Strategy', videoId: 'Vv9lARk4vcs' },
   ];
 
