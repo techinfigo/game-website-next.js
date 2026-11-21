@@ -3,12 +3,11 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import {
-  Lock, Loader2, FileText, Check, ShieldCheck, Download,
-  ArrowLeft, ArrowRight, MessageCircle, ChevronRight, Eye, BookOpen
+  Lock, Loader2, FileText, Check, ShieldCheck,
+  ArrowLeft, ArrowRight, MessageCircle, ChevronRight, Eye, BookOpen, FolderDown
 } from 'lucide-react';
+import { goToPortal } from '@/lib/portalHandoff';
 
-const PORTAL_URL =
-  process.env.NEXT_PUBLIC_STUDENT_PORTAL_URL || 'https://student.gameacademy.in';
 const WHATSAPP = 'https://wa.me/919027615394';
 
 interface PdfMeta {
@@ -63,7 +62,9 @@ export default function PdfProductPage({ id }: { id: string }) {
     return () => { cancelled = true; };
   }, [id]);
 
-  const buyUrl = `${PORTAL_URL}/library?buy=${id}`;
+  const [redirecting, setRedirecting] = useState<'buy' | 'downloads' | null>(null);
+  const goBuy = () => { setRedirecting('buy'); goToPortal(`/library?buy=${id}`); };
+  const goDownloads = () => { setRedirecting('downloads'); goToPortal('/purchases'); };
 
   if (loading) {
     return (
@@ -116,12 +117,25 @@ export default function PdfProductPage({ id }: { id: string }) {
         <div className="text-[11px] text-slate-400 mt-0.5">One-time purchase on this website</div>
       </div>
 
-      <a
-        href={buyUrl}
-        className="mt-4 w-full inline-flex items-center justify-center gap-2 bg-[#075d63] text-white font-black py-3.5 rounded-xl hover:bg-[#f2c537] hover:text-black transition-all"
+      <button
+        onClick={goBuy}
+        disabled={redirecting === 'buy'}
+        className="mt-4 w-full inline-flex items-center justify-center gap-2 bg-[#075d63] text-white font-black py-3.5 rounded-xl hover:bg-[#f2c537] hover:text-black transition-all disabled:opacity-70"
       >
-        <Lock size={16} /> Unlock Full PDF{pdf.price > 0 ? ` – ${priceLabel(pdf.price)}` : ''}
-      </a>
+        {redirecting === 'buy'
+          ? <><Loader2 size={16} className="animate-spin" /> Taking you to checkout…</>
+          : <><Lock size={16} /> Unlock Full PDF{pdf.price > 0 ? ` – ${priceLabel(pdf.price)}` : ''}</>}
+      </button>
+
+      <button
+        onClick={goDownloads}
+        disabled={redirecting === 'downloads'}
+        className="mt-2 w-full inline-flex items-center justify-center gap-2 text-[#075d63] font-bold py-2.5 rounded-xl border border-[#075d63]/30 hover:bg-[#075d63]/5 text-sm transition-all disabled:opacity-70"
+      >
+        {redirecting === 'downloads'
+          ? <><Loader2 size={15} className="animate-spin" /> Opening…</>
+          : <><FolderDown size={15} /> Already purchased? Open My Downloads</>}
+      </button>
 
       <div className="mt-5 space-y-2.5">
         <div className="text-[11px] font-black uppercase tracking-widest text-slate-400">Your purchase includes</div>
@@ -207,9 +221,11 @@ export default function PdfProductPage({ id }: { id: string }) {
                   <div className="w-14 h-14 rounded-full bg-[#075d63]/10 text-[#075d63] flex items-center justify-center mb-4"><Lock size={24} /></div>
                   <h3 className="text-lg md:text-xl font-black text-slate-900">Ready for the complete resource?</h3>
                   <p className="text-slate-500 text-sm mt-1 max-w-sm">You have seen the sample. Unlock the full PDF to continue.</p>
-                  <a href={buyUrl} className="mt-5 inline-flex items-center gap-2 bg-[#075d63] text-white font-black px-6 py-3 rounded-xl hover:bg-[#f2c537] hover:text-black transition-all">
-                    <Lock size={16} /> Unlock Full PDF{pdf.price > 0 ? ` – ${priceLabel(pdf.price)}` : ''}
-                  </a>
+                  <button onClick={goBuy} disabled={redirecting === 'buy'} className="mt-5 inline-flex items-center gap-2 bg-[#075d63] text-white font-black px-6 py-3 rounded-xl hover:bg-[#f2c537] hover:text-black transition-all disabled:opacity-70">
+                    {redirecting === 'buy'
+                      ? <><Loader2 size={16} className="animate-spin" /> Taking you to checkout…</>
+                      : <><Lock size={16} /> Unlock Full PDF{pdf.price > 0 ? ` – ${priceLabel(pdf.price)}` : ''}</>}
+                  </button>
                   <p className="text-[11px] text-slate-400 mt-3">Paid pages remain locked until payment is confirmed.</p>
                 </div>
               </div>
@@ -285,9 +301,9 @@ export default function PdfProductPage({ id }: { id: string }) {
           <div className="text-lg font-black text-slate-900 leading-none">{priceLabel(pdf.price)}</div>
           <div className="text-[10px] text-slate-400">One-time · this website</div>
         </div>
-        <a href={buyUrl} className="flex-1 max-w-[220px] inline-flex items-center justify-center gap-2 bg-[#075d63] text-white font-black py-3 rounded-xl hover:bg-[#054a4f]">
-          <Lock size={15} /> Unlock Full PDF
-        </a>
+        <button onClick={goBuy} disabled={redirecting === 'buy'} className="flex-1 max-w-[220px] inline-flex items-center justify-center gap-2 bg-[#075d63] text-white font-black py-3 rounded-xl hover:bg-[#054a4f] disabled:opacity-70">
+          {redirecting === 'buy' ? <><Loader2 size={15} className="animate-spin" /> Opening…</> : <><Lock size={15} /> Unlock Full PDF</>}
+        </button>
       </div>
     </div>
   );
