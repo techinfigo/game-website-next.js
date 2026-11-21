@@ -16,6 +16,8 @@ export interface Resource {
   price?: string;
   tag?: string;
   examTag?: string;
+  branch?: string;
+  subject?: string;
 }
 
 /**
@@ -48,6 +50,8 @@ export function useResources(): { resources: Resource[]; loading: boolean } {
             price: (data.price as string) ?? "",
             tag: (data.tag as string) ?? "",
             examTag: (data.examTag as string) ?? "",
+            branch: (data.branch as string) ?? "",
+            subject: (data.subject as string) ?? "",
           } as Resource;
         });
         if (fetched.length > 0) setResources(fetched);
