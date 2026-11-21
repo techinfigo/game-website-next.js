@@ -11,13 +11,6 @@ import {
   X, Eye, ShoppingBag, Layers, PlayCircle, RotateCcw, Package
 } from 'lucide-react';
 
-// Where buyers go to purchase a paid PDF (the student portal PDF library).
-// Phase 2 replaces this with an on-site product/preview page.
-const PORTAL_URL =
-  process.env.NEXT_PUBLIC_STUDENT_PORTAL_URL || 'https://student.gameacademy.in';
-
-const TEAL = '#075d63';
-
 // Canonical resource-type labels (approved design).
 const CANON_TYPES = ['Revision Notes', 'Lecture Notes', 'Formula Sheets', 'Question Banks', 'PYQ Booklets', 'Videos'] as const;
 
@@ -173,8 +166,9 @@ const KnowledgePitaraPage: React.FC = () => {
         branch: p.branch || '',
         subject: p.subject || '',
         rtype: rtypeOf(p.resourceType, p.category, p.resourceType),
-        openLink: `${PORTAL_URL}/library?buy=${p.id.replace(/^pdf-/, '')}`,
-        previewLink: `${PORTAL_URL}/library?buy=${p.id.replace(/^pdf-/, '')}`,
+        // Paid items open the on-site product/preview page (Phase 2).
+        openLink: `/resources/${p.id}`,
+        previewLink: `/resources/${p.id}`,
       };
     });
 
@@ -584,12 +578,12 @@ function Card({ item, index }: { item: Item; index: number }) {
         <div className="mt-auto pt-4 border-t border-dashed border-slate-200 flex items-center gap-2">
           {isPaid ? (
             <>
-              <button onClick={() => open(item.previewLink)} className="shrink-0 inline-flex items-center gap-1.5 text-sm font-black text-[#075d63] border border-[#075d63]/30 rounded-xl px-3 py-2.5 hover:bg-[#075d63]/5 transition-all">
+              <Link href={item.previewLink} className="shrink-0 inline-flex items-center gap-1.5 text-sm font-black text-[#075d63] border border-[#075d63]/30 rounded-xl px-3 py-2.5 hover:bg-[#075d63]/5 transition-all">
                 <Eye size={15} /> Preview
-              </button>
-              <button onClick={() => open(item.openLink)} className="flex-1 inline-flex items-center justify-center gap-1.5 bg-slate-900 text-white text-sm font-black rounded-xl px-3 py-2.5 hover:bg-[#f2c537] hover:text-black transition-all">
+              </Link>
+              <Link href={item.openLink} className="flex-1 inline-flex items-center justify-center gap-1.5 bg-slate-900 text-white text-sm font-black rounded-xl px-3 py-2.5 hover:bg-[#f2c537] hover:text-black transition-all">
                 <ShoppingBag size={15} /> View &amp; Buy PDF
-              </button>
+              </Link>
             </>
           ) : (
             <button onClick={() => open(item.openLink)} className="flex-1 inline-flex items-center justify-center gap-1.5 bg-[#075d63] text-white text-sm font-black rounded-xl px-3 py-2.5 hover:bg-[#f2c537] hover:text-black transition-all">
