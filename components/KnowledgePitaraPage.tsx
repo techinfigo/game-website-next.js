@@ -278,7 +278,7 @@ const KnowledgePitaraPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#f3f7f5] font-sans text-slate-900">
       {/* ===== Hero ===== */}
-      <section className="relative pt-28 md:pt-36 pb-28 md:pb-32 overflow-hidden bg-gradient-to-br from-slate-900 via-[#0f172a] to-slate-900 text-white">
+      <section className="relative pt-28 md:pt-36 pb-20 md:pb-24 overflow-hidden bg-gradient-to-br from-slate-900 via-[#0f172a] to-slate-900 text-white">
         <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-[#075d63]/15 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#f2c537]/10 rounded-full blur-[120px] pointer-events-none" />
 
@@ -338,7 +338,7 @@ const KnowledgePitaraPage: React.FC = () => {
       </section>
 
       {/* ===== Catalogue ===== */}
-      <section className="px-4 sm:px-6 md:px-10 lg:px-12 py-10 md:py-14 relative z-20 -mt-14 md:-mt-16">
+      <section className="px-4 sm:px-6 md:px-10 lg:px-12 pt-8 md:pt-10 pb-12 md:pb-16 relative z-20 -mt-10 md:-mt-14 bg-[#f3f7f5] rounded-t-[2.5rem] md:rounded-t-[3rem]">
         <div className="max-w-[1280px] mx-auto">
           {/* Resource-type tabs */}
           <div className="mb-6">
