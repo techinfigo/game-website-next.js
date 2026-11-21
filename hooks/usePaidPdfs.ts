@@ -11,6 +11,11 @@ export interface PaidPdf {
   price: number;
   examTag: string;
   category: string;
+  branch: string;
+  subject: string;
+  resourceType: string;
+  pages?: number;
+  sampleUrl?: string;
 }
 
 /**
@@ -39,6 +44,11 @@ export function usePaidPdfs(): { pdfs: PaidPdf[]; loading: boolean } {
             price: Number(p.price) || 0,
             examTag: (p.examTag as string) ?? "",
             category: (p.category as string) ?? "PDF",
+            branch: (p.branch as string) ?? "",
+            subject: (p.subject as string) ?? "",
+            resourceType: (p.resourceType as string) ?? "",
+            pages: Number(p.pages) || undefined,
+            sampleUrl: (p.sampleUrl as string) ?? "",
           }));
         setPdfs(items);
       })
