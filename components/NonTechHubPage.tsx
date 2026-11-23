@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
@@ -127,7 +127,30 @@ export default function NonTechHubPage() {
   const [route, setRoute] = useState<Route>('all');
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
-  const cards = useMemo(() => route === 'all' ? CARDS : CARDS.filter((c) => c.route === route), [route]);
+  // Content the client can edit in the admin panel overrides the built-in
+  // defaults when present; otherwise the approved defaults show.
+  const [examCards, setExamCards] = useState<ExamCard[]>(CARDS);
+  const [updates, setUpdates] = useState(UPDATES);
+  const [faqs, setFaqs] = useState(FAQS);
+  const [lastChecked, setLastChecked] = useState(LAST_CHECKED);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch('/api/page-content?page=nontech')
+      .then((r) => r.json())
+      .then((d) => {
+        if (cancelled || !d?.content) return;
+        const c = d.content;
+        if (Array.isArray(c.examCards) && c.examCards.length) setExamCards(c.examCards);
+        if (Array.isArray(c.updates) && c.updates.length) setUpdates(c.updates);
+        if (Array.isArray(c.faqs) && c.faqs.length) setFaqs(c.faqs);
+        if (typeof c.lastChecked === 'string' && c.lastChecked.trim()) setLastChecked(c.lastChecked);
+      })
+      .catch(() => { /* keep defaults */ });
+    return () => { cancelled = true; };
+  }, []);
+
+  const cards = useMemo(() => route === 'all' ? examCards : examCards.filter((c) => c.route === route), [route, examCards]);
 
   return (
     <div className="bg-[#eef2ef] text-[#0f2a2b] font-sans">
@@ -242,7 +265,7 @@ export default function NonTechHubPage() {
               <span>Exam</span><span>Stage</span><span>Update</span><span>Status</span>
             </div>
             <div className="divide-y divide-slate-100">
-              {UPDATES.map((u, i) => (
+              {updates.map((u, i) => (
                 <div key={i} className="grid md:grid-cols-[120px_120px_1fr_120px] gap-2 md:gap-4 px-5 py-4 items-start">
                   <span className="font-black text-sm">{u.exam}</span>
                   <span className="text-xs text-slate-500 font-bold">{u.stage}</span>
@@ -252,7 +275,7 @@ export default function NonTechHubPage() {
               ))}
             </div>
           </div>
-          <p className="text-[11px] text-slate-400 mt-3">Last checked {LAST_CHECKED} · Dates are as reported by news and exam portals and can change. Always confirm on the official site.</p>
+          <p className="text-[11px] text-slate-400 mt-3">Last checked {lastChecked} · Dates are as reported by news and exam portals and can change. Always confirm on the official site.</p>
         </div>
       </section>
 
@@ -372,7 +395,7 @@ export default function NonTechHubPage() {
         <div className="max-w-[900px] mx-auto">
           <h2 className="text-2xl md:text-3xl font-black mb-5">Questions students ask</h2>
           <div className="divide-y divide-slate-200 border-t border-b border-slate-200">
-            {FAQS.map((f, i) => (
+            {faqs.map((f, i) => (
               <div key={i}>
                 <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex items-center justify-between gap-4 py-4 text-left">
                   <span className="font-bold">{f.q}</span>

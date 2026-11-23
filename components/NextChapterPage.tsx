@@ -44,8 +44,19 @@ export default function NextChapterPage() {
   const [goal, setGoal] = useState<string>('');
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [guidanceOpen, setGuidanceOpen] = useState(false);
+  const [faqs, setFaqs] = useState(FAQS);
 
   const goals = useMemo(() => goalsFor(cls), [cls]);
+
+  // Admin-editable FAQs override the defaults when present.
+  useEffect(() => {
+    let cancelled = false;
+    fetch('/api/page-content?page=school')
+      .then((r) => r.json())
+      .then((d) => { if (!cancelled && Array.isArray(d?.content?.faqs) && d.content.faqs.length) setFaqs(d.content.faqs); })
+      .catch(() => { /* keep defaults */ });
+    return () => { cancelled = true; };
+  }, []);
 
   // Read class/goal from the URL on load (so a shared link restores the path).
   useEffect(() => {
@@ -286,7 +297,7 @@ export default function NextChapterPage() {
         <div className="max-w-[900px] mx-auto">
           <h2 className="text-2xl md:text-3xl font-black mb-5">A few things worth asking.</h2>
           <div className="divide-y divide-slate-200 border-t border-b border-slate-200">
-            {FAQS.map((f, i) => (
+            {faqs.map((f, i) => (
               <div key={i}>
                 <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex items-center justify-between gap-4 py-4 text-left">
                   <span className="font-bold text-[#101821]">{f.q}</span>
