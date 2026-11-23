@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { NonTechExamPage } from '@/components/OtherExamPages';
+import NonTechHubPage from '@/components/NonTechHubPage';
 
 export default function NonTech() {
-  return <NonTechExamPage />;
+  return <NonTechHubPage />;
 }

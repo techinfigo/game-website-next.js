@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { SchoolExamPage } from '@/components/OtherExamPages';
+import NextChapterPage from '@/components/NextChapterPage';
 
 export default function School() {
-  return <SchoolExamPage />;
+  return <NextChapterPage />;
 }
