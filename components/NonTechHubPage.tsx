@@ -4,252 +4,378 @@ import React, { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
-  Search, ArrowUpRight, ArrowRight, ArrowDown, Compass, BookOpen,
-  Brain, Languages, ChevronDown, ShieldCheck
+  ArrowRight, ArrowDown, ChevronDown, ChevronRight, ShieldCheck, Check,
+  Globe, Landmark, ScrollText, TrendingUp, FlaskConical, Leaf, Newspaper, Brain,
+  Video, FileText, ClipboardCheck, CalendarClock
 } from 'lucide-react';
-import CallbackRequestModal from './CallbackRequestModal';
 
-const COURSES_URL = 'https://courses.gameacademy.in';
+const COURSES_URL = 'https://courses.gameacademy.in'; // Beyond Boundaries on Game Live (Classplus)
+const LAST_CHECKED = '23 Nov 2026';
 
-type Route = 'recruitment' | 'engineering';
+type Route = 'all' | 'recruitment' | 'engineering';
+type PillTone = 'open' | 'waiting' | 'upcoming' | 'closed';
 
-interface ExamCard {
-  tag: string;
-  title: string;
-  desc: string;
-  href: string;
-  featured?: boolean;
-}
-
-const EXAMS: Record<Route, ExamCard[]> = {
-  recruitment: [
-    { tag: 'Graduate-level route', title: 'SSC CGL', desc: 'Check the specified qualifications and selection stages for each post.', href: COURSES_URL, featured: true },
-    { tag: 'Post-specific routes', title: 'RRB NTPC', desc: 'Compare graduate and undergraduate post requirements before applying.', href: COURSES_URL },
-    { tag: 'Different entry requirements', title: 'SSC CHSL / MTS', desc: 'Check the individual notice. Do not assume diploma equivalence.', href: COURSES_URL },
-    { tag: 'Exam-specific pathways', title: 'Banking & State', desc: 'Explore the role and full subject mix. General Studies is only one part.', href: COURSES_URL },
-  ],
-  engineering: [
-    { tag: 'Diploma / B.Tech route', title: 'SSC JE', desc: 'Junior Engineer posts via SSC — check the paper pattern and eligibility.', href: '/ssc', featured: true },
-    { tag: 'Railways engineering', title: 'RRB JE', desc: 'Junior Engineer recruitment in Indian Railways. Verify post requirements.', href: '/rrb' },
-    { tag: 'State services', title: 'State AE / JE', desc: 'Assistant/Junior Engineer posts in state PWD, irrigation and more.', href: '/state' },
-    { tag: 'Public sector', title: 'PSU Recruitment', desc: 'Post-specific PSU hiring. Check each organisation’s own notice.', href: '/psu' },
-  ],
+const toneClass: Record<PillTone, string> = {
+  open: 'bg-green-100 text-green-700',
+  waiting: 'bg-amber-100 text-amber-700',
+  upcoming: 'bg-blue-100 text-blue-700',
+  closed: 'bg-slate-200 text-slate-500',
 };
 
-const NOTICES = [
-  { label: 'SSC notices', href: 'https://ssc.gov.in' },
-  { label: 'RRB notices', href: 'https://www.rrbcdg.gov.in' },
-  { label: 'IBPS notices', href: 'https://www.ibps.in' },
+interface ExamCard {
+  route: 'recruitment' | 'engineering';
+  eligibility: string;
+  status: string;
+  tone: PillTone;
+  title: string;
+  desc: string;
+  meta: string;
+  href: string;
+}
+
+const CARDS: ExamCard[] = [
+  { route: 'recruitment', eligibility: 'Graduate', status: 'Tier I done', tone: 'waiting', title: 'SSC CGL',
+    desc: 'Non-tech: entire exam. Reasoning, GA, Quant, English. Any graduate, any branch.',
+    meta: '12,256 posts. Tier I held 30 Sep–30 Oct 2026. Tier II tentatively Dec.', href: COURSES_URL },
+  { route: 'recruitment', eligibility: 'Graduate · UG', status: 'Applications closed', tone: 'closed', title: 'RRB NTPC',
+    desc: 'Non-tech: entire exam. Graduate (CEN 06/2026) and 12th pass (CEN 07/2026) posts.',
+    meta: '3,548 graduate + 1,688 UG posts. Graduate CBT-1 expected Dec.', href: COURSES_URL },
+  { route: 'recruitment', eligibility: '12th · 10th', status: 'Dec 2026', tone: 'upcoming', title: 'SSC CHSL / MTS',
+    desc: 'Non-tech: entire exam. CHSL needs 12th pass, MTS needs 10th pass. A diploma or degree is not a separate route.',
+    meta: 'CHSL Tier I proposed 30 Nov–31 Dec 2026. Confirm on ssc.gov.in.', href: COURSES_URL },
+  { route: 'recruitment', eligibility: 'Graduate', status: 'Varies', tone: 'closed', title: 'Banking & State',
+    desc: 'Non-tech: entire exam. IBPS, SBI and state recruitments. General Studies is only one part of the mix.',
+    meta: 'Dates differ for every bank and state. Check the official notice.', href: COURSES_URL },
+  { route: 'engineering', eligibility: 'Diploma · Degree', status: 'Paper-I done', tone: 'waiting', title: 'SSC JE',
+    desc: 'Non-tech: Reasoning + General Awareness, 100 of 200 marks in Paper-I.',
+    meta: 'About 1,748 posts notified (some sources say 1,699). Paper-II expected Dec 2026.', href: '/ssc' },
+  { route: 'engineering', eligibility: 'Diploma · Degree', status: 'Result awaited', tone: 'waiting', title: 'RRB JE',
+    desc: 'Non-tech: all of CBT-1. Maths, Reasoning, General Awareness, General Science.',
+    meta: 'CEN 04/2026 · 4,029 posts (one source reports 4,487). CBT-1 result expected Dec.', href: '/rrb' },
+  { route: 'engineering', eligibility: 'Degree', status: '31 Jan 2027', tone: 'upcoming', title: 'UPSC ESE (IES)',
+    desc: 'Non-tech: Paper 1, 200 of 500 marks in prelims. General Studies and Engineering Aptitude.',
+    meta: 'Prelims 31 Jan 2027. Paper 1 is 9:30–11:30 am.', href: '/ese' },
+  { route: 'engineering', eligibility: 'Diploma · Degree', status: 'Varies by state', tone: 'closed', title: 'State AE / JE',
+    desc: 'Non-tech: a General Studies paper or section in most state engineering services.',
+    meta: 'Pattern and dates differ for every state. Track them on Job Updates.', href: '/state' },
 ];
 
-const SUBJECTS = [
-  { title: 'General Studies', desc: 'Science / history / polity / economy / environment', tone: 'dark' },
-  { title: 'Aptitude & Reasoning', desc: 'Check the required skills. Match your exam stage.', tone: 'mint' },
-  { title: 'English & Other Skills', desc: 'Language, computers and skill tests vary by post.', tone: 'gold' },
+const FACTS = [
+  { big: '100', small: '200', label: 'SSC JE Paper 1', desc: 'Reasoning (50) + General Awareness (50). The other 100 are your engineering subject.', pct: 50 },
+  { big: '100', small: '100', label: 'RRB JE CBT-1', desc: 'Maths, Reasoning, General Awareness and General Science. No technical questions at this stage.', pct: 100 },
+  { big: '200', small: '500', label: 'UPSC ESE Prelims', desc: 'Paper 1 is General Studies and Engineering Aptitude, common to every branch.', pct: 40 },
+];
+
+const UPDATES: { exam: string; stage: string; update: string; status: string; tone: PillTone }[] = [
+  { exam: 'RRB NTPC', stage: 'Graduate + UG', update: 'Graduate (CEN 06/2026) applications ran 8 Oct–8 Nov; UG (CEN 07/2026) closed 13 Nov. Modification windows run to 18 Nov and 25 Nov.', status: 'Open: edits', tone: 'open' },
+  { exam: 'SSC CHSL', stage: 'Tier I', update: 'Proposed exam window 30 Nov–31 Dec 2026, as per SSC’s schedule reported on 2 Oct. Dates can change.', status: 'Upcoming', tone: 'upcoming' },
+  { exam: 'RRB JE', stage: 'CBT-1', update: 'Held 27–28 Oct and 2 Nov. Answer key out 11 Nov. Result expected in December. CBT-2 date not announced.', status: 'Waiting', tone: 'waiting' },
+  { exam: 'SSC JE', stage: 'Paper-I', update: 'Paper-I started 2 Nov. Answer key reported 19 Nov. Paper-II is tentatively December.', status: 'Waiting', tone: 'waiting' },
+  { exam: 'SSC CGL', stage: 'Tier I → II', update: 'Tier I ran 30 Sep–30 Oct. Result awaited. Tier II is tentatively December.', status: 'Waiting', tone: 'waiting' },
+  { exam: 'UPSC ESE', stage: 'Prelims', update: 'Prelims on 31 Jan 2027. Admit card to be issued on upsc.gov.in closer to the date.', status: '31 Jan 2027', tone: 'upcoming' },
+];
+
+const PATTERN = [
+  { exam: 'SSC JE Paper-I', sections: 'Reasoning · General Awareness', questions: '50 + 50', marks: '100 of 200', share: '50%', neg: '0.25' },
+  { exam: 'RRB JE CBT-1', sections: 'Maths · Reasoning · GA · General Science', questions: '30 + 25 + 15 + 30', marks: '100 of 100', share: '100%', neg: '⅓' },
+  { exam: 'UPSC ESE Prelims', sections: 'Paper 1: General Studies & Engineering Aptitude', questions: 'Objective', marks: '200 of 500', share: '40%', neg: 'As per UPSC' },
+  { exam: 'SSC CGL Tier I', sections: 'Reasoning · GA · Quant · English (25 each)', questions: '100', marks: '200 of 200', share: '100%', neg: '0.50' },
+];
+
+const SYLLABUS = [
+  { icon: Globe, title: 'Geography', desc: 'India and world, physical and economic.' },
+  { icon: Landmark, title: 'Polity & Constitution', desc: 'Structure of government, provisions, key acts.' },
+  { icon: ScrollText, title: 'History & Culture', desc: 'Ancient, medieval, modern, art and culture.' },
+  { icon: TrendingUp, title: 'Indian Economy', desc: 'Policies, planning, basic concepts.' },
+  { icon: FlaskConical, title: 'General Science', desc: 'Basic physics, chemistry and biology.' },
+  { icon: Leaf, title: 'Environment', desc: 'Issues, policies and sustainability.' },
+  { icon: Newspaper, title: 'Current Affairs', desc: 'National and international events, technology.' },
+  { icon: Brain, title: 'Reasoning & Maths', desc: 'Needed for SSC JE, RRB JE, CGL. Practised separately.' },
+];
+
+const PREP = [
+  { t: 'Start from PYQs', d: 'Solve the last few years’ papers first to see which topics repeat in your exam.' },
+  { t: 'Revise static GS weekly', d: 'History, polity and geography don’t change. Short weekly cycles beat long cramming.' },
+  { t: 'Keep current affairs light', d: 'Cover the last 6–12 months in short notes. Don’t chase every news item.' },
+  { t: 'Time the sections', d: 'Practise non-tech in a fixed time so it never eats your technical time.' },
+];
+
+const COURSE_FEATURES = [
+  'Structured study plan by Gaurav Babu Sir', 'Recorded video lectures',
+  'Doubt resolution support', 'Regular tests and assignments',
+  'Practice sets', 'Offline downloads',
+  'Career guidance by Gaurav Babu Sir', 'Flexible for working professionals',
 ];
 
 const FAQS = [
-  { q: 'Can diploma holders apply for every listed exam?', a: 'No. Each exam and post sets its own qualification. A diploma does not automatically meet a degree or 10+2-equivalence requirement — always check the official notice for the specific post.' },
-  { q: 'Is General Studies enough for the full exam?', a: 'No. General Studies is only one part. Most exams also test aptitude, reasoning, English and, for engineering posts, technical subjects. Prepare for the complete paper you will face.' },
-  { q: 'Where should I confirm eligibility and application dates?', a: 'Always on the recruiting authority’s official noticeboard (SSC, RRB, IBPS, state PSC). Dates and corrections can change — the official notice is final.' },
+  { q: 'Is non-tech really that important in engineering exams?', a: 'In SSC JE Paper-I it is half the marks, in RRB JE CBT-1 it is all the marks, and in ESE prelims Paper 1 it is 200 of 500. A strong technical paper can still lose to a weak non-tech one.' },
+  { q: 'I am a diploma holder. Which of these can I sit?', a: 'It depends on each post. SSC JE, RRB JE and most State AE/JE posts accept a diploma; SSC CGL, RRB NTPC (graduate posts) and UPSC ESE need a degree. Always confirm the qualification in the official notice for the specific post.' },
+  { q: 'Can a B.Tech student apply for SSC CGL and RRB NTPC?', a: 'Yes. Both are open to any graduate of any discipline, engineering included. They test reasoning, general awareness, quantitative aptitude and English — not your engineering subject.' },
+  { q: 'How long should I give to non-tech each day?', a: 'A steady fixed block each day works better than occasional long sessions. Fit it around your technical study so neither side is neglected — consistency matters more than hours.' },
+  { q: 'Does your GS course cover Reasoning and Maths?', a: 'No. It covers General Studies subjects only. Reasoning and Maths are practised separately.' },
+];
+
+const SOURCES = [
+  { name: 'SSC', site: 'ssc.gov.in', note: 'JE, CGL, CHSL notices', href: 'https://ssc.gov.in' },
+  { name: 'Railway (RRB)', site: 'rrbapply.gov.in', note: 'NTPC, JE, regional RRB sites', href: 'https://www.rrbapply.gov.in' },
+  { name: 'UPSC', site: 'upsc.gov.in', note: 'ESE notice and admit card', href: 'https://upsc.gov.in' },
+  { name: 'Banking', site: 'ibps.in · sbi.co.in/careers', note: 'IBPS and SBI notices', href: 'https://www.ibps.in' },
+  { name: 'State services', site: 'State PSC / board sites', note: 'Notices differ by state', href: '/jobs' },
 ];
 
 export default function NonTechHubPage() {
-  const [route, setRoute] = useState<Route>('recruitment');
-  const [q, setQ] = useState('');
+  const [route, setRoute] = useState<Route>('all');
   const [openFaq, setOpenFaq] = useState<number | null>(0);
-  const [guidanceOpen, setGuidanceOpen] = useState(false);
 
-  const cards = useMemo(() => {
-    const t = q.trim().toLowerCase();
-    const list = EXAMS[route];
-    if (!t) return list;
-    return list.filter((c) => `${c.title} ${c.desc} ${c.tag}`.toLowerCase().includes(t));
-  }, [route, q]);
+  const cards = useMemo(() => route === 'all' ? CARDS : CARDS.filter((c) => c.route === route), [route]);
 
   return (
-    <div className="bg-[#f3f5f0] text-[#101821] font-sans">
-      {/* ===== Hero ===== */}
-      <section className="relative -mt-20 pt-36 md:pt-44 pb-16 md:pb-20 overflow-hidden bg-gradient-to-br from-[#061417] via-[#0a1f1d] to-[#101821] text-white">
-        <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-[#087C70]/15 rounded-full blur-[130px] pointer-events-none" />
+    <div className="bg-[#eef2ef] text-[#0f2a2b] font-sans">
+      {/* ===== Breadcrumb + Hero ===== */}
+      <section className="relative -mt-20 pt-32 md:pt-40 pb-24 overflow-hidden bg-gradient-to-br from-[#06403f] via-[#075d63] to-[#06403f] text-white">
+        <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-[#f2c537]/10 rounded-full blur-[130px] pointer-events-none" />
         <div className="max-w-[1280px] mx-auto px-6 md:px-10 lg:px-12 relative z-10">
-          <div className="grid lg:grid-cols-[1.1fr_1fr] gap-10 items-center">
+          <nav className="text-[11px] text-teal-200/80 mb-6 flex items-center gap-1.5">
+            <Link href="/" className="hover:text-white">Home</Link><ChevronRight size={12} />
+            <span>Examination</span><ChevronRight size={12} />
+            <span className="text-white">Non-Tech Exams</span>
+          </nav>
+
+          <div className="grid lg:grid-cols-[1.5fr_1fr] gap-10 items-start">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-6">
-                <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#f2c537]">The Wider GAME · Non-Tech</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 mb-6">
+                <span className="text-[10px] font-black uppercase tracking-[0.22em] text-[#f2c537]">Non-Tech Exams · For Diploma &amp; B.Tech Engineers</span>
               </div>
-              <h1 className="text-4xl md:text-6xl font-black leading-[1.03] tracking-tight mb-4">
-                Your degree.<br /><span className="text-[#2dd4bf]">More directions.</span>
+              <h1 className="text-4xl md:text-6xl font-black leading-[1.02] tracking-tight mb-5">
+                Half the SSC JE Paper<br /><span className="text-[#f2c537]">Isn’t Engineering.</span>
               </h1>
-              <p className="text-lg font-bold text-[#2dd4bf]/90 mb-2">Explore beyond your technical subjects.</p>
-              <p className="text-slate-300 max-w-md mb-7 leading-relaxed">
-                Discover non-tech recruitments and the non-technical sections of engineering exams. Start with the right route.
+              <p className="text-slate-200 text-lg max-w-xl mb-7 leading-relaxed">
+                Reasoning, general awareness, science and maths decide the rank in many engineering exams. Here is where they count, what is open right now, and what to study.
               </p>
-              <div className="flex flex-wrap items-center gap-4">
-                <a href="#exams" className="inline-flex items-center gap-2 bg-[#f2c537] text-[#101821] font-black px-6 py-3.5 rounded-full hover:brightness-105 transition-all">
-                  Explore exams <ArrowUpRight size={17} />
+              <div className="flex flex-wrap items-center gap-3">
+                <a href="#updates" className="inline-flex items-center gap-2 bg-[#f2c537] text-[#0f2a2b] font-black px-6 py-3.5 rounded-full hover:brightness-105 transition-all">
+                  See What’s Open Now <ArrowDown size={16} />
                 </a>
-                <a href="#notices" className="inline-flex items-center gap-2 text-white/90 font-bold hover:text-white">
-                  Official notices <ArrowDown size={16} />
+                <a href="#exams" className="inline-flex items-center gap-2 border border-white/25 text-white font-bold px-6 py-3.5 rounded-full hover:bg-white/10 transition-all">
+                  Which exams test non-tech? <ArrowRight size={16} />
                 </a>
               </div>
-              <p className="text-[11px] text-slate-400 uppercase tracking-widest mt-7">
-                For diploma &amp; B.Tech backgrounds · check each post’s eligibility
-              </p>
             </motion.div>
 
-            {/* Orbital route diagram (decorative, original) */}
-            <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.1 }}
-              className="relative h-[320px] hidden lg:block">
-              <svg className="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 400 320" fill="none">
-                <line x1="200" y1="160" x2="90" y2="70" stroke="#2dd4bf" strokeWidth="1" strokeDasharray="3 4" />
-                <line x1="200" y1="160" x2="330" y2="95" stroke="#2dd4bf" strokeWidth="1" strokeDasharray="3 4" />
-                <line x1="200" y1="160" x2="320" y2="250" stroke="#2dd4bf" strokeWidth="1" strokeDasharray="3 4" />
-              </svg>
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-[#f2c537] text-[#101821] font-black text-2xl flex items-center justify-center shadow-xl shadow-[#f2c537]/20">G</div>
-              <div className="absolute left-[8%] top-[12%] bg-white text-[#101821] rounded-xl px-4 py-3 shadow-lg">
-                <span className="text-[9px] font-black text-slate-400">01</span>
-                <p className="font-black text-sm">SSC &amp; Railways</p>
-              </div>
-              <div className="absolute right-[4%] top-[22%] bg-white text-[#101821] rounded-xl px-4 py-3 shadow-lg">
-                <span className="text-[9px] font-black text-slate-400">02</span>
-                <p className="font-black text-sm">Banking &amp; State</p>
-              </div>
-              <div className="absolute right-[6%] bottom-[8%] bg-[#087C70] text-white rounded-xl px-4 py-3 shadow-lg">
-                <span className="text-[9px] font-black text-white/60">03</span>
-                <p className="font-black text-sm">Engineering + GS</p>
+            {/* Founder card */}
+            <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
+              className="hidden lg:flex items-center gap-4 bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm self-end">
+              <img src="/gaurav-sir.webp" alt="Gaurav Babu Sir" referrerPolicy="no-referrer" className="w-24 h-28 object-cover rounded-xl border border-white/10" />
+              <div>
+                <div className="text-[10px] font-black uppercase tracking-widest text-[#f2c537] mb-1">Founder &amp; Mentor</div>
+                <div className="font-black text-lg leading-tight">Gaurav Babu Sir</div>
+                <div className="text-sm text-teal-200">14+ Years Experience</div>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ===== Exam compass ===== */}
-      <section className="px-5 md:px-10 lg:px-12 -mt-10 relative z-20">
-        <div className="max-w-[1280px] mx-auto bg-white rounded-3xl shadow-xl border border-slate-100 p-6 md:p-8">
-          <div className="flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-[#075d63] mb-2">
-            <Compass size={14} /> Your exam compass
-          </div>
-          <h2 className="text-2xl md:text-3xl font-black mb-5">Which opportunity are you exploring?</h2>
-          <div className="grid sm:grid-cols-2 gap-3">
-            {([['recruitment', '01  Non-technical recruitments'], ['engineering', '02  Non-tech in engineering exams']] as const).map(([val, label]) => (
-              <button
-                key={val}
-                onClick={() => { setRoute(val as Route); setQ(''); }}
-                className={`text-left px-5 py-4 rounded-2xl font-black transition-all border ${
-                  route === val ? 'bg-[#075d63] text-white border-[#075d63] shadow-lg' : 'bg-slate-50 text-slate-700 border-slate-200 hover:border-[#075d63]/40'
-                }`}
-              >
-                {label}
+      {/* ===== Fact strip (overlaps hero) ===== */}
+      <section className="px-5 md:px-10 lg:px-12 -mt-16 relative z-20">
+        <div className="max-w-[1280px] mx-auto grid md:grid-cols-3 gap-4">
+          {FACTS.map((f) => (
+            <div key={f.label} className="bg-white rounded-2xl shadow-xl border border-slate-100 p-6">
+              <div className="flex items-baseline gap-1 mb-1">
+                <span className="text-4xl font-black text-[#075d63]">{f.big}</span>
+                <span className="text-xl font-black text-slate-300">/ {f.small}</span>
+              </div>
+              <div className="font-black text-sm mb-2">{f.label}</div>
+              <p className="text-xs text-slate-500 leading-relaxed mb-3">{f.desc}</p>
+              <div className="h-1.5 rounded-full bg-slate-100 overflow-hidden">
+                <div className="h-full bg-[#f2c537] rounded-full" style={{ width: `${f.pct}%` }} />
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ===== Route filter + exam cards ===== */}
+      <section id="exams" className="px-5 md:px-10 lg:px-12 py-14">
+        <div className="max-w-[1280px] mx-auto">
+          <h2 className="text-2xl md:text-4xl font-black mb-1">Which opportunity are you exploring?</h2>
+          <p className="text-sm text-slate-500 mb-6">Two routes. Pick one, or see all. Check each post’s eligibility in its official notice.</p>
+
+          <div className="grid sm:grid-cols-3 gap-3 mb-8">
+            {([
+              ['all', 'All exams', '8 exams'],
+              ['recruitment', 'Non-technical recruitments', 'CGL · NTPC · CHSL/MTS · Banking & State · any branch'],
+              ['engineering', 'Non-tech in engineering exams', 'SSC JE · RRB JE · ESE · State AE/JE · your branch'],
+            ] as const).map(([val, label, sub]) => (
+              <button key={val} onClick={() => setRoute(val as Route)}
+                className={`text-left px-5 py-4 rounded-2xl border transition-all ${route === val ? 'bg-[#075d63] text-white border-[#075d63] shadow-lg' : 'bg-white text-slate-700 border-slate-200 hover:border-[#075d63]/40'}`}>
+                <div className="font-black">{label}</div>
+                <div className={`text-[11px] mt-0.5 ${route === val ? 'text-teal-100' : 'text-slate-400'}`}>{sub}</div>
               </button>
             ))}
           </div>
-          <p className="text-xs text-slate-400 mt-3">Two routes, clear labels. Engineering recruitments stay distinct from non-technical jobs.</p>
-        </div>
-      </section>
 
-      {/* ===== Exam cards ===== */}
-      <section id="exams" className="px-5 md:px-10 lg:px-12 py-14">
-        <div className="max-w-[1280px] mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-7">
-            <div>
-              <div className="text-[11px] font-black uppercase tracking-widest text-[#075d63] mb-1">Explore the possibilities</div>
-              <h2 className="text-2xl md:text-4xl font-black">Start with the exam. Not the sales pitch.</h2>
-            </div>
-            <div className="relative w-full md:w-80">
-              <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
-              <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search exam or recruitment"
-                className="w-full pl-10 pr-3 py-3 rounded-xl border border-slate-200 bg-white text-sm font-semibold focus:outline-none focus:border-[#075d63]" />
-            </div>
-          </div>
-
-          {cards.length === 0 ? (
-            <div className="py-16 text-center bg-white rounded-2xl border-2 border-dashed border-slate-200 text-slate-400 font-medium">No match in this route. Try the other tab or clear the search.</div>
-          ) : (
-            <div className="grid sm:grid-cols-2 gap-4">
-              {cards.map((c) => (
-                <Link key={c.title} href={c.href} target={c.href.startsWith('http') ? '_blank' : undefined}
-                  className={`group rounded-2xl p-6 border transition-all hover:-translate-y-0.5 hover:shadow-lg ${
-                    c.featured ? 'bg-[#101821] text-white border-[#101821]' : 'bg-[#e9efe9] text-[#101821] border-transparent hover:border-[#075d63]/30'
-                  }`}>
-                  <div className={`text-[10px] font-black uppercase tracking-widest mb-2 ${c.featured ? 'text-[#2dd4bf]' : 'text-[#075d63]'}`}>{c.tag}</div>
-                  <h3 className="text-2xl font-black mb-2">{c.title}</h3>
-                  <p className={`text-sm mb-4 leading-relaxed ${c.featured ? 'text-slate-300' : 'text-slate-600'}`}>{c.desc}</p>
-                  <span className={`inline-flex items-center gap-1.5 text-sm font-black ${c.featured ? 'text-[#f2c537]' : 'text-[#075d63]'}`}>
-                    Explore exam guide <ArrowUpRight size={15} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                  </span>
-                </Link>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* ===== Notices ===== */}
-      <section id="notices" className="px-5 md:px-10 lg:px-12 pb-14">
-        <div className="max-w-[1280px] mx-auto bg-white rounded-3xl border border-slate-100 shadow-sm p-6 md:p-8 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-          <div className="max-w-xl">
-            <div className="text-[11px] font-black uppercase tracking-widest text-[#075d63] mb-1">Stay informed. Stay accurate.</div>
-            <h2 className="text-2xl md:text-3xl font-black mb-2">Dates change. Official notices lead.</h2>
-            <p className="text-sm text-slate-500">Check eligibility, dates and corrections with the recruiting authority. Live updates are published only after verification — no assumed application windows.</p>
-          </div>
-          <div className="flex flex-wrap gap-2 shrink-0">
-            {NOTICES.map((n) => (
-              <a key={n.label} href={n.href} target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 bg-slate-50 border border-slate-200 text-slate-700 font-bold text-sm px-4 py-2.5 rounded-xl hover:border-[#075d63] hover:text-[#075d63] transition-all">
-                {n.label} <ArrowUpRight size={14} />
-              </a>
+          <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-4">
+            {cards.map((c) => (
+              <Link key={c.title} href={c.href} target={c.href.startsWith('http') ? '_blank' : undefined}
+                className="group bg-white rounded-2xl border border-slate-200 p-5 flex flex-col hover:-translate-y-0.5 hover:shadow-lg hover:border-[#075d63]/30 transition-all">
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span className="text-[9px] font-black uppercase tracking-widest text-slate-400">{c.eligibility}</span>
+                  <span className={`text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full ${toneClass[c.tone]}`}>{c.status}</span>
+                </div>
+                <h3 className="text-xl font-black mb-2 group-hover:text-[#075d63] transition-colors">{c.title}</h3>
+                <p className="text-sm text-slate-600 leading-relaxed mb-3">{c.desc}</p>
+                <p className="text-[11px] text-slate-400 leading-relaxed mt-auto pt-3 border-t border-dashed border-slate-100">{c.meta}</p>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ===== Subject mix ===== */}
+      {/* ===== Latest updates ===== */}
+      <section id="updates" className="px-5 md:px-10 lg:px-12 pb-14">
+        <div className="max-w-[1280px] mx-auto">
+          <h2 className="text-2xl md:text-3xl font-black mb-1">Latest updates</h2>
+          <p className="text-sm text-slate-500 mb-5">What changed recently, with the date it was reported.</p>
+          <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+            <div className="hidden md:grid grid-cols-[120px_120px_1fr_120px] gap-4 px-5 py-3 bg-slate-50 text-[10px] font-black uppercase tracking-widest text-slate-400">
+              <span>Exam</span><span>Stage</span><span>Update</span><span>Status</span>
+            </div>
+            <div className="divide-y divide-slate-100">
+              {UPDATES.map((u, i) => (
+                <div key={i} className="grid md:grid-cols-[120px_120px_1fr_120px] gap-2 md:gap-4 px-5 py-4 items-start">
+                  <span className="font-black text-sm">{u.exam}</span>
+                  <span className="text-xs text-slate-500 font-bold">{u.stage}</span>
+                  <span className="text-sm text-slate-600 leading-relaxed">{u.update}</span>
+                  <span className={`justify-self-start text-[9px] font-black uppercase tracking-wider px-2 py-1 rounded-full ${toneClass[u.tone]}`}>{u.status}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <p className="text-[11px] text-slate-400 mt-3">Last checked {LAST_CHECKED} · Dates are as reported by news and exam portals and can change. Always confirm on the official site.</p>
+        </div>
+      </section>
+
+      {/* ===== Pattern table ===== */}
       <section className="px-5 md:px-10 lg:px-12 pb-14">
         <div className="max-w-[1280px] mx-auto">
-          <div className="text-[11px] font-black uppercase tracking-widest text-[#075d63] mb-1">The subject mix</div>
-          <h2 className="text-2xl md:text-4xl font-black mb-6">Prepare for the paper you will face.</h2>
-          <div className="grid md:grid-cols-3 gap-4">
-            {SUBJECTS.map((s) => {
-              const Icon = s.title.includes('General') ? BookOpen : s.title.includes('Aptitude') ? Brain : Languages;
-              const cls = s.tone === 'dark' ? 'bg-[#101821] text-white' : s.tone === 'gold' ? 'bg-[#f2c537] text-[#101821]' : 'bg-[#e9efe9] text-[#101821]';
-              return (
-                <div key={s.title} className={`rounded-2xl p-6 ${cls}`}>
-                  <Icon size={22} className="mb-3 opacity-80" />
-                  <h3 className="text-lg font-black mb-1">{s.title}</h3>
-                  <p className={`text-sm ${s.tone === 'dark' ? 'text-slate-300' : s.tone === 'gold' ? 'text-[#101821]/70' : 'text-slate-600'}`}>{s.desc}</p>
-                </div>
-              );
-            })}
+          <h2 className="text-2xl md:text-3xl font-black mb-1">What the non-tech paper looks like</h2>
+          <p className="text-sm text-slate-500 mb-5">Same subjects, very different weight in each exam.</p>
+          <div className="bg-white rounded-2xl border border-slate-200 overflow-x-auto">
+            <table className="w-full text-left text-sm min-w-[640px]">
+              <thead className="bg-slate-50 text-[10px] font-black uppercase tracking-widest text-slate-400">
+                <tr>
+                  <th className="px-5 py-3">Exam / Paper</th><th className="px-5 py-3">Non-tech sections</th>
+                  <th className="px-5 py-3">Questions</th><th className="px-5 py-3">Marks</th>
+                  <th className="px-5 py-3">Share</th><th className="px-5 py-3">Negative</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100">
+                {PATTERN.map((p) => (
+                  <tr key={p.exam}>
+                    <td className="px-5 py-3 font-black">{p.exam}</td>
+                    <td className="px-5 py-3 text-slate-600">{p.sections}</td>
+                    <td className="px-5 py-3 text-slate-600">{p.questions}</td>
+                    <td className="px-5 py-3 text-slate-600">{p.marks}</td>
+                    <td className="px-5 py-3"><span className="font-black text-[#075d63]">{p.share}</span></td>
+                    <td className="px-5 py-3 text-slate-600">{p.neg}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
 
-      {/* ===== GS course block ===== */}
+      {/* ===== Syllabus grid ===== */}
       <section className="px-5 md:px-10 lg:px-12 pb-14">
-        <div className="max-w-[1280px] mx-auto rounded-3xl bg-gradient-to-br from-[#083a33] to-[#101821] text-white p-8 md:p-10 flex flex-col md:flex-row md:items-center justify-between gap-6 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-[#f2c537]/10 rounded-full blur-3xl" />
-          <div className="relative z-10">
-            <div className="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-[#f2c537] mb-2">Optional · General Studies support</div>
-            <h2 className="text-2xl md:text-3xl font-black mb-2">Build your General Studies base.</h2>
-            <p className="text-[#2dd4bf] font-bold text-sm mb-1">Beyond Boundaries · GAME Academy</p>
-            <p className="text-slate-300 text-sm max-w-lg">Explore the GS course. Check its topic coverage against your target exam before you enrol.</p>
+        <div className="max-w-[1280px] mx-auto">
+          <h2 className="text-2xl md:text-3xl font-black mb-1">What you actually need to study</h2>
+          <p className="text-sm text-slate-500 mb-6">Common ground across these exams. Depth and mix change by exam.</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {SYLLABUS.map((s) => (
+              <div key={s.title} className="bg-white rounded-2xl border border-slate-200 p-5">
+                <div className="w-10 h-10 rounded-xl bg-[#075d63]/10 text-[#075d63] flex items-center justify-center mb-3"><s.icon size={20} /></div>
+                <h3 className="font-black mb-1">{s.title}</h3>
+                <p className="text-xs text-slate-500 leading-relaxed">{s.desc}</p>
+              </div>
+            ))}
           </div>
-          <a href={COURSES_URL} target="_blank" rel="noopener noreferrer" className="relative z-10 shrink-0 inline-flex items-center gap-2 bg-[#f2c537] text-[#101821] font-black px-6 py-3.5 rounded-xl hover:brightness-105 transition-all">
-            View GS course <ArrowUpRight size={17} />
-          </a>
+        </div>
+      </section>
+
+      {/* ===== Prep tips ===== */}
+      <section className="px-5 md:px-10 lg:px-12 pb-14">
+        <div className="max-w-[1280px] mx-auto">
+          <h2 className="text-2xl md:text-3xl font-black mb-1">How to prepare, simply</h2>
+          <p className="text-sm text-slate-500 mb-6">Four habits that work across these exams.</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {PREP.map((p, i) => (
+              <div key={p.t} className="bg-white rounded-2xl border border-slate-200 p-5">
+                <div className="w-8 h-8 rounded-full bg-[#f2c537] text-[#0f2a2b] font-black flex items-center justify-center mb-3">{i + 1}</div>
+                <h3 className="font-black mb-1">{p.t}</h3>
+                <p className="text-xs text-slate-500 leading-relaxed">{p.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== Course block ===== */}
+      <section className="px-5 md:px-10 lg:px-12 pb-14">
+        <div className="max-w-[1280px] mx-auto rounded-3xl bg-gradient-to-br from-[#06403f] to-[#0f2a2b] text-white p-7 md:p-10 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#f2c537]/10 rounded-full blur-3xl" />
+          <div className="relative z-10 grid lg:grid-cols-[260px_1fr] gap-8 items-center">
+            <div className="bg-[#0f2a2b] border border-white/10 rounded-2xl p-5 text-center">
+              <div className="text-[10px] font-black uppercase tracking-widest text-[#f2c537] mb-2">Our course</div>
+              <img src="/gaurav-sir.webp" alt="Gaurav Babu Sir" referrerPolicy="no-referrer" className="w-full h-40 object-cover rounded-xl mb-3" />
+              <div className="font-black">Beyond Boundaries</div>
+              <div className="text-xs text-teal-200">GS Mastery · Gaurav Sir</div>
+            </div>
+            <div>
+              <div className="text-[10px] font-black uppercase tracking-widest text-[#f2c537] mb-1">GAME Academy Course · Non-Tech</div>
+              <h2 className="text-2xl md:text-3xl font-black mb-2">Beyond Boundaries: General Studies Mastery Course</h2>
+              <p className="text-slate-300 text-sm mb-5 max-w-2xl">A full General Studies course for State Engineering Services, SSC, RRB, ESE and PSU exams, planned by Gaurav Babu Sir. Built for technical students who need non-tech support.</p>
+
+              <div className="grid grid-cols-4 gap-3 mb-6 max-w-lg">
+                {[['101', 'Videos', Video], ['145', 'Files', FileText], ['60', 'Tests', ClipboardCheck], ['6/12', 'Months', CalendarClock]].map(([n, l, Icon]) => (
+                  <div key={l as string} className="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
+                    {React.createElement(Icon as any, { size: 16, className: 'mx-auto mb-1 text-[#f2c537]' })}
+                    <div className="font-black">{n as string}</div>
+                    <div className="text-[9px] uppercase tracking-widest text-slate-400">{l as string}</div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-x-6 gap-y-2 mb-6">
+                {COURSE_FEATURES.map((f) => (
+                  <div key={f} className="flex items-center gap-2 text-sm text-slate-200"><Check size={15} className="text-[#2dd4bf] shrink-0" /> {f}</div>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap items-center gap-3 mb-4">
+                <a href={COURSES_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-[#f2c537] text-[#0f2a2b] font-black px-6 py-3 rounded-xl hover:brightness-105 transition-all">
+                  Choose Your Plan <ArrowRight size={16} />
+                </a>
+                <a href={COURSES_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-white/20 text-white font-bold px-5 py-3 rounded-xl hover:bg-white/10 transition-all text-sm">
+                  View course details
+                </a>
+              </div>
+              <p className="text-xs text-slate-400 max-w-2xl">Covers: General Science, Current Affairs, History &amp; Culture, Geography, Polity, Economy, Environmental Science. <span className="text-slate-300 font-bold">Reasoning and Maths are not part of this course.</span></p>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ===== FAQ ===== */}
       <section className="px-5 md:px-10 lg:px-12 pb-14">
         <div className="max-w-[900px] mx-auto">
-          <h2 className="text-2xl md:text-3xl font-black mb-5">A few things worth asking.</h2>
+          <h2 className="text-2xl md:text-3xl font-black mb-5">Questions students ask</h2>
           <div className="divide-y divide-slate-200 border-t border-b border-slate-200">
             {FAQS.map((f, i) => (
               <div key={i}>
                 <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex items-center justify-between gap-4 py-4 text-left">
-                  <span className="font-bold text-[#101821]">{f.q}</span>
+                  <span className="font-bold">{f.q}</span>
                   <ChevronDown size={18} className={`shrink-0 text-[#075d63] transition-transform ${openFaq === i ? 'rotate-180' : ''}`} />
                 </button>
                 {openFaq === i && <p className="text-sm text-slate-600 pb-4 -mt-1 leading-relaxed">{f.a}</p>}
@@ -259,23 +385,26 @@ export default function NonTechHubPage() {
         </div>
       </section>
 
-      {/* ===== Guidance CTA ===== */}
-      <section className="px-5 md:px-10 lg:px-12 pb-16">
-        <div className="max-w-[1280px] mx-auto bg-white rounded-3xl border border-slate-100 shadow-sm p-6 md:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-5">
-          <div>
-            <h2 className="text-xl md:text-2xl font-black mb-1">Need a clearer starting point?</h2>
-            <p className="text-sm text-slate-500">Tell us your qualification and target exam before choosing preparation support.</p>
+      {/* ===== Official sources ===== */}
+      <section className="px-5 md:px-10 lg:px-12 pb-14">
+        <div className="max-w-[1280px] mx-auto">
+          <h2 className="text-2xl md:text-3xl font-black mb-1">Official sources</h2>
+          <p className="text-sm text-slate-500 mb-6">Confirm dates and eligibility here before you apply.</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            {SOURCES.map((s) => (
+              <a key={s.name} href={s.href} target={s.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer"
+                className="bg-white rounded-2xl border border-slate-200 p-5 hover:border-[#075d63]/40 hover:shadow-md transition-all">
+                <div className="font-black text-sm mb-1">{s.name}</div>
+                <div className="text-[#075d63] font-bold text-sm mb-1">{s.site}</div>
+                <div className="text-xs text-slate-400">{s.note}</div>
+              </a>
+            ))}
           </div>
-          <button onClick={() => setGuidanceOpen(true)} className="shrink-0 inline-flex items-center gap-2 bg-[#075d63] text-white font-black px-6 py-3.5 rounded-xl hover:bg-[#054a4f] transition-all">
-            Get guidance <ArrowRight size={16} />
-          </button>
+          <p className="text-[11px] text-slate-400 mt-6 flex items-center gap-1.5">
+            <ShieldCheck size={13} /> GAME Academy is an independent preparation platform. Official recruitment notices govern eligibility, dates and corrections.
+          </p>
         </div>
-        <p className="max-w-[1280px] mx-auto text-[11px] text-slate-400 mt-4 flex items-center gap-1.5">
-          <ShieldCheck size={13} /> GAME is an independent preparation platform. Official recruitment notices govern eligibility.
-        </p>
       </section>
-
-      <CallbackRequestModal isOpen={guidanceOpen} onClose={() => setGuidanceOpen(false)} source="nontech-hub" />
     </div>
   );
 }
