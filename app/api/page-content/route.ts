@@ -9,7 +9,7 @@ export const dynamic = 'force-dynamic';
 // Read via the Admin SDK so it works regardless of Firestore client rules.
 // The website falls back to its built-in defaults when a field is empty, so an
 // empty or missing document never breaks the page.
-const ALLOWED = new Set(['nontech', 'school']);
+const ALLOWED = new Set(['nontech', 'school', 'iit']);
 
 export async function GET(req: NextRequest) {
   const page = (req.nextUrl.searchParams.get('page') || '').toLowerCase();
