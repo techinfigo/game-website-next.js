@@ -155,7 +155,7 @@ export default function NonTechHubPage() {
   return (
     <div className="bg-[#eef2ef] text-[#0f2a2b] font-sans">
       {/* ===== Breadcrumb + Hero ===== */}
-      <section className="relative -mt-20 pt-32 md:pt-40 pb-24 overflow-hidden bg-gradient-to-br from-[#06403f] via-[#075d63] to-[#06403f] text-white">
+      <section className="relative -mt-20 pt-44 md:pt-48 pb-24 overflow-hidden bg-gradient-to-br from-[#06403f] via-[#075d63] to-[#06403f] text-white">
         <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-[#f2c537]/10 rounded-full blur-[130px] pointer-events-none" />
         <div className="max-w-[1280px] mx-auto px-6 md:px-10 lg:px-12 relative z-10">
           <nav className="text-[11px] text-teal-200/80 mb-6 flex items-center gap-1.5">

@@ -87,7 +87,7 @@ export default function NextChapterPage() {
   return (
     <div className="bg-[#f3f5f0] text-[#101821] font-sans">
       {/* ===== Hero ===== */}
-      <section className="relative -mt-20 pt-36 md:pt-44 pb-16 md:pb-20 overflow-hidden bg-gradient-to-br from-[#061417] via-[#0a1f1d] to-[#101821] text-white">
+      <section className="relative -mt-20 pt-44 md:pt-48 pb-16 md:pb-20 overflow-hidden bg-gradient-to-br from-[#061417] via-[#0a1f1d] to-[#101821] text-white">
         <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-[#087C70]/15 rounded-full blur-[130px] pointer-events-none" />
         <div className="max-w-[1280px] mx-auto px-6 md:px-10 lg:px-12 relative z-10">
           <div className="grid lg:grid-cols-[1.1fr_1fr] gap-10 items-center">
