@@ -121,6 +121,7 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout, profil
       ]
     },
     { name: 'Courses', id: 'courses' },
+    { name: 'Test Series', id: 'test-series' },
     { name: 'Results', id: 'rankers' },
     { name: 'Reviews', id: 'reviews' },
     { name: 'Job Updates', id: 'jobs' },
