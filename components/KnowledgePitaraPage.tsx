@@ -188,10 +188,9 @@ const KnowledgePitaraPage: React.FC = () => {
     () => Array.from(new Set(items.map((i) => i.subject).filter(Boolean))).sort(),
     [items]
   );
-  const typeTabs = useMemo(() => {
-    const present = new Set(items.map((i) => i.rtype));
-    return ['All PDFs', ...CANON_TYPES.filter((t) => present.has(t))];
-  }, [items]);
+  // Show the full, proper category set at all times (not only the types that
+  // currently have content). As resources get tagged in admin, each tab fills.
+  const typeTabs = useMemo(() => ['All PDFs', ...CANON_TYPES], []);
 
   // ---- Apply filters ----
   const filtered = useMemo(() => {
