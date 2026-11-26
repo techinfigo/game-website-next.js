@@ -259,7 +259,7 @@ const KnowledgePitaraPage: React.FC = () => {
       )}
       <div>
         <label className="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-1.5">Access</label>
-        <div className="grid grid-cols-3 gap-1.5 bg-slate-100 p-1 rounded-xl">
+        <div className="grid grid-cols-1 gap-1.5 bg-slate-100 p-1 rounded-xl">
           {(['all', 'free', 'paid'] as const).map((a) => (
             <button
               key={a}
