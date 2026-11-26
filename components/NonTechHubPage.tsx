@@ -415,14 +415,13 @@ export default function NonTechHubPage() {
           <div className="divide-y divide-slate-200 border-t border-b border-slate-200">
             {faqs.map((f, i) => (
               <div key={i}>
-                <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex items-center gap-3 py-4 text-left">
-                  <img src="/gaurav-sir.webp" alt="Gaurav Babu Sir" referrerPolicy="no-referrer" className="w-9 h-9 rounded-full object-cover border border-slate-200 shrink-0" />
-                  <span className="font-bold flex-1">{f.q}</span>
+                <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex items-center justify-between gap-4 py-4 text-left">
+                  <span className="font-bold">{f.q}</span>
                   <ChevronDown size={18} className={`shrink-0 text-[#075d63] transition-transform ${openFaq === i ? 'rotate-180' : ''}`} />
                 </button>
                 {openFaq === i && (
-                  <div className="flex gap-3 pb-4 -mt-1">
-                    <span className="w-9 shrink-0" aria-hidden="true" />
+                  <div className="flex items-start gap-3 pb-4 -mt-1">
+                    <img src="/gaurav-sir.webp" alt="Gaurav Babu Sir" referrerPolicy="no-referrer" className="w-9 h-9 rounded-full object-cover border border-slate-200 shrink-0" />
                     <p className="text-sm text-slate-600 leading-relaxed">{f.a}</p>
                   </div>
                 )}
