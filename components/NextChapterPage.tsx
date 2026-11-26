@@ -4,13 +4,16 @@ import React, { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
-  ArrowUpRight, ArrowRight, ArrowDown, Compass, ChevronDown,
-  BookOpen, FlaskConical, Sigma, Leaf, Lightbulb
+  ArrowUpRight, ArrowRight, Compass, ChevronDown,
+  BookOpen, FlaskConical, Sigma, Leaf, Lightbulb, Download, Youtube, X, CheckCircle2
 } from 'lucide-react';
 import CallbackRequestModal from './CallbackRequestModal';
+import { useSiteSettings } from '@/hooks/useSiteSettings';
 
 const COURSES_URL = 'https://courses.gameacademy.in'; // Game Live (Classplus)
 const TEST_PORTAL = 'https://courses.gameacademy.in'; // tests live on the Classplus app
+const GUIDE_URL = '/resources'; // "Download Starter Guide" → short guides on the Resources page
+const YT_FALLBACK = 'https://www.youtube.com/@gblions'; // Gaurav Sir's Physics lessons
 
 type ClassLevel = '09' | '10' | '11' | '12';
 
@@ -44,7 +47,10 @@ export default function NextChapterPage() {
   const [goal, setGoal] = useState<string>('');
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [guidanceOpen, setGuidanceOpen] = useState(false);
+  const [thanksOpen, setThanksOpen] = useState(false);
   const [faqs, setFaqs] = useState(FAQS);
+  const { youtube } = useSiteSettings();
+  const ytUrl = youtube || YT_FALLBACK;
 
   const goals = useMemo(() => goalsFor(cls), [cls]);
 
@@ -73,7 +79,7 @@ export default function NextChapterPage() {
     if (goal && !goals.includes(goal)) setGoal('');
   }, [goals, goal]);
 
-  const explorePath = () => {
+  const submitInterests = () => {
     try {
       const p = new URLSearchParams();
       if (cls) p.set('class', cls);
@@ -81,7 +87,7 @@ export default function NextChapterPage() {
       const qs = p.toString();
       window.history.replaceState(null, '', qs ? `?${qs}` : window.location.pathname);
     } catch { /* ignore */ }
-    document.getElementById('routes')?.scrollIntoView({ behavior: 'smooth' });
+    setThanksOpen(true);
   };
 
   return (
@@ -99,15 +105,15 @@ export default function NextChapterPage() {
                 Big questions.<br /><span className="text-[#2dd4bf]">Bigger possibilities.</span>
               </h1>
               <p className="text-lg font-bold text-[#2dd4bf]/90 mb-2">Your next chapter starts with understanding.</p>
-              <p className="text-slate-300 max-w-md mb-7 leading-relaxed">
-                Science &amp; Maths for Classes 9–12. Find your direction for school, JEE or NEET.
+              <p className="text-slate-300 max-w-xl mb-7 leading-relaxed">
+                Build your understanding with Gaurav Babu Sir’s Physics lessons on YouTube. Read our short guides and tell us what you would like to learn next.
               </p>
               <div className="flex flex-wrap items-center gap-4">
-                <a href="#pathfinder" className="inline-flex items-center gap-2 bg-[#f2c537] text-[#101821] font-black px-6 py-3.5 rounded-full hover:brightness-105 transition-all">
-                  Find my path <ArrowUpRight size={17} />
+                <a href={GUIDE_URL} className="inline-flex items-center gap-2 bg-[#f2c537] text-[#101821] font-black px-6 py-3.5 rounded-full hover:brightness-105 transition-all">
+                  <Download size={17} /> Download Starter Guide
                 </a>
-                <a href="#concept-lab" className="inline-flex items-center gap-2 text-white/90 font-bold hover:text-white">
-                  Explore subjects <ArrowDown size={16} />
+                <a href={ytUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-white/90 font-bold hover:text-white">
+                  <Youtube size={18} /> Watch Physics on YouTube
                 </a>
               </div>
               <p className="text-[11px] text-slate-400 uppercase tracking-widest mt-7">
@@ -126,7 +132,8 @@ export default function NextChapterPage() {
                 <circle cx="120" cy="175" r="5" fill="#2dd4bf" />
                 <circle cx="350" cy="205" r="5" fill="#f2c537" />
               </svg>
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-[#f2c537] text-[#101821] font-black text-2xl flex items-center justify-center shadow-xl shadow-[#f2c537]/20">G</div>
+              <img src="/gaurav-sir.webp" alt="Gaurav Babu Sir" referrerPolicy="no-referrer"
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 rounded-full object-cover border-4 border-[#f2c537] shadow-xl shadow-[#f2c537]/20" />
               <div className="absolute left-[10%] bottom-[18%] bg-white text-[#101821] rounded-xl px-4 py-3 shadow-lg">
                 <span className="text-[9px] font-black text-slate-400">01 / Understand</span>
                 <p className="font-black text-sm">Why does it work?</p>
@@ -146,7 +153,7 @@ export default function NextChapterPage() {
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5 mb-5">
             <div>
               <div className="flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-[#075d63] mb-1"><Compass size={14} /> Your pathfinder</div>
-              <h2 className="text-2xl md:text-3xl font-black">Where are you starting?</h2>
+              <h2 className="text-2xl md:text-3xl font-black">What would you like to learn next?</h2>
               <p className="text-xs text-slate-400 mt-1">Choose a class. We’ll help you explore the next step.</p>
             </div>
             <div className="grid grid-cols-4 gap-2">
@@ -170,8 +177,8 @@ export default function NextChapterPage() {
                 </button>
               ))}
             </div>
-            <button onClick={explorePath} className="shrink-0 inline-flex items-center justify-center gap-2 bg-[#f2c537] text-[#101821] font-black px-6 py-3 rounded-xl hover:brightness-105 transition-all">
-              Explore my path <ArrowUpRight size={16} />
+            <button onClick={submitInterests} className="shrink-0 inline-flex items-center justify-center gap-2 bg-[#f2c537] text-[#101821] font-black px-6 py-3 rounded-xl hover:brightness-105 transition-all">
+              Submit <ArrowUpRight size={16} />
             </button>
           </div>
           <p className="text-xs text-slate-400 mt-3">
@@ -312,6 +319,33 @@ export default function NextChapterPage() {
       </section>
 
       <CallbackRequestModal isOpen={guidanceOpen} onClose={() => setGuidanceOpen(false)} source="next-chapter" />
+
+      {/* ===== Submit thank-you popup ===== */}
+      {thanksOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" role="dialog" aria-modal="true">
+          <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setThanksOpen(false)} />
+          <div className="relative z-10 w-full max-w-md bg-white rounded-3xl shadow-2xl p-7 text-center">
+            <button onClick={() => setThanksOpen(false)} aria-label="Close" className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-slate-200">
+              <X size={18} />
+            </button>
+            <div className="w-14 h-14 rounded-full bg-[#075d63]/10 text-[#075d63] flex items-center justify-center mx-auto mb-4">
+              <CheckCircle2 size={28} />
+            </div>
+            <h3 className="text-xl font-black text-[#101821] mb-2">Thank you</h3>
+            <p className="text-sm text-slate-600 leading-relaxed mb-6">
+              Your interests have been shared with GAME. You can continue learning through Gaurav Sir’s available Physics lessons on YouTube.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a href={ytUrl} target="_blank" rel="noopener noreferrer" className="flex-1 inline-flex items-center justify-center gap-2 bg-[#f2c537] text-[#101821] font-black px-5 py-3 rounded-xl hover:brightness-105 transition-all">
+                <Youtube size={17} /> Watch Physics on YouTube
+              </a>
+              <button onClick={() => setThanksOpen(false)} className="flex-1 inline-flex items-center justify-center font-bold text-slate-600 border border-slate-200 px-5 py-3 rounded-xl hover:bg-slate-50 transition-all">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
