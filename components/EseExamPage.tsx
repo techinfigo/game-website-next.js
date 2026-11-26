@@ -13,12 +13,12 @@ import WinnerChoiceSection from './WinnerChoiceSection';
 import AchieversSection from './AchieversSection';
 import { useSiteSettings } from '@/hooks/useSiteSettings';
 import { 
-  Trophy, Shield, Star, Briefcase, TrendingUp, 
+  Trophy, Shield, Star, Briefcase,
   CheckCircle2, ArrowRight, Sparkles,
   Building2, Landmark, Users, GraduationCap, Target,
   Zap, Clock, FileText, Download, Info, HelpCircle,
   Plus, Minus, Globe, HeartPulse, Scale, Newspaper,
-  Layers, Award, ShieldCheck, Microscope, Flame,
+  Layers, Award, ShieldCheck, Microscope,
   Lightbulb, Compass, BarChart3, AlertCircle, Calendar,
   Activity, UserCheck, ClipboardList, HardHat, FileSpreadsheet, ListChecks,
   BookOpen, FolderOpen, ExternalLink as ExternalLinkIcon, Stethoscope, Eye, LayoutList, Train, Wrench,
@@ -129,6 +129,16 @@ const EseExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content }
         behavior: 'smooth'
       });
     }
+  };
+
+  // Each hero creative carries its own link from the admin panel. Clicking the
+  // slide follows it: in-page anchors scroll, external URLs open in a new tab,
+  // and site routes navigate.
+  const openSlideLink = (link?: string) => {
+    if (!link) return;
+    if (link.startsWith('#')) scrollToSection(link.slice(1));
+    else if (/^https?:\/\//.test(link)) window.open(link, '_blank', 'noopener,noreferrer');
+    else window.location.href = link;
   };
 
   const comparisonData = [
@@ -582,7 +592,10 @@ const EseExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content }
                            animate={{ opacity: 1 }}
                            exit={{ opacity: 0 }}
                            transition={{ duration: 0.4 }}
-                           className="absolute inset-0 flex flex-col p-8 justify-between h-full w-full"
+                           onClick={() => openSlideLink(eseSlides[activeSlide].link)}
+                           role={eseSlides[activeSlide].link ? 'link' : undefined}
+                           aria-label={eseSlides[activeSlide].title}
+                           className={`absolute inset-0 ${eseSlides[activeSlide].link ? 'cursor-pointer' : ''}`}
                         >
                            <Image
                               src={eseSlides[activeSlide].imageUrl}
@@ -591,20 +604,6 @@ const EseExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content }
                               className="object-cover"
                               referrerPolicy="no-referrer"
                            />
-                           <div className="absolute inset-0 bg-gradient-to-t from-[#001c1e] via-transparent to-[#001c1e]/60"></div>
-
-                           {/* Button bottom right corner */}
-                           <div className="relative z-10 mt-auto self-end">
-                              <button onClick={() => scrollToSection('ese-courses')} className="group flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white font-black text-xs uppercase tracking-widest hover:bg-gameGold hover:text-gameBlack transition-all">
-                                 {eseSlides[activeSlide].buttonText || 'Explore Courses'}
-                                 <TrendingUp size={14} className="group-hover:translate-x-1 transition-transform" />
-                              </button>
-                           </div>
-
-                           {/* Decorative Elements */}
-                           <div className="absolute top-8 right-8 opacity-20 z-10 text-white">
-                              <Flame size={60} />
-                           </div>
                         </motion.div>
                      </AnimatePresence>
 
@@ -627,7 +626,7 @@ const EseExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content }
                            key={i}
                            onClick={() => setActiveSlide(i)}
                            className={`relative aspect-[16/9] rounded-lg border transition-all duration-300 overflow-hidden ${
-                              i === activeSlide ? 'border-gameTeal scale-105 shadow-lg shadow-gameTeal/20' : 'border-white/10 opacity-30 hover:opacity-100'
+                              i === activeSlide ? 'border-gameTeal scale-105 shadow-lg shadow-gameTeal/20' : 'border-white/10 opacity-70 hover:opacity-100'
                            }`}
                         >
                            <Image
@@ -637,7 +636,6 @@ const EseExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content }
                               className="object-cover"
                               referrerPolicy="no-referrer"
                            />
-                           <div className="absolute inset-0 bg-black/40"></div>
                         </button>
                      ))}
                   </div>
