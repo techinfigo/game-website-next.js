@@ -50,9 +50,18 @@ function formatPrice(p?: string | number): string {
   return s;
 }
 
+// Normalise a single tag so near-duplicates collapse to one label, e.g.
+// "RRB-JE" -> "RRB JE", "SSC-JE" -> "SSC JE", and stray double spaces go away.
+function normTag(x: string): string {
+  return x
+    .trim()
+    .replace(/\s+/g, ' ')
+    .replace(/\b([A-Za-z]+)-([A-Za-z]+)\b/g, '$1 $2');
+}
+
 // Split a tag string like "GATE / Mechanical / SOM" or "GATE, ESE" into parts.
 function splitTags(s?: string): string[] {
-  return (s || '').split(/[,/|]/).map((x) => x.trim()).filter(Boolean);
+  return (s || '').split(/[,/|]/).map((x) => normTag(x)).filter(Boolean);
 }
 
 // Unified catalogue item used by the grid.
@@ -188,6 +197,16 @@ const KnowledgePitaraPage: React.FC = () => {
     () => Array.from(new Set(items.map((i) => i.subject).filter(Boolean))).sort(),
     [items]
   );
+  // Popular exams (quick picks) — a preferred order, kept to the ones we
+  // actually have resources for, so no quick pick leads to an empty result.
+  const popularExams = useMemo(() => {
+    const pref = ['GATE', 'ESE', 'SSC JE', 'RRB JE', 'PSUs', 'JE', 'AE'];
+    return pref.filter((p) => examOptions.some((e) => e.toLowerCase() === p.toLowerCase())).slice(0, 6);
+  }, [examOptions]);
+  const counts = useMemo(() => ({
+    free: items.filter((i) => i.kind === 'free').length,
+    paid: items.filter((i) => i.kind === 'paid').length,
+  }), [items]);
   // Show the full, proper category set at all times (not only the types that
   // currently have content). As resources get tagged in admin, each tab fills.
   const typeTabs = useMemo(() => ['All PDFs', ...CANON_TYPES], []);
@@ -259,7 +278,7 @@ const KnowledgePitaraPage: React.FC = () => {
       )}
       <div>
         <label className="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-1.5">Access</label>
-        <div className="grid grid-cols-3 gap-1.5 bg-slate-100 p-1 rounded-xl">
+        <div className="grid grid-cols-1 gap-1.5 bg-slate-100 p-1 rounded-xl">
           {(['all', 'free', 'paid'] as const).map((a) => (
             <button
               key={a}
@@ -359,6 +378,35 @@ const KnowledgePitaraPage: React.FC = () => {
                   <button onClick={resetAll} className="text-xs font-bold text-slate-400 hover:text-[#075d63] flex items-center gap-1"><RotateCcw size={12} /> Reset</button>
                 </div>
                 {FiltersBody}
+
+                {/* Popular quick picks — puts the panel's spare height to work */}
+                {popularExams.length > 0 && (
+                  <div className="mt-6">
+                    <label className="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">Popular</label>
+                    <div className="flex flex-wrap gap-1.5">
+                      {popularExams.map((ex) => {
+                        const on = exam.toLowerCase() === ex.toLowerCase();
+                        return (
+                          <button
+                            key={ex}
+                            onClick={() => { setExam(on ? 'all' : ex); setVisible(9); }}
+                            className={`px-3 py-1.5 rounded-full text-xs font-bold border transition-all ${on ? 'bg-[#075d63] text-white border-[#075d63] shadow' : 'bg-white text-slate-600 border-slate-200 hover:border-[#075d63]/40'}`}
+                          >
+                            {ex}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
+                {/* Library at a glance */}
+                <div className="mt-6 rounded-xl border border-slate-100 bg-slate-50 px-4 py-3">
+                  <div className="flex items-center justify-between text-xs font-black">
+                    <span className="flex items-center gap-1.5 text-[#075d63]"><span className="w-2 h-2 rounded-full bg-[#075d63]" /> {counts.free} Free</span>
+                    <span className="flex items-center gap-1.5 text-slate-600"><span className="w-2 h-2 rounded-full bg-[#f2c537]" /> {counts.paid} Premium</span>
+                  </div>
+                </div>
 
                 <div className="mt-auto pt-6 border-t border-slate-100">
                   <div className="rounded-xl bg-[#075d63]/5 border border-[#075d63]/15 p-4">
