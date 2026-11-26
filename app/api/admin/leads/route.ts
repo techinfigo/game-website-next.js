@@ -10,7 +10,7 @@ import { getAdminAuth, getAdminDb } from '@/lib/firebase-admin';
 // project (i.e. a logged-in admin).
 
 // Only these collections may be read through this endpoint.
-const ALLOWED_COLLECTIONS = new Set(['callbackRequests', 'mentorshipLeads']);
+const ALLOWED_COLLECTIONS = new Set(['callbackRequests', 'mentorshipLeads', 'schoolInterests']);
 
 // The admin panel is served from its own origin, so we reflect the request's
 // Origin. Auth here is a bearer ID token (not a cookie), so opening CORS does
