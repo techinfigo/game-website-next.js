@@ -166,7 +166,7 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout, profil
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center lg:gap-7 xl:gap-9">
+          <nav className="hidden lg:flex items-center lg:gap-5 xl:gap-7">
             {navItems.map((item) => {
               const isHighlight = (item as any).highlight;
               const active = isItemActive(item);
@@ -180,7 +180,7 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout, profil
                   {item.dropdown ? (
                     <button
                       className={`
-                        text-sm font-bold transition-all relative flex items-center gap-1.5 py-2
+                        text-sm font-bold transition-all relative flex items-center gap-1.5 py-2 xl:whitespace-nowrap
                         ${isHighlight
                           ? `px-5 rounded-full border-2 border-[#f2c537] hover:bg-[#f2c537] hover:text-black hover:-translate-y-0.5 ${active ? 'bg-[#f2c537] text-black' : 'bg-transparent text-slate-900'}`
                           : `${active ? 'text-gameTeal' : (scrolled ? 'text-slate-600 hover:text-gameTeal' : 'text-slate-700 hover:text-gameTeal')}`
@@ -197,7 +197,7 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout, profil
                       prefetch={false}
                       onClick={handleLinkClick}
                       className={`
-                        text-sm font-bold transition-all relative flex items-center gap-1.5 py-2
+                        text-sm font-bold transition-all relative flex items-center gap-1.5 py-2 xl:whitespace-nowrap
                         ${active ? 'text-gameTeal' : (scrolled ? 'text-slate-600 hover:text-gameTeal' : 'text-slate-700 hover:text-gameTeal')}
                       `}
                     >
