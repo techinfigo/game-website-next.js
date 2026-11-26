@@ -375,7 +375,7 @@ export default function NextChapterPage() {
                 </button>
                 {openFaq === i && (
                   <div className="flex items-start gap-3 pb-4 -mt-1">
-                    <img src="/gaurav-sir.webp" alt="Gaurav Babu Sir" referrerPolicy="no-referrer" className="w-9 h-9 rounded-full object-cover border border-slate-200 shrink-0" />
+                    <img src="/gaurav-face.webp" alt="Gaurav Babu Sir" referrerPolicy="no-referrer" className="w-9 h-9 rounded-full object-cover border border-slate-200 shrink-0" />
                     <p className="text-sm text-slate-600 leading-relaxed">{f.a}</p>
                   </div>
                 )}
