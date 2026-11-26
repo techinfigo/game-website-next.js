@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import {
   ArrowRight, ArrowDown, ChevronDown, ShieldCheck, Check,
   Globe, Landmark, ScrollText, TrendingUp, FlaskConical, Leaf, Newspaper, Brain,
-  Video, FileText, ClipboardCheck, CalendarClock, MessageCircle
+  Video, FileText, ClipboardCheck, CalendarClock
 } from 'lucide-react';
 
 const COURSES_URL = 'https://courses.gameacademy.in'; // Game Live (Classplus) catalogue
@@ -410,32 +410,24 @@ export default function NonTechHubPage() {
 
       {/* ===== FAQ ===== */}
       <section className="px-5 md:px-10 lg:px-12 pb-14">
-        <div className="max-w-[1100px] mx-auto grid lg:grid-cols-[300px_1fr] gap-8 items-start">
-          {/* Mentor card */}
-          <div className="bg-white rounded-2xl border border-slate-200 p-6 lg:sticky lg:top-24 text-center">
-            <img src="/gaurav-sir.webp" alt="Gaurav Babu Sir" referrerPolicy="no-referrer" className="w-28 h-28 object-cover rounded-2xl mx-auto mb-4 border border-slate-100" />
-            <div className="text-[10px] font-black uppercase tracking-widest text-[#075d63] mb-1">Founder &amp; Mentor</div>
-            <div className="font-black text-lg leading-tight">Gaurav Babu Sir</div>
-            <div className="text-sm text-slate-500 mb-4">14+ years mentoring GATE, ESE &amp; non-tech aspirants</div>
-            <a href="https://wa.me/919027615394" target="_blank" rel="noopener noreferrer" className="w-full inline-flex items-center justify-center gap-2 bg-[#075d63] text-white text-sm font-black rounded-xl px-4 py-2.5 hover:bg-[#054a4f] transition-all">
-              <MessageCircle size={15} /> Ask your question
-            </a>
-          </div>
-
-          {/* Accordion */}
-          <div>
-            <h2 className="text-2xl md:text-3xl font-black mb-5">Questions students ask</h2>
-            <div className="divide-y divide-slate-200 border-t border-b border-slate-200">
-              {faqs.map((f, i) => (
-                <div key={i}>
-                  <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex items-center justify-between gap-4 py-4 text-left">
-                    <span className="font-bold">{f.q}</span>
-                    <ChevronDown size={18} className={`shrink-0 text-[#075d63] transition-transform ${openFaq === i ? 'rotate-180' : ''}`} />
-                  </button>
-                  {openFaq === i && <p className="text-sm text-slate-600 pb-4 -mt-1 leading-relaxed">{f.a}</p>}
-                </div>
-              ))}
-            </div>
+        <div className="max-w-[900px] mx-auto">
+          <h2 className="text-2xl md:text-3xl font-black mb-5">Questions students ask</h2>
+          <div className="divide-y divide-slate-200 border-t border-b border-slate-200">
+            {faqs.map((f, i) => (
+              <div key={i}>
+                <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex items-center gap-3 py-4 text-left">
+                  <img src="/gaurav-sir.webp" alt="Gaurav Babu Sir" referrerPolicy="no-referrer" className="w-9 h-9 rounded-full object-cover border border-slate-200 shrink-0" />
+                  <span className="font-bold flex-1">{f.q}</span>
+                  <ChevronDown size={18} className={`shrink-0 text-[#075d63] transition-transform ${openFaq === i ? 'rotate-180' : ''}`} />
+                </button>
+                {openFaq === i && (
+                  <div className="flex gap-3 pb-4 -mt-1">
+                    <span className="w-9 shrink-0" aria-hidden="true" />
+                    <p className="text-sm text-slate-600 leading-relaxed">{f.a}</p>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>
