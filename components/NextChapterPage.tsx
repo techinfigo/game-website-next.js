@@ -166,7 +166,7 @@ export default function NextChapterPage() {
                 <div className="absolute -inset-6 bg-[#2dd4bf]/10 rounded-[2rem] blur-2xl pointer-events-none" />
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/15 bg-black" style={{ aspectRatio: '16 / 9' }}>
                   <iframe
-                    src={`https://www.youtube.com/embed/${heroVideos[0]}?autoplay=1&mute=1&loop=1&playlist=${heroVideos[0]}&rel=0&playsinline=1&modestbranding=1`}
+                    src={`https://www.youtube.com/embed/${heroVideos[0]}?autoplay=1&mute=1&loop=1&playlist=${heroVideos[0]}&rel=0&playsinline=1&modestbranding=1&controls=0&disablekb=1&fs=0&iv_load_policy=3`}
                     title="Gaurav Sir lesson"
                     allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
                     allowFullScreen
