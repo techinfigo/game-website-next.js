@@ -7,6 +7,7 @@ import {
   ArrowLeft, ArrowRight, MessageCircle, ChevronRight, Eye, BookOpen, FolderDown, Star, Quote
 } from 'lucide-react';
 import { goToPortal } from '@/lib/portalHandoff';
+import TestimonialsText from './TestimonialsText';
 
 const WHATSAPP = 'https://wa.me/919027615394';
 
@@ -392,6 +393,11 @@ export default function PdfProductPage({ id }: { id: string }) {
             <Link href="/about" className="text-sm font-black text-[#075d63] hover:underline inline-flex items-center gap-1 mt-2">Meet Gaurav Sir <ArrowRight size={13} /></Link>
           </div>
         </div>
+      </div>
+
+      {/* ===== Student testimonials (site-wide) ===== */}
+      <div className="mt-10">
+        <TestimonialsText />
       </div>
 
       {/* ===== Mobile sticky bottom bar ===== */}
