@@ -8,7 +8,7 @@ import { usePaidPdfs } from '@/hooks/usePaidPdfs';
 import {
   BookOpen, FileText, Video, PenTool, Sparkles, Layout,
   ArrowRight, Download, Search, SlidersHorizontal,
-  X, Eye, ShoppingBag, Layers, PlayCircle, RotateCcw, Package
+  X, ShoppingBag, Layers, PlayCircle, RotateCcw, Package
 } from 'lucide-react';
 
 // Canonical resource-type labels (approved design).
@@ -353,18 +353,20 @@ const KnowledgePitaraPage: React.FC = () => {
           <div className="grid lg:grid-cols-[240px_1fr] gap-6">
             {/* Filter sidebar (desktop) */}
             <aside className="hidden lg:block">
-              <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 sticky top-24">
-                <div className="flex items-center justify-between mb-4">
+              <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sticky top-24 flex flex-col lg:min-h-[620px]">
+                <div className="flex items-center justify-between mb-5">
                   <span className="font-black text-slate-900 flex items-center gap-2"><SlidersHorizontal size={16} className="text-[#075d63]" /> Filters</span>
                   <button onClick={resetAll} className="text-xs font-bold text-slate-400 hover:text-[#075d63] flex items-center gap-1"><RotateCcw size={12} /> Reset</button>
                 </div>
                 {FiltersBody}
 
-                <div className="mt-6 pt-5 border-t border-slate-100">
-                  <p className="text-xs font-bold text-slate-500 mb-2">Looking for live mock tests?</p>
-                  <Link href="/#test-series" className="text-sm font-black text-[#075d63] hover:underline inline-flex items-center gap-1">
-                    Visit Test Series <ArrowRight size={14} />
-                  </Link>
+                <div className="mt-auto pt-6 border-t border-slate-100">
+                  <div className="rounded-xl bg-[#075d63]/5 border border-[#075d63]/15 p-4">
+                    <p className="text-xs font-bold text-slate-600 mb-2">Looking for live mock tests?</p>
+                    <Link href="/test-series" className="w-full inline-flex items-center justify-center gap-1.5 bg-[#075d63] text-white text-sm font-black rounded-lg px-4 py-2.5 hover:bg-[#054a4f] transition-all">
+                      Explore Test Series <ArrowRight size={14} />
+                    </Link>
+                  </div>
                 </div>
               </div>
             </aside>
@@ -490,14 +492,18 @@ const KnowledgePitaraPage: React.FC = () => {
 
           {/* ===== Cross links ===== */}
           <div className="mt-8 grid sm:grid-cols-2 gap-4">
-            <Link href="/courses" className="group bg-white rounded-2xl border border-slate-200 p-6 flex items-center justify-between hover:border-[#075d63]/40 hover:shadow-md transition-all">
-              <span className="flex items-center gap-3 font-black text-slate-900"><PlayCircle className="text-[#075d63]" size={22} /> Need classes? Explore Courses</span>
-              <ArrowRight size={18} className="text-slate-400 group-hover:text-[#075d63] group-hover:translate-x-1 transition-all" />
-            </Link>
-            <Link href="/#test-series" className="group bg-white rounded-2xl border border-slate-200 p-6 flex items-center justify-between hover:border-[#075d63]/40 hover:shadow-md transition-all">
-              <span className="flex items-center gap-3 font-black text-slate-900"><PenTool className="text-[#075d63]" size={22} /> Need mock tests? Explore Test Series</span>
-              <ArrowRight size={18} className="text-slate-400 group-hover:text-[#075d63] group-hover:translate-x-1 transition-all" />
-            </Link>
+            <div className="bg-white rounded-2xl border border-slate-200 p-6 flex flex-wrap items-center justify-between gap-4 hover:border-[#075d63]/40 hover:shadow-md transition-all">
+              <span className="flex items-center gap-3 font-black text-slate-900"><PlayCircle className="text-[#075d63]" size={22} /> Need classes?</span>
+              <Link href="/courses" className="shrink-0 inline-flex items-center gap-1.5 bg-[#075d63] text-white text-sm font-black rounded-xl px-5 py-2.5 hover:bg-[#054a4f] transition-all">
+                Explore More <ArrowRight size={16} />
+              </Link>
+            </div>
+            <div className="bg-white rounded-2xl border border-slate-200 p-6 flex flex-wrap items-center justify-between gap-4 hover:border-[#075d63]/40 hover:shadow-md transition-all">
+              <span className="flex items-center gap-3 font-black text-slate-900"><PenTool className="text-[#075d63]" size={22} /> Need mock tests?</span>
+              <Link href="/test-series" className="shrink-0 inline-flex items-center gap-1.5 bg-[#075d63] text-white text-sm font-black rounded-xl px-5 py-2.5 hover:bg-[#054a4f] transition-all">
+                Explore Test Series <ArrowRight size={16} />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -576,18 +582,13 @@ function Card({ item, index }: { item: Item; index: number }) {
           </div>
         )}
 
-        <div className="mt-auto pt-4 border-t border-dashed border-slate-200 flex items-center gap-2">
+        <div className="mt-auto pt-4 border-t border-dashed border-slate-200">
           {isPaid ? (
-            <>
-              <Link href={item.previewLink} className="shrink-0 inline-flex items-center gap-1.5 text-sm font-black text-[#075d63] border border-[#075d63]/30 rounded-xl px-3 py-2.5 hover:bg-[#075d63]/5 transition-all">
-                <Eye size={15} /> Preview
-              </Link>
-              <Link href={item.openLink} className="flex-1 inline-flex items-center justify-center gap-1.5 bg-slate-900 text-white text-sm font-black rounded-xl px-3 py-2.5 hover:bg-[#f2c537] hover:text-black transition-all">
-                <ShoppingBag size={15} /> View &amp; Buy PDF
-              </Link>
-            </>
+            <Link href={item.openLink} className="w-full inline-flex items-center justify-center gap-1.5 bg-slate-900 text-white text-sm font-black rounded-xl px-3 py-3 hover:bg-[#f2c537] hover:text-black transition-all">
+              <ShoppingBag size={15} /> View &amp; Buy PDF
+            </Link>
           ) : (
-            <button onClick={() => open(item.openLink)} className="flex-1 inline-flex items-center justify-center gap-1.5 bg-[#075d63] text-white text-sm font-black rounded-xl px-3 py-2.5 hover:bg-[#f2c537] hover:text-black transition-all">
+            <button onClick={() => open(item.openLink)} className="w-full inline-flex items-center justify-center gap-1.5 bg-[#075d63] text-white text-sm font-black rounded-xl px-3 py-3 hover:bg-[#f2c537] hover:text-black transition-all">
               <Download size={15} /> Download Free
             </button>
           )}
