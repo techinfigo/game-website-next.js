@@ -188,10 +188,9 @@ const KnowledgePitaraPage: React.FC = () => {
     () => Array.from(new Set(items.map((i) => i.subject).filter(Boolean))).sort(),
     [items]
   );
-  const typeTabs = useMemo(() => {
-    const present = new Set(items.map((i) => i.rtype));
-    return ['All PDFs', ...CANON_TYPES.filter((t) => present.has(t))];
-  }, [items]);
+  // Show the full, proper category set at all times (not only the types that
+  // currently have content). As resources get tagged in admin, each tab fills.
+  const typeTabs = useMemo(() => ['All PDFs', ...CANON_TYPES], []);
 
   // ---- Apply filters ----
   const filtered = useMemo(() => {
@@ -300,17 +299,6 @@ const KnowledgePitaraPage: React.FC = () => {
               <p className="text-slate-300 text-base md:text-lg mb-7 leading-relaxed max-w-xl">
                 Notes, formula sheets and question banks for GATE, ESE and JE exams. Find your subject, preview the PDF, then download or buy — all on this website.
               </p>
-
-              {/* Search */}
-              <div className="relative max-w-xl">
-                <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
-                <input
-                  value={q}
-                  onChange={(e) => { setQ(e.target.value); setVisible(9); }}
-                  placeholder="Search subjects or resources, e.g. Strength of Materials"
-                  className="w-full pl-12 pr-4 py-4 rounded-2xl bg-white text-slate-900 text-sm md:text-base font-semibold shadow-xl placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-[#075d63]/30"
-                />
-              </div>
             </motion.div>
 
             {/* Study your way */}
@@ -397,18 +385,31 @@ const KnowledgePitaraPage: React.FC = () => {
                     {loading ? 'Loading…' : `${filtered.length} ${filtered.length === 1 ? 'resource' : 'resources'}`}
                   </p>
                 </div>
-                <div className="relative">
-                  <select
-                    value={sort}
-                    onChange={(e) => setSort(e.target.value as any)}
-                    aria-label="Sort resources"
-                    className="appearance-none bg-white border border-slate-200 rounded-xl pl-3 pr-8 py-2 text-sm font-bold text-slate-700 shadow-sm cursor-pointer focus:outline-none focus:border-[#075d63]"
-                  >
-                    <option value="recommended">Sort: Recommended</option>
-                    <option value="priceLow">Price: Low to High</option>
-                    <option value="priceHigh">Price: High to Low</option>
-                  </select>
-                  <ChevronDown />
+                <div className="flex items-center gap-2 w-full sm:w-auto">
+                  {/* Compact search, beside the sort control */}
+                  <div className="relative flex-1 sm:flex-none sm:w-56">
+                    <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+                    <input
+                      value={q}
+                      onChange={(e) => { setQ(e.target.value); setVisible(9); }}
+                      placeholder="Search resources"
+                      aria-label="Search resources"
+                      className="w-full pl-9 pr-3 py-2 rounded-xl bg-white border border-slate-200 text-sm font-semibold text-slate-700 shadow-sm placeholder:text-slate-400 focus:outline-none focus:border-[#075d63]"
+                    />
+                  </div>
+                  <div className="relative shrink-0">
+                    <select
+                      value={sort}
+                      onChange={(e) => setSort(e.target.value as any)}
+                      aria-label="Sort resources"
+                      className="appearance-none bg-white border border-slate-200 rounded-xl pl-3 pr-8 py-2 text-sm font-bold text-slate-700 shadow-sm cursor-pointer focus:outline-none focus:border-[#075d63]"
+                    >
+                      <option value="recommended">Sort: Recommended</option>
+                      <option value="priceLow">Price: Low to High</option>
+                      <option value="priceHigh">Price: High to Low</option>
+                    </select>
+                    <ChevronDown />
+                  </div>
                 </div>
               </div>
 
