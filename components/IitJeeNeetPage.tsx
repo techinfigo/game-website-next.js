@@ -42,11 +42,15 @@ const DEFAULT_FAQS: Faq[] = [
   { q: 'Is this an official notice?', a: 'No. This page is a general guide. Exam dates and rules are set by NTA, IIT Delhi, JoSAA and MCC, and can change.' },
 ];
 
-const CAROUSEL = [
-  { tag: 'JEE Main 2027', line: 'Session 1 exams from 20 January 2027' },
-  { tag: 'JEE Advanced 2027', line: 'Reported for 23 May 2027 · IIT Delhi' },
-  { tag: 'NEET UG 2027', line: 'Notification and dates awaited from NTA' },
-  { tag: 'Counselling', line: 'JoSAA for engineering · MCC for medical' },
+interface HeroSlide { imageUrl: string; link: string; title: string; }
+
+// Default hero banners — placeholders until the client uploads real creatives
+// in the admin panel (Exam Page Content → IIT / NEET → Hero slider).
+const SEED_SLIDES: HeroSlide[] = [
+  { imageUrl: 'https://picsum.photos/seed/iit-hero-1/1200/820', link: '#updates', title: 'JEE & NEET latest updates' },
+  { imageUrl: 'https://picsum.photos/seed/iit-hero-2/1200/820', link: '#compare', title: 'Compare JEE and NEET' },
+  { imageUrl: 'https://picsum.photos/seed/iit-hero-3/1200/820', link: '#updates', title: 'Exam dates and eligibility' },
+  { imageUrl: 'https://picsum.photos/seed/iit-hero-4/1200/820', link: '#updates', title: 'Counselling: JoSAA & MCC' },
 ];
 
 const FACTS = [
@@ -107,11 +111,13 @@ export default function IitJeeNeetPage() {
   const [faqs, setFaqs] = useState<Faq[]>(DEFAULT_FAQS);
   const [lastChecked, setLastChecked] = useState(DEFAULT_LAST_CHECKED);
   const [deadline, setDeadline] = useState(DEFAULT_DEADLINE);
+  const [slides, setSlides] = useState<HeroSlide[]>(SEED_SLIDES);
 
   useEffect(() => {
-    const t = setInterval(() => setSlide((s) => (s + 1) % CAROUSEL.length), 4500);
+    if (slides.length < 2) return;
+    const t = setInterval(() => setSlide((s) => (s + 1) % slides.length), 4500);
     return () => clearInterval(t);
-  }, []);
+  }, [slides.length]);
 
   useEffect(() => {
     let cancelled = false;
@@ -122,9 +128,19 @@ export default function IitJeeNeetPage() {
       if (Array.isArray(c.faqs) && c.faqs.length) setFaqs(c.faqs);
       if (typeof c.lastChecked === 'string' && c.lastChecked.trim()) setLastChecked(c.lastChecked);
       if (typeof c.deadlineNote === 'string') setDeadline(c.deadlineNote);
+      if (Array.isArray(c.hero) && c.hero.length) { setSlides(c.hero.filter((s: any) => s && s.imageUrl)); setSlide(0); }
     }).catch(() => {});
     return () => { cancelled = true; };
   }, []);
+
+  // Each hero banner carries its own admin-set link.
+  const openSlide = (link?: string) => {
+    if (!link) return;
+    if (link.startsWith('#')) { const el = document.getElementById(link.slice(1)); if (el) el.scrollIntoView({ behavior: 'smooth' }); }
+    else if (/^https?:\/\//.test(link)) { window.open(link, '_blank', 'noopener,noreferrer'); }
+    else { window.location.href = link; }
+  };
+  const activeSrc = slides[Math.min(slide, slides.length - 1)];
 
   return (
     <div className="bg-[#eef2ef] text-[#0f2a2b] font-sans">
@@ -162,22 +178,37 @@ export default function IitJeeNeetPage() {
               )}
             </motion.div>
 
-            {/* Banner carousel */}
-            <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.1 }}
-              className="relative rounded-2xl overflow-hidden h-[300px] border border-white/10 bg-[#0f2a2b]">
-              {CAROUSEL.map((s, i) => (
-                <div key={i} className={`absolute inset-0 p-6 flex flex-col justify-end transition-opacity duration-700 ${i === slide ? 'opacity-100' : 'opacity-0'}`}
-                  style={{ background: 'linear-gradient(135deg, rgba(8,58,51,0.4), rgba(15,42,43,0.95))' }}>
-                  <span className="absolute top-5 left-5 text-[10px] font-black uppercase tracking-widest bg-[#f2c537] text-[#0f2a2b] px-2 py-1 rounded">{s.tag}</span>
-                  <h3 className="text-2xl font-black text-white mb-3 max-w-sm">{s.line}</h3>
-                  <a href="#updates" className="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 text-white font-bold text-sm px-4 py-2 rounded-lg w-fit hover:bg-white/20">View dates <ArrowDown size={14} /></a>
-                </div>
-              ))}
-              <div className="absolute bottom-5 right-5 flex gap-1.5 z-10">
-                {CAROUSEL.map((_, i) => (
-                  <button key={i} onClick={() => setSlide(i)} aria-label={`Slide ${i + 1}`} className={`h-1.5 rounded-full transition-all ${i === slide ? 'w-5 bg-[#f2c537]' : 'w-1.5 bg-white/40'}`} />
-                ))}
-              </div>
+            {/* Hero image slider (admin-managed, like the exam pages) */}
+            <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.1 }} className="w-full">
+              {activeSrc && (
+                <>
+                  <div className="relative rounded-2xl border border-white/10 overflow-hidden shadow-2xl bg-white/5 aspect-[16/11]">
+                    <img
+                      src={activeSrc.imageUrl}
+                      alt={activeSrc.title || 'IIT JEE / NEET banner'}
+                      referrerPolicy="no-referrer"
+                      onClick={() => openSlide(activeSrc.link)}
+                      className={`w-full h-full object-cover ${activeSrc.link ? 'cursor-pointer' : ''}`}
+                    />
+                    <div className="absolute bottom-3 right-4 flex gap-1.5 z-10">
+                      {slides.map((_, i) => (
+                        <button key={i} onClick={() => setSlide(i)} aria-label={`Slide ${i + 1}`}
+                          className={`h-1 rounded-full transition-all duration-300 ${i === slide ? 'w-6 bg-[#f2c537]' : 'w-1.5 bg-white/40'}`} />
+                      ))}
+                    </div>
+                  </div>
+                  {slides.length > 1 && (
+                    <div className="grid grid-cols-4 gap-2 mt-3">
+                      {slides.map((s, i) => (
+                        <button key={i} onClick={() => setSlide(i)} aria-label={s.title || `Slide ${i + 1}`}
+                          className={`relative aspect-[16/10] rounded-lg overflow-hidden border transition-all duration-300 ${i === slide ? 'border-[#f2c537] scale-105' : 'border-white/10 opacity-70 hover:opacity-100'}`}>
+                          <img src={s.imageUrl} alt="" referrerPolicy="no-referrer" className="w-full h-full object-cover" />
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </>
+              )}
             </motion.div>
           </div>
         </div>
