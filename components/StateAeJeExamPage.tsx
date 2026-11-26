@@ -423,6 +423,8 @@ const StateAeJeExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ con
               const security = detailOf(i, 'Job Security');
               const posting = detailOf(i, 'Postings', 'Posting');
               const impact = detailOf(i, 'Work Impact');
+              const steps = m.stages.kind === 'steps' ? m.stages.steps : null;
+              const chipsData = m.stages.kind === 'chips' ? m.stages : null;
               return (
               <motion.div
                 key={i}
@@ -450,28 +452,28 @@ const StateAeJeExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ con
 
                   {/* Selection stages */}
                   <div className="text-[11px] font-black uppercase tracking-widest text-[#1F5A56] mb-3 pt-5 border-t border-slate-100">Selection Stages</div>
-                  {m.stages.kind === 'steps' ? (
+                  {steps ? (
                     <div className="flex items-center justify-between gap-1 mb-5">
-                      {m.stages.steps.map((st, k) => (
+                      {steps.map((st, k) => (
                         <React.Fragment key={st}>
                           <div className="flex flex-col items-center text-center shrink-0">
-                            <span className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-black ${k === m.stages.steps.length - 1 ? 'bg-[#E7BB2B] text-[#12302F]' : 'bg-[#1F5A56] text-white'}`}>{k + 1}</span>
+                            <span className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-black ${k === steps.length - 1 ? 'bg-[#E7BB2B] text-[#12302F]' : 'bg-[#1F5A56] text-white'}`}>{k + 1}</span>
                             <span className="text-xs font-bold text-[#0B1F1E] mt-1.5">{st}</span>
                           </div>
-                          {k < m.stages.steps.length - 1 && <span className="flex-1 h-0.5 bg-[#1F5A56]/30 mt-[-18px]" />}
+                          {k < steps.length - 1 && <span className="flex-1 h-0.5 bg-[#1F5A56]/30 mt-[-18px]" />}
                         </React.Fragment>
                       ))}
                     </div>
-                  ) : (
+                  ) : chipsData ? (
                     <div className="mb-5">
                       <div className="flex flex-wrap gap-2">
-                        {m.stages.chips.map((c) => (
+                        {chipsData.chips.map((c) => (
                           <span key={c} className="text-[13px] font-bold text-[#0B1F1E] bg-[#F2F6F5] border border-slate-200 rounded-lg px-3 py-1.5">{c}</span>
                         ))}
                       </div>
-                      <p className="text-xs text-slate-500 mt-2.5 leading-relaxed">{m.stages.note}</p>
+                      <p className="text-xs text-slate-500 mt-2.5 leading-relaxed">{chipsData.note}</p>
                     </div>
-                  )}
+                  ) : null}
 
                   {/* Two tiles: Eligibility (left) + Pay (right) */}
                   <div className="grid sm:grid-cols-2 gap-3 mb-6">
