@@ -166,7 +166,7 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout, profil
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-6">
+          <nav className="hidden lg:flex items-center lg:gap-7 xl:gap-9">
             {navItems.map((item) => {
               const isHighlight = (item as any).highlight;
               const active = isItemActive(item);
