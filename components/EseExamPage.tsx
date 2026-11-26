@@ -591,7 +591,6 @@ const EseExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content }
                               className="object-cover"
                               referrerPolicy="no-referrer"
                            />
-                           <div className="absolute inset-0 bg-gradient-to-t from-[#001c1e] via-transparent to-[#001c1e]/60"></div>
 
                            {/* Button bottom right corner */}
                            <div className="relative z-10 mt-auto self-end">
@@ -627,7 +626,7 @@ const EseExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content }
                            key={i}
                            onClick={() => setActiveSlide(i)}
                            className={`relative aspect-[16/9] rounded-lg border transition-all duration-300 overflow-hidden ${
-                              i === activeSlide ? 'border-gameTeal scale-105 shadow-lg shadow-gameTeal/20' : 'border-white/10 opacity-30 hover:opacity-100'
+                              i === activeSlide ? 'border-gameTeal scale-105 shadow-lg shadow-gameTeal/20' : 'border-white/10 opacity-70 hover:opacity-100'
                            }`}
                         >
                            <Image
@@ -637,7 +636,6 @@ const EseExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ content }
                               className="object-cover"
                               referrerPolicy="no-referrer"
                            />
-                           <div className="absolute inset-0 bg-black/40"></div>
                         </button>
                      ))}
                   </div>
