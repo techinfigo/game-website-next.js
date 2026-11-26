@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import {
   Lock, Loader2, FileText, Check, ShieldCheck,
-  ArrowLeft, ArrowRight, MessageCircle, ChevronRight, Eye, BookOpen, FolderDown
+  ArrowLeft, ArrowRight, MessageCircle, ChevronRight, Eye, BookOpen, FolderDown, Star, Quote
 } from 'lucide-react';
 import { goToPortal } from '@/lib/portalHandoff';
 
@@ -29,6 +29,25 @@ interface PdfMeta {
   images: string[];
   purchaseIncludes: string[];
   resourceDetails: string[];
+  reviews: PdfReview[];
+}
+
+interface PdfReview {
+  name: string;
+  text: string;
+  rating: number;
+  verified: boolean;
+}
+
+function Stars({ n }: { n: number }) {
+  if (!n) return null;
+  return (
+    <div className="flex items-center gap-0.5">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <Star key={i} size={13} className={i < n ? 'text-[#f2c537] fill-[#f2c537]' : 'text-slate-200 fill-slate-200'} />
+      ))}
+    </div>
+  );
 }
 
 const DEFAULT_INCLUDES = [
@@ -323,6 +342,32 @@ export default function PdfProductPage({ id }: { id: string }) {
                 )}
               </div>
             </div>
+
+            {/* Student reviews (shown only when real reviews exist) */}
+            {pdf.reviews.length > 0 && (
+              <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+                <h2 className="text-lg font-black text-slate-900 mb-4">What students say</h2>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {pdf.reviews.map((r, i) => (
+                    <div key={i} className="rounded-xl border border-slate-100 bg-slate-50/60 p-4 flex flex-col">
+                      <Quote size={18} className="text-[#075d63]/30 mb-2" />
+                      <p className="text-sm text-slate-700 leading-relaxed flex-grow">{r.text}</p>
+                      <div className="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+                        <div className="min-w-0">
+                          {r.name && <div className="text-sm font-black text-slate-900 truncate">{r.name}</div>}
+                          {r.rating > 0 && <Stars n={r.rating} />}
+                        </div>
+                        {r.verified && (
+                          <span className="shrink-0 inline-flex items-center gap-1 text-[10px] font-black uppercase tracking-wider text-[#075d63] bg-[#075d63]/10 px-2 py-1 rounded-full">
+                            <Check size={11} /> Verified Buyer
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* FAQ */}
             <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
