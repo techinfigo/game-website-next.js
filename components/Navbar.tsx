@@ -123,7 +123,7 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout, profil
     { name: 'Courses', id: 'courses' },
     { name: 'Test Series', id: 'test-series' },
     { name: 'Results', id: 'rankers' },
-    { name: 'Reviews', id: 'reviews' },
+    { name: 'Resources', id: 'resources' },
     { name: 'Job Updates', id: 'jobs' },
     {
       name: 'More',
@@ -133,7 +133,7 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout, profil
       dropdown: [
         { name: 'About Us', id: 'about', icon: Info, desc: 'Our Story' },
         { name: 'Strategy', id: 'hacks', icon: Lightbulb, desc: 'Tips & Tricks' },
-        { name: 'Resources', id: 'resources', icon: FileText, desc: 'Downloads & Notes' }
+        { name: 'Reviews', id: 'reviews', icon: MessageSquare, desc: 'Student Reviews' }
       ]
     }
   ];
