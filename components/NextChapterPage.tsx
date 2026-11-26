@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   ArrowUpRight, ArrowRight, Compass, ChevronDown, Download, Youtube,
-  X, CheckCircle2, Loader2, AlertCircle, FlaskConical, Sigma, Leaf, Lightbulb
+  X, CheckCircle2, Loader2, AlertCircle, FlaskConical, Sigma, Leaf, Lightbulb, Play
 } from 'lucide-react';
 import { useSiteSettings } from '@/hooks/useSiteSettings';
 
@@ -14,6 +14,17 @@ const GUIDE_SCHOOL = 'https://drive.google.com/file/d/11fVsMj_uNv78PKiAcAynnsXwb
 const GUIDE_JEE = 'https://drive.google.com/file/d/11L-eY30JMITMof4DZ7umxRp-6OkHMYvo/view';
 const GUIDE_NEET = 'https://drive.google.com/file/d/1XNCN4hp3FM_KlghaiKoW956-CxQogQdq/view';
 const YT_FALLBACK = 'https://www.youtube.com/@gblions'; // Gaurav Sir's Physics lessons
+
+// Hero video cards — Gaurav Sir's lessons, admin-editable (School page content).
+const HERO_VIDEOS = ['CAJezRf1u9g', 'UnjCZn-Ga8M', 'ggnZchS4AZ4'];
+
+// Accepts a YouTube URL or a bare 11-char ID and returns the video ID.
+function videoId(input: string): string {
+  const s = (input || '').trim();
+  if (/^[A-Za-z0-9_-]{11}$/.test(s)) return s;
+  const m = s.match(/(?:v=|\/embed\/|youtu\.be\/|\/shorts\/)([A-Za-z0-9_-]{11})/);
+  return m ? m[1] : '';
+}
 
 type ClassLevel = '09' | '10' | '11' | '12';
 
@@ -42,6 +53,22 @@ const FAQS = [
   { q: 'Where should I confirm JEE or NEET eligibility and dates?', a: 'Use the official JEE Main, JEE Advanced and NEET UG websites. Their current notices and information bulletins take precedence over guidance PDFs or social-media posts.' },
 ];
 
+function VideoCard({ id, onPlay, className }: { id: string; onPlay: () => void; className?: string }) {
+  return (
+    <button onClick={onPlay} aria-label="Play lesson" className={`group rounded-xl overflow-hidden shadow-2xl border border-white/15 bg-[#101821] transition-all hover:scale-[1.03] ${className || ''}`}>
+      <div className="relative aspect-video">
+        <img src={`https://img.youtube.com/vi/${id}/hqdefault.jpg`} alt="" referrerPolicy="no-referrer" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/5 transition-colors" />
+        <span className="absolute inset-0 flex items-center justify-center">
+          <span className="w-10 h-10 rounded-full bg-[#f2c537] text-[#101821] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+            <Play size={16} className="fill-[#101821] ml-0.5" />
+          </span>
+        </span>
+      </div>
+    </button>
+  );
+}
+
 export default function NextChapterPage() {
   const { youtube } = useSiteSettings();
 
@@ -59,6 +86,8 @@ export default function NextChapterPage() {
 
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [faqs, setFaqs] = useState(FAQS);
+  const [heroVideos, setHeroVideos] = useState<string[]>(HERO_VIDEOS);
+  const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
   // Admin-editable links (guides + playlist) override the defaults when set.
   const [links, setLinks] = useState({ school: GUIDE_SCHOOL, jee: GUIDE_JEE, neet: GUIDE_NEET, playlist: '' });
@@ -71,6 +100,10 @@ export default function NextChapterPage() {
         if (cancelled || !d?.content) return;
         const c = d.content;
         if (Array.isArray(c.faqs) && c.faqs.length) setFaqs(c.faqs);
+        if (Array.isArray(c.heroVideos)) {
+          const ids = c.heroVideos.map((v: string) => videoId(v)).filter(Boolean);
+          if (ids.length) setHeroVideos(ids);
+        }
         setLinks((prev) => ({
           school: c.guideSchool || prev.school,
           jee: c.guideJee || prev.jee,
@@ -141,29 +174,31 @@ export default function NextChapterPage() {
               <p className="text-xs text-slate-400 mt-6 max-w-md leading-relaxed">
                 Classes 9–12 courses are not currently available at GAME. This page offers learning links and introductory guidance.
               </p>
+
+              {/* Mobile: tap-to-play lesson cards */}
+              {heroVideos.length > 0 && (
+                <div className="lg:hidden mt-7 flex gap-3 overflow-x-auto pb-1 -mx-1 px-1">
+                  {heroVideos.map((id, i) => (
+                    <VideoCard key={i} id={id} onPlay={() => setActiveVideo(id)} className="shrink-0 w-52" />
+                  ))}
+                </div>
+              )}
             </motion.div>
 
-            {/* Orbital artwork with Gaurav Sir's photo */}
+            {/* Hero lesson videos — creatively placed, tap to play */}
             <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.1 }}
-              className="relative h-[320px] hidden lg:block">
-              <svg className="absolute inset-0 w-full h-full opacity-50" viewBox="0 0 400 320" fill="none">
-                <ellipse cx="230" cy="150" rx="150" ry="60" stroke="#2dd4bf" strokeWidth="1" opacity="0.4" />
-                <ellipse cx="230" cy="150" rx="150" ry="60" stroke="#2dd4bf" strokeWidth="1" opacity="0.4" transform="rotate(60 230 150)" />
-                <ellipse cx="230" cy="150" rx="150" ry="60" stroke="#2dd4bf" strokeWidth="1" opacity="0.4" transform="rotate(-60 230 150)" />
-                <circle cx="300" cy="95" r="5" fill="#f2c537" />
-                <circle cx="120" cy="175" r="5" fill="#2dd4bf" />
-                <circle cx="350" cy="205" r="5" fill="#f2c537" />
+              className="relative h-[360px] hidden lg:block">
+              <svg className="absolute inset-0 w-full h-full opacity-40" viewBox="0 0 400 360" fill="none">
+                <ellipse cx="200" cy="180" rx="170" ry="72" stroke="#2dd4bf" strokeWidth="1" opacity="0.4" />
+                <ellipse cx="200" cy="180" rx="170" ry="72" stroke="#2dd4bf" strokeWidth="1" opacity="0.4" transform="rotate(60 200 180)" />
+                <ellipse cx="200" cy="180" rx="170" ry="72" stroke="#2dd4bf" strokeWidth="1" opacity="0.4" transform="rotate(-60 200 180)" />
+                <circle cx="330" cy="88" r="5" fill="#f2c537" />
+                <circle cx="66" cy="214" r="5" fill="#2dd4bf" />
               </svg>
-              <img src="/gaurav-sir.webp" alt="Gaurav Babu Sir" referrerPolicy="no-referrer"
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 rounded-full object-cover border-4 border-[#f2c537] shadow-xl shadow-[#f2c537]/20" />
-              <div className="absolute left-[10%] bottom-[18%] bg-white text-[#101821] rounded-xl px-4 py-3 shadow-lg">
-                <span className="text-[9px] font-black text-slate-400">01 / Understand</span>
-                <p className="font-black text-sm">Why does it work?</p>
-              </div>
-              <div className="absolute right-[6%] bottom-[4%] bg-[#f2c537] text-[#101821] rounded-xl px-4 py-3 shadow-lg">
-                <span className="text-[9px] font-black text-[#101821]/60">02 / Apply</span>
-                <p className="font-black text-sm">Now, solve for it.</p>
-              </div>
+              {heroVideos[1] && <VideoCard id={heroVideos[1]} onPlay={() => setActiveVideo(heroVideos[1])} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-56 z-20" />}
+              {heroVideos[0] && <VideoCard id={heroVideos[0]} onPlay={() => setActiveVideo(heroVideos[0])} className="absolute left-0 top-[4%] w-40 -rotate-6 z-10" />}
+              {heroVideos[2] && <VideoCard id={heroVideos[2]} onPlay={() => setActiveVideo(heroVideos[2])} className="absolute right-0 bottom-[4%] w-40 rotate-6 z-10" />}
+              <div className="absolute left-1/2 -translate-x-1/2 -bottom-1 bg-[#f2c537] text-[#101821] rounded-full px-4 py-1.5 text-[10px] font-black uppercase tracking-widest z-30 shadow-lg">Gaurav Sir · Physics lessons</div>
             </motion.div>
           </div>
         </div>
@@ -356,16 +391,41 @@ export default function NextChapterPage() {
           <div className="divide-y divide-slate-200 border-t border-b border-slate-200">
             {faqs.map((f, i) => (
               <div key={i}>
-                <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex items-center justify-between gap-4 py-4 text-left">
-                  <span className="font-bold text-[#101821]">{f.q}</span>
+                <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex items-center gap-3 py-4 text-left">
+                  <img src="/gaurav-sir.webp" alt="Gaurav Babu Sir" referrerPolicy="no-referrer" className="w-9 h-9 rounded-full object-cover border border-slate-200 shrink-0" />
+                  <span className="font-bold text-[#101821] flex-1">{f.q}</span>
                   <ChevronDown size={18} className={`shrink-0 text-[#075d63] transition-transform ${openFaq === i ? 'rotate-180' : ''}`} />
                 </button>
-                {openFaq === i && <p className="text-sm text-slate-600 pb-4 -mt-1 leading-relaxed">{f.a}</p>}
+                {openFaq === i && (
+                  <div className="flex gap-3 pb-4 -mt-1">
+                    <span className="w-9 shrink-0" aria-hidden="true" />
+                    <p className="text-sm text-slate-600 leading-relaxed">{f.a}</p>
+                  </div>
+                )}
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* ===== Lesson video lightbox ===== */}
+      {activeVideo && (
+        <div className="fixed inset-0 z-[110] flex items-center justify-center p-4" role="dialog" aria-modal="true">
+          <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={() => setActiveVideo(null)} />
+          <div className="relative z-10 w-full max-w-3xl">
+            <button onClick={() => setActiveVideo(null)} aria-label="Close" className="absolute -top-11 right-0 w-9 h-9 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20"><X size={18} /></button>
+            <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl bg-black" style={{ aspectRatio: '16 / 9' }}>
+              <iframe
+                src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1&rel=0`}
+                title="Gaurav Sir lesson"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="absolute inset-0 w-full h-full"
+              />
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ===== Submit thank-you popup (shown only after the response is saved) ===== */}
       {thanksOpen && (
