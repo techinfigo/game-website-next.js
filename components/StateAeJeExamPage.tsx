@@ -165,6 +165,45 @@ const StateAeJeExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ con
     },
   ];
 
+  // Card design metadata (index-aligned with `exams`), per the approved design:
+  // badge, short/full name, role pill, selection-stage style, eligibility tags,
+  // and the big pay label + note. Text content comes from `exams[i].details`.
+  const META: {
+    badge: string; short: string; full: string; role: string;
+    stages: { kind: 'steps'; steps: string[] } | { kind: 'chips'; chips: string[]; note: string };
+    eligTags: string[]; payBig: string; payNote: string;
+  }[] = [
+    { badge: 'UP', short: 'UPPSC-AE', full: 'Uttar Pradesh Public Service Commission', role: 'Assistant Engineer',
+      stages: { kind: 'steps', steps: ['Prelims', 'Mains', 'Interview'] },
+      eligTags: ['Civil', 'Mechanical', 'Electrical', 'Agricultural'], payBig: 'Level-10', payNote: '₹56,100–₹1,77,500 as per 7th CPC' },
+    { badge: 'UP', short: 'UPPSC-Lecturer', full: 'Uttar Pradesh Public Service Commission', role: 'Polytechnic Lecturer',
+      stages: { kind: 'steps', steps: ['Written Exam', 'Interview'] },
+      eligTags: ['ME', 'CE', 'EE', 'ECE', 'CH', 'CS'], payBig: 'Level-9A', payNote: 'Entry Pay ₹56,100 as per 7th CPC' },
+    { badge: 'MP', short: 'MPPSC-AE', full: 'Madhya Pradesh Public Service Commission', role: 'Assistant Engineer',
+      stages: { kind: 'steps', steps: ['Written Exam', 'Interview'] },
+      eligTags: ['Civil', 'Mechanical', 'Electrical', 'Agricultural'], payBig: 'Level-10', payNote: 'approx. ₹56,100 – ₹1,77,500 / month' },
+    { badge: 'MH', short: 'MPSC-AE', full: 'Maharashtra Public Service Commission', role: 'Assistant Engineer',
+      stages: { kind: 'steps', steps: ['Prelims', 'Mains', 'Interview'] },
+      eligTags: ['Marathi required'], payBig: 'S-20', payNote: 'Basic ₹56,100 up to ₹1,77,500' },
+    { badge: 'RJ', short: 'RPSC-AE', full: 'Rajasthan Public Service Commission', role: 'Assistant Engineer',
+      stages: { kind: 'steps', steps: ['Prelims', 'Mains', 'Interview'] },
+      eligTags: ['Civil', 'Mechanical', 'Electrical', 'Agricultural'], payBig: '₹98,175', payNote: 'Gross / month (incl. DA, HRA)' },
+    { badge: 'RJ', short: 'RSMSSB-JE', full: 'Rajasthan Subordinate & Ministerial Services Selection Board', role: 'Junior Engineer',
+      stages: { kind: 'steps', steps: ['Written Exam', 'Document Verification'] },
+      eligTags: ['Degree / Diploma', 'Civil', 'Mechanical', 'Electrical'], payBig: '₹34,800', payNote: '+ other allowances' },
+    { badge: 'BIH', short: 'BPSC-AE', full: 'Bihar Public Service Commission', role: 'Assistant Engineer',
+      stages: { kind: 'chips', chips: ['General English', 'General Hindi', 'General Studies', 'General Engineering Science', 'Two core Subject Papers'], note: 'Recent cycles rely entirely on a multi-paper Written Examination consisting of the papers above.' },
+      eligTags: ['Age 21–37 (usually)'], payBig: 'Level 9', payNote: 'Grade Pay ₹5400 · basic ₹53,100 (Bihar matrix)' },
+    { badge: 'GJ', short: 'GPSC-AE', full: 'Gujarat Public Service Commission', role: 'Assistant Engineer (Class-II)',
+      stages: { kind: 'steps', steps: ['Prelims', 'Interview'] },
+      eligTags: ['Gujarati / Hindi'], payBig: 'Level 8', payNote: '₹44,900 – ₹1,42,400 (Level 8/9)' },
+  ];
+
+  const detailOf = (idx: number, ...labels: string[]) => {
+    const d = exams[idx].details.find((x) => labels.some((l) => x.label.toLowerCase() === l.toLowerCase()));
+    return d?.value || '';
+  };
+
   // Syllabus links from the source document (Google Drive). An empty string
   // means no syllabus link was provided for that exam in the document.
   const syllabusLinks: string[] = [
@@ -377,52 +416,114 @@ const StateAeJeExamPage: React.FC<{ content?: ExamPageContent | null }> = ({ con
             <h2 className="text-3xl md:text-5xl font-black text-slate-900">Major State Commissions <span className="text-gameTeal">We Cover</span></h2>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {exams.map((exam, i) => (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+            {exams.map((exam, i) => {
+              const m = META[i];
+              const elig = detailOf(i, 'Eligibility');
+              const security = detailOf(i, 'Job Security');
+              const posting = detailOf(i, 'Postings', 'Posting');
+              const impact = detailOf(i, 'Work Impact');
+              const steps = m.stages.kind === 'steps' ? m.stages.steps : null;
+              const chipsData = m.stages.kind === 'chips' ? m.stages : null;
+              return (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-[2rem] border border-slate-200 shadow-lg hover:shadow-2xl hover:border-gameTeal/30 transition-all duration-300 overflow-hidden flex flex-col"
+                className="flex flex-col h-full rounded-[1.75rem] border border-slate-200 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden bg-white"
               >
-                <div className="p-7 md:p-8 flex flex-col flex-grow">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-2xl bg-gameTeal/10 text-gameTeal flex items-center justify-center shrink-0">
-                      <Landmark size={22} />
-                    </div>
-                    <h3 className="text-xl font-black text-slate-900 leading-tight pt-1">{exam.title}</h3>
+                {/* Header */}
+                <div className="relative p-6 md:p-7 text-white bg-gradient-to-br from-[#12302F] to-[#1F5A56] overflow-hidden">
+                  <div className="absolute -top-10 -right-10 w-44 h-44 bg-white/5 rounded-full pointer-events-none" />
+                  <div className="relative flex items-start justify-between gap-3">
+                    <div className="w-11 h-12 bg-[#E7BB2B] text-[#12302F] font-black text-[11px] flex items-center justify-center shrink-0"
+                      style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}>{m.badge}</div>
+                    <span className="text-[10px] font-black uppercase tracking-widest bg-white/10 border border-white/20 rounded-full px-3 py-1.5 whitespace-nowrap">{m.role}</span>
                   </div>
-                  <p className="text-sm text-slate-600 font-medium leading-relaxed mb-6">{exam.intro}</p>
+                  <h3 className="relative text-3xl md:text-4xl font-black mt-4 leading-none">{m.short}</h3>
+                  <p className="relative text-sm text-white/70 mt-2">{m.full} ({m.short})</p>
+                </div>
 
-                  <div className="space-y-3 mb-7 flex-grow">
-                    {exam.details.map((d, j) => (
-                      <div key={j} className="flex gap-3">
-                        <CheckCircle2 size={16} className="text-gameTeal shrink-0 mt-1" />
-                        <p className="text-sm text-slate-700 leading-snug">
-                          <span className="font-black text-slate-900">{d.label}: </span>
-                          {d.value}
-                        </p>
+                {/* Body */}
+                <div className="p-6 md:p-7 flex flex-col flex-grow">
+                  <div className="text-[11px] font-black uppercase tracking-widest text-[#1F5A56] mb-1.5">About</div>
+                  <p className="text-[15px] text-[#33403F] leading-relaxed mb-5 line-clamp-3">{exam.intro}</p>
+
+                  {/* Selection stages */}
+                  <div className="text-[11px] font-black uppercase tracking-widest text-[#1F5A56] mb-3 pt-5 border-t border-slate-100">Selection Stages</div>
+                  {steps ? (
+                    <div className="flex items-center justify-between gap-1 mb-5">
+                      {steps.map((st, k) => (
+                        <React.Fragment key={st}>
+                          <div className="flex flex-col items-center text-center shrink-0">
+                            <span className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-black ${k === steps.length - 1 ? 'bg-[#E7BB2B] text-[#12302F]' : 'bg-[#1F5A56] text-white'}`}>{k + 1}</span>
+                            <span className="text-xs font-bold text-[#0B1F1E] mt-1.5">{st}</span>
+                          </div>
+                          {k < steps.length - 1 && <span className="flex-1 h-0.5 bg-[#1F5A56]/30 mt-[-18px]" />}
+                        </React.Fragment>
+                      ))}
+                    </div>
+                  ) : chipsData ? (
+                    <div className="mb-5">
+                      <div className="flex flex-wrap gap-2">
+                        {chipsData.chips.map((c) => (
+                          <span key={c} className="text-[13px] font-bold text-[#0B1F1E] bg-[#F2F6F5] border border-slate-200 rounded-lg px-3 py-1.5">{c}</span>
+                        ))}
+                      </div>
+                      <p className="text-xs text-slate-500 mt-2.5 leading-relaxed">{chipsData.note}</p>
+                    </div>
+                  ) : null}
+
+                  {/* Two tiles: Eligibility (left) + Pay (right) */}
+                  <div className="grid sm:grid-cols-2 gap-3 mb-6">
+                    <div className="order-2 sm:order-1 rounded-2xl bg-[#F2F6F5] p-4">
+                      <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-[#1F5A56]"><GraduationCap size={15} /> Eligibility</div>
+                      <p className="text-sm font-bold text-[#0B1F1E] mt-2 leading-snug line-clamp-3">{elig}</p>
+                      {m.eligTags.length > 0 && (
+                        <div className="flex flex-wrap gap-1.5 mt-3">
+                          {m.eligTags.map((t) => <span key={t} className="text-[11px] font-bold text-[#0B1F1E] bg-white border border-slate-200 rounded-full px-2.5 py-1">{t}</span>)}
+                        </div>
+                      )}
+                    </div>
+                    <div className="order-1 sm:order-2 rounded-2xl bg-[#E7BB2B] text-[#12302F] p-4 flex flex-col">
+                      <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest"><Wallet size={15} /> Pay Scale</div>
+                      <div className="text-3xl font-black mt-1 leading-none">{m.payBig}</div>
+                      <div className="text-xs font-bold mt-2 leading-snug">{m.payNote}</div>
+                    </div>
+                  </div>
+
+                  {/* Three info columns */}
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 pt-5 border-t border-slate-100 mb-6">
+                    {[
+                      { Icon: ShieldCheck, label: 'Security', text: security },
+                      { Icon: MapPin, label: 'Postings', text: posting },
+                      { Icon: Building2, label: 'Work Impact', text: impact },
+                    ].map(({ Icon, label, text }) => (
+                      <div key={label}>
+                        <div className="flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-[#1F5A56] mb-1.5"><Icon size={15} /> {label}</div>
+                        <p className="text-[13px] text-[#33403F] leading-relaxed line-clamp-5">{text}</p>
                       </div>
                     ))}
                   </div>
 
+                  {/* Buttons pinned to the bottom */}
                   <div className="flex flex-wrap gap-3 mt-auto pt-2">
-                    <button onClick={scrollToCourses} className="flex-1 min-w-[140px] px-5 py-3 bg-gameTeal text-white font-black rounded-full text-sm hover:bg-[#007a7e] transition-all active:scale-95 flex items-center justify-center gap-2">
+                    <button onClick={scrollToCourses} className="flex-1 min-w-[140px] px-5 py-3 bg-[#12302F] text-white font-black rounded-full text-sm hover:bg-[#1F5A56] transition-all active:scale-95 flex items-center justify-center gap-2">
                       <BookOpen size={15} /> View Course
                     </button>
                     <a
                       href={syllabusLinks[i] || '#'}
                       target={syllabusLinks[i] ? '_blank' : undefined}
                       rel={syllabusLinks[i] ? 'noopener noreferrer' : undefined}
-                      className="flex-1 min-w-[140px] px-5 py-3 border border-slate-300 text-slate-800 font-black rounded-full text-sm hover:border-gameTeal hover:text-gameTeal transition-all flex items-center justify-center gap-2"
+                      className="flex-1 min-w-[140px] px-5 py-3 border border-slate-300 text-[#12302F] font-black rounded-full text-sm hover:border-[#1F5A56] hover:text-[#1F5A56] transition-all flex items-center justify-center gap-2"
                     >
                       View Syllabus <ArrowUpRight size={15} />
                     </a>
                   </div>
                 </div>
               </motion.div>
-            ))}
+            );})}
           </div>
         </div>
       </section>
