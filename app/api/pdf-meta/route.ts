@@ -38,6 +38,21 @@ export async function GET(req: NextRequest) {
         language: p.language || '',
         sampleUrl: p.sampleUrl || '',
         topics: Array.isArray(p.topics) ? p.topics.slice(0, 12) : [],
+        // Admin-editable gallery and content lists (safe public fields only).
+        images: Array.isArray(p.images) ? p.images.filter(Boolean).slice(0, 10) : [],
+        purchaseIncludes: Array.isArray(p.purchaseIncludes) ? p.purchaseIncludes.filter(Boolean).slice(0, 12) : [],
+        resourceDetails: Array.isArray(p.resourceDetails) ? p.resourceDetails.filter(Boolean).slice(0, 12) : [],
+        reviews: Array.isArray(p.reviews)
+          ? p.reviews
+              .filter((r: any) => r && (r.text || r.name))
+              .slice(0, 20)
+              .map((r: any) => ({
+                name: String(r.name || '').slice(0, 80),
+                text: String(r.text || '').slice(0, 600),
+                rating: Number(r.rating) > 0 ? Math.min(5, Math.round(Number(r.rating))) : 0,
+                verified: r.verified === true,
+              }))
+          : [],
       },
     });
   } catch (e) {

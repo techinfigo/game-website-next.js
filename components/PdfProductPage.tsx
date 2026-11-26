@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import {
   Lock, Loader2, FileText, Check, ShieldCheck,
-  ArrowLeft, ArrowRight, MessageCircle, ChevronRight, Eye, BookOpen, FolderDown
+  ArrowLeft, ArrowRight, MessageCircle, ChevronRight, Eye, BookOpen, FolderDown, Star, Quote
 } from 'lucide-react';
 import { goToPortal } from '@/lib/portalHandoff';
 
@@ -26,7 +26,36 @@ interface PdfMeta {
   language: string;
   sampleUrl: string;
   topics: string[];
+  images: string[];
+  purchaseIncludes: string[];
+  resourceDetails: string[];
+  reviews: PdfReview[];
 }
+
+interface PdfReview {
+  name: string;
+  text: string;
+  rating: number;
+  verified: boolean;
+}
+
+function Stars({ n }: { n: number }) {
+  if (!n) return null;
+  return (
+    <div className="flex items-center gap-0.5">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <Star key={i} size={13} className={i < n ? 'text-[#f2c537] fill-[#f2c537]' : 'text-slate-200 fill-slate-200'} />
+      ))}
+    </div>
+  );
+}
+
+const DEFAULT_INCLUDES = [
+  'Full version of this resource',
+  'Access in My Downloads',
+  'Download after confirmed payment',
+  'No course app required',
+];
 
 function priceLabel(n: number) {
   return n > 0 ? `₹${n.toLocaleString('en-IN')}` : 'Free';
@@ -63,6 +92,7 @@ export default function PdfProductPage({ id }: { id: string }) {
   }, [id]);
 
   const [redirecting, setRedirecting] = useState<'buy' | 'downloads' | null>(null);
+  const [activeImg, setActiveImg] = useState(0);
   const goBuy = () => { setRedirecting('buy'); goToPortal(`/library?buy=${id}`); };
   const goDownloads = () => { setRedirecting('downloads'); goToPortal('/purchases'); };
 
@@ -96,6 +126,12 @@ export default function PdfProductPage({ id }: { id: string }) {
 
   const crumbs = [pdf.examTag && tagList(pdf.examTag)[0], pdf.branch, pdf.subject].filter(Boolean) as string[];
   const tags = Array.from(new Set([...tagList(pdf.examTag), pdf.branch, pdf.resourceType || 'PDF'].filter(Boolean)));
+
+  // Gallery = cover thumbnail + any admin-added images, de-duplicated.
+  const gallery = Array.from(new Set([pdf.thumbnailUrl, ...pdf.images].filter(Boolean)));
+  const activeSrc = gallery[Math.min(activeImg, gallery.length - 1)] || pdf.thumbnailUrl;
+  // Editable lists fall back to sensible defaults when admin leaves them blank.
+  const includes = pdf.purchaseIncludes.length ? pdf.purchaseIncludes : DEFAULT_INCLUDES;
 
   const PurchasePanel = (
     <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
@@ -139,7 +175,7 @@ export default function PdfProductPage({ id }: { id: string }) {
 
       <div className="mt-5 space-y-2.5">
         <div className="text-[11px] font-black uppercase tracking-widest text-slate-400">Your purchase includes</div>
-        {['Full version of this resource', 'Access in My Downloads', 'Download after confirmed payment', 'No course app required'].map((t) => (
+        {includes.map((t) => (
           <div key={t} className="flex items-center gap-2 text-sm text-slate-600 font-medium">
             <Check size={15} className="text-[#075d63] shrink-0" /> {t}
           </div>
@@ -175,7 +211,33 @@ export default function PdfProductPage({ id }: { id: string }) {
       <div className="max-w-[1200px] mx-auto px-5 md:px-8 -mt-6">
         <div className="grid lg:grid-cols-[1fr_340px] gap-6 items-start">
           {/* ===== Preview viewer ===== */}
-          <div>
+          <div className="space-y-6">
+            {/* Image gallery (admin-added resource images) */}
+            {gallery.length > 1 && (
+              <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                <div className="px-4 py-3 border-b border-slate-100 bg-slate-50">
+                  <span className="text-xs font-black text-slate-600 flex items-center gap-2"><Eye size={14} className="text-[#075d63]" /> Resource images</span>
+                </div>
+                <div className="p-4 md:p-6">
+                  <div className="relative w-full rounded-lg overflow-hidden border border-slate-200 bg-slate-50 flex items-center justify-center">
+                    <img src={activeSrc} alt={pdf.title} referrerPolicy="no-referrer" className="w-full object-contain max-h-[480px]" />
+                  </div>
+                  <div className="flex gap-2 mt-3 overflow-x-auto pb-1">
+                    {gallery.map((src, i) => (
+                      <button
+                        key={i}
+                        onClick={() => setActiveImg(i)}
+                        aria-label={`Image ${i + 1}`}
+                        className={`shrink-0 w-16 h-20 rounded-lg overflow-hidden border-2 transition-all ${i === activeImg ? 'border-[#075d63]' : 'border-slate-200 hover:border-[#075d63]/40'}`}
+                      >
+                        <img src={src} alt="" referrerPolicy="no-referrer" className="w-full h-full object-cover" />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
             <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
               <div className="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
                 <span className="text-xs font-black text-slate-600 flex items-center gap-2"><FileText size={14} className="text-[#075d63]" /> PDF Preview · Free sample page 1</span>
@@ -255,11 +317,19 @@ export default function PdfProductPage({ id }: { id: string }) {
                 <div>
                   <div className="text-[11px] font-black uppercase tracking-widest text-[#075d63] mb-2">Resource details</div>
                   <ul className="space-y-1.5 text-sm text-slate-600">
-                    <li className="flex items-center gap-2"><Check size={14} className="text-[#075d63]" /> Format: PDF (digital download)</li>
-                    {pdf.pages ? <li className="flex items-center gap-2"><Check size={14} className="text-[#075d63]" /> {pdf.pages} pages</li> : null}
-                    {pdf.language ? <li className="flex items-center gap-2"><Check size={14} className="text-[#075d63]" /> Language: {pdf.language}</li> : null}
-                    {crumbs.length ? <li className="flex items-center gap-2"><Check size={14} className="text-[#075d63]" /> {crumbs.join(' · ')}</li> : null}
-                    <li className="flex items-center gap-2"><Check size={14} className="text-[#075d63]" /> Access in My Downloads after payment</li>
+                    {pdf.resourceDetails.length ? (
+                      pdf.resourceDetails.map((d, i) => (
+                        <li key={i} className="flex items-center gap-2"><Check size={14} className="text-[#075d63]" /> {d}</li>
+                      ))
+                    ) : (
+                      <>
+                        <li className="flex items-center gap-2"><Check size={14} className="text-[#075d63]" /> Format: PDF (digital download)</li>
+                        {pdf.pages ? <li className="flex items-center gap-2"><Check size={14} className="text-[#075d63]" /> {pdf.pages} pages</li> : null}
+                        {pdf.language ? <li className="flex items-center gap-2"><Check size={14} className="text-[#075d63]" /> Language: {pdf.language}</li> : null}
+                        {crumbs.length ? <li className="flex items-center gap-2"><Check size={14} className="text-[#075d63]" /> {crumbs.join(' · ')}</li> : null}
+                        <li className="flex items-center gap-2"><Check size={14} className="text-[#075d63]" /> Access in My Downloads after payment</li>
+                      </>
+                    )}
                   </ul>
                 </div>
                 {pdf.topics.length > 0 && (
@@ -272,6 +342,32 @@ export default function PdfProductPage({ id }: { id: string }) {
                 )}
               </div>
             </div>
+
+            {/* Student reviews (shown only when real reviews exist) */}
+            {pdf.reviews.length > 0 && (
+              <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+                <h2 className="text-lg font-black text-slate-900 mb-4">What students say</h2>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {pdf.reviews.map((r, i) => (
+                    <div key={i} className="rounded-xl border border-slate-100 bg-slate-50/60 p-4 flex flex-col">
+                      <Quote size={18} className="text-[#075d63]/30 mb-2" />
+                      <p className="text-sm text-slate-700 leading-relaxed flex-grow">{r.text}</p>
+                      <div className="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+                        <div className="min-w-0">
+                          {r.name && <div className="text-sm font-black text-slate-900 truncate">{r.name}</div>}
+                          {r.rating > 0 && <Stars n={r.rating} />}
+                        </div>
+                        {r.verified && (
+                          <span className="shrink-0 inline-flex items-center gap-1 text-[10px] font-black uppercase tracking-wider text-[#075d63] bg-[#075d63]/10 px-2 py-1 rounded-full">
+                            <Check size={11} /> Verified Buyer
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* FAQ */}
             <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
