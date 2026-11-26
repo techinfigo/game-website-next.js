@@ -4,13 +4,25 @@ import React, { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
-  ArrowRight, ArrowDown, ChevronDown, ChevronRight, ShieldCheck, Check,
+  ArrowRight, ArrowDown, ChevronDown, ShieldCheck, Check,
   Globe, Landmark, ScrollText, TrendingUp, FlaskConical, Leaf, Newspaper, Brain,
-  Video, FileText, ClipboardCheck, CalendarClock
+  Video, FileText, ClipboardCheck, CalendarClock, MessageCircle
 } from 'lucide-react';
 
-const COURSES_URL = 'https://courses.gameacademy.in'; // Beyond Boundaries on Game Live (Classplus)
-const LAST_CHECKED = '23 Nov 2026';
+const COURSES_URL = 'https://courses.gameacademy.in'; // Game Live (Classplus) catalogue
+// Beyond Boundaries: General Studies Mastery Course (exact course page).
+const COURSE_URL = 'https://wpsvp.courses.store/courses/490929?filterId=1&sortId=7';
+
+interface HeroSlide { imageUrl: string; link: string; title: string; }
+
+// Default hero banners — placeholders until the client uploads real creatives
+// in the admin panel (Exam Page Content → Non-Tech → Hero slider).
+const SEED_SLIDES: HeroSlide[] = [
+  { imageUrl: 'https://picsum.photos/seed/nontech-hero-1/1200/820', link: '#exams', title: 'Non-tech in engineering exams' },
+  { imageUrl: 'https://picsum.photos/seed/nontech-hero-2/1200/820', link: '#exams', title: 'General studies that decides ranks' },
+  { imageUrl: 'https://picsum.photos/seed/nontech-hero-3/1200/820', link: COURSE_URL, title: 'Beyond Boundaries GS course' },
+  { imageUrl: 'https://picsum.photos/seed/nontech-hero-4/1200/820', link: '#exams', title: 'Start preparing now' },
+];
 
 type Route = 'all' | 'recruitment' | 'engineering';
 type PillTone = 'open' | 'waiting' | 'upcoming' | 'closed';
@@ -66,15 +78,6 @@ const FACTS = [
   { big: '200', small: '500', label: 'UPSC ESE Prelims', desc: 'Paper 1 is General Studies and Engineering Aptitude, common to every branch.', pct: 40 },
 ];
 
-const UPDATES: { exam: string; stage: string; update: string; status: string; tone: PillTone }[] = [
-  { exam: 'RRB NTPC', stage: 'Graduate + UG', update: 'Graduate (CEN 06/2026) applications ran 8 Oct–8 Nov; UG (CEN 07/2026) closed 13 Nov. Modification windows run to 18 Nov and 25 Nov.', status: 'Open: edits', tone: 'open' },
-  { exam: 'SSC CHSL', stage: 'Tier I', update: 'Proposed exam window 30 Nov–31 Dec 2026, as per SSC’s schedule reported on 2 Oct. Dates can change.', status: 'Upcoming', tone: 'upcoming' },
-  { exam: 'RRB JE', stage: 'CBT-1', update: 'Held 27–28 Oct and 2 Nov. Answer key out 11 Nov. Result expected in December. CBT-2 date not announced.', status: 'Waiting', tone: 'waiting' },
-  { exam: 'SSC JE', stage: 'Paper-I', update: 'Paper-I started 2 Nov. Answer key reported 19 Nov. Paper-II is tentatively December.', status: 'Waiting', tone: 'waiting' },
-  { exam: 'SSC CGL', stage: 'Tier I → II', update: 'Tier I ran 30 Sep–30 Oct. Result awaited. Tier II is tentatively December.', status: 'Waiting', tone: 'waiting' },
-  { exam: 'UPSC ESE', stage: 'Prelims', update: 'Prelims on 31 Jan 2027. Admit card to be issued on upsc.gov.in closer to the date.', status: '31 Jan 2027', tone: 'upcoming' },
-];
-
 const PATTERN = [
   { exam: 'SSC JE Paper-I', sections: 'Reasoning · General Awareness', questions: '50 + 50', marks: '100 of 200', share: '50%', neg: '0.25' },
   { exam: 'RRB JE CBT-1', sections: 'Maths · Reasoning · GA · General Science', questions: '30 + 25 + 15 + 30', marks: '100 of 100', share: '100%', neg: '⅓' },
@@ -126,13 +129,13 @@ const SOURCES = [
 export default function NonTechHubPage() {
   const [route, setRoute] = useState<Route>('all');
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [activeSlide, setActiveSlide] = useState(0);
 
   // Content the client can edit in the admin panel overrides the built-in
   // defaults when present; otherwise the approved defaults show.
   const [examCards, setExamCards] = useState<ExamCard[]>(CARDS);
-  const [updates, setUpdates] = useState(UPDATES);
   const [faqs, setFaqs] = useState(FAQS);
-  const [lastChecked, setLastChecked] = useState(LAST_CHECKED);
+  const [slides, setSlides] = useState<HeroSlide[]>(SEED_SLIDES);
 
   useEffect(() => {
     let cancelled = false;
@@ -142,14 +145,37 @@ export default function NonTechHubPage() {
         if (cancelled || !d?.content) return;
         const c = d.content;
         if (Array.isArray(c.examCards) && c.examCards.length) setExamCards(c.examCards);
-        if (Array.isArray(c.updates) && c.updates.length) setUpdates(c.updates);
         if (Array.isArray(c.faqs) && c.faqs.length) setFaqs(c.faqs);
-        if (typeof c.lastChecked === 'string' && c.lastChecked.trim()) setLastChecked(c.lastChecked);
+        if (Array.isArray(c.hero) && c.hero.length) {
+          setSlides(c.hero.filter((s: any) => s && s.imageUrl));
+          setActiveSlide(0);
+        }
       })
       .catch(() => { /* keep defaults */ });
     return () => { cancelled = true; };
   }, []);
 
+  // Gentle auto-advance of the hero slider.
+  useEffect(() => {
+    if (slides.length < 2) return;
+    const t = setInterval(() => setActiveSlide((s) => (s + 1) % slides.length), 5000);
+    return () => clearInterval(t);
+  }, [slides.length]);
+
+  // Each hero banner carries its own admin-set link.
+  const openSlide = (link?: string) => {
+    if (!link) return;
+    if (link.startsWith('#')) {
+      const el = document.getElementById(link.slice(1));
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    } else if (/^https?:\/\//.test(link)) {
+      window.open(link, '_blank', 'noopener,noreferrer');
+    } else {
+      window.location.href = link;
+    }
+  };
+
+  const activeSrc = slides[Math.min(activeSlide, slides.length - 1)];
   const cards = useMemo(() => route === 'all' ? examCards : examCards.filter((c) => c.route === route), [route, examCards]);
 
   return (
@@ -158,13 +184,7 @@ export default function NonTechHubPage() {
       <section className="relative -mt-20 pt-44 md:pt-48 pb-24 overflow-hidden bg-gradient-to-br from-[#06403f] via-[#075d63] to-[#06403f] text-white">
         <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-[#f2c537]/10 rounded-full blur-[130px] pointer-events-none" />
         <div className="max-w-[1280px] mx-auto px-6 md:px-10 lg:px-12 relative z-10">
-          <nav className="text-[11px] text-teal-200/80 mb-6 flex items-center gap-1.5">
-            <Link href="/" className="hover:text-white">Home</Link><ChevronRight size={12} />
-            <span>Examination</span><ChevronRight size={12} />
-            <span className="text-white">Non-Tech Exams</span>
-          </nav>
-
-          <div className="grid lg:grid-cols-[1.5fr_1fr] gap-10 items-start">
+          <div className="grid lg:grid-cols-[1.4fr_1fr] gap-10 items-center">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 mb-6">
                 <span className="text-[10px] font-black uppercase tracking-[0.22em] text-[#f2c537]">Non-Tech Exams · For Diploma &amp; B.Tech Engineers</span>
@@ -176,8 +196,8 @@ export default function NonTechHubPage() {
                 Reasoning, general awareness, science and maths decide the rank in many engineering exams. Here is where they count, what is open right now, and what to study.
               </p>
               <div className="flex flex-wrap items-center gap-3">
-                <a href="#updates" className="inline-flex items-center gap-2 bg-[#f2c537] text-[#0f2a2b] font-black px-6 py-3.5 rounded-full hover:brightness-105 transition-all">
-                  See What’s Open Now <ArrowDown size={16} />
+                <a href="#exams" className="inline-flex items-center gap-2 bg-[#f2c537] text-[#0f2a2b] font-black px-6 py-3.5 rounded-full hover:brightness-105 transition-all">
+                  See the exams <ArrowDown size={16} />
                 </a>
                 <a href="#exams" className="inline-flex items-center gap-2 border border-white/25 text-white font-bold px-6 py-3.5 rounded-full hover:bg-white/10 transition-all">
                   Which exams test non-tech? <ArrowRight size={16} />
@@ -185,15 +205,37 @@ export default function NonTechHubPage() {
               </div>
             </motion.div>
 
-            {/* Founder card */}
-            <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
-              className="hidden lg:flex items-center gap-4 bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm self-end">
-              <img src="/gaurav-sir.webp" alt="Gaurav Babu Sir" referrerPolicy="no-referrer" className="w-24 h-28 object-cover rounded-xl border border-white/10" />
-              <div>
-                <div className="text-[10px] font-black uppercase tracking-widest text-[#f2c537] mb-1">Founder &amp; Mentor</div>
-                <div className="font-black text-lg leading-tight">Gaurav Babu Sir</div>
-                <div className="text-sm text-teal-200">14+ Years Experience</div>
-              </div>
+            {/* Hero slider (admin-managed, like the exam pages) */}
+            <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="w-full">
+              {activeSrc && (
+                <>
+                  <div className="relative rounded-2xl border border-white/10 overflow-hidden shadow-2xl bg-white/5 aspect-[16/11]">
+                    <img
+                      src={activeSrc.imageUrl}
+                      alt={activeSrc.title || 'Non-tech banner'}
+                      referrerPolicy="no-referrer"
+                      onClick={() => openSlide(activeSrc.link)}
+                      className={`w-full h-full object-cover ${activeSrc.link ? 'cursor-pointer' : ''}`}
+                    />
+                    <div className="absolute bottom-3 right-4 flex gap-1.5 z-10">
+                      {slides.map((_, i) => (
+                        <button key={i} onClick={() => setActiveSlide(i)} aria-label={`Slide ${i + 1}`}
+                          className={`h-1 rounded-full transition-all duration-300 ${i === activeSlide ? 'w-6 bg-[#f2c537]' : 'w-1.5 bg-white/40'}`} />
+                      ))}
+                    </div>
+                  </div>
+                  {slides.length > 1 && (
+                    <div className="grid grid-cols-4 gap-2 mt-3">
+                      {slides.map((s, i) => (
+                        <button key={i} onClick={() => setActiveSlide(i)} aria-label={s.title || `Slide ${i + 1}`}
+                          className={`relative aspect-[16/10] rounded-lg overflow-hidden border transition-all duration-300 ${i === activeSlide ? 'border-[#f2c537] scale-105' : 'border-white/10 opacity-70 hover:opacity-100'}`}>
+                          <img src={s.imageUrl} alt="" referrerPolicy="no-referrer" className="w-full h-full object-cover" />
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </>
+              )}
             </motion.div>
           </div>
         </div>
@@ -252,30 +294,6 @@ export default function NonTechHubPage() {
               </Link>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ===== Latest updates ===== */}
-      <section id="updates" className="px-5 md:px-10 lg:px-12 pb-14">
-        <div className="max-w-[1280px] mx-auto">
-          <h2 className="text-2xl md:text-3xl font-black mb-1">Latest updates</h2>
-          <p className="text-sm text-slate-500 mb-5">What changed recently, with the date it was reported.</p>
-          <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
-            <div className="hidden md:grid grid-cols-[120px_120px_1fr_120px] gap-4 px-5 py-3 bg-slate-50 text-[10px] font-black uppercase tracking-widest text-slate-400">
-              <span>Exam</span><span>Stage</span><span>Update</span><span>Status</span>
-            </div>
-            <div className="divide-y divide-slate-100">
-              {updates.map((u, i) => (
-                <div key={i} className="grid md:grid-cols-[120px_120px_1fr_120px] gap-2 md:gap-4 px-5 py-4 items-start">
-                  <span className="font-black text-sm">{u.exam}</span>
-                  <span className="text-xs text-slate-500 font-bold">{u.stage}</span>
-                  <span className="text-sm text-slate-600 leading-relaxed">{u.update}</span>
-                  <span className={`justify-self-start text-[9px] font-black uppercase tracking-wider px-2 py-1 rounded-full ${toneClass[u.tone]}`}>{u.status}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-          <p className="text-[11px] text-slate-400 mt-3">Last checked {lastChecked} · Dates are as reported by news and exam portals and can change. Always confirm on the official site.</p>
         </div>
       </section>
 
@@ -348,7 +366,7 @@ export default function NonTechHubPage() {
       <section className="px-5 md:px-10 lg:px-12 pb-14">
         <div className="max-w-[1280px] mx-auto rounded-3xl bg-gradient-to-br from-[#06403f] to-[#0f2a2b] text-white p-7 md:p-10 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#f2c537]/10 rounded-full blur-3xl" />
-          <div className="relative z-10 grid lg:grid-cols-[260px_1fr] gap-8 items-center">
+          <div className="relative z-10 grid lg:grid-cols-[260px_1fr] gap-8 items-center lg:pl-8">
             <div className="bg-[#0f2a2b] border border-white/10 rounded-2xl p-5 text-center">
               <div className="text-[10px] font-black uppercase tracking-widest text-[#f2c537] mb-2">Our course</div>
               <img src="/gaurav-sir.webp" alt="Gaurav Babu Sir" referrerPolicy="no-referrer" className="w-full h-40 object-cover rounded-xl mb-3" />
@@ -377,10 +395,10 @@ export default function NonTechHubPage() {
               </div>
 
               <div className="flex flex-wrap items-center gap-3 mb-4">
-                <a href={COURSES_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-[#f2c537] text-[#0f2a2b] font-black px-6 py-3 rounded-xl hover:brightness-105 transition-all">
+                <a href={COURSE_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-[#f2c537] text-[#0f2a2b] font-black px-6 py-3 rounded-xl hover:brightness-105 transition-all">
                   Choose Your Plan <ArrowRight size={16} />
                 </a>
-                <a href={COURSES_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-white/20 text-white font-bold px-5 py-3 rounded-xl hover:bg-white/10 transition-all text-sm">
+                <a href={COURSE_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-white/20 text-white font-bold px-5 py-3 rounded-xl hover:bg-white/10 transition-all text-sm">
                   View course details
                 </a>
               </div>
@@ -392,18 +410,32 @@ export default function NonTechHubPage() {
 
       {/* ===== FAQ ===== */}
       <section className="px-5 md:px-10 lg:px-12 pb-14">
-        <div className="max-w-[900px] mx-auto">
-          <h2 className="text-2xl md:text-3xl font-black mb-5">Questions students ask</h2>
-          <div className="divide-y divide-slate-200 border-t border-b border-slate-200">
-            {faqs.map((f, i) => (
-              <div key={i}>
-                <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex items-center justify-between gap-4 py-4 text-left">
-                  <span className="font-bold">{f.q}</span>
-                  <ChevronDown size={18} className={`shrink-0 text-[#075d63] transition-transform ${openFaq === i ? 'rotate-180' : ''}`} />
-                </button>
-                {openFaq === i && <p className="text-sm text-slate-600 pb-4 -mt-1 leading-relaxed">{f.a}</p>}
-              </div>
-            ))}
+        <div className="max-w-[1100px] mx-auto grid lg:grid-cols-[300px_1fr] gap-8 items-start">
+          {/* Mentor card */}
+          <div className="bg-white rounded-2xl border border-slate-200 p-6 lg:sticky lg:top-24 text-center">
+            <img src="/gaurav-sir.webp" alt="Gaurav Babu Sir" referrerPolicy="no-referrer" className="w-28 h-28 object-cover rounded-2xl mx-auto mb-4 border border-slate-100" />
+            <div className="text-[10px] font-black uppercase tracking-widest text-[#075d63] mb-1">Founder &amp; Mentor</div>
+            <div className="font-black text-lg leading-tight">Gaurav Babu Sir</div>
+            <div className="text-sm text-slate-500 mb-4">14+ years mentoring GATE, ESE &amp; non-tech aspirants</div>
+            <a href="https://wa.me/919027615394" target="_blank" rel="noopener noreferrer" className="w-full inline-flex items-center justify-center gap-2 bg-[#075d63] text-white text-sm font-black rounded-xl px-4 py-2.5 hover:bg-[#054a4f] transition-all">
+              <MessageCircle size={15} /> Ask your question
+            </a>
+          </div>
+
+          {/* Accordion */}
+          <div>
+            <h2 className="text-2xl md:text-3xl font-black mb-5">Questions students ask</h2>
+            <div className="divide-y divide-slate-200 border-t border-b border-slate-200">
+              {faqs.map((f, i) => (
+                <div key={i}>
+                  <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex items-center justify-between gap-4 py-4 text-left">
+                    <span className="font-bold">{f.q}</span>
+                    <ChevronDown size={18} className={`shrink-0 text-[#075d63] transition-transform ${openFaq === i ? 'rotate-180' : ''}`} />
+                  </button>
+                  {openFaq === i && <p className="text-sm text-slate-600 pb-4 -mt-1 leading-relaxed">{f.a}</p>}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
