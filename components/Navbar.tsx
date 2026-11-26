@@ -294,7 +294,7 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout, profil
               href="https://online.gameacademy.in/login"
               target="_blank"
               rel="noopener noreferrer"
-              className="border-2 border-gameTeal/20 text-gameTeal hover:text-white hover:bg-gameTeal hover:border-gameTeal px-4 py-2 rounded-full font-bold text-sm transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2 group/live shadow-sm hover:shadow-md hover:shadow-gameTeal/10"
+              className="border-2 border-gameTeal/20 text-gameTeal hover:text-white hover:bg-gameTeal hover:border-gameTeal px-4 py-2 rounded-full font-bold text-sm transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2 whitespace-nowrap shrink-0 group/live shadow-sm hover:shadow-md hover:shadow-gameTeal/10"
             >
               <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
@@ -349,7 +349,7 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout, profil
             ) : (
               <button 
                 onClick={openLogin}
-                className="bg-gameTeal hover:bg-gameTealDark text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-lg shadow-gameTeal/20 transition-all hover:-translate-y-0.5 active:translate-y-0"
+                className="bg-gameTeal hover:bg-gameTealDark text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-lg shadow-gameTeal/20 transition-all hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap shrink-0"
               >
                 Student Login
               </button>
