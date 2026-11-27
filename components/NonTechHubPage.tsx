@@ -366,9 +366,9 @@ export default function NonTechHubPage() {
       <section id="course" className="px-5 md:px-10 lg:px-12 pb-14 scroll-mt-24">
         <div className="max-w-[1280px] mx-auto rounded-3xl bg-gradient-to-br from-[#06403f] to-[#0f2a2b] text-white p-7 md:p-10 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#f2c537]/10 rounded-full blur-3xl" />
-          <div className="relative z-10 grid lg:grid-cols-[340px_1fr] gap-8 items-center lg:pl-8">
-            <a href={COURSE_URL} target="_blank" rel="noopener noreferrer" className="block rounded-2xl overflow-hidden border border-white/10 shadow-lg hover:brightness-105 transition-all">
-              <img src="/beyond-boundaries.jpg" alt="Beyond Boundaries: General Studies Mastery Course" referrerPolicy="no-referrer" className="w-full h-auto block" />
+          <div className="relative z-10 grid lg:grid-cols-[1fr_1.15fr] gap-8 items-stretch lg:pl-8">
+            <a href={COURSE_URL} target="_blank" rel="noopener noreferrer" className="block rounded-2xl overflow-hidden border border-white/10 shadow-lg hover:brightness-105 transition-all self-stretch">
+              <img src="/beyond-boundaries.jpg" alt="Beyond Boundaries: General Studies Mastery Course" referrerPolicy="no-referrer" className="w-full h-full object-cover block" />
             </a>
             <div>
               <div className="text-[10px] font-black uppercase tracking-widest text-[#f2c537] mb-1">GAME Academy Course · Non-Tech</div>
