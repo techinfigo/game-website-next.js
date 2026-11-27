@@ -166,7 +166,7 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout, profil
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center lg:gap-7 xl:gap-9">
+          <nav className="hidden lg:flex items-center lg:gap-5 xl:gap-7">
             {navItems.map((item) => {
               const isHighlight = (item as any).highlight;
               const active = isItemActive(item);
@@ -180,7 +180,7 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout, profil
                   {item.dropdown ? (
                     <button
                       className={`
-                        text-sm font-bold transition-all relative flex items-center gap-1.5 py-2
+                        text-sm font-bold transition-all relative flex items-center gap-1.5 py-2 xl:whitespace-nowrap
                         ${isHighlight
                           ? `px-5 rounded-full border-2 border-[#f2c537] hover:bg-[#f2c537] hover:text-black hover:-translate-y-0.5 ${active ? 'bg-[#f2c537] text-black' : 'bg-transparent text-slate-900'}`
                           : `${active ? 'text-gameTeal' : (scrolled ? 'text-slate-600 hover:text-gameTeal' : 'text-slate-700 hover:text-gameTeal')}`
@@ -197,7 +197,7 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout, profil
                       prefetch={false}
                       onClick={handleLinkClick}
                       className={`
-                        text-sm font-bold transition-all relative flex items-center gap-1.5 py-2
+                        text-sm font-bold transition-all relative flex items-center gap-1.5 py-2 xl:whitespace-nowrap
                         ${active ? 'text-gameTeal' : (scrolled ? 'text-slate-600 hover:text-gameTeal' : 'text-slate-700 hover:text-gameTeal')}
                       `}
                     >
@@ -294,14 +294,16 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout, profil
               href="https://online.gameacademy.in/login"
               target="_blank"
               rel="noopener noreferrer"
-              className="border-2 border-gameTeal/20 text-gameTeal hover:text-white hover:bg-gameTeal hover:border-gameTeal px-4 py-2 rounded-full font-bold text-sm transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2 group/live shadow-sm hover:shadow-md hover:shadow-gameTeal/10"
+              aria-label="Live Class"
+              title="Live Class"
+              className="relative w-10 h-10 rounded-full border-2 border-gameTeal/20 text-gameTeal hover:text-white hover:bg-gameTeal hover:border-gameTeal transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center shrink-0 group/live shadow-sm hover:shadow-md hover:shadow-gameTeal/10"
             >
-              <span className="relative flex h-2.5 w-2.5">
+              <Video size={18} className="group-hover/live:scale-110 transition-transform duration-300" />
+              <span className="absolute top-0.5 right-0.5 flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
               </span>
-              <Video size={16} className="text-gameTeal group-hover/live:text-white group-hover/live:scale-110 transition-all duration-300" />
-              <span>Live Class</span>
+              <span className="absolute top-full mt-2 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-md bg-slate-900 text-white text-[11px] font-bold whitespace-nowrap opacity-0 invisible group-hover/live:opacity-100 group-hover/live:visible transition-all pointer-events-none z-50">Live Class</span>
             </a>
 
             {isLoggedIn ? (
@@ -349,7 +351,7 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout, profil
             ) : (
               <button 
                 onClick={openLogin}
-                className="bg-gameTeal hover:bg-gameTealDark text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-lg shadow-gameTeal/20 transition-all hover:-translate-y-0.5 active:translate-y-0"
+                className="bg-gameTeal hover:bg-gameTealDark text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-lg shadow-gameTeal/20 transition-all hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap shrink-0"
               >
                 Student Login
               </button>
