@@ -242,7 +242,12 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
               {categories.map((item) => (
                     <div
                        key={item.id}
-                       className="min-w-[240px] md:min-w-[260px] snap-center group pointer-events-auto"
+                       onClick={() => handleNavigate(item.action)}
+                       role="button"
+                       tabIndex={0}
+                       aria-label={`Open ${item.title}`}
+                       onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleNavigate(item.action, true); } }}
+                       className="min-w-[240px] md:min-w-[260px] snap-center group pointer-events-auto cursor-pointer"
                     >
                        {/* Container - Bit more rounded rounded-[3rem] */}
                        <div className="relative h-[300px] md:h-[320px] rounded-[2.5rem] overflow-hidden bg-slate-900 border border-slate-200/10 transition-all duration-500 isolate">
@@ -280,7 +285,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
                                 />
                              </div>
    
-                            <div className="mt-auto transform translate-y-[70px] group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]">
+                            <div className="mt-auto transform translate-y-[70px] group-hover:translate-y-0 max-md:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]">
                                <h3 className="text-xl md:text-2xl font-black text-white mb-1 tracking-tight drop-shadow-lg leading-tight transition-all">
                                   {item.title}
                                </h3>
@@ -289,7 +294,7 @@ const FeaturedExams: React.FC<FeaturedExamsProps> = ({ onNavigate }) => {
                                </p>
                                
                                {/* Buttons container */}
-                               <div className="space-y-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto">
+                               <div className="space-y-1.5 opacity-0 group-hover:opacity-100 max-md:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto max-md:pointer-events-auto">
                                    <button 
                                      onClick={(e) => {
                                        e.stopPropagation();
