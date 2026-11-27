@@ -9,7 +9,6 @@ import {
   Video, FileText, ClipboardCheck, CalendarClock
 } from 'lucide-react';
 
-const COURSES_URL = 'https://courses.gameacademy.in'; // Game Live (Classplus) catalogue
 // Beyond Boundaries: General Studies Mastery Course (exact course page).
 const COURSE_URL = 'https://wpsvp.courses.store/courses/490929?filterId=1&sortId=7';
 
@@ -48,28 +47,28 @@ interface ExamCard {
 const CARDS: ExamCard[] = [
   { route: 'recruitment', eligibility: 'Graduate', status: 'Tier I done', tone: 'waiting', title: 'SSC CGL',
     desc: 'Non-tech: entire exam. Reasoning, GA, Quant, English. Any graduate, any branch.',
-    meta: '12,256 posts. Tier I held 30 Sep–30 Oct 2026. Tier II tentatively Dec.', href: COURSES_URL },
+    meta: '12,256 posts. Tier I held 30 Sep–30 Oct 2026. Tier II tentatively Dec.', href: 'https://ssc.gov.in' },
   { route: 'recruitment', eligibility: 'Graduate · UG', status: 'Applications closed', tone: 'closed', title: 'RRB NTPC',
     desc: 'Non-tech: entire exam. Graduate (CEN 06/2026) and 12th pass (CEN 07/2026) posts.',
-    meta: '3,548 graduate + 1,688 UG posts. Graduate CBT-1 expected Dec.', href: COURSES_URL },
+    meta: '3,548 graduate + 1,688 UG posts. Graduate CBT-1 expected Dec.', href: 'https://www.rrbapply.gov.in' },
   { route: 'recruitment', eligibility: '12th · 10th', status: 'Dec 2026', tone: 'upcoming', title: 'SSC CHSL / MTS',
     desc: 'Non-tech: entire exam. CHSL needs 12th pass, MTS needs 10th pass. A diploma or degree is not a separate route.',
-    meta: 'CHSL Tier I proposed 30 Nov–31 Dec 2026. Confirm on ssc.gov.in.', href: COURSES_URL },
+    meta: 'CHSL Tier I proposed 30 Nov–31 Dec 2026. Confirm on ssc.gov.in.', href: 'https://ssc.gov.in' },
   { route: 'recruitment', eligibility: 'Graduate', status: 'Varies', tone: 'closed', title: 'Banking & State',
     desc: 'Non-tech: entire exam. IBPS, SBI and state recruitments. General Studies is only one part of the mix.',
-    meta: 'Dates differ for every bank and state. Check the official notice.', href: COURSES_URL },
+    meta: 'Dates differ for every bank and state. Check the official notice.', href: 'https://www.ibps.in' },
   { route: 'engineering', eligibility: 'Diploma · Degree', status: 'Paper-I done', tone: 'waiting', title: 'SSC JE',
     desc: 'Non-tech: Reasoning + General Awareness, 100 of 200 marks in Paper-I.',
-    meta: 'About 1,748 posts notified (some sources say 1,699). Paper-II expected Dec 2026.', href: '/ssc' },
+    meta: 'About 1,748 posts notified (some sources say 1,699). Paper-II expected Dec 2026.', href: 'https://ssc.gov.in' },
   { route: 'engineering', eligibility: 'Diploma · Degree', status: 'Result awaited', tone: 'waiting', title: 'RRB JE',
     desc: 'Non-tech: all of CBT-1. Maths, Reasoning, General Awareness, General Science.',
-    meta: 'CEN 04/2026 · 4,029 posts (one source reports 4,487). CBT-1 result expected Dec.', href: '/rrb' },
+    meta: 'CEN 04/2026 · 4,029 posts (one source reports 4,487). CBT-1 result expected Dec.', href: 'https://www.rrbapply.gov.in' },
   { route: 'engineering', eligibility: 'Degree', status: '31 Jan 2027', tone: 'upcoming', title: 'UPSC ESE (IES)',
     desc: 'Non-tech: Paper 1, 200 of 500 marks in prelims. General Studies and Engineering Aptitude.',
-    meta: 'Prelims 31 Jan 2027. Paper 1 is 9:30–11:30 am.', href: '/ese' },
+    meta: 'Prelims 31 Jan 2027. Paper 1 is 9:30–11:30 am.', href: 'https://upsc.gov.in' },
   { route: 'engineering', eligibility: 'Diploma · Degree', status: 'Varies by state', tone: 'closed', title: 'State AE / JE',
     desc: 'Non-tech: a General Studies paper or section in most state engineering services.',
-    meta: 'Pattern and dates differ for every state. Track them on Job Updates.', href: '/state' },
+    meta: 'Pattern and dates differ for every state. Track them on Job Updates.', href: '/jobs' },
 ];
 
 const FACTS = [
@@ -282,7 +281,7 @@ export default function NonTechHubPage() {
 
           <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-4">
             {cards.map((c) => (
-              <Link key={c.title} href={c.href} target={c.href.startsWith('http') ? '_blank' : undefined}
+              <Link key={c.title} href={c.href} target={c.href.startsWith('http') ? '_blank' : undefined} rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                 className="group bg-white rounded-2xl border border-slate-200 p-5 flex flex-col hover:-translate-y-0.5 hover:shadow-lg hover:border-[#075d63]/30 transition-all">
                 <div className="flex items-center justify-between gap-2 mb-3">
                   <span className="text-[9px] font-black uppercase tracking-widest text-slate-400">{c.eligibility}</span>
