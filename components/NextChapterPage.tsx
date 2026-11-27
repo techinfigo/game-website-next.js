@@ -314,8 +314,8 @@ export default function NextChapterPage() {
                 </a>
               </div>
               {/* Projectile parabola — "see the idea" visual */}
-              <div className="flex items-end justify-center sm:items-center shrink-0 sm:w-60 pt-2 sm:pt-0" aria-hidden="true">
-                <svg viewBox="0 0 200 150" className="w-full max-w-[300px] h-auto">
+              <div className="flex items-end justify-center sm:items-center shrink-0 sm:w-72 pt-2 sm:pt-0" aria-hidden="true">
+                <svg viewBox="0 0 200 150" className="w-full max-w-[360px] h-auto">
                   {/* axes */}
                   <line x1="30" y1="14" x2="30" y2="130" stroke="#34d399" strokeOpacity="0.55" strokeWidth="2.5" strokeLinecap="round" />
                   <line x1="30" y1="130" x2="192" y2="130" stroke="#34d399" strokeOpacity="0.55" strokeWidth="2.5" strokeLinecap="round" />
