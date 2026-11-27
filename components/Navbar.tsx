@@ -294,13 +294,13 @@ const Navbar: React.FC<NavbarProps> = ({ openLogin, isLoggedIn, onLogout, profil
               href="https://online.gameacademy.in/login"
               target="_blank"
               rel="noopener noreferrer"
-              className="border-2 border-gameTeal/20 text-gameTeal hover:text-white hover:bg-gameTeal hover:border-gameTeal px-4 py-2 rounded-full font-bold text-sm transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2 whitespace-nowrap shrink-0 group/live shadow-sm hover:shadow-md hover:shadow-gameTeal/10"
+              className="border-2 border-gameTeal/20 text-gameTeal hover:text-white hover:bg-gameTeal hover:border-gameTeal px-3 py-1.5 rounded-full font-bold text-xs transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-1.5 whitespace-nowrap shrink-0 group/live shadow-sm hover:shadow-md hover:shadow-gameTeal/10"
             >
-              <span className="relative flex h-2.5 w-2.5">
+              <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
               </span>
-              <Video size={16} className="text-gameTeal group-hover/live:text-white group-hover/live:scale-110 transition-all duration-300" />
+              <Video size={14} className="text-gameTeal group-hover/live:text-white group-hover/live:scale-110 transition-all duration-300" />
               <span>Live Class</span>
             </a>
 
