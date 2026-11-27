@@ -199,8 +199,8 @@ export default function NonTechHubPage() {
                 <a href="#exams" className="inline-flex items-center gap-2 bg-[#f2c537] text-[#0f2a2b] font-black px-6 py-3.5 rounded-full hover:brightness-105 transition-all">
                   See the exams <ArrowDown size={16} />
                 </a>
-                <a href="#exams" className="inline-flex items-center gap-2 border border-white/25 text-white font-bold px-6 py-3.5 rounded-full hover:bg-white/10 transition-all">
-                  Which exams test non-tech? <ArrowRight size={16} />
+                <a href="#course" className="inline-flex items-center gap-2 border border-white/25 text-white font-bold px-6 py-3.5 rounded-full hover:bg-white/10 transition-all">
+                  Explore Courses <ArrowRight size={16} />
                 </a>
               </div>
             </motion.div>
@@ -363,7 +363,7 @@ export default function NonTechHubPage() {
       </section>
 
       {/* ===== Course block ===== */}
-      <section className="px-5 md:px-10 lg:px-12 pb-14">
+      <section id="course" className="px-5 md:px-10 lg:px-12 pb-14 scroll-mt-24">
         <div className="max-w-[1280px] mx-auto rounded-3xl bg-gradient-to-br from-[#06403f] to-[#0f2a2b] text-white p-7 md:p-10 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#f2c537]/10 rounded-full blur-3xl" />
           <div className="relative z-10 grid lg:grid-cols-[260px_1fr] gap-8 items-center lg:pl-8">
