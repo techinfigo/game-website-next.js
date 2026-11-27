@@ -13,7 +13,15 @@ import { useSiteSettings } from '@/hooks/useSiteSettings';
 const GUIDE_SCHOOL = 'https://drive.google.com/file/d/11fVsMj_uNv78PKiAcAynnsXwbKriWM9O/view';
 const GUIDE_JEE = 'https://drive.google.com/file/d/11L-eY30JMITMof4DZ7umxRp-6OkHMYvo/view';
 const GUIDE_NEET = 'https://drive.google.com/file/d/1XNCN4hp3FM_KlghaiKoW956-CxQogQdq/view';
-const YT_FALLBACK = 'https://www.youtube.com/@gblions'; // Gaurav Sir's Physics lessons
+const YT_FALLBACK = 'https://www.youtube.com/@gblions'; // Gaurav Sir's channel
+// Gaurav Sir's Physics playlist — the hero video and the "Watch Physics on
+// YouTube" button both use this (admin can override via the Physics playlist field).
+const DEFAULT_PLAYLIST = 'https://youtube.com/playlist?list=PL4z8h611VJ3DzujUrV1eQpSjue0vRJlAM';
+
+function playlistId(url: string): string {
+  const m = (url || '').match(/[?&]list=([A-Za-z0-9_-]+)/);
+  return m ? m[1] : '';
+}
 
 // Hero video cards — Gaurav Sir's lessons, admin-editable (School page content).
 const HERO_VIDEOS = ['CAJezRf1u9g', 'UnjCZn-Ga8M', 'ggnZchS4AZ4'];
@@ -98,7 +106,11 @@ export default function NextChapterPage() {
     return () => { cancelled = true; };
   }, []);
 
-  const playlistUrl = links.playlist || youtube || YT_FALLBACK;
+  const playlistUrl = links.playlist || DEFAULT_PLAYLIST;
+  const heroPlId = playlistId(playlistUrl);
+  const heroEmbedSrc = heroPlId
+    ? `https://www.youtube.com/embed/videoseries?list=${heroPlId}&autoplay=1&mute=1&loop=1&controls=0&disablekb=1&fs=0&rel=0&playsinline=1&modestbranding=1&iv_load_policy=3`
+    : (heroVideos[0] ? `https://www.youtube.com/embed/${heroVideos[0]}?autoplay=1&mute=1&loop=1&playlist=${heroVideos[0]}&rel=0&playsinline=1&modestbranding=1&controls=0&disablekb=1&fs=0&iv_load_policy=3` : '');
   const guideHref = (k: 'school' | 'jee' | 'neet') => links[k];
 
   const scrollToForm = () => document.getElementById('interest')?.scrollIntoView({ behavior: 'smooth' });
@@ -159,15 +171,15 @@ export default function NextChapterPage() {
               </p>
             </motion.div>
 
-            {/* Hero lesson video — single, auto-plays (muted) */}
-            {heroVideos[0] && (
+            {/* Hero lesson video — Physics playlist, auto-plays (muted) */}
+            {heroEmbedSrc && (
               <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.1 }}
                 className="relative w-full">
                 <div className="absolute -inset-6 bg-[#2dd4bf]/10 rounded-[2rem] blur-2xl pointer-events-none" />
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/15 bg-black" style={{ aspectRatio: '16 / 9' }}>
                   <iframe
-                    src={`https://www.youtube.com/embed/${heroVideos[0]}?autoplay=1&mute=1&loop=1&playlist=${heroVideos[0]}&rel=0&playsinline=1&modestbranding=1&controls=0&disablekb=1&fs=0&iv_load_policy=3`}
-                    title="Gaurav Sir lesson"
+                    src={heroEmbedSrc}
+                    title="Gaurav Sir Physics lessons"
                     allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
                     allowFullScreen
                     className="absolute inset-0 w-full h-full"
